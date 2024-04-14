@@ -11,8 +11,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/AI-Empower-Labs/Studio
-cd ./docker/minimum
-
+cd ./Studio/docker/minimum
 ```
 
 #### Using Docker Compose
