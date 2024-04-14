@@ -1,0 +1,61 @@
+version: '3.8'
+services:
+  host:
+    image: registry.aiempowerlabs.com/aistudio:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      configPath: /opt/aistudio/
+    volumes:
+      - ./appsettings.json:/opt/aistudio/appsettings.json
+    depends_on:
+      - postgres
+      - translation
+      - transcription
+      - embedding
+
+  postgres:
+    image: ankane/pgvector:latest
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  phi2:
+    image: registry.aiempowerlabs.com/phi2:latest
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/readyz"]
+      interval: 1m
+      timeout: 20m
+      retries: 5
+
+  translation:
+    image: registry.aiempowerlabs.com/translation:latest
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD-SHELL', './venv/bin/python scripts/healthcheck.py']     
+
+  transcription:
+    image: registry.aiempowerlabs.com/transcription:latest
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+
+  embedding:
+    image: registry.aiempowerlabs.com/multilingual-e5-large:latest
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
