@@ -21,7 +21,7 @@ This section is key and should provide detailed instructions on how to use Docke
 ## Starting the System with Docker Compose
 
 ### Run the Services
-Notice, this example run on CPU only, so LLM inference may be slow. See [GPU](#GPT) section on how to run with GPU if available.
+Notice, this example run on CPU only, so LLM inference may be slow. See [GPU](#GPU) section on how to run with GPU if available.
 To start all services defined in the docker-compose.yml file:
 ```bash
 docker compose pull
