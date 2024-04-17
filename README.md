@@ -46,7 +46,7 @@ docker compose down
 
 ### Docker Image List
 * registry.aiempowerlabs.com/aistudio
-* registry.aiempowerlabs.com/phi2
+* registry.aiempowerlabs.com/mistral02
 * registry.aiempowerlabs.com/translation
 * registry.aiempowerlabs.com/transcription
 * registry.aiempowerlabs.com/multilingual-e5-large
