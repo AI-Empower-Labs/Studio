@@ -23,24 +23,25 @@ This section is key and should provide detailed instructions on how to use Docke
 ### Run the Services
 To start all services defined in the docker-compose.yml file:
 ```bash
-docker-compose up
+docker compose pull
+docker compose up
 ```
 
 Start Studio UI on http://localhost:8080
 
 To run in detached mode, use the -d flag:
 ```bash
-docker-compose logs
+docker compose logs
 ```
 
 To follow logs for a specific service:
 ```bash
-docker-compose logs -f service_name
+docker compose logs -f service_name
 ```
 
 To stop all services:
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Docker Image List
