@@ -57,25 +57,25 @@ docker compose down
 
 #### Overview
 
-AI Empowerlabs offers flexible hosting solutions for Large Language Models (LLMs) using Docker images based on LocalAI specifications. This document provides guidelines for local hosting and configuring GPU support when using custom models.
+AI Empowerlabs offers flexible hosting solutions for Large Language Models (LLMs) using Docker images based on ollama specifications. This document provides guidelines for local hosting and configuring GPU support when using custom models.
 
-#### Local Hosting Using Docker Images Based on LocalAI
+#### Local Hosting Using Docker Images Based on ollama
 
-- **Service Provider**: LocalAI Specifications
-- **Resource**: Docker images based on LocalAI
-- **Usage**: For deployment of LLMs, AI Empowerlabs uses Docker images developed based on LocalAI specifications. These images facilitate quick setup and reliable performance tailored to LocalAI's standards.
+- **Service Provider**: ollama Specifications
+- **Resource**: Docker images based on ollama
+- **Usage**: For deployment of LLMs, AI Empowerlabs uses Docker images developed based on ollama specifications. These images facilitate quick setup and reliable performance tailored to ollama's standards.
 
 #### Configuring GPU Support for LLM Hosting
 
-- **Reference Guide**: [LocalAI GPU Acceleration](https://localai.io/features/gpu-acceleration/)
-- **Details**: To optimize the performance of LLM hosting, particularly with custom models, configuring GPU support is recommended. Detailed instructions and configurations can be accessed on the LocalAI GPU acceleration page linked above.
+- **Reference Guide**: [ollama GPU Acceleration](https://docs.docker.com/desktop/gpu/) & NVidia - https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/docker-specialized.html
+- **Details**: To optimize the performance of LLM hosting, particularly with custom models, configuring GPU support is recommended. Detailed instructions and configurations can be accessed on the ollama GPU acceleration page linked above.
 
 #### Compatibility and Custom Model Integration
 
 - **Compatibility**: AI Empowerlabs supports any OpenAI compatible endpoints.
-- **Custom Model Creation**: Users can create their own custom models that adhere to OpenAI specifications. For instance, models based on LocalAI can be integrated seamlessly.
+- **Custom Model Creation**: Users can create their own custom models that adhere to OpenAI specifications. For instance, models based on ollama can be integrated seamlessly.
 
-For additional information on custom model integration and other advanced configurations, users are encouraged to refer to the specific documentation provided by LocalAI or contact AI Empowerlabs support.
+For additional information on custom model integration and other advanced configurations, users are encouraged to refer to the specific documentation provided by ollama or contact AI Empowerlabs support.
 
 
 # AI Empowerlabs Studio configuration - appsettings.json
