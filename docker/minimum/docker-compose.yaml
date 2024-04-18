@@ -14,7 +14,7 @@ services:
       - translation
       - transcription
       - embedding
-      - mistral02
+      - llama3
 
   postgres:
     image: ankane/pgvector:latest
@@ -28,8 +28,8 @@ services:
       timeout: 3s
       retries: 3
 
-  mistral02:
-    image: registry.aiempowerlabs.com/mistral02:latest
+  llama3:
+    image: registry.aiempowerlabs.com/llama3:latest
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:11434"]
