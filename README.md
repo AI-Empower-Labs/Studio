@@ -348,24 +348,6 @@ Configures logging via Serilog.
 }
 ```
 
-### 5. Columns
-
-Defines the structure of log data when written to storage.
-
-**To customize**:
-Modify column writers, such as changing the `dbType` for log levels.
-
-```json
-"Columns": {
-    "level": {
-        "Name": "LevelColumnWriter",
-        "Args": {
-            "dbType": "Text"
-        }
-    }
-}
-```
-
 ### Saving and Applying Changes
 
 After making changes to the `appsettings.json`, save the file and restart your ASP.NET application to apply these adjustments. It is essential to validate the settings to prevent configuration errors that could disrupt the operation of your application.
