@@ -2,6 +2,15 @@
 
 This Docker Compose configuration sets up a comprehensive infrastructure for AI Empower Labs, featuring multiple services integrated with OpenTelemetry for observability. The setup includes services for application hosting, databases, translation, transcription, embedding, and more, with extensive monitoring through tools like Prometheus, Grafana, Jaeger, and Zipkin.
 
+To enable OpenTelemetry in the setup the environment variable OTEL_EXPORTER_OTLP_ENDPOINT must be set to point to a compatible Open Telemetry Protocol endpoint, for example
+
+```bash
+environment:
+   OTEL_EXPORTER_OTLP_ENDPOINT: "http://serviceName:4317"
+```
+
+This is documented on the Open Telemetry exporter page - https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/. Notice only OTEL_EXPORTER_OTLP_ENDPOINT is supported in AI Empower Labs.
+
 ## Prerequisites
 
 Before deploying the services, ensure you have:
