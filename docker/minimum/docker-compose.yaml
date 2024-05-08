@@ -51,20 +51,8 @@ services:  # Defines the services part of the compose file
       interval: 1m
       timeout: 20s
       retries: 5
-    runtime: nvidia  # Specifies the runtime environment, necessary for GPU usage
-    environment:
-      NVIDIA_VISIBLE_DEVICES: all  # Makes all NVIDIA devices visible inside the container
-    security_opt:
-      - label=disable  # Disables security labeling within the container, necessary for some contexts
     networks:
       - ai_internal  # Connects to the internal network
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia  # Reserves NVIDIA GPUs
-              capabilities: [gpu]
-              count: 1  # Specifies the number of GPUs
 
   translation:  # Translation service
     image: registry.aiempowerlabs.com/translation:latest  # Image to use for translation service
