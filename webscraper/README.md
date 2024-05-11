@@ -11,6 +11,7 @@ This Python program accomplishes two main tasks:
 
 ### Installation
 
+Assumes AI Empower Labs is running on localhost port 8080
 Before running the program, ensure you have the necessary libraries installed:
 
 ```bash
