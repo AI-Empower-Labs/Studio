@@ -15,6 +15,11 @@ services:  # Defines the services part of the compose file
       - "8080:8080"  # Port mapping: Maps port 8080 of the container to port 8080 on the host
     environment:
       configPath: /opt/aistudio/  # Environment variable specifying the config path inside the container
+    healthcheck:  # Health check using a curl command to a local endpoint
+      test: ["CMD", "curl", "-f", "http://localhost:8080/liveness"]
+      interval: 1m
+      timeout: 20s
+      retries: 5
     volumes:
       - ./appsettings.json:/opt/aistudio/appsettings.json  # Mounts a configuration file into the container
     networks:
