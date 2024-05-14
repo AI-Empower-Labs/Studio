@@ -25,17 +25,23 @@ class AISpider(scrapy.Spider):
     allowed_domains = ["aiempowerlabs.com"]
 
     def parse(self, response):
-        print(response.url)
-
-        webpage_request = {
-            'url': response.url,
-            'documentId': re.sub('[^a-zA-Z0-9-_.]', '', response.url),
-            'index': "webscrape"
-            }
-        requests.post("http://localhost:8080/api/semantic/ingest/webpage", json=webpage_request)
-        time.sleep(1) # Don't exceed rate limits
-
+        self.ingest(response.url)
         for href in response.xpath("//a/@href").getall():
             url = response.urljoin(href)
             if is_valid_http_url(url):
-                yield scrapy.Request(url, self.parse)
+                if(url.lower().endswith(tuple([".jpeg", ".jpg", ".gif", ".png", ".js"]))):
+                    continue
+                elif(url.lower().endswith(".pdf")):
+                   self.ingest(url)
+                else:
+                    yield scrapy.Request(url, self.parse)
+
+    def ingest(self, url):
+        print(url)
+        webpage_request = {
+            'url': url,
+            'documentId': re.sub('[^a-zA-Z0-9-_.]', '', url),
+            'index': 'webscrape'
+        }
+        requests.post("http://localhost:8080/api/semantic/ingest/webpage", json=webpage_request)
+        time.sleep(1) # Don't exceed rate limits
