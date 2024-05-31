@@ -15,6 +15,7 @@ services:  # Defines the services part of the compose file
       - "8080:8080"  # Port mapping: Maps port 8080 of the container to port 8080 on the host
     environment:
       configPath: /opt/aistudio/  # Environment variable specifying the config path inside the container
+      ASPNETCORE_URLS: http://*:8080
     healthcheck:  # Health check using a curl command to a local endpoint
       test: ["CMD", "curl", "-f", "http://localhost:8080/liveness"]
       interval: 1m
@@ -72,6 +73,8 @@ services:  # Defines the services part of the compose file
     image: registry.aiempowerlabs.com/transcription:latest  # Image to use for transcription service
     logging: *default-logging
     restart: unless-stopped
+    environment:
+      ASPNETCORE_URLS: http://*:8080
     healthcheck:  # Health check using a curl command to a local endpoint
       test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
       interval: 1m  # Health check interval
@@ -84,6 +87,8 @@ services:  # Defines the services part of the compose file
     image: registry.aiempowerlabs.com/multilingual-e5-large:latest  # Image to use for embedding service
     logging: *default-logging
     restart: unless-stopped
+    environment:
+      ASPNETCORE_URLS: http://*:8080
     healthcheck:  # Health check using a curl command to a local endpoint
       test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
       interval: 1m  # Health check interval

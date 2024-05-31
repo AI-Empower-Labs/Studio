@@ -20,6 +20,7 @@ services:  # Defines the services part of the compose file
     environment:
       <<: *environment
       configPath: /opt/aistudio/  # Environment variable specifying the config path inside the container
+      ASPNETCORE_URLS: http://*:8080
     healthcheck:  # Health check using a curl command to a local endpoint
       test: ["CMD", "curl", "-f", "http://localhost:8080/liveness"]
       interval: 1m
@@ -83,6 +84,7 @@ services:  # Defines the services part of the compose file
     environment:
       <<: *environment
       configPath: /opt/transcription/  # Environment variable specifying the config path inside the container
+      ASPNETCORE_URLS: http://*:8080
     volumes:
       - ./transcription/appsettings.json:/opt/transcription/appsettings.json  # Mounts a configuration file into the container
     healthcheck:  # Health check using a curl command to a local endpoint
@@ -100,6 +102,7 @@ services:  # Defines the services part of the compose file
     environment:
       <<: *environment
       configPath: /opt/embedding/  # Environment variable specifying the config path inside the container
+      ASPNETCORE_URLS: http://*:8080
     volumes:
       - ./embedding/appsettings.json:/opt/embedding/appsettings.json  # Mounts a configuration file into the container
     healthcheck:  # Health check using a curl command to a local endpoint
