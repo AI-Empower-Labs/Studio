@@ -19,7 +19,6 @@ using CopilotChat.WebApi.Models.Response;
 using CopilotChat.WebApi.Models.Storage;
 using CopilotChat.WebApi.Options;
 using CopilotChat.WebApi.Plugins.Chat;
-using CopilotChat.WebApi.Plugins.Email;
 using CopilotChat.WebApi.Storage;
 using CopilotChat.WebApi.Utilities;
 using Microsoft.AspNetCore.Http;
@@ -308,10 +307,10 @@ public sealed class ChatController(
 
     private static KernelArguments GetContextVariables(Ask ask, IAuthInfo authInfo, string chatId)
     {
-        const string UserIdKey = "userId";
-        const string UserNameKey = "userName";
-        const string ChatIdKey = "chatId";
-        const string MessageKey = "message";
+        const string userIdKey = "userId";
+        const string userNameKey = "userName";
+        const string chatIdKey = "chatId";
+        const string messageKey = "message";
 
         KernelArguments contextVariables = new();
         foreach (KeyValuePair<string, string> variable in ask.Variables)
@@ -319,10 +318,10 @@ public sealed class ChatController(
             contextVariables[variable.Key] = variable.Value;
         }
 
-        contextVariables[UserIdKey] = authInfo.UserId;
-        contextVariables[UserNameKey] = authInfo.Name;
-        contextVariables[ChatIdKey] = chatId;
-        contextVariables[MessageKey] = ask.Input;
+        contextVariables[userIdKey] = authInfo.UserId;
+        contextVariables[userNameKey] = authInfo.Name;
+        contextVariables[chatIdKey] = chatId;
+        contextVariables[messageKey] = ask.Input;
 
         return contextVariables;
     }
