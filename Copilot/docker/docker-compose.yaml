@@ -1,0 +1,25 @@
+version: "3"
+services:
+  chat-copilot-webapp:
+   image: chat-copilot-webapp
+   build:
+     context: ..
+     dockerfile: docker/webapp/Dockerfile
+   ports:
+     - 3000:3000
+   environment:
+     - REACT_APP_BACKEND_URI=http://localhost:3080
+   depends_on:
+     chat-copilot-webapi:
+       condition: service_started
+  chat-copilot-webapi:
+    image: chat-copilot-webapi
+    build:
+      context: ..
+      dockerfile: docker/webapi/Dockerfile
+    ports:
+      - 3080:8080
+    env_file:
+      - webapi/.env
+    environment:
+      - Authentication__Type=none

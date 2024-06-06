@@ -1,0 +1,120 @@
+﻿// Copyright (c) Microsoft. All rights reserved.
+
+using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
+namespace CopilotChat.WebApi.Plugins.OpenApi.GitHubPlugin.Model;
+
+/// <summary>
+///     Represents a GitHub Pull Request.
+/// </summary>
+public sealed record PullRequest
+{
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="PullRequest" /> class, representing a pull request on GitHub.
+    /// </summary>
+    /// <param name="url">The URL of the pull request.</param>
+    /// <param name="id">The unique identifier of the pull request.</param>
+    /// <param name="number">The number of the pull request within the repository.</param>
+    /// <param name="state">The state of the pull request, such as "open", "closed", or "merged".</param>
+    /// <param name="locked">A value indicating whether the pull request is locked for comments or changes.</param>
+    /// <param name="title">The title of the pull request.</param>
+    /// <param name="user">The user who created the pull request.</param>
+    /// <param name="labels">A list of labels assigned to the pull request.</param>
+    /// <param name="updatedAt">The date and time when the pull request was last updated.</param>
+    /// <param name="closedAt">The date and time when the pull request was closed, or null if it is not closed.</param>
+    /// <param name="mergedAt">The date and time when the pull request was merged, or null if it is not merged.</param>
+    public PullRequest(
+        Uri url,
+        int id,
+        int number,
+        string state,
+        bool locked,
+        string title,
+        GitHubUser user,
+        ICollection<Label> labels,
+        DateTime updatedAt,
+        DateTime? closedAt,
+        DateTime? mergedAt
+    )
+    {
+        Url = url;
+        Id = id;
+        Number = number;
+        State = state;
+        Locked = locked;
+        Title = title;
+        User = user;
+        Labels = labels;
+        UpdatedAt = updatedAt;
+        ClosedAt = closedAt;
+        MergedAt = mergedAt;
+    }
+
+    /// <summary>
+    ///     Gets or sets the URL of the pull request
+    /// </summary>
+    [JsonPropertyName("url")]
+    public Uri Url { get; init; }
+
+    /// <summary>
+    ///     Gets or sets the unique identifier of the pull request
+    /// </summary>
+    [JsonPropertyName("id")]
+    public int Id { get; init; }
+
+    /// <summary>
+    ///     Gets or sets the number of the pull request
+    /// </summary>
+    [JsonPropertyName("number")]
+    public int Number { get; init; }
+
+    /// <summary>
+    ///     Gets or sets the state of the pull request
+    /// </summary>
+    [JsonPropertyName("state")]
+    public string State { get; init; }
+
+    /// <summary>
+    ///     Whether the pull request is locked
+    /// </summary>
+    [JsonPropertyName("locked")]
+    public bool Locked { get; init; }
+
+    /// <summary>
+    ///     Gets or sets the title of the pull request
+    /// </summary>
+    [JsonPropertyName("title")]
+    public string Title { get; init; }
+
+    /// <summary>
+    ///     Gets or sets the user who created the pull request
+    /// </summary>
+    [JsonPropertyName("user")]
+    public GitHubUser User { get; init; }
+
+	/// <summary>
+	///     Gets or sets the labels associated with the pull request
+	/// </summary>
+	[JsonPropertyName("labels")]
+	public ICollection<Label> Labels { get; init; } = [];
+
+    /// <summary>
+    ///     Gets or sets the date and time when the pull request was last updated
+    /// </summary>
+    [JsonPropertyName("updated_at")]
+    public DateTime UpdatedAt { get; init; }
+
+    /// <summary>
+    ///     Gets or sets the date and time when the pull request was closed
+    /// </summary>
+    [JsonPropertyName("closed_at")]
+    public DateTime? ClosedAt { get; init; }
+
+    /// <summary>
+    ///     Gets or sets the date and time when the pull request was merged
+    /// </summary>
+    [JsonPropertyName("merged_at")]
+    public DateTime? MergedAt { get; init; }
+}
