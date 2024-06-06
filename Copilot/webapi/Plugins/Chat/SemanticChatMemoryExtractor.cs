@@ -29,7 +29,7 @@ internal static class SemanticChatMemoryExtractor
     /// <param name="options">The prompts options.</param>
     /// <param name="logger">The logger.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
-    public static async Task ExtractSemanticChatMemoryAsync(
+    public static async Task ExtractSemanticChatMemory(
         string chatId,
         IKernelMemory memoryClient,
         Kernel kernel,
@@ -120,7 +120,7 @@ internal static class SemanticChatMemoryExtractor
             {
                 // Search if there is already a memory item that has a high similarity score with the new item.
                 SearchResult searchResult =
-                    await memoryClient.SearchMemoryAsync(
+                    await memoryClient.SearchMemory(
                         options.MemoryIndexName,
                         memory,
                         options.SemanticMemoryRelevanceUpper,
@@ -131,7 +131,7 @@ internal static class SemanticChatMemoryExtractor
 
                 if (searchResult.Results.Count == 0)
                 {
-                    await memoryClient.StoreMemoryAsync(options.MemoryIndexName, chatId, memoryName, memory,
+                    await memoryClient.StoreMemory(options.MemoryIndexName, chatId, memoryName, memory,
                         cancellationToken);
                 }
             }

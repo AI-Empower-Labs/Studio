@@ -22,7 +22,7 @@ public sealed class ChatMessageRepository(ICopilotChatMessageStorageContext stor
 	/// <param name="count">The number of messages to return. -1 returns all messages.</param>
 	/// <param name="cancellationToken"></param>
 	/// <returns>A list of ChatMessages matching the given chatId sorted from most recent to oldest.</returns>
-	public IAsyncEnumerable<CopilotChatMessage> FindByChatIdAsync(
+	public IAsyncEnumerable<CopilotChatMessage> FindByChatId(
 		string chatId,
 		int skip = 0,
 		int count = -1,
@@ -37,9 +37,9 @@ public sealed class ChatMessageRepository(ICopilotChatMessageStorageContext stor
 	/// <param name="chatId">The chat id.</param>
 	/// <param name="cancellationToken"></param>
 	/// <returns>The most recent ChatMessage matching the given chatId.</returns>
-	public async Task<CopilotChatMessage> FindLastByChatIdAsync(string chatId, CancellationToken cancellationToken)
+	public async Task<CopilotChatMessage> FindLastByChatId(string chatId, CancellationToken cancellationToken)
 	{
-		IAsyncEnumerable<CopilotChatMessage> chatMessages = FindByChatIdAsync(chatId, 0, 1, cancellationToken);
+		IAsyncEnumerable<CopilotChatMessage> chatMessages = FindByChatId(chatId, 0, 1, cancellationToken);
 		CopilotChatMessage? first = await chatMessages
 			.OrderByDescending(e => e.Timestamp)
 			.FirstOrDefaultAsync(cancellationToken: cancellationToken);

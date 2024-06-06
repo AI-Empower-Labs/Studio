@@ -23,7 +23,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.KernelMemory;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.MistralAI;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 
 using CopilotChatMessage = CopilotChat.WebApi.Models.Storage.CopilotChatMessage;
@@ -36,72 +35,24 @@ namespace CopilotChat.WebApi.Plugins.Chat;
 ///     ChatPlugin offers a more coherent chat experience by using memories
 ///     to extract conversation history and user intentions.
 /// </summary>
-public class ChatPlugin
+public sealed class ChatPlugin(
+	Kernel kernel,
+	IKernelMemory memoryClient,
+	ChatMessageRepository chatMessageRepository,
+	ChatSessionRepository chatSessionRepository,
+	IHubContext<MessageRelayHub> messageRelayHubContext,
+	IOptions<PromptsOptions> promptOptions,
+	ILogger logger)
 {
-	/// <summary>
-	///     A repository to save and retrieve chat messages.
-	/// </summary>
-	private readonly ChatMessageRepository _chatMessageRepository;
-
-	/// <summary>
-	///     A repository to save and retrieve chat sessions.
-	/// </summary>
-	private readonly ChatSessionRepository _chatSessionRepository;
-
-	/// <summary>
-	///     A kernel instance to create a completion function since each invocation
-	///     of the <see cref="ChatAsync" /> function will generate a new prompt dynamically.
-	/// </summary>
-	private readonly Kernel _kernel;
-
-	/// <summary>
-	///     A logger instance to log events.
-	/// </summary>
-	private readonly ILogger _logger;
-
-	/// <summary>
-	///     Client for the kernel memory service.
-	/// </summary>
-	private readonly IKernelMemory _memoryClient;
-
-	/// <summary>
-	///     A SignalR hub context to broadcast updates of the execution.
-	/// </summary>
-	private readonly IHubContext<MessageRelayHub> _messageRelayHubContext;
-
 	/// <summary>
 	///     Settings containing prompt texts.
 	/// </summary>
-	private readonly PromptsOptions _promptOptions;
+	private readonly PromptsOptions _promptOptions = promptOptions.Value.Copy();
 
 	/// <summary>
 	///     A kernel memory retriever instance to query semantic memories.
 	/// </summary>
-	private readonly SemanticMemoryRetriever _semanticMemoryRetriever;
-
-	/// <summary>
-	///     Create a new instance of <see cref="ChatPlugin" />.
-	/// </summary>
-	public ChatPlugin(
-		Kernel kernel,
-		IKernelMemory memoryClient,
-		ChatMessageRepository chatMessageRepository,
-		ChatSessionRepository chatSessionRepository,
-		IHubContext<MessageRelayHub> messageRelayHubContext,
-		IOptions<PromptsOptions> promptOptions,
-		ILogger logger)
-	{
-		_logger = logger;
-		_kernel = kernel;
-		_memoryClient = memoryClient;
-		_chatMessageRepository = chatMessageRepository;
-		_chatSessionRepository = chatSessionRepository;
-		_messageRelayHubContext = messageRelayHubContext;
-		// Clone the prompt options to avoid modifying the original prompt options.
-		_promptOptions = promptOptions.Value.Copy();
-
-		_semanticMemoryRetriever = new SemanticMemoryRetriever(promptOptions, chatSessionRepository, memoryClient);
-	}
+	private readonly SemanticMemoryRetriever _semanticMemoryRetriever = new(promptOptions, chatSessionRepository, memoryClient);
 
 	/// <summary>
 	///     Method that wraps GetAllowedChatHistoryAsync to get allotted history messages as one string.
@@ -119,7 +70,7 @@ public class ChatPlugin
 		[Description("Maximum number of tokens")]
 		int tokenLimit)
 	{
-		return GetAllowedChatHistoryAsync(chatId, tokenLimit);
+		return GetAllowedChatHistory(chatId, tokenLimit);
 	}
 
 	/// <summary>
@@ -131,14 +82,14 @@ public class ChatPlugin
 	/// <param name="chatHistory">Optional ChatHistory object tracking allotted messages.</param>
 	/// <param name="cancellationToken"></param>
 	/// <returns>Chat history as a string.</returns>
-	private async Task<string> GetAllowedChatHistoryAsync(
+	private async Task<string> GetAllowedChatHistory(
 		string chatId,
 		int tokenLimit,
 		ChatHistory? chatHistory = null,
 		CancellationToken cancellationToken = default)
 	{
-		IAsyncEnumerable<CopilotChatMessage> sortedMessages = _chatMessageRepository
-			.FindByChatIdAsync(chatId, 0, 100, cancellationToken);
+		IAsyncEnumerable<CopilotChatMessage> sortedMessages = chatMessageRepository
+			.FindByChatId(chatId, 0, 100, cancellationToken);
 
 		ChatHistory allottedChatHistory = [];
 		int remainingToken = tokenLimit;
@@ -204,7 +155,7 @@ public class ChatPlugin
 	/// <param name="messageType"></param>
 	[KernelFunction]
 	[Description("Get chat response")]
-	public async Task<KernelArguments> ChatAsync(
+	public async Task<KernelArguments> Chat(
 		[Description("The new message")] string message,
 		[Description("Unique and persistent identifier for the user")]
 		string userId,
@@ -216,20 +167,20 @@ public class ChatPlugin
 		CancellationToken cancellationToken = default)
 	{
 		// Set the system description in the prompt options
-		await SetSystemDescriptionAsync(chatId, cancellationToken);
+		await SetSystemDescription(chatId, cancellationToken);
 
 		// Save this new message to memory such that subsequent chat responses can use it
-		await UpdateBotResponseStatusOnClientAsync(chatId, "Saving user message to chat history",
+		await UpdateBotResponseStatusOnClient(chatId, "Saving user message to chat history",
 			cancellationToken);
 		CopilotChatMessage newUserMessage =
-			await SaveNewMessageAsync(message, userId, userName, chatId, messageType, cancellationToken);
+			await SaveNewMessage(message, userId, userName, chatId, messageType, cancellationToken);
 
 		// Clone the context to avoid modifying the original context variables.
 		KernelArguments chatContext = new(context);
 		chatContext["knowledgeCutoff"] = _promptOptions.KnowledgeCutoffDate;
 
 		CopilotChatMessage chatMessage =
-			await GetChatResponseAsync(chatId, userId, chatContext, newUserMessage, cancellationToken);
+			await GetChatResponse(chatId, userId, chatContext, newUserMessage, cancellationToken);
 		context["input"] = chatMessage.Content;
 
 		if (chatMessage.TokenUsage is not null)
@@ -238,7 +189,7 @@ public class ChatPlugin
 		}
 		else
 		{
-			_logger.LogWarning(
+			logger.LogWarning(
 				"ChatPlugin.ChatAsync token usage unknown. Ensure token management has been implemented correctly");
 		}
 
@@ -254,7 +205,7 @@ public class ChatPlugin
 	/// <param name="userMessage">ChatMessage object representing new user message.</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
 	/// <returns>The created chat message containing the model-generated response.</returns>
-	private async Task<CopilotChatMessage> GetChatResponseAsync(string chatId, string userId,
+	private async Task<CopilotChatMessage> GetChatResponse(string chatId, string userId,
 		KernelArguments chatContext, CopilotChatMessage userMessage, CancellationToken cancellationToken)
 	{
 		// Render system instruction components and create the meta-prompt template
@@ -268,16 +219,16 @@ public class ChatPlugin
 		if (!PassThroughAuthenticationHandler.IsDefaultUser(userId))
 		{
 			// Get the audience
-			await UpdateBotResponseStatusOnClientAsync(chatId, "Extracting audience", cancellationToken);
+			await UpdateBotResponseStatusOnClient(chatId, "Extracting audience", cancellationToken);
 			audience = await AsyncUtils.SafeInvokeAsync(
-				() => GetAudienceAsync(chatContext, cancellationToken), nameof(GetAudienceAsync));
+				() => GetAudience(chatContext, cancellationToken), nameof(GetAudience));
 			metaPrompt.AddSystemMessage(audience);
 		}
 
 		// Extract user intent from the conversation history.
-		await UpdateBotResponseStatusOnClientAsync(chatId, "Extracting user intent", cancellationToken);
+		await UpdateBotResponseStatusOnClient(chatId, "Extracting user intent", cancellationToken);
 		string userIntent = await AsyncUtils.SafeInvokeAsync(
-			() => GetUserIntentAsync(chatContext, cancellationToken), nameof(GetUserIntentAsync));
+			() => GetUserIntent(chatContext, cancellationToken), nameof(GetUserIntent));
 		metaPrompt.AddSystemMessage(userIntent);
 
 		// Calculate max amount of tokens to use for memories
@@ -291,10 +242,10 @@ public class ChatPlugin
 		chatMemoryTokenBudget = (int)(chatMemoryTokenBudget * _promptOptions.MemoriesResponseContextWeight);
 
 		// Query relevant semantic and document memories
-		await UpdateBotResponseStatusOnClientAsync(chatId, "Extracting semantic and document memories",
+		await UpdateBotResponseStatusOnClient(chatId, "Extracting semantic and document memories",
 			cancellationToken);
 		(string memoryText, IDictionary<string, CitationSource> citationMap) =
-			await _semanticMemoryRetriever.QueryMemoriesAsync(userIntent, chatId, chatMemoryTokenBudget);
+			await _semanticMemoryRetriever.QueryMemories(userIntent, chatId, chatMemoryTokenBudget);
 		if (!string.IsNullOrWhiteSpace(memoryText))
 		{
 			metaPrompt.AddSystemMessage(memoryText);
@@ -302,8 +253,8 @@ public class ChatPlugin
 		}
 
 		// Add as many chat history messages to meta-prompt as the token budget will allow
-		await UpdateBotResponseStatusOnClientAsync(chatId, "Extracting chat history", cancellationToken);
-		string allowedChatHistory = await GetAllowedChatHistoryAsync(chatId, maxRequestTokenBudget - tokensUsed, metaPrompt, cancellationToken);
+		await UpdateBotResponseStatusOnClient(chatId, "Extracting chat history", cancellationToken);
+		string allowedChatHistory = await GetAllowedChatHistory(chatId, maxRequestTokenBudget - tokensUsed, metaPrompt, cancellationToken);
 
 		// Store token usage of prompt template
 		chatContext[TokenUtils.GetFunctionKey("SystemMetaPrompt")] = TokenUtils.GetContextMessagesTokenCount(metaPrompt)
@@ -320,7 +271,7 @@ public class ChatPlugin
 			MetaPromptTemplate = metaPrompt
 		};
 
-		return await HandleBotResponseAsync(chatId, userId, chatContext, promptView, citationMap.Values.AsEnumerable(), cancellationToken);
+		return await HandleBotResponse(chatId, userId, chatContext, promptView, citationMap.Values.AsEnumerable(), cancellationToken);
 	}
 
 	/// <summary>
@@ -333,12 +284,12 @@ public class ChatPlugin
 		CancellationToken cancellationToken)
 	{
 		// Render system instruction components
-		await UpdateBotResponseStatusOnClientAsync(chatId, "Initializing prompt", cancellationToken);
+		await UpdateBotResponseStatusOnClient(chatId, "Initializing prompt", cancellationToken);
 
 		KernelPromptTemplateFactory promptTemplateFactory = new();
 		IPromptTemplate promptTemplate =
 			promptTemplateFactory.Create(new PromptTemplateConfig(_promptOptions.SystemPersona));
-		return await promptTemplate.RenderAsync(_kernel, context, cancellationToken);
+		return await promptTemplate.RenderAsync(kernel, context, cancellationToken);
 	}
 
 	/// <summary>
@@ -351,7 +302,7 @@ public class ChatPlugin
 	/// <param name="promptView">The prompt view.</param>
 	/// <param name="citations">Citation sources.</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
-	private async Task<CopilotChatMessage> HandleBotResponseAsync(
+	private async Task<CopilotChatMessage> HandleBotResponse(
 		string chatId,
 		string userId,
 		KernelArguments chatContext,
@@ -360,29 +311,29 @@ public class ChatPlugin
 		CancellationToken cancellationToken)
 	{
 		// Get bot response and stream to client
-		await UpdateBotResponseStatusOnClientAsync(chatId, "Generating bot response", cancellationToken);
+		await UpdateBotResponseStatusOnClient(chatId, "Generating bot response", cancellationToken);
 		CopilotChatMessage chatMessage = await AsyncUtils.SafeInvokeAsync(
-			() => StreamResponseToClientAsync(chatId, userId, promptView, cancellationToken, citations),
-			nameof(StreamResponseToClientAsync));
+			() => StreamResponseToClient(chatId, userId, promptView, cancellationToken, citations),
+			nameof(StreamResponseToClient));
 
 		// Save the message into chat history
-		await UpdateBotResponseStatusOnClientAsync(chatId, "Saving message to chat history", cancellationToken);
-		await _chatMessageRepository.Upsert(chatMessage, cancellationToken);
+		await UpdateBotResponseStatusOnClient(chatId, "Saving message to chat history", cancellationToken);
+		await chatMessageRepository.Upsert(chatMessage, cancellationToken);
 
 		// Extract semantic chat memory
-		await UpdateBotResponseStatusOnClientAsync(chatId, "Generating semantic chat memory", cancellationToken);
+		await UpdateBotResponseStatusOnClient(chatId, "Generating semantic chat memory", cancellationToken);
 		await AsyncUtils.SafeInvokeAsync(
-			() => SemanticChatMemoryExtractor.ExtractSemanticChatMemoryAsync(
+			() => SemanticChatMemoryExtractor.ExtractSemanticChatMemory(
 				chatId,
-				_memoryClient,
-				_kernel,
+				memoryClient,
+				kernel,
 				chatContext,
 				_promptOptions,
-				_logger,
-				cancellationToken), nameof(SemanticChatMemoryExtractor.ExtractSemanticChatMemoryAsync));
+				logger,
+				cancellationToken), nameof(SemanticChatMemoryExtractor.ExtractSemanticChatMemory));
 
 		// Calculate total token usage for dependency functions and prompt template
-		await UpdateBotResponseStatusOnClientAsync(chatId, "Saving token usage", cancellationToken);
+		await UpdateBotResponseStatusOnClient(chatId, "Saving token usage", cancellationToken);
 		chatMessage = chatMessage with
 		{
 			TokenUsage = GetTokenUsages(chatContext, chatMessage.Content)
@@ -390,7 +341,7 @@ public class ChatPlugin
 
 		// Update the message on client and in chat history with final completion token usage
 		await UpdateMessageOnClient(chatMessage, cancellationToken);
-		await _chatMessageRepository.Upsert(chatMessage, cancellationToken);
+		await chatMessageRepository.Upsert(chatMessage, cancellationToken);
 
 		return chatMessage;
 	}
@@ -401,7 +352,7 @@ public class ChatPlugin
 	/// </summary>
 	/// <param name="context">Kernel context variables.</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
-	private async Task<string> GetAudienceAsync(KernelArguments context, CancellationToken cancellationToken)
+	private async Task<string> GetAudience(KernelArguments context, CancellationToken cancellationToken)
 	{
 		// Clone the context to avoid modifying the original context variables
 		KernelArguments audienceContext = new(context);
@@ -416,23 +367,23 @@ public class ChatPlugin
 
 		audienceContext["tokenLimit"] = historyTokenBudget.ToString(new NumberFormatInfo());
 
-		KernelFunction completionFunction = _kernel.CreateFunctionFromPrompt(
+		KernelFunction completionFunction = kernel.CreateFunctionFromPrompt(
 			_promptOptions.SystemAudienceExtraction,
 			CreateIntentCompletionSettings(),
 			"SystemAudienceExtraction",
 			"Extract audience");
 
-		FunctionResult result = await completionFunction.InvokeAsync(_kernel, audienceContext, cancellationToken);
+		FunctionResult result = await completionFunction.InvokeAsync(kernel, audienceContext, cancellationToken);
 
 		// Get token usage from ChatCompletion result and add to original context
-		string? tokenUsage = TokenUtils.GetFunctionTokenUsage(result, _logger);
+		string? tokenUsage = TokenUtils.GetFunctionTokenUsage(result, logger);
 		if (tokenUsage is not null)
 		{
 			context[TokenUtils.GetFunctionKey("SystemAudienceExtraction")] = tokenUsage;
 		}
 		else
 		{
-			_logger.LogError("Unable to determine token usage for audienceExtraction");
+			logger.LogError("Unable to determine token usage for audienceExtraction");
 		}
 
 		return $"List of participants: {result}";
@@ -443,7 +394,7 @@ public class ChatPlugin
 	/// </summary>
 	/// <param name="context">Kernel context.</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
-	private async Task<string> GetUserIntentAsync(KernelArguments context, CancellationToken cancellationToken)
+	private async Task<string> GetUserIntent(KernelArguments context, CancellationToken cancellationToken)
 	{
 		// Clone the context to avoid modifying the original context variables
 		KernelArguments intentContext = new(context);
@@ -461,23 +412,23 @@ public class ChatPlugin
 		intentContext["tokenLimit"] = tokenBudget.ToString(new NumberFormatInfo());
 		intentContext["knowledgeCutoff"] = _promptOptions.KnowledgeCutoffDate;
 
-		KernelFunction completionFunction = _kernel.CreateFunctionFromPrompt(
+		KernelFunction completionFunction = kernel.CreateFunctionFromPrompt(
 			_promptOptions.SystemIntentExtraction,
 			CreateIntentCompletionSettings(),
 			"UserIntentExtraction",
 			"Extract user intent");
 
-		FunctionResult result = await completionFunction.InvokeAsync(_kernel, intentContext, cancellationToken);
+		FunctionResult result = await completionFunction.InvokeAsync(kernel, intentContext, cancellationToken);
 
 		// Get token usage from ChatCompletion result and add to original context
-		string? tokenUsage = TokenUtils.GetFunctionTokenUsage(result, _logger);
+		string? tokenUsage = TokenUtils.GetFunctionTokenUsage(result, logger);
 		if (tokenUsage is not null)
 		{
 			context[TokenUtils.GetFunctionKey("SystemIntentExtraction")] = tokenUsage;
 		}
 		else
 		{
-			_logger.LogError("Unable to determine token usage for userIntentExtraction");
+			logger.LogError("Unable to determine token usage for userIntentExtraction");
 		}
 
 		return $"User intent: {result}";
@@ -492,7 +443,7 @@ public class ChatPlugin
 	/// <param name="chatId">The chat ID</param>
 	/// <param name="type">Type of the message</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
-	private async Task<CopilotChatMessage> SaveNewMessageAsync(
+	private async Task<CopilotChatMessage> SaveNewMessage(
 		string message,
 		string userId,
 		string userName,
@@ -501,7 +452,7 @@ public class ChatPlugin
 		CancellationToken cancellationToken)
 	{
 		// Make sure the chat exists.
-		if (!await _chatSessionRepository.TryFindById(chatId, cancellationToken: cancellationToken))
+		if (!await chatSessionRepository.TryFindById(chatId, cancellationToken: cancellationToken))
 		{
 			throw new ArgumentException("Chat session does not exist.");
 		}
@@ -520,7 +471,7 @@ public class ChatPlugin
 					: CopilotChatMessage.ChatMessageType.Message
 		};
 
-		await _chatMessageRepository.Create(chatMessage, cancellationToken);
+		await chatMessageRepository.Create(chatMessage, cancellationToken);
 		return chatMessage;
 	}
 
@@ -535,7 +486,7 @@ public class ChatPlugin
 	/// <param name="tokenUsage">Total token usage of response completion</param>
 	/// <param name="citations">Citations for the message</param>
 	/// <returns>The created chat message.</returns>
-	private async Task<CopilotChatMessage> SaveNewResponseAsync(
+	private async Task<CopilotChatMessage> SaveNewResponse(
 		string response,
 		string prompt,
 		string chatId,
@@ -545,7 +496,7 @@ public class ChatPlugin
 		IEnumerable<CitationSource>? citations = null)
 	{
 		// Make sure the chat exists.
-		if (!await _chatSessionRepository.TryFindById(chatId, cancellationToken: cancellationToken))
+		if (!await chatSessionRepository.TryFindById(chatId, cancellationToken: cancellationToken))
 		{
 			throw new ArgumentException("Chat session does not exist.");
 		}
@@ -560,7 +511,7 @@ public class ChatPlugin
 			citations,
 			tokenUsage
 		);
-		await _chatMessageRepository.Upsert(chatMessage, cancellationToken);
+		await chatMessageRepository.Upsert(chatMessage, cancellationToken);
 
 		return chatMessage;
 	}
@@ -572,11 +523,11 @@ public class ChatPlugin
 	/// <param name="messageId">The chat message ID.</param>
 	/// <param name="chatId">The chat ID that's used as the partition Id.</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
-	private async Task UpdateChatMessageContentAsync(string updatedResponse, string messageId, string chatId,
+	private async Task UpdateChatMessageContent(string updatedResponse, string messageId, string chatId,
 		CancellationToken cancellationToken)
 	{
 		CopilotChatMessage? chatMessage = null;
-		if (!await _chatMessageRepository.TryFindById(messageId, chatId, v => chatMessage = v, cancellationToken))
+		if (!await chatMessageRepository.TryFindById(messageId, chatId, v => chatMessage = v, cancellationToken))
 		{
 			throw new ArgumentException($"Chat message {messageId} does not exist.");
 		}
@@ -588,25 +539,25 @@ public class ChatPlugin
 				Content = chatMessage.Content + updatedResponse
 			};
 
-			await _chatMessageRepository.Upsert(chatMessage, cancellationToken);
+			await chatMessageRepository.Upsert(chatMessage, cancellationToken);
 		}
 	}
 
 	/// <summary>
 	///     Create `OpenAIPromptExecutionSettings` for chat response. Parameters are read from the PromptSettings class.
 	/// </summary>
-	private MistralAIPromptExecutionSettings CreateChatRequestSettings()
+	private PromptExecutionSettings CreateChatRequestSettings()
 	{
-		return new MistralAIPromptExecutionSettings
+		return new OpenAIPromptExecutionSettings
 		{
 			MaxTokens = _promptOptions.ResponseTokenLimit,
 			Temperature = _promptOptions.ResponseTemperature,
 			TopP = _promptOptions.ResponseTopP,
-			SafePrompt = false,
-			ToolCallBehavior = MistralAIToolCallBehavior.AutoInvokeKernelFunctions
-			// FrequencyPenalty = _promptOptions.ResponseFrequencyPenalty,
-			// PresencePenalty = _promptOptions.ResponsePresencePenalty,
-			// ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
+			//SafePrompt = false,
+			//ToolCallBehavior = MistralAIToolCallBehavior.AutoInvokeKernelFunctions
+			FrequencyPenalty = _promptOptions.ResponseFrequencyPenalty,
+			PresencePenalty = _promptOptions.ResponsePresencePenalty,
+			ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
 		};
 	}
 
@@ -682,7 +633,7 @@ public class ChatPlugin
 	/// <param name="cancellationToken">The cancellation token.</param>
 	/// <param name="citations">Citations for the message</param>
 	/// <returns>The created chat message</returns>
-	private async Task<CopilotChatMessage> StreamResponseToClientAsync(
+	private async Task<CopilotChatMessage> StreamResponseToClient(
 		string chatId,
 		string userId,
 		BotResponsePrompt prompt,
@@ -690,12 +641,12 @@ public class ChatPlugin
 		IEnumerable<CitationSource>? citations = null)
 	{
 		// Create the stream
-		IChatCompletionService chatCompletion = _kernel.GetRequiredService<IChatCompletionService>();
+		IChatCompletionService chatCompletion = kernel.GetRequiredService<IChatCompletionService>();
 		IAsyncEnumerable<StreamingChatMessageContent> stream =
 			chatCompletion.GetStreamingChatMessageContentsAsync(
 				prompt.MetaPromptTemplate,
 				CreateChatRequestSettings(),
-				_kernel,
+				kernel,
 				cancellationToken);
 
 		// Create message on client
@@ -743,7 +694,7 @@ public class ChatPlugin
 	{
 		CopilotChatMessage chatMessage =
 			CopilotChatMessage.CreateBotResponseMessage(chatId, content, prompt, citations, tokenUsage);
-		await _messageRelayHubContext.Clients.Group(chatId)
+		await messageRelayHubContext.Clients.Group(chatId)
 			.SendAsync("ReceiveMessage", chatId, userId, chatMessage, cancellationToken);
 		return chatMessage;
 	}
@@ -755,7 +706,7 @@ public class ChatPlugin
 	/// <param name="cancellationToken">The cancellation token.</param>
 	private async Task UpdateMessageOnClient(CopilotChatMessage message, CancellationToken cancellationToken)
 	{
-		await _messageRelayHubContext.Clients.Group(message.ChatId)
+		await messageRelayHubContext.Clients.Group(message.ChatId)
 			.SendAsync("ReceiveMessageUpdate", message, cancellationToken);
 	}
 
@@ -765,12 +716,12 @@ public class ChatPlugin
 	/// <param name="chatId">The chat ID</param>
 	/// <param name="status">Current status of the response</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
-	private async Task UpdateBotResponseStatusOnClientAsync(
+	private async Task UpdateBotResponseStatusOnClient(
 		string chatId,
 		string status,
 		CancellationToken cancellationToken)
 	{
-		await _messageRelayHubContext.Clients.Group(chatId)
+		await messageRelayHubContext.Clients.Group(chatId)
 			.SendAsync("ReceiveBotResponseStatus", chatId, status, cancellationToken);
 	}
 
@@ -780,10 +731,10 @@ public class ChatPlugin
 	/// <param name="chatId">Id of the chat session</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
 	/// <exception cref="ArgumentException">Throw if the chat session does not exist.</exception>
-	private async Task SetSystemDescriptionAsync(string chatId, CancellationToken cancellationToken)
+	private async Task SetSystemDescription(string chatId, CancellationToken cancellationToken)
 	{
 		ChatSession? chatSession = null;
-		if (!await _chatSessionRepository.TryFindById(chatId, callback: v => chatSession = v, cancellationToken: cancellationToken))
+		if (!await chatSessionRepository.TryFindById(chatId, callback: v => chatSession = v, cancellationToken: cancellationToken))
 		{
 			throw new ArgumentException("Chat session does not exist.");
 		}

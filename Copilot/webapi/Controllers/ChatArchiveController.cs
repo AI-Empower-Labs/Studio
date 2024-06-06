@@ -41,12 +41,12 @@ public sealed class ChatArchiveController(
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [Authorize(Policy = AuthPolicyName.RequireChatParticipant)]
-    public async Task<ActionResult<ChatArchive?>> DownloadAsync(Guid chatId,
+    public async Task<ActionResult<ChatArchive?>> Download(Guid chatId,
         CancellationToken cancellationToken = default)
     {
         logger.LogDebug("Received call to download a chat archive");
 
-        ChatArchive chatArchive = await CreateChatArchiveAsync(chatId, cancellationToken);
+        ChatArchive chatArchive = await CreateChatArchive(chatId, cancellationToken);
 
         return Ok(chatArchive);
     }
@@ -57,7 +57,7 @@ public sealed class ChatArchiveController(
     /// <param name="chatId">The chat id of the chat archive</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>A ChatArchive object that represents the chat session.</returns>
-    private async Task<ChatArchive> CreateChatArchiveAsync(Guid chatId, CancellationToken cancellationToken)
+    private async Task<ChatArchive> CreateChatArchive(Guid chatId, CancellationToken cancellationToken)
     {
         string chatIdString = chatId.ToString();
         ChatSession chat = await chatRepository.FindById(chatIdString, cancellationToken: cancellationToken);
@@ -72,20 +72,20 @@ public sealed class ChatArchiveController(
             SystemDescription = chat.SafeSystemDescription,
 
             // get the chat history
-            ChatHistory = await GetAllChatMessagesAsync(chatIdString).ToListAsync(cancellationToken: cancellationToken)
+            ChatHistory = await GetAllChatMessages(chatIdString).ToListAsync(cancellationToken: cancellationToken)
         };
 
         foreach (string memory in promptOptions.Value.MemoryMap.Keys)
         {
             chatArchive.Embeddings.Add(
                 memory,
-                await GetMemoryRecordsAndAppendToEmbeddingsAsync(chatIdString, memory, cancellationToken));
+                await GetMemoryRecordsAndAppendToEmbeddings(chatIdString, memory, cancellationToken));
         }
 
         // get the document memory collection names (global scope)
         chatArchive.DocumentEmbeddings.Add(
             "GlobalDocuments",
-            await GetMemoryRecordsAndAppendToEmbeddingsAsync(
+            await GetMemoryRecordsAndAppendToEmbeddings(
                 Guid.Empty.ToString(),
                 promptOptions.Value.DocumentMemoryName,
                 cancellationToken));
@@ -93,7 +93,7 @@ public sealed class ChatArchiveController(
         // get the document memory collection names (user scope)
         chatArchive.DocumentEmbeddings.Add(
             "ChatDocuments",
-            await GetMemoryRecordsAndAppendToEmbeddingsAsync(
+            await GetMemoryRecordsAndAppendToEmbeddings(
                 chatIdString,
                 promptOptions.Value.DocumentMemoryName,
                 cancellationToken));
@@ -108,7 +108,7 @@ public sealed class ChatArchiveController(
     /// <param name="chatId"></param>
     /// <param name="memoryName">The current collection name. Used to query the memory storage.</param>
     /// <param name="cancellationToken"></param>
-    private async Task<List<Citation>> GetMemoryRecordsAndAppendToEmbeddingsAsync(
+    private async Task<List<Citation>> GetMemoryRecordsAndAppendToEmbeddings(
         string chatId,
         string memoryName,
         CancellationToken cancellationToken)
@@ -116,7 +116,7 @@ public sealed class ChatArchiveController(
         List<Citation> collectionMemoryRecords;
         try
         {
-            SearchResult result = await memoryClient.SearchMemoryAsync(
+            SearchResult result = await memoryClient.SearchMemory(
                 promptOptions.Value.MemoryIndexName,
                 "*", // dummy query since we don't care about relevance. An empty string will cause exception.
                 -1, // no relevance required since the collection only has one entry
@@ -141,8 +141,8 @@ public sealed class ChatArchiveController(
     /// </summary>
     /// <param name="chatId">The chat id</param>
     /// <returns>The list of chat messages in descending order of the timestamp</returns>
-    private IAsyncEnumerable<CopilotChatMessage> GetAllChatMessagesAsync(string chatId)
+    private IAsyncEnumerable<CopilotChatMessage> GetAllChatMessages(string chatId)
     {
-        return chatMessageRepository.FindByChatIdAsync(chatId);
+        return chatMessageRepository.FindByChatId(chatId);
     }
 }

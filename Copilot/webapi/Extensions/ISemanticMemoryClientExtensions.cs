@@ -31,7 +31,7 @@ internal static class SemanticMemoryClientExtensions
         appBuilder.Services.AddSingleton(memory);
     }
 
-    public static Task<SearchResult> SearchMemoryAsync(
+    public static Task<SearchResult> SearchMemory(
         this IKernelMemory memoryClient,
         string indexName,
         string query,
@@ -41,10 +41,10 @@ internal static class SemanticMemoryClientExtensions
         CancellationToken cancellationToken = default)
     {
         return memoryClient
-            .SearchMemoryAsync(indexName, query, relevanceThreshold, -1, chatId, memoryName, cancellationToken);
+            .SearchMemory(indexName, query, relevanceThreshold, -1, chatId, memoryName, cancellationToken);
     }
 
-    public static async Task<SearchResult> SearchMemoryAsync(
+    public static async Task<SearchResult> SearchMemory(
         this IKernelMemory memoryClient,
         string indexName,
         string query,
@@ -104,7 +104,7 @@ internal static class SemanticMemoryClientExtensions
         await memoryClient.ImportDocumentAsync(uploadRequest, cancellationToken);
     }
 
-    public static Task StoreMemoryAsync(
+    public static Task StoreMemory(
         this IKernelMemory memoryClient,
         string indexName,
         string chatId,
@@ -112,11 +112,11 @@ internal static class SemanticMemoryClientExtensions
         string memory,
         CancellationToken cancellationToken = default)
     {
-        return memoryClient.StoreMemoryAsync(indexName, chatId, memoryName, Guid.NewGuid().ToString(), memory,
+        return memoryClient.StoreMemory(indexName, chatId, memoryName, Guid.NewGuid().ToString(), memory,
             cancellationToken);
     }
 
-    public static async Task StoreMemoryAsync(
+    public static async Task StoreMemory(
         this IKernelMemory memoryClient,
         string indexName,
         string chatId,
@@ -146,14 +146,14 @@ internal static class SemanticMemoryClientExtensions
 		await memoryClient.ImportDocumentAsync(uploadRequest, cancellationToken);
 	}
 
-    public static async Task RemoveChatMemoriesAsync(
+    public static async Task RemoveChatMemories(
         this IKernelMemory memoryClient,
         string indexName,
         string chatId,
         CancellationToken cancellationToken = default)
     {
         SearchResult memories = await memoryClient
-			.SearchMemoryAsync(indexName, "*", 0.0F, chatId, cancellationToken: cancellationToken);
+			.SearchMemory(indexName, "*", 0.0F, chatId, cancellationToken: cancellationToken);
         string[] documentIds = memories.Results.Select(memory => memory.Link.Split('/').First()).Distinct().ToArray();
         Task[] tasks = documentIds
             .Select(documentId => memoryClient.DeleteDocumentAsync(documentId, indexName, cancellationToken)).ToArray();

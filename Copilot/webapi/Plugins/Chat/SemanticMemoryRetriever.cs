@@ -37,7 +37,7 @@ public sealed class SemanticMemoryRetriever(
 	///     Query relevant memories based on the query.
 	/// </summary>
 	/// <returns>A string containing the relevant memories.</returns>
-	public async Task<(string, IDictionary<string, CitationSource>)> QueryMemoriesAsync(
+	public async Task<(string, IDictionary<string, CitationSource>)> QueryMemories(
 		[Description("Query to match.")] string query,
 		[Description("Chat ID to query history from")]
 		string chatId,
@@ -117,7 +117,7 @@ public sealed class SemanticMemoryRetriever(
 		async Task SearchMemoryAsync(string memoryName, bool isGlobalMemory = false)
 		{
 			SearchResult searchResult =
-				await memoryClient.SearchMemoryAsync(
+				await memoryClient.SearchMemory(
 					promptOptions.Value.MemoryIndexName,
 					query,
 					CalculateRelevanceThreshold(memoryName, chatSession!.MemoryBalance),
@@ -135,7 +135,7 @@ public sealed class SemanticMemoryRetriever(
 		{
 			foreach (AdditionalIndex index in promptsOptions.AdditionalIndexesToSearch)
 			{
-				SearchResult searchResult = await memoryClient.SearchMemoryAsync(
+				SearchResult searchResult = await memoryClient.SearchMemory(
 					index.Name,
 					query,
 					index.RelevanceThreshold,

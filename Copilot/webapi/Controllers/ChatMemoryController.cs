@@ -74,7 +74,7 @@ public sealed class ChatMemoryController(
             filter.ByTag("memory", memoryContainerName);
 
             SearchResult searchResult =
-                await memoryClient.SearchMemoryAsync(
+                 await memoryClient.SearchMemory(
                     promptsOptions.Value.MemoryIndexName,
                     "*",
                     0,

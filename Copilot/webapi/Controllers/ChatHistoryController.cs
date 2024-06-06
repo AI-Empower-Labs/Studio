@@ -175,7 +175,7 @@ public sealed class ChatHistoryController(
 		CancellationToken cancellationToken = default)
 	{
 		IAsyncEnumerable<CopilotChatMessage> chatMessages = messageRepository
-			.FindByChatIdAsync(chatId.ToString(), skip, count, cancellationToken);
+			.FindByChatId(chatId.ToString(), skip, count, cancellationToken);
 		if (!await chatMessages.AnyAsync(cancellationToken: cancellationToken))
 		{
 			return NotFound($"No messages found for chat id '{chatId}'.");
@@ -318,7 +318,7 @@ public sealed class ChatHistoryController(
 		}
 
 		// Create and store the tasks for deleting chat messages.
-		IAsyncEnumerable<CopilotChatMessage> messages = messageRepository.FindByChatIdAsync(chatId, cancellationToken: cancellationToken);
+		IAsyncEnumerable<CopilotChatMessage> messages = messageRepository.FindByChatId(chatId, cancellationToken: cancellationToken);
 		await foreach (CopilotChatMessage message in messages)
 		{
 			cleanupTasks.Add(messageRepository.Delete(message, cancellationToken: cancellationToken));
@@ -332,7 +332,7 @@ public sealed class ChatHistoryController(
 		}
 
 		// Create and store the tasks for deleting semantic memories.
-		cleanupTasks.Add(memoryClient.RemoveChatMemoriesAsync(promptOptions.Value.MemoryIndexName, chatId,
+		cleanupTasks.Add(memoryClient.RemoveChatMemories(promptOptions.Value.MemoryIndexName, chatId,
 			cancellationToken));
 
 		// Create a task that represents the completion of all cleanupTasks
