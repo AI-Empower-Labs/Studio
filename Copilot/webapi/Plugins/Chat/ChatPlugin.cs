@@ -546,7 +546,9 @@ public sealed class ChatPlugin(
 	/// <summary>
 	///     Create `OpenAIPromptExecutionSettings` for chat response. Parameters are read from the PromptSettings class.
 	/// </summary>
+#pragma warning disable CA1859
 	private PromptExecutionSettings CreateChatRequestSettings()
+#pragma warning restore CA1859
 	{
 		return new OpenAIPromptExecutionSettings
 		{

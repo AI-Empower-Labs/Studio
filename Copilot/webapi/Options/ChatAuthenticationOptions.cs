@@ -32,8 +32,10 @@ public class ChatAuthenticationOptions
     /// <summary>
     ///     Configuration options for Azure Active Directory (AAD) authorization.
     /// </summary>
-    public sealed class AzureAdOptions
-    {
+#pragma warning disable CA1034
+	public sealed class AzureAdOptions
+#pragma warning restore CA1034
+	{
         /// <summary>
         ///     AAD instance url, i.e., https://login.microsoftonline.com
         /// </summary>
