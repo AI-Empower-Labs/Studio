@@ -736,11 +736,12 @@ public sealed class ChatPlugin(
 	private async Task SetSystemDescription(string chatId, CancellationToken cancellationToken)
 	{
 		ChatSession? chatSession = null;
-		if (!await chatSessionRepository.TryFindById(chatId, callback: v => chatSession = v, cancellationToken: cancellationToken))
+		if (!await chatSessionRepository.TryFindById(chatId, callback: v => chatSession = v, cancellationToken: cancellationToken)
+			|| chatSession is null)
 		{
 			throw new ArgumentException("Chat session does not exist.");
 		}
 
-		_promptOptions.SystemDescription = chatSession!.SafeSystemDescription;
+		_promptOptions.SystemDescription = chatSession.SafeSystemDescription;
 	}
 }

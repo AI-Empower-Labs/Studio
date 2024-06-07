@@ -207,13 +207,14 @@ public sealed class ChatHistoryController(
 		if (await sessionRepository.TryFindById(
 			chatId.ToString(),
 			callback: v => chat = v,
-			cancellationToken: cancellationToken))
+			cancellationToken: cancellationToken)
+			&& chat is not null)
 		{
-			chat = chat! with
+			chat = chat with
 			{
-				Title = chatParameters.Title ?? chat!.Title,
-				SystemDescription = chatParameters.SystemDescription ?? chat!.SafeSystemDescription,
-				MemoryBalance = chatParameters.MemoryBalance ?? chat!.MemoryBalance
+				Title = chatParameters.Title ?? chat.Title,
+				SystemDescription = chatParameters.SystemDescription ?? chat.SafeSystemDescription,
+				MemoryBalance = chatParameters.MemoryBalance ?? chat.MemoryBalance
 			};
 
 			await sessionRepository.Upsert(chat, cancellationToken: cancellationToken);

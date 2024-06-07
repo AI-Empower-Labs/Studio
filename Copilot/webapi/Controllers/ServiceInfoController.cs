@@ -60,8 +60,8 @@ public sealed class ServiceInfoController(
         if (!string.IsNullOrEmpty(chatAuthenticationOptions.Value.AzureAd?.Instance) &&
             !string.IsNullOrEmpty(chatAuthenticationOptions.Value.AzureAd?.TenantId))
         {
-            Uri authorityUri = new(chatAuthenticationOptions.Value.AzureAd!.Instance);
-            authorityUri = new Uri(authorityUri, chatAuthenticationOptions.Value.AzureAd!.TenantId);
+            Uri authorityUri = new(chatAuthenticationOptions.Value.AzureAd.Instance);
+            authorityUri = new Uri(authorityUri, chatAuthenticationOptions.Value.AzureAd.TenantId);
             authorityUriString = authorityUri.ToString();
         }
 

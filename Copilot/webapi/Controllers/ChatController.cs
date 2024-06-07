@@ -86,7 +86,8 @@ public sealed class ChatController(
 
         // Verify that the chat exists and that the user has access to it.
         ChatSession? chat = null;
-        if (!await chatSessionRepository.TryFindById(chatIdString, callback: c => chat = c, cancellationToken: cancellationToken))
+        if (!await chatSessionRepository.TryFindById(chatIdString, callback: c => chat = c, cancellationToken: cancellationToken)
+			|| chat is null)
         {
             return NotFound("Failed to find chat session for the chatId specified in variables.");
         }
@@ -101,7 +102,7 @@ public sealed class ChatController(
         await RegisterFunctionsAsync(kernel, openApiPluginAuthHeaders, contextVariables);
 
         // Register hosted plugins that have been enabled
-        await RegisterHostedFunctionsAsync(kernel, chat!.EnabledPlugins);
+        await RegisterHostedFunctionsAsync(kernel, chat.EnabledPlugins);
 
         // Get the function to invoke
         KernelFunction chatFunction = kernel.Plugins.GetFunction(ChatPluginName, ChatFunctionName);
