@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   chat-copilot-webapp:
    image: chat-copilot-webapp
