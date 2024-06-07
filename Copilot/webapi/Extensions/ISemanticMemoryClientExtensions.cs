@@ -38,9 +38,9 @@ internal static class SemanticMemoryClientExtensions
 		appBuilder.Services.AddSingleton(sp =>
 		{
 			IOptions<AiEmpowerLabsOptions> options = sp.GetRequiredService<IOptions<AiEmpowerLabsOptions>>();
-			UriBuilder uriBuilder = new(options.Value.Url);
-			uriBuilder.Path += "api/kernelmemory";
-			IKernelMemory memory = new MemoryWebClient(uriBuilder.Uri.ToString(), "not-needed");
+			Uri uri = new(options.Value.Url);
+			uri = new Uri(uri, "/api/kernelmemory");
+			IKernelMemory memory = new MemoryWebClient(uri.ToString(), "not-needed");
 			return memory;
 		});
 	}

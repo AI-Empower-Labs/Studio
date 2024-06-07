@@ -5,12 +5,15 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+using CopilotChat.WebApi.Options;
+
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Http.Logging;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
-using Microsoft.SemanticKernel.Embeddings;
+using Microsoft.SemanticKernel.TextGeneration;
 
 namespace CopilotChat.WebApi.Services;
 
@@ -22,9 +25,9 @@ namespace CopilotChat.WebApi.Services;
 /// <summary>
 ///     Extension methods for registering Semantic Kernel related services.
 /// </summary>
-internal sealed class SemanticKernelProvider
+internal sealed class SemanticKernelProvider(IOptions<AiEmpowerLabsOptions> options)
 {
-	private readonly IKernelBuilder _builderChat = InitializeCompletionKernel();
+	private readonly IKernelBuilder _builderChat = InitializeCompletionKernel(options);
 
 	/// <summary>
 	///     Produce semantic-kernel with only completion services for chat.
@@ -37,12 +40,24 @@ internal sealed class SemanticKernelProvider
 		}
 	}
 
-	private static IKernelBuilder InitializeCompletionKernel()
+	private static IKernelBuilder InitializeCompletionKernel(IOptions<AiEmpowerLabsOptions> options)
 	{
 		IKernelBuilder builder = Kernel.CreateBuilder();
 
 		builder.Services.AddLogging();
 
+		Func<IServiceProvider, object?, OpenAIChatCompletionService> factory = (sp, _) =>
+		{
+			Uri uri = new(options.Value.Url);
+			uri = new Uri(uri, "/api/openai/v1/chat/completions");
+			return new(options.Value.LlmModelName,
+				"NoKey",
+				null,
+				new HttpClient(new RequestUriReWriterHandler(uri)),
+				sp.GetService<ILoggerFactory>());
+		};
+		builder.Services.AddKeyedSingleton<IChatCompletionService>(null, factory);
+		builder.Services.AddKeyedSingleton<ITextGenerationService>(null, factory);
 
 		return builder;
 	}
@@ -54,8 +69,7 @@ internal sealed class SemanticKernelProvider
 /// </summary>
 internal sealed class RequestUriReWriterHandler(Uri rewriteUri) : DelegatingHandler(new HttpClientHandler())
 {
-	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
-		CancellationToken cancellationToken)
+	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 	{
 		request.RequestUri = rewriteUri;
 		HttpResponseMessage response = await base.SendAsync(request, cancellationToken);

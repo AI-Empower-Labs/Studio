@@ -29,11 +29,8 @@ internal static class PluginUtils
     /// <returns>The plugin manifest URI.</returns>
     public static Uri GetPluginManifestUri(Uri manifestDomain)
     {
-        UriBuilder uriBuilder = new(manifestDomain);
-
         // Expected manifest path as defined by OpenAI: https://platform.openai.com/docs/plugins/getting-started/plugin-manifest
-        uriBuilder.Path = "/.well-known/ai-plugin.json";
-        return uriBuilder.Uri;
+        return new Uri(manifestDomain, "/.well-known/ai-plugin.json");
     }
 
     /// <summary>

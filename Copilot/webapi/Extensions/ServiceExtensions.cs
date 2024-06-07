@@ -47,19 +47,17 @@ internal static class CopilotChatServiceExtensions
 		// Authentication configuration
 		AddOptionsLocal<ChatAuthenticationOptions>(ChatAuthenticationOptions.PropertyName);
 
-		AddOptionsLocal<DocumentMemoryOptions>(DocumentMemoryOptions.PropertyName);
-
 		// Chat prompt options
 		AddOptionsLocal<PromptsOptions>(PromptsOptions.PropertyName);
 
-		AddOptionsLocal<KernelMemoryConfig>(MemoryConfiguration.KernelMemorySection);
+		// AI Empower Labs Options
+		AddOptionsLocal<AiEmpowerLabsOptions>(AiEmpowerLabsOptions.PropertyName);
 
 		AddOptionsLocal<FrontendOptions>(FrontendOptions.PropertyName);
 
 		return services;
 
-		void AddOptionsLocal<TOptions>(string propertyName)
-			where TOptions : class
+		void AddOptionsLocal<TOptions>(string propertyName) where TOptions : class
 		{
 			services.AddOptions<TOptions>(configuration.GetSection(propertyName));
 		}
