@@ -8,7 +8,7 @@ namespace CopilotChat.WebApi.Options;
 /// <summary>
 ///     Configuration options for handling memorized documents.
 /// </summary>
-public sealed class DocumentMemoryOptions
+public sealed record DocumentMemoryOptions
 {
     public const string PropertyName = "DocumentMemory";
 
@@ -23,7 +23,7 @@ public sealed class DocumentMemoryOptions
     ///     https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them
     /// </summary>
     [Range(0, int.MaxValue)]
-    public int DocumentLineSplitMaxTokens { get; set; } = 30;
+    public int DocumentLineSplitMaxTokens { get; init; } = 30;
 
     /// <summary>
     ///     Gets or sets the maximum number of tokens to use when splitting documents for embeddings.
@@ -31,7 +31,7 @@ public sealed class DocumentMemoryOptions
     ///     https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them
     /// </summary>
     [Range(0, int.MaxValue)]
-    public int DocumentChunkMaxTokens { get; set; } = 100;
+    public int DocumentChunkMaxTokens { get; init; } = 100;
 
     /// <summary>
     ///     Maximum size in bytes of a document to be allowed for importing.
@@ -39,11 +39,11 @@ public sealed class DocumentMemoryOptions
     ///     https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-6.0
     /// </summary>
     [Range(0, int.MaxValue)]
-    public int FileSizeLimit { get; set; } = 1000000;
+    public int FileSizeLimit { get; init; } = 1000000;
 
     /// <summary>
     ///     Maximum number of files to be allowed for importing in a single request.
     /// </summary>
     [Range(0, int.MaxValue)]
-    public int FileCountLimit { get; set; } = 10;
+    public int FileCountLimit { get; init; } = 10;
 }
