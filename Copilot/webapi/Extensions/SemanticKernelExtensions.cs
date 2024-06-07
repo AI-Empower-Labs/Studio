@@ -86,7 +86,7 @@ internal static class SemanticKernelExtensions
     /// <summary>
     ///     Register the chat plugin with the kernel.
     /// </summary>
-    public static Kernel RegisterChatPlugin(this Kernel kernel, IServiceProvider sp)
+	private static void RegisterChatPlugin(this Kernel kernel, IServiceProvider sp)
     {
         // Chat plugin
         kernel.ImportPluginFromObject(
@@ -99,9 +99,7 @@ internal static class SemanticKernelExtensions
                 sp.GetRequiredService<IOptions<PromptsOptions>>(),
                 sp.GetRequiredService<ILogger<ChatPlugin>>()),
             nameof(ChatPlugin));
-
-        return kernel;
-    }
+	}
 
     private static void InitializeKernelProvider(this WebApplicationBuilder builder)
     {
