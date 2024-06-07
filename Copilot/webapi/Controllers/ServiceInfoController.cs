@@ -57,8 +57,8 @@ public sealed class ServiceInfoController(
     public IActionResult GetAuthConfig()
     {
         string authorityUriString = string.Empty;
-        if (!string.IsNullOrEmpty(chatAuthenticationOptions.Value.AzureAd!.Instance) &&
-            !string.IsNullOrEmpty(chatAuthenticationOptions.Value.AzureAd!.TenantId))
+        if (!string.IsNullOrEmpty(chatAuthenticationOptions.Value.AzureAd?.Instance) &&
+            !string.IsNullOrEmpty(chatAuthenticationOptions.Value.AzureAd?.TenantId))
         {
             Uri authorityUri = new(chatAuthenticationOptions.Value.AzureAd!.Instance);
             authorityUri = new Uri(authorityUri, chatAuthenticationOptions.Value.AzureAd!.TenantId);
@@ -71,7 +71,7 @@ public sealed class ServiceInfoController(
             AadAuthority = authorityUriString,
             AadClientId = frontendOptions.Value.AadClientId,
             AadApiScope =
-                $"api://{chatAuthenticationOptions.Value.AzureAd!.ClientId}/{chatAuthenticationOptions.Value.AzureAd!.Scopes}"
+                $"api://{chatAuthenticationOptions.Value.AzureAd?.ClientId}/{chatAuthenticationOptions.Value.AzureAd?.Scopes}"
         };
 
         return Ok(config);
