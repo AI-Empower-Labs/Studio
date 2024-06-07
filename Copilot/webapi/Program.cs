@@ -48,7 +48,6 @@ public sealed class Program
 
         // Configure and add semantic services
         builder
-            //.AddBotConfig()
             .AddSemanticKernelServices()
             .AddSemanticMemoryServices();
 
