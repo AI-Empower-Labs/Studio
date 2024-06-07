@@ -1,23 +1,19 @@
 # docker build -f docker/plugins/web-searcher/Dockerfile -t web-searcher .
 
 # builder
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS installer-env
-ARG AZURE_FUNCTION_MASTER_KEY
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
 WORKDIR /source
-COPY plugins/shared shared
-COPY plugins/web-searcher web-searcher
-RUN cd /source/web-searcher && \
-  mkdir -p /home/site/wwwroot && \
-  dotnet publish *.csproj --output /home/site/wwwroot && \
-  mkdir -p /azure-functions-host/Secrets/ && \
-  echo "{\"masterKey\":{\"name\":\"master\",\"value\":\"$AZURE_FUNCTION_MASTER_KEY\",\"encrypted\":false},\"functionKeys\":[]}" > /azure-functions-host/Secrets/host.json
+# copy everything else and build app
+COPY plugins/web-searcher plugins/web-searcher
+COPY plugins/shared plugins/shared
+COPY shared shared
+RUN cd plugins/web-searcher && \
+  dotnet restore --use-current-runtime && \
+  dotnet publish --use-current-runtime --self-contained false --no-restore -o /app
 
 # final stage/image
-FROM mcr.microsoft.com/azure-functions/dotnet-isolated:4.0-dotnet-isolated6.0-appservice
-ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-  AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
-  AzureWebJobsSecretStorageType=files
-COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
-COPY --from=installer-env ["/azure-functions-host/Secrets", "/azure-functions-host/Secrets"]
-
-
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+ENV Kestrel__Endpoints__Http__Url=http://0.0.0.0:8080
+WORKDIR /app
+COPY --from=builder /app .
+ENTRYPOINT ["./WebSearcher"]
