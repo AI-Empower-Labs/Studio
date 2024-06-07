@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.Json;
+
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
+
 using SharpToken;
 
 namespace CopilotChat.WebApi.Plugins.Utils;
@@ -67,7 +69,7 @@ internal static class TokenUtils
 	internal static string? GetFunctionTokenUsage(FunctionResult result, ILogger logger)
 	{
 		if (result.Metadata is null ||
-		    !result.Metadata.TryGetValue("Usage", out object? usageObject) || usageObject is null)
+			!result.Metadata.TryGetValue("Usage", out object? usageObject) || usageObject is null)
 		{
 			logger.LogError("No usage metadata provided");
 
@@ -79,11 +81,11 @@ internal static class TokenUtils
 		{
 			JsonElement jsonObject = JsonSerializer.Deserialize<JsonElement>(JsonSerializer.Serialize(usageObject));
 			if (jsonObject.TryGetProperty("TotalTokens", out JsonElement totalTokensElement)
-			    && totalTokensElement.TryGetInt32(out tokenUsage))
+				&& totalTokensElement.TryGetInt32(out tokenUsage))
 			{
 			}
 			else if (jsonObject.TryGetProperty("total_tokens", out totalTokensElement)
-			         && totalTokensElement.TryGetInt32(out tokenUsage))
+				&& totalTokensElement.TryGetInt32(out tokenUsage))
 			{
 			}
 			else
