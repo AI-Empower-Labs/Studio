@@ -1,6 +1,8 @@
 .vscode
 .venv
 .idea
+.env
 __pycache__
 bin/
 obj/
+node_modules
