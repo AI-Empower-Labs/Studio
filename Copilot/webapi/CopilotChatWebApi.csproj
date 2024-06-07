@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <RootNamespace>CopilotChat.WebApi</RootNamespace>
+        <TargetFramework>net8.0</TargetFramework>
+        <RollForward>LatestMajor</RollForward>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <UserSecretsId>5ee045b0-aea3-4f08-8d31-32d1a6f8fed0</UserSecretsId>
+        <NoWarn>CA1812;CA1062;CA1848;CA2007;CA1515;SKEXP0040;SKEXP0003,SKEXP0011,SKEXP0021,SKEXP0026,SKEXP0042,SKEXP0050,SKEXP0052,SKEXP0053,SKEXP0060</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+        <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+        <AnalysisLevel>latest</AnalysisLevel>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Marten" Version="7.19.1" />
+        <PackageReference Include="Microsoft.Identity.Web" Version="2.19.0" />
+        <PackageReference Include="Microsoft.KernelMemory.Abstractions" Version="0.62.240605.1" />
+        <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.62.240605.1" />
+        <PackageReference Include="Microsoft.SemanticKernel" Version="1.14.1" />
+        <PackageReference Include="Microsoft.SemanticKernel.Abstractions" Version="1.14.1" />
+        <PackageReference Include="Microsoft.SemanticKernel.Connectors.MistralAI" Version="1.13.0-alpha" />
+        <PackageReference Include="Microsoft.SemanticKernel.Plugins.Core" Version="1.5.0-alpha"/>
+        <PackageReference Include="Microsoft.SemanticKernel.Plugins.Memory" Version="1.5.0-alpha"/>
+        <PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi" Version="1.13.0-alpha"/>
+        <PackageReference Include="Microsoft.SemanticKernel.Plugins.Web" Version="1.5.0-alpha"/>
+        <PackageReference Include="SharpToken" Version="2.0.3"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\shared\CopilotChatShared.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.CLSCompliantAttribute">
+            <_Parameter1>false</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="data\eng.traineddata">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <!--
+        <Content Include="Plugins\NativePlugins\*.*">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Include="Plugins\SemanticPlugins\*.*">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        -->
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="wwwroot\"/>
+    </ItemGroup>
+</Project>
