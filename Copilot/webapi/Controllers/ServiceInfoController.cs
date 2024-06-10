@@ -70,8 +70,7 @@ public sealed class ServiceInfoController(
             AuthType = chatAuthenticationOptions.Value.Type.ToString(),
             AadAuthority = authorityUriString,
             AadClientId = frontendOptions.Value.AadClientId,
-            AadApiScope =
-                $"api://{chatAuthenticationOptions.Value.AzureAd?.ClientId}/{chatAuthenticationOptions.Value.AzureAd?.Scopes}"
+            AadApiScope = $"api://{chatAuthenticationOptions.Value.AzureAd?.ClientId}/{chatAuthenticationOptions.Value.AzureAd?.Scopes}"
         };
 
         return Ok(config);

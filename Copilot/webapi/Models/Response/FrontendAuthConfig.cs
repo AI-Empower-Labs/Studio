@@ -20,17 +20,17 @@ public sealed record FrontendAuthConfig
     ///     Azure Active Directory authority to use.
     /// </summary>
     [JsonPropertyName("aadAuthority")]
-    public string AadAuthority  { get; init; } = string.Empty;
+    public required string AadAuthority  { get; init; }
 
     /// <summary>
     ///     Azure Active Directory client ID the frontend is to use.
     /// </summary>
     [JsonPropertyName("aadClientId")]
-    public string AadClientId  { get; init; } = string.Empty;
+    public required string AadClientId  { get; init; }
 
     /// <summary>
     ///     Azure Active Directory scope the frontend should request.
     /// </summary>
     [JsonPropertyName("aadApiScope")]
-    public string AadApiScope  { get; init; } = string.Empty;
+    public required string AadApiScope  { get; init; }
 }
