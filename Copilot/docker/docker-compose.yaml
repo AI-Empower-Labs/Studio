@@ -22,7 +22,6 @@ services:
     env_file:
       - webapi/.env
     environment:
-      - Authentication__Type=none
       - ConnectionStrings__Postgres=Host=postgres;Port=5432;User Id=$POSTGRES_USER;Database=$POSTGRES_DB;Password=$POSTGRES_PASSWORD;Pooling=true
   postgres:
     image: ankane/pgvector:latest
