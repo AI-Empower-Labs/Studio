@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Reflection;
 
-using CopilotChat.Shared;
 using CopilotChat.WebApi.Auth;
 using CopilotChat.WebApi.Models.Storage;
 using CopilotChat.WebApi.Options;
@@ -23,7 +22,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
-using Microsoft.KernelMemory;
 using Microsoft.KernelMemory.Diagnostics;
 
 using Weasel.Core;

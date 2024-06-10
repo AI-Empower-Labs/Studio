@@ -15,6 +15,7 @@ RUN cd webapi && \
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 ENV Kestrel__Endpoints__Http__Url=http://0.0.0.0:8080
+ENV Kestrel__Endpoints__Https__Url=https://0.0.0.0:40443
 WORKDIR /app
 COPY --from=builder /app .
 COPY --from=builder /root/.dotnet/corefx/cryptography/x509stores/my/* /root/.dotnet/corefx/cryptography/x509stores/my/
