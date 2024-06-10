@@ -7,7 +7,7 @@ namespace CopilotChat.WebApi.Options;
 /// <summary>
 ///     Configuration options for authenticating to the service.
 /// </summary>
-public class ChatAuthenticationOptions
+public sealed class ChatAuthenticationOptions
 {
     public enum AuthenticationType
     {
