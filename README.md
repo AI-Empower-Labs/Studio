@@ -1,9 +1,10 @@
-# Ai Empowerlabs Studio Open Source
+# AI Empowerlabs Studio Open Source
 
 ## Prerequisites
 
 - Docker: [Install Docker](https://docs.docker.com/get-docker/)
 - Docker Compose: [Install Docker Compose](https://docs.docker.com/compose/install/)
+- Windows or linux, will not work on OSX
 
 ## Installation
 
