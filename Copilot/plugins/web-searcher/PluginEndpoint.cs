@@ -4,12 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
+
 using Plugins.PluginShared;
 using Plugins.WebSearcher.Models;
+
 using Uri = System.Uri;
 
 namespace Plugins.WebSearcher;
@@ -33,6 +37,7 @@ public sealed class PluginEndpoint
 			NameForHuman = "WebSearcher",
 			DescriptionForModel = "Searches the web",
 			DescriptionForHuman = "Searches the web",
+			ContactEmail = "support@aiempowerlabs.com",
 			Auth = new PluginAuth
 			{
 				Type = "none"
@@ -75,7 +80,8 @@ public sealed class PluginEndpoint
 		int offset,
 		string? site,
 		PluginConfig config,
-		ILogger<PluginEndpoint> logger)
+		ILogger<PluginEndpoint> logger,
+		CancellationToken cancellationToken)
 	{
 		if (string.IsNullOrWhiteSpace(query))
 		{
@@ -107,7 +113,7 @@ public sealed class PluginEndpoint
 
 		httpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", config.BingApiKey);
 
-		string bingResponse = await httpClient.GetStringAsync(uri);
+		string bingResponse = await httpClient.GetStringAsync(uri, cancellationToken);
 
 		logger.LogDebug("Search completed. Response: {BingResponse}", bingResponse);
 

@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 
 using System.Text.Json;
+using System.Threading;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+
 using Plugins.WebSearcher;
 using Plugins.WebSearcher.Models;
 
@@ -17,7 +20,7 @@ builder.Configuration.AddUserSecrets<Program>(true);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-	c.SwaggerDoc("v1", new OpenApiInfo {Title = "Copilot Web Search", Version = "v1" });
+	c.SwaggerDoc("v1", new OpenApiInfo { Title = "Copilot Web Search", Version = "v1" });
 });
 builder.Services.Configure<JsonSerializerOptions>(options => options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
 builder.Services.Configure<PluginConfig>(builder.Configuration.GetSection(nameof(PluginConfig)));
@@ -32,8 +35,9 @@ app.MapGet("/get", (
 			[FromQuery(Name = "query")] string query,
 			[FromQuery(Name = "numResults")] int numResults = 10,
 			[FromQuery(Name = "site")] string? site = null,
-			[FromQuery(Name = "offset")] int? offset = 0) =>
-		PluginEndpoint.WebSearch(httpContext, query, numResults, offset ?? 0, site, config.Value, logger))
+			[FromQuery(Name = "offset")] int? offset = 0,
+			CancellationToken cancellationToken = default) =>
+		PluginEndpoint.WebSearch(httpContext, query, numResults, offset ?? 0, site, config.Value, logger, cancellationToken))
 	.WithName("Search")
 	.WithOpenApi(operation =>
 	{

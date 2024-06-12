@@ -28,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SUPPORT.md = SUPPORT.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{4F472923-85CE-485B-AFC4-0B9451A31F3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailSend", "plugins\EmailSend\EmailSend.csproj", "{3217AD84-43DA-4358-BF73-342FB2715B60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,11 +62,19 @@ Global
 		{9D03913A-21FF-4D0A-9883-95C4B3D6F65A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D03913A-21FF-4D0A-9883-95C4B3D6F65A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D03913A-21FF-4D0A-9883-95C4B3D6F65A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3217AD84-43DA-4358-BF73-342FB2715B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3217AD84-43DA-4358-BF73-342FB2715B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3217AD84-43DA-4358-BF73-342FB2715B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3217AD84-43DA-4358-BF73-342FB2715B60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {971570D3-60EA-4EE4-980C-0BDA3E66E741}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F83C857D-3080-4DEA-B3D1-978E2BC64BFB} = {4F472923-85CE-485B-AFC4-0B9451A31F3B}
+		{3217AD84-43DA-4358-BF73-342FB2715B60} = {4F472923-85CE-485B-AFC4-0B9451A31F3B}
 	EndGlobalSection
 EndGlobal

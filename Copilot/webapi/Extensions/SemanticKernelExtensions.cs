@@ -118,7 +118,6 @@ internal static class SemanticKernelExtensions
         kernel.ImportPluginFromObject(new TimePlugin(), nameof(TimePlugin));
 
 		kernel.Plugins.AddFromType<AuthorEmailPlanner>();
-		kernel.Plugins.AddFromType<EmailPlugin>();
 
         return Task.CompletedTask;
     }
