@@ -19,7 +19,7 @@
 
     <ItemGroup>
         <PackageReference Include="Marten" Version="7.19.1" />
-        <PackageReference Include="Microsoft.Identity.Web" Version="2.19.0" />
+        <PackageReference Include="Microsoft.Identity.Web" Version="2.19.1" />
         <PackageReference Include="Microsoft.KernelMemory.Abstractions" Version="0.62.240605.1" />
         <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.62.240605.1" />
         <PackageReference Include="Microsoft.SemanticKernel" Version="1.14.1" />
