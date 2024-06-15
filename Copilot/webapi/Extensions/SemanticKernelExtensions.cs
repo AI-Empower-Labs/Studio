@@ -9,6 +9,7 @@ using CopilotChat.WebApi.Hubs;
 using CopilotChat.WebApi.Options;
 using CopilotChat.WebApi.Plugins.Chat;
 using CopilotChat.WebApi.Plugins.Email;
+using CopilotChat.WebApi.Plugins.Personification;
 using CopilotChat.WebApi.Services;
 using CopilotChat.WebApi.Storage;
 using Microsoft.AspNetCore.Builder;
@@ -114,9 +115,8 @@ internal static class SemanticKernelExtensions
         // Chat Copilot functions
         kernel.RegisterChatPlugin(sp);
 
-        // Time plugin
-        kernel.ImportPluginFromObject(new TimePlugin(), nameof(TimePlugin));
-
+		kernel.ImportPluginFromObject(new TimePlugin(), nameof(TimePlugin));
+		kernel.ImportPluginFromObject(new PersonificationPlugin(sp), nameof(PersonificationPlugin));
 		kernel.Plugins.AddFromType<AuthorEmailPlanner>();
 
         return Task.CompletedTask;

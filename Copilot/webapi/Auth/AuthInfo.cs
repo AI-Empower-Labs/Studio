@@ -40,12 +40,16 @@ public sealed class AuthInfo(IHttpContextAccessor httpContextAccessor) : IAuthIn
 			throw new CredentialUnavailableException("User name was not present in the request token.");
 		}
 
+		Claim emailAddressClaim = user.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")
+			?? new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", "Unknown@AIEmpowerlabs.com");
+
 		return new AuthData
 		{
 			UserId = tenantIdClaim is null
 				? userIdClaim.Value
 				: string.Join(".", userIdClaim.Value, tenantIdClaim.Value),
-			UserName = userNameClaim.Value
+			UserName = userNameClaim.Value,
+			EmailAddress = emailAddressClaim.Value
 		};
 	}, false);
 
@@ -59,5 +63,7 @@ public sealed class AuthInfo(IHttpContextAccessor httpContextAccessor) : IAuthIn
 	/// </summary>
 	public string Name => _data.Value.UserName;
 
-	private record struct AuthData(string UserId, string UserName);
+	public string EmailAddress => _data.Value.EmailAddress;
+
+	private record struct AuthData(string UserId, string UserName, string EmailAddress);
 }
