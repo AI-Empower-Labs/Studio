@@ -179,7 +179,7 @@ public sealed record PromptsOptions
     /// </summary>
     internal bool TryGetMemoryContainerName(string memoryType, out string memoryContainerName)
     {
-        memoryContainerName = "";
+        memoryContainerName = string.Empty;
         if (!Enum.TryParse(memoryType, true, out SemanticMemoryType semanticMemoryType))
         {
             return false;
