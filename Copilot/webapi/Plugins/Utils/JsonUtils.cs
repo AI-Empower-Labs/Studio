@@ -21,7 +21,6 @@ public static class JsonUtils
     {
         // Remove all new line characters + leading and trailing white space
         jsonString = Regex.Replace(jsonString.Trim(), @"[\n\r]", string.Empty);
-        JsonDocument document = JsonDocument.Parse(jsonString);
 
         // The json will be deserialized based on the response type of the particular operation that was last invoked by the planner
         // The response type can be a custom trimmed down json structure, which is useful in staying within the token limit
@@ -30,7 +29,7 @@ public static class JsonUtils
         // Deserializing limits the json content to only the fields defined in the respective OpenApi's Model classes
         object? functionResponse = JsonSerializer.Deserialize(jsonString, responseType);
         jsonString = functionResponse is not null ? JsonSerializer.Serialize(functionResponse) : string.Empty;
-        document = JsonDocument.Parse(jsonString);
+        JsonDocument document = JsonDocument.Parse(jsonString);
 
         int jsonStringTokenCount = TokenUtils.TokenCount(jsonString);
 
@@ -58,7 +57,7 @@ public static class JsonUtils
                     resultsDescriptor = string.Format(CultureInfo.InvariantCulture, "{0}: ", odataContextVal);
                 }
 
-                // Extract object to be truncated  
+                // Extract object to be truncated
                 JsonDocument valueDocument = JsonDocument.Parse(valueElement.GetRawText());
                 document = valueDocument;
             }
