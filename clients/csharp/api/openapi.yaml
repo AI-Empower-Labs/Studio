@@ -1,0 +1,3742 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: support@aiempowerlabs.com
+    name: AI Empower Labs
+    url: https://www.AIEmpowerLabs.com
+  description: |-
+    # Studio API Documentation
+
+    ## Introduction
+    Welcome to Studio by AI Empower Labs API documentation! We are thrilled to offer developers around the world access to our cutting-edge artificial intelligence technology and semantic search. Our API is designed to empower your applications with state-of-the-art AI capabilities, including but not limited to natural language processing, audio transcription, embedding, and predictive analytics.
+
+    Our mission is to make AI technology accessible and easy to integrate, enabling you to enhance your applications, improve user experiences, and innovate in your field. Whether you're building complex systems, developing mobile apps, or creating web services, our API provides you with the tools you need to incorporate AI functionalities seamlessly.
+
+    Support and Feedback
+    We are committed to providing exceptional support to our developer community. If you have any questions, encounter any issues, or have feedback on how we can improve our API, please don't hesitate to contact our support team @ support@AIEmpowerLabs.com.
+
+    Terms of Use
+    Please review our terms of use and privacy policy before integrating our API into your application. By using our API, you agree to comply with these terms.
+  license:
+    name: License
+    url: https://www.AIEmpowerLabs.com/license
+  termsOfService: https://www.AIEmpowerLabs.com/terms-of-service
+  title: Studio - AI Empower Labs
+  version: v1
+servers:
+- description: Demo
+  url: https://studio.aiempowerlabs.com
+- description: Development
+  url: http://localhost:8080
+tags:
+- description: Interface for Extracting Diverse Data Types from Textual and Auditory
+    Inputs
+  name: Data Extraction
+- description: |-
+    Kernel Memory compatible endpoints.
+    Kernel Memory (KM) is a multi-modal AI Service specialized in the efficient indexing of documents and information through custom continuous data pipelines, with support for Retrieval Augmented Generation (RAG), synthetic memory, prompt engineering, and custom semantic memory processing.
+  externalDocs:
+    description: Kernel memory
+    url: https://microsoft.github.io/kernel-memory/
+  name: Kernel Memory
+- description: |-
+    A text translation service is a digital platform that enables users to convert written content from one language to another, facilitating communication and understanding across different cultures and languages. These services employ advanced algorithms and artificial intelligence, including machine learning and natural language processing technologies, to accurately interpret and translate the nuances, idioms, and context of the source text into the target language. They cater to a wide range of needs, from casual conversations and travel assistance to professional and academic document translation, offering support for numerous languages from around the globe.
+
+    The service typically offers a user-friendly interface where users can input the text they wish to translate, select the source and target languages, and receive the translated text almost instantaneously. Many text translation services also provide additional features such as text-to-speech, language detection, and the capability to handle specialized terminology from various fields like legal, medical, and technical sectors. With continuous improvements in translation accuracy and the expansion of supported languages, these services have become invaluable tools for global communication, education, business, and access to information.
+  name: Language
+- description: |-
+    Semantic search is a sophisticated data searching technique that seeks to improve search accuracy by understanding the searcher's intent and the contextual meaning of the terms as they appear in the searchable dataspace, whether on the Web or within a specific database or platform. Unlike traditional keyword-based searches, which only surface results based on the exact match of search terms, semantic search delves into the interrelatedness of words, considering synonyms, variations, and the context in which terms are used to produce more relevant results.
+
+    This approach relies on natural language processing (NLP), machine learning, and semantic technologies to comprehend and interpret the user's query at a deeper level. By doing so, it can identify content that is conceptually similar to the search query, even if the exact words are not present in the content. Semantic search systems often utilize ontologies and knowledge graphs to understand the relationships between different concepts and entities across a wide range of subjects.
+
+    The application of semantic search technology enhances user experiences across various platforms, including search engines, e-commerce sites, customer service portals, and information retrieval systems, by making searches more intuitive and efficient. It significantly benefits areas requiring high precision and understanding in searches, such as academic research, legal document retrieval, and targeted marketing. As semantic search technology continues to evolve, it promises to further refine the way we interact with and retrieve information, leading to more insightful, accurate, and contextually relevant search outcomes.
+  name: Semantic Search
+paths:
+  /info:
+    get:
+      description: Get configuration information
+      operationId: get_configuration
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  additionalProperties:
+                    items:
+                      type: string
+                    type: array
+                  type: object
+                nullable: true
+                type: array
+          description: Current configuration
+      tags:
+      - Miscellaneous
+  /api/extract/entities:
+    post:
+      description: "This endpoint accepts a string of text and returns a list of identified\
+        \ entities classified into categories such as email, location, organisation,\
+        \ etc."
+      operationId: named_entity_recognition
+      requestBody:
+        content:
+          application/json:
+            example:
+              text: Hello world! Get in touch with AI Empower Labs from Malmö Sweden
+                via www.AIEmpowerLabs.com or email info@AIEmpowerLabs.com
+              entities:
+              - email
+              - location
+              - organisation
+              - url
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/NamedEntityRecognitionRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NamedEntityRecognitionResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Extracts named entities from provided text
+      tags:
+      - Data Extraction
+  /api/extract/keywords:
+    post:
+      description: "This endpoint accepts a string of text and returns a list of key\
+        \ words or phrases that best describe the content of the text. This can be\
+        \ used for tagging, summarizing, indexing, or categorizing content."
+      operationId: keyword_extraction
+      requestBody:
+        content:
+          application/json:
+            example:
+              text: Hello world! Get in touch with AI Empower Labs from Malmö Sweden
+                via www.AIEmpowerLabs.com or email info@AIEmpowerLabs.com
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/KeywordExtractionRequestBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeywordExtractionResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Performs keyword extraction on source text
+      tags:
+      - Data Extraction
+  /api/extract/embed:
+    post:
+      description: |-
+        The embedding endpoint is a sophisticated API designed for transforming textual data into high-dimensional vectors, facilitating a wide array of natural language processing (NLP) tasks. This transformation process encodes the semantic properties and contextual meanings of the input text into a vector space, enabling machines to understand and process language in a manner analogous to human comprehension.
+
+        ## Core Features:
+
+        * Semantic Encoding: Leverages advanced machine learning models, particularly those based on transformer architectures, to capture the deep semantic and syntactic nuances of the input text. This ensures that similar words and phrases are positioned closely in the vector space, reflecting their semantic proximity.
+        * High-Dimensional Representation: Transforms texts into vectors in a high-dimensional space, typically ranging from hundreds to thousands of dimensions. This rich representation captures a comprehensive spectrum of linguistic features and relationships.
+        * Scalability: Engineered to handle a wide range of text sizes, from short tweets to extensive documents, without compromising on the accuracy of the vector representations.
+      operationId: embedding
+      requestBody:
+        content:
+          application/json:
+            example:
+              model: multilingual-e5-large
+              text:
+              - Hello world
+              - AI Empower Labs rocks!
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/EmbeddingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddingResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Converts data to a numerical vector array
+      tags:
+      - Data Extraction
+  /api/extract/tokenize:
+    post:
+      description: The tokenizer endpoint designed for transforming textual data into
+        integer tokens.
+      operationId: tokenize
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: multilingual-e5-large
+              text:
+              - Hello world
+              - AI Empower Labs rocks!
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/TokenizerRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenizerResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Converts data to a integer token array
+      tags:
+      - Data Extraction
+  /api/extract/tokenCount:
+    post:
+      description: The tokenCount endpoint designed for counting tokens in text data.
+      operationId: tokenCount
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: multilingual-e5-large
+              text:
+              - Hello world
+              - AI Empower Labs rocks!
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/TokenCountRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenCountResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Count tokens in a text
+      tags:
+      - Data Extraction
+  /api/extract/similarity:
+    post:
+      description: |-
+        Upon receiving a user-defined query and a set of texts, the endpoint processes this information through its semantic analysis engine. This engine leverages state-of-the-art machine learning models, such as transformer-based architectures, to encode the texts and the query into high-dimensional vectors. By operating in this semantic space, it can accurately measure the distances between the query vector and each of the text vectors, reflecting how closely the meanings align.
+
+        Use Cases:
+
+        * Content Discovery: Helps users find articles, posts, or documents that are most relevant to their query.
+
+        * Customer Support: Automatically matches customer queries to the most relevant FAQs or support documents.
+
+        * Research and Study: Assists researchers in quickly finding academic papers or resources that are closely related to their field of inquiry.
+
+        By utilizing the semantic similarity endpoint, organizations and individuals can greatly enhance the efficiency and effectiveness of their information retrieval processes, ensuring that users are connected with the content most pertinent to their needs.
+      operationId: semantic_similarity
+      requestBody:
+        content:
+          application/json:
+            example:
+              query: Machine learning is so easy
+              documents:
+              - Deep learning is so straightforward
+              - "This is so difficult, like rocket science"
+              - I can't believe how much I struggled with this
+              model: multilingual-e5-large
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/SemanticSimilarityRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SemanticSimilarityResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Generate semantic similarity queries from text
+      tags:
+      - Data Extraction
+  /api/extract/transcription:
+    post:
+      description: "The audio transcription endpoint is a specialized web service\
+        \ designed to convert spoken words from audio or video files into written\
+        \ text. This technology relies on advanced speech recognition algorithms to\
+        \ accurately transcribe the content of audio or video recordings. The endpoint\
+        \ typically accepts files in various formats, such as MP3, WAV for audio,\
+        \ and MP4, AVI for video, among others. Users can upload their files directly\
+        \ to the service, which then processes the audio track to extract the spoken\
+        \ words.\n\nThe transcription process involves several steps, including noise\
+        \ reduction to improve audio clarity, speaker diarization to identify and\
+        \ differentiate between different speakers, and the actual speech-to-text\
+        \ conversion. The result is a detailed transcript that captures the spoken\
+        \ content, often including timestamps and speaker labels for easy reference.\n\
+        \nThis service is particularly useful for journalists, researchers, podcasters,\
+        \ and professionals who need to convert meetings, interviews, lectures, or\
+        \ presentations into written form for analysis, sharing, or archival purposes.\
+        \ The endpoint may offer additional features like language detection, support\
+        \ for multiple languages, and customization options to improve transcription\
+        \ accuracy based on specific vocabulary or industry terms.\n\nTo use the audio\
+        \ transcription endpoint, developers typically integrate it into applications\
+        \ via API calls. These calls specify the file to be transcribed and any additional\
+        \ parameters required by the service, such as language preference. \n\nUpon\
+        \ completion, the service returns the transcription in a JSON text format,\
+        \ which can then be displayed, stored, or further processed according to the\
+        \ user's needs."
+      operationId: transcription_synchronous
+      parameters:
+      - description: "Model to use for transcription (Optional, default = Base)"
+        explode: true
+        in: query
+        name: model
+        required: false
+        schema:
+          enum:
+          - tiny
+          - tiny.en
+          - base
+          - base.en
+          - small
+          - small.en
+          - medium
+          - medium.en
+          - large_v1
+          - large_v2
+          - large_v3
+          minLength: 1
+          type: string
+        style: form
+      - description: "The language of the input audio. Supplying the input language\
+          \ in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)\
+          \ format will improve accuracy and latency.  (optional)"
+        explode: true
+        in: query
+        name: language
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: An optional text to guide the model's style or continue a previous
+          audio segment. The prompt should match the audio language.  (optional)
+        explode: true
+        in: query
+        name: prompt
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "The sampling temperature, between 0 and 1. Higher values like\
+          \ 0.8 will make the output more random, while lower values like 0.2 will\
+          \ make it more focused and deterministic. If set to 0, the model will use\
+          \ [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically\
+          \ increase the temperature until certain thresholds are hit.  (optional,\
+          \ default to 0M)"
+        explode: true
+        in: query
+        name: temperature
+        required: false
+        schema:
+          default: 0
+          format: double
+          type: number
+        style: form
+      - allowEmptyValue: true
+        description: "Split into word segments. (optional, default is false)"
+        explode: true
+        in: query
+        name: splitOnWord
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - allowEmptyValue: true
+        description: Enable transcription language detection (Optional. default is
+          false)
+        explode: true
+        in: query
+        name: languageDetection
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - allowEmptyValue: true
+        description: Enable noise reduction from audio stream before transcription
+          (Optional. default is false)
+        explode: true
+        in: query
+        name: noiseReduction
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UploadFiles'
+          application/x-www-form-urlencoded:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UploadFiles'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptionResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Synchronous transcribe audio
+      tags:
+      - Data Extraction
+  /api/kernelmemory/upload:
+    post:
+      operationId: kernel_memory_upload
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadAccepted'
+          description: Accepted
+        "400":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "503":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Service Unavailable
+      summary: Upload file for ingestion
+      tags:
+      - Kernel Memory
+  /api/kernelmemory/indexes:
+    delete:
+      operationId: kernel_memory_delete_index
+      parameters:
+      - explode: true
+        in: query
+        name: index
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteAccepted'
+          description: Accepted
+        "401":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+      summary: Delete index
+      tags:
+      - Kernel Memory
+    get:
+      operationId: kernel_memory_get_index
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndexCollection'
+          description: OK
+        "401":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+      summary: List indexes
+      tags:
+      - Kernel Memory
+  /api/kernelmemory/documents:
+    delete:
+      operationId: kernel_memory_delete
+      parameters:
+      - explode: true
+        in: query
+        name: index
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: documentId
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteAccepted'
+          description: Accepted
+        "401":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+      summary: Delete document from specific index
+      tags:
+      - Kernel Memory
+  /api/kernelmemory/ask:
+    post:
+      operationId: kernel_memory_ask
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/MemoryQuery'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemoryAnswer'
+          description: OK
+        "401":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+      summary: Query documents and forward result to LLM
+      tags:
+      - Kernel Memory
+  /api/kernelmemory/search:
+    post:
+      operationId: kernel_memory_search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/SearchQuery'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+          description: OK
+        "401":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+      summary: Search for documents in specific index
+      tags:
+      - Kernel Memory
+  /api/kernelmemory/upload-status:
+    get:
+      operationId: kernel_memory_upload_status
+      parameters:
+      - explode: true
+        in: query
+        name: index
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: documentId
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataPipelineStatus'
+          description: OK
+        "400":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+      summary: Get ingestion status for specific document
+      tags:
+      - Kernel Memory
+  /api/language/translate:
+    post:
+      description: "This endpoint provides a simplified interface for text translation,\
+        \ making it accessible for various applications, including web and mobile\
+        \ apps that require multilingual support."
+      operationId: language_translate
+      requestBody:
+        content:
+          application/json:
+            example:
+              text: Hej verden
+              source: auto
+              target: en
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Translate'
+              description: "Represents a translation request with the source text,\
+                \ source language, and target language."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                translatedText: Hello world
+              schema:
+                $ref: '#/components/schemas/TranslateResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+      summary: Translation of text from one language to another
+      tags:
+      - Language
+  /api/language/detect:
+    get:
+      description: |-
+        Accepts text input and returns information about the language in which the text is written.
+         The response from the endpoint includes the detected language represented by a language code (e.g., EN for English, ES for Spanish) and may also provide a confidence score indicating the likelihood that the detected language is correct. This type of endpoint is useful for applications requiring automatic language recognition, such as content localization, multilingual support systems, and global data analysis tools.
+      operationId: language_detection
+      parameters:
+      - explode: true
+        in: query
+        name: text
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                languages:
+                - languageCode: en
+                  confidence: 0.7
+              schema:
+                $ref: '#/components/schemas/DetectLanguageResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+      summary: Detects language of a text
+      tags:
+      - Language
+  /api/language:
+    get:
+      description: "Returns a list of supported languages, and translation targets"
+      operationId: language_get_language_list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLanguageResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+      summary: List of supported languages for translation
+      tags:
+      - Language
+  /api/semantic/ingest/file:
+    post:
+      description: Import file document into semantic search
+      operationId: semantic_search_file_ingestion
+      parameters:
+      - description: Id that uniquely identifies content within an index. Previously
+          ingested documents with the same id will be overwritten schema.
+        explode: true
+        in: query
+        name: documentId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Optional value to specify with index the document should be ingested.
+          Defaults to 'default'.
+        explode: true
+        in: query
+        name: index
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Optional value to specify ingestion pipeline steps. Defaults
+          to server configured defaults.
+        explode: true
+        in: query
+        name: pipeline
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Url to use for webhook callback when operation finishes or fails.
+        explode: true
+        in: query
+        name: webHookUrl
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - description: Embedding model to use in ingestion. Optional. Default to configured
+          default.
+        explode: true
+        in: query
+        name: embeddingModel
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/IngestFileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/IngestFileRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestDocumentResponse'
+          description: Created ingestion job
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/ingest/text:
+    post:
+      description: Import plain text into semantic search
+      operationId: semantic_search_text_ingestion
+      requestBody:
+        content:
+          application/json:
+            example:
+              documentId: 7e6ea7b1-ad67-4058-b043-dae5160ed245
+              index: Studio
+              tags:
+                Great: []
+                AI: []
+                Software:
+                - "true"
+              text: Hello world
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/IngestTextDocumentRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestDocumentResponse'
+          description: Created ingestion job
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/ingest/webpage:
+    post:
+      description: Import web page text into semantic search
+      operationId: semantic_search_webpage_ingestion
+      requestBody:
+        content:
+          application/json:
+            example:
+              documentId: 7e6ea7b1-ad67-4058-b043-dae5160ed245
+              index: Studio
+              tags:
+                Software:
+                - "true"
+              url: https://www.aiempowerlabs.com
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/IngestWebPageDocumentRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestDocumentResponse'
+          description: Created ingestion job
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/ingest/status:
+    get:
+      description: Get queue status for ingestion job
+      operationId: semantic_search_ingestion_status
+      parameters:
+      - explode: true
+        in: query
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataPipelineStatus'
+          description: Created ingestion job
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/query:
+    post:
+      description: Query ingested documents using semantic search
+      operationId: semantic_search_query
+      requestBody:
+        content:
+          application/json:
+            example:
+              query: Find invoice totals
+              index: Studio
+              filter:
+              - documentId:
+                - SomeUniqueId
+                tags:
+                  A: []
+              minRelevance: 0.8
+              limit: 10
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/QueryDocumentRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                relevantSources:
+                - link: https://www.AIEmpowerLabs.com/invoice/1
+                  index: Studio
+                  documentId: http_www.AIEmpowerLabs.com/invoice/1
+                  fileId: 404628099ff2466e9ef342425df120b4
+                  sourceContentType: text/x-uri
+                  sourceName: content.url
+                  sourceUrl: https://www.AIEmpowerLabs.com/invoice/1
+                  partitions:
+                  - text: <invoice>
+                    relevance: 0.85534734
+                    lastUpdate: 2024-03-07T13:08:13.628981+00:00
+                    tags:
+                      __document_id:
+                      - https-www.AIEmpowerLabs.com
+              schema:
+                $ref: '#/components/schemas/QueryDocumentResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/list:
+    post:
+      description: List - and filter - for ingested documents
+      operationId: semantic_search_list
+      requestBody:
+        content:
+          application/json:
+            example:
+              index: Studio
+              filter:
+              - documentId:
+                - SomeUniqueId
+                tags:
+                  A: []
+              withEmbeddings: false
+              limit: 10
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ListDocumentParameters'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: http_www.AIEmpowerLabs.com/invoice/1
+                tags:
+                  __document_id:
+                  - https-www.AIEmpowerLabs.com
+                payload:
+                  url: https://www.AIEmpowerLabs.com/
+                  file: content.url
+                  schema: 20231218A
+                  last_update: 2024-03-07 13:08:13 +00:00
+                  vector_provider: Infrastructure.Embedding.BentoMlTextEmbeddingGenerator
+                  text: <text>
+                vector:
+                - 0.0123
+              schema:
+                $ref: '#/components/schemas/ListDocumentResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/ask:
+    post:
+      description: Ask questions over ingested documents
+      operationId: semantic_search_ask
+      requestBody:
+        content:
+          application/json:
+            example:
+              query: Find invoice totals
+              index: Studio
+              filter:
+              - documentId:
+                - SomeUniqueId
+                tags:
+                  A: []
+              minRelevance: 0.8
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/AskDocumentRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                noResult: false
+                text: The total invoice amount is $9.99
+                relevantSources:
+                - link: https://www.AIEmpowerLabs.com/invoice/1
+                  index: Studio
+                  documentId: http_www.AIEmpowerLabs.com/invoice/1
+                  fileId: 404628099ff2466e9ef342425df120b4
+                  sourceContentType: text/x-uri
+                  sourceName: content.url
+                  sourceUrl: https://www.AIEmpowerLabs.com/invoice/1
+                  partitions:
+                  - text: <invoice>
+                    relevance: 0.85534734
+                    lastUpdate: 2024-03-07T13:08:13.6347502+00:00
+                    tags:
+                      __document_id:
+                      - https-www.AIEmpowerLabs.com
+              schema:
+                $ref: '#/components/schemas/AskDocumentResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/{documentId}:
+    delete:
+      description: Delete specific document by id
+      operationId: semantic_search_delete_document
+      parameters:
+      - explode: false
+        in: path
+        name: documentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: index
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/index:
+    delete:
+      description: Delete specific index by name
+      operationId: semantic_search_delete_index
+      parameters:
+      - explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/rerank:
+    post:
+      description: Rerank documents
+      operationId: semantic_search_rerank
+      requestBody:
+        content:
+          application/json:
+            example:
+              query: What is the capital of the United States?
+              documents:
+              - "Carson City is the capital city of the American state of Nevada.\
+                \ At the  2010 United States Census, Carson City had a population\
+                \ of 55,274."
+              - The Commonwealth of the Northern Mariana Islands is a group of islands
+                in the Pacific Ocean that are a political division controlled by the
+                United States. Its capital is Saipan.
+              - "Charlotte Amalie is the capital and largest city of the United States\
+                \ Virgin Islands. It has about 20,000 people. The city is on the island\
+                \ of Saint Thomas."
+              - "Washington, D.C. (also known as simply Washington or D.C., and officially\
+                \ as the District of Columbia) is the capital of the United States.\
+                \ It is a federal district. "
+              - "Capital punishment (the death penalty) has existed in the United\
+                \ States since before the United States was a country. As of 2017,\
+                \ capital punishment is legal in 30 of the 50 states."
+              - "North Dakota is a state in the United States. 672,591 people lived\
+                \ in North Dakota in the year 2010. The capital and seat of government\
+                \ is Bismarck."
+              limit: 10
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/ReRankDocumentsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                documents:
+                - document: "Washington, D.C. (also known as simply Washington or\
+                    \ D.C., and officially as the District of Columbia) is the capital\
+                    \ of the United States. It is a federal district."
+                  index: 3
+                  relevance_score: 0.86135674
+                - document: "Carson City is the capital city of the American state\
+                    \ of Nevada. At the  2010 United States Census, Carson City had\
+                    \ a population of 55,274."
+                  index: 0
+                  relevance_score: 0.8037646
+                - document: "North Dakota is a state in the United States. 672,591\
+                    \ people lived in North Dakota in the year 2010. The capital and\
+                    \ seat of government is Bismarck."
+                  index: 5
+                  relevance_score: 0.8028696
+                - document: "Capital punishment (the death penalty) has existed in\
+                    \ the United States since before the United States was a country.\
+                    \ As of 2017, capital punishment is legal in 30 of the 50 states."
+                  index: 1
+                  relevance_score: 0.7993222
+                - document: "Charlotte Amalie is the capital and largest city of the\
+                    \ United States Virgin Islands. It has about 20,000 people. The\
+                    \ city is on the island of Saint Thomas."
+                  index: 4
+                  relevance_score: 0.7843615
+              schema:
+                $ref: '#/components/schemas/ReRankDocumentsResponse'
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/semantic/wordcloud:
+    post:
+      description: Generate word cloud from semantic database
+      operationId: semantic_search_wordcloud
+      requestBody:
+        content:
+          application/json:
+            example:
+              index: Studio
+              filter:
+              - documentId:
+                - SomeUniqueId
+                tags:
+                  A: []
+              source: document_key
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/WordCloudDocumentRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            image/png:
+              schema:
+                format: byte
+                type: string
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+  /api/transcribe/upload:
+    post:
+      description: |-
+        This service is designed to convert spoken words from audio or video files into written text, utilizing sophisticated speech recognition algorithms for accurate transcription. It offers a range of features that cater to various needs and use cases, making it particularly valuable for journalists, researchers, podcasters, and professionals dealing with meetings, interviews, lectures, or presentations.
+
+        ### Key features and capabilities include:
+
+        * Support for Various File Formats: Accepts a wide range of audio and video file formats, ensuring flexibility in file uploads.
+        * Advanced Processing Steps: Incorporates noise reduction, speaker diarization, and speech-to-text conversion for clear and differentiated transcriptions.
+        * Asynchronous Background Processing: Allows for non-blocking, efficient handling of transcription tasks, suitable for large files or batches of files.
+        * Webhook Callback URL: Offers real-time updates on the transcription process via a provided webhook, enabling immediate reaction to task completion or failure.
+        * /api/transcribe GET Endpoint: Provides an alternative for users to manually check the status of their transcription requests, allowing flexibility in monitoring.
+        * Automatic Text Translation Feature: An optional service that translates the transcribed text into a specified target language, enhancing the utility for multi-lingual contexts.
+        * Multi-File and Multi-Channel Support: Supports concurrent file uploads and accurate transcription of multi-channel recordings, ideal for complex audio environments.
+        * The transcription output is meticulously formatted to clearly distinguish between channels and speakers, including timestamps and labels for easy navigation and reference. This structured approach ensures that even in challenging audio environments with multiple speakers or channels, the transcription service can provide clear, accurate, and useful text representations of the spoken content.
+
+        This service integrates into applications via API calls, offering developers a powerful tool to enhance their applications with audio-to-text conversion capabilities. The inclusion of features like language detection, support for multiple languages, and customization options for specific vocabulary or industry terms further extends its applicability across various domains and industries.
+      operationId: transcription_asynchronous
+      parameters:
+      - description: "Model to use for transcription (Optional, default = Base)"
+        explode: true
+        in: query
+        name: model
+        required: false
+        schema:
+          enum:
+          - tiny
+          - tiny.en
+          - base
+          - base.en
+          - small
+          - small.en
+          - medium
+          - medium.en
+          - large_v1
+          - large_v2
+          - large_v3
+          minLength: 1
+          type: string
+        style: form
+      - description: "The language of the input audio. Supplying the input language\
+          \ in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)\
+          \ format will improve accuracy and latency.  (optional)"
+        explode: true
+        in: query
+        name: language
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: An optional text to guide the model's style or continue a previous
+          audio segment. The prompt should match the audio language.  (optional)
+        explode: true
+        in: query
+        name: prompt
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "The sampling temperature, between 0 and 1. Higher values like\
+          \ 0.8 will make the output more random, while lower values like 0.2 will\
+          \ make it more focused and deterministic. If set to 0, the model will use\
+          \ [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically\
+          \ increase the temperature until certain thresholds are hit.  (optional,\
+          \ default to 0M)"
+        explode: true
+        in: query
+        name: temperature
+        required: false
+        schema:
+          default: 0
+          format: double
+          type: number
+        style: form
+      - description: Url to call when transcription has completed or failed. (optional)
+        explode: true
+        in: query
+        name: webHookUrl
+        required: false
+        schema:
+          format: uri
+          type: string
+        style: form
+      - description: "The language to translate transcription into. Supplying the\
+          \ language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)\
+          \ format will improve accuracy and latency.  (optional)"
+        explode: true
+        in: query
+        name: translateTo
+        required: false
+        schema:
+          type: string
+        style: form
+      - allowEmptyValue: true
+        description: "Split into word segments. (optional, default is false)"
+        explode: true
+        in: query
+        name: splitOnWord
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - allowEmptyValue: true
+        description: Enable transcription language detection (Optional. default is
+          false)
+        explode: true
+        in: query
+        name: languageDetection
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - allowEmptyValue: true
+        description: Enable noise reduction from audio stream before transcription
+          (Optional. default is false)
+        explode: true
+        in: query
+        name: noiseReduction
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UploadFiles'
+          application/x-www-form-urlencoded:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UploadFiles'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              example:
+                id: da4ad129-93ce-4c75-ab64-4042bf459520
+              schema:
+                $ref: '#/components/schemas/TranscriptionAudioUploadResult'
+          description: Created
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Upload audio file for asynchronous transcription
+      tags:
+      - Transcription
+  /api/transcribe:
+    get:
+      description: |-
+        The /api/transcribe GET endpoint is a crucial component of the audio transcription service, designed to offer users a way to check the status of their transcription requests. This endpoint caters to the needs of users who prefer polling to monitor their requests over relying on webhook callbacks for real-time updates. Here's a detailed description of its functionality and how it integrates within the service:
+
+        ### Purpose and Functionality
+        The primary purpose of the /api/transcribe GET endpoint is to provide users with the ability to manually inquire about the current status of their audio or video file transcription tasks. This endpoint supports a polling mechanism, where users can send a GET request at their convenience to receive the latest update on their transcription process.
+
+        ### How It Works
+        Request: To utilize this endpoint, users initiate a GET request, including a unique identifier for the transcription task as a parameter. This identifier is provided by the service when the transcription request is first submitted.
+        Response: In response to the GET request, the endpoint returns data about the transcription task's status. The response indicate that the transcription is still processing, has been completed, or has failed.
+
+        ### Response Details
+        The response from the /api/transcribe GET endpoint includes several pieces of information that are crucial for users to understand the status and outcome of their transcription requests:
+
+        Status: Indicates the current state of the transcription task (e.g., Queued, Completed, Failed).
+        Completion Details: If the transcription is completed, the response include details the resulting transcript.
+
+        ### Use Cases
+        This endpoint is particularly useful for scenarios where users need or prefer to periodically check the status of their requests rather than implement real-time update mechanisms via webhooks. It provides flexibility in handling transcription tasks, allowing users to:
+
+        ### Advantages
+        The /api/transcribe GET endpoint offers several advantages, including simplicity in implementation, flexibility in usage, and the ability to integrate easily into various application workflows. It provides a straightforward method for users to remain informed about their transcription tasks without the need for complex callback systems, making it an essential feature for many applications and services requiring transcription capabilities.
+      operationId: transcription_get_by_id
+      parameters:
+      - explode: true
+        in: query
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Get transcription status and data
+      tags:
+      - Transcription
+components:
+  schemas:
+    AskDocumentRequest:
+      additionalProperties: false
+      example:
+        filter:
+        - documentId:
+          - documentId
+          - documentId
+          tags:
+            key:
+            - tags
+            - tags
+        - documentId:
+          - documentId
+          - documentId
+          tags:
+            key:
+            - tags
+            - tags
+        query: query
+        index: index
+        embeddingModel: embeddingModel
+        llmModel: llmModel
+        minRelevance: 0.8008281904610115
+      properties:
+        query:
+          description: Semantic query to find matching documents and ask questions
+            over
+          nullable: true
+          type: string
+        index:
+          description: Optional index to specify which index to search in. Defaults
+            to 'default'
+          nullable: true
+          type: string
+        filter:
+          description: Optional filtering of document id(s) and/or tags
+          items:
+            $ref: '#/components/schemas/DocumentFilters'
+          nullable: true
+          type: array
+        minRelevance:
+          description: Optional filter to specify minimum relevance. Typically values
+            between 0 and 1
+          format: double
+          nullable: true
+          type: number
+        llmModel:
+          description: Large language model to use in query
+          nullable: true
+          type: string
+        embeddingModel:
+          description: Embedding model to use in query
+          nullable: true
+          type: string
+      type: object
+    AskDocumentResponse:
+      additionalProperties: false
+      example:
+        noResult: true
+        text: text
+        noResultReason: noResultReason
+        relevantSources:
+        - sourceUrl: sourceUrl
+          partitions:
+          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          link: link
+          index: index
+          documentId: documentId
+          sourceContentType: sourceContentType
+          sourceName: sourceName
+          fileId: fileId
+        - sourceUrl: sourceUrl
+          partitions:
+          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          link: link
+          index: index
+          documentId: documentId
+          sourceContentType: sourceContentType
+          sourceName: sourceName
+          fileId: fileId
+      properties:
+        noResult:
+          type: boolean
+        noResultReason:
+          description: Content of the answer.
+          nullable: true
+          type: string
+        text:
+          description: Content of the answer.
+          nullable: true
+          type: string
+        relevantSources:
+          description: "List of the relevant sources used to produce the answer.\r\
+            \nKey = Document ID\r\nValue = List of partitions used from the document."
+          items:
+            $ref: '#/components/schemas/DocumentCitation'
+          nullable: true
+          type: array
+      type: object
+    UploadFiles:
+      properties:
+        files:
+          description: The file object to ingest.
+          items:
+            format: binary
+            type: string
+          type: array
+      required:
+      - files
+      type: object
+    Citation:
+      additionalProperties: false
+      example:
+        sourceUrl: sourceUrl
+        partitions:
+        - partitionNumber: 6
+          sectionNumber: 1
+          lastUpdate: 2000-01-23T04:56:07.000+00:00
+          text: text
+          relevance: 0.8008282
+          tags:
+            key:
+            - tags
+            - tags
+        - partitionNumber: 6
+          sectionNumber: 1
+          lastUpdate: 2000-01-23T04:56:07.000+00:00
+          text: text
+          relevance: 0.8008282
+          tags:
+            key:
+            - tags
+            - tags
+        link: link
+        index: index
+        documentId: documentId
+        sourceContentType: sourceContentType
+        sourceName: sourceName
+        fileId: fileId
+      properties:
+        link:
+          nullable: true
+          type: string
+        index:
+          nullable: true
+          type: string
+        documentId:
+          nullable: true
+          type: string
+        fileId:
+          nullable: true
+          type: string
+        sourceContentType:
+          nullable: true
+          type: string
+        sourceName:
+          nullable: true
+          type: string
+        sourceUrl:
+          nullable: true
+          type: string
+        partitions:
+          items:
+            $ref: '#/components/schemas/Partition'
+          nullable: true
+          type: array
+      type: object
+    DataPipelineStatus:
+      additionalProperties: false
+      example:
+        last_update: 2000-01-23T04:56:07.000+00:00
+        completed_steps:
+        - completed_steps
+        - completed_steps
+        index: index
+        remaining_steps:
+        - remaining_steps
+        - remaining_steps
+        completed: true
+        failed: true
+        document_id: document_id
+        steps:
+        - steps
+        - steps
+        creation: 2000-01-23T04:56:07.000+00:00
+        empty: true
+        tags:
+          key:
+          - tags
+          - tags
+      properties:
+        completed:
+          type: boolean
+        failed:
+          type: boolean
+        empty:
+          type: boolean
+        index:
+          nullable: true
+          type: string
+        document_id:
+          nullable: true
+          type: string
+        tags:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          type: object
+        creation:
+          format: date-time
+          type: string
+        last_update:
+          format: date-time
+          type: string
+        steps:
+          items:
+            type: string
+          nullable: true
+          type: array
+        remaining_steps:
+          items:
+            type: string
+          nullable: true
+          type: array
+        completed_steps:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    DeleteAccepted:
+      additionalProperties: false
+      example:
+        index: index
+        documentId: documentId
+        message: message
+      properties:
+        index:
+          nullable: true
+          type: string
+        documentId:
+          nullable: true
+          type: string
+        message:
+          nullable: true
+          type: string
+      type: object
+    DetectLanguageResponse:
+      additionalProperties: false
+      example:
+        languages:
+        - confidence: 0.8008282
+          languageCode: ar
+        - confidence: 0.8008282
+          languageCode: ar
+      properties:
+        languages:
+          items:
+            $ref: '#/components/schemas/LanguageDetection'
+          nullable: true
+          type: array
+      type: object
+    DocumentCitation:
+      additionalProperties: false
+      example:
+        sourceUrl: sourceUrl
+        partitions:
+        - lastUpdate: 2000-01-23T04:56:07.000+00:00
+          text: text
+          relevance: 0.8008282
+          tags:
+            key:
+            - tags
+            - tags
+        - lastUpdate: 2000-01-23T04:56:07.000+00:00
+          text: text
+          relevance: 0.8008282
+          tags:
+            key:
+            - tags
+            - tags
+        link: link
+        index: index
+        documentId: documentId
+        sourceContentType: sourceContentType
+        sourceName: sourceName
+        fileId: fileId
+      properties:
+        link:
+          description: "Link to the source, if available."
+          nullable: true
+          type: string
+        index:
+          description: "Link to the source, if available."
+          nullable: true
+          type: string
+        documentId:
+          description: "Link to the source, if available."
+          nullable: true
+          type: string
+        fileId:
+          description: "Link to the source, if available."
+          nullable: true
+          type: string
+        sourceContentType:
+          description: "Type of source, e.g. PDF, Word, Chat, etc."
+          nullable: true
+          type: string
+        sourceName:
+          description: "Name of the source, e.g. file name."
+          nullable: true
+          type: string
+        sourceUrl:
+          description: "URL of the source, used for web pages and external data"
+          nullable: true
+          type: string
+        partitions:
+          description: List of chunks/blocks of text used.
+          items:
+            $ref: '#/components/schemas/DocumentPartition'
+          nullable: true
+          type: array
+      type: object
+    DocumentFilters:
+      additionalProperties: false
+      example:
+        documentId:
+        - documentId
+        - documentId
+        tags:
+          key:
+          - tags
+          - tags
+      properties:
+        documentId:
+          items:
+            type: string
+          nullable: true
+          type: array
+        tags:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          type: object
+      type: object
+    DocumentPartition:
+      additionalProperties: false
+      example:
+        lastUpdate: 2000-01-23T04:56:07.000+00:00
+        text: text
+        relevance: 0.8008282
+        tags:
+          key:
+          - tags
+          - tags
+      properties:
+        text:
+          description: "Content of the document partition, aka chunk/block of text."
+          nullable: true
+          type: string
+        relevance:
+          description: "Relevance of this partition against the given query.\r\nValue\
+            \ usually is between 0 and 1, when using cosine similarity."
+          format: float
+          type: number
+        lastUpdate:
+          description: Timestamp about the file/text partition.
+          format: date-time
+          type: string
+        tags:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          description: List of document tags
+          nullable: true
+          type: object
+      type: object
+    Embedding:
+      additionalProperties: false
+      type: object
+    EmbeddingRequest:
+      additionalProperties: false
+      example:
+        model: multilingual-e5-large
+        text:
+        - Hello world
+        - AI Empower Labs rocks!
+      properties:
+        model:
+          maxLength: 250
+          minLength: 1
+          nullable: true
+          type: string
+        text:
+          items:
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+      type: object
+    EmbeddingResponse:
+      additionalProperties: false
+      example:
+        vectors:
+        - - 0.8008282
+          - 0.8008282
+        - - 0.8008282
+          - 0.8008282
+      properties:
+        vectors:
+          items:
+            items:
+              format: float
+              type: number
+            type: array
+          type: array
+      type: object
+    TokenizerRequest:
+      additionalProperties: false
+      example:
+        name: multilingual-e5-large
+        text:
+        - Hello world
+        - AI Empower Labs rocks!
+      properties:
+        name:
+          maxLength: 250
+          minLength: 1
+          nullable: true
+          type: string
+        text:
+          items:
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+      type: object
+    TokenizerResponse:
+      additionalProperties: false
+      example:
+        tokens:
+        - - 0
+          - 35378
+          - 8999
+          - 2
+          - 1
+          - 1
+          - 1
+          - 1
+          - 1
+          - 1
+        - - 0
+          - 38730
+          - 2775
+          - 62783
+          - 21488
+          - 7
+          - 13950
+          - 7
+          - 38
+          - 2
+      properties:
+        tokens:
+          items:
+            items:
+              type: integer
+            type: array
+          type: array
+      type: object
+    TokenCountRequest:
+      additionalProperties: false
+      example:
+        name: multilingual-e5-large
+        text:
+        - Hello world
+        - AI Empower Labs rocks!
+      properties:
+        name:
+          maxLength: 250
+          minLength: 1
+          nullable: true
+          type: string
+        text:
+          items:
+            type: string
+          maxItems: 100
+          minItems: 1
+          type: array
+      type: object
+    TokenCountResponse:
+      additionalProperties: false
+      example:
+        count:
+        - 10
+        - 11
+      properties:
+        tokens:
+          type: integer
+      type: object
+    GetLanguageResponse:
+      additionalProperties: false
+      example:
+        languages:
+        - name: name
+          languageCode: languageCode
+          targets:
+          - targets
+          - targets
+        - name: name
+          languageCode: languageCode
+          targets:
+          - targets
+          - targets
+      properties:
+        languages:
+          items:
+            $ref: '#/components/schemas/SupportedLanguage'
+          nullable: true
+          type: array
+      type: object
+    HttpValidationProblemDetails:
+      additionalProperties: {}
+      properties:
+        type:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          nullable: true
+          type: integer
+        detail:
+          nullable: true
+          type: string
+        instance:
+          nullable: true
+          type: string
+        errors:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          type: object
+      type: object
+    IndexCollection:
+      additionalProperties: false
+      example:
+        results:
+        - name: name
+        - name: name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/IndexDetails'
+          nullable: true
+          type: array
+      type: object
+    IndexDetails:
+      additionalProperties: false
+      example:
+        name: name
+      properties:
+        name:
+          nullable: true
+          type: string
+      type: object
+    IngestFileRequest:
+      properties:
+        files:
+          description: The file object to ingest.
+          items:
+            format: binary
+            type: string
+          type: array
+        tags:
+          additionalProperties: {}
+          description: Tags to associate with ingestion
+          example:
+            en:
+            - Hello
+            - World
+            fr:
+            - Bonjour
+          type: object
+      required:
+      - files
+      type: object
+    IngestTextDocumentRequest:
+      additionalProperties: false
+      example:
+        pipeline:
+        - pipeline
+        - pipeline
+        webHookUrl: webHookUrl
+        index: index
+        documentId: documentId
+        text: text
+        embeddingModel: embeddingModel
+        tags:
+          key:
+          - tags
+          - tags
+      properties:
+        documentId:
+          description: Id that uniquely identifies content. Previously ingested documents
+            with the same id will be overwritten
+          maxLength: 255
+          minLength: 1
+          type: string
+        index:
+          description: Optional value to specify with index the document should be
+            ingested. Defaults to 'default'
+          nullable: true
+          type: string
+        tags:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          description: Optionally add tags to ingestion
+          nullable: true
+          type: object
+        text:
+          description: Text to ingest
+          type: string
+        pipeline:
+          description: Optional value to specify ingestion pipeline steps. Defaults
+            to server configured defaults.
+          items:
+            type: string
+          nullable: true
+          type: array
+        webHookUrl:
+          description: Url to use for webhook callback when operation finishes or
+            fails.
+          nullable: true
+          type: string
+        embeddingModel:
+          description: Embedding model to use in ingestion. Optional. Default to configured
+            default.
+          nullable: true
+          type: string
+      required:
+      - documentId
+      - text
+      type: object
+    IngestWebPageDocumentRequest:
+      additionalProperties: false
+      example:
+        pipeline:
+        - pipeline
+        - pipeline
+        webHookUrl: webHookUrl
+        index: index
+        documentId: documentId
+        embeddingModel: embeddingModel
+        url: url
+        tags:
+          key:
+          - tags
+          - tags
+      properties:
+        documentId:
+          description: Id that uniquely identifies content. Previously ingested documents
+            with the same id will be overwritten
+          maxLength: 255
+          minLength: 1
+          type: string
+        index:
+          description: Optional value to specify with index the document should be
+            ingested. Defaults to 'default'
+          nullable: true
+          type: string
+        tags:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          description: Optionally add tags to ingestion
+          nullable: true
+          type: object
+        url:
+          description: Web page to ingest
+          type: string
+        pipeline:
+          description: Optional value to specify ingestion pipeline steps. Defaults
+            to server configured defaults.
+          items:
+            type: string
+          nullable: true
+          type: array
+        webHookUrl:
+          description: Url to use for webhook callback when operation finishes or
+            fails.
+          nullable: true
+          type: string
+        embeddingModel:
+          description: Embedding model to use in ingestion. Optional. Default to configured
+            default.
+          nullable: true
+          type: string
+      required:
+      - documentId
+      - url
+      type: object
+    IngestDocumentResponse:
+      example:
+        id: 0CB72738-00FA-44C4-9724-203B9E3D491A
+        index: default
+        documentId: 30C521AC-1C6C-4C25-ACB1-2292E89F387C
+        pipeline:
+        - extract
+        - sanitize
+        - extract_audio
+        - partition
+        - gen_embeddings
+        - save_records
+      properties:
+        id:
+          description: Ingestion queue identifier
+          type: string
+        index:
+          description: Index ingestion is written to
+          type: string
+        documentId:
+          description: Identity of the document written to index
+          type: string
+        pipeline:
+          description: Index ingestion is written to
+          items:
+            type: string
+          type: array
+      type: object
+    KeywordExtractionRequestBody:
+      additionalProperties: false
+      example:
+        model: model
+        text: text
+      properties:
+        text:
+          description: Text to perform keyword extraction on
+          type: string
+        model:
+          description: Text to perform keyword extraction on
+          maxLength: 250
+          minLength: 1
+          nullable: true
+          type: string
+      required:
+      - text
+      type: object
+    KeywordExtractionResponse:
+      additionalProperties: false
+      example:
+        keywords:
+        - keywords
+        - keywords
+      properties:
+        keywords:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    LanguageDetection:
+      additionalProperties: false
+      example:
+        confidence: 0.8008282
+        languageCode: ar
+      properties:
+        languageCode:
+          enum:
+          - ar
+          - az
+          - bg
+          - bn
+          - ca
+          - cs
+          - da
+          - de
+          - el
+          - en
+          - eo
+          - es
+          - et
+          - fa
+          - fi
+          - fr
+          - ga
+          - he
+          - hi
+          - hu
+          - id
+          - it
+          - ja
+          - ko
+          - lt
+          - lv
+          - ms
+          - nb
+          - nl
+          - pl
+          - pt
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sv
+          - th
+          - tl
+          - tr
+          - uk
+          - zh
+          - zt
+          type: string
+        confidence:
+          format: float
+          type: number
+      type: object
+    ListDocumentParameters:
+      additionalProperties: false
+      example:
+        filter:
+        - documentId:
+          - documentId
+          - documentId
+          tags:
+            key:
+            - tags
+            - tags
+        - documentId:
+          - documentId
+          - documentId
+          tags:
+            key:
+            - tags
+            - tags
+        offset: 6
+        limit: 0
+        index: index
+        withEmbeddings: true
+      properties:
+        index:
+          description: Optional index to specify which index to search in. Defaults
+            to 'default'
+          nullable: true
+          type: string
+        filter:
+          description: Optional filtering of document id(s) and/or tags
+          items:
+            $ref: '#/components/schemas/DocumentFilters'
+          nullable: true
+          type: array
+        withEmbeddings:
+          description: Optionally specifies if embedding should be returned in response.
+            Default is false
+          nullable: true
+          type: boolean
+        limit:
+          description: Optional filter for specifying maximum number of entries to
+            return. Defaults to 3
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          description: Optional filter for specifying list offset for paging. Default
+            is 0
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    ListDocumentResponse:
+      additionalProperties: false
+      example:
+        payload:
+          key: ""
+        vector: ""
+        id: id
+        tags:
+          key:
+          - tags
+          - tags
+      properties:
+        id:
+          description: Unique record ID
+          nullable: true
+          type: string
+        vector:
+          allOf:
+          - $ref: '#/components/schemas/Embedding'
+          description: Embedding vector
+        tags:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          description: "Optional Searchable Key=Value tags (string => string[] collection)\r\
+            \n            \r\nMultiple values per keys are supported.\r\ne.g. [ \"\
+            Collection=Work\", \"Project=1\", \"Project=2\", \"Project=3\", \"Type=Chat\"\
+            , \"LLM=AzureAda2\" ]\r\n            \r\nUse cases:\r\n * collections,\
+            \ e.g. [ \"Collection=Project1\", \"Collection=Work\" ]\r\n * folders,\
+            \ e.g. [ \"Folder=Inbox\", \"Folder=Spam\" ]\r\n * content types, e.g.\
+            \ [ \"Type=Chat\" ]\r\n * versioning, e.g. [ \"LLM=AzureAda2\", \"Schema=1.0\"\
+            \ ]\r\n * etc."
+          type: object
+        payload:
+          additionalProperties: {}
+          description: "Optional Non-Searchable payload processed client side.\r\n\
+            \            \r\nUse cases:\r\n * citations\r\n * original text\r\n *\
+            \ descriptions\r\n * embedding generator name\r\n * URLs\r\n * content\
+            \ type\r\n * timestamps\r\n * etc."
+          nullable: true
+          type: object
+      type: object
+    MemoryAnswer:
+      additionalProperties: false
+      example:
+        question: question
+        noResult: true
+        text: text
+        noResultReason: noResultReason
+        relevantSources:
+        - sourceUrl: sourceUrl
+          partitions:
+          - partitionNumber: 6
+            sectionNumber: 1
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          - partitionNumber: 6
+            sectionNumber: 1
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          link: link
+          index: index
+          documentId: documentId
+          sourceContentType: sourceContentType
+          sourceName: sourceName
+          fileId: fileId
+        - sourceUrl: sourceUrl
+          partitions:
+          - partitionNumber: 6
+            sectionNumber: 1
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          - partitionNumber: 6
+            sectionNumber: 1
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          link: link
+          index: index
+          documentId: documentId
+          sourceContentType: sourceContentType
+          sourceName: sourceName
+          fileId: fileId
+      properties:
+        question:
+          nullable: true
+          type: string
+        noResult:
+          type: boolean
+        noResultReason:
+          nullable: true
+          type: string
+        text:
+          nullable: true
+          type: string
+        relevantSources:
+          items:
+            $ref: '#/components/schemas/Citation'
+          nullable: true
+          type: array
+      type: object
+    MemoryQuery:
+      additionalProperties: false
+      example:
+        question: question
+        index: index
+        filters:
+        - key:
+          - filters
+          - filters
+        - key:
+          - filters
+          - filters
+        minRelevance: 0.8008281904610115
+      properties:
+        index:
+          nullable: true
+          type: string
+        question:
+          nullable: true
+          type: string
+        filters:
+          items:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+          nullable: true
+          type: array
+        minRelevance:
+          format: double
+          type: number
+      type: object
+    NamedEntityRecognitionRequest:
+      additionalProperties: false
+      example:
+        entities:
+        - entities
+        - entities
+        - entities
+        - entities
+        - entities
+        model: model
+        text: text
+      properties:
+        text:
+          description: "Text to perform Named Entity Recognition on\r\nIt recognises\
+            \ Persons, Organisations, Dates, Locations and Emails"
+          type: string
+        model:
+          description: LLM Model to use
+          maxLength: 250
+          minLength: 1
+          nullable: true
+          type: string
+        entities:
+          description: Entities to extract
+          items:
+            type: string
+          maxItems: 200
+          minItems: 1
+          type: array
+      required:
+      - entities
+      - text
+      type: object
+    NamedEntityRecognitionResponse:
+      additionalProperties: false
+      example:
+        entities:
+          key:
+          - entities
+          - entities
+      properties:
+        entities:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          type: object
+      type: object
+    Partition:
+      additionalProperties: false
+      example:
+        partitionNumber: 6
+        sectionNumber: 1
+        lastUpdate: 2000-01-23T04:56:07.000+00:00
+        text: text
+        relevance: 0.8008282
+        tags:
+          key:
+          - tags
+          - tags
+      properties:
+        text:
+          nullable: true
+          type: string
+        relevance:
+          format: float
+          type: number
+        partitionNumber:
+          format: int32
+          type: integer
+        sectionNumber:
+          format: int32
+          type: integer
+        lastUpdate:
+          format: date-time
+          type: string
+        tags:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          type: object
+      type: object
+    ProblemDetails:
+      additionalProperties: {}
+      example:
+        instance: instance
+        detail: detail
+        type: type
+        title: title
+        status: 0
+      properties:
+        type:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+        status:
+          format: int32
+          nullable: true
+          type: integer
+        detail:
+          nullable: true
+          type: string
+        instance:
+          nullable: true
+          type: string
+      type: object
+    QueryDocumentRequest:
+      additionalProperties: false
+      example:
+        filter:
+        - documentId:
+          - documentId
+          - documentId
+          tags:
+            key:
+            - tags
+            - tags
+        - documentId:
+          - documentId
+          - documentId
+          tags:
+            key:
+            - tags
+            - tags
+        query: query
+        limit: 6
+        index: index
+        embeddingModel: embeddingModel
+        minRelevance: 0.8008281904610115
+      properties:
+        query:
+          description: Semantic query to find matching documents
+          nullable: true
+          type: string
+        index:
+          description: Optional index to specify which index to search in. Defaults
+            to 'default'
+          nullable: true
+          type: string
+        filter:
+          description: Optional filtering of document id(s) and/or tags
+          items:
+            $ref: '#/components/schemas/DocumentFilters'
+          nullable: true
+          type: array
+        minRelevance:
+          description: Optional filter to specify minimum relevance. Typically values
+            between 0 and 1
+          format: double
+          nullable: true
+          type: number
+        limit:
+          description: Optional filter for specifying maximum number of entries to
+            return. Defaults to 3
+          format: int32
+          nullable: true
+          type: integer
+        embeddingModel:
+          description: Embedding model to use in query
+          nullable: true
+          type: string
+      type: object
+    QueryDocumentResponse:
+      additionalProperties: false
+      example:
+        relevantSources:
+        - sourceUrl: sourceUrl
+          partitions:
+          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          link: link
+          index: index
+          documentId: documentId
+          sourceContentType: sourceContentType
+          sourceName: sourceName
+          fileId: fileId
+        - sourceUrl: sourceUrl
+          partitions:
+          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          link: link
+          index: index
+          documentId: documentId
+          sourceContentType: sourceContentType
+          sourceName: sourceName
+          fileId: fileId
+      properties:
+        relevantSources:
+          description: "List of the relevant sources used to produce the answer.\r\
+            \nKey = Document ID\r\nValue = List of partitions used from the document."
+          items:
+            $ref: '#/components/schemas/DocumentCitation'
+          nullable: true
+          type: array
+      type: object
+    ReRankDocument:
+      additionalProperties: false
+      example:
+        document: document
+        index: 0
+        relevance_score: 6.0274563
+      properties:
+        document:
+          nullable: true
+          type: string
+        index:
+          format: int32
+          type: integer
+        relevance_score:
+          format: float
+          type: number
+      type: object
+    ReRankDocumentsRequest:
+      additionalProperties: false
+      example:
+        documents:
+        - documents
+        - documents
+        query: query
+        limit: 0
+        model: model
+      properties:
+        model:
+          description: Optional embedding model. Defaults to configured default
+          nullable: true
+          type: string
+        query:
+          description: Semantic query to find matching documents
+          nullable: true
+          type: string
+        documents:
+          description: Optional index to specify which index to search in. Defaults
+            to 'default'
+          items:
+            type: string
+          nullable: true
+          type: array
+        limit:
+          description: Optional filter for specifying maximum number of entries to
+            return. Defaults to 3
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    ReRankDocumentsResponse:
+      additionalProperties: false
+      example:
+        documents:
+        - document: document
+          index: 0
+          relevance_score: 6.0274563
+        - document: document
+          index: 0
+          relevance_score: 6.0274563
+      properties:
+        documents:
+          items:
+            $ref: '#/components/schemas/ReRankDocument'
+          nullable: true
+          type: array
+      type: object
+    SearchQuery:
+      additionalProperties: false
+      example:
+        query: query
+        limit: 6
+        index: index
+        filters:
+        - key:
+          - filters
+          - filters
+        - key:
+          - filters
+          - filters
+        minRelevance: 0.8008281904610115
+      properties:
+        index:
+          nullable: true
+          type: string
+        query:
+          nullable: true
+          type: string
+        filters:
+          items:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+          nullable: true
+          type: array
+        minRelevance:
+          format: double
+          type: number
+        limit:
+          format: int32
+          type: integer
+      type: object
+    SearchResult:
+      additionalProperties: false
+      example:
+        query: query
+        noResult: true
+        results:
+        - sourceUrl: sourceUrl
+          partitions:
+          - partitionNumber: 6
+            sectionNumber: 1
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          - partitionNumber: 6
+            sectionNumber: 1
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          link: link
+          index: index
+          documentId: documentId
+          sourceContentType: sourceContentType
+          sourceName: sourceName
+          fileId: fileId
+        - sourceUrl: sourceUrl
+          partitions:
+          - partitionNumber: 6
+            sectionNumber: 1
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          - partitionNumber: 6
+            sectionNumber: 1
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            text: text
+            relevance: 0.8008282
+            tags:
+              key:
+              - tags
+              - tags
+          link: link
+          index: index
+          documentId: documentId
+          sourceContentType: sourceContentType
+          sourceName: sourceName
+          fileId: fileId
+      properties:
+        query:
+          nullable: true
+          type: string
+        noResult:
+          readOnly: true
+          type: boolean
+        results:
+          items:
+            $ref: '#/components/schemas/Citation'
+          nullable: true
+          type: array
+      type: object
+    SegmentData:
+      additionalProperties: false
+      example:
+        probability: 0.8008282
+        start: ""
+        end: ""
+        language: language
+        text: text
+      properties:
+        text:
+          nullable: true
+          type: string
+        start:
+          allOf:
+          - $ref: '#/components/schemas/TimeSpan'
+        end:
+          allOf:
+          - $ref: '#/components/schemas/TimeSpan'
+        probability:
+          format: float
+          type: number
+        language:
+          nullable: true
+          type: string
+      type: object
+    SemanticSimilarityDocument:
+      additionalProperties: false
+      example:
+        distance: 0.8008282
+        document: document
+      properties:
+        document:
+          nullable: true
+          type: string
+        distance:
+          format: float
+          type: number
+      type: object
+    SemanticSimilarityRequest:
+      additionalProperties: false
+      example:
+        documents:
+        - documents
+        - documents
+        query: query
+        model: model
+      properties:
+        query:
+          description: Query text to compare with
+          type: string
+        documents:
+          items:
+            minItems: 1
+            type: string
+          type: array
+        model:
+          nullable: true
+          type: string
+      type: object
+    SemanticSimilarityResponse:
+      additionalProperties: false
+      example:
+        documents:
+        - distance: 0.8008282
+          document: document
+        - distance: 0.8008282
+          document: document
+      properties:
+        documents:
+          items:
+            $ref: '#/components/schemas/SemanticSimilarityDocument'
+          nullable: true
+          type: array
+      type: object
+    SupportedLanguage:
+      additionalProperties: false
+      example:
+        name: name
+        languageCode: languageCode
+        targets:
+        - targets
+        - targets
+      properties:
+        languageCode:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        targets:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    TimeSpan:
+      additionalProperties: false
+      properties:
+        ticks:
+          format: int64
+          type: integer
+        days:
+          format: int32
+          readOnly: true
+          type: integer
+        hours:
+          format: int32
+          readOnly: true
+          type: integer
+        milliseconds:
+          format: int32
+          readOnly: true
+          type: integer
+        microseconds:
+          format: int32
+          readOnly: true
+          type: integer
+        nanoseconds:
+          format: int32
+          readOnly: true
+          type: integer
+        minutes:
+          format: int32
+          readOnly: true
+          type: integer
+        seconds:
+          format: int32
+          readOnly: true
+          type: integer
+        totalDays:
+          format: double
+          readOnly: true
+          type: number
+        totalHours:
+          format: double
+          readOnly: true
+          type: number
+        totalMilliseconds:
+          format: double
+          readOnly: true
+          type: number
+        totalMicroseconds:
+          format: double
+          readOnly: true
+          type: number
+        totalNanoseconds:
+          format: double
+          readOnly: true
+          type: number
+        totalMinutes:
+          format: double
+          readOnly: true
+          type: number
+        totalSeconds:
+          format: double
+          readOnly: true
+          type: number
+      type: object
+    TranscriptionAudioUploadResult:
+      additionalProperties: false
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+      type: object
+    TranscriptionResponse:
+      additionalProperties: false
+      example:
+        duration: ""
+        data:
+        - probability: 0.8008282
+          start: ""
+          end: ""
+          language: language
+          text: text
+        - probability: 0.8008282
+          start: ""
+          end: ""
+          language: language
+          text: text
+        text: text
+      properties:
+        text:
+          nullable: true
+          type: string
+        duration:
+          allOf:
+          - $ref: '#/components/schemas/TimeSpan'
+        data:
+          items:
+            $ref: '#/components/schemas/SegmentData'
+          nullable: true
+          type: array
+      type: object
+    Translate:
+      additionalProperties: false
+      description: "Represents a translation request with the source text, source\
+        \ language, and target language."
+      example:
+        text: text
+        source: auto
+        target: ar
+      properties:
+        text:
+          description: The input text to be translated.
+          nullable: true
+          type: string
+        source:
+          description: The language code of the input text.
+          enum:
+          - auto
+          - ar
+          - az
+          - bg
+          - bn
+          - ca
+          - cs
+          - da
+          - de
+          - el
+          - en
+          - eo
+          - es
+          - et
+          - fa
+          - fi
+          - fr
+          - ga
+          - he
+          - hi
+          - hu
+          - id
+          - it
+          - ja
+          - ko
+          - lt
+          - lv
+          - ms
+          - nb
+          - nl
+          - pl
+          - pt
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sv
+          - th
+          - tl
+          - tr
+          - uk
+          - zh
+          - zt
+          type: string
+        target:
+          description: The language code of the desired output translation.
+          enum:
+          - ar
+          - az
+          - bg
+          - bn
+          - ca
+          - cs
+          - da
+          - de
+          - el
+          - en
+          - eo
+          - es
+          - et
+          - fa
+          - fi
+          - fr
+          - ga
+          - he
+          - hi
+          - hu
+          - id
+          - it
+          - ja
+          - ko
+          - lt
+          - lv
+          - ms
+          - nb
+          - nl
+          - pl
+          - pt
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sv
+          - th
+          - tl
+          - tr
+          - uk
+          - zh
+          - zt
+          type: string
+      type: object
+    TranslateResponse:
+      additionalProperties: false
+      example:
+        translatedText: translatedText
+      properties:
+        translatedText:
+          nullable: true
+          type: string
+      type: object
+    UploadAccepted:
+      additionalProperties: false
+      example:
+        index: index
+        documentId: documentId
+        message: message
+      properties:
+        index:
+          nullable: true
+          type: string
+        documentId:
+          nullable: true
+          type: string
+        message:
+          nullable: true
+          type: string
+      type: object
+    WordCloudDocumentRequest:
+      additionalProperties: false
+      example:
+        filter:
+        - documentId:
+          - documentId
+          - documentId
+          tags:
+            key:
+            - tags
+            - tags
+        - documentId:
+          - documentId
+          - documentId
+          tags:
+            key:
+            - tags
+            - tags
+        limit: 0
+        index: index
+        source: document_key
+      properties:
+        index:
+          description: Optional index to specify which index to search in. Defaults
+            to 'default'
+          nullable: true
+          type: string
+        filter:
+          description: Optional filtering of document id(s) and/or tags
+          items:
+            $ref: '#/components/schemas/DocumentFilters'
+          nullable: true
+          type: array
+        limit:
+          description: Optional filter for specifying maximum number of entries to
+            return. Defaults to 3
+          format: int32
+          nullable: true
+          type: integer
+        source:
+          description: Optional filter for specifying maximum number of entries to
+            return. Defaults to 3
+          enum:
+          - document_key
+          - document_value
+          - document_key_and_value
+          - tag_key
+          - tag_value
+          - tag_ker_and_value
+          type: string
+      type: object
+
