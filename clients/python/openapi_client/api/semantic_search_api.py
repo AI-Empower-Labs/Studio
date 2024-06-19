@@ -890,6 +890,7 @@ class SemanticSearchApi:
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")] = None,
         web_hook_url: Annotated[Optional[StrictStr], Field(description="Url to use for webhook callback when operation finishes or fails.")] = None,
         embedding_model: Annotated[Optional[StrictStr], Field(description="Embedding model to use in ingestion. Optional. Default to configured default.")] = None,
+        args: Optional[Dict[str, Any]] = None,
         tags: Annotated[Optional[Dict[str, Any]], Field(description="Tags to associate with ingestion")] = None,
         _request_timeout: Union[
             None,
@@ -920,6 +921,8 @@ class SemanticSearchApi:
         :type web_hook_url: str
         :param embedding_model: Embedding model to use in ingestion. Optional. Default to configured default.
         :type embedding_model: str
+        :param args:
+        :type args: Dict[str, Optional[object]]
         :param tags: Tags to associate with ingestion
         :type tags: Dict[str, object]
         :param _request_timeout: timeout setting for this request. If one
@@ -951,6 +954,7 @@ class SemanticSearchApi:
             pipeline=pipeline,
             web_hook_url=web_hook_url,
             embedding_model=embedding_model,
+            args=args,
             tags=tags,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -984,6 +988,7 @@ class SemanticSearchApi:
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")] = None,
         web_hook_url: Annotated[Optional[StrictStr], Field(description="Url to use for webhook callback when operation finishes or fails.")] = None,
         embedding_model: Annotated[Optional[StrictStr], Field(description="Embedding model to use in ingestion. Optional. Default to configured default.")] = None,
+        args: Optional[Dict[str, Any]] = None,
         tags: Annotated[Optional[Dict[str, Any]], Field(description="Tags to associate with ingestion")] = None,
         _request_timeout: Union[
             None,
@@ -1014,6 +1019,8 @@ class SemanticSearchApi:
         :type web_hook_url: str
         :param embedding_model: Embedding model to use in ingestion. Optional. Default to configured default.
         :type embedding_model: str
+        :param args:
+        :type args: Dict[str, Optional[object]]
         :param tags: Tags to associate with ingestion
         :type tags: Dict[str, object]
         :param _request_timeout: timeout setting for this request. If one
@@ -1045,6 +1052,7 @@ class SemanticSearchApi:
             pipeline=pipeline,
             web_hook_url=web_hook_url,
             embedding_model=embedding_model,
+            args=args,
             tags=tags,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1078,6 +1086,7 @@ class SemanticSearchApi:
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")] = None,
         web_hook_url: Annotated[Optional[StrictStr], Field(description="Url to use for webhook callback when operation finishes or fails.")] = None,
         embedding_model: Annotated[Optional[StrictStr], Field(description="Embedding model to use in ingestion. Optional. Default to configured default.")] = None,
+        args: Optional[Dict[str, Any]] = None,
         tags: Annotated[Optional[Dict[str, Any]], Field(description="Tags to associate with ingestion")] = None,
         _request_timeout: Union[
             None,
@@ -1108,6 +1117,8 @@ class SemanticSearchApi:
         :type web_hook_url: str
         :param embedding_model: Embedding model to use in ingestion. Optional. Default to configured default.
         :type embedding_model: str
+        :param args:
+        :type args: Dict[str, Optional[object]]
         :param tags: Tags to associate with ingestion
         :type tags: Dict[str, object]
         :param _request_timeout: timeout setting for this request. If one
@@ -1139,6 +1150,7 @@ class SemanticSearchApi:
             pipeline=pipeline,
             web_hook_url=web_hook_url,
             embedding_model=embedding_model,
+            args=args,
             tags=tags,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -1167,6 +1179,7 @@ class SemanticSearchApi:
         pipeline,
         web_hook_url,
         embedding_model,
+        args,
         tags,
         _request_auth,
         _content_type,
@@ -1214,6 +1227,8 @@ class SemanticSearchApi:
         # process the form parameters
         if files is not None:
             _files['files'] = files
+        if args is not None:
+            _form_params.append(('args', args))
         if tags is not None:
             _form_params.append(('tags', tags))
         # process the body parameter

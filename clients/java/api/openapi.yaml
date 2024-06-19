@@ -599,12 +599,12 @@ paths:
     post:
       operationId: kernel_memory_upload
       responses:
-        "202":
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadAccepted'
-          description: Accepted
+          description: OK
         "400":
           content:
             application/json:
@@ -613,22 +613,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
-        "401":
+        "429":
           content:
-            application/json:
+            application/problem+json:
               example:
                 title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              example:
-                title: Server error
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
+          description: Too Many Requests
         "503":
           content:
             application/json:
@@ -642,6 +634,7 @@ paths:
       - Kernel Memory
       x-accepts:
       - application/json
+      - application/problem+json
   /api/kernelmemory/indexes:
     delete:
       operationId: kernel_memory_delete_index
@@ -660,27 +653,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeleteAccepted'
           description: Accepted
-        "401":
+        "429":
           content:
-            application/json:
+            application/problem+json:
               example:
                 title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
+          description: Too Many Requests
+        "503":
           content:
             application/json:
-              example:
-                title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
+          description: Service Unavailable
       summary: Delete index
       tags:
       - Kernel Memory
       x-accepts:
       - application/json
+      - application/problem+json
     get:
       operationId: kernel_memory_get_index
       responses:
@@ -690,27 +682,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/IndexCollection'
           description: OK
-        "401":
+        "429":
           content:
-            application/json:
+            application/problem+json:
               example:
                 title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
+          description: Too Many Requests
+        "503":
           content:
             application/json:
-              example:
-                title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
+          description: Service Unavailable
       summary: List indexes
       tags:
       - Kernel Memory
       x-accepts:
       - application/json
+      - application/problem+json
   /api/kernelmemory/documents:
     delete:
       operationId: kernel_memory_delete
@@ -736,27 +727,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/DeleteAccepted'
           description: Accepted
-        "401":
+        "429":
           content:
-            application/json:
+            application/problem+json:
               example:
                 title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
+          description: Too Many Requests
+        "503":
           content:
             application/json:
-              example:
-                title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
+          description: Service Unavailable
       summary: Delete document from specific index
       tags:
       - Kernel Memory
       x-accepts:
       - application/json
+      - application/problem+json
   /api/kernelmemory/ask:
     post:
       operationId: kernel_memory_ask
@@ -774,28 +764,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/MemoryAnswer'
           description: OK
-        "401":
+        "429":
           content:
-            application/json:
+            application/problem+json:
               example:
                 title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
+          description: Too Many Requests
+        "503":
           content:
             application/json:
-              example:
-                title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
+          description: Service Unavailable
       summary: Query documents and forward result to LLM
       tags:
       - Kernel Memory
       x-content-type: application/json
       x-accepts:
       - application/json
+      - application/problem+json
   /api/kernelmemory/search:
     post:
       operationId: kernel_memory_search
@@ -813,28 +802,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchResult'
           description: OK
-        "401":
+        "429":
           content:
-            application/json:
+            application/problem+json:
               example:
                 title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
+          description: Too Many Requests
+        "503":
           content:
             application/json:
-              example:
-                title: Server error
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
+          description: Service Unavailable
       summary: Search for documents in specific index
       tags:
       - Kernel Memory
       x-content-type: application/json
       x-accepts:
       - application/json
+      - application/problem+json
   /api/kernelmemory/upload-status:
     get:
       operationId: kernel_memory_upload_status
@@ -868,22 +856,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Bad Request
-        "401":
-          content:
-            application/json:
-              example:
-                title: Server error
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              example:
-                title: Server error
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
         "404":
           content:
             application/json:
@@ -892,11 +864,82 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Service Unavailable
       summary: Get ingestion status for specific document
       tags:
       - Kernel Memory
       x-accepts:
       - application/json
+      - application/problem+json
+  /download:
+    get:
+      parameters:
+      - explode: true
+        in: query
+        name: index
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: documentId
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: filename
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamableFileContent'
+          description: OK
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Service Unavailable
+      tags:
+      - Kernel Memory
+      x-accepts:
+      - application/json
+      - application/problem+json
   /api/language/translate:
     post:
       description: "This endpoint provides a simplified interface for text translation,\
@@ -2018,6 +2061,8 @@ components:
             key:
             - tags
             - tags
+        args:
+          key: ""
         query: query
         index: index
         embeddingModel: embeddingModel
@@ -2054,6 +2099,11 @@ components:
           description: Embedding model to use in query
           nullable: true
           type: string
+        args:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
       type: object
     AskDocumentResponse:
       additionalProperties: false
@@ -2608,6 +2658,11 @@ components:
             format: binary
             type: string
           type: array
+        args:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
         tags:
           additionalProperties: {}
           description: Tags to associate with ingestion
@@ -2627,6 +2682,8 @@ components:
         pipeline:
         - pipeline
         - pipeline
+        args:
+          key: ""
         webHookUrl: webHookUrl
         index: index
         documentId: documentId
@@ -2676,6 +2733,11 @@ components:
             default.
           nullable: true
           type: string
+        args:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
       required:
       - documentId
       - text
@@ -2686,6 +2748,8 @@ components:
         pipeline:
         - pipeline
         - pipeline
+        args:
+          key: ""
         webHookUrl: webHookUrl
         index: index
         documentId: documentId
@@ -2735,6 +2799,11 @@ components:
             default.
           nullable: true
           type: string
+        args:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
       required:
       - documentId
       - url
@@ -3189,6 +3258,8 @@ components:
             key:
             - tags
             - tags
+        args:
+          key: ""
         query: query
         limit: 6
         index: index
@@ -3226,6 +3297,11 @@ components:
           description: Embedding model to use in query
           nullable: true
           type: string
+        args:
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
       type: object
     QueryDocumentResponse:
       additionalProperties: false
@@ -3770,6 +3846,31 @@ components:
       properties:
         translatedText:
           nullable: true
+          type: string
+      type: object
+    StreamableFileContent:
+      additionalProperties: false
+      example:
+        fileName: fileName
+        fileSize: 0
+        lastWrite: 2000-01-23T04:56:07.000+00:00
+        fileType: fileType
+      properties:
+        fileName:
+          nullable: true
+          readOnly: true
+          type: string
+        fileSize:
+          format: int64
+          readOnly: true
+          type: integer
+        fileType:
+          nullable: true
+          readOnly: true
+          type: string
+        lastWrite:
+          format: date-time
+          readOnly: true
           type: string
       type: object
     UploadAccepted:

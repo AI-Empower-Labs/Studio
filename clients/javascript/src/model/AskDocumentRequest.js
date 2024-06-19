@@ -66,6 +66,9 @@ class AskDocumentRequest {
             if (data.hasOwnProperty('embeddingModel')) {
                 obj['embeddingModel'] = ApiClient.convertToType(data['embeddingModel'], 'String');
             }
+            if (data.hasOwnProperty('args')) {
+                obj['args'] = ApiClient.convertToType(data['args'], {'String': Object});
+            }
         }
         return obj;
     }
@@ -146,6 +149,11 @@ AskDocumentRequest.prototype['llmModel'] = undefined;
  * @member {String} embeddingModel
  */
 AskDocumentRequest.prototype['embeddingModel'] = undefined;
+
+/**
+ * @member {Object.<String, Object>} args
+ */
+AskDocumentRequest.prototype['args'] = undefined;
 
 
 

@@ -214,7 +214,7 @@ No authorization required
 
 <a id="semanticSearchFileIngestion"></a>
 # **semanticSearchFileIngestion**
-> IngestDocumentResponse semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags)
+> IngestDocumentResponse semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags)
 
 
 
@@ -241,9 +241,10 @@ public class Example {
     List<String> pipeline = Arrays.asList(); // List<String> | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
     String webHookUrl = "webHookUrl_example"; // String | Url to use for webhook callback when operation finishes or fails.
     String embeddingModel = "embeddingModel_example"; // String | Embedding model to use in ingestion. Optional. Default to configured default.
+    Map<String, Object> args = new HashMap(); // Map<String, Object> | 
     Map<String, Object> tags = new HashMap(); // Map<String, Object> | Tags to associate with ingestion
     try {
-      IngestDocumentResponse result = apiInstance.semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags);
+      IngestDocumentResponse result = apiInstance.semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SemanticSearchApi#semanticSearchFileIngestion");
@@ -266,6 +267,7 @@ public class Example {
 | **pipeline** | [**List&lt;String&gt;**](String.md)| Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] |
 | **webHookUrl** | **String**| Url to use for webhook callback when operation finishes or fails. | [optional] |
 | **embeddingModel** | **String**| Embedding model to use in ingestion. Optional. Default to configured default. | [optional] |
+| **args** | [**Map&lt;String, Object&gt;**](Map.md)|  | [optional] |
 | **tags** | [**Map&lt;String, Object&gt;**](Map.md)| Tags to associate with ingestion | [optional] |
 
 ### Return type

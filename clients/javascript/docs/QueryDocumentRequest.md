@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **minRelevance** | **Number** | Optional filter to specify minimum relevance. Typically values between 0 and 1 | [optional] 
 **limit** | **Number** | Optional filter for specifying maximum number of entries to return. Defaults to 3 | [optional] 
 **embeddingModel** | **String** | Embedding model to use in query | [optional] 
+**args** | **{String: Object}** |  | [optional] 
 
 

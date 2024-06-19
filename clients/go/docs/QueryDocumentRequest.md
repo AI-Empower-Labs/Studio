@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **MinRelevance** | Pointer to **NullableFloat64** | Optional filter to specify minimum relevance. Typically values between 0 and 1 | [optional] 
 **Limit** | Pointer to **NullableInt32** | Optional filter for specifying maximum number of entries to return. Defaults to 3 | [optional] 
 **EmbeddingModel** | Pointer to **NullableString** | Embedding model to use in query | [optional] 
+**Args** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -240,6 +241,41 @@ HasEmbeddingModel returns a boolean if a field has been set.
 `func (o *QueryDocumentRequest) UnsetEmbeddingModel()`
 
 UnsetEmbeddingModel ensures that no value is present for EmbeddingModel, not even an explicit nil
+### GetArgs
+
+`func (o *QueryDocumentRequest) GetArgs() map[string]interface{}`
+
+GetArgs returns the Args field if non-nil, zero value otherwise.
+
+### GetArgsOk
+
+`func (o *QueryDocumentRequest) GetArgsOk() (*map[string]interface{}, bool)`
+
+GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArgs
+
+`func (o *QueryDocumentRequest) SetArgs(v map[string]interface{})`
+
+SetArgs sets Args field to given value.
+
+### HasArgs
+
+`func (o *QueryDocumentRequest) HasArgs() bool`
+
+HasArgs returns a boolean if a field has been set.
+
+### SetArgsNil
+
+`func (o *QueryDocumentRequest) SetArgsNil(b bool)`
+
+ SetArgsNil sets the value for Args to be an explicit nil
+
+### UnsetArgs
+`func (o *QueryDocumentRequest) UnsetArgs()`
+
+UnsetArgs ensures that no value is present for Args, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

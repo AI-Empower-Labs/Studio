@@ -194,6 +194,7 @@ export default class SemanticSearchApi {
      * @param {Array.<String>} [pipeline] Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
      * @param {String} [webHookUrl] Url to use for webhook callback when operation finishes or fails.
      * @param {String} [embeddingModel] Embedding model to use in ingestion. Optional. Default to configured default.
+     * @param {Object.<String, {String: Object}>} [args] 
      * @param {Object.<String, {String: Object}>} [tags] Tags to associate with ingestion
      * @param {module:api/SemanticSearchApi~semanticSearchFileIngestionCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/IngestDocumentResponse}
@@ -219,6 +220,7 @@ export default class SemanticSearchApi {
       };
       let formParams = {
         'files': this.apiClient.buildCollectionParam(files, 'passthrough'),
+        'args': opts['args'],
         'tags': opts['tags']
       };
 

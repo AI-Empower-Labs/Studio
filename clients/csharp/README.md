@@ -133,6 +133,7 @@ Class | Method | HTTP request | Description
 *DataExtractionApi* | [**TokenCount**](docs/DataExtractionApi.md#tokencount) | **POST** /api/extract/tokenCount | Count tokens in a text
 *DataExtractionApi* | [**Tokenize**](docs/DataExtractionApi.md#tokenize) | **POST** /api/extract/tokenize | Converts data to a integer token array
 *DataExtractionApi* | [**TranscriptionSynchronous**](docs/DataExtractionApi.md#transcriptionsynchronous) | **POST** /api/extract/transcription | Synchronous transcribe audio
+*KernelMemoryApi* | [**DownloadGet**](docs/KernelMemoryApi.md#downloadget) | **GET** /download | 
 *KernelMemoryApi* | [**KernelMemoryAsk**](docs/KernelMemoryApi.md#kernelmemoryask) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM
 *KernelMemoryApi* | [**KernelMemoryDelete**](docs/KernelMemoryApi.md#kernelmemorydelete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index
 *KernelMemoryApi* | [**KernelMemoryDeleteIndex**](docs/KernelMemoryApi.md#kernelmemorydeleteindex) | **DELETE** /api/kernelmemory/indexes | Delete index
@@ -202,6 +203,7 @@ Class | Method | HTTP request | Description
  - [Model.SemanticSimilarityDocument](docs/SemanticSimilarityDocument.md)
  - [Model.SemanticSimilarityRequest](docs/SemanticSimilarityRequest.md)
  - [Model.SemanticSimilarityResponse](docs/SemanticSimilarityResponse.md)
+ - [Model.StreamableFileContent](docs/StreamableFileContent.md)
  - [Model.SupportedLanguage](docs/SupportedLanguage.md)
  - [Model.TimeSpan](docs/TimeSpan.md)
  - [Model.TokenCountRequest](docs/TokenCountRequest.md)

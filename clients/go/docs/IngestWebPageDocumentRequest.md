@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Pipeline** | Pointer to **[]string** | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] 
 **WebHookUrl** | Pointer to **NullableString** | Url to use for webhook callback when operation finishes or fails. | [optional] 
 **EmbeddingModel** | Pointer to **NullableString** | Embedding model to use in ingestion. Optional. Default to configured default. | [optional] 
+**Args** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -246,6 +247,41 @@ HasEmbeddingModel returns a boolean if a field has been set.
 `func (o *IngestWebPageDocumentRequest) UnsetEmbeddingModel()`
 
 UnsetEmbeddingModel ensures that no value is present for EmbeddingModel, not even an explicit nil
+### GetArgs
+
+`func (o *IngestWebPageDocumentRequest) GetArgs() map[string]interface{}`
+
+GetArgs returns the Args field if non-nil, zero value otherwise.
+
+### GetArgsOk
+
+`func (o *IngestWebPageDocumentRequest) GetArgsOk() (*map[string]interface{}, bool)`
+
+GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArgs
+
+`func (o *IngestWebPageDocumentRequest) SetArgs(v map[string]interface{})`
+
+SetArgs sets Args field to given value.
+
+### HasArgs
+
+`func (o *IngestWebPageDocumentRequest) HasArgs() bool`
+
+HasArgs returns a boolean if a field has been set.
+
+### SetArgsNil
+
+`func (o *IngestWebPageDocumentRequest) SetArgsNil(b bool)`
+
+ SetArgsNil sets the value for Args to be an explicit nil
+
+### UnsetArgs
+`func (o *IngestWebPageDocumentRequest) UnsetArgs()`
+
+UnsetArgs ensures that no value is present for Args, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

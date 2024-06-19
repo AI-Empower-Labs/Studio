@@ -27,6 +27,12 @@ class TestKernelMemoryApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_download_get(self) -> None:
+        """Test case for download_get
+
+        """
+        pass
+
     def test_kernel_memory_ask(self) -> None:
         """Test case for kernel_memory_ask
 

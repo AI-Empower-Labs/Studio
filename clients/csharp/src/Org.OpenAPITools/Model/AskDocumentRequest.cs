@@ -41,7 +41,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="minRelevance">Optional filter to specify minimum relevance. Typically values between 0 and 1.</param>
         /// <param name="llmModel">Large language model to use in query.</param>
         /// <param name="embeddingModel">Embedding model to use in query.</param>
-        public AskDocumentRequest(string query = default(string), string index = default(string), List<DocumentFilters> filter = default(List<DocumentFilters>), double? minRelevance = default(double?), string llmModel = default(string), string embeddingModel = default(string))
+        /// <param name="args">args.</param>
+        public AskDocumentRequest(string query = default(string), string index = default(string), List<DocumentFilters> filter = default(List<DocumentFilters>), double? minRelevance = default(double?), string llmModel = default(string), string embeddingModel = default(string), Dictionary<string, Object> args = default(Dictionary<string, Object>))
         {
             this.Query = query;
             this.Index = index;
@@ -49,6 +50,7 @@ namespace Org.OpenAPITools.Model
             this.MinRelevance = minRelevance;
             this.LlmModel = llmModel;
             this.EmbeddingModel = embeddingModel;
+            this.Args = args;
         }
 
         /// <summary>
@@ -94,6 +96,12 @@ namespace Org.OpenAPITools.Model
         public string EmbeddingModel { get; set; }
 
         /// <summary>
+        /// Gets or Sets Args
+        /// </summary>
+        [DataMember(Name = "args", EmitDefaultValue = true)]
+        public Dictionary<string, Object> Args { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -107,6 +115,7 @@ namespace Org.OpenAPITools.Model
             sb.Append("  MinRelevance: ").Append(MinRelevance).Append("\n");
             sb.Append("  LlmModel: ").Append(LlmModel).Append("\n");
             sb.Append("  EmbeddingModel: ").Append(EmbeddingModel).Append("\n");
+            sb.Append("  Args: ").Append(Args).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

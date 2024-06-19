@@ -22,7 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.client.model.DocumentFilters;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -53,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * QueryDocumentRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-18T14:05:27.871542961Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-19T07:55:36.701094956Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
 public class QueryDocumentRequest {
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -78,6 +80,10 @@ public class QueryDocumentRequest {
   public static final String SERIALIZED_NAME_EMBEDDING_MODEL = "embeddingModel";
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
   private String embeddingModel;
+
+  public static final String SERIALIZED_NAME_ARGS = "args";
+  @SerializedName(SERIALIZED_NAME_ARGS)
+  private Map<String, Object> args;
 
   public QueryDocumentRequest() {
   }
@@ -204,6 +210,33 @@ public class QueryDocumentRequest {
   }
 
 
+  public QueryDocumentRequest args(Map<String, Object> args) {
+    this.args = args;
+    return this;
+  }
+
+  public QueryDocumentRequest putArgsItem(String key, Object argsItem) {
+    if (this.args == null) {
+      this.args = new HashMap<>();
+    }
+    this.args.put(key, argsItem);
+    return this;
+  }
+
+   /**
+   * Get args
+   * @return args
+  **/
+  @javax.annotation.Nullable
+  public Map<String, Object> getArgs() {
+    return args;
+  }
+
+  public void setArgs(Map<String, Object> args) {
+    this.args = args;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -219,7 +252,8 @@ public class QueryDocumentRequest {
         Objects.equals(this.filter, queryDocumentRequest.filter) &&
         Objects.equals(this.minRelevance, queryDocumentRequest.minRelevance) &&
         Objects.equals(this.limit, queryDocumentRequest.limit) &&
-        Objects.equals(this.embeddingModel, queryDocumentRequest.embeddingModel);
+        Objects.equals(this.embeddingModel, queryDocumentRequest.embeddingModel) &&
+        Objects.equals(this.args, queryDocumentRequest.args);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -228,7 +262,7 @@ public class QueryDocumentRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(query, index, filter, minRelevance, limit, embeddingModel);
+    return Objects.hash(query, index, filter, minRelevance, limit, embeddingModel, args);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -248,6 +282,7 @@ public class QueryDocumentRequest {
     sb.append("    minRelevance: ").append(toIndentedString(minRelevance)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
+    sb.append("    args: ").append(toIndentedString(args)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -276,6 +311,7 @@ public class QueryDocumentRequest {
     openapiFields.add("minRelevance");
     openapiFields.add("limit");
     openapiFields.add("embeddingModel");
+    openapiFields.add("args");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

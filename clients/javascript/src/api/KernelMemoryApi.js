@@ -21,6 +21,7 @@ import MemoryQuery from '../model/MemoryQuery';
 import ProblemDetails from '../model/ProblemDetails';
 import SearchQuery from '../model/SearchQuery';
 import SearchResult from '../model/SearchResult';
+import StreamableFileContent from '../model/StreamableFileContent';
 import UploadAccepted from '../model/UploadAccepted';
 
 /**
@@ -41,6 +42,57 @@ export default class KernelMemoryApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+    /**
+     * Callback function to receive the result of the downloadGet operation.
+     * @callback module:api/KernelMemoryApi~downloadGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/StreamableFileContent} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * @param {String} documentId 
+     * @param {String} filename 
+     * @param {Object} opts Optional parameters
+     * @param {String} [index] 
+     * @param {module:api/KernelMemoryApi~downloadGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/StreamableFileContent}
+     */
+    downloadGet(documentId, filename, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'documentId' is set
+      if (documentId === undefined || documentId === null) {
+        throw new Error("Missing the required parameter 'documentId' when calling downloadGet");
+      }
+      // verify the required parameter 'filename' is set
+      if (filename === undefined || filename === null) {
+        throw new Error("Missing the required parameter 'filename' when calling downloadGet");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'index': opts['index'],
+        'documentId': documentId,
+        'filename': filename
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json', 'application/problem+json'];
+      let returnType = StreamableFileContent;
+      return this.apiClient.callApi(
+        '/download', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the kernelMemoryAsk operation.
@@ -74,7 +126,7 @@ export default class KernelMemoryApi {
 
       let authNames = [];
       let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
+      let accepts = ['application/json', 'application/problem+json'];
       let returnType = MemoryAnswer;
       return this.apiClient.callApi(
         '/api/kernelmemory/ask', 'POST',
@@ -120,7 +172,7 @@ export default class KernelMemoryApi {
 
       let authNames = [];
       let contentTypes = [];
-      let accepts = ['application/json'];
+      let accepts = ['application/json', 'application/problem+json'];
       let returnType = DeleteAccepted;
       return this.apiClient.callApi(
         '/api/kernelmemory/documents', 'DELETE',
@@ -160,7 +212,7 @@ export default class KernelMemoryApi {
 
       let authNames = [];
       let contentTypes = [];
-      let accepts = ['application/json'];
+      let accepts = ['application/json', 'application/problem+json'];
       let returnType = DeleteAccepted;
       return this.apiClient.callApi(
         '/api/kernelmemory/indexes', 'DELETE',
@@ -196,7 +248,7 @@ export default class KernelMemoryApi {
 
       let authNames = [];
       let contentTypes = [];
-      let accepts = ['application/json'];
+      let accepts = ['application/json', 'application/problem+json'];
       let returnType = IndexCollection;
       return this.apiClient.callApi(
         '/api/kernelmemory/indexes', 'GET',
@@ -237,7 +289,7 @@ export default class KernelMemoryApi {
 
       let authNames = [];
       let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
+      let accepts = ['application/json', 'application/problem+json'];
       let returnType = SearchResult;
       return this.apiClient.callApi(
         '/api/kernelmemory/search', 'POST',
@@ -273,7 +325,7 @@ export default class KernelMemoryApi {
 
       let authNames = [];
       let contentTypes = [];
-      let accepts = ['application/json'];
+      let accepts = ['application/json', 'application/problem+json'];
       let returnType = UploadAccepted;
       return this.apiClient.callApi(
         '/api/kernelmemory/upload', 'POST',
@@ -319,7 +371,7 @@ export default class KernelMemoryApi {
 
       let authNames = [];
       let contentTypes = [];
-      let accepts = ['application/json'];
+      let accepts = ['application/json', 'application/problem+json'];
       let returnType = DataPipelineStatus;
       return this.apiClient.callApi(
         '/api/kernelmemory/upload-status', 'GET',

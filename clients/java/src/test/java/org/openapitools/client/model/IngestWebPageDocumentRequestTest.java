@@ -98,4 +98,12 @@ public class IngestWebPageDocumentRequestTest {
         // TODO: test embeddingModel
     }
 
+    /**
+     * Test the property 'args'
+     */
+    @Test
+    public void argsTest() {
+        // TODO: test args
+    }
+
 }

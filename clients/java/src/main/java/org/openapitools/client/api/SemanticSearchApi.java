@@ -507,6 +507,7 @@ public class SemanticSearchApi {
      * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
      * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
      * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
+     * @param args  (optional)
      * @param tags Tags to associate with ingestion (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -520,7 +521,7 @@ public class SemanticSearchApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call semanticSearchFileIngestionCall(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> tags, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call semanticSearchFileIngestionCall(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -547,6 +548,10 @@ public class SemanticSearchApi {
 
         if (files != null) {
             localVarFormParams.put("files", files);
+        }
+
+        if (args != null) {
+            localVarFormParams.put("args", args);
         }
 
         if (tags != null) {
@@ -596,13 +601,13 @@ public class SemanticSearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call semanticSearchFileIngestionValidateBeforeCall(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> tags, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call semanticSearchFileIngestionValidateBeforeCall(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'files' is set
         if (files == null) {
             throw new ApiException("Missing the required parameter 'files' when calling semanticSearchFileIngestion(Async)");
         }
 
-        return semanticSearchFileIngestionCall(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags, _callback);
+        return semanticSearchFileIngestionCall(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags, _callback);
 
     }
 
@@ -615,6 +620,7 @@ public class SemanticSearchApi {
      * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
      * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
      * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
+     * @param args  (optional)
      * @param tags Tags to associate with ingestion (optional)
      * @return IngestDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -627,8 +633,8 @@ public class SemanticSearchApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public IngestDocumentResponse semanticSearchFileIngestion(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> tags) throws ApiException {
-        ApiResponse<IngestDocumentResponse> localVarResp = semanticSearchFileIngestionWithHttpInfo(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags);
+    public IngestDocumentResponse semanticSearchFileIngestion(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags) throws ApiException {
+        ApiResponse<IngestDocumentResponse> localVarResp = semanticSearchFileIngestionWithHttpInfo(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags);
         return localVarResp.getData();
     }
 
@@ -641,6 +647,7 @@ public class SemanticSearchApi {
      * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
      * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
      * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
+     * @param args  (optional)
      * @param tags Tags to associate with ingestion (optional)
      * @return ApiResponse&lt;IngestDocumentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -653,8 +660,8 @@ public class SemanticSearchApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngestDocumentResponse> semanticSearchFileIngestionWithHttpInfo(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> tags) throws ApiException {
-        okhttp3.Call localVarCall = semanticSearchFileIngestionValidateBeforeCall(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags, null);
+    public ApiResponse<IngestDocumentResponse> semanticSearchFileIngestionWithHttpInfo(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags) throws ApiException {
+        okhttp3.Call localVarCall = semanticSearchFileIngestionValidateBeforeCall(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags, null);
         Type localVarReturnType = new TypeToken<IngestDocumentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -668,6 +675,7 @@ public class SemanticSearchApi {
      * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
      * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
      * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
+     * @param args  (optional)
      * @param tags Tags to associate with ingestion (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -681,9 +689,9 @@ public class SemanticSearchApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call semanticSearchFileIngestionAsync(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> tags, final ApiCallback<IngestDocumentResponse> _callback) throws ApiException {
+    public okhttp3.Call semanticSearchFileIngestionAsync(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags, final ApiCallback<IngestDocumentResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = semanticSearchFileIngestionValidateBeforeCall(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags, _callback);
+        okhttp3.Call localVarCall = semanticSearchFileIngestionValidateBeforeCall(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags, _callback);
         Type localVarReturnType = new TypeToken<IngestDocumentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

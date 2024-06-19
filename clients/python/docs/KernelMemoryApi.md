@@ -4,6 +4,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**download_get**](KernelMemoryApi.md#download_get) | **GET** /download | 
 [**kernel_memory_ask**](KernelMemoryApi.md#kernel_memory_ask) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM
 [**kernel_memory_delete**](KernelMemoryApi.md#kernel_memory_delete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index
 [**kernel_memory_delete_index**](KernelMemoryApi.md#kernel_memory_delete_index) | **DELETE** /api/kernelmemory/indexes | Delete index
@@ -12,6 +13,78 @@ Method | HTTP request | Description
 [**kernel_memory_upload**](KernelMemoryApi.md#kernel_memory_upload) | **POST** /api/kernelmemory/upload | Upload file for ingestion
 [**kernel_memory_upload_status**](KernelMemoryApi.md#kernel_memory_upload_status) | **GET** /api/kernelmemory/upload-status | Get ingestion status for specific document
 
+
+# **download_get**
+> StreamableFileContent download_get(document_id, filename, index=index)
+
+
+
+### Example
+
+
+```python
+import openapi_client
+from openapi_client.models.streamable_file_content import StreamableFileContent
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://studio.aiempowerlabs.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://studio.aiempowerlabs.com"
+)
+
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.KernelMemoryApi(api_client)
+    document_id = 'document_id_example' # str | 
+    filename = 'filename_example' # str | 
+    index = 'index_example' # str |  (optional)
+
+    try:
+        api_response = api_instance.download_get(document_id, filename, index=index)
+        print("The response of KernelMemoryApi->download_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling KernelMemoryApi->download_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **document_id** | **str**|  | 
+ **filename** | **str**|  | 
+ **index** | **str**|  | [optional] 
+
+### Return type
+
+[**StreamableFileContent**](StreamableFileContent.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kernel_memory_ask**
 > MemoryAnswer kernel_memory_ask(memory_query)
@@ -70,15 +143,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -140,15 +213,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Accepted |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -208,15 +281,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Accepted |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -272,15 +345,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -341,15 +414,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -405,16 +478,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**202** | Accepted |  -  |
+**200** | OK |  -  |
 **400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
+**429** | Too Many Requests |  -  |
 **503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -477,7 +549,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 
@@ -485,9 +557,9 @@ No authorization required
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | Bad Request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**429** | Too Many Requests |  -  |
+**503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

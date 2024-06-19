@@ -48,7 +48,10 @@ class TestIngestWebPageDocumentRequest(unittest.TestCase):
                     ''
                     ],
                 web_hook_url = '',
-                embedding_model = ''
+                embedding_model = '',
+                args = {
+                    'key' : null
+                    }
             )
         else:
             return IngestWebPageDocumentRequest(

@@ -66,6 +66,9 @@ class QueryDocumentRequest {
             if (data.hasOwnProperty('embeddingModel')) {
                 obj['embeddingModel'] = ApiClient.convertToType(data['embeddingModel'], 'String');
             }
+            if (data.hasOwnProperty('args')) {
+                obj['args'] = ApiClient.convertToType(data['args'], {'String': Object});
+            }
         }
         return obj;
     }
@@ -142,6 +145,11 @@ QueryDocumentRequest.prototype['limit'] = undefined;
  * @member {String} embeddingModel
  */
 QueryDocumentRequest.prototype['embeddingModel'] = undefined;
+
+/**
+ * @member {Object.<String, Object>} args
+ */
+QueryDocumentRequest.prototype['args'] = undefined;
 
 
 

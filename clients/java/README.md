@@ -2,7 +2,7 @@
 
 Studio - AI Empower Labs
 - API version: v1
-  - Build date: 2024-06-18T14:05:27.871542961Z[Etc/UTC]
+  - Build date: 2024-06-19T07:55:36.701094956Z[Etc/UTC]
   - Generator version: 7.7.0-SNAPSHOT
 
 # Studio API Documentation
@@ -134,6 +134,7 @@ Class | Method | HTTP request | Description
 *DataExtractionApi* | [**tokenCount**](docs/DataExtractionApi.md#tokenCount) | **POST** /api/extract/tokenCount | Count tokens in a text
 *DataExtractionApi* | [**tokenize**](docs/DataExtractionApi.md#tokenize) | **POST** /api/extract/tokenize | Converts data to a integer token array
 *DataExtractionApi* | [**transcriptionSynchronous**](docs/DataExtractionApi.md#transcriptionSynchronous) | **POST** /api/extract/transcription | Synchronous transcribe audio
+*KernelMemoryApi* | [**downloadGet**](docs/KernelMemoryApi.md#downloadGet) | **GET** /download | 
 *KernelMemoryApi* | [**kernelMemoryAsk**](docs/KernelMemoryApi.md#kernelMemoryAsk) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM
 *KernelMemoryApi* | [**kernelMemoryDelete**](docs/KernelMemoryApi.md#kernelMemoryDelete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index
 *KernelMemoryApi* | [**kernelMemoryDeleteIndex**](docs/KernelMemoryApi.md#kernelMemoryDeleteIndex) | **DELETE** /api/kernelmemory/indexes | Delete index
@@ -202,6 +203,7 @@ Class | Method | HTTP request | Description
  - [SemanticSimilarityDocument](docs/SemanticSimilarityDocument.md)
  - [SemanticSimilarityRequest](docs/SemanticSimilarityRequest.md)
  - [SemanticSimilarityResponse](docs/SemanticSimilarityResponse.md)
+ - [StreamableFileContent](docs/StreamableFileContent.md)
  - [SupportedLanguage](docs/SupportedLanguage.md)
  - [TimeSpan](docs/TimeSpan.md)
  - [TokenCountRequest](docs/TokenCountRequest.md)

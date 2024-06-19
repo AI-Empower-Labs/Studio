@@ -53,6 +53,7 @@ import SegmentData from './model/SegmentData';
 import SemanticSimilarityDocument from './model/SemanticSimilarityDocument';
 import SemanticSimilarityRequest from './model/SemanticSimilarityRequest';
 import SemanticSimilarityResponse from './model/SemanticSimilarityResponse';
+import StreamableFileContent from './model/StreamableFileContent';
 import SupportedLanguage from './model/SupportedLanguage';
 import TimeSpan from './model/TimeSpan';
 import TokenCountRequest from './model/TokenCountRequest';
@@ -350,6 +351,12 @@ export {
      * @property {module:model/SemanticSimilarityResponse}
      */
     SemanticSimilarityResponse,
+
+    /**
+     * The StreamableFileContent model constructor.
+     * @property {module:model/StreamableFileContent}
+     */
+    StreamableFileContent,
 
     /**
      * The SupportedLanguage model constructor.

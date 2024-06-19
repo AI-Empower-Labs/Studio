@@ -47,7 +47,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="pipeline">Optional value to specify ingestion pipeline steps. Defaults to server configured defaults..</param>
         /// <param name="webHookUrl">Url to use for webhook callback when operation finishes or fails..</param>
         /// <param name="embeddingModel">Embedding model to use in ingestion. Optional. Default to configured default..</param>
-        public IngestWebPageDocumentRequest(string documentId = default(string), string index = default(string), Dictionary<string, List<string>> tags = default(Dictionary<string, List<string>>), string url = default(string), List<string> pipeline = default(List<string>), string webHookUrl = default(string), string embeddingModel = default(string))
+        /// <param name="args">args.</param>
+        public IngestWebPageDocumentRequest(string documentId = default(string), string index = default(string), Dictionary<string, List<string>> tags = default(Dictionary<string, List<string>>), string url = default(string), List<string> pipeline = default(List<string>), string webHookUrl = default(string), string embeddingModel = default(string), Dictionary<string, Object> args = default(Dictionary<string, Object>))
         {
             // to ensure "documentId" is required (not null)
             if (documentId == null)
@@ -66,6 +67,7 @@ namespace Org.OpenAPITools.Model
             this.Pipeline = pipeline;
             this.WebHookUrl = webHookUrl;
             this.EmbeddingModel = embeddingModel;
+            this.Args = args;
         }
 
         /// <summary>
@@ -118,6 +120,12 @@ namespace Org.OpenAPITools.Model
         public string EmbeddingModel { get; set; }
 
         /// <summary>
+        /// Gets or Sets Args
+        /// </summary>
+        [DataMember(Name = "args", EmitDefaultValue = true)]
+        public Dictionary<string, Object> Args { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -132,6 +140,7 @@ namespace Org.OpenAPITools.Model
             sb.Append("  Pipeline: ").Append(Pipeline).Append("\n");
             sb.Append("  WebHookUrl: ").Append(WebHookUrl).Append("\n");
             sb.Append("  EmbeddingModel: ").Append(EmbeddingModel).Append("\n");
+            sb.Append("  Args: ").Append(Args).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

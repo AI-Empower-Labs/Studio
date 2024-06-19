@@ -96,6 +96,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property args (base name: "args")', function() {
+      // uncomment below and update the code to test the property args
+      //var instance = new StudioAiEmpowerLabs.IngestTextDocumentRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

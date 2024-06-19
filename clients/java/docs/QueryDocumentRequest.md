@@ -13,6 +13,7 @@
 |**minRelevance** | **Double** | Optional filter to specify minimum relevance. Typically values between 0 and 1 |  [optional] |
 |**limit** | **Integer** | Optional filter for specifying maximum number of entries to return. Defaults to 3 |  [optional] |
 |**embeddingModel** | **String** | Embedding model to use in query |  [optional] |
+|**args** | **Map&lt;String, Object&gt;** |  |  [optional] |
 
 
 

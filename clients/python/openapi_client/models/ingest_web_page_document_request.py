@@ -35,7 +35,8 @@ class IngestWebPageDocumentRequest(BaseModel):
     pipeline: Optional[List[StrictStr]] = Field(default=None, description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")
     web_hook_url: Optional[StrictStr] = Field(default=None, description="Url to use for webhook callback when operation finishes or fails.", alias="webHookUrl")
     embedding_model: Optional[StrictStr] = Field(default=None, description="Embedding model to use in ingestion. Optional. Default to configured default.", alias="embeddingModel")
-    __properties: ClassVar[List[str]] = ["documentId", "index", "tags", "url", "pipeline", "webHookUrl", "embeddingModel"]
+    args: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["documentId", "index", "tags", "url", "pipeline", "webHookUrl", "embeddingModel", "args"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -101,6 +102,11 @@ class IngestWebPageDocumentRequest(BaseModel):
         if self.embedding_model is None and "embedding_model" in self.model_fields_set:
             _dict['embeddingModel'] = None
 
+        # set to None if args (nullable) is None
+        # and model_fields_set contains the field
+        if self.args is None and "args" in self.model_fields_set:
+            _dict['args'] = None
+
         return _dict
 
     @classmethod
@@ -119,7 +125,8 @@ class IngestWebPageDocumentRequest(BaseModel):
             "url": obj.get("url"),
             "pipeline": obj.get("pipeline"),
             "webHookUrl": obj.get("webHookUrl"),
-            "embeddingModel": obj.get("embeddingModel")
+            "embeddingModel": obj.get("embeddingModel"),
+            "args": obj.get("args")
         })
         return _obj
 

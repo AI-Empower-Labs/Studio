@@ -140,6 +140,7 @@ Class | Method | HTTP request | Description
 *StudioAiEmpowerLabs.DataExtractionApi* | [**tokenCount**](docs/DataExtractionApi.md#tokenCount) | **POST** /api/extract/tokenCount | Count tokens in a text
 *StudioAiEmpowerLabs.DataExtractionApi* | [**tokenize**](docs/DataExtractionApi.md#tokenize) | **POST** /api/extract/tokenize | Converts data to a integer token array
 *StudioAiEmpowerLabs.DataExtractionApi* | [**transcriptionSynchronous**](docs/DataExtractionApi.md#transcriptionSynchronous) | **POST** /api/extract/transcription | Synchronous transcribe audio
+*StudioAiEmpowerLabs.KernelMemoryApi* | [**downloadGet**](docs/KernelMemoryApi.md#downloadGet) | **GET** /download | 
 *StudioAiEmpowerLabs.KernelMemoryApi* | [**kernelMemoryAsk**](docs/KernelMemoryApi.md#kernelMemoryAsk) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM
 *StudioAiEmpowerLabs.KernelMemoryApi* | [**kernelMemoryDelete**](docs/KernelMemoryApi.md#kernelMemoryDelete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index
 *StudioAiEmpowerLabs.KernelMemoryApi* | [**kernelMemoryDeleteIndex**](docs/KernelMemoryApi.md#kernelMemoryDeleteIndex) | **DELETE** /api/kernelmemory/indexes | Delete index
@@ -208,6 +209,7 @@ Class | Method | HTTP request | Description
  - [StudioAiEmpowerLabs.SemanticSimilarityDocument](docs/SemanticSimilarityDocument.md)
  - [StudioAiEmpowerLabs.SemanticSimilarityRequest](docs/SemanticSimilarityRequest.md)
  - [StudioAiEmpowerLabs.SemanticSimilarityResponse](docs/SemanticSimilarityResponse.md)
+ - [StudioAiEmpowerLabs.StreamableFileContent](docs/StreamableFileContent.md)
  - [StudioAiEmpowerLabs.SupportedLanguage](docs/SupportedLanguage.md)
  - [StudioAiEmpowerLabs.TimeSpan](docs/TimeSpan.md)
  - [StudioAiEmpowerLabs.TokenCountRequest](docs/TokenCountRequest.md)

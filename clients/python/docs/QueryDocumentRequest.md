@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **min_relevance** | **float** | Optional filter to specify minimum relevance. Typically values between 0 and 1 | [optional] 
 **limit** | **int** | Optional filter for specifying maximum number of entries to return. Defaults to 3 | [optional] 
 **embedding_model** | **str** | Embedding model to use in query | [optional] 
+**args** | **Dict[str, Optional[object]]** |  | [optional] 
 
 ## Example
 

@@ -51,6 +51,7 @@ docs/SemanticSearchApi.md
 docs/SemanticSimilarityDocument.md
 docs/SemanticSimilarityRequest.md
 docs/SemanticSimilarityResponse.md
+docs/StreamableFileContent.md
 docs/SupportedLanguage.md
 docs/TimeSpan.md
 docs/TokenCountRequest.md
@@ -137,6 +138,7 @@ src/main/java/org/openapitools/client/model/SegmentData.java
 src/main/java/org/openapitools/client/model/SemanticSimilarityDocument.java
 src/main/java/org/openapitools/client/model/SemanticSimilarityRequest.java
 src/main/java/org/openapitools/client/model/SemanticSimilarityResponse.java
+src/main/java/org/openapitools/client/model/StreamableFileContent.java
 src/main/java/org/openapitools/client/model/SupportedLanguage.java
 src/main/java/org/openapitools/client/model/TimeSpan.java
 src/main/java/org/openapitools/client/model/TokenCountRequest.java
@@ -195,6 +197,7 @@ src/test/java/org/openapitools/client/model/SegmentDataTest.java
 src/test/java/org/openapitools/client/model/SemanticSimilarityDocumentTest.java
 src/test/java/org/openapitools/client/model/SemanticSimilarityRequestTest.java
 src/test/java/org/openapitools/client/model/SemanticSimilarityResponseTest.java
+src/test/java/org/openapitools/client/model/StreamableFileContentTest.java
 src/test/java/org/openapitools/client/model/SupportedLanguageTest.java
 src/test/java/org/openapitools/client/model/TimeSpanTest.java
 src/test/java/org/openapitools/client/model/TokenCountRequestTest.java

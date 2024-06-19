@@ -288,7 +288,7 @@ No authorization required
 
 <a id="semanticsearchfileingestion"></a>
 # **SemanticSearchFileIngestion**
-> IngestDocumentResponse SemanticSearchFileIngestion (List<System.IO.Stream> files, string? documentId = null, string? index = null, List<string>? pipeline = null, string? webHookUrl = null, string? embeddingModel = null, Dictionary<string, Object>? tags = null)
+> IngestDocumentResponse SemanticSearchFileIngestion (List<System.IO.Stream> files, string? documentId = null, string? index = null, List<string>? pipeline = null, string? webHookUrl = null, string? embeddingModel = null, Dictionary<string, Object>? args = null, Dictionary<string, Object>? tags = null)
 
 
 
@@ -317,11 +317,12 @@ namespace Example
             var pipeline = new List<string>?(); // List<string>? | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional) 
             var webHookUrl = "webHookUrl_example";  // string? | Url to use for webhook callback when operation finishes or fails. (optional) 
             var embeddingModel = "embeddingModel_example";  // string? | Embedding model to use in ingestion. Optional. Default to configured default. (optional) 
+            var args = new Dictionary<string, Object>?(); // Dictionary<string, Object>? |  (optional) 
             var tags = new Dictionary<string, Object>?(); // Dictionary<string, Object>? | Tags to associate with ingestion (optional) 
 
             try
             {
-                IngestDocumentResponse result = apiInstance.SemanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags);
+                IngestDocumentResponse result = apiInstance.SemanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -341,7 +342,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<IngestDocumentResponse> response = apiInstance.SemanticSearchFileIngestionWithHttpInfo(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags);
+    ApiResponse<IngestDocumentResponse> response = apiInstance.SemanticSearchFileIngestionWithHttpInfo(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -364,6 +365,7 @@ catch (ApiException e)
 | **pipeline** | [**List&lt;string&gt;?**](string.md) | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional]  |
 | **webHookUrl** | **string?** | Url to use for webhook callback when operation finishes or fails. | [optional]  |
 | **embeddingModel** | **string?** | Embedding model to use in ingestion. Optional. Default to configured default. | [optional]  |
+| **args** | [**Dictionary&lt;string, Object&gt;?**](Dictionary.md) |  | [optional]  |
 | **tags** | [**Dictionary&lt;string, Object&gt;?**](Dictionary.md) | Tags to associate with ingestion | [optional]  |
 
 ### Return type

@@ -97,8 +97,9 @@ public class SemanticSearchApiTest {
         List<String> pipeline = null;
         String webHookUrl = null;
         String embeddingModel = null;
+        Map<String, Object> args = null;
         Map<String, Object> tags = null;
-        IngestDocumentResponse response = api.semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags);
+        IngestDocumentResponse response = api.semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags);
         // TODO: test validations
     }
 

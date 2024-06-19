@@ -4,6 +4,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**DownloadGet**](KernelMemoryApi.md#downloadget) | **GET** /download |  |
 | [**KernelMemoryAsk**](KernelMemoryApi.md#kernelmemoryask) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM |
 | [**KernelMemoryDelete**](KernelMemoryApi.md#kernelmemorydelete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index |
 | [**KernelMemoryDeleteIndex**](KernelMemoryApi.md#kernelmemorydeleteindex) | **DELETE** /api/kernelmemory/indexes | Delete index |
@@ -11,6 +12,100 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 | [**KernelMemorySearch**](KernelMemoryApi.md#kernelmemorysearch) | **POST** /api/kernelmemory/search | Search for documents in specific index |
 | [**KernelMemoryUpload**](KernelMemoryApi.md#kernelmemoryupload) | **POST** /api/kernelmemory/upload | Upload file for ingestion |
 | [**KernelMemoryUploadStatus**](KernelMemoryApi.md#kernelmemoryuploadstatus) | **GET** /api/kernelmemory/upload-status | Get ingestion status for specific document |
+
+<a id="downloadget"></a>
+# **DownloadGet**
+> StreamableFileContent DownloadGet (string documentId, string filename, string? index = null)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class DownloadGetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://studio.aiempowerlabs.com";
+            var apiInstance = new KernelMemoryApi(config);
+            var documentId = "documentId_example";  // string | 
+            var filename = "filename_example";  // string | 
+            var index = "index_example";  // string? |  (optional) 
+
+            try
+            {
+                StreamableFileContent result = apiInstance.DownloadGet(documentId, filename, index);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling KernelMemoryApi.DownloadGet: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the DownloadGetWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<StreamableFileContent> response = apiInstance.DownloadGetWithHttpInfo(documentId, filename, index);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling KernelMemoryApi.DownloadGetWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **documentId** | **string** |  |  |
+| **filename** | **string** |  |  |
+| **index** | **string?** |  | [optional]  |
+
+### Return type
+
+[**StreamableFileContent**](StreamableFileContent.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="kernelmemoryask"></a>
 # **KernelMemoryAsk**
@@ -91,15 +186,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -184,15 +279,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -275,15 +370,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -361,15 +456,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -452,15 +547,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -538,16 +633,15 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **202** | Accepted |  -  |
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
 | **503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -633,7 +727,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 
 ### HTTP response details
@@ -641,9 +735,9 @@ No authorization required
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
 | **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

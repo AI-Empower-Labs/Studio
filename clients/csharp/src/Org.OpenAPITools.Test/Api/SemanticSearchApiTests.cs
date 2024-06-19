@@ -103,8 +103,9 @@ namespace Org.OpenAPITools.Test.Api
             //List<string>? pipeline = null;
             //string? webHookUrl = null;
             //string? embeddingModel = null;
+            //Dictionary<string, Object>? args = null;
             //Dictionary<string, Object>? tags = null;
-            //var response = instance.SemanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags);
+            //var response = instance.SemanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags);
             //Assert.IsType<IngestDocumentResponse>(response);
         }
 

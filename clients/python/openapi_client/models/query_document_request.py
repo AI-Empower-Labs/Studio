@@ -34,7 +34,8 @@ class QueryDocumentRequest(BaseModel):
     min_relevance: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Optional filter to specify minimum relevance. Typically values between 0 and 1", alias="minRelevance")
     limit: Optional[StrictInt] = Field(default=None, description="Optional filter for specifying maximum number of entries to return. Defaults to 3")
     embedding_model: Optional[StrictStr] = Field(default=None, description="Embedding model to use in query", alias="embeddingModel")
-    __properties: ClassVar[List[str]] = ["query", "index", "filter", "minRelevance", "limit", "embeddingModel"]
+    args: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["query", "index", "filter", "minRelevance", "limit", "embeddingModel", "args"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -112,6 +113,11 @@ class QueryDocumentRequest(BaseModel):
         if self.embedding_model is None and "embedding_model" in self.model_fields_set:
             _dict['embeddingModel'] = None
 
+        # set to None if args (nullable) is None
+        # and model_fields_set contains the field
+        if self.args is None and "args" in self.model_fields_set:
+            _dict['args'] = None
+
         return _dict
 
     @classmethod
@@ -129,7 +135,8 @@ class QueryDocumentRequest(BaseModel):
             "filter": [DocumentFilters.from_dict(_item) for _item in obj["filter"]] if obj.get("filter") is not None else None,
             "minRelevance": obj.get("minRelevance"),
             "limit": obj.get("limit"),
-            "embeddingModel": obj.get("embeddingModel")
+            "embeddingModel": obj.get("embeddingModel"),
+            "args": obj.get("args")
         })
         return _obj
 

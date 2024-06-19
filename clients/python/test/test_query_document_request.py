@@ -51,7 +51,10 @@ class TestQueryDocumentRequest(unittest.TestCase):
                     ],
                 min_relevance = 1.337,
                 limit = 56,
-                embedding_model = ''
+                embedding_model = '',
+                args = {
+                    'key' : null
+                    }
             )
         else:
             return QueryDocumentRequest(

@@ -56,6 +56,20 @@ namespace Org.OpenAPITools.Test.Api
         }
 
         /// <summary>
+        /// Test DownloadGet
+        /// </summary>
+        [Fact]
+        public void DownloadGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string documentId = null;
+            //string filename = null;
+            //string? index = null;
+            //var response = instance.DownloadGet(documentId, filename, index);
+            //Assert.IsType<StreamableFileContent>(response);
+        }
+
+        /// <summary>
         /// Test KernelMemoryAsk
         /// </summary>
         [Fact]

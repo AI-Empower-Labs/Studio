@@ -49,6 +49,7 @@ docs/SemanticSearchApi.md
 docs/SemanticSimilarityDocument.md
 docs/SemanticSimilarityRequest.md
 docs/SemanticSimilarityResponse.md
+docs/StreamableFileContent.md
 docs/SupportedLanguage.md
 docs/TimeSpan.md
 docs/TokenCountRequest.md
@@ -109,6 +110,7 @@ src/Org.OpenAPITools.Test/Model/SegmentDataTests.cs
 src/Org.OpenAPITools.Test/Model/SemanticSimilarityDocumentTests.cs
 src/Org.OpenAPITools.Test/Model/SemanticSimilarityRequestTests.cs
 src/Org.OpenAPITools.Test/Model/SemanticSimilarityResponseTests.cs
+src/Org.OpenAPITools.Test/Model/StreamableFileContentTests.cs
 src/Org.OpenAPITools.Test/Model/SupportedLanguageTests.cs
 src/Org.OpenAPITools.Test/Model/TimeSpanTests.cs
 src/Org.OpenAPITools.Test/Model/TokenCountRequestTests.cs
@@ -185,6 +187,7 @@ src/Org.OpenAPITools/Model/SegmentData.cs
 src/Org.OpenAPITools/Model/SemanticSimilarityDocument.cs
 src/Org.OpenAPITools/Model/SemanticSimilarityRequest.cs
 src/Org.OpenAPITools/Model/SemanticSimilarityResponse.cs
+src/Org.OpenAPITools/Model/StreamableFileContent.cs
 src/Org.OpenAPITools/Model/SupportedLanguage.cs
 src/Org.OpenAPITools/Model/TimeSpan.cs
 src/Org.OpenAPITools/Model/TokenCountRequest.cs

@@ -225,7 +225,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **semantic_search_file_ingestion**
-> IngestDocumentResponse semantic_search_file_ingestion(files, document_id=document_id, index=index, pipeline=pipeline, web_hook_url=web_hook_url, embedding_model=embedding_model, tags=tags)
+> IngestDocumentResponse semantic_search_file_ingestion(files, document_id=document_id, index=index, pipeline=pipeline, web_hook_url=web_hook_url, embedding_model=embedding_model, args=args, tags=tags)
 
 
 
@@ -257,10 +257,11 @@ with openapi_client.ApiClient(configuration) as api_client:
     pipeline = ['pipeline_example'] # List[str] | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
     web_hook_url = 'web_hook_url_example' # str | Url to use for webhook callback when operation finishes or fails. (optional)
     embedding_model = 'embedding_model_example' # str | Embedding model to use in ingestion. Optional. Default to configured default. (optional)
+    args = None # Dict[str, Optional[object]] |  (optional)
     tags = None # Dict[str, object] | Tags to associate with ingestion (optional)
 
     try:
-        api_response = api_instance.semantic_search_file_ingestion(files, document_id=document_id, index=index, pipeline=pipeline, web_hook_url=web_hook_url, embedding_model=embedding_model, tags=tags)
+        api_response = api_instance.semantic_search_file_ingestion(files, document_id=document_id, index=index, pipeline=pipeline, web_hook_url=web_hook_url, embedding_model=embedding_model, args=args, tags=tags)
         print("The response of SemanticSearchApi->semantic_search_file_ingestion:\n")
         pprint(api_response)
     except Exception as e:
@@ -280,6 +281,7 @@ Name | Type | Description  | Notes
  **pipeline** | [**List[str]**](str.md)| Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] 
  **web_hook_url** | **str**| Url to use for webhook callback when operation finishes or fails. | [optional] 
  **embedding_model** | **str**| Embedding model to use in ingestion. Optional. Default to configured default. | [optional] 
+ **args** | [**Dict[str, Optional[object]]**](Dict.md)|  | [optional] 
  **tags** | [**Dict[str, object]**](Dict.md)| Tags to associate with ingestion | [optional] 
 
 ### Return type

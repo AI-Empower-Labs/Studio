@@ -51,7 +51,10 @@ class TestAskDocumentRequest(unittest.TestCase):
                     ],
                 min_relevance = 1.337,
                 llm_model = '',
-                embedding_model = ''
+                embedding_model = '',
+                args = {
+                    'key' : null
+                    }
             )
         else:
             return AskDocumentRequest(

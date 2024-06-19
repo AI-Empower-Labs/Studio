@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * IngestWebPageDocumentRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-18T14:05:27.871542961Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-19T07:55:36.701094956Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
 public class IngestWebPageDocumentRequest {
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
@@ -83,6 +83,10 @@ public class IngestWebPageDocumentRequest {
   public static final String SERIALIZED_NAME_EMBEDDING_MODEL = "embeddingModel";
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
   private String embeddingModel;
+
+  public static final String SERIALIZED_NAME_ARGS = "args";
+  @SerializedName(SERIALIZED_NAME_ARGS)
+  private Map<String, Object> args;
 
   public IngestWebPageDocumentRequest() {
   }
@@ -236,6 +240,33 @@ public class IngestWebPageDocumentRequest {
   }
 
 
+  public IngestWebPageDocumentRequest args(Map<String, Object> args) {
+    this.args = args;
+    return this;
+  }
+
+  public IngestWebPageDocumentRequest putArgsItem(String key, Object argsItem) {
+    if (this.args == null) {
+      this.args = new HashMap<>();
+    }
+    this.args.put(key, argsItem);
+    return this;
+  }
+
+   /**
+   * Get args
+   * @return args
+  **/
+  @javax.annotation.Nullable
+  public Map<String, Object> getArgs() {
+    return args;
+  }
+
+  public void setArgs(Map<String, Object> args) {
+    this.args = args;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -252,7 +283,8 @@ public class IngestWebPageDocumentRequest {
         Objects.equals(this.url, ingestWebPageDocumentRequest.url) &&
         Objects.equals(this.pipeline, ingestWebPageDocumentRequest.pipeline) &&
         Objects.equals(this.webHookUrl, ingestWebPageDocumentRequest.webHookUrl) &&
-        Objects.equals(this.embeddingModel, ingestWebPageDocumentRequest.embeddingModel);
+        Objects.equals(this.embeddingModel, ingestWebPageDocumentRequest.embeddingModel) &&
+        Objects.equals(this.args, ingestWebPageDocumentRequest.args);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -261,7 +293,7 @@ public class IngestWebPageDocumentRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(documentId, index, tags, url, pipeline, webHookUrl, embeddingModel);
+    return Objects.hash(documentId, index, tags, url, pipeline, webHookUrl, embeddingModel, args);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -282,6 +314,7 @@ public class IngestWebPageDocumentRequest {
     sb.append("    pipeline: ").append(toIndentedString(pipeline)).append("\n");
     sb.append("    webHookUrl: ").append(toIndentedString(webHookUrl)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
+    sb.append("    args: ").append(toIndentedString(args)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -311,6 +344,7 @@ public class IngestWebPageDocumentRequest {
     openapiFields.add("pipeline");
     openapiFields.add("webHookUrl");
     openapiFields.add("embeddingModel");
+    openapiFields.add("args");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

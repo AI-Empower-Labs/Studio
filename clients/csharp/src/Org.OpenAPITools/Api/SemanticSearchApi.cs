@@ -111,10 +111,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="pipeline">Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)</param>
         /// <param name="webHookUrl">Url to use for webhook callback when operation finishes or fails. (optional)</param>
         /// <param name="embeddingModel">Embedding model to use in ingestion. Optional. Default to configured default. (optional)</param>
+        /// <param name="args"> (optional)</param>
         /// <param name="tags">Tags to associate with ingestion (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IngestDocumentResponse</returns>
-        IngestDocumentResponse SemanticSearchFileIngestion(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0);
+        IngestDocumentResponse SemanticSearchFileIngestion(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -129,10 +130,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="pipeline">Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)</param>
         /// <param name="webHookUrl">Url to use for webhook callback when operation finishes or fails. (optional)</param>
         /// <param name="embeddingModel">Embedding model to use in ingestion. Optional. Default to configured default. (optional)</param>
+        /// <param name="args"> (optional)</param>
         /// <param name="tags">Tags to associate with ingestion (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IngestDocumentResponse</returns>
-        ApiResponse<IngestDocumentResponse> SemanticSearchFileIngestionWithHttpInfo(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0);
+        ApiResponse<IngestDocumentResponse> SemanticSearchFileIngestionWithHttpInfo(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -393,11 +395,12 @@ namespace Org.OpenAPITools.Api
         /// <param name="pipeline">Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)</param>
         /// <param name="webHookUrl">Url to use for webhook callback when operation finishes or fails. (optional)</param>
         /// <param name="embeddingModel">Embedding model to use in ingestion. Optional. Default to configured default. (optional)</param>
+        /// <param name="args"> (optional)</param>
         /// <param name="tags">Tags to associate with ingestion (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IngestDocumentResponse</returns>
-        System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchFileIngestionAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchFileIngestionAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -412,11 +415,12 @@ namespace Org.OpenAPITools.Api
         /// <param name="pipeline">Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)</param>
         /// <param name="webHookUrl">Url to use for webhook callback when operation finishes or fails. (optional)</param>
         /// <param name="embeddingModel">Embedding model to use in ingestion. Optional. Default to configured default. (optional)</param>
+        /// <param name="args"> (optional)</param>
         /// <param name="tags">Tags to associate with ingestion (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IngestDocumentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IngestDocumentResponse>> SemanticSearchFileIngestionWithHttpInfoAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IngestDocumentResponse>> SemanticSearchFileIngestionWithHttpInfoAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -1172,12 +1176,13 @@ namespace Org.OpenAPITools.Api
         /// <param name="pipeline">Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)</param>
         /// <param name="webHookUrl">Url to use for webhook callback when operation finishes or fails. (optional)</param>
         /// <param name="embeddingModel">Embedding model to use in ingestion. Optional. Default to configured default. (optional)</param>
+        /// <param name="args"> (optional)</param>
         /// <param name="tags">Tags to associate with ingestion (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>IngestDocumentResponse</returns>
-        public IngestDocumentResponse SemanticSearchFileIngestion(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0)
+        public IngestDocumentResponse SemanticSearchFileIngestion(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0)
         {
-            Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse> localVarResponse = SemanticSearchFileIngestionWithHttpInfo(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags);
+            Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse> localVarResponse = SemanticSearchFileIngestionWithHttpInfo(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags);
             return localVarResponse.Data;
         }
 
@@ -1191,10 +1196,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="pipeline">Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)</param>
         /// <param name="webHookUrl">Url to use for webhook callback when operation finishes or fails. (optional)</param>
         /// <param name="embeddingModel">Embedding model to use in ingestion. Optional. Default to configured default. (optional)</param>
+        /// <param name="args"> (optional)</param>
         /// <param name="tags">Tags to associate with ingestion (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of IngestDocumentResponse</returns>
-        public Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse> SemanticSearchFileIngestionWithHttpInfo(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0)
+        public Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse> SemanticSearchFileIngestionWithHttpInfo(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0)
         {
             // verify the required parameter 'files' is set
             if (files == null)
@@ -1251,6 +1257,10 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.FileParameters.Add("files", file);
             }
+            if (args != null)
+            {
+                localVarRequestOptions.FormParameters.Add("args", Org.OpenAPITools.Client.ClientUtils.Serialize(args)); // form parameter
+            }
             if (tags != null)
             {
                 localVarRequestOptions.FormParameters.Add("tags", Org.OpenAPITools.Client.ClientUtils.Serialize(tags)); // form parameter
@@ -1284,13 +1294,14 @@ namespace Org.OpenAPITools.Api
         /// <param name="pipeline">Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)</param>
         /// <param name="webHookUrl">Url to use for webhook callback when operation finishes or fails. (optional)</param>
         /// <param name="embeddingModel">Embedding model to use in ingestion. Optional. Default to configured default. (optional)</param>
+        /// <param name="args"> (optional)</param>
         /// <param name="tags">Tags to associate with ingestion (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IngestDocumentResponse</returns>
-        public async System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchFileIngestionAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchFileIngestionAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse> localVarResponse = await SemanticSearchFileIngestionWithHttpInfoAsync(files, documentId, index, pipeline, webHookUrl, embeddingModel, tags, operationIndex, cancellationToken).ConfigureAwait(false);
+            Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse> localVarResponse = await SemanticSearchFileIngestionWithHttpInfoAsync(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1304,11 +1315,12 @@ namespace Org.OpenAPITools.Api
         /// <param name="pipeline">Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)</param>
         /// <param name="webHookUrl">Url to use for webhook callback when operation finishes or fails. (optional)</param>
         /// <param name="embeddingModel">Embedding model to use in ingestion. Optional. Default to configured default. (optional)</param>
+        /// <param name="args"> (optional)</param>
         /// <param name="tags">Tags to associate with ingestion (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IngestDocumentResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse>> SemanticSearchFileIngestionWithHttpInfoAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse>> SemanticSearchFileIngestionWithHttpInfoAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'files' is set
             if (files == null)
@@ -1365,6 +1377,10 @@ namespace Org.OpenAPITools.Api
             foreach (var file in files)
             {
                 localVarRequestOptions.FileParameters.Add("files", file);
+            }
+            if (args != null)
+            {
+                localVarRequestOptions.FormParameters.Add("args", Org.OpenAPITools.Client.ClientUtils.Serialize(args)); // form parameter
             }
             if (tags != null)
             {

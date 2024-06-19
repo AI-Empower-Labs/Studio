@@ -55,6 +55,7 @@ from openapi_client.models.segment_data import SegmentData
 from openapi_client.models.semantic_similarity_document import SemanticSimilarityDocument
 from openapi_client.models.semantic_similarity_request import SemanticSimilarityRequest
 from openapi_client.models.semantic_similarity_response import SemanticSimilarityResponse
+from openapi_client.models.streamable_file_content import StreamableFileContent
 from openapi_client.models.supported_language import SupportedLanguage
 from openapi_client.models.time_span import TimeSpan
 from openapi_client.models.token_count_request import TokenCountRequest

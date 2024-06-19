@@ -21,7 +21,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.client.model.DocumentFilters;
 import org.openapitools.jackson.nullable.JsonNullable;
 import org.junit.jupiter.api.Disabled;
@@ -87,6 +89,14 @@ public class QueryDocumentRequestTest {
     @Test
     public void embeddingModelTest() {
         // TODO: test embeddingModel
+    }
+
+    /**
+     * Test the property 'args'
+     */
+    @Test
+    public void argsTest() {
+        // TODO: test args
     }
 
 }

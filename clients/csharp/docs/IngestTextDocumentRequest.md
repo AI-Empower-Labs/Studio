@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Pipeline** | **List&lt;string&gt;** | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] 
 **WebHookUrl** | **string** | Url to use for webhook callback when operation finishes or fails. | [optional] 
 **EmbeddingModel** | **string** | Embedding model to use in ingestion. Optional. Default to configured default. | [optional] 
+**Args** | **Dictionary&lt;string, Object&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

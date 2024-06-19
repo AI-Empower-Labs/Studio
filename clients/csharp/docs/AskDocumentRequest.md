@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **MinRelevance** | **double?** | Optional filter to specify minimum relevance. Typically values between 0 and 1 | [optional] 
 **LlmModel** | **string** | Large language model to use in query | [optional] 
 **EmbeddingModel** | **string** | Embedding model to use in query | [optional] 
+**Args** | **Dictionary&lt;string, Object&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

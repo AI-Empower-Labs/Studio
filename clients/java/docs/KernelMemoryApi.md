@@ -4,6 +4,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**downloadGet**](KernelMemoryApi.md#downloadGet) | **GET** /download |  |
 | [**kernelMemoryAsk**](KernelMemoryApi.md#kernelMemoryAsk) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM |
 | [**kernelMemoryDelete**](KernelMemoryApi.md#kernelMemoryDelete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index |
 | [**kernelMemoryDeleteIndex**](KernelMemoryApi.md#kernelMemoryDeleteIndex) | **DELETE** /api/kernelmemory/indexes | Delete index |
@@ -12,6 +13,73 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 | [**kernelMemoryUpload**](KernelMemoryApi.md#kernelMemoryUpload) | **POST** /api/kernelmemory/upload | Upload file for ingestion |
 | [**kernelMemoryUploadStatus**](KernelMemoryApi.md#kernelMemoryUploadStatus) | **GET** /api/kernelmemory/upload-status | Get ingestion status for specific document |
 
+
+<a id="downloadGet"></a>
+# **downloadGet**
+> StreamableFileContent downloadGet(documentId, filename, index)
+
+
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.KernelMemoryApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://studio.aiempowerlabs.com");
+
+    KernelMemoryApi apiInstance = new KernelMemoryApi(defaultClient);
+    String documentId = "documentId_example"; // String | 
+    String filename = "filename_example"; // String | 
+    String index = "index_example"; // String | 
+    try {
+      StreamableFileContent result = apiInstance.downloadGet(documentId, filename, index);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling KernelMemoryApi#downloadGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **documentId** | **String**|  | |
+| **filename** | **String**|  | |
+| **index** | **String**|  | [optional] |
+
+### Return type
+
+[**StreamableFileContent**](StreamableFileContent.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 <a id="kernelMemoryAsk"></a>
 # **kernelMemoryAsk**
@@ -66,14 +134,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 <a id="kernelMemoryDelete"></a>
 # **kernelMemoryDelete**
@@ -130,14 +198,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 <a id="kernelMemoryDeleteIndex"></a>
 # **kernelMemoryDeleteIndex**
@@ -192,14 +260,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **202** | Accepted |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 <a id="kernelMemoryGetIndex"></a>
 # **kernelMemoryGetIndex**
@@ -250,14 +318,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 <a id="kernelMemorySearch"></a>
 # **kernelMemorySearch**
@@ -312,14 +380,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 
 <a id="kernelMemoryUpload"></a>
 # **kernelMemoryUpload**
@@ -370,15 +438,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **202** | Accepted |  -  |
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
+| **429** | Too Many Requests |  -  |
 | **503** | Service Unavailable |  -  |
 
 <a id="kernelMemoryUploadStatus"></a>
@@ -436,14 +503,14 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/json, application/problem+json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
 | **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+| **503** | Service Unavailable |  -  |
 

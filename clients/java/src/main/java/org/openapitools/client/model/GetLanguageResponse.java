@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * GetLanguageResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-18T14:05:27.871542961Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-19T07:55:36.701094956Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
 public class GetLanguageResponse {
   public static final String SERIALIZED_NAME_LANGUAGES = "languages";
   @SerializedName(SERIALIZED_NAME_LANGUAGES)

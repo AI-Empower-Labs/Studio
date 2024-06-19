@@ -434,6 +434,7 @@ type ApiSemanticSearchFileIngestionRequest struct {
 	pipeline *[]string
 	webHookUrl *string
 	embeddingModel *string
+	args *map[string]interface{}
 	tags *map[string]interface{}
 }
 
@@ -470,6 +471,11 @@ func (r ApiSemanticSearchFileIngestionRequest) WebHookUrl(webHookUrl string) Api
 // Embedding model to use in ingestion. Optional. Default to configured default.
 func (r ApiSemanticSearchFileIngestionRequest) EmbeddingModel(embeddingModel string) ApiSemanticSearchFileIngestionRequest {
 	r.embeddingModel = &embeddingModel
+	return r
+}
+
+func (r ApiSemanticSearchFileIngestionRequest) Args(args map[string]interface{}) ApiSemanticSearchFileIngestionRequest {
+	r.args = &args
 	return r
 }
 
@@ -579,6 +585,9 @@ func (a *SemanticSearchAPIService) SemanticSearchFileIngestionExecute(r ApiSeman
 			filesLocalVarFileValue.Close()
 			formFiles = append(formFiles, formFile{fileBytes: filesLocalVarFileBytes, fileName: filesLocalVarFileName, formFileName: filesLocalVarFormFileName})
 		}
+	}
+	if r.args != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "args", r.args, "")
 	}
 	if r.tags != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "tags", r.tags, "")

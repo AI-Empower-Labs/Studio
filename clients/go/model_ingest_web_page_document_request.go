@@ -36,6 +36,7 @@ type IngestWebPageDocumentRequest struct {
 	WebHookUrl NullableString `json:"webHookUrl,omitempty"`
 	// Embedding model to use in ingestion. Optional. Default to configured default.
 	EmbeddingModel NullableString `json:"embeddingModel,omitempty"`
+	Args map[string]interface{} `json:"args,omitempty"`
 }
 
 type _IngestWebPageDocumentRequest IngestWebPageDocumentRequest
@@ -299,6 +300,39 @@ func (o *IngestWebPageDocumentRequest) UnsetEmbeddingModel() {
 	o.EmbeddingModel.Unset()
 }
 
+// GetArgs returns the Args field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IngestWebPageDocumentRequest) GetArgs() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Args
+}
+
+// GetArgsOk returns a tuple with the Args field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IngestWebPageDocumentRequest) GetArgsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Args) {
+		return map[string]interface{}{}, false
+	}
+	return o.Args, true
+}
+
+// HasArgs returns a boolean if a field has been set.
+func (o *IngestWebPageDocumentRequest) HasArgs() bool {
+	if o != nil && !IsNil(o.Args) {
+		return true
+	}
+
+	return false
+}
+
+// SetArgs gets a reference to the given map[string]interface{} and assigns it to the Args field.
+func (o *IngestWebPageDocumentRequest) SetArgs(v map[string]interface{}) {
+	o.Args = v
+}
+
 func (o IngestWebPageDocumentRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -325,6 +359,9 @@ func (o IngestWebPageDocumentRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.EmbeddingModel.IsSet() {
 		toSerialize["embeddingModel"] = o.EmbeddingModel.Get()
+	}
+	if o.Args != nil {
+		toSerialize["args"] = o.Args
 	}
 	return toSerialize, nil
 }

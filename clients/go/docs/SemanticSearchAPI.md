@@ -224,7 +224,7 @@ No authorization required
 
 ## SemanticSearchFileIngestion
 
-> IngestDocumentResponse SemanticSearchFileIngestion(ctx).Files(files).DocumentId(documentId).Index(index).Pipeline(pipeline).WebHookUrl(webHookUrl).EmbeddingModel(embeddingModel).Tags(tags).Execute()
+> IngestDocumentResponse SemanticSearchFileIngestion(ctx).Files(files).DocumentId(documentId).Index(index).Pipeline(pipeline).WebHookUrl(webHookUrl).EmbeddingModel(embeddingModel).Args(args).Tags(tags).Execute()
 
 
 
@@ -249,11 +249,12 @@ func main() {
 	pipeline := []string{"Inner_example"} // []string | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
 	webHookUrl := "webHookUrl_example" // string | Url to use for webhook callback when operation finishes or fails. (optional)
 	embeddingModel := "embeddingModel_example" // string | Embedding model to use in ingestion. Optional. Default to configured default. (optional)
+	args := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} |  (optional)
 	tags := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} | Tags to associate with ingestion (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SemanticSearchAPI.SemanticSearchFileIngestion(context.Background()).Files(files).DocumentId(documentId).Index(index).Pipeline(pipeline).WebHookUrl(webHookUrl).EmbeddingModel(embeddingModel).Tags(tags).Execute()
+	resp, r, err := apiClient.SemanticSearchAPI.SemanticSearchFileIngestion(context.Background()).Files(files).DocumentId(documentId).Index(index).Pipeline(pipeline).WebHookUrl(webHookUrl).EmbeddingModel(embeddingModel).Args(args).Tags(tags).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SemanticSearchAPI.SemanticSearchFileIngestion``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -280,6 +281,7 @@ Name | Type | Description  | Notes
  **pipeline** | **[]string** | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | 
  **webHookUrl** | **string** | Url to use for webhook callback when operation finishes or fails. | 
  **embeddingModel** | **string** | Embedding model to use in ingestion. Optional. Default to configured default. | 
+ **args** | **map[string]interface{}** |  | 
  **tags** | **map[string]interface{}** | Tags to associate with ingestion | 
 
 ### Return type

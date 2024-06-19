@@ -14,6 +14,7 @@
 |**pipeline** | **List&lt;String&gt;** | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. |  [optional] |
 |**webHookUrl** | **String** | Url to use for webhook callback when operation finishes or fails. |  [optional] |
 |**embeddingModel** | **String** | Embedding model to use in ingestion. Optional. Default to configured default. |  [optional] |
+|**args** | **Map&lt;String, Object&gt;** |  |  [optional] |
 
 
 

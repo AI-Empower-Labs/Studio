@@ -13,6 +13,7 @@
 |**minRelevance** | **Double** | Optional filter to specify minimum relevance. Typically values between 0 and 1 |  [optional] |
 |**llmModel** | **String** | Large language model to use in query |  [optional] |
 |**embeddingModel** | **String** | Embedding model to use in query |  [optional] |
+|**args** | **Map&lt;String, Object&gt;** |  |  [optional] |
 
 
 

@@ -22,6 +22,7 @@ import org.openapitools.client.model.MemoryQuery;
 import org.openapitools.client.model.ProblemDetails;
 import org.openapitools.client.model.SearchQuery;
 import org.openapitools.client.model.SearchResult;
+import org.openapitools.client.model.StreamableFileContent;
 import org.openapitools.client.model.UploadAccepted;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,18 @@ import java.util.Map;
 public class KernelMemoryApiTest {
 
     private final KernelMemoryApi api = new KernelMemoryApi();
+
+    /**
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void downloadGetTest() throws ApiException {
+        String documentId = null;
+        String filename = null;
+        String index = null;
+        StreamableFileContent response = api.downloadGet(documentId, filename, index);
+        // TODO: test validations
+    }
 
     /**
      * Query documents and forward result to LLM

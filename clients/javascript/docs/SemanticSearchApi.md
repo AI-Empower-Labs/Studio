@@ -176,6 +176,7 @@ let opts = {
   'pipeline': ["null"], // [String] | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
   'webHookUrl': "webHookUrl_example", // String | Url to use for webhook callback when operation finishes or fails.
   'embeddingModel': "embeddingModel_example", // String | Embedding model to use in ingestion. Optional. Default to configured default.
+  'args': {key: null}, // {String: Object} | 
   'tags': {key: null} // {String: Object} | Tags to associate with ingestion
 };
 apiInstance.semanticSearchFileIngestion(files, opts, (error, data, response) => {
@@ -198,6 +199,7 @@ Name | Type | Description  | Notes
  **pipeline** | [**[String]**](String.md)| Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] 
  **webHookUrl** | **String**| Url to use for webhook callback when operation finishes or fails. | [optional] 
  **embeddingModel** | **String**| Embedding model to use in ingestion. Optional. Default to configured default. | [optional] 
+ **args** | [**{String: Object}**](Object.md)|  | [optional] 
  **tags** | [**{String: Object}**](Object.md)| Tags to associate with ingestion | [optional] 
 
 ### Return type

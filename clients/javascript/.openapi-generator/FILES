@@ -48,6 +48,7 @@ docs/SemanticSearchApi.md
 docs/SemanticSimilarityDocument.md
 docs/SemanticSimilarityRequest.md
 docs/SemanticSimilarityResponse.md
+docs/StreamableFileContent.md
 docs/SupportedLanguage.md
 docs/TimeSpan.md
 docs/TokenCountRequest.md
@@ -112,6 +113,7 @@ src/model/SegmentData.js
 src/model/SemanticSimilarityDocument.js
 src/model/SemanticSimilarityRequest.js
 src/model/SemanticSimilarityResponse.js
+src/model/StreamableFileContent.js
 src/model/SupportedLanguage.js
 src/model/TimeSpan.js
 src/model/TokenCountRequest.js
@@ -170,6 +172,7 @@ test/model/SegmentData.spec.js
 test/model/SemanticSimilarityDocument.spec.js
 test/model/SemanticSimilarityRequest.spec.js
 test/model/SemanticSimilarityResponse.spec.js
+test/model/StreamableFileContent.spec.js
 test/model/SupportedLanguage.spec.js
 test/model/TimeSpan.spec.js
 test/model/TokenCountRequest.spec.js

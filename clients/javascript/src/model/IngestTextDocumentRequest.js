@@ -72,6 +72,9 @@ class IngestTextDocumentRequest {
             if (data.hasOwnProperty('embeddingModel')) {
                 obj['embeddingModel'] = ApiClient.convertToType(data['embeddingModel'], 'String');
             }
+            if (data.hasOwnProperty('args')) {
+                obj['args'] = ApiClient.convertToType(data['args'], {'String': Object});
+            }
         }
         return obj;
     }
@@ -162,6 +165,11 @@ IngestTextDocumentRequest.prototype['webHookUrl'] = undefined;
  * @member {String} embeddingModel
  */
 IngestTextDocumentRequest.prototype['embeddingModel'] = undefined;
+
+/**
+ * @member {Object.<String, Object>} args
+ */
+IngestTextDocumentRequest.prototype['args'] = undefined;
 
 
 

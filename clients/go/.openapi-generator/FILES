@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -55,6 +56,7 @@ docs/SemanticSearchAPI.md
 docs/SemanticSimilarityDocument.md
 docs/SemanticSimilarityRequest.md
 docs/SemanticSimilarityResponse.md
+docs/StreamableFileContent.md
 docs/SupportedLanguage.md
 docs/TimeSpan.md
 docs/TokenCountRequest.md
@@ -111,6 +113,7 @@ model_segment_data.go
 model_semantic_similarity_document.go
 model_semantic_similarity_request.go
 model_semantic_similarity_response.go
+model_streamable_file_content.go
 model_supported_language.go
 model_time_span.go
 model_token_count_request.go
@@ -124,4 +127,10 @@ model_translate_response.go
 model_upload_accepted.go
 model_word_cloud_document_request.go
 response.go
+test/api_data_extraction_test.go
+test/api_kernel_memory_test.go
+test/api_language_test.go
+test/api_miscellaneous_test.go
+test/api_semantic_search_test.go
+test/api_transcription_test.go
 utils.go

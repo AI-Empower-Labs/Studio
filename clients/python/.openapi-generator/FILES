@@ -49,6 +49,7 @@ docs/SemanticSearchApi.md
 docs/SemanticSimilarityDocument.md
 docs/SemanticSimilarityRequest.md
 docs/SemanticSimilarityResponse.md
+docs/StreamableFileContent.md
 docs/SupportedLanguage.md
 docs/TimeSpan.md
 docs/TokenCountRequest.md
@@ -116,6 +117,7 @@ openapi_client/models/segment_data.py
 openapi_client/models/semantic_similarity_document.py
 openapi_client/models/semantic_similarity_request.py
 openapi_client/models/semantic_similarity_response.py
+openapi_client/models/streamable_file_content.py
 openapi_client/models/supported_language.py
 openapi_client/models/time_span.py
 openapi_client/models/token_count_request.py
@@ -181,6 +183,7 @@ test/test_semantic_search_api.py
 test/test_semantic_similarity_document.py
 test/test_semantic_similarity_request.py
 test/test_semantic_similarity_response.py
+test/test_streamable_file_content.py
 test/test_supported_language.py
 test/test_time_span.py
 test/test_token_count_request.py

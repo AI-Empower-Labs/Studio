@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **pipeline** | **List[str]** | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] 
 **web_hook_url** | **str** | Url to use for webhook callback when operation finishes or fails. | [optional] 
 **embedding_model** | **str** | Embedding model to use in ingestion. Optional. Default to configured default. | [optional] 
+**args** | **Dict[str, Optional[object]]** |  | [optional] 
 
 ## Example
 
