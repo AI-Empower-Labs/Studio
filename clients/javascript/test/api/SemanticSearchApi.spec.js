@@ -148,16 +148,6 @@
         done();
       });
     });
-    describe('semanticSearchWordcloud', function() {
-      it('should call semanticSearchWordcloud successfully', function(done) {
-        //uncomment below and update the code to test semanticSearchWordcloud
-        //instance.semanticSearchWordcloud(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
   });
 
 }));

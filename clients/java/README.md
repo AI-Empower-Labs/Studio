@@ -2,7 +2,7 @@
 
 Studio - AI Empower Labs
 - API version: v1
-  - Build date: 2024-06-19T07:55:36.701094956Z[Etc/UTC]
+  - Build date: 2024-06-19T09:44:04.308798711Z[Etc/UTC]
   - Generator version: 7.7.0-SNAPSHOT
 
 # Studio API Documentation
@@ -156,7 +156,6 @@ Class | Method | HTTP request | Description
 *SemanticSearchApi* | [**semanticSearchRerank**](docs/SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank | 
 *SemanticSearchApi* | [**semanticSearchTextIngestion**](docs/SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/semantic/ingest/text | 
 *SemanticSearchApi* | [**semanticSearchWebpageIngestion**](docs/SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/semantic/ingest/webpage | 
-*SemanticSearchApi* | [**semanticSearchWordcloud**](docs/SemanticSearchApi.md#semanticSearchWordcloud) | **POST** /api/semantic/wordcloud | 
 *TranscriptionApi* | [**transcriptionAsynchronous**](docs/TranscriptionApi.md#transcriptionAsynchronous) | **POST** /api/transcribe/upload | Upload audio file for asynchronous transcription
 *TranscriptionApi* | [**transcriptionGetById**](docs/TranscriptionApi.md#transcriptionGetById) | **GET** /api/transcribe | Get transcription status and data
 
@@ -215,7 +214,6 @@ Class | Method | HTTP request | Description
  - [Translate](docs/Translate.md)
  - [TranslateResponse](docs/TranslateResponse.md)
  - [UploadAccepted](docs/UploadAccepted.md)
- - [WordCloudDocumentRequest](docs/WordCloudDocumentRequest.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -64,7 +64,6 @@ docs/TranscriptionResponse.md
 docs/Translate.md
 docs/TranslateResponse.md
 docs/UploadAccepted.md
-docs/WordCloudDocumentRequest.md
 git_push.sh
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
@@ -150,7 +149,6 @@ src/main/java/org/openapitools/client/model/TranscriptionResponse.java
 src/main/java/org/openapitools/client/model/Translate.java
 src/main/java/org/openapitools/client/model/TranslateResponse.java
 src/main/java/org/openapitools/client/model/UploadAccepted.java
-src/main/java/org/openapitools/client/model/WordCloudDocumentRequest.java
 src/test/java/org/openapitools/client/api/DataExtractionApiTest.java
 src/test/java/org/openapitools/client/api/KernelMemoryApiTest.java
 src/test/java/org/openapitools/client/api/LanguageApiTest.java
@@ -209,4 +207,3 @@ src/test/java/org/openapitools/client/model/TranscriptionResponseTest.java
 src/test/java/org/openapitools/client/model/TranslateResponseTest.java
 src/test/java/org/openapitools/client/model/TranslateTest.java
 src/test/java/org/openapitools/client/model/UploadAcceptedTest.java
-src/test/java/org/openapitools/client/model/WordCloudDocumentRequestTest.java

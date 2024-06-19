@@ -14,7 +14,6 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 | [**semanticSearchRerank**](SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank |  |
 | [**semanticSearchTextIngestion**](SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/semantic/ingest/text |  |
 | [**semanticSearchWebpageIngestion**](SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/semantic/ingest/webpage |  |
-| [**semanticSearchWordcloud**](SemanticSearchApi.md#semanticSearchWordcloud) | **POST** /api/semantic/wordcloud |  |
 
 
 <a id="semanticSearchAsk"></a>
@@ -678,71 +677,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created ingestion job |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
-
-<a id="semanticSearchWordcloud"></a>
-# **semanticSearchWordcloud**
-> byte[] semanticSearchWordcloud(wordCloudDocumentRequest)
-
-
-
-Generate word cloud from semantic database
-
-### Example
-```java
-// Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.SemanticSearchApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://studio.aiempowerlabs.com");
-
-    SemanticSearchApi apiInstance = new SemanticSearchApi(defaultClient);
-    WordCloudDocumentRequest wordCloudDocumentRequest = new WordCloudDocumentRequest(); // WordCloudDocumentRequest | 
-    try {
-      byte[] result = apiInstance.semanticSearchWordcloud(wordCloudDocumentRequest);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling SemanticSearchApi#semanticSearchWordcloud");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **wordCloudDocumentRequest** | [**WordCloudDocumentRequest**](WordCloudDocumentRequest.md)|  | |
-
-### Return type
-
-**byte[]**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: image/png, application/problem+json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |

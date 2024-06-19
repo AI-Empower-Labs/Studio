@@ -27,7 +27,6 @@ import QueryDocumentRequest from '../model/QueryDocumentRequest';
 import QueryDocumentResponse from '../model/QueryDocumentResponse';
 import ReRankDocumentsRequest from '../model/ReRankDocumentsRequest';
 import ReRankDocumentsResponse from '../model/ReRankDocumentsResponse';
-import WordCloudDocumentRequest from '../model/WordCloudDocumentRequest';
 
 /**
 * SemanticSearch service.
@@ -477,47 +476,6 @@ export default class SemanticSearchApi {
       let returnType = IngestDocumentResponse;
       return this.apiClient.callApi(
         '/api/semantic/ingest/webpage', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the semanticSearchWordcloud operation.
-     * @callback module:api/SemanticSearchApi~semanticSearchWordcloudCallback
-     * @param {String} error Error message, if any.
-     * @param {Blob} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Generate word cloud from semantic database
-     * @param {module:model/WordCloudDocumentRequest} wordCloudDocumentRequest 
-     * @param {module:api/SemanticSearchApi~semanticSearchWordcloudCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Blob}
-     */
-    semanticSearchWordcloud(wordCloudDocumentRequest, callback) {
-      let postBody = wordCloudDocumentRequest;
-      // verify the required parameter 'wordCloudDocumentRequest' is set
-      if (wordCloudDocumentRequest === undefined || wordCloudDocumentRequest === null) {
-        throw new Error("Missing the required parameter 'wordCloudDocumentRequest' when calling semanticSearchWordcloud");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = ['application/json'];
-      let accepts = ['image/png', 'application/problem+json'];
-      let returnType = 'Blob';
-      return this.apiClient.callApi(
-        '/api/semantic/wordcloud', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

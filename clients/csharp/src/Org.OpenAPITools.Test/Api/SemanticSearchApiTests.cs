@@ -180,17 +180,5 @@ namespace Org.OpenAPITools.Test.Api
             //var response = instance.SemanticSearchWebpageIngestion(ingestWebPageDocumentRequest);
             //Assert.IsType<IngestDocumentResponse>(response);
         }
-
-        /// <summary>
-        /// Test SemanticSearchWordcloud
-        /// </summary>
-        [Fact]
-        public void SemanticSearchWordcloudTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //WordCloudDocumentRequest wordCloudDocumentRequest = null;
-            //var response = instance.SemanticSearchWordcloud(wordCloudDocumentRequest);
-            //Assert.IsType<byte[]>(response);
-        }
     }
 }

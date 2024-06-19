@@ -61,7 +61,6 @@ docs/TranscriptionResponse.md
 docs/Translate.md
 docs/TranslateResponse.md
 docs/UploadAccepted.md
-docs/WordCloudDocumentRequest.md
 git_push.sh
 mocha.opts
 package.json
@@ -125,7 +124,6 @@ src/model/TranscriptionResponse.js
 src/model/Translate.js
 src/model/TranslateResponse.js
 src/model/UploadAccepted.js
-src/model/WordCloudDocumentRequest.js
 test/api/DataExtractionApi.spec.js
 test/api/KernelMemoryApi.spec.js
 test/api/LanguageApi.spec.js
@@ -184,4 +182,3 @@ test/model/TranscriptionResponse.spec.js
 test/model/Translate.spec.js
 test/model/TranslateResponse.spec.js
 test/model/UploadAccepted.spec.js
-test/model/WordCloudDocumentRequest.spec.js

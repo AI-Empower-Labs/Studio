@@ -65,7 +65,6 @@ import TranscriptionResponse from './model/TranscriptionResponse';
 import Translate from './model/Translate';
 import TranslateResponse from './model/TranslateResponse';
 import UploadAccepted from './model/UploadAccepted';
-import WordCloudDocumentRequest from './model/WordCloudDocumentRequest';
 import DataExtractionApi from './api/DataExtractionApi';
 import KernelMemoryApi from './api/KernelMemoryApi';
 import LanguageApi from './api/LanguageApi';
@@ -423,12 +422,6 @@ export {
      * @property {module:model/UploadAccepted}
      */
     UploadAccepted,
-
-    /**
-     * The WordCloudDocumentRequest model constructor.
-     * @property {module:model/WordCloudDocumentRequest}
-     */
-    WordCloudDocumentRequest,
 
     /**
     * The DataExtractionApi service constructor.

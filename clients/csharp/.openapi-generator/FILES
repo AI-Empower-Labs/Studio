@@ -62,7 +62,6 @@ docs/TranscriptionResponse.md
 docs/Translate.md
 docs/TranslateResponse.md
 docs/UploadAccepted.md
-docs/WordCloudDocumentRequest.md
 git_push.sh
 src/Org.OpenAPITools.Test/Api/DataExtractionApiTests.cs
 src/Org.OpenAPITools.Test/Api/KernelMemoryApiTests.cs
@@ -122,7 +121,6 @@ src/Org.OpenAPITools.Test/Model/TranscriptionResponseTests.cs
 src/Org.OpenAPITools.Test/Model/TranslateResponseTests.cs
 src/Org.OpenAPITools.Test/Model/TranslateTests.cs
 src/Org.OpenAPITools.Test/Model/UploadAcceptedTests.cs
-src/Org.OpenAPITools.Test/Model/WordCloudDocumentRequestTests.cs
 src/Org.OpenAPITools.Test/Org.OpenAPITools.Test.csproj
 src/Org.OpenAPITools/Api/DataExtractionApi.cs
 src/Org.OpenAPITools/Api/KernelMemoryApi.cs
@@ -199,5 +197,4 @@ src/Org.OpenAPITools/Model/TranscriptionResponse.cs
 src/Org.OpenAPITools/Model/Translate.cs
 src/Org.OpenAPITools/Model/TranslateResponse.cs
 src/Org.OpenAPITools/Model/UploadAccepted.cs
-src/Org.OpenAPITools/Model/WordCloudDocumentRequest.cs
 src/Org.OpenAPITools/Org.OpenAPITools.csproj

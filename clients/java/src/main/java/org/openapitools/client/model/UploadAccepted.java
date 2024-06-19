@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * UploadAccepted
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-19T07:55:36.701094956Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-19T09:44:04.308798711Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
 public class UploadAccepted {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)

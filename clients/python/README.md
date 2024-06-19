@@ -126,7 +126,6 @@ Class | Method | HTTP request | Description
 *SemanticSearchApi* | [**semantic_search_rerank**](docs/SemanticSearchApi.md#semantic_search_rerank) | **POST** /api/semantic/rerank | 
 *SemanticSearchApi* | [**semantic_search_text_ingestion**](docs/SemanticSearchApi.md#semantic_search_text_ingestion) | **POST** /api/semantic/ingest/text | 
 *SemanticSearchApi* | [**semantic_search_webpage_ingestion**](docs/SemanticSearchApi.md#semantic_search_webpage_ingestion) | **POST** /api/semantic/ingest/webpage | 
-*SemanticSearchApi* | [**semantic_search_wordcloud**](docs/SemanticSearchApi.md#semantic_search_wordcloud) | **POST** /api/semantic/wordcloud | 
 *TranscriptionApi* | [**transcription_asynchronous**](docs/TranscriptionApi.md#transcription_asynchronous) | **POST** /api/transcribe/upload | Upload audio file for asynchronous transcription
 *TranscriptionApi* | [**transcription_get_by_id**](docs/TranscriptionApi.md#transcription_get_by_id) | **GET** /api/transcribe | Get transcription status and data
 
@@ -185,7 +184,6 @@ Class | Method | HTTP request | Description
  - [Translate](docs/Translate.md)
  - [TranslateResponse](docs/TranslateResponse.md)
  - [UploadAccepted](docs/UploadAccepted.md)
- - [WordCloudDocumentRequest](docs/WordCloudDocumentRequest.md)
 
 
 <a id="documentation-for-authorization"></a>

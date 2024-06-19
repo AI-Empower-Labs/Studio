@@ -67,4 +67,3 @@ from openapi_client.models.transcription_response import TranscriptionResponse
 from openapi_client.models.translate import Translate
 from openapi_client.models.translate_response import TranslateResponse
 from openapi_client.models.upload_accepted import UploadAccepted
-from openapi_client.models.word_cloud_document_request import WordCloudDocumentRequest

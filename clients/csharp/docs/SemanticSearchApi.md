@@ -14,7 +14,6 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 | [**SemanticSearchRerank**](SemanticSearchApi.md#semanticsearchrerank) | **POST** /api/semantic/rerank |  |
 | [**SemanticSearchTextIngestion**](SemanticSearchApi.md#semanticsearchtextingestion) | **POST** /api/semantic/ingest/text |  |
 | [**SemanticSearchWebpageIngestion**](SemanticSearchApi.md#semanticsearchwebpageingestion) | **POST** /api/semantic/ingest/webpage |  |
-| [**SemanticSearchWordcloud**](SemanticSearchApi.md#semanticsearchwordcloud) | **POST** /api/semantic/wordcloud |  |
 
 <a id="semanticsearchask"></a>
 # **SemanticSearchAsk**
@@ -939,98 +938,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created ingestion job |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a id="semanticsearchwordcloud"></a>
-# **SemanticSearchWordcloud**
-> byte[] SemanticSearchWordcloud (WordCloudDocumentRequest wordCloudDocumentRequest)
-
-
-
-Generate word cloud from semantic database
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class SemanticSearchWordcloudExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://studio.aiempowerlabs.com";
-            var apiInstance = new SemanticSearchApi(config);
-            var wordCloudDocumentRequest = new WordCloudDocumentRequest(); // WordCloudDocumentRequest | 
-
-            try
-            {
-                byte[] result = apiInstance.SemanticSearchWordcloud(wordCloudDocumentRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SemanticSearchApi.SemanticSearchWordcloud: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SemanticSearchWordcloudWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<byte[]> response = apiInstance.SemanticSearchWordcloudWithHttpInfo(wordCloudDocumentRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SemanticSearchApi.SemanticSearchWordcloudWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **wordCloudDocumentRequest** | [**WordCloudDocumentRequest**](WordCloudDocumentRequest.md) |  |  |
-
-### Return type
-
-**byte[]**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: image/png, application/problem+json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **429** | Too Many Requests |  -  |
 | **500** | Internal Server Error |  -  |

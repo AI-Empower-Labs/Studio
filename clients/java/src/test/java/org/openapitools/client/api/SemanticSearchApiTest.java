@@ -30,7 +30,6 @@ import org.openapitools.client.model.QueryDocumentResponse;
 import org.openapitools.client.model.ReRankDocumentsRequest;
 import org.openapitools.client.model.ReRankDocumentsResponse;
 import java.util.UUID;
-import org.openapitools.client.model.WordCloudDocumentRequest;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -172,18 +171,6 @@ public class SemanticSearchApiTest {
     public void semanticSearchWebpageIngestionTest() throws ApiException {
         IngestWebPageDocumentRequest ingestWebPageDocumentRequest = null;
         IngestDocumentResponse response = api.semanticSearchWebpageIngestion(ingestWebPageDocumentRequest);
-        // TODO: test validations
-    }
-
-    /**
-     * Generate word cloud from semantic database
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void semanticSearchWordcloudTest() throws ApiException {
-        WordCloudDocumentRequest wordCloudDocumentRequest = null;
-        byte[] response = api.semanticSearchWordcloud(wordCloudDocumentRequest);
         // TODO: test validations
     }
 

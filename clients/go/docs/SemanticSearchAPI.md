@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**SemanticSearchRerank**](SemanticSearchAPI.md#SemanticSearchRerank) | **Post** /api/semantic/rerank | 
 [**SemanticSearchTextIngestion**](SemanticSearchAPI.md#SemanticSearchTextIngestion) | **Post** /api/semantic/ingest/text | 
 [**SemanticSearchWebpageIngestion**](SemanticSearchAPI.md#SemanticSearchWebpageIngestion) | **Post** /api/semantic/ingest/webpage | 
-[**SemanticSearchWordcloud**](SemanticSearchAPI.md#SemanticSearchWordcloud) | **Post** /api/semantic/wordcloud | 
 
 
 
@@ -692,72 +691,6 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SemanticSearchWordcloud
-
-> string SemanticSearchWordcloud(ctx).WordCloudDocumentRequest(wordCloudDocumentRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	wordCloudDocumentRequest := *openapiclient.NewWordCloudDocumentRequest() // WordCloudDocumentRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SemanticSearchAPI.SemanticSearchWordcloud(context.Background()).WordCloudDocumentRequest(wordCloudDocumentRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SemanticSearchAPI.SemanticSearchWordcloud``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SemanticSearchWordcloud`: string
-	fmt.Fprintf(os.Stdout, "Response from `SemanticSearchAPI.SemanticSearchWordcloud`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSemanticSearchWordcloudRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **wordCloudDocumentRequest** | [**WordCloudDocumentRequest**](WordCloudDocumentRequest.md) |  | 
-
-### Return type
-
-**string**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: image/png, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

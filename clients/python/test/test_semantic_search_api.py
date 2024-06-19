@@ -87,12 +87,6 @@ class TestSemanticSearchApi(unittest.TestCase):
         """
         pass
 
-    def test_semantic_search_wordcloud(self) -> None:
-        """Test case for semantic_search_wordcloud
-
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

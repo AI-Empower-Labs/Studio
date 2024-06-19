@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**semanticSearchRerank**](SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank | 
 [**semanticSearchTextIngestion**](SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/semantic/ingest/text | 
 [**semanticSearchWebpageIngestion**](SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/semantic/ingest/webpage | 
-[**semanticSearchWordcloud**](SemanticSearchApi.md#semanticSearchWordcloud) | **POST** /api/semantic/wordcloud | 
 
 
 
@@ -484,49 +483,4 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
-
-
-## semanticSearchWordcloud
-
-> Blob semanticSearchWordcloud(wordCloudDocumentRequest)
-
-
-
-Generate word cloud from semantic database
-
-### Example
-
-```javascript
-import StudioAiEmpowerLabs from 'studio_ai_empower_labs';
-
-let apiInstance = new StudioAiEmpowerLabs.SemanticSearchApi();
-let wordCloudDocumentRequest = {"index":"Studio","filter":[{"documentId":["SomeUniqueId"],"tags":{"A":[]}}],"source":"document_key"}; // WordCloudDocumentRequest | 
-apiInstance.semanticSearchWordcloud(wordCloudDocumentRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **wordCloudDocumentRequest** | [**WordCloudDocumentRequest**](WordCloudDocumentRequest.md)|  | 
-
-### Return type
-
-**Blob**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: image/png, application/problem+json
 

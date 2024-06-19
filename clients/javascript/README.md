@@ -162,7 +162,6 @@ Class | Method | HTTP request | Description
 *StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchRerank**](docs/SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank | 
 *StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchTextIngestion**](docs/SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/semantic/ingest/text | 
 *StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchWebpageIngestion**](docs/SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/semantic/ingest/webpage | 
-*StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchWordcloud**](docs/SemanticSearchApi.md#semanticSearchWordcloud) | **POST** /api/semantic/wordcloud | 
 *StudioAiEmpowerLabs.TranscriptionApi* | [**transcriptionAsynchronous**](docs/TranscriptionApi.md#transcriptionAsynchronous) | **POST** /api/transcribe/upload | Upload audio file for asynchronous transcription
 *StudioAiEmpowerLabs.TranscriptionApi* | [**transcriptionGetById**](docs/TranscriptionApi.md#transcriptionGetById) | **GET** /api/transcribe | Get transcription status and data
 
@@ -221,7 +220,6 @@ Class | Method | HTTP request | Description
  - [StudioAiEmpowerLabs.Translate](docs/Translate.md)
  - [StudioAiEmpowerLabs.TranslateResponse](docs/TranslateResponse.md)
  - [StudioAiEmpowerLabs.UploadAccepted](docs/UploadAccepted.md)
- - [StudioAiEmpowerLabs.WordCloudDocumentRequest](docs/WordCloudDocumentRequest.md)
 
 
 ## Documentation for Authorization

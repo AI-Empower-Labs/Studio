@@ -69,7 +69,6 @@ docs/TranscriptionResponse.md
 docs/Translate.md
 docs/TranslateResponse.md
 docs/UploadAccepted.md
-docs/WordCloudDocumentRequest.md
 git_push.sh
 go.mod
 go.sum
@@ -125,7 +124,6 @@ model_transcription_response.go
 model_translate.go
 model_translate_response.go
 model_upload_accepted.go
-model_word_cloud_document_request.go
 response.go
 test/api_data_extraction_test.go
 test/api_kernel_memory_test.go
