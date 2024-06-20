@@ -1,0 +1,10 @@
+﻿services:
+  emailsend:
+    image: emailsend
+    build:
+      context: ..
+      dockerfile: plugins/EmailSend/Dockerfile
+    ports:
+        - 4000:8080
+    volumes:
+        - ./../plugins/EmailSend/appsettings.json:/app/appsettings.json # Mounts a configuration file into the container

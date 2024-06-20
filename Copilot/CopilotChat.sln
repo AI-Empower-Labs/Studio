@@ -26,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		SECURITY.md = SECURITY.md
 		SUPPORT.md = SUPPORT.md
+		docker\docker-compose.yaml = docker\docker-compose.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{4F472923-85CE-485B-AFC4-0B9451A31F3B}"

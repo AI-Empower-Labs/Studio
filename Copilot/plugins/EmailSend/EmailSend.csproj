@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>Plugins.EmailSend</RootNamespace>
 		<UserSecretsId>decf07a9-54db-40a6-9a1f-aaee10c5cf70</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -15,5 +16,11 @@
 		<PackageReference Include="FluentEmail.Smtp" Version="3.0.2"/>
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6"/>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Icons\smtp.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 </Project>
