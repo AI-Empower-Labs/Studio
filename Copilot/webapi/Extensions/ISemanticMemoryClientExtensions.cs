@@ -88,6 +88,7 @@ internal static class SemanticMemoryClientExtensions
 				null,
 				relevanceThreshold, // minRelevance param
 				resultCount,
+				null,
 				cancellationToken);
 
 		return searchResult;
@@ -115,7 +116,7 @@ internal static class SemanticMemoryClientExtensions
 		uploadRequest.Tags.Add(MemoryTags.TagChatId, chatId);
 		uploadRequest.Tags.Add(MemoryTags.TagMemory, memoryName);
 
-		await memoryClient.ImportDocumentAsync(uploadRequest, cancellationToken);
+		await memoryClient.ImportDocumentAsync(uploadRequest, cancellationToken: cancellationToken);
 	}
 
 	public static Task StoreMemory(
@@ -155,7 +156,7 @@ internal static class SemanticMemoryClientExtensions
 		uploadRequest.Tags.Add(MemoryTags.TagChatId, chatId);
 		uploadRequest.Tags.Add(MemoryTags.TagMemory, memoryName);
 
-		await memoryClient.ImportDocumentAsync(uploadRequest, cancellationToken);
+		await memoryClient.ImportDocumentAsync(uploadRequest, cancellationToken: cancellationToken);
 	}
 
 	public static async Task RemoveChatMemories(

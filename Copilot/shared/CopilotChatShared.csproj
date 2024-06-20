@@ -9,8 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.62.240605.1" />
-        <PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.62.240605.1" />
+        <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.64.240619.1" />
+        <PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.64.240619.1" />
     </ItemGroup>
 
 </Project>
