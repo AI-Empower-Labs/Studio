@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -77,11 +78,13 @@ public sealed class PluginEndpoint
 		PluginConfig config,
 		CancellationToken cancellationToken)
 	{
+		string unescapedSubject = Regex.Unescape(subject);
+		string unescapedBody = Regex.Unescape(body);
 		SendResponse email = await Email
 			.From(config.SenderEmail, config.SenderName)
 			.To(recipientEmails)
-			.Subject(subject)
-			.Body(body)
+			.Subject(unescapedSubject)
+			.Body(unescapedBody)
 			.SendAsync(cancellationToken);
 
 		return email.Successful
