@@ -1,16 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <RootNamespace>CopilotChat.Shared</RootNamespace>
-        <TargetFramework>net8.0</TargetFramework>
-        <RollForward>LatestMajor</RollForward>
-        <ImplicitUsings>disable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
+	<PropertyGroup>
+		<RootNamespace>CopilotChat.Shared</RootNamespace>
+		<TargetFramework>net8.0</TargetFramework>
+		<RollForward>LatestMajor</RollForward>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.64.240619.1" />
-        <PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.64.240619.1" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.KernelMemory.Core" Version="0.65.240620.1"/>
+	</ItemGroup>
 
 </Project>
