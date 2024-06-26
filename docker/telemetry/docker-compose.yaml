@@ -102,11 +102,10 @@ services:  # Defines the services part of the compose file
     environment:
       <<: *environment
       configPath: /opt/embedding/  # Environment variable specifying the config path inside the container
-      ASPNETCORE_URLS: http://*:8080
     volumes:
       - ./embedding/appsettings.json:/opt/embedding/appsettings.json  # Mounts a configuration file into the container
     healthcheck:  # Health check using a curl command to a local endpoint
-      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 1m  # Health check interval
       timeout: 10s  # Timeout for the health check
       retries: 3  # Number of retries before considering the service unhealthy
