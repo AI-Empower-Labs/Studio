@@ -84,7 +84,7 @@ services:  # Defines the services part of the compose file
       - ai_internal  # Connects to the internal network
 
   embedding:  # Embedding service
-    image: registry.aiempowerlabs.com/multilingual-e5-large:latest  # Image to use for embedding service
+    image: registry.aiempowerlabs.com/embedding_base:latest  # Image to use for embedding service
     logging: *default-logging
     restart: unless-stopped
     environment:
