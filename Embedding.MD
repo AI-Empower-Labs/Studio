@@ -5,24 +5,18 @@ AI Empower Labs delivers two embedding models:
 ## Models
 
 ### 1. multilingual-e5-large
-- **Hugging Face Link**: [multilingual-e5-large](https://huggingface.co/intfloat/multilingual-e5-large)
-- **Docker Image**: `registry.aiempowerlabs.com/multilingual-e5-large:1.0.0`
+- **Hugging Face Link**: [multilingual-e5-large](https://huggingface.co/intfloat/multilingual-e5-large-instruct)
+- **Docker Image**: `registry.aiempowerlabs.com/embedding:latest`
 
 ### 2. mxbai-embed-large-v1
 - **Hugging Face Link**: [mxbai-embed-large-v1](https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1)
-- **Docker Image**: `registry.aiempowerlabs.com/mxbai-embed-large-v1:1.0.0`
+- **Docker Image**: `registry.aiempowerlabs.com/embedding:latest`
 
 ## Features
 
 Both models are multilingual and support GPU acceleration using NVIDIA CUDA. GPU usage is optional but highly recommended for significant performance improvements. Each embedding instance supports only one GPU at a time. 
 
 ## Usage
-
-### Specifying GPU
-To specify which GPU to use, set the `CudaDevice` environment variable. For example, to use the first installed GPU device, use the following Docker parameter:
-```
--e CudaDevice=0
-```
 
 ### Enabling GPU Support
 
