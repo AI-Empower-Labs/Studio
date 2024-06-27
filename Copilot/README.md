@@ -22,7 +22,7 @@ To deploy the sample to Azure, please view [Deploying Chat Copilot](./scripts/de
 
 You will need the following items to run the sample:
 
-- [.NET 7.0 SDK](https://dotnet.microsoft.com/download/dotnet/7.0) _(via Setup install.\* script)_
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) _(via Setup install.\* script)_
 - [Node.js](https://nodejs.org/en/download) _(via Setup install.\* script)_
 - [Yarn](https://classic.yarnpkg.com/docs/install) _(via Setup install.\* script)_
 - [Git](https://www.git-scm.com/downloads)
@@ -41,7 +41,7 @@ You will need the following items to run the sample:
    > NOTE: Ensure that you have [PowerShell Core 6+](https://github.com/PowerShell/PowerShell) installed. This is different from the default PowerShell installed on Windows.
 1. Clone this repository
    ```powershell
-   git clone https://github.com/microsoft/chat-copilot
+   git clone https://github.com/AI-Empower-Labs/Studio/
    ```
 1. Setup your environment.
 
@@ -52,7 +52,7 @@ You will need the following items to run the sample:
    .\Install.ps1
    ```
 
-   > NOTE: This script will install `Chocolatey`, `dotnet-7.0-sdk`, `nodejs`, and `yarn`.
+   > NOTE: This script will install `Chocolatey`, `dotnet-8.0-sdk`, `nodejs`, and `yarn`.
 
    > NOTE: If you receive an error that the script is not digitally signed or cannot execute on the system, you may need to [change the execution policy](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3#change-the-execution-policy) (see list of [policies](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3#powershell-execution-policies) and [scopes](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.3#execution-policy-scope)) or [unblock the script](https://learn.microsoft.com/powershell/module/microsoft.powershell.security/get-executionpolicy?view=powershell-7.3#example-4-unblock-a-script-to-run-it-without-changing-the-execution-policy).
 
@@ -95,7 +95,7 @@ You will need the following items to run the sample:
 1. Open Bash as an Administrator.
 1. Clone this repository
    ```bash
-   git clone https://github.com/microsoft/chat-copilot
+   git clone [https://github.com/microsoft/chat-copilot](https://github.com/AI-Empower-Labs/Studio/)
    ```
 1. Configure environment.
 
@@ -111,7 +111,7 @@ You will need the following items to run the sample:
    ./install-apt.sh
    ```
 
-   > NOTE: This script uses `apt` to install `dotnet-sdk-7.0`, `nodejs`, and `yarn`.
+   > NOTE: This script uses `apt` to install `dotnet-sdk-8.0`, `nodejs`, and `yarn`.
 
    **macOS**
 
@@ -362,7 +362,7 @@ Backend authentication via Azure AD must be enabled. Detailed instructions for e
 
    # Update and install dotnet
    sudo apt update;
-   sudo apt install --assume-yes dotnet-sdk-7.0;
+   sudo apt install --assume-yes dotnet-sdk-8.0;
    ```
 
 # A note on branches
