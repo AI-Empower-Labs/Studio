@@ -95,7 +95,7 @@ You will need the following items to run the sample:
 1. Open Bash as an Administrator.
 1. Clone this repository
    ```bash
-   git clone [https://github.com/microsoft/chat-copilot](https://github.com/AI-Empower-Labs/Studio/)
+   git clone https://github.com/AI-Empower-Labs/Studio
    ```
 1. Configure environment.
 
