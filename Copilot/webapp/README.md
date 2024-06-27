@@ -3,6 +3,9 @@
 This directory contains the source code for Chat Copilot's frontend web application. The backend web API service component can be found in the [webapi/](../webapi/) directory.
 
 ## Running the Chat Copilot sample
+### Prerequsites
+Make sure there is a version of AI Empower Labs Studio running and you have access to it, see [docker/minimum](https://github.com/AI-Empower-Labs/Studio/tree/main/docker/minimum)
+
 To configure and run the full Chat Copilot application, please view the [main instructions](../README.md#instructions).
 
 # (Under Development)
