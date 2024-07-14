@@ -18,11 +18,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Marten" Version="7.20.1"/>
-		<PackageReference Include="Microsoft.Identity.Web" Version="2.19.1"/>
-		<PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.65.240620.1"/>
-		<PackageReference Include="Microsoft.SemanticKernel" Version="1.15.0"/>
-		<PackageReference Include="Microsoft.SemanticKernel.Abstractions" Version="1.15.0"/>
+		<PackageReference Include="Marten" Version="7.23.1" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="2.20.0" />
+		<PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.67.240712.1" />
+		<PackageReference Include="Microsoft.SemanticKernel" Version="1.15.1" />
+		<PackageReference Include="Microsoft.SemanticKernel.Abstractions" Version="1.15.1" />
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.MistralAI" Version="1.13.0-alpha"/>
 		<PackageReference Include="Microsoft.SemanticKernel.Plugins.Core" Version="1.5.0-alpha"/>
 		<PackageReference Include="Microsoft.SemanticKernel.Plugins.Memory" Version="1.5.0-alpha"/>
