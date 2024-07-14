@@ -46,7 +46,7 @@ public sealed record ChatSession : IStorageEntity
 	/// <summary>
 	///     A list of enabled plugins.
 	/// </summary>
-	public HashSet<string> EnabledPlugins { get; } = new();
+	public HashSet<string> EnabledPlugins { get; set; } = new();
 
 	/// <summary>
 	///     Used to determine if the current chat requires upgrade.
