@@ -27,6 +27,6 @@ public sealed record SemanticChatMemoryItem
 	/// <returns>A formatted string representing the item.</returns>
 	public string ToFormattedString()
 	{
-		return $"{Label}: {Details?.Trim()}";
+		return $"{Label}: {Details.Trim()}";
 	}
 }
