@@ -48,7 +48,36 @@ public sealed record SemanticChatMemory
 	/// <returns>A semantic chat memory.</returns>
 	public static SemanticChatMemory FromJson(string json)
 	{
-		SemanticChatMemory? result = JsonSerializer.Deserialize<SemanticChatMemory>(json);
+		SemanticChatMemory? result = PowerParseJson<SemanticChatMemory>(json);
 		return result ?? throw new ArgumentException("Failed to deserialize chat memory to json.");
 	}
+
+	/// <summary>
+	/// Source: https://github.com/mehrandvd/SemanticValidation
+	/// Parses <paramref name="text"/> to JSON in a more tolerant way suitable
+	/// for OpenAI results.
+	/// Sometimes even the prompt dictated to return a JSON, but OpenAI returns it
+	/// with some additional characters like a heading and tailing ```, or even a starting ```json.
+	/// This method tries its best to parse these texts to a JSON.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="text"></param>
+	/// <returns></returns>
+	public static T? PowerParseJson<T>(string text)
+	{
+		string trim = text.Trim(' ', '"', '\'', '`');
+
+		int firstBrace = trim.IndexOfAny(['{', '[']);
+		int lastBrace = trim.LastIndexOfAny(['}', ']']) + 1;
+
+		string clear = trim[firstBrace..lastBrace];
+		T? json = JsonSerializer.Deserialize<T>(clear, s_powerParseJsonSerializerOptions);
+
+		return json;
+	}
+
+	private static readonly JsonSerializerOptions s_powerParseJsonSerializerOptions = new()
+	{
+		AllowTrailingCommas = true
+	};
 }
