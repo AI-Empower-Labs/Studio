@@ -61,8 +61,7 @@ internal static class SemanticChatMemoryExtractor
 			{
 				// Skip kernel memory extraction for this item if it fails.
 				// We cannot rely on the model to response with perfect Json each time.
-				logger.LogInformation("Unable to extract kernel memory for {MemoryType}: {Message}. Continuing...", memoryType,
-					ex.Message);
+				logger.LogInformation("Unable to extract kernel memory for {MemoryType}: {Message}. Continuing...", memoryType, ex.Message);
 			}
 		}
 
