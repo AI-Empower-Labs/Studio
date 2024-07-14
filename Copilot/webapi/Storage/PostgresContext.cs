@@ -74,7 +74,6 @@ public class PostgresContext<T>(IDocumentStore documentStore) : IStorageContext<
 
 		await using IDocumentSession session = documentStore.LightweightSession();
 		T? entity = await session.LoadAsync<T>(entityId, cancellationToken);
-		await session.SaveChangesAsync(cancellationToken);
 		if (entity is null)
 		{
 			throw new KeyNotFoundException($"Entity with id {entityId} not found.");
