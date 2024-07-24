@@ -130,7 +130,7 @@ This subsection configures the settings for various large language models used i
 - **Models**: Configuration options for multiple models like `phi-2`, `llama2-70b-4096`, `mixtral-8x7b-32768`, etc.
 - **Attributes**:
   - **Default**: Specifies if the model is the default choice for operations.
-  - **BaseAddress**: API endpoint for the model.
+  - **Address**: API endpoint for the model.
   - **AuthorizationToken**: Security token for accessing the model API.
   - **ContextSize**: Defines the maximum context size (in tokens) that the model can handle.
   - **DisplayName**: A friendly name for the model used for identification in logs or user interfaces.
@@ -144,7 +144,7 @@ Select the model and update its attributes according to your operational require
     "Llm": {
         "gemma-7b-it": {
             "Default": "false",
-            "BaseAddress": "https://newapi.example.com",
+            "Address": "https://newapi.example.com",
             "AuthorizationToken": "new_authorization_token_here",
             "ContextSize": "8192",
             "DisplayName": "New DisplayName"
@@ -160,7 +160,7 @@ Manages the embedding models for transforming text into numerical vectors, which
 - **Attributes**:
   - **Default**: Indicates if this is the default embedding model.
   - **Type**: The type or source of the embedding model.
-  - **BaseAddress**: API endpoint for accessing the model.
+  - **Address**: API endpoint for accessing the model.
   - **MaxTokens**: Maximum number of tokens that the model can process in one request.
   - **Dimensions**: The dimensionality of the embeddings generated.
 
@@ -172,25 +172,9 @@ Modify properties such as `MaxTokens` or `Dimensions` to tune the model's perfor
     "Embedding": {
         "multilingual-e5-large": {
             "Default": true,
-            "BaseAddress": "http://127.0.0.1:3000",
+            "Address": "http://127.0.0.1:3000",
             "MaxTokens": 1024,
             "Dimensions": 2048
-        }
-    }
-}
-```
-
-#### Tokenization
-Configures tokenization services, essential for text preprocessing before it is fed into AI models.
-
-**To customize**:
-You may need to change the `BaseAddress` if the endpoint of the tokenization service changes.
-
-```json
-"AiStudioOptions": {
-    "Tokenization": {
-        "multilingual-e5-large": {
-            "BaseAddress": "http://new_tokenization_service.example.com"
         }
     }
 }
@@ -200,17 +184,17 @@ You may need to change the `BaseAddress` if the endpoint of the tokenization ser
 Configures transcription services that convert speech to text.
 
 - **Default**: Whether this service is selected by default.
-- **BaseAddress**: API endpoint for the transcription service.
+- **Address**: API endpoint for the transcription service.
 
 **To customize**:
-Update the `BaseAddress` to point to a new transcription service if changed.
+Update the `Address` to point to a new transcription service if changed.
 
 ```json
 "AiStudioOptions": {
     "Transcription": {
         "AiEmpowerLabs": {
             "Default": "true",
-            "BaseAddress": "http://new_transcription_service.example.com"
+            "Address": "http://new_transcription_service.example.com"
         }
     }
 }
