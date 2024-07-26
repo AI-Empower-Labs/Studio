@@ -609,12 +609,10 @@ public sealed class ChatPlugin(
 		// Total token usage of each semantic function
 		foreach (string function in TokenUtils.SemanticFunctions.Values)
 		{
-			if (kernelArguments.TryGetValue($"{function}TokenUsage", out object? tokenUsage))
+			if (kernelArguments.TryGetValue($"{function}TokenUsage", out object? tokenUsage)
+				&& tokenUsage is string tokenUsageString)
 			{
-				if (tokenUsage is string tokenUsageString)
-				{
-					tokenUsageDict.Add(function, int.Parse(tokenUsageString, CultureInfo.InvariantCulture));
-				}
+				tokenUsageDict.Add(function, int.Parse(tokenUsageString, CultureInfo.InvariantCulture));
 			}
 		}
 
