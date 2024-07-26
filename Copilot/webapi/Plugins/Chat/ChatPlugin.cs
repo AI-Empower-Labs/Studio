@@ -555,8 +555,6 @@ public sealed class ChatPlugin(
 			MaxTokens = _promptOptions.ResponseTokenLimit,
 			Temperature = _promptOptions.ResponseTemperature,
 			TopP = _promptOptions.ResponseTopP,
-			//SafePrompt = false,
-			//ToolCallBehavior = MistralAIToolCallBehavior.AutoInvokeKernelFunctions
 			FrequencyPenalty = _promptOptions.ResponseFrequencyPenalty,
 			PresencePenalty = _promptOptions.ResponsePresencePenalty,
 			ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
