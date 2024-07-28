@@ -18,9 +18,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Marten" Version="7.25.1" />
+		<PackageReference Include="Marten" Version="7.25.2" />
 		<PackageReference Include="Microsoft.Identity.Web" Version="3.0.1" />
-		<PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.68.240722.1" />
+		<PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.69.240727.1" />
 		<PackageReference Include="Microsoft.SemanticKernel" Version="1.16.1" />
 		<PackageReference Include="Microsoft.SemanticKernel.Abstractions" Version="1.16.1" />
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.MistralAI" Version="1.13.0-alpha"/>
