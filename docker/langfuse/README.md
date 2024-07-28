@@ -32,10 +32,11 @@ docker compose down
 
 ### Setting Up Langfuse
 
-1. Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
+1. Open your browser and navigate to [http://localhost:3100](http://localhost:3100).
 2. Create a new user account and log in.
-3. Go to the Settings Menu and click on "Create new API keys".
-4. Copy the generated API keys.
+3. Create new project
+4. Go to the Settings Menu and click on "Create new API keys".
+5. Copy the generated API keys.
 
 ### Configuring the Application
 
