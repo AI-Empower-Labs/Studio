@@ -100,7 +100,7 @@ services:  # Defines the services part of the compose file
     logging: *default-logging  # Uses the defined reusable logging configuration
     command: --config /app/config.yaml --detailed_debug
     environment:
-      - LANGFUSE_HOST=http://langfuse:3000
+      - LANGFUSE_HOST=http://langfuse:3100
       - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY}
       - LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY}
     ports:
@@ -123,12 +123,12 @@ services:  # Defines the services part of the compose file
       timeout: 20s
       retries: 5
     ports:
-      - 3000:3000
+      - 3100:3000
     environment:
       - DATABASE_URL=postgresql://postgres:password@postgres:5432/langfuse
       - NEXTAUTH_SECRET=password
       - SALT=mysalt
-      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_URL=http://localhost:3100
       - TELEMETRY_ENABLED=false
       - LANGFUSE_DEFAULT_PROJECT_ROLE=ADMIN
       - LANGFUSE_DEFAULT_PROJECT_ID=AiEmpowerLabs
