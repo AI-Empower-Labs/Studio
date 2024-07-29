@@ -6,7 +6,7 @@ services:
      context: ..
      dockerfile: docker/webapp/Dockerfile
    ports:
-     - 3000:3000
+     - "3000:3000"
    environment:
      - REACT_APP_BACKEND_URI=http://localhost:3080
    depends_on:
@@ -18,7 +18,7 @@ services:
       context: ..
       dockerfile: docker/webapi/Dockerfile
     ports:
-      - 3080:8080
+      - "3080:8080"
     volumes:
       - ./webapi/appsettings.json:/app/appsettings.json # Mounts a configuration file into the container
     env_file:
