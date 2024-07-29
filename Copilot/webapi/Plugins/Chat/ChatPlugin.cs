@@ -9,6 +9,8 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Azure.AI.OpenAI;
+
 using CopilotChat.WebApi.Auth;
 using CopilotChat.WebApi.Hubs;
 using CopilotChat.WebApi.Models.Response;
@@ -30,6 +32,7 @@ using CopilotChatMessage = CopilotChat.WebApi.Models.Storage.CopilotChatMessage;
 namespace CopilotChat.WebApi.Plugins.Chat;
 
 #pragma warning disable SKEXP0070
+#pragma warning disable SKEXP0010
 
 /// <summary>
 ///     ChatPlugin offers a more coherent chat experience by using memories
@@ -44,6 +47,12 @@ public sealed class ChatPlugin(
 	IOptions<PromptsOptions> promptOptions,
 	ILogger logger)
 {
+	/// <summary>
+	/// Tags used for Langfuse metadata in chat requests.
+	/// </summary>
+	private static readonly string[] s_langFuseTags = ["AI Empower Labs", "Copilot"];
+	private static readonly string[] s_langFuseTagsWithIntent = [..s_langFuseTags, "Intent"];
+
 	/// <summary>
 	///     Settings containing prompt texts.
 	/// </summary>
@@ -205,8 +214,12 @@ public sealed class ChatPlugin(
 	/// <param name="userMessage">ChatMessage object representing new user message.</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
 	/// <returns>The created chat message containing the model-generated response.</returns>
-	private async Task<CopilotChatMessage> GetChatResponse(string chatId, string userId,
-		KernelArguments chatContext, CopilotChatMessage userMessage, CancellationToken cancellationToken)
+	private async Task<CopilotChatMessage> GetChatResponse(
+		string chatId,
+		string userId,
+		KernelArguments chatContext,
+		CopilotChatMessage userMessage,
+		CancellationToken cancellationToken)
 	{
 		// Render system instruction components and create the meta-prompt template
 		string systemInstructions = await AsyncUtils.SafeInvokeAsync(
@@ -221,14 +234,14 @@ public sealed class ChatPlugin(
 			// Get the audience
 			await UpdateBotResponseStatusOnClient(chatId, "Extracting audience", cancellationToken);
 			audience = await AsyncUtils.SafeInvokeAsync(
-				() => GetAudience(chatContext, cancellationToken), nameof(GetAudience));
+				() => GetAudience(chatContext, chatId, userId, cancellationToken), nameof(GetAudience));
 			metaPrompt.AddSystemMessage(audience);
 		}
 
 		// Extract user intent from the conversation history.
 		await UpdateBotResponseStatusOnClient(chatId, "Extracting user intent", cancellationToken);
 		string userIntent = await AsyncUtils.SafeInvokeAsync(
-			() => GetUserIntent(chatContext, cancellationToken), nameof(GetUserIntent));
+			() => GetUserIntent(chatContext, chatId, userId, cancellationToken), nameof(GetUserIntent));
 		metaPrompt.AddSystemMessage(userIntent);
 
 		// Calculate max amount of tokens to use for memories
@@ -351,8 +364,14 @@ public sealed class ChatPlugin(
 	///     Note that only those who have spoken will be included.
 	/// </summary>
 	/// <param name="context">Kernel context variables.</param>
+	/// <param name="chatId">The chat ID</param>
+	/// <param name="userId">The user ID</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
-	private async Task<string> GetAudience(KernelArguments context, CancellationToken cancellationToken)
+	private async Task<string> GetAudience(
+		KernelArguments context,
+		string chatId,
+		string userId,
+		CancellationToken cancellationToken)
 	{
 		// Clone the context to avoid modifying the original context variables
 		KernelArguments audienceContext = new(context);
@@ -369,7 +388,7 @@ public sealed class ChatPlugin(
 
 		KernelFunction completionFunction = kernel.CreateFunctionFromPrompt(
 			_promptOptions.SystemAudienceExtraction,
-			CreateIntentCompletionSettings(),
+			CreateIntentCompletionSettings(chatId, userId),
 			"SystemAudienceExtraction",
 			"Extract audience");
 
@@ -393,8 +412,14 @@ public sealed class ChatPlugin(
 	///     Extract user intent from the conversation history.
 	/// </summary>
 	/// <param name="context">Kernel context.</param>
+	/// <param name="chatId">The chat ID</param>
+	/// <param name="userId">The user ID</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
-	private async Task<string> GetUserIntent(KernelArguments context, CancellationToken cancellationToken)
+	private async Task<string> GetUserIntent(
+		KernelArguments context,
+		string chatId,
+		string userId,
+		CancellationToken cancellationToken)
 	{
 		// Clone the context to avoid modifying the original context variables
 		KernelArguments intentContext = new(context);
@@ -414,7 +439,7 @@ public sealed class ChatPlugin(
 
 		KernelFunction completionFunction = kernel.CreateFunctionFromPrompt(
 			_promptOptions.SystemIntentExtraction,
-			CreateIntentCompletionSettings(),
+			CreateIntentCompletionSettings(chatId, userId),
 			"UserIntentExtraction",
 			"Extract user intent");
 
@@ -546,25 +571,29 @@ public sealed class ChatPlugin(
 	/// <summary>
 	///     Create `OpenAIPromptExecutionSettings` for chat response. Parameters are read from the PromptSettings class.
 	/// </summary>
-#pragma warning disable CA1859
-	private PromptExecutionSettings CreateChatRequestSettings()
-#pragma warning restore CA1859
+	private OpenAIPromptExecutionSettings CreateChatRequestSettings(string chatId, string userId)
 	{
-		return new OpenAIPromptExecutionSettings
+		var x = new OpenAIPromptExecutionSettings
 		{
 			MaxTokens = _promptOptions.ResponseTokenLimit,
 			Temperature = _promptOptions.ResponseTemperature,
 			TopP = _promptOptions.ResponseTopP,
 			FrequencyPenalty = _promptOptions.ResponseFrequencyPenalty,
 			PresencePenalty = _promptOptions.ResponsePresencePenalty,
-			ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
+			ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions,
+			AzureChatExtensionsOptions = new AzureChatExtensionsOptions
+			{
+				Extensions = { new LangfuseExtensionConfiguration(chatId, userId, s_langFuseTags) }
+			}
 		};
+
+		return x;
 	}
 
 	/// <summary>
 	///     Create `OpenAIPromptExecutionSettings` for intent response. Parameters are read from the PromptSettings class.
 	/// </summary>
-	private OpenAIPromptExecutionSettings CreateIntentCompletionSettings()
+	private OpenAIPromptExecutionSettings CreateIntentCompletionSettings(string chatId, string userId)
 	{
 		return new OpenAIPromptExecutionSettings
 		{
@@ -573,7 +602,11 @@ public sealed class ChatPlugin(
 			TopP = _promptOptions.IntentTopP,
 			FrequencyPenalty = _promptOptions.IntentFrequencyPenalty,
 			PresencePenalty = _promptOptions.IntentPresencePenalty,
-			StopSequences = new[] { "] bot:" }
+			StopSequences = new[] { "] bot:" },
+			AzureChatExtensionsOptions = new AzureChatExtensionsOptions
+			{
+				Extensions = { new LangfuseExtensionConfiguration(chatId, userId, s_langFuseTagsWithIntent) }
+			}
 		};
 	}
 
@@ -643,7 +676,7 @@ public sealed class ChatPlugin(
 		IAsyncEnumerable<StreamingChatMessageContent> stream =
 			chatCompletion.GetStreamingChatMessageContentsAsync(
 				prompt.MetaPromptTemplate,
-				CreateChatRequestSettings(),
+				CreateChatRequestSettings(chatId, userId),
 				kernel,
 				cancellationToken);
 

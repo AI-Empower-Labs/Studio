@@ -1,7 +1,11 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -50,10 +54,15 @@ internal sealed class SemanticKernelProvider(IOptions<AiEmpowerLabsOptions> opti
 		{
 			Uri uri = new(options.Value.Url);
 			uri = new Uri(uri, "/api/openai/v1/chat/completions");
+
+			HttpClientHandler httpMessageHandler = new();
+			RequestUriReWriterHandler requestUriReWriterHandler = new(httpMessageHandler, uri);
+			RewriterHandler rewriterHandler = new(requestUriReWriterHandler, sp.GetRequiredService<ILogger<RewriterHandler>>());
+
 			return new(options.Value.LlmModelName,
 				"NoKey",
 				null,
-				new HttpClient(new RequestUriReWriterHandler(uri)),
+				new HttpClient(rewriterHandler),
 				sp.GetService<ILoggerFactory>());
 		};
 		builder.Services.AddKeyedSingleton<IChatCompletionService>(null, factory);
@@ -67,12 +76,61 @@ internal sealed class SemanticKernelProvider(IOptions<AiEmpowerLabsOptions> opti
 /// Since Microsoft.SemanticKernel does not provide a direct way to set the address of the OpenAI server,
 /// Therefore, you need to customize a DelegatingHandler and change the OpenAI server address to the Local-LLM-Server address.
 /// </summary>
-internal sealed class RequestUriReWriterHandler(Uri rewriteUri) : DelegatingHandler(new HttpClientHandler())
+internal sealed class RequestUriReWriterHandler(
+	HttpMessageHandler httpMessageHandler,
+	Uri rewriteUri) : DelegatingHandler(httpMessageHandler)
 {
 	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 	{
 		request.RequestUri = rewriteUri;
 		HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
 		return response;
+	}
+}
+
+/// <summary>
+/// Extract data_sources property from request and convert it to metadata property
+/// </summary>
+/// <param name="httpMessageHandler"></param>
+/// <param name="logger"></param>
+internal sealed class RewriterHandler(
+	HttpMessageHandler httpMessageHandler,
+	ILogger<RewriterHandler> logger) : DelegatingHandler(httpMessageHandler)
+{
+	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+	{
+		if (request.Content is null)
+		{
+			return await base.SendAsync(request, cancellationToken);
+		}
+
+		string requestBodyString = await request.Content.ReadAsStringAsync(cancellationToken);
+		Dictionary<string, JsonElement>? requestBody = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(requestBodyString);
+		if (requestBody is not null
+			&& requestBody.Remove("data_sources", out JsonElement dataSourcesJsonElement))
+		{
+			JsonElement[]? dataSourcesArray = dataSourcesJsonElement.Deserialize<JsonElement[]>();
+			if (dataSourcesArray is not null && dataSourcesArray.Length == 1)
+			{
+				Dictionary<string, JsonNode>? firstItemDataSources = dataSourcesArray[0].Deserialize<Dictionary<string, JsonNode>>();
+				if (firstItemDataSources is not null)
+				{
+					JsonObject doc = new();
+					foreach (KeyValuePair<string, JsonNode> pair in firstItemDataSources)
+					{
+						doc[pair.Key] = pair.Value;
+					}
+
+					requestBody.Add("metadata", doc.Deserialize<JsonElement>());
+					using JsonContent requestContent = JsonContent.Create(requestBody);
+					request.Content = requestContent;
+					return await base.SendAsync(request, cancellationToken);
+				}
+			}
+		}
+
+		logger.LogError("Could not extract langfuse metadata");
+
+		return await base.SendAsync(request, cancellationToken);
 	}
 }

@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Azure.AI.OpenAI;
+
 using CopilotChat.WebApi.Extensions;
 using CopilotChat.WebApi.Models.Request;
 using CopilotChat.WebApi.Options;
@@ -13,6 +15,9 @@ using CopilotChat.WebApi.Plugins.Utils;
 using Microsoft.Extensions.Logging;
 using Microsoft.KernelMemory;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
+
+#pragma warning disable SKEXP0010
 
 namespace CopilotChat.WebApi.Plugins.Chat;
 
@@ -21,6 +26,8 @@ namespace CopilotChat.WebApi.Plugins.Chat;
 /// </summary>
 internal static class SemanticChatMemoryExtractor
 {
+	private static readonly string[] s_langFuseTags = ["AI Empower Labs", "Copilot", "Memory"];
+
 	/// <summary>
 	///     Extract and save kernel memory.
 	/// </summary>
@@ -90,7 +97,14 @@ internal static class SemanticChatMemoryExtractor
 				["knowledgeCutoff"] = options.KnowledgeCutoffDate
 			};
 
-			KernelFunction completionFunction = kernel.CreateFunctionFromPrompt(memoryPrompt);
+			KernelFunction completionFunction = kernel.CreateFunctionFromPrompt(memoryPrompt,
+				executionSettings: new OpenAIPromptExecutionSettings
+				{
+					AzureChatExtensionsOptions = new AzureChatExtensionsOptions
+					{
+						Extensions = { new LangfuseExtensionConfiguration(chatId, "system", s_langFuseTags) }
+					}
+				});
 			FunctionResult result = await completionFunction.InvokeAsync(
 				kernel,
 				memoryExtractionArguments,
