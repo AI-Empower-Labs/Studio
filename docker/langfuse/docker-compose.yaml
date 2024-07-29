@@ -100,7 +100,7 @@ services:  # Defines the services part of the compose file
     logging: *default-logging  # Uses the defined reusable logging configuration
     command: --config /app/config.yaml --detailed_debug
     environment:
-      - LANGFUSE_HOST=http://langfuse:3100
+      - LANGFUSE_HOST=http://langfuse:3000
       - LANGFUSE_PUBLIC_KEY=${LANGFUSE_PUBLIC_KEY}
       - LANGFUSE_SECRET_KEY=${LANGFUSE_SECRET_KEY}
     ports:
