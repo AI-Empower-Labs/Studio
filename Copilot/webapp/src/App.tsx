@@ -26,7 +26,7 @@ export const useClasses = makeStyles({
     },
     header: {
         alignItems: 'center',
-        backgroundColor: tokens.colorBrandForeground2,
+        backgroundColor: '#312783',
         color: tokens.colorNeutralForegroundOnBrand,
         display: 'flex',
         '& h1': {
