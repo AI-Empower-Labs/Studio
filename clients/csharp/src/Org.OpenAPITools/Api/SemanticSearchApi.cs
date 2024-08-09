@@ -208,6 +208,29 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// Perform k-means clustering over semantic search log entries
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="semanticSearchQueryResultsClusteringRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KMeansCluster</returns>
+        KMeansCluster SemanticSearchQueryResultsClustering(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Perform k-means clustering over semantic search log entries
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="semanticSearchQueryResultsClusteringRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KMeansCluster</returns>
+        ApiResponse<KMeansCluster> SemanticSearchQueryResultsClusteringWithHttpInfo(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Rerank documents
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
@@ -473,6 +496,31 @@ namespace Org.OpenAPITools.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (QueryDocumentResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<QueryDocumentResponse>> SemanticSearchQueryWithHttpInfoAsync(QueryDocumentRequest queryDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Perform k-means clustering over semantic search log entries
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="semanticSearchQueryResultsClusteringRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KMeansCluster</returns>
+        System.Threading.Tasks.Task<KMeansCluster> SemanticSearchQueryResultsClusteringAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Perform k-means clustering over semantic search log entries
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="semanticSearchQueryResultsClusteringRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KMeansCluster)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KMeansCluster>> SemanticSearchQueryResultsClusteringWithHttpInfoAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -1779,6 +1827,156 @@ namespace Org.OpenAPITools.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SemanticSearchQuery", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Perform k-means clustering over semantic search log entries
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="semanticSearchQueryResultsClusteringRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KMeansCluster</returns>
+        public KMeansCluster SemanticSearchQueryResultsClustering(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0)
+        {
+            Org.OpenAPITools.Client.ApiResponse<KMeansCluster> localVarResponse = SemanticSearchQueryResultsClusteringWithHttpInfo(semanticSearchQueryResultsClusteringRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Perform k-means clustering over semantic search log entries
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="semanticSearchQueryResultsClusteringRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KMeansCluster</returns>
+        public Org.OpenAPITools.Client.ApiResponse<KMeansCluster> SemanticSearchQueryResultsClusteringWithHttpInfo(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'semanticSearchQueryResultsClusteringRequest' is set
+            if (semanticSearchQueryResultsClusteringRequest == null)
+            {
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'semanticSearchQueryResultsClusteringRequest' when calling SemanticSearchApi->SemanticSearchQueryResultsClustering");
+            }
+
+            Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json",
+                "text/csv",
+                "application/problem+json"
+            };
+
+            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = semanticSearchQueryResultsClusteringRequest;
+
+            localVarRequestOptions.Operation = "SemanticSearchApi.SemanticSearchQueryResultsClustering";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<KMeansCluster>("/api/semantic/query-results-clustering", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SemanticSearchQueryResultsClustering", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Perform k-means clustering over semantic search log entries
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="semanticSearchQueryResultsClusteringRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KMeansCluster</returns>
+        public async System.Threading.Tasks.Task<KMeansCluster> SemanticSearchQueryResultsClusteringAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Org.OpenAPITools.Client.ApiResponse<KMeansCluster> localVarResponse = await SemanticSearchQueryResultsClusteringWithHttpInfoAsync(semanticSearchQueryResultsClusteringRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Perform k-means clustering over semantic search log entries
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="semanticSearchQueryResultsClusteringRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KMeansCluster)</returns>
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<KMeansCluster>> SemanticSearchQueryResultsClusteringWithHttpInfoAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'semanticSearchQueryResultsClusteringRequest' is set
+            if (semanticSearchQueryResultsClusteringRequest == null)
+            {
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'semanticSearchQueryResultsClusteringRequest' when calling SemanticSearchApi->SemanticSearchQueryResultsClustering");
+            }
+
+
+            Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json",
+                "text/csv",
+                "application/problem+json"
+            };
+
+            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = semanticSearchQueryResultsClusteringRequest;
+
+            localVarRequestOptions.Operation = "SemanticSearchApi.SemanticSearchQueryResultsClustering";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KMeansCluster>("/api/semantic/query-results-clustering", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("SemanticSearchQueryResultsClustering", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

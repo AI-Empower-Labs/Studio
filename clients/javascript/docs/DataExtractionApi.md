@@ -4,6 +4,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**apiExtractThematicSimilarityClusterPost**](DataExtractionApi.md#apiExtractThematicSimilarityClusterPost) | **POST** /api/extract/thematic-similarity-cluster | Generate thematic similarity clusters using the K-Means algorithm
 [**embedding**](DataExtractionApi.md#embedding) | **POST** /api/extract/embed | Converts data to a numerical vector array
 [**keywordExtraction**](DataExtractionApi.md#keywordExtraction) | **POST** /api/extract/keywords | Performs keyword extraction on source text
 [**namedEntityRecognition**](DataExtractionApi.md#namedEntityRecognition) | **POST** /api/extract/entities | Extracts named entities from provided text
@@ -12,6 +13,49 @@ Method | HTTP request | Description
 [**tokenize**](DataExtractionApi.md#tokenize) | **POST** /api/extract/tokenize | Converts data to a integer token array
 [**transcriptionSynchronous**](DataExtractionApi.md#transcriptionSynchronous) | **POST** /api/extract/transcription | Synchronous transcribe audio
 
+
+
+## apiExtractThematicSimilarityClusterPost
+
+> KMeansCluster apiExtractThematicSimilarityClusterPost(apiExtractThematicSimilarityClusterPostRequest)
+
+Generate thematic similarity clusters using the K-Means algorithm
+
+### Example
+
+```javascript
+import StudioAiEmpowerLabs from 'studio_ai_empower_labs';
+
+let apiInstance = new StudioAiEmpowerLabs.DataExtractionApi();
+let apiExtractThematicSimilarityClusterPostRequest = new StudioAiEmpowerLabs.ApiExtractThematicSimilarityClusterPostRequest(); // ApiExtractThematicSimilarityClusterPostRequest | 
+apiInstance.apiExtractThematicSimilarityClusterPost(apiExtractThematicSimilarityClusterPostRequest, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiExtractThematicSimilarityClusterPostRequest** | [**ApiExtractThematicSimilarityClusterPostRequest**](ApiExtractThematicSimilarityClusterPostRequest.md)|  | 
+
+### Return type
+
+[**KMeansCluster**](KMeansCluster.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/csv, application/problem+json
 
 
 ## embedding
@@ -306,7 +350,7 @@ let opts = {
   'temperature': 0, // Number | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M)
   'splitOnWord': false, // Boolean | Split into word segments. (optional, default is false)
   'languageDetection': false, // Boolean | Enable transcription language detection (Optional. default is false)
-  'noiseReduction': false // Boolean | Enable noise reduction from audio stream before transcription (Optional. default is false)
+  'enableNoiseReduction': false // Boolean | Enable noise reduction from audio stream before transcription (Optional. default is false)
 };
 apiInstance.transcriptionSynchronous(files, opts, (error, data, response) => {
   if (error) {
@@ -329,7 +373,7 @@ Name | Type | Description  | Notes
  **temperature** | **Number**| The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) | [optional] [default to 0]
  **splitOnWord** | **Boolean**| Split into word segments. (optional, default is false) | [optional] [default to false]
  **languageDetection** | **Boolean**| Enable transcription language detection (Optional. default is false) | [optional] [default to false]
- **noiseReduction** | **Boolean**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false]
+ **enableNoiseReduction** | **Boolean**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false]
 
 ### Return type
 

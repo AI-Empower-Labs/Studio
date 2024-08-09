@@ -14,10 +14,12 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
+import org.openapitools.client.model.ApiExtractThematicSimilarityClusterPostRequest;
 import org.openapitools.client.model.EmbeddingRequest;
 import org.openapitools.client.model.EmbeddingResponse;
 import java.io.File;
 import org.openapitools.client.model.HttpValidationProblemDetails;
+import org.openapitools.client.model.KMeansCluster;
 import org.openapitools.client.model.KeywordExtractionRequestBody;
 import org.openapitools.client.model.KeywordExtractionResponse;
 import org.openapitools.client.model.NamedEntityRecognitionRequest;
@@ -45,6 +47,18 @@ import java.util.Map;
 public class DataExtractionApiTest {
 
     private final DataExtractionApi api = new DataExtractionApi();
+
+    /**
+     * Generate thematic similarity clusters using the K-Means algorithm
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void apiExtractThematicSimilarityClusterPostTest() throws ApiException {
+        ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest = null;
+        KMeansCluster response = api.apiExtractThematicSimilarityClusterPost(apiExtractThematicSimilarityClusterPostRequest);
+        // TODO: test validations
+    }
 
     /**
      * Converts data to a numerical vector array
@@ -146,8 +160,8 @@ public class DataExtractionApiTest {
         Double temperature = null;
         Boolean splitOnWord = null;
         Boolean languageDetection = null;
-        Boolean noiseReduction = null;
-        TranscriptionResponse response = api.transcriptionSynchronous(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction);
+        Boolean enableNoiseReduction = null;
+        TranscriptionResponse response = api.transcriptionSynchronous(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction);
         // TODO: test validations
     }
 

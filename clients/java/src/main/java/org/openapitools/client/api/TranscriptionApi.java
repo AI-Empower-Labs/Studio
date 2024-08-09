@@ -88,7 +88,7 @@ public class TranscriptionApi {
      * @param translateTo The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)
      * @param splitOnWord Split into word segments. (optional, default is false) (optional, default to false)
      * @param languageDetection Enable transcription language detection (Optional. default is false) (optional, default to false)
-     * @param noiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
+     * @param enableNoiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -101,7 +101,7 @@ public class TranscriptionApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call transcriptionAsynchronousCall(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call transcriptionAsynchronousCall(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -162,8 +162,8 @@ public class TranscriptionApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("languageDetection", languageDetection));
         }
 
-        if (noiseReduction != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("noiseReduction", noiseReduction));
+        if (enableNoiseReduction != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("enableNoiseReduction", enableNoiseReduction));
         }
 
         final String[] localVarAccepts = {
@@ -189,13 +189,13 @@ public class TranscriptionApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call transcriptionAsynchronousValidateBeforeCall(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call transcriptionAsynchronousValidateBeforeCall(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'files' is set
         if (files == null) {
             throw new ApiException("Missing the required parameter 'files' when calling transcriptionAsynchronous(Async)");
         }
 
-        return transcriptionAsynchronousCall(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction, _callback);
+        return transcriptionAsynchronousCall(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction, _callback);
 
     }
 
@@ -211,7 +211,7 @@ public class TranscriptionApi {
      * @param translateTo The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)
      * @param splitOnWord Split into word segments. (optional, default is false) (optional, default to false)
      * @param languageDetection Enable transcription language detection (Optional. default is false) (optional, default to false)
-     * @param noiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
+     * @param enableNoiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
      * @return TranscriptionAudioUploadResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -223,8 +223,8 @@ public class TranscriptionApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public TranscriptionAudioUploadResult transcriptionAsynchronous(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction) throws ApiException {
-        ApiResponse<TranscriptionAudioUploadResult> localVarResp = transcriptionAsynchronousWithHttpInfo(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction);
+    public TranscriptionAudioUploadResult transcriptionAsynchronous(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction) throws ApiException {
+        ApiResponse<TranscriptionAudioUploadResult> localVarResp = transcriptionAsynchronousWithHttpInfo(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction);
         return localVarResp.getData();
     }
 
@@ -240,7 +240,7 @@ public class TranscriptionApi {
      * @param translateTo The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)
      * @param splitOnWord Split into word segments. (optional, default is false) (optional, default to false)
      * @param languageDetection Enable transcription language detection (Optional. default is false) (optional, default to false)
-     * @param noiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
+     * @param enableNoiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
      * @return ApiResponse&lt;TranscriptionAudioUploadResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -252,8 +252,8 @@ public class TranscriptionApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TranscriptionAudioUploadResult> transcriptionAsynchronousWithHttpInfo(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction) throws ApiException {
-        okhttp3.Call localVarCall = transcriptionAsynchronousValidateBeforeCall(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction, null);
+    public ApiResponse<TranscriptionAudioUploadResult> transcriptionAsynchronousWithHttpInfo(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction) throws ApiException {
+        okhttp3.Call localVarCall = transcriptionAsynchronousValidateBeforeCall(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction, null);
         Type localVarReturnType = new TypeToken<TranscriptionAudioUploadResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -270,7 +270,7 @@ public class TranscriptionApi {
      * @param translateTo The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)
      * @param splitOnWord Split into word segments. (optional, default is false) (optional, default to false)
      * @param languageDetection Enable transcription language detection (Optional. default is false) (optional, default to false)
-     * @param noiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
+     * @param enableNoiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -283,9 +283,9 @@ public class TranscriptionApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call transcriptionAsynchronousAsync(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction, final ApiCallback<TranscriptionAudioUploadResult> _callback) throws ApiException {
+    public okhttp3.Call transcriptionAsynchronousAsync(List<File> files, String model, String language, String prompt, Double temperature, URI webHookUrl, String translateTo, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction, final ApiCallback<TranscriptionAudioUploadResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = transcriptionAsynchronousValidateBeforeCall(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction, _callback);
+        okhttp3.Call localVarCall = transcriptionAsynchronousValidateBeforeCall(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction, _callback);
         Type localVarReturnType = new TypeToken<TranscriptionAudioUploadResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

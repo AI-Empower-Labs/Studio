@@ -57,7 +57,7 @@ export default class TranscriptionApi {
      * @param {String} [translateTo] The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional)
      * @param {Boolean} [splitOnWord = false)] Split into word segments. (optional, default is false)
      * @param {Boolean} [languageDetection = false)] Enable transcription language detection (Optional. default is false)
-     * @param {Boolean} [noiseReduction = false)] Enable noise reduction from audio stream before transcription (Optional. default is false)
+     * @param {Boolean} [enableNoiseReduction = false)] Enable noise reduction from audio stream before transcription (Optional. default is false)
      * @param {module:api/TranscriptionApi~transcriptionAsynchronousCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/TranscriptionAudioUploadResult}
      */
@@ -80,7 +80,7 @@ export default class TranscriptionApi {
         'translateTo': opts['translateTo'],
         'splitOnWord': opts['splitOnWord'],
         'languageDetection': opts['languageDetection'],
-        'noiseReduction': opts['noiseReduction']
+        'enableNoiseReduction': opts['enableNoiseReduction']
       };
       let headerParams = {
       };

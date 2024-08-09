@@ -27,10 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import org.openapitools.client.model.ApiExtractThematicSimilarityClusterPostRequest;
 import org.openapitools.client.model.EmbeddingRequest;
 import org.openapitools.client.model.EmbeddingResponse;
 import java.io.File;
 import org.openapitools.client.model.HttpValidationProblemDetails;
+import org.openapitools.client.model.KMeansCluster;
 import org.openapitools.client.model.KeywordExtractionRequestBody;
 import org.openapitools.client.model.KeywordExtractionResponse;
 import org.openapitools.client.model.NamedEntityRecognitionRequest;
@@ -87,6 +89,143 @@ public class DataExtractionApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for apiExtractThematicSimilarityClusterPost
+     * @param apiExtractThematicSimilarityClusterPostRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call apiExtractThematicSimilarityClusterPostCall(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = apiExtractThematicSimilarityClusterPostRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/extract/thematic-similarity-cluster";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "text/csv",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call apiExtractThematicSimilarityClusterPostValidateBeforeCall(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'apiExtractThematicSimilarityClusterPostRequest' is set
+        if (apiExtractThematicSimilarityClusterPostRequest == null) {
+            throw new ApiException("Missing the required parameter 'apiExtractThematicSimilarityClusterPostRequest' when calling apiExtractThematicSimilarityClusterPost(Async)");
+        }
+
+        return apiExtractThematicSimilarityClusterPostCall(apiExtractThematicSimilarityClusterPostRequest, _callback);
+
+    }
+
+    /**
+     * Generate thematic similarity clusters using the K-Means algorithm
+     * 
+     * @param apiExtractThematicSimilarityClusterPostRequest  (required)
+     * @return KMeansCluster
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public KMeansCluster apiExtractThematicSimilarityClusterPost(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest) throws ApiException {
+        ApiResponse<KMeansCluster> localVarResp = apiExtractThematicSimilarityClusterPostWithHttpInfo(apiExtractThematicSimilarityClusterPostRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Generate thematic similarity clusters using the K-Means algorithm
+     * 
+     * @param apiExtractThematicSimilarityClusterPostRequest  (required)
+     * @return ApiResponse&lt;KMeansCluster&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<KMeansCluster> apiExtractThematicSimilarityClusterPostWithHttpInfo(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest) throws ApiException {
+        okhttp3.Call localVarCall = apiExtractThematicSimilarityClusterPostValidateBeforeCall(apiExtractThematicSimilarityClusterPostRequest, null);
+        Type localVarReturnType = new TypeToken<KMeansCluster>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Generate thematic similarity clusters using the K-Means algorithm (asynchronously)
+     * 
+     * @param apiExtractThematicSimilarityClusterPostRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call apiExtractThematicSimilarityClusterPostAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, final ApiCallback<KMeansCluster> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = apiExtractThematicSimilarityClusterPostValidateBeforeCall(apiExtractThematicSimilarityClusterPostRequest, _callback);
+        Type localVarReturnType = new TypeToken<KMeansCluster>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for embedding
      * @param embeddingRequest  (required)
@@ -912,7 +1051,7 @@ public class DataExtractionApi {
      * @param temperature The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0)
      * @param splitOnWord Split into word segments. (optional, default is false) (optional, default to false)
      * @param languageDetection Enable transcription language detection (Optional. default is false) (optional, default to false)
-     * @param noiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
+     * @param enableNoiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -925,7 +1064,7 @@ public class DataExtractionApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call transcriptionSynchronousCall(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call transcriptionSynchronousCall(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -978,8 +1117,8 @@ public class DataExtractionApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("languageDetection", languageDetection));
         }
 
-        if (noiseReduction != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("noiseReduction", noiseReduction));
+        if (enableNoiseReduction != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("enableNoiseReduction", enableNoiseReduction));
         }
 
         final String[] localVarAccepts = {
@@ -1005,13 +1144,13 @@ public class DataExtractionApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call transcriptionSynchronousValidateBeforeCall(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call transcriptionSynchronousValidateBeforeCall(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'files' is set
         if (files == null) {
             throw new ApiException("Missing the required parameter 'files' when calling transcriptionSynchronous(Async)");
         }
 
-        return transcriptionSynchronousCall(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction, _callback);
+        return transcriptionSynchronousCall(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction, _callback);
 
     }
 
@@ -1025,7 +1164,7 @@ public class DataExtractionApi {
      * @param temperature The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0)
      * @param splitOnWord Split into word segments. (optional, default is false) (optional, default to false)
      * @param languageDetection Enable transcription language detection (Optional. default is false) (optional, default to false)
-     * @param noiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
+     * @param enableNoiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
      * @return TranscriptionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1037,8 +1176,8 @@ public class DataExtractionApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public TranscriptionResponse transcriptionSynchronous(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction) throws ApiException {
-        ApiResponse<TranscriptionResponse> localVarResp = transcriptionSynchronousWithHttpInfo(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction);
+    public TranscriptionResponse transcriptionSynchronous(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction) throws ApiException {
+        ApiResponse<TranscriptionResponse> localVarResp = transcriptionSynchronousWithHttpInfo(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction);
         return localVarResp.getData();
     }
 
@@ -1052,7 +1191,7 @@ public class DataExtractionApi {
      * @param temperature The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0)
      * @param splitOnWord Split into word segments. (optional, default is false) (optional, default to false)
      * @param languageDetection Enable transcription language detection (Optional. default is false) (optional, default to false)
-     * @param noiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
+     * @param enableNoiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
      * @return ApiResponse&lt;TranscriptionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1064,8 +1203,8 @@ public class DataExtractionApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TranscriptionResponse> transcriptionSynchronousWithHttpInfo(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction) throws ApiException {
-        okhttp3.Call localVarCall = transcriptionSynchronousValidateBeforeCall(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction, null);
+    public ApiResponse<TranscriptionResponse> transcriptionSynchronousWithHttpInfo(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction) throws ApiException {
+        okhttp3.Call localVarCall = transcriptionSynchronousValidateBeforeCall(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction, null);
         Type localVarReturnType = new TypeToken<TranscriptionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1080,7 +1219,7 @@ public class DataExtractionApi {
      * @param temperature The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0)
      * @param splitOnWord Split into word segments. (optional, default is false) (optional, default to false)
      * @param languageDetection Enable transcription language detection (Optional. default is false) (optional, default to false)
-     * @param noiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
+     * @param enableNoiseReduction Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1093,9 +1232,9 @@ public class DataExtractionApi {
         <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call transcriptionSynchronousAsync(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean noiseReduction, final ApiCallback<TranscriptionResponse> _callback) throws ApiException {
+    public okhttp3.Call transcriptionSynchronousAsync(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction, final ApiCallback<TranscriptionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = transcriptionSynchronousValidateBeforeCall(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction, _callback);
+        okhttp3.Call localVarCall = transcriptionSynchronousValidateBeforeCall(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction, _callback);
         Type localVarReturnType = new TypeToken<TranscriptionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

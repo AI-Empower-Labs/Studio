@@ -37,9 +37,12 @@ from openapi_client.exceptions import ApiAttributeError
 from openapi_client.exceptions import ApiException
 
 # import models into sdk package
+from openapi_client.models.api_extract_thematic_similarity_cluster_post_request import ApiExtractThematicSimilarityClusterPostRequest
 from openapi_client.models.ask_document_request import AskDocumentRequest
 from openapi_client.models.ask_document_response import AskDocumentResponse
+from openapi_client.models.centroid import Centroid
 from openapi_client.models.citation import Citation
+from openapi_client.models.coordinate import Coordinate
 from openapi_client.models.data_pipeline_status import DataPipelineStatus
 from openapi_client.models.delete_accepted import DeleteAccepted
 from openapi_client.models.detect_language_response import DetectLanguageResponse
@@ -55,6 +58,7 @@ from openapi_client.models.index_details import IndexDetails
 from openapi_client.models.ingest_document_response import IngestDocumentResponse
 from openapi_client.models.ingest_text_document_request import IngestTextDocumentRequest
 from openapi_client.models.ingest_web_page_document_request import IngestWebPageDocumentRequest
+from openapi_client.models.k_means_cluster import KMeansCluster
 from openapi_client.models.keyword_extraction_request_body import KeywordExtractionRequestBody
 from openapi_client.models.keyword_extraction_response import KeywordExtractionResponse
 from openapi_client.models.language_detection import LanguageDetection
@@ -74,6 +78,7 @@ from openapi_client.models.re_rank_documents_response import ReRankDocumentsResp
 from openapi_client.models.search_query import SearchQuery
 from openapi_client.models.search_result import SearchResult
 from openapi_client.models.segment_data import SegmentData
+from openapi_client.models.semantic_search_query_results_clustering_request import SemanticSearchQueryResultsClusteringRequest
 from openapi_client.models.semantic_similarity_document import SemanticSimilarityDocument
 from openapi_client.models.semantic_similarity_request import SemanticSimilarityRequest
 from openapi_client.models.semantic_similarity_response import SemanticSimilarityResponse

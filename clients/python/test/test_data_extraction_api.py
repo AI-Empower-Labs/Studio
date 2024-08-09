@@ -27,6 +27,13 @@ class TestDataExtractionApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_api_extract_thematic_similarity_cluster_post(self) -> None:
+        """Test case for api_extract_thematic_similarity_cluster_post
+
+        Generate thematic similarity clusters using the K-Means algorithm
+        """
+        pass
+
     def test_embedding(self) -> None:
         """Test case for embedding
 

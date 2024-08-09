@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**semanticSearchIngestionStatus**](SemanticSearchApi.md#semanticSearchIngestionStatus) | **GET** /api/semantic/ingest/status | 
 [**semanticSearchList**](SemanticSearchApi.md#semanticSearchList) | **POST** /api/semantic/list | 
 [**semanticSearchQuery**](SemanticSearchApi.md#semanticSearchQuery) | **POST** /api/semantic/query | 
+[**semanticSearchQueryResultsClustering**](SemanticSearchApi.md#semanticSearchQueryResultsClustering) | **POST** /api/semantic/query-results-clustering | 
 [**semanticSearchRerank**](SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank | 
 [**semanticSearchTextIngestion**](SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/semantic/ingest/text | 
 [**semanticSearchWebpageIngestion**](SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/semantic/ingest/webpage | 
@@ -348,6 +349,51 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
+
+
+## semanticSearchQueryResultsClustering
+
+> KMeansCluster semanticSearchQueryResultsClustering(semanticSearchQueryResultsClusteringRequest)
+
+
+
+Perform k-means clustering over semantic search log entries
+
+### Example
+
+```javascript
+import StudioAiEmpowerLabs from 'studio_ai_empower_labs';
+
+let apiInstance = new StudioAiEmpowerLabs.SemanticSearchApi();
+let semanticSearchQueryResultsClusteringRequest = new StudioAiEmpowerLabs.SemanticSearchQueryResultsClusteringRequest(); // SemanticSearchQueryResultsClusteringRequest | 
+apiInstance.semanticSearchQueryResultsClustering(semanticSearchQueryResultsClusteringRequest, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **semanticSearchQueryResultsClusteringRequest** | [**SemanticSearchQueryResultsClusteringRequest**](SemanticSearchQueryResultsClusteringRequest.md)|  | 
+
+### Return type
+
+[**KMeansCluster**](KMeansCluster.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/csv, application/problem+json
 
 
 ## semanticSearchRerank

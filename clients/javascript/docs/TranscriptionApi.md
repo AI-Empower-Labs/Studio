@@ -33,7 +33,7 @@ let opts = {
   'translateTo': "translateTo_example", // String | The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional)
   'splitOnWord': false, // Boolean | Split into word segments. (optional, default is false)
   'languageDetection': false, // Boolean | Enable transcription language detection (Optional. default is false)
-  'noiseReduction': false // Boolean | Enable noise reduction from audio stream before transcription (Optional. default is false)
+  'enableNoiseReduction': false // Boolean | Enable noise reduction from audio stream before transcription (Optional. default is false)
 };
 apiInstance.transcriptionAsynchronous(files, opts, (error, data, response) => {
   if (error) {
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
  **translateTo** | **String**| The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) | [optional] 
  **splitOnWord** | **Boolean**| Split into word segments. (optional, default is false) | [optional] [default to false]
  **languageDetection** | **Boolean**| Enable transcription language detection (Optional. default is false) | [optional] [default to false]
- **noiseReduction** | **Boolean**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false]
+ **enableNoiseReduction** | **Boolean**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false]
 
 ### Return type
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **transcription_asynchronous**
-> TranscriptionAudioUploadResult transcription_asynchronous(files, model=model, language=language, prompt=prompt, temperature=temperature, web_hook_url=web_hook_url, translate_to=translate_to, split_on_word=split_on_word, language_detection=language_detection, noise_reduction=noise_reduction)
+> TranscriptionAudioUploadResult transcription_asynchronous(files, model=model, language=language, prompt=prompt, temperature=temperature, web_hook_url=web_hook_url, translate_to=translate_to, split_on_word=split_on_word, language_detection=language_detection, enable_noise_reduction=enable_noise_reduction)
 
 Upload audio file for asynchronous transcription
 
@@ -44,11 +44,11 @@ with openapi_client.ApiClient(configuration) as api_client:
     translate_to = 'translate_to_example' # str | The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)
     split_on_word = False # bool | Split into word segments. (optional, default is false) (optional) (default to False)
     language_detection = False # bool | Enable transcription language detection (Optional. default is false) (optional) (default to False)
-    noise_reduction = False # bool | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional) (default to False)
+    enable_noise_reduction = False # bool | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional) (default to False)
 
     try:
         # Upload audio file for asynchronous transcription
-        api_response = api_instance.transcription_asynchronous(files, model=model, language=language, prompt=prompt, temperature=temperature, web_hook_url=web_hook_url, translate_to=translate_to, split_on_word=split_on_word, language_detection=language_detection, noise_reduction=noise_reduction)
+        api_response = api_instance.transcription_asynchronous(files, model=model, language=language, prompt=prompt, temperature=temperature, web_hook_url=web_hook_url, translate_to=translate_to, split_on_word=split_on_word, language_detection=language_detection, enable_noise_reduction=enable_noise_reduction)
         print("The response of TranscriptionApi->transcription_asynchronous:\n")
         pprint(api_response)
     except Exception as e:
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
  **translate_to** | **str**| The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) | [optional] 
  **split_on_word** | **bool**| Split into word segments. (optional, default is false) | [optional] [default to False]
  **language_detection** | **bool**| Enable transcription language detection (Optional. default is false) | [optional] [default to False]
- **noise_reduction** | **bool**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to False]
+ **enable_noise_reduction** | **bool**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to False]
 
 ### Return type
 

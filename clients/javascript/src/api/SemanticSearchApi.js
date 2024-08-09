@@ -20,6 +20,7 @@ import HttpValidationProblemDetails from '../model/HttpValidationProblemDetails'
 import IngestDocumentResponse from '../model/IngestDocumentResponse';
 import IngestTextDocumentRequest from '../model/IngestTextDocumentRequest';
 import IngestWebPageDocumentRequest from '../model/IngestWebPageDocumentRequest';
+import KMeansCluster from '../model/KMeansCluster';
 import ListDocumentParameters from '../model/ListDocumentParameters';
 import ListDocumentResponse from '../model/ListDocumentResponse';
 import ProblemDetails from '../model/ProblemDetails';
@@ -27,6 +28,7 @@ import QueryDocumentRequest from '../model/QueryDocumentRequest';
 import QueryDocumentResponse from '../model/QueryDocumentResponse';
 import ReRankDocumentsRequest from '../model/ReRankDocumentsRequest';
 import ReRankDocumentsResponse from '../model/ReRankDocumentsResponse';
+import SemanticSearchQueryResultsClusteringRequest from '../model/SemanticSearchQueryResultsClusteringRequest';
 
 /**
 * SemanticSearch service.
@@ -353,6 +355,47 @@ export default class SemanticSearchApi {
       let returnType = QueryDocumentResponse;
       return this.apiClient.callApi(
         '/api/semantic/query', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the semanticSearchQueryResultsClustering operation.
+     * @callback module:api/SemanticSearchApi~semanticSearchQueryResultsClusteringCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/KMeansCluster} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Perform k-means clustering over semantic search log entries
+     * @param {module:model/SemanticSearchQueryResultsClusteringRequest} semanticSearchQueryResultsClusteringRequest 
+     * @param {module:api/SemanticSearchApi~semanticSearchQueryResultsClusteringCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/KMeansCluster}
+     */
+    semanticSearchQueryResultsClustering(semanticSearchQueryResultsClusteringRequest, callback) {
+      let postBody = semanticSearchQueryResultsClusteringRequest;
+      // verify the required parameter 'semanticSearchQueryResultsClusteringRequest' is set
+      if (semanticSearchQueryResultsClusteringRequest === undefined || semanticSearchQueryResultsClusteringRequest === null) {
+        throw new Error("Missing the required parameter 'semanticSearchQueryResultsClusteringRequest' when calling semanticSearchQueryResultsClustering");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json', 'text/csv', 'application/problem+json'];
+      let returnType = KMeansCluster;
+      return this.apiClient.callApi(
+        '/api/semantic/query-results-clustering', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

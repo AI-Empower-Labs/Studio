@@ -430,6 +430,66 @@ paths:
       x-accepts:
       - application/json
       - application/problem+json
+  /api/extract/thematic-similarity-cluster:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_api_extract_thematic_similarity_cluster_post_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KMeansCluster'
+            text/csv:
+              schema:
+                description: CSV output of the clusters
+                example: |-
+                  clusterId,clusterLabel,x,y,label
+                  2,Capital punishment,-0.17478639,-0.43926504,"Capital punishment (the death penalty) has existed in the United States since before the United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states."
+                  1,cities and their capitals,-0.14798689,0.17053927,"Carson City is the capital city of the American state of Nevada. At the  2010 United States Census, Carson City had a population of 55,274."
+                  1,cities and their capitals,-0.1521753,0.07095035,The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean that are a political division controlled by the United States. Its capital is Saipan.
+                  1,cities and their capitals,-0.1518811,0.14289644,"Charlotte Amalie is the capital and largest city of the United States Virgin Islands. It has about 20,000 people. The city is on the island of Saint Thomas."
+                  1,cities and their capitals,-0.14337993,-0.02449449,"Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district. "
+                  1,cities and their capitals,-0.14487398,0.07341845,"North Dakota is a state in the United States. 672,591 people lived in North Dakota in the year 2010. The capital and seat of government is Bismarck."
+                type: string
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Generate thematic similarity clusters using the K-Means algorithm
+      tags:
+      - Data Extraction
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+      - application/problem+json
+      - text/csv
   /api/extract/transcription:
     post:
       description: "The audio transcription endpoint is a specialized web service\
@@ -539,7 +599,7 @@ paths:
           (Optional. default is false)
         explode: true
         in: query
-        name: noiseReduction
+        name: enableNoiseReduction
         required: false
         schema:
           default: false
@@ -1642,6 +1702,67 @@ paths:
       - Semantic Search
       x-accepts:
       - application/problem+json
+  /api/semantic/query-results-clustering:
+    post:
+      description: Perform k-means clustering over semantic search log entries
+      operationId: semantic_search_query_results_clustering
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/semantic_search_query_results_clustering_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KMeansCluster'
+            text/csv:
+              schema:
+                description: CSV output of the clusters
+                example: |-
+                  clusterId,clusterLabel,x,y,label
+                  2,Capital punishment,-0.17478639,-0.43926504,"Capital punishment (the death penalty) has existed in the United States since before the United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states."
+                  1,cities and their capitals,-0.14798689,0.17053927,"Carson City is the capital city of the American state of Nevada. At the  2010 United States Census, Carson City had a population of 55,274."
+                  1,cities and their capitals,-0.1521753,0.07095035,The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean that are a political division controlled by the United States. Its capital is Saipan.
+                  1,cities and their capitals,-0.1518811,0.14289644,"Charlotte Amalie is the capital and largest city of the United States Virgin Islands. It has about 20,000 people. The city is on the island of Saint Thomas."
+                  1,cities and their capitals,-0.14337993,-0.02449449,"Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district. "
+                  1,cities and their capitals,-0.14487398,0.07341845,"North Dakota is a state in the United States. 672,591 people lived in North Dakota in the year 2010. The capital and seat of government is Bismarck."
+                type: string
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Semantic Search
+      x-content-type: application/json
+      x-accepts:
+      - application/json
+      - application/problem+json
+      - text/csv
   /api/semantic/rerank:
     post:
       description: Rerank documents
@@ -1859,7 +1980,7 @@ paths:
           (Optional. default is false)
         explode: true
         in: query
-        name: noiseReduction
+        name: enableNoiseReduction
         required: false
         schema:
           default: false
@@ -1985,6 +2106,86 @@ paths:
       - application/problem+json
 components:
   schemas:
+    KMeansCluster:
+      description: "Represents the response object for K-Means Clustering, contains\
+        \ cluster size and array of centroids"
+      example:
+        centroids:
+        - coordinate:
+            x: 6.0274563
+            "y": 1.4658129
+            label: label
+          dataPoints:
+          - x: 6.0274563
+            "y": 1.4658129
+            label: label
+          - x: 6.0274563
+            "y": 1.4658129
+            label: label
+        - coordinate:
+            x: 6.0274563
+            "y": 1.4658129
+            label: label
+          dataPoints:
+          - x: 6.0274563
+            "y": 1.4658129
+            label: label
+          - x: 6.0274563
+            "y": 1.4658129
+            label: label
+        clusterSize: 0
+      properties:
+        clusterSize:
+          description: Size of the cluster
+          type: integer
+        centroids:
+          description: Array of Centroid objects
+          items:
+            $ref: '#/components/schemas/Centroid'
+          type: array
+      type: object
+    Centroid:
+      description: "Represents a centroid for a cluster, includes coordinate and array\
+        \ of datapoints"
+      example:
+        coordinate:
+          x: 6.0274563
+          "y": 1.4658129
+          label: label
+        dataPoints:
+        - x: 6.0274563
+          "y": 1.4658129
+          label: label
+        - x: 6.0274563
+          "y": 1.4658129
+          label: label
+      properties:
+        coordinate:
+          $ref: '#/components/schemas/Coordinate'
+        dataPoints:
+          description: Array of data points belonging to the centroid
+          items:
+            $ref: '#/components/schemas/Coordinate'
+          type: array
+      type: object
+    Coordinate:
+      example:
+        x: 6.0274563
+        "y": 1.4658129
+        label: label
+      properties:
+        x:
+          description: X-axis value of the coordinate
+          format: float
+          type: number
+        "y":
+          description: Y-axis value of the coordinate
+          format: float
+          type: number
+        label:
+          description: Label associated with the coordinate
+          type: string
+      type: object
     AskDocumentRequest:
       additionalProperties: false
       example:
@@ -3831,5 +4032,85 @@ components:
         message:
           nullable: true
           type: string
+      type: object
+    _api_extract_thematic_similarity_cluster_post_request:
+      properties:
+        input:
+          description: The input texts for generating clusters
+          items:
+            type: string
+          type: array
+        clusterCount:
+          description: The number of clusters requested for generating clusters
+          maximum: 1000
+          minimum: 2
+          type: integer
+        maxDegreeOfParallelism:
+          default: 1
+          description: The maximum degree of parallelism for the KMeans clustering
+            algorithm
+          maximum: 100
+          minimum: 1
+          type: integer
+        maxTokens:
+          default: 10
+          description: The maximum number of tokens
+          maximum: 100
+          minimum: 1
+          type: integer
+        llmModel:
+          description: The name of the LLM model. Optional.
+          nullable: true
+          type: string
+        embeddingModel:
+          description: The name of the embedding model used in the GenerateClusterHttpRequest.
+            Optional.
+          nullable: true
+          type: string
+      required:
+      - clusterCount
+      - input
+      type: object
+    semantic_search_query_results_clustering_request:
+      properties:
+        clusterCount:
+          default: 3
+          description: The number of clusters to be used in k-means clustering.
+          maximum: 100
+          minimum: 2
+          type: integer
+        maxDegreeOfParallelism:
+          default: 1
+          description: The Maximum Degrees Of Parallelism
+          maximum: 100
+          minimum: 1
+          type: integer
+        maxTokens:
+          default: 10
+          description: The maximum number of tokens to be used in the KMeans clustering
+            algorithm.
+          maximum: 100
+          minimum: 1
+          type: integer
+        index:
+          description: Optional index to specify which index to search in. Defaults
+            to 'default'.
+          type: string
+        minRelevance:
+          description: The minimum relevance value used for querying the search result
+            audit.
+          type: number
+        maxRelevance:
+          description: The maximum relevance value to be used in the search query.
+          type: number
+        llmModel:
+          description: Specifies the name of the LLM (Language Model) to be used in
+            the KMeans clustering algorithm.
+          type: string
+        embeddingModel:
+          description: The name of the embedding model used for clustering.
+          type: string
+      required:
+      - cluster_count
       type: object
 

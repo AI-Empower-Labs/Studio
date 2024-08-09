@@ -71,8 +71,8 @@ namespace Org.OpenAPITools.Test.Api
             //string? translateTo = null;
             //bool? splitOnWord = null;
             //bool? languageDetection = null;
-            //bool? noiseReduction = null;
-            //var response = instance.TranscriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction);
+            //bool? enableNoiseReduction = null;
+            //var response = instance.TranscriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction);
             //Assert.IsType<TranscriptionAudioUploadResult>(response);
         }
 

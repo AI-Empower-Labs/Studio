@@ -4,6 +4,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**ApiExtractThematicSimilarityClusterPost**](DataExtractionAPI.md#ApiExtractThematicSimilarityClusterPost) | **Post** /api/extract/thematic-similarity-cluster | Generate thematic similarity clusters using the K-Means algorithm
 [**Embedding**](DataExtractionAPI.md#Embedding) | **Post** /api/extract/embed | Converts data to a numerical vector array
 [**KeywordExtraction**](DataExtractionAPI.md#KeywordExtraction) | **Post** /api/extract/keywords | Performs keyword extraction on source text
 [**NamedEntityRecognition**](DataExtractionAPI.md#NamedEntityRecognition) | **Post** /api/extract/entities | Extracts named entities from provided text
@@ -12,6 +13,70 @@ Method | HTTP request | Description
 [**Tokenize**](DataExtractionAPI.md#Tokenize) | **Post** /api/extract/tokenize | Converts data to a integer token array
 [**TranscriptionSynchronous**](DataExtractionAPI.md#TranscriptionSynchronous) | **Post** /api/extract/transcription | Synchronous transcribe audio
 
+
+
+## ApiExtractThematicSimilarityClusterPost
+
+> KMeansCluster ApiExtractThematicSimilarityClusterPost(ctx).ApiExtractThematicSimilarityClusterPostRequest(apiExtractThematicSimilarityClusterPostRequest).Execute()
+
+Generate thematic similarity clusters using the K-Means algorithm
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	apiExtractThematicSimilarityClusterPostRequest := *openapiclient.NewApiExtractThematicSimilarityClusterPostRequest([]string{"Input_example"}, int32(123)) // ApiExtractThematicSimilarityClusterPostRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DataExtractionAPI.ApiExtractThematicSimilarityClusterPost(context.Background()).ApiExtractThematicSimilarityClusterPostRequest(apiExtractThematicSimilarityClusterPostRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DataExtractionAPI.ApiExtractThematicSimilarityClusterPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApiExtractThematicSimilarityClusterPost`: KMeansCluster
+	fmt.Fprintf(os.Stdout, "Response from `DataExtractionAPI.ApiExtractThematicSimilarityClusterPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiExtractThematicSimilarityClusterPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiExtractThematicSimilarityClusterPostRequest** | [**ApiExtractThematicSimilarityClusterPostRequest**](ApiExtractThematicSimilarityClusterPostRequest.md) |  | 
+
+### Return type
+
+[**KMeansCluster**](KMeansCluster.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/csv, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## Embedding
@@ -412,7 +477,7 @@ No authorization required
 
 ## TranscriptionSynchronous
 
-> TranscriptionResponse TranscriptionSynchronous(ctx).Files(files).Model(model).Language(language).Prompt(prompt).Temperature(temperature).SplitOnWord(splitOnWord).LanguageDetection(languageDetection).NoiseReduction(noiseReduction).Execute()
+> TranscriptionResponse TranscriptionSynchronous(ctx).Files(files).Model(model).Language(language).Prompt(prompt).Temperature(temperature).SplitOnWord(splitOnWord).LanguageDetection(languageDetection).EnableNoiseReduction(enableNoiseReduction).Execute()
 
 Synchronous transcribe audio
 
@@ -438,11 +503,11 @@ func main() {
 	temperature := float64(1.2) // float64 | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional) (default to 0)
 	splitOnWord := true // bool | Split into word segments. (optional, default is false) (optional) (default to false)
 	languageDetection := true // bool | Enable transcription language detection (Optional. default is false) (optional) (default to false)
-	noiseReduction := true // bool | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional) (default to false)
+	enableNoiseReduction := true // bool | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DataExtractionAPI.TranscriptionSynchronous(context.Background()).Files(files).Model(model).Language(language).Prompt(prompt).Temperature(temperature).SplitOnWord(splitOnWord).LanguageDetection(languageDetection).NoiseReduction(noiseReduction).Execute()
+	resp, r, err := apiClient.DataExtractionAPI.TranscriptionSynchronous(context.Background()).Files(files).Model(model).Language(language).Prompt(prompt).Temperature(temperature).SplitOnWord(splitOnWord).LanguageDetection(languageDetection).EnableNoiseReduction(enableNoiseReduction).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DataExtractionAPI.TranscriptionSynchronous``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -470,7 +535,7 @@ Name | Type | Description  | Notes
  **temperature** | **float64** | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) | [default to 0]
  **splitOnWord** | **bool** | Split into word segments. (optional, default is false) | [default to false]
  **languageDetection** | **bool** | Enable transcription language detection (Optional. default is false) | [default to false]
- **noiseReduction** | **bool** | Enable noise reduction from audio stream before transcription (Optional. default is false) | [default to false]
+ **enableNoiseReduction** | **bool** | Enable noise reduction from audio stream before transcription (Optional. default is false) | [default to false]
 
 ### Return type
 

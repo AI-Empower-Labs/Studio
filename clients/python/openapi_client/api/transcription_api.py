@@ -52,7 +52,7 @@ class TranscriptionApi:
         translate_to: Annotated[Optional[StrictStr], Field(description="The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional)")] = None,
         split_on_word: Annotated[Optional[StrictBool], Field(description="Split into word segments. (optional, default is false)")] = None,
         language_detection: Annotated[Optional[StrictBool], Field(description="Enable transcription language detection (Optional. default is false)")] = None,
-        noise_reduction: Annotated[Optional[StrictBool], Field(description="Enable noise reduction from audio stream before transcription (Optional. default is false)")] = None,
+        enable_noise_reduction: Annotated[Optional[StrictBool], Field(description="Enable noise reduction from audio stream before transcription (Optional. default is false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -88,8 +88,8 @@ class TranscriptionApi:
         :type split_on_word: bool
         :param language_detection: Enable transcription language detection (Optional. default is false)
         :type language_detection: bool
-        :param noise_reduction: Enable noise reduction from audio stream before transcription (Optional. default is false)
-        :type noise_reduction: bool
+        :param enable_noise_reduction: Enable noise reduction from audio stream before transcription (Optional. default is false)
+        :type enable_noise_reduction: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -122,7 +122,7 @@ class TranscriptionApi:
             translate_to=translate_to,
             split_on_word=split_on_word,
             language_detection=language_detection,
-            noise_reduction=noise_reduction,
+            enable_noise_reduction=enable_noise_reduction,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -158,7 +158,7 @@ class TranscriptionApi:
         translate_to: Annotated[Optional[StrictStr], Field(description="The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional)")] = None,
         split_on_word: Annotated[Optional[StrictBool], Field(description="Split into word segments. (optional, default is false)")] = None,
         language_detection: Annotated[Optional[StrictBool], Field(description="Enable transcription language detection (Optional. default is false)")] = None,
-        noise_reduction: Annotated[Optional[StrictBool], Field(description="Enable noise reduction from audio stream before transcription (Optional. default is false)")] = None,
+        enable_noise_reduction: Annotated[Optional[StrictBool], Field(description="Enable noise reduction from audio stream before transcription (Optional. default is false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -194,8 +194,8 @@ class TranscriptionApi:
         :type split_on_word: bool
         :param language_detection: Enable transcription language detection (Optional. default is false)
         :type language_detection: bool
-        :param noise_reduction: Enable noise reduction from audio stream before transcription (Optional. default is false)
-        :type noise_reduction: bool
+        :param enable_noise_reduction: Enable noise reduction from audio stream before transcription (Optional. default is false)
+        :type enable_noise_reduction: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -228,7 +228,7 @@ class TranscriptionApi:
             translate_to=translate_to,
             split_on_word=split_on_word,
             language_detection=language_detection,
-            noise_reduction=noise_reduction,
+            enable_noise_reduction=enable_noise_reduction,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -264,7 +264,7 @@ class TranscriptionApi:
         translate_to: Annotated[Optional[StrictStr], Field(description="The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional)")] = None,
         split_on_word: Annotated[Optional[StrictBool], Field(description="Split into word segments. (optional, default is false)")] = None,
         language_detection: Annotated[Optional[StrictBool], Field(description="Enable transcription language detection (Optional. default is false)")] = None,
-        noise_reduction: Annotated[Optional[StrictBool], Field(description="Enable noise reduction from audio stream before transcription (Optional. default is false)")] = None,
+        enable_noise_reduction: Annotated[Optional[StrictBool], Field(description="Enable noise reduction from audio stream before transcription (Optional. default is false)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -300,8 +300,8 @@ class TranscriptionApi:
         :type split_on_word: bool
         :param language_detection: Enable transcription language detection (Optional. default is false)
         :type language_detection: bool
-        :param noise_reduction: Enable noise reduction from audio stream before transcription (Optional. default is false)
-        :type noise_reduction: bool
+        :param enable_noise_reduction: Enable noise reduction from audio stream before transcription (Optional. default is false)
+        :type enable_noise_reduction: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -334,7 +334,7 @@ class TranscriptionApi:
             translate_to=translate_to,
             split_on_word=split_on_word,
             language_detection=language_detection,
-            noise_reduction=noise_reduction,
+            enable_noise_reduction=enable_noise_reduction,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -365,7 +365,7 @@ class TranscriptionApi:
         translate_to,
         split_on_word,
         language_detection,
-        noise_reduction,
+        enable_noise_reduction,
         _request_auth,
         _content_type,
         _headers,
@@ -419,9 +419,9 @@ class TranscriptionApi:
             
             _query_params.append(('languageDetection', language_detection))
             
-        if noise_reduction is not None:
+        if enable_noise_reduction is not None:
             
-            _query_params.append(('noiseReduction', noise_reduction))
+            _query_params.append(('enableNoiseReduction', enable_noise_reduction))
             
         # process the header parameters
         # process the form parameters

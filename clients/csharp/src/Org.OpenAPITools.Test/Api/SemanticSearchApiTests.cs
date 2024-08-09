@@ -146,6 +146,18 @@ namespace Org.OpenAPITools.Test.Api
         }
 
         /// <summary>
+        /// Test SemanticSearchQueryResultsClustering
+        /// </summary>
+        [Fact]
+        public void SemanticSearchQueryResultsClusteringTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest = null;
+            //var response = instance.SemanticSearchQueryResultsClustering(semanticSearchQueryResultsClusteringRequest);
+            //Assert.IsType<KMeansCluster>(response);
+        }
+
+        /// <summary>
         /// Test SemanticSearchRerank
         /// </summary>
         [Fact]

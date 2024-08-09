@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## TranscriptionAsynchronous
 
-> TranscriptionAudioUploadResult TranscriptionAsynchronous(ctx).Files(files).Model(model).Language(language).Prompt(prompt).Temperature(temperature).WebHookUrl(webHookUrl).TranslateTo(translateTo).SplitOnWord(splitOnWord).LanguageDetection(languageDetection).NoiseReduction(noiseReduction).Execute()
+> TranscriptionAudioUploadResult TranscriptionAsynchronous(ctx).Files(files).Model(model).Language(language).Prompt(prompt).Temperature(temperature).WebHookUrl(webHookUrl).TranslateTo(translateTo).SplitOnWord(splitOnWord).LanguageDetection(languageDetection).EnableNoiseReduction(enableNoiseReduction).Execute()
 
 Upload audio file for asynchronous transcription
 
@@ -39,11 +39,11 @@ func main() {
 	translateTo := "translateTo_example" // string | The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)
 	splitOnWord := true // bool | Split into word segments. (optional, default is false) (optional) (default to false)
 	languageDetection := true // bool | Enable transcription language detection (Optional. default is false) (optional) (default to false)
-	noiseReduction := true // bool | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional) (default to false)
+	enableNoiseReduction := true // bool | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TranscriptionAPI.TranscriptionAsynchronous(context.Background()).Files(files).Model(model).Language(language).Prompt(prompt).Temperature(temperature).WebHookUrl(webHookUrl).TranslateTo(translateTo).SplitOnWord(splitOnWord).LanguageDetection(languageDetection).NoiseReduction(noiseReduction).Execute()
+	resp, r, err := apiClient.TranscriptionAPI.TranscriptionAsynchronous(context.Background()).Files(files).Model(model).Language(language).Prompt(prompt).Temperature(temperature).WebHookUrl(webHookUrl).TranslateTo(translateTo).SplitOnWord(splitOnWord).LanguageDetection(languageDetection).EnableNoiseReduction(enableNoiseReduction).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TranscriptionAPI.TranscriptionAsynchronous``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
  **translateTo** | **string** | The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) | 
  **splitOnWord** | **bool** | Split into word segments. (optional, default is false) | [default to false]
  **languageDetection** | **bool** | Enable transcription language detection (Optional. default is false) | [default to false]
- **noiseReduction** | **bool** | Enable noise reduction from audio stream before transcription (Optional. default is false) | [default to false]
+ **enableNoiseReduction** | **bool** | Enable noise reduction from audio stream before transcription (Optional. default is false) | [default to false]
 
 ### Return type
 

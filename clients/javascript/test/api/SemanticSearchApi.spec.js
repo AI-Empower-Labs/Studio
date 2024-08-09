@@ -118,6 +118,16 @@
         done();
       });
     });
+    describe('semanticSearchQueryResultsClustering', function() {
+      it('should call semanticSearchQueryResultsClustering successfully', function(done) {
+        //uncomment below and update the code to test semanticSearchQueryResultsClustering
+        //instance.semanticSearchQueryResultsClustering(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('semanticSearchRerank', function() {
       it('should call semanticSearchRerank successfully', function(done) {
         //uncomment below and update the code to test semanticSearchRerank

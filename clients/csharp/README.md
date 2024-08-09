@@ -99,17 +99,17 @@ namespace Example
             Configuration config = new Configuration();
             config.BasePath = "https://studio.aiempowerlabs.com";
             var apiInstance = new DataExtractionApi(config);
-            var embeddingRequest = new EmbeddingRequest(); // EmbeddingRequest | 
+            var apiExtractThematicSimilarityClusterPostRequest = new ApiExtractThematicSimilarityClusterPostRequest(); // ApiExtractThematicSimilarityClusterPostRequest | 
 
             try
             {
-                // Converts data to a numerical vector array
-                EmbeddingResponse result = apiInstance.Embedding(embeddingRequest);
+                // Generate thematic similarity clusters using the K-Means algorithm
+                KMeansCluster result = apiInstance.ApiExtractThematicSimilarityClusterPost(apiExtractThematicSimilarityClusterPostRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling DataExtractionApi.Embedding: " + e.Message );
+                Debug.Print("Exception when calling DataExtractionApi.ApiExtractThematicSimilarityClusterPost: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -126,6 +126,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DataExtractionApi* | [**ApiExtractThematicSimilarityClusterPost**](docs/DataExtractionApi.md#apiextractthematicsimilarityclusterpost) | **POST** /api/extract/thematic-similarity-cluster | Generate thematic similarity clusters using the K-Means algorithm
 *DataExtractionApi* | [**Embedding**](docs/DataExtractionApi.md#embedding) | **POST** /api/extract/embed | Converts data to a numerical vector array
 *DataExtractionApi* | [**KeywordExtraction**](docs/DataExtractionApi.md#keywordextraction) | **POST** /api/extract/keywords | Performs keyword extraction on source text
 *DataExtractionApi* | [**NamedEntityRecognition**](docs/DataExtractionApi.md#namedentityrecognition) | **POST** /api/extract/entities | Extracts named entities from provided text
@@ -152,6 +153,7 @@ Class | Method | HTTP request | Description
 *SemanticSearchApi* | [**SemanticSearchIngestionStatus**](docs/SemanticSearchApi.md#semanticsearchingestionstatus) | **GET** /api/semantic/ingest/status | 
 *SemanticSearchApi* | [**SemanticSearchList**](docs/SemanticSearchApi.md#semanticsearchlist) | **POST** /api/semantic/list | 
 *SemanticSearchApi* | [**SemanticSearchQuery**](docs/SemanticSearchApi.md#semanticsearchquery) | **POST** /api/semantic/query | 
+*SemanticSearchApi* | [**SemanticSearchQueryResultsClustering**](docs/SemanticSearchApi.md#semanticsearchqueryresultsclustering) | **POST** /api/semantic/query-results-clustering | 
 *SemanticSearchApi* | [**SemanticSearchRerank**](docs/SemanticSearchApi.md#semanticsearchrerank) | **POST** /api/semantic/rerank | 
 *SemanticSearchApi* | [**SemanticSearchTextIngestion**](docs/SemanticSearchApi.md#semanticsearchtextingestion) | **POST** /api/semantic/ingest/text | 
 *SemanticSearchApi* | [**SemanticSearchWebpageIngestion**](docs/SemanticSearchApi.md#semanticsearchwebpageingestion) | **POST** /api/semantic/ingest/webpage | 
@@ -162,9 +164,12 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [Model.ApiExtractThematicSimilarityClusterPostRequest](docs/ApiExtractThematicSimilarityClusterPostRequest.md)
  - [Model.AskDocumentRequest](docs/AskDocumentRequest.md)
  - [Model.AskDocumentResponse](docs/AskDocumentResponse.md)
+ - [Model.Centroid](docs/Centroid.md)
  - [Model.Citation](docs/Citation.md)
+ - [Model.Coordinate](docs/Coordinate.md)
  - [Model.DataPipelineStatus](docs/DataPipelineStatus.md)
  - [Model.DeleteAccepted](docs/DeleteAccepted.md)
  - [Model.DetectLanguageResponse](docs/DetectLanguageResponse.md)
@@ -180,6 +185,7 @@ Class | Method | HTTP request | Description
  - [Model.IngestDocumentResponse](docs/IngestDocumentResponse.md)
  - [Model.IngestTextDocumentRequest](docs/IngestTextDocumentRequest.md)
  - [Model.IngestWebPageDocumentRequest](docs/IngestWebPageDocumentRequest.md)
+ - [Model.KMeansCluster](docs/KMeansCluster.md)
  - [Model.KeywordExtractionRequestBody](docs/KeywordExtractionRequestBody.md)
  - [Model.KeywordExtractionResponse](docs/KeywordExtractionResponse.md)
  - [Model.LanguageDetection](docs/LanguageDetection.md)
@@ -199,6 +205,7 @@ Class | Method | HTTP request | Description
  - [Model.SearchQuery](docs/SearchQuery.md)
  - [Model.SearchResult](docs/SearchResult.md)
  - [Model.SegmentData](docs/SegmentData.md)
+ - [Model.SemanticSearchQueryResultsClusteringRequest](docs/SemanticSearchQueryResultsClusteringRequest.md)
  - [Model.SemanticSimilarityDocument](docs/SemanticSimilarityDocument.md)
  - [Model.SemanticSimilarityRequest](docs/SemanticSimilarityRequest.md)
  - [Model.SemanticSimilarityResponse](docs/SemanticSimilarityResponse.md)

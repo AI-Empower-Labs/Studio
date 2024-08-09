@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**semantic_search_ingestion_status**](SemanticSearchApi.md#semantic_search_ingestion_status) | **GET** /api/semantic/ingest/status | 
 [**semantic_search_list**](SemanticSearchApi.md#semantic_search_list) | **POST** /api/semantic/list | 
 [**semantic_search_query**](SemanticSearchApi.md#semantic_search_query) | **POST** /api/semantic/query | 
+[**semantic_search_query_results_clustering**](SemanticSearchApi.md#semantic_search_query_results_clustering) | **POST** /api/semantic/query-results-clustering | 
 [**semantic_search_rerank**](SemanticSearchApi.md#semantic_search_rerank) | **POST** /api/semantic/rerank | 
 [**semantic_search_text_ingestion**](SemanticSearchApi.md#semantic_search_text_ingestion) | **POST** /api/semantic/ingest/text | 
 [**semantic_search_webpage_ingestion**](SemanticSearchApi.md#semantic_search_webpage_ingestion) | **POST** /api/semantic/ingest/webpage | 
@@ -508,6 +509,77 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**429** | Too Many Requests |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **semantic_search_query_results_clustering**
+> KMeansCluster semantic_search_query_results_clustering(semantic_search_query_results_clustering_request)
+
+
+
+Perform k-means clustering over semantic search log entries
+
+### Example
+
+
+```python
+import openapi_client
+from openapi_client.models.k_means_cluster import KMeansCluster
+from openapi_client.models.semantic_search_query_results_clustering_request import SemanticSearchQueryResultsClusteringRequest
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://studio.aiempowerlabs.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://studio.aiempowerlabs.com"
+)
+
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.SemanticSearchApi(api_client)
+    semantic_search_query_results_clustering_request = openapi_client.SemanticSearchQueryResultsClusteringRequest() # SemanticSearchQueryResultsClusteringRequest | 
+
+    try:
+        api_response = api_instance.semantic_search_query_results_clustering(semantic_search_query_results_clustering_request)
+        print("The response of SemanticSearchApi->semantic_search_query_results_clustering:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SemanticSearchApi->semantic_search_query_results_clustering: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **semantic_search_query_results_clustering_request** | [**SemanticSearchQueryResultsClusteringRequest**](SemanticSearchQueryResultsClusteringRequest.md)|  | 
+
+### Return type
+
+[**KMeansCluster**](KMeansCluster.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, text/csv, application/problem+json
 
 ### HTTP response details
 

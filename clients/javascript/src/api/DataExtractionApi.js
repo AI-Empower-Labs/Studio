@@ -13,9 +13,11 @@
 
 
 import ApiClient from "../ApiClient";
+import ApiExtractThematicSimilarityClusterPostRequest from '../model/ApiExtractThematicSimilarityClusterPostRequest';
 import EmbeddingRequest from '../model/EmbeddingRequest';
 import EmbeddingResponse from '../model/EmbeddingResponse';
 import HttpValidationProblemDetails from '../model/HttpValidationProblemDetails';
+import KMeansCluster from '../model/KMeansCluster';
 import KeywordExtractionRequestBody from '../model/KeywordExtractionRequestBody';
 import KeywordExtractionResponse from '../model/KeywordExtractionResponse';
 import NamedEntityRecognitionRequest from '../model/NamedEntityRecognitionRequest';
@@ -47,6 +49,47 @@ export default class DataExtractionApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+    /**
+     * Callback function to receive the result of the apiExtractThematicSimilarityClusterPost operation.
+     * @callback module:api/DataExtractionApi~apiExtractThematicSimilarityClusterPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/KMeansCluster} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Generate thematic similarity clusters using the K-Means algorithm
+     * @param {module:model/ApiExtractThematicSimilarityClusterPostRequest} apiExtractThematicSimilarityClusterPostRequest 
+     * @param {module:api/DataExtractionApi~apiExtractThematicSimilarityClusterPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/KMeansCluster}
+     */
+    apiExtractThematicSimilarityClusterPost(apiExtractThematicSimilarityClusterPostRequest, callback) {
+      let postBody = apiExtractThematicSimilarityClusterPostRequest;
+      // verify the required parameter 'apiExtractThematicSimilarityClusterPostRequest' is set
+      if (apiExtractThematicSimilarityClusterPostRequest === undefined || apiExtractThematicSimilarityClusterPostRequest === null) {
+        throw new Error("Missing the required parameter 'apiExtractThematicSimilarityClusterPostRequest' when calling apiExtractThematicSimilarityClusterPost");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json', 'text/csv', 'application/problem+json'];
+      let returnType = KMeansCluster;
+      return this.apiClient.callApi(
+        '/api/extract/thematic-similarity-cluster', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the embedding operation.
@@ -319,7 +362,7 @@ export default class DataExtractionApi {
      * @param {Number} [temperature = 0)] The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M)
      * @param {Boolean} [splitOnWord = false)] Split into word segments. (optional, default is false)
      * @param {Boolean} [languageDetection = false)] Enable transcription language detection (Optional. default is false)
-     * @param {Boolean} [noiseReduction = false)] Enable noise reduction from audio stream before transcription (Optional. default is false)
+     * @param {Boolean} [enableNoiseReduction = false)] Enable noise reduction from audio stream before transcription (Optional. default is false)
      * @param {module:api/DataExtractionApi~transcriptionSynchronousCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/TranscriptionResponse}
      */
@@ -340,7 +383,7 @@ export default class DataExtractionApi {
         'temperature': opts['temperature'],
         'splitOnWord': opts['splitOnWord'],
         'languageDetection': opts['languageDetection'],
-        'noiseReduction': opts['noiseReduction']
+        'enableNoiseReduction': opts['enableNoiseReduction']
       };
       let headerParams = {
       };

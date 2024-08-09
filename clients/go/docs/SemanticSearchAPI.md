@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**SemanticSearchIngestionStatus**](SemanticSearchAPI.md#SemanticSearchIngestionStatus) | **Get** /api/semantic/ingest/status | 
 [**SemanticSearchList**](SemanticSearchAPI.md#SemanticSearchList) | **Post** /api/semantic/list | 
 [**SemanticSearchQuery**](SemanticSearchAPI.md#SemanticSearchQuery) | **Post** /api/semantic/query | 
+[**SemanticSearchQueryResultsClustering**](SemanticSearchAPI.md#SemanticSearchQueryResultsClustering) | **Post** /api/semantic/query-results-clustering | 
 [**SemanticSearchRerank**](SemanticSearchAPI.md#SemanticSearchRerank) | **Post** /api/semantic/rerank | 
 [**SemanticSearchTextIngestion**](SemanticSearchAPI.md#SemanticSearchTextIngestion) | **Post** /api/semantic/ingest/text | 
 [**SemanticSearchWebpageIngestion**](SemanticSearchAPI.md#SemanticSearchWebpageIngestion) | **Post** /api/semantic/ingest/webpage | 
@@ -493,6 +494,72 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SemanticSearchQueryResultsClustering
+
+> KMeansCluster SemanticSearchQueryResultsClustering(ctx).SemanticSearchQueryResultsClusteringRequest(semanticSearchQueryResultsClusteringRequest).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	semanticSearchQueryResultsClusteringRequest := *openapiclient.NewSemanticSearchQueryResultsClusteringRequest() // SemanticSearchQueryResultsClusteringRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SemanticSearchAPI.SemanticSearchQueryResultsClustering(context.Background()).SemanticSearchQueryResultsClusteringRequest(semanticSearchQueryResultsClusteringRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SemanticSearchAPI.SemanticSearchQueryResultsClustering``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SemanticSearchQueryResultsClustering`: KMeansCluster
+	fmt.Fprintf(os.Stdout, "Response from `SemanticSearchAPI.SemanticSearchQueryResultsClustering`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSemanticSearchQueryResultsClusteringRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **semanticSearchQueryResultsClusteringRequest** | [**SemanticSearchQueryResultsClusteringRequest**](SemanticSearchQueryResultsClusteringRequest.md) |  | 
+
+### Return type
+
+[**KMeansCluster**](KMeansCluster.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json, text/csv, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

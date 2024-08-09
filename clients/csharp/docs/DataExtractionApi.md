@@ -4,6 +4,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
+| [**ApiExtractThematicSimilarityClusterPost**](DataExtractionApi.md#apiextractthematicsimilarityclusterpost) | **POST** /api/extract/thematic-similarity-cluster | Generate thematic similarity clusters using the K-Means algorithm |
 | [**Embedding**](DataExtractionApi.md#embedding) | **POST** /api/extract/embed | Converts data to a numerical vector array |
 | [**KeywordExtraction**](DataExtractionApi.md#keywordextraction) | **POST** /api/extract/keywords | Performs keyword extraction on source text |
 | [**NamedEntityRecognition**](DataExtractionApi.md#namedentityrecognition) | **POST** /api/extract/entities | Extracts named entities from provided text |
@@ -11,6 +12,98 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 | [**TokenCount**](DataExtractionApi.md#tokencount) | **POST** /api/extract/tokenCount | Count tokens in a text |
 | [**Tokenize**](DataExtractionApi.md#tokenize) | **POST** /api/extract/tokenize | Converts data to a integer token array |
 | [**TranscriptionSynchronous**](DataExtractionApi.md#transcriptionsynchronous) | **POST** /api/extract/transcription | Synchronous transcribe audio |
+
+<a id="apiextractthematicsimilarityclusterpost"></a>
+# **ApiExtractThematicSimilarityClusterPost**
+> KMeansCluster ApiExtractThematicSimilarityClusterPost (ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest)
+
+Generate thematic similarity clusters using the K-Means algorithm
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class ApiExtractThematicSimilarityClusterPostExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://studio.aiempowerlabs.com";
+            var apiInstance = new DataExtractionApi(config);
+            var apiExtractThematicSimilarityClusterPostRequest = new ApiExtractThematicSimilarityClusterPostRequest(); // ApiExtractThematicSimilarityClusterPostRequest | 
+
+            try
+            {
+                // Generate thematic similarity clusters using the K-Means algorithm
+                KMeansCluster result = apiInstance.ApiExtractThematicSimilarityClusterPost(apiExtractThematicSimilarityClusterPostRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DataExtractionApi.ApiExtractThematicSimilarityClusterPost: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the ApiExtractThematicSimilarityClusterPostWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Generate thematic similarity clusters using the K-Means algorithm
+    ApiResponse<KMeansCluster> response = apiInstance.ApiExtractThematicSimilarityClusterPostWithHttpInfo(apiExtractThematicSimilarityClusterPostRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling DataExtractionApi.ApiExtractThematicSimilarityClusterPostWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **apiExtractThematicSimilarityClusterPostRequest** | [**ApiExtractThematicSimilarityClusterPostRequest**](ApiExtractThematicSimilarityClusterPostRequest.md) |  |  |
+
+### Return type
+
+[**KMeansCluster**](KMeansCluster.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, text/csv, application/problem+json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **429** | Too Many Requests |  -  |
+| **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a id="embedding"></a>
 # **Embedding**
@@ -578,7 +671,7 @@ No authorization required
 
 <a id="transcriptionsynchronous"></a>
 # **TranscriptionSynchronous**
-> TranscriptionResponse TranscriptionSynchronous (List<System.IO.Stream> files, string? model = null, string? language = null, string? prompt = null, double? temperature = null, bool? splitOnWord = null, bool? languageDetection = null, bool? noiseReduction = null)
+> TranscriptionResponse TranscriptionSynchronous (List<System.IO.Stream> files, string? model = null, string? language = null, string? prompt = null, double? temperature = null, bool? splitOnWord = null, bool? languageDetection = null, bool? enableNoiseReduction = null)
 
 Synchronous transcribe audio
 
@@ -608,12 +701,12 @@ namespace Example
             var temperature = 0D;  // double? | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional)  (default to 0D)
             var splitOnWord = false;  // bool? | Split into word segments. (optional, default is false) (optional)  (default to false)
             var languageDetection = false;  // bool? | Enable transcription language detection (Optional. default is false) (optional)  (default to false)
-            var noiseReduction = false;  // bool? | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional)  (default to false)
+            var enableNoiseReduction = false;  // bool? | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional)  (default to false)
 
             try
             {
                 // Synchronous transcribe audio
-                TranscriptionResponse result = apiInstance.TranscriptionSynchronous(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction);
+                TranscriptionResponse result = apiInstance.TranscriptionSynchronous(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -634,7 +727,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Synchronous transcribe audio
-    ApiResponse<TranscriptionResponse> response = apiInstance.TranscriptionSynchronousWithHttpInfo(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction);
+    ApiResponse<TranscriptionResponse> response = apiInstance.TranscriptionSynchronousWithHttpInfo(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -658,7 +751,7 @@ catch (ApiException e)
 | **temperature** | **double?** | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) | [optional] [default to 0D] |
 | **splitOnWord** | **bool?** | Split into word segments. (optional, default is false) | [optional] [default to false] |
 | **languageDetection** | **bool?** | Enable transcription language detection (Optional. default is false) | [optional] [default to false] |
-| **noiseReduction** | **bool?** | Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false] |
+| **enableNoiseReduction** | **bool?** | Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false] |
 
 ### Return type
 

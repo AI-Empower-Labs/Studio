@@ -90,6 +90,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DataExtractionAPI* | [**ApiExtractThematicSimilarityClusterPost**](docs/DataExtractionAPI.md#apiextractthematicsimilarityclusterpost) | **Post** /api/extract/thematic-similarity-cluster | Generate thematic similarity clusters using the K-Means algorithm
 *DataExtractionAPI* | [**Embedding**](docs/DataExtractionAPI.md#embedding) | **Post** /api/extract/embed | Converts data to a numerical vector array
 *DataExtractionAPI* | [**KeywordExtraction**](docs/DataExtractionAPI.md#keywordextraction) | **Post** /api/extract/keywords | Performs keyword extraction on source text
 *DataExtractionAPI* | [**NamedEntityRecognition**](docs/DataExtractionAPI.md#namedentityrecognition) | **Post** /api/extract/entities | Extracts named entities from provided text
@@ -116,6 +117,7 @@ Class | Method | HTTP request | Description
 *SemanticSearchAPI* | [**SemanticSearchIngestionStatus**](docs/SemanticSearchAPI.md#semanticsearchingestionstatus) | **Get** /api/semantic/ingest/status | 
 *SemanticSearchAPI* | [**SemanticSearchList**](docs/SemanticSearchAPI.md#semanticsearchlist) | **Post** /api/semantic/list | 
 *SemanticSearchAPI* | [**SemanticSearchQuery**](docs/SemanticSearchAPI.md#semanticsearchquery) | **Post** /api/semantic/query | 
+*SemanticSearchAPI* | [**SemanticSearchQueryResultsClustering**](docs/SemanticSearchAPI.md#semanticsearchqueryresultsclustering) | **Post** /api/semantic/query-results-clustering | 
 *SemanticSearchAPI* | [**SemanticSearchRerank**](docs/SemanticSearchAPI.md#semanticsearchrerank) | **Post** /api/semantic/rerank | 
 *SemanticSearchAPI* | [**SemanticSearchTextIngestion**](docs/SemanticSearchAPI.md#semanticsearchtextingestion) | **Post** /api/semantic/ingest/text | 
 *SemanticSearchAPI* | [**SemanticSearchWebpageIngestion**](docs/SemanticSearchAPI.md#semanticsearchwebpageingestion) | **Post** /api/semantic/ingest/webpage | 
@@ -125,9 +127,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ApiExtractThematicSimilarityClusterPostRequest](docs/ApiExtractThematicSimilarityClusterPostRequest.md)
  - [AskDocumentRequest](docs/AskDocumentRequest.md)
  - [AskDocumentResponse](docs/AskDocumentResponse.md)
+ - [Centroid](docs/Centroid.md)
  - [Citation](docs/Citation.md)
+ - [Coordinate](docs/Coordinate.md)
  - [DataPipelineStatus](docs/DataPipelineStatus.md)
  - [DeleteAccepted](docs/DeleteAccepted.md)
  - [DetectLanguageResponse](docs/DetectLanguageResponse.md)
@@ -143,6 +148,7 @@ Class | Method | HTTP request | Description
  - [IngestDocumentResponse](docs/IngestDocumentResponse.md)
  - [IngestTextDocumentRequest](docs/IngestTextDocumentRequest.md)
  - [IngestWebPageDocumentRequest](docs/IngestWebPageDocumentRequest.md)
+ - [KMeansCluster](docs/KMeansCluster.md)
  - [KeywordExtractionRequestBody](docs/KeywordExtractionRequestBody.md)
  - [KeywordExtractionResponse](docs/KeywordExtractionResponse.md)
  - [LanguageDetection](docs/LanguageDetection.md)
@@ -162,6 +168,7 @@ Class | Method | HTTP request | Description
  - [SearchQuery](docs/SearchQuery.md)
  - [SearchResult](docs/SearchResult.md)
  - [SegmentData](docs/SegmentData.md)
+ - [SemanticSearchQueryResultsClusteringRequest](docs/SemanticSearchQueryResultsClusteringRequest.md)
  - [SemanticSimilarityDocument](docs/SemanticSimilarityDocument.md)
  - [SemanticSimilarityRequest](docs/SemanticSimilarityRequest.md)
  - [SemanticSimilarityResponse](docs/SemanticSimilarityResponse.md)

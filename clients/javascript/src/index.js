@@ -13,9 +13,12 @@
 
 
 import ApiClient from './ApiClient';
+import ApiExtractThematicSimilarityClusterPostRequest from './model/ApiExtractThematicSimilarityClusterPostRequest';
 import AskDocumentRequest from './model/AskDocumentRequest';
 import AskDocumentResponse from './model/AskDocumentResponse';
+import Centroid from './model/Centroid';
 import Citation from './model/Citation';
+import Coordinate from './model/Coordinate';
 import DataPipelineStatus from './model/DataPipelineStatus';
 import DeleteAccepted from './model/DeleteAccepted';
 import DetectLanguageResponse from './model/DetectLanguageResponse';
@@ -31,6 +34,7 @@ import IndexDetails from './model/IndexDetails';
 import IngestDocumentResponse from './model/IngestDocumentResponse';
 import IngestTextDocumentRequest from './model/IngestTextDocumentRequest';
 import IngestWebPageDocumentRequest from './model/IngestWebPageDocumentRequest';
+import KMeansCluster from './model/KMeansCluster';
 import KeywordExtractionRequestBody from './model/KeywordExtractionRequestBody';
 import KeywordExtractionResponse from './model/KeywordExtractionResponse';
 import LanguageDetection from './model/LanguageDetection';
@@ -50,6 +54,7 @@ import ReRankDocumentsResponse from './model/ReRankDocumentsResponse';
 import SearchQuery from './model/SearchQuery';
 import SearchResult from './model/SearchResult';
 import SegmentData from './model/SegmentData';
+import SemanticSearchQueryResultsClusteringRequest from './model/SemanticSearchQueryResultsClusteringRequest';
 import SemanticSimilarityDocument from './model/SemanticSimilarityDocument';
 import SemanticSimilarityRequest from './model/SemanticSimilarityRequest';
 import SemanticSimilarityResponse from './model/SemanticSimilarityResponse';
@@ -112,6 +117,12 @@ export {
     ApiClient,
 
     /**
+     * The ApiExtractThematicSimilarityClusterPostRequest model constructor.
+     * @property {module:model/ApiExtractThematicSimilarityClusterPostRequest}
+     */
+    ApiExtractThematicSimilarityClusterPostRequest,
+
+    /**
      * The AskDocumentRequest model constructor.
      * @property {module:model/AskDocumentRequest}
      */
@@ -124,10 +135,22 @@ export {
     AskDocumentResponse,
 
     /**
+     * The Centroid model constructor.
+     * @property {module:model/Centroid}
+     */
+    Centroid,
+
+    /**
      * The Citation model constructor.
      * @property {module:model/Citation}
      */
     Citation,
+
+    /**
+     * The Coordinate model constructor.
+     * @property {module:model/Coordinate}
+     */
+    Coordinate,
 
     /**
      * The DataPipelineStatus model constructor.
@@ -218,6 +241,12 @@ export {
      * @property {module:model/IngestWebPageDocumentRequest}
      */
     IngestWebPageDocumentRequest,
+
+    /**
+     * The KMeansCluster model constructor.
+     * @property {module:model/KMeansCluster}
+     */
+    KMeansCluster,
 
     /**
      * The KeywordExtractionRequestBody model constructor.
@@ -332,6 +361,12 @@ export {
      * @property {module:model/SegmentData}
      */
     SegmentData,
+
+    /**
+     * The SemanticSearchQueryResultsClusteringRequest model constructor.
+     * @property {module:model/SemanticSearchQueryResultsClusteringRequest}
+     */
+    SemanticSearchQueryResultsClusteringRequest,
 
     /**
      * The SemanticSimilarityDocument model constructor.

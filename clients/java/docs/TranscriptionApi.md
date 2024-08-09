@@ -10,7 +10,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 <a id="transcriptionAsynchronous"></a>
 # **transcriptionAsynchronous**
-> TranscriptionAudioUploadResult transcriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction)
+> TranscriptionAudioUploadResult transcriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction)
 
 Upload audio file for asynchronous transcription
 
@@ -40,9 +40,9 @@ public class Example {
     String translateTo = "translateTo_example"; // String | The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional)
     Boolean splitOnWord = false; // Boolean | Split into word segments. (optional, default is false)
     Boolean languageDetection = false; // Boolean | Enable transcription language detection (Optional. default is false)
-    Boolean noiseReduction = false; // Boolean | Enable noise reduction from audio stream before transcription (Optional. default is false)
+    Boolean enableNoiseReduction = false; // Boolean | Enable noise reduction from audio stream before transcription (Optional. default is false)
     try {
-      TranscriptionAudioUploadResult result = apiInstance.transcriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction);
+      TranscriptionAudioUploadResult result = apiInstance.transcriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TranscriptionApi#transcriptionAsynchronous");
@@ -68,7 +68,7 @@ public class Example {
 | **translateTo** | **String**| The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) | [optional] |
 | **splitOnWord** | **Boolean**| Split into word segments. (optional, default is false) | [optional] [default to false] |
 | **languageDetection** | **Boolean**| Enable transcription language detection (Optional. default is false) | [optional] [default to false] |
-| **noiseReduction** | **Boolean**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false] |
+| **enableNoiseReduction** | **Boolean**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false] |
 
 ### Return type
 

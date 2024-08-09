@@ -28,6 +28,26 @@ namespace Org.OpenAPITools.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Generate thematic similarity clusters using the K-Means algorithm
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="apiExtractThematicSimilarityClusterPostRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KMeansCluster</returns>
+        KMeansCluster ApiExtractThematicSimilarityClusterPost(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0);
+
+        /// <summary>
+        /// Generate thematic similarity clusters using the K-Means algorithm
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="apiExtractThematicSimilarityClusterPostRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KMeansCluster</returns>
+        ApiResponse<KMeansCluster> ApiExtractThematicSimilarityClusterPostWithHttpInfo(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0);
+        /// <summary>
         /// Converts data to a numerical vector array
         /// </summary>
         /// <remarks>
@@ -179,10 +199,10 @@ namespace Org.OpenAPITools.Api
         /// <param name="temperature">The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0D)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TranscriptionResponse</returns>
-        TranscriptionResponse TranscriptionSynchronous(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0);
+        TranscriptionResponse TranscriptionSynchronous(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0);
 
         /// <summary>
         /// Synchronous transcribe audio
@@ -198,10 +218,10 @@ namespace Org.OpenAPITools.Api
         /// <param name="temperature">The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0D)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TranscriptionResponse</returns>
-        ApiResponse<TranscriptionResponse> TranscriptionSynchronousWithHttpInfo(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0);
+        ApiResponse<TranscriptionResponse> TranscriptionSynchronousWithHttpInfo(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -211,6 +231,31 @@ namespace Org.OpenAPITools.Api
     public interface IDataExtractionApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// Generate thematic similarity clusters using the K-Means algorithm
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="apiExtractThematicSimilarityClusterPostRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KMeansCluster</returns>
+        System.Threading.Tasks.Task<KMeansCluster> ApiExtractThematicSimilarityClusterPostAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Generate thematic similarity clusters using the K-Means algorithm
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="apiExtractThematicSimilarityClusterPostRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KMeansCluster)</returns>
+        System.Threading.Tasks.Task<ApiResponse<KMeansCluster>> ApiExtractThematicSimilarityClusterPostWithHttpInfoAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Converts data to a numerical vector array
         /// </summary>
@@ -375,11 +420,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="temperature">The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0D)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TranscriptionResponse</returns>
-        System.Threading.Tasks.Task<TranscriptionResponse> TranscriptionSynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TranscriptionResponse> TranscriptionSynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Synchronous transcribe audio
@@ -395,11 +440,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="temperature">The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0D)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TranscriptionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TranscriptionResponse>> TranscriptionSynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TranscriptionResponse>> TranscriptionSynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -518,6 +563,156 @@ namespace Org.OpenAPITools.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// Generate thematic similarity clusters using the K-Means algorithm 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="apiExtractThematicSimilarityClusterPostRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>KMeansCluster</returns>
+        public KMeansCluster ApiExtractThematicSimilarityClusterPost(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0)
+        {
+            Org.OpenAPITools.Client.ApiResponse<KMeansCluster> localVarResponse = ApiExtractThematicSimilarityClusterPostWithHttpInfo(apiExtractThematicSimilarityClusterPostRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Generate thematic similarity clusters using the K-Means algorithm 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="apiExtractThematicSimilarityClusterPostRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of KMeansCluster</returns>
+        public Org.OpenAPITools.Client.ApiResponse<KMeansCluster> ApiExtractThematicSimilarityClusterPostWithHttpInfo(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0)
+        {
+            // verify the required parameter 'apiExtractThematicSimilarityClusterPostRequest' is set
+            if (apiExtractThematicSimilarityClusterPostRequest == null)
+            {
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'apiExtractThematicSimilarityClusterPostRequest' when calling DataExtractionApi->ApiExtractThematicSimilarityClusterPost");
+            }
+
+            Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json",
+                "text/csv",
+                "application/problem+json"
+            };
+
+            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = apiExtractThematicSimilarityClusterPostRequest;
+
+            localVarRequestOptions.Operation = "DataExtractionApi.ApiExtractThematicSimilarityClusterPost";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<KMeansCluster>("/api/extract/thematic-similarity-cluster", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ApiExtractThematicSimilarityClusterPost", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Generate thematic similarity clusters using the K-Means algorithm 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="apiExtractThematicSimilarityClusterPostRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of KMeansCluster</returns>
+        public async System.Threading.Tasks.Task<KMeansCluster> ApiExtractThematicSimilarityClusterPostAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Org.OpenAPITools.Client.ApiResponse<KMeansCluster> localVarResponse = await ApiExtractThematicSimilarityClusterPostWithHttpInfoAsync(apiExtractThematicSimilarityClusterPostRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Generate thematic similarity clusters using the K-Means algorithm 
+        /// </summary>
+        /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="apiExtractThematicSimilarityClusterPostRequest"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (KMeansCluster)</returns>
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<KMeansCluster>> ApiExtractThematicSimilarityClusterPostWithHttpInfoAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'apiExtractThematicSimilarityClusterPostRequest' is set
+            if (apiExtractThematicSimilarityClusterPostRequest == null)
+            {
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'apiExtractThematicSimilarityClusterPostRequest' when calling DataExtractionApi->ApiExtractThematicSimilarityClusterPost");
+            }
+
+
+            Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json",
+                "text/csv",
+                "application/problem+json"
+            };
+
+            var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Org.OpenAPITools.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = apiExtractThematicSimilarityClusterPostRequest;
+
+            localVarRequestOptions.Operation = "DataExtractionApi.ApiExtractThematicSimilarityClusterPost";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<KMeansCluster>("/api/extract/thematic-similarity-cluster", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ApiExtractThematicSimilarityClusterPost", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -1419,12 +1614,12 @@ namespace Org.OpenAPITools.Api
         /// <param name="temperature">The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0D)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TranscriptionResponse</returns>
-        public TranscriptionResponse TranscriptionSynchronous(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0)
+        public TranscriptionResponse TranscriptionSynchronous(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0)
         {
-            Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse> localVarResponse = TranscriptionSynchronousWithHttpInfo(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction);
+            Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse> localVarResponse = TranscriptionSynchronousWithHttpInfo(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction);
             return localVarResponse.Data;
         }
 
@@ -1439,10 +1634,10 @@ namespace Org.OpenAPITools.Api
         /// <param name="temperature">The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0D)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TranscriptionResponse</returns>
-        public Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse> TranscriptionSynchronousWithHttpInfo(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0)
+        public Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse> TranscriptionSynchronousWithHttpInfo(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0)
         {
             // verify the required parameter 'files' is set
             if (files == null)
@@ -1499,9 +1694,9 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "languageDetection", languageDetection));
             }
-            if (noiseReduction != null)
+            if (enableNoiseReduction != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "noiseReduction", noiseReduction));
+                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "enableNoiseReduction", enableNoiseReduction));
             }
             foreach (var file in files)
             {
@@ -1537,13 +1732,13 @@ namespace Org.OpenAPITools.Api
         /// <param name="temperature">The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0D)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TranscriptionResponse</returns>
-        public async System.Threading.Tasks.Task<TranscriptionResponse> TranscriptionSynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TranscriptionResponse> TranscriptionSynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse> localVarResponse = await TranscriptionSynchronousWithHttpInfoAsync(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction, operationIndex, cancellationToken).ConfigureAwait(false);
+            Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse> localVarResponse = await TranscriptionSynchronousWithHttpInfoAsync(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1558,11 +1753,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="temperature">The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional, default to 0D)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TranscriptionResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse>> TranscriptionSynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse>> TranscriptionSynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'files' is set
             if (files == null)
@@ -1620,9 +1815,9 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "languageDetection", languageDetection));
             }
-            if (noiseReduction != null)
+            if (enableNoiseReduction != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "noiseReduction", noiseReduction));
+                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "enableNoiseReduction", enableNoiseReduction));
             }
             foreach (var file in files)
             {

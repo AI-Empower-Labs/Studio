@@ -115,7 +115,7 @@ var StudioAiEmpowerLabs = require('studio_ai_empower_labs');
 
 
 var api = new StudioAiEmpowerLabs.DataExtractionApi()
-var embeddingRequest = {"model":"multilingual-e5-large","text":["Hello world","AI Empower Labs rocks!"]}; // {EmbeddingRequest} 
+var apiExtractThematicSimilarityClusterPostRequest = new StudioAiEmpowerLabs.ApiExtractThematicSimilarityClusterPostRequest(); // {ApiExtractThematicSimilarityClusterPostRequest} 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -123,7 +123,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.embedding(embeddingRequest, callback);
+api.apiExtractThematicSimilarityClusterPost(apiExtractThematicSimilarityClusterPostRequest, callback);
 
 ```
 
@@ -133,6 +133,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*StudioAiEmpowerLabs.DataExtractionApi* | [**apiExtractThematicSimilarityClusterPost**](docs/DataExtractionApi.md#apiExtractThematicSimilarityClusterPost) | **POST** /api/extract/thematic-similarity-cluster | Generate thematic similarity clusters using the K-Means algorithm
 *StudioAiEmpowerLabs.DataExtractionApi* | [**embedding**](docs/DataExtractionApi.md#embedding) | **POST** /api/extract/embed | Converts data to a numerical vector array
 *StudioAiEmpowerLabs.DataExtractionApi* | [**keywordExtraction**](docs/DataExtractionApi.md#keywordExtraction) | **POST** /api/extract/keywords | Performs keyword extraction on source text
 *StudioAiEmpowerLabs.DataExtractionApi* | [**namedEntityRecognition**](docs/DataExtractionApi.md#namedEntityRecognition) | **POST** /api/extract/entities | Extracts named entities from provided text
@@ -159,6 +160,7 @@ Class | Method | HTTP request | Description
 *StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchIngestionStatus**](docs/SemanticSearchApi.md#semanticSearchIngestionStatus) | **GET** /api/semantic/ingest/status | 
 *StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchList**](docs/SemanticSearchApi.md#semanticSearchList) | **POST** /api/semantic/list | 
 *StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchQuery**](docs/SemanticSearchApi.md#semanticSearchQuery) | **POST** /api/semantic/query | 
+*StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchQueryResultsClustering**](docs/SemanticSearchApi.md#semanticSearchQueryResultsClustering) | **POST** /api/semantic/query-results-clustering | 
 *StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchRerank**](docs/SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank | 
 *StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchTextIngestion**](docs/SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/semantic/ingest/text | 
 *StudioAiEmpowerLabs.SemanticSearchApi* | [**semanticSearchWebpageIngestion**](docs/SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/semantic/ingest/webpage | 
@@ -168,9 +170,12 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [StudioAiEmpowerLabs.ApiExtractThematicSimilarityClusterPostRequest](docs/ApiExtractThematicSimilarityClusterPostRequest.md)
  - [StudioAiEmpowerLabs.AskDocumentRequest](docs/AskDocumentRequest.md)
  - [StudioAiEmpowerLabs.AskDocumentResponse](docs/AskDocumentResponse.md)
+ - [StudioAiEmpowerLabs.Centroid](docs/Centroid.md)
  - [StudioAiEmpowerLabs.Citation](docs/Citation.md)
+ - [StudioAiEmpowerLabs.Coordinate](docs/Coordinate.md)
  - [StudioAiEmpowerLabs.DataPipelineStatus](docs/DataPipelineStatus.md)
  - [StudioAiEmpowerLabs.DeleteAccepted](docs/DeleteAccepted.md)
  - [StudioAiEmpowerLabs.DetectLanguageResponse](docs/DetectLanguageResponse.md)
@@ -186,6 +191,7 @@ Class | Method | HTTP request | Description
  - [StudioAiEmpowerLabs.IngestDocumentResponse](docs/IngestDocumentResponse.md)
  - [StudioAiEmpowerLabs.IngestTextDocumentRequest](docs/IngestTextDocumentRequest.md)
  - [StudioAiEmpowerLabs.IngestWebPageDocumentRequest](docs/IngestWebPageDocumentRequest.md)
+ - [StudioAiEmpowerLabs.KMeansCluster](docs/KMeansCluster.md)
  - [StudioAiEmpowerLabs.KeywordExtractionRequestBody](docs/KeywordExtractionRequestBody.md)
  - [StudioAiEmpowerLabs.KeywordExtractionResponse](docs/KeywordExtractionResponse.md)
  - [StudioAiEmpowerLabs.LanguageDetection](docs/LanguageDetection.md)
@@ -205,6 +211,7 @@ Class | Method | HTTP request | Description
  - [StudioAiEmpowerLabs.SearchQuery](docs/SearchQuery.md)
  - [StudioAiEmpowerLabs.SearchResult](docs/SearchResult.md)
  - [StudioAiEmpowerLabs.SegmentData](docs/SegmentData.md)
+ - [StudioAiEmpowerLabs.SemanticSearchQueryResultsClusteringRequest](docs/SemanticSearchQueryResultsClusteringRequest.md)
  - [StudioAiEmpowerLabs.SemanticSimilarityDocument](docs/SemanticSimilarityDocument.md)
  - [StudioAiEmpowerLabs.SemanticSimilarityRequest](docs/SemanticSimilarityRequest.md)
  - [StudioAiEmpowerLabs.SemanticSimilarityResponse](docs/SemanticSimilarityResponse.md)

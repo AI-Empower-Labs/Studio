@@ -56,6 +56,18 @@ namespace Org.OpenAPITools.Test.Api
         }
 
         /// <summary>
+        /// Test ApiExtractThematicSimilarityClusterPost
+        /// </summary>
+        [Fact]
+        public void ApiExtractThematicSimilarityClusterPostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest = null;
+            //var response = instance.ApiExtractThematicSimilarityClusterPost(apiExtractThematicSimilarityClusterPostRequest);
+            //Assert.IsType<KMeansCluster>(response);
+        }
+
+        /// <summary>
         /// Test Embedding
         /// </summary>
         [Fact]
@@ -141,8 +153,8 @@ namespace Org.OpenAPITools.Test.Api
             //double? temperature = null;
             //bool? splitOnWord = null;
             //bool? languageDetection = null;
-            //bool? noiseReduction = null;
-            //var response = instance.TranscriptionSynchronous(files, model, language, prompt, temperature, splitOnWord, languageDetection, noiseReduction);
+            //bool? enableNoiseReduction = null;
+            //var response = instance.TranscriptionSynchronous(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction);
             //Assert.IsType<TranscriptionResponse>(response);
         }
     }

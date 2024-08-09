@@ -43,10 +43,10 @@ namespace Org.OpenAPITools.Api
         /// <param name="translateTo">The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TranscriptionAudioUploadResult</returns>
-        TranscriptionAudioUploadResult TranscriptionAsynchronous(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0);
+        TranscriptionAudioUploadResult TranscriptionAsynchronous(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0);
 
         /// <summary>
         /// Upload audio file for asynchronous transcription
@@ -64,10 +64,10 @@ namespace Org.OpenAPITools.Api
         /// <param name="translateTo">The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TranscriptionAudioUploadResult</returns>
-        ApiResponse<TranscriptionAudioUploadResult> TranscriptionAsynchronousWithHttpInfo(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0);
+        ApiResponse<TranscriptionAudioUploadResult> TranscriptionAsynchronousWithHttpInfo(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0);
         /// <summary>
         /// Get transcription status and data
         /// </summary>
@@ -116,11 +116,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="translateTo">The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TranscriptionAudioUploadResult</returns>
-        System.Threading.Tasks.Task<TranscriptionAudioUploadResult> TranscriptionAsynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TranscriptionAudioUploadResult> TranscriptionAsynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Upload audio file for asynchronous transcription
@@ -138,11 +138,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="translateTo">The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TranscriptionAudioUploadResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TranscriptionAudioUploadResult>> TranscriptionAsynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TranscriptionAudioUploadResult>> TranscriptionAsynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get transcription status and data
         /// </summary>
@@ -301,12 +301,12 @@ namespace Org.OpenAPITools.Api
         /// <param name="translateTo">The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TranscriptionAudioUploadResult</returns>
-        public TranscriptionAudioUploadResult TranscriptionAsynchronous(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0)
+        public TranscriptionAudioUploadResult TranscriptionAsynchronous(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0)
         {
-            Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult> localVarResponse = TranscriptionAsynchronousWithHttpInfo(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction);
+            Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult> localVarResponse = TranscriptionAsynchronousWithHttpInfo(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction);
             return localVarResponse.Data;
         }
 
@@ -323,10 +323,10 @@ namespace Org.OpenAPITools.Api
         /// <param name="translateTo">The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TranscriptionAudioUploadResult</returns>
-        public Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult> TranscriptionAsynchronousWithHttpInfo(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0)
+        public Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult> TranscriptionAsynchronousWithHttpInfo(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0)
         {
             // verify the required parameter 'files' is set
             if (files == null)
@@ -391,9 +391,9 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "languageDetection", languageDetection));
             }
-            if (noiseReduction != null)
+            if (enableNoiseReduction != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "noiseReduction", noiseReduction));
+                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "enableNoiseReduction", enableNoiseReduction));
             }
             foreach (var file in files)
             {
@@ -431,13 +431,13 @@ namespace Org.OpenAPITools.Api
         /// <param name="translateTo">The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TranscriptionAudioUploadResult</returns>
-        public async System.Threading.Tasks.Task<TranscriptionAudioUploadResult> TranscriptionAsynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TranscriptionAudioUploadResult> TranscriptionAsynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult> localVarResponse = await TranscriptionAsynchronousWithHttpInfoAsync(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction, operationIndex, cancellationToken).ConfigureAwait(false);
+            Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult> localVarResponse = await TranscriptionAsynchronousWithHttpInfoAsync(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -454,11 +454,11 @@ namespace Org.OpenAPITools.Api
         /// <param name="translateTo">The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional)</param>
         /// <param name="splitOnWord">Split into word segments. (optional, default is false) (optional, default to false)</param>
         /// <param name="languageDetection">Enable transcription language detection (Optional. default is false) (optional, default to false)</param>
-        /// <param name="noiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
+        /// <param name="enableNoiseReduction">Enable noise reduction from audio stream before transcription (Optional. default is false) (optional, default to false)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TranscriptionAudioUploadResult)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult>> TranscriptionAsynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? noiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult>> TranscriptionAsynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'files' is set
             if (files == null)
@@ -524,9 +524,9 @@ namespace Org.OpenAPITools.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "languageDetection", languageDetection));
             }
-            if (noiseReduction != null)
+            if (enableNoiseReduction != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "noiseReduction", noiseReduction));
+                localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "enableNoiseReduction", enableNoiseReduction));
             }
             foreach (var file in files)
             {

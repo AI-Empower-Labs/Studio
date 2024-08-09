@@ -23,6 +23,146 @@ import (
 // DataExtractionAPIService DataExtractionAPI service
 type DataExtractionAPIService service
 
+type ApiApiExtractThematicSimilarityClusterPostRequest struct {
+	ctx context.Context
+	ApiService *DataExtractionAPIService
+	apiExtractThematicSimilarityClusterPostRequest *ApiExtractThematicSimilarityClusterPostRequest
+}
+
+func (r ApiApiExtractThematicSimilarityClusterPostRequest) ApiExtractThematicSimilarityClusterPostRequest(apiExtractThematicSimilarityClusterPostRequest ApiExtractThematicSimilarityClusterPostRequest) ApiApiExtractThematicSimilarityClusterPostRequest {
+	r.apiExtractThematicSimilarityClusterPostRequest = &apiExtractThematicSimilarityClusterPostRequest
+	return r
+}
+
+func (r ApiApiExtractThematicSimilarityClusterPostRequest) Execute() (*KMeansCluster, *http.Response, error) {
+	return r.ApiService.ApiExtractThematicSimilarityClusterPostExecute(r)
+}
+
+/*
+ApiExtractThematicSimilarityClusterPost Generate thematic similarity clusters using the K-Means algorithm
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiExtractThematicSimilarityClusterPostRequest
+*/
+func (a *DataExtractionAPIService) ApiExtractThematicSimilarityClusterPost(ctx context.Context) ApiApiExtractThematicSimilarityClusterPostRequest {
+	return ApiApiExtractThematicSimilarityClusterPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return KMeansCluster
+func (a *DataExtractionAPIService) ApiExtractThematicSimilarityClusterPostExecute(r ApiApiExtractThematicSimilarityClusterPostRequest) (*KMeansCluster, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KMeansCluster
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataExtractionAPIService.ApiExtractThematicSimilarityClusterPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/extract/thematic-similarity-cluster"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.apiExtractThematicSimilarityClusterPostRequest == nil {
+		return localVarReturnValue, nil, reportError("apiExtractThematicSimilarityClusterPostRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/csv", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.apiExtractThematicSimilarityClusterPostRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v HttpValidationProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEmbeddingRequest struct {
 	ctx context.Context
 	ApiService *DataExtractionAPIService
@@ -901,7 +1041,7 @@ type ApiTranscriptionSynchronousRequest struct {
 	temperature *float64
 	splitOnWord *bool
 	languageDetection *bool
-	noiseReduction *bool
+	enableNoiseReduction *bool
 }
 
 // The file object to ingest.
@@ -947,8 +1087,8 @@ func (r ApiTranscriptionSynchronousRequest) LanguageDetection(languageDetection 
 }
 
 // Enable noise reduction from audio stream before transcription (Optional. default is false)
-func (r ApiTranscriptionSynchronousRequest) NoiseReduction(noiseReduction bool) ApiTranscriptionSynchronousRequest {
-	r.noiseReduction = &noiseReduction
+func (r ApiTranscriptionSynchronousRequest) EnableNoiseReduction(enableNoiseReduction bool) ApiTranscriptionSynchronousRequest {
+	r.enableNoiseReduction = &enableNoiseReduction
 	return r
 }
 
@@ -1030,11 +1170,11 @@ func (a *DataExtractionAPIService) TranscriptionSynchronousExecute(r ApiTranscri
 		var defaultValue bool = false
 		r.languageDetection = &defaultValue
 	}
-	if r.noiseReduction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "noiseReduction", r.noiseReduction, "")
+	if r.enableNoiseReduction != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enableNoiseReduction", r.enableNoiseReduction, "")
 	} else {
 		var defaultValue bool = false
-		r.noiseReduction = &defaultValue
+		r.enableNoiseReduction = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data", "application/x-www-form-urlencoded"}

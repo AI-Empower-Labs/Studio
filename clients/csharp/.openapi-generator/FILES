@@ -4,9 +4,12 @@ Org.OpenAPITools.sln
 README.md
 api/openapi.yaml
 appveyor.yml
+docs/ApiExtractThematicSimilarityClusterPostRequest.md
 docs/AskDocumentRequest.md
 docs/AskDocumentResponse.md
+docs/Centroid.md
 docs/Citation.md
+docs/Coordinate.md
 docs/DataExtractionApi.md
 docs/DataPipelineStatus.md
 docs/DeleteAccepted.md
@@ -23,6 +26,7 @@ docs/IndexDetails.md
 docs/IngestDocumentResponse.md
 docs/IngestTextDocumentRequest.md
 docs/IngestWebPageDocumentRequest.md
+docs/KMeansCluster.md
 docs/KernelMemoryApi.md
 docs/KeywordExtractionRequestBody.md
 docs/KeywordExtractionResponse.md
@@ -46,6 +50,7 @@ docs/SearchQuery.md
 docs/SearchResult.md
 docs/SegmentData.md
 docs/SemanticSearchApi.md
+docs/SemanticSearchQueryResultsClusteringRequest.md
 docs/SemanticSimilarityDocument.md
 docs/SemanticSimilarityRequest.md
 docs/SemanticSimilarityResponse.md
@@ -69,9 +74,12 @@ src/Org.OpenAPITools.Test/Api/LanguageApiTests.cs
 src/Org.OpenAPITools.Test/Api/MiscellaneousApiTests.cs
 src/Org.OpenAPITools.Test/Api/SemanticSearchApiTests.cs
 src/Org.OpenAPITools.Test/Api/TranscriptionApiTests.cs
+src/Org.OpenAPITools.Test/Model/ApiExtractThematicSimilarityClusterPostRequestTests.cs
 src/Org.OpenAPITools.Test/Model/AskDocumentRequestTests.cs
 src/Org.OpenAPITools.Test/Model/AskDocumentResponseTests.cs
+src/Org.OpenAPITools.Test/Model/CentroidTests.cs
 src/Org.OpenAPITools.Test/Model/CitationTests.cs
+src/Org.OpenAPITools.Test/Model/CoordinateTests.cs
 src/Org.OpenAPITools.Test/Model/DataPipelineStatusTests.cs
 src/Org.OpenAPITools.Test/Model/DeleteAcceptedTests.cs
 src/Org.OpenAPITools.Test/Model/DetectLanguageResponseTests.cs
@@ -87,6 +95,7 @@ src/Org.OpenAPITools.Test/Model/IndexDetailsTests.cs
 src/Org.OpenAPITools.Test/Model/IngestDocumentResponseTests.cs
 src/Org.OpenAPITools.Test/Model/IngestTextDocumentRequestTests.cs
 src/Org.OpenAPITools.Test/Model/IngestWebPageDocumentRequestTests.cs
+src/Org.OpenAPITools.Test/Model/KMeansClusterTests.cs
 src/Org.OpenAPITools.Test/Model/KeywordExtractionRequestBodyTests.cs
 src/Org.OpenAPITools.Test/Model/KeywordExtractionResponseTests.cs
 src/Org.OpenAPITools.Test/Model/LanguageDetectionTests.cs
@@ -106,6 +115,7 @@ src/Org.OpenAPITools.Test/Model/ReRankDocumentsResponseTests.cs
 src/Org.OpenAPITools.Test/Model/SearchQueryTests.cs
 src/Org.OpenAPITools.Test/Model/SearchResultTests.cs
 src/Org.OpenAPITools.Test/Model/SegmentDataTests.cs
+src/Org.OpenAPITools.Test/Model/SemanticSearchQueryResultsClusteringRequestTests.cs
 src/Org.OpenAPITools.Test/Model/SemanticSimilarityDocumentTests.cs
 src/Org.OpenAPITools.Test/Model/SemanticSimilarityRequestTests.cs
 src/Org.OpenAPITools.Test/Model/SemanticSimilarityResponseTests.cs
@@ -145,9 +155,12 @@ src/Org.OpenAPITools/Client/OpenAPIDateConverter.cs
 src/Org.OpenAPITools/Client/RequestOptions.cs
 src/Org.OpenAPITools/Client/RetryConfiguration.cs
 src/Org.OpenAPITools/Model/AbstractOpenAPISchema.cs
+src/Org.OpenAPITools/Model/ApiExtractThematicSimilarityClusterPostRequest.cs
 src/Org.OpenAPITools/Model/AskDocumentRequest.cs
 src/Org.OpenAPITools/Model/AskDocumentResponse.cs
+src/Org.OpenAPITools/Model/Centroid.cs
 src/Org.OpenAPITools/Model/Citation.cs
+src/Org.OpenAPITools/Model/Coordinate.cs
 src/Org.OpenAPITools/Model/DataPipelineStatus.cs
 src/Org.OpenAPITools/Model/DeleteAccepted.cs
 src/Org.OpenAPITools/Model/DetectLanguageResponse.cs
@@ -163,6 +176,7 @@ src/Org.OpenAPITools/Model/IndexDetails.cs
 src/Org.OpenAPITools/Model/IngestDocumentResponse.cs
 src/Org.OpenAPITools/Model/IngestTextDocumentRequest.cs
 src/Org.OpenAPITools/Model/IngestWebPageDocumentRequest.cs
+src/Org.OpenAPITools/Model/KMeansCluster.cs
 src/Org.OpenAPITools/Model/KeywordExtractionRequestBody.cs
 src/Org.OpenAPITools/Model/KeywordExtractionResponse.cs
 src/Org.OpenAPITools/Model/LanguageDetection.cs
@@ -182,6 +196,7 @@ src/Org.OpenAPITools/Model/ReRankDocumentsResponse.cs
 src/Org.OpenAPITools/Model/SearchQuery.cs
 src/Org.OpenAPITools/Model/SearchResult.cs
 src/Org.OpenAPITools/Model/SegmentData.cs
+src/Org.OpenAPITools/Model/SemanticSearchQueryResultsClusteringRequest.cs
 src/Org.OpenAPITools/Model/SemanticSimilarityDocument.cs
 src/Org.OpenAPITools/Model/SemanticSimilarityRequest.cs
 src/Org.OpenAPITools/Model/SemanticSimilarityResponse.cs

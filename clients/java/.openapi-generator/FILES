@@ -6,9 +6,12 @@ README.md
 api/openapi.yaml
 build.gradle
 build.sbt
+docs/ApiExtractThematicSimilarityClusterPostRequest.md
 docs/AskDocumentRequest.md
 docs/AskDocumentResponse.md
+docs/Centroid.md
 docs/Citation.md
+docs/Coordinate.md
 docs/DataExtractionApi.md
 docs/DataPipelineStatus.md
 docs/DeleteAccepted.md
@@ -25,6 +28,7 @@ docs/IndexDetails.md
 docs/IngestDocumentResponse.md
 docs/IngestTextDocumentRequest.md
 docs/IngestWebPageDocumentRequest.md
+docs/KMeansCluster.md
 docs/KernelMemoryApi.md
 docs/KeywordExtractionRequestBody.md
 docs/KeywordExtractionResponse.md
@@ -48,6 +52,7 @@ docs/SearchQuery.md
 docs/SearchResult.md
 docs/SegmentData.md
 docs/SemanticSearchApi.md
+docs/SemanticSearchQueryResultsClusteringRequest.md
 docs/SemanticSimilarityDocument.md
 docs/SemanticSimilarityRequest.md
 docs/SemanticSimilarityResponse.md
@@ -97,9 +102,12 @@ src/main/java/org/openapitools/client/auth/Authentication.java
 src/main/java/org/openapitools/client/auth/HttpBasicAuth.java
 src/main/java/org/openapitools/client/auth/HttpBearerAuth.java
 src/main/java/org/openapitools/client/model/AbstractOpenApiSchema.java
+src/main/java/org/openapitools/client/model/ApiExtractThematicSimilarityClusterPostRequest.java
 src/main/java/org/openapitools/client/model/AskDocumentRequest.java
 src/main/java/org/openapitools/client/model/AskDocumentResponse.java
+src/main/java/org/openapitools/client/model/Centroid.java
 src/main/java/org/openapitools/client/model/Citation.java
+src/main/java/org/openapitools/client/model/Coordinate.java
 src/main/java/org/openapitools/client/model/DataPipelineStatus.java
 src/main/java/org/openapitools/client/model/DeleteAccepted.java
 src/main/java/org/openapitools/client/model/DetectLanguageResponse.java
@@ -115,6 +123,7 @@ src/main/java/org/openapitools/client/model/IndexDetails.java
 src/main/java/org/openapitools/client/model/IngestDocumentResponse.java
 src/main/java/org/openapitools/client/model/IngestTextDocumentRequest.java
 src/main/java/org/openapitools/client/model/IngestWebPageDocumentRequest.java
+src/main/java/org/openapitools/client/model/KMeansCluster.java
 src/main/java/org/openapitools/client/model/KeywordExtractionRequestBody.java
 src/main/java/org/openapitools/client/model/KeywordExtractionResponse.java
 src/main/java/org/openapitools/client/model/LanguageDetection.java
@@ -134,6 +143,7 @@ src/main/java/org/openapitools/client/model/ReRankDocumentsResponse.java
 src/main/java/org/openapitools/client/model/SearchQuery.java
 src/main/java/org/openapitools/client/model/SearchResult.java
 src/main/java/org/openapitools/client/model/SegmentData.java
+src/main/java/org/openapitools/client/model/SemanticSearchQueryResultsClusteringRequest.java
 src/main/java/org/openapitools/client/model/SemanticSimilarityDocument.java
 src/main/java/org/openapitools/client/model/SemanticSimilarityRequest.java
 src/main/java/org/openapitools/client/model/SemanticSimilarityResponse.java
@@ -155,9 +165,12 @@ src/test/java/org/openapitools/client/api/LanguageApiTest.java
 src/test/java/org/openapitools/client/api/MiscellaneousApiTest.java
 src/test/java/org/openapitools/client/api/SemanticSearchApiTest.java
 src/test/java/org/openapitools/client/api/TranscriptionApiTest.java
+src/test/java/org/openapitools/client/model/ApiExtractThematicSimilarityClusterPostRequestTest.java
 src/test/java/org/openapitools/client/model/AskDocumentRequestTest.java
 src/test/java/org/openapitools/client/model/AskDocumentResponseTest.java
+src/test/java/org/openapitools/client/model/CentroidTest.java
 src/test/java/org/openapitools/client/model/CitationTest.java
+src/test/java/org/openapitools/client/model/CoordinateTest.java
 src/test/java/org/openapitools/client/model/DataPipelineStatusTest.java
 src/test/java/org/openapitools/client/model/DeleteAcceptedTest.java
 src/test/java/org/openapitools/client/model/DetectLanguageResponseTest.java
@@ -173,6 +186,7 @@ src/test/java/org/openapitools/client/model/IndexDetailsTest.java
 src/test/java/org/openapitools/client/model/IngestDocumentResponseTest.java
 src/test/java/org/openapitools/client/model/IngestTextDocumentRequestTest.java
 src/test/java/org/openapitools/client/model/IngestWebPageDocumentRequestTest.java
+src/test/java/org/openapitools/client/model/KMeansClusterTest.java
 src/test/java/org/openapitools/client/model/KeywordExtractionRequestBodyTest.java
 src/test/java/org/openapitools/client/model/KeywordExtractionResponseTest.java
 src/test/java/org/openapitools/client/model/LanguageDetectionTest.java
@@ -192,6 +206,7 @@ src/test/java/org/openapitools/client/model/ReRankDocumentsResponseTest.java
 src/test/java/org/openapitools/client/model/SearchQueryTest.java
 src/test/java/org/openapitools/client/model/SearchResultTest.java
 src/test/java/org/openapitools/client/model/SegmentDataTest.java
+src/test/java/org/openapitools/client/model/SemanticSearchQueryResultsClusteringRequestTest.java
 src/test/java/org/openapitools/client/model/SemanticSimilarityDocumentTest.java
 src/test/java/org/openapitools/client/model/SemanticSimilarityRequestTest.java
 src/test/java/org/openapitools/client/model/SemanticSimilarityResponseTest.java

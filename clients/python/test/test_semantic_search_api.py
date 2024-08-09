@@ -69,6 +69,12 @@ class TestSemanticSearchApi(unittest.TestCase):
         """
         pass
 
+    def test_semantic_search_query_results_clustering(self) -> None:
+        """Test case for semantic_search_query_results_clustering
+
+        """
+        pass
+
     def test_semantic_search_rerank(self) -> None:
         """Test case for semantic_search_rerank
 

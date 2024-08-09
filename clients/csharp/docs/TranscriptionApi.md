@@ -9,7 +9,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 <a id="transcriptionasynchronous"></a>
 # **TranscriptionAsynchronous**
-> TranscriptionAudioUploadResult TranscriptionAsynchronous (List<System.IO.Stream> files, string? model = null, string? language = null, string? prompt = null, double? temperature = null, string? webHookUrl = null, string? translateTo = null, bool? splitOnWord = null, bool? languageDetection = null, bool? noiseReduction = null)
+> TranscriptionAudioUploadResult TranscriptionAsynchronous (List<System.IO.Stream> files, string? model = null, string? language = null, string? prompt = null, double? temperature = null, string? webHookUrl = null, string? translateTo = null, bool? splitOnWord = null, bool? languageDetection = null, bool? enableNoiseReduction = null)
 
 Upload audio file for asynchronous transcription
 
@@ -41,12 +41,12 @@ namespace Example
             var translateTo = "translateTo_example";  // string? | The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) (optional) 
             var splitOnWord = false;  // bool? | Split into word segments. (optional, default is false) (optional)  (default to false)
             var languageDetection = false;  // bool? | Enable transcription language detection (Optional. default is false) (optional)  (default to false)
-            var noiseReduction = false;  // bool? | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional)  (default to false)
+            var enableNoiseReduction = false;  // bool? | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional)  (default to false)
 
             try
             {
                 // Upload audio file for asynchronous transcription
-                TranscriptionAudioUploadResult result = apiInstance.TranscriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction);
+                TranscriptionAudioUploadResult result = apiInstance.TranscriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -67,7 +67,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Upload audio file for asynchronous transcription
-    ApiResponse<TranscriptionAudioUploadResult> response = apiInstance.TranscriptionAsynchronousWithHttpInfo(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction);
+    ApiResponse<TranscriptionAudioUploadResult> response = apiInstance.TranscriptionAsynchronousWithHttpInfo(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -93,7 +93,7 @@ catch (ApiException e)
 | **translateTo** | **string?** | The language to translate transcription into. Supplying the language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional) | [optional]  |
 | **splitOnWord** | **bool?** | Split into word segments. (optional, default is false) | [optional] [default to false] |
 | **languageDetection** | **bool?** | Enable transcription language detection (Optional. default is false) | [optional] [default to false] |
-| **noiseReduction** | **bool?** | Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false] |
+| **enableNoiseReduction** | **bool?** | Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to false] |
 
 ### Return type
 

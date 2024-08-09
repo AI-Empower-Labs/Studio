@@ -54,8 +54,8 @@ public class TranscriptionApiTest {
         String translateTo = null;
         Boolean splitOnWord = null;
         Boolean languageDetection = null;
-        Boolean noiseReduction = null;
-        TranscriptionAudioUploadResult response = api.transcriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, noiseReduction);
+        Boolean enableNoiseReduction = null;
+        TranscriptionAudioUploadResult response = api.transcriptionAsynchronous(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction);
         // TODO: test validations
     }
 

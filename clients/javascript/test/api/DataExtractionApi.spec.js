@@ -48,6 +48,16 @@
   }
 
   describe('DataExtractionApi', function() {
+    describe('apiExtractThematicSimilarityClusterPost', function() {
+      it('should call apiExtractThematicSimilarityClusterPost successfully', function(done) {
+        //uncomment below and update the code to test apiExtractThematicSimilarityClusterPost
+        //instance.apiExtractThematicSimilarityClusterPost(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('embedding', function() {
       it('should call embedding successfully', function(done) {
         //uncomment below and update the code to test embedding

@@ -4,6 +4,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**api_extract_thematic_similarity_cluster_post**](DataExtractionApi.md#api_extract_thematic_similarity_cluster_post) | **POST** /api/extract/thematic-similarity-cluster | Generate thematic similarity clusters using the K-Means algorithm
 [**embedding**](DataExtractionApi.md#embedding) | **POST** /api/extract/embed | Converts data to a numerical vector array
 [**keyword_extraction**](DataExtractionApi.md#keyword_extraction) | **POST** /api/extract/keywords | Performs keyword extraction on source text
 [**named_entity_recognition**](DataExtractionApi.md#named_entity_recognition) | **POST** /api/extract/entities | Extracts named entities from provided text
@@ -12,6 +13,76 @@ Method | HTTP request | Description
 [**tokenize**](DataExtractionApi.md#tokenize) | **POST** /api/extract/tokenize | Converts data to a integer token array
 [**transcription_synchronous**](DataExtractionApi.md#transcription_synchronous) | **POST** /api/extract/transcription | Synchronous transcribe audio
 
+
+# **api_extract_thematic_similarity_cluster_post**
+> KMeansCluster api_extract_thematic_similarity_cluster_post(api_extract_thematic_similarity_cluster_post_request)
+
+Generate thematic similarity clusters using the K-Means algorithm
+
+### Example
+
+
+```python
+import openapi_client
+from openapi_client.models.api_extract_thematic_similarity_cluster_post_request import ApiExtractThematicSimilarityClusterPostRequest
+from openapi_client.models.k_means_cluster import KMeansCluster
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://studio.aiempowerlabs.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = openapi_client.Configuration(
+    host = "https://studio.aiempowerlabs.com"
+)
+
+
+# Enter a context with an instance of the API client
+with openapi_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = openapi_client.DataExtractionApi(api_client)
+    api_extract_thematic_similarity_cluster_post_request = openapi_client.ApiExtractThematicSimilarityClusterPostRequest() # ApiExtractThematicSimilarityClusterPostRequest | 
+
+    try:
+        # Generate thematic similarity clusters using the K-Means algorithm
+        api_response = api_instance.api_extract_thematic_similarity_cluster_post(api_extract_thematic_similarity_cluster_post_request)
+        print("The response of DataExtractionApi->api_extract_thematic_similarity_cluster_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DataExtractionApi->api_extract_thematic_similarity_cluster_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **api_extract_thematic_similarity_cluster_post_request** | [**ApiExtractThematicSimilarityClusterPostRequest**](ApiExtractThematicSimilarityClusterPostRequest.md)|  | 
+
+### Return type
+
+[**KMeansCluster**](KMeansCluster.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, text/csv, application/problem+json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**429** | Too Many Requests |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **embedding**
 > EmbeddingResponse embedding(embedding_request)
@@ -446,7 +517,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transcription_synchronous**
-> TranscriptionResponse transcription_synchronous(files, model=model, language=language, prompt=prompt, temperature=temperature, split_on_word=split_on_word, language_detection=language_detection, noise_reduction=noise_reduction)
+> TranscriptionResponse transcription_synchronous(files, model=model, language=language, prompt=prompt, temperature=temperature, split_on_word=split_on_word, language_detection=language_detection, enable_noise_reduction=enable_noise_reduction)
 
 Synchronous transcribe audio
 
@@ -479,11 +550,11 @@ with openapi_client.ApiClient(configuration) as api_client:
     temperature = 0 # float | The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) (optional) (default to 0)
     split_on_word = False # bool | Split into word segments. (optional, default is false) (optional) (default to False)
     language_detection = False # bool | Enable transcription language detection (Optional. default is false) (optional) (default to False)
-    noise_reduction = False # bool | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional) (default to False)
+    enable_noise_reduction = False # bool | Enable noise reduction from audio stream before transcription (Optional. default is false) (optional) (default to False)
 
     try:
         # Synchronous transcribe audio
-        api_response = api_instance.transcription_synchronous(files, model=model, language=language, prompt=prompt, temperature=temperature, split_on_word=split_on_word, language_detection=language_detection, noise_reduction=noise_reduction)
+        api_response = api_instance.transcription_synchronous(files, model=model, language=language, prompt=prompt, temperature=temperature, split_on_word=split_on_word, language_detection=language_detection, enable_noise_reduction=enable_noise_reduction)
         print("The response of DataExtractionApi->transcription_synchronous:\n")
         pprint(api_response)
     except Exception as e:
@@ -504,7 +575,7 @@ Name | Type | Description  | Notes
  **temperature** | **float**| The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit.  (optional, default to 0M) | [optional] [default to 0]
  **split_on_word** | **bool**| Split into word segments. (optional, default is false) | [optional] [default to False]
  **language_detection** | **bool**| Enable transcription language detection (Optional. default is false) | [optional] [default to False]
- **noise_reduction** | **bool**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to False]
+ **enable_noise_reduction** | **bool**| Enable noise reduction from audio stream before transcription (Optional. default is false) | [optional] [default to False]
 
 ### Return type
 

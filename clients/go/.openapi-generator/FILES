@@ -11,9 +11,12 @@ api_semantic_search.go
 api_transcription.go
 client.go
 configuration.go
+docs/ApiExtractThematicSimilarityClusterPostRequest.md
 docs/AskDocumentRequest.md
 docs/AskDocumentResponse.md
+docs/Centroid.md
 docs/Citation.md
+docs/Coordinate.md
 docs/DataExtractionAPI.md
 docs/DataPipelineStatus.md
 docs/DeleteAccepted.md
@@ -30,6 +33,7 @@ docs/IndexDetails.md
 docs/IngestDocumentResponse.md
 docs/IngestTextDocumentRequest.md
 docs/IngestWebPageDocumentRequest.md
+docs/KMeansCluster.md
 docs/KernelMemoryAPI.md
 docs/KeywordExtractionRequestBody.md
 docs/KeywordExtractionResponse.md
@@ -53,6 +57,7 @@ docs/SearchQuery.md
 docs/SearchResult.md
 docs/SegmentData.md
 docs/SemanticSearchAPI.md
+docs/SemanticSearchQueryResultsClusteringRequest.md
 docs/SemanticSimilarityDocument.md
 docs/SemanticSimilarityRequest.md
 docs/SemanticSimilarityResponse.md
@@ -72,9 +77,12 @@ docs/UploadAccepted.md
 git_push.sh
 go.mod
 go.sum
+model__api_extract_thematic_similarity_cluster_post_request.go
 model_ask_document_request.go
 model_ask_document_response.go
+model_centroid.go
 model_citation.go
+model_coordinate.go
 model_data_pipeline_status.go
 model_delete_accepted.go
 model_detect_language_response.go
@@ -90,6 +98,7 @@ model_index_details.go
 model_ingest_document_response.go
 model_ingest_text_document_request.go
 model_ingest_web_page_document_request.go
+model_k_means_cluster.go
 model_keyword_extraction_request_body.go
 model_keyword_extraction_response.go
 model_language_detection.go
@@ -109,6 +118,7 @@ model_re_rank_documents_response.go
 model_search_query.go
 model_search_result.go
 model_segment_data.go
+model_semantic_search_query_results_clustering_request.go
 model_semantic_similarity_document.go
 model_semantic_similarity_request.go
 model_semantic_similarity_response.go

@@ -35,7 +35,7 @@ type ApiTranscriptionAsynchronousRequest struct {
 	translateTo *string
 	splitOnWord *bool
 	languageDetection *bool
-	noiseReduction *bool
+	enableNoiseReduction *bool
 }
 
 // The file object to ingest.
@@ -93,8 +93,8 @@ func (r ApiTranscriptionAsynchronousRequest) LanguageDetection(languageDetection
 }
 
 // Enable noise reduction from audio stream before transcription (Optional. default is false)
-func (r ApiTranscriptionAsynchronousRequest) NoiseReduction(noiseReduction bool) ApiTranscriptionAsynchronousRequest {
-	r.noiseReduction = &noiseReduction
+func (r ApiTranscriptionAsynchronousRequest) EnableNoiseReduction(enableNoiseReduction bool) ApiTranscriptionAsynchronousRequest {
+	r.enableNoiseReduction = &enableNoiseReduction
 	return r
 }
 
@@ -187,11 +187,11 @@ func (a *TranscriptionAPIService) TranscriptionAsynchronousExecute(r ApiTranscri
 		var defaultValue bool = false
 		r.languageDetection = &defaultValue
 	}
-	if r.noiseReduction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "noiseReduction", r.noiseReduction, "")
+	if r.enableNoiseReduction != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enableNoiseReduction", r.enableNoiseReduction, "")
 	} else {
 		var defaultValue bool = false
-		r.noiseReduction = &defaultValue
+		r.enableNoiseReduction = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data", "application/x-www-form-urlencoded"}

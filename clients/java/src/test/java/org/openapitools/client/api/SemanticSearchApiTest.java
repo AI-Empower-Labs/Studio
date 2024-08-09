@@ -22,6 +22,7 @@ import org.openapitools.client.model.HttpValidationProblemDetails;
 import org.openapitools.client.model.IngestDocumentResponse;
 import org.openapitools.client.model.IngestTextDocumentRequest;
 import org.openapitools.client.model.IngestWebPageDocumentRequest;
+import org.openapitools.client.model.KMeansCluster;
 import org.openapitools.client.model.ListDocumentParameters;
 import org.openapitools.client.model.ListDocumentResponse;
 import org.openapitools.client.model.ProblemDetails;
@@ -29,6 +30,7 @@ import org.openapitools.client.model.QueryDocumentRequest;
 import org.openapitools.client.model.QueryDocumentResponse;
 import org.openapitools.client.model.ReRankDocumentsRequest;
 import org.openapitools.client.model.ReRankDocumentsResponse;
+import org.openapitools.client.model.SemanticSearchQueryResultsClusteringRequest;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -135,6 +137,18 @@ public class SemanticSearchApiTest {
     public void semanticSearchQueryTest() throws ApiException {
         QueryDocumentRequest queryDocumentRequest = null;
         QueryDocumentResponse response = api.semanticSearchQuery(queryDocumentRequest);
+        // TODO: test validations
+    }
+
+    /**
+     * Perform k-means clustering over semantic search log entries
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void semanticSearchQueryResultsClusteringTest() throws ApiException {
+        SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest = null;
+        KMeansCluster response = api.semanticSearchQueryResultsClustering(semanticSearchQueryResultsClusteringRequest);
         // TODO: test validations
     }
 

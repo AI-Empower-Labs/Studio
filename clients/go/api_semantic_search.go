@@ -1097,6 +1097,148 @@ func (a *SemanticSearchAPIService) SemanticSearchQueryExecute(r ApiSemanticSearc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiSemanticSearchQueryResultsClusteringRequest struct {
+	ctx context.Context
+	ApiService *SemanticSearchAPIService
+	semanticSearchQueryResultsClusteringRequest *SemanticSearchQueryResultsClusteringRequest
+}
+
+func (r ApiSemanticSearchQueryResultsClusteringRequest) SemanticSearchQueryResultsClusteringRequest(semanticSearchQueryResultsClusteringRequest SemanticSearchQueryResultsClusteringRequest) ApiSemanticSearchQueryResultsClusteringRequest {
+	r.semanticSearchQueryResultsClusteringRequest = &semanticSearchQueryResultsClusteringRequest
+	return r
+}
+
+func (r ApiSemanticSearchQueryResultsClusteringRequest) Execute() (*KMeansCluster, *http.Response, error) {
+	return r.ApiService.SemanticSearchQueryResultsClusteringExecute(r)
+}
+
+/*
+SemanticSearchQueryResultsClustering Method for SemanticSearchQueryResultsClustering
+
+Perform k-means clustering over semantic search log entries
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSemanticSearchQueryResultsClusteringRequest
+*/
+func (a *SemanticSearchAPIService) SemanticSearchQueryResultsClustering(ctx context.Context) ApiSemanticSearchQueryResultsClusteringRequest {
+	return ApiSemanticSearchQueryResultsClusteringRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return KMeansCluster
+func (a *SemanticSearchAPIService) SemanticSearchQueryResultsClusteringExecute(r ApiSemanticSearchQueryResultsClusteringRequest) (*KMeansCluster, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KMeansCluster
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SemanticSearchAPIService.SemanticSearchQueryResultsClustering")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/semantic/query-results-clustering"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.semanticSearchQueryResultsClusteringRequest == nil {
+		return localVarReturnValue, nil, reportError("semanticSearchQueryResultsClusteringRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json", "text/csv", "application/problem+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.semanticSearchQueryResultsClusteringRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v HttpValidationProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiSemanticSearchRerankRequest struct {
 	ctx context.Context
 	ApiService *SemanticSearchAPIService
