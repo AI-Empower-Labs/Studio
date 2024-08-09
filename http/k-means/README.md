@@ -174,5 +174,65 @@ response = requests.post(url, json=data, headers=headers)
 print(response.json())
 ```
 
+## Visualizing results
+
+```python
+import matplotlib.pyplot as plt
+
+# Example response data
+response = {
+    "clusterSize": 2,
+    "centroids": [
+        {
+            "clusterId": 1,
+            "coordinate": {
+                "x": -0.14818683,
+                "y": -0.08817512,
+                "label": "cities and their capitals"
+            },
+            "dataPoints": [
+                {"x": -0.1484083, "y": -0.16131228, "label": "Carson City is the capital city..."},
+                {"x": -0.15187132, "y": -0.04186835, "label": "The Commonwealth of the Northern Mariana Islands..."},
+                {"x": -0.1519506, "y": -0.12574847, "label": "Charlotte Amalie is the capital and largest city..."},
+                {"x": -0.14379919, "y": -0.022728091, "label": "Washington, D.C. is the capital of the United States..."},
+                {"x": -0.14490473, "y": -0.08921837, "label": "North Dakota is a state in the United States..."}
+            ]
+        },
+        {
+            "clusterId": 2,
+            "coordinate": {
+                "x": -0.17413735,
+                "y": 0.44853252,
+                "label": "Capital punishment"
+            },
+            "dataPoints": [
+                {"x": -0.17413735, "y": 0.44853252, "label": "Capital punishment (the death penalty) has existed..."}
+            ]
+        }
+    ]
+}
+
+# Plotting
+for centroid in response['centroids']:
+    x = [point['x'] for point in centroid['dataPoints']]
+    y = [point['y'] for point in centroid['dataPoints']]
+    labels = [point['label'] for point in centroid['dataPoints']]
+    
+    plt.scatter(x, y, label=centroid['coordinate']['label'])
+    
+    for i, label in enumerate(labels):
+        plt.annotate(label, (x[i], y[i]), fontsize=8, alpha=0.75)
+
+plt.xlabel('X Coordinate')
+plt.ylabel('Y Coordinate')
+plt.title('Thematic Similarity Clusters')
+plt.legend()
+plt.show()
+```
+
+produces 
+
+![alt text](kmeanscluster.png "k-means cluster")
+
 ## Conclusion
 This API provides a straightforward way to generate thematic similarity clusters from a set of text inputs using the K-Means clustering algorithm. It can be used for a wide range of text analysis tasks, including topic modeling, document clustering, and summarization. By adjusting the parameters, users can fine-tune the clustering process to suit their specific needs.
