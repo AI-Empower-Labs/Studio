@@ -6,6 +6,8 @@ import { UserSettingsMenu } from '../header/UserSettingsMenu';
 import { PluginGallery } from '../open-api-plugins/PluginGallery';
 import { BackendProbe, ChatView, Error, Loading } from '../views';
 
+import logo from '../../assets/logo.png';
+
 const Chat = ({
     classes,
     appState,
@@ -27,7 +29,7 @@ const Chat = ({
     return (
         <div className={classes.container}>
             <div className={classes.header}>
-                <Subtitle1 as="h1">AEL Chat Copilot</Subtitle1>
+                <Subtitle1 as="h1"><img alt='logo' style={{ width: 30 }} src={String(logo)} /> &nbsp; AEL Chat Copilot</Subtitle1>
                 {appState > AppState.SettingUserInfo && (
                     <div className={classes.cornerItems}>
                         <div className={classes.cornerItems}>
