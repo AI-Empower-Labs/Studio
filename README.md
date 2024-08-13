@@ -142,15 +142,67 @@ Select the model and update its attributes according to your operational require
 ```json
 "AiStudioOptions": {
     "Llm": {
-        "gemma-7b-it": {
+        "llama3": {
             "Default": "false",
-            "Address": "https://newapi.example.com",
-            "AuthorizationToken": "new_authorization_token_here",
-            "ContextSize": "8192",
-            "DisplayName": "New DisplayName"
+            "Address": "https://<dns>/v1/chat/completions",
+            "AuthorizationToken": "<authToken>",
+            "ContextSize": "32768",
+            "DisplayName": "llama3.1 8b",
+            "ModelName": "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+            "EmulateFunctionCalling": true,
+            "Tokenizer": "llama"
         }
     }
 }
+```
+
+#### Tokenizer Options
+The Tokenizer value in the configuration can be set to one of the following supported tokenizer types, depending on the specific model or service you intend to use:
+
+```
+XlmRobertaBase
+llama
+mistral
+mxbai-embed-large-v1
+gpt-4o
+gpt-4
+gpt-3.5-turbo
+gpt-3.5-turbo-16k
+gpt-35
+gpt-35-turbo
+gpt-35-turbo-16k
+text-davinci-003
+text-davinci-002
+text-davinci-001
+text-curie-001
+text-babbage-001
+text-ada-001
+davinci
+curie
+babbage
+ada
+code-davinci-002
+code-davinci-001
+code-cushman-002
+code-cushman-001
+davinci-codex
+cushman-codex
+text-davinci-edit-001
+code-davinci-edit-001
+text-embedding-ada-002
+text-embedding-3-small
+text-embedding-3-large
+text-similarity-davinci-001
+text-similarity-curie-001
+text-similarity-babbage-001
+text-similarity-ada-001
+text-search-davinci-doc-001
+text-search-curie-doc-001
+text-search-babbage-doc-001
+text-search-ada-doc-001
+code-search-babbage-code-001
+code-search-ada-code-001
+gpt2
 ```
 
 #### Embedding
@@ -173,8 +225,10 @@ Modify properties such as `MaxTokens` or `Dimensions` to tune the model's perfor
         "multilingual-e5-large": {
             "Default": true,
             "Address": "http://127.0.0.1:3000",
-            "MaxTokens": 1024,
-            "Dimensions": 2048
+            "MaxTokens": "512",
+            "Dimensions": "1024",
+            "DisplayName": "multilingual-e5-large",
+            "Tokenizer": "XlmRobertaBase"
         }
     }
 }
