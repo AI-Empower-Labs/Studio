@@ -254,6 +254,20 @@ Update the `Address` to point to a new transcription service if changed.
 }
 ```
 
+### SemanticSearchLogDbRetentionTime
+The SemanticSearchLogDbRetentionTime property configures the retention period for the Semantic Search query logs. This setting determines how long the query logs are stored before being automatically deleted.
+
+Type: Duration, optional
+Accepted Values:
+A duration of time, such as 10 days, 10.00:00:00, or 365 days. If not specified, the system will not remove logs.
+```json
+"AiStudioOptions": {
+    "SemanticSearchLogDbRetentionTime": "31 days"
+}
+```
+
+
+
 ### Saving and Applying Changes
 
 After editing the `appsettings.json` with the new configurations, save the file and ensure to restart your ASP.NET application to apply the changes. It's crucial to validate the settings for correctness to prevent any disruptions in the functionality of your application.
