@@ -39,7 +39,7 @@ services:  # Defines the services part of the compose file
       - llama3
 
   postgres:  # PostgreSQL database service
-    image: ankane/pgvector:latest  # Image to use for PostgreSQL with vector extension
+    image: paradedb/paradedb:latest  # Image to use for PostgreSQL with vector extension
     logging: *default-logging
     restart: unless-stopped
     environment:  # Database credentials
