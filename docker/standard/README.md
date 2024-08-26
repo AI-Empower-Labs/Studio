@@ -2,8 +2,7 @@ Below is an example `README.md` file that explains the given `docker-compose.yam
 
 # AI Empower Labs Docker Compose Configuration
 
-This Docker Compose configuration defines a minimal setup for AI Empower Labs services related to AI operations within the AI Empower Labs ecosystem. Each service is containerized and configured to ensure efficient and reliable operation.
-This minimal setup excludes Translation and Transcription.
+This Docker Compose configuration defines a standard setup for AI Empower Labs with all services related to AI operations within the AI Empower Labs ecosystem. Each service is containerized and configured to ensure efficient and reliable operation.
 
 ## Docker Compose Version
 
@@ -38,6 +37,20 @@ This configuration uses Docker Compose version 3.8.
 - **Resource Reservations**: Configured to use one NVIDIA GPU.
 - **Security Options**: Security context is disabled.
 - **Network**: Connected to the `ai_internal` network.
+
+### Translation
+
+- **Image**: `registry.aiempowerlabs.com/translation:latest`
+- **Purpose**: Provides translation services.
+- **Healthcheck**: Custom script to ensure the translation service is operational.
+- **Network**: Uses the `ai_internal` network.
+
+### Transcription
+
+- **Image**: `registry.aiempowerlabs.com/transcription:latest`
+- **Purpose**: Provides transcription services.
+- **Healthcheck**: Ensures service availability via an HTTP health check.
+- **Network**: Uses the `ai_internal` network.
 
 ### Embedding
 
