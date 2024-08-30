@@ -127,6 +127,30 @@ x-ael-cache-relevance: 1
 }
 ```
 
+### Cache Sessions
+Notice that to enable "session" based caching, use the OpenAI compatible "user" property, and set the value to the current "session" / user. This will ensure cache uniqueness cross "session" / user.
+
+Example:
+
+```bash
+POST http://localhost:8080/api/openai/v1/chat/completions
+Content-Type: application/json
+
+{
+    "model": "llama3",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Write a limerick about the wonders of GPU computing."
+        },
+        "user": "<sessionId> / <userId>"
+    ],
+    "extra_body": {
+        "cache-type": "semantic"
+    }
+}
+```
+
 ## Response Headers
 
 For both cache types, specific headers are included in the response:
