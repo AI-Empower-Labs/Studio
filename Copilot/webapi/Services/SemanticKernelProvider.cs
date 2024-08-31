@@ -47,19 +47,17 @@ internal sealed class SemanticKernelProvider(IOptions<AiEmpowerLabsOptions> opti
 	private static IKernelBuilder InitializeCompletionKernel(IOptions<AiEmpowerLabsOptions> options)
 	{
 		IKernelBuilder builder = Kernel.CreateBuilder();
-
 		builder.Services.AddLogging();
-
 		Func<IServiceProvider, object?, OpenAIChatCompletionService> factory = (sp, _) =>
 		{
-			Uri uri = new(options.Value.Url);
-			uri = new Uri(uri, "/api/openai/v1/chat/completions");
+			Uri chatCompletionUri = new(options.Value.Url);
+			chatCompletionUri = new Uri(chatCompletionUri, "/api/openai/v1/chat/completions");
 
 			HttpClientHandler httpMessageHandler = new();
-			RequestUriReWriterHandler requestUriReWriterHandler = new(httpMessageHandler, uri);
-			RewriterHandler rewriterHandler = new(requestUriReWriterHandler, sp.GetRequiredService<ILogger<RewriterHandler>>());
+			RewriterHandler rewriterHandler = new(httpMessageHandler, sp.GetRequiredService<ILogger<RewriterHandler>>());
 
 			return new(options.Value.LlmModelName,
+				chatCompletionUri,
 				"NoKey",
 				null,
 				new HttpClient(rewriterHandler),
@@ -69,22 +67,6 @@ internal sealed class SemanticKernelProvider(IOptions<AiEmpowerLabsOptions> opti
 		builder.Services.AddKeyedSingleton<ITextGenerationService>(null, factory);
 
 		return builder;
-	}
-}
-
-/// <summary>
-/// Since Microsoft.SemanticKernel does not provide a direct way to set the address of the OpenAI server,
-/// Therefore, you need to customize a DelegatingHandler and change the OpenAI server address to the Local-LLM-Server address.
-/// </summary>
-internal sealed class RequestUriReWriterHandler(
-	HttpMessageHandler httpMessageHandler,
-	Uri rewriteUri) : DelegatingHandler(httpMessageHandler)
-{
-	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-	{
-		request.RequestUri = rewriteUri;
-		HttpResponseMessage response = await base.SendAsync(request, cancellationToken);
-		return response;
 	}
 }
 
