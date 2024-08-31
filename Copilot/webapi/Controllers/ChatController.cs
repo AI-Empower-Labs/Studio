@@ -120,6 +120,11 @@ public sealed class ChatController(
         }
         catch (Exception ex)
         {
+			// To keep the UI from hanging
+			await messageRelayHubContext.Clients
+				.Group(chatIdString)
+				.SendAsync(GeneratingResponseClientCall, chatIdString, null, cancellationToken: cancellationToken);
+
             if (ex is OperationCanceledException || ex.InnerException is OperationCanceledException)
             {
                 // Log the timeout and return a 504 response
@@ -130,17 +135,16 @@ public sealed class ChatController(
             throw;
         }
 
-        AskResult chatAskResult = new()
-        {
-            Value = result.ToString(),
-            Variables = contextVariables.Select(v => new KeyValuePair<string, object?>(v.Key, v.Value))
-        };
-
         // Broadcast AskResult to all users
         await messageRelayHubContext.Clients
 	        .Group(chatIdString)
             .SendAsync(GeneratingResponseClientCall, chatIdString, null, cancellationToken: cancellationToken);
 
+		AskResult chatAskResult = new()
+		{
+			Value = result.ToString(),
+			Variables = contextVariables.Select(v => new KeyValuePair<string, object?>(v.Key, v.Value))
+		};
         return Ok(chatAskResult);
     }
 
