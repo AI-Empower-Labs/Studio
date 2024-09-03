@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -78,17 +79,24 @@ public sealed class PluginEndpoint
 		PluginConfig config,
 		CancellationToken cancellationToken)
 	{
-		string unescapedSubject = Regex.Unescape(subject);
-		string unescapedBody = Regex.Unescape(body);
-		SendResponse email = await Email
-			.From(config.SenderEmail, config.SenderName)
-			.To(recipientEmails)
-			.Subject(unescapedSubject)
-			.Body(unescapedBody)
-			.SendAsync(cancellationToken);
+		try
+		{
+			string unescapedSubject = Regex.Unescape(subject);
+			string unescapedBody = Regex.Unescape(body);
+			SendResponse email = await Email
+				.From(config.SenderEmail, config.SenderName)
+				.To(recipientEmails)
+				.Subject(unescapedSubject)
+				.Body(unescapedBody)
+				.SendAsync(cancellationToken);
 
-		return email.Successful
-			? Results.Text("Email is sent.")
-			: Results.Text("Email failed to send because: {0}.", string.Join(',', email.ErrorMessages));
+			return email.Successful
+				? Results.Text("Email is sent.")
+				: Results.Text("Email failed to send because: {0}.", string.Join(',', email.ErrorMessages));
+		}
+		catch (Exception e)
+		{
+			return Results.Text("Email failed to send because: {0}.", e.Message);
+		}
 	}
 }
