@@ -1,0 +1,9 @@
+.openapi-generator-ignore
+Apis/DataExtractionApi.http
+Apis/KernelMemoryApi.http
+Apis/LanguageApi.http
+Apis/MiscellaneousApi.http
+Apis/SemanticSearchApi.http
+Apis/TranscriptionApi.http
+Apis/http-client.template.env.json
+README.md

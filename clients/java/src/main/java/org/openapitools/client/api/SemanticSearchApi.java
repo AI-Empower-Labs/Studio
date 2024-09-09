@@ -539,7 +539,7 @@ public class SemanticSearchApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/semantic/ingest/file";
+        String localVarPath = "/api/ingest/file";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -730,7 +730,7 @@ public class SemanticSearchApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/semantic/ingest/status";
+        String localVarPath = "/api/ingest/status";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1417,7 +1417,7 @@ public class SemanticSearchApi {
         Object localVarPostBody = ingestTextDocumentRequest;
 
         // create path and map variables
-        String localVarPath = "/api/semantic/ingest/text";
+        String localVarPath = "/api/ingest/text";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1553,7 +1553,7 @@ public class SemanticSearchApi {
         Object localVarPostBody = ingestWebPageDocumentRequest;
 
         // create path and map variables
-        String localVarPath = "/api/semantic/ingest/webpage";
+        String localVarPath = "/api/ingest/webpage";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

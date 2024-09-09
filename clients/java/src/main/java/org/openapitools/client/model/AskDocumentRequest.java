@@ -43,7 +43,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -55,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * AskDocumentRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class AskDocumentRequest {
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -93,10 +92,10 @@ public class AskDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Semantic query to find matching documents and ask questions over
    * @return query
-  **/
+   */
   @javax.annotation.Nullable
   public String getQuery() {
     return query;
@@ -112,10 +111,10 @@ public class AskDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Optional index to specify which index to search in. Defaults to &#39;default&#39;
    * @return index
-  **/
+   */
   @javax.annotation.Nullable
   public String getIndex() {
     return index;
@@ -139,10 +138,10 @@ public class AskDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Optional filtering of document id(s) and/or tags
    * @return filter
-  **/
+   */
   @javax.annotation.Nullable
   public List<DocumentFilters> getFilter() {
     return filter;
@@ -158,10 +157,10 @@ public class AskDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Optional filter to specify minimum relevance. Typically values between 0 and 1
    * @return minRelevance
-  **/
+   */
   @javax.annotation.Nullable
   public Double getMinRelevance() {
     return minRelevance;
@@ -177,10 +176,10 @@ public class AskDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Large language model to use in query
    * @return llmModel
-  **/
+   */
   @javax.annotation.Nullable
   public String getLlmModel() {
     return llmModel;
@@ -196,10 +195,10 @@ public class AskDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Embedding model to use in query
    * @return embeddingModel
-  **/
+   */
   @javax.annotation.Nullable
   public String getEmbeddingModel() {
     return embeddingModel;
@@ -223,10 +222,10 @@ public class AskDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Get args
    * @return args
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, Object> getArgs() {
     return args;
@@ -317,12 +316,12 @@ public class AskDocumentRequest {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to AskDocumentRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to AskDocumentRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AskDocumentRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -395,22 +394,22 @@ public class AskDocumentRequest {
     }
   }
 
- /**
-  * Create an instance of AskDocumentRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of AskDocumentRequest
-  * @throws IOException if the JSON string is invalid with respect to AskDocumentRequest
-  */
+  /**
+   * Create an instance of AskDocumentRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of AskDocumentRequest
+   * @throws IOException if the JSON string is invalid with respect to AskDocumentRequest
+   */
   public static AskDocumentRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, AskDocumentRequest.class);
   }
 
- /**
-  * Convert an instance of AskDocumentRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of AskDocumentRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

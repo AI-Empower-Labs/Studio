@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * SearchQuery
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class SearchQuery {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
@@ -83,10 +82,10 @@ public class SearchQuery {
     return this;
   }
 
-   /**
+  /**
    * Get index
    * @return index
-  **/
+   */
   @javax.annotation.Nullable
   public String getIndex() {
     return index;
@@ -102,10 +101,10 @@ public class SearchQuery {
     return this;
   }
 
-   /**
+  /**
    * Get query
    * @return query
-  **/
+   */
   @javax.annotation.Nullable
   public String getQuery() {
     return query;
@@ -129,10 +128,10 @@ public class SearchQuery {
     return this;
   }
 
-   /**
+  /**
    * Get filters
    * @return filters
-  **/
+   */
   @javax.annotation.Nullable
   public List<Map<String, List<String>>> getFilters() {
     return filters;
@@ -148,10 +147,10 @@ public class SearchQuery {
     return this;
   }
 
-   /**
+  /**
    * Get minRelevance
    * @return minRelevance
-  **/
+   */
   @javax.annotation.Nullable
   public Double getMinRelevance() {
     return minRelevance;
@@ -167,10 +166,10 @@ public class SearchQuery {
     return this;
   }
 
-   /**
+  /**
    * Get limit
    * @return limit
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getLimit() {
     return limit;
@@ -255,12 +254,12 @@ public class SearchQuery {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to SearchQuery
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to SearchQuery
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SearchQuery.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -317,22 +316,22 @@ public class SearchQuery {
     }
   }
 
- /**
-  * Create an instance of SearchQuery given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of SearchQuery
-  * @throws IOException if the JSON string is invalid with respect to SearchQuery
-  */
+  /**
+   * Create an instance of SearchQuery given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of SearchQuery
+   * @throws IOException if the JSON string is invalid with respect to SearchQuery
+   */
   public static SearchQuery fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, SearchQuery.class);
   }
 
- /**
-  * Convert an instance of SearchQuery to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of SearchQuery to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

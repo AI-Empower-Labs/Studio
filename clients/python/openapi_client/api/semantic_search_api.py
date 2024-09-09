@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBytes, StrictStr
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from openapi_client.models.ask_document_request import AskDocumentRequest
 from openapi_client.models.ask_document_response import AskDocumentResponse
@@ -277,7 +277,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -290,12 +292,13 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -570,7 +573,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -587,11 +592,12 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
 
 
         # authentication setting
@@ -840,7 +846,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -853,11 +861,12 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
 
 
         # authentication setting
@@ -885,7 +894,7 @@ class SemanticSearchApi:
     @validate_call
     def semantic_search_file_ingestion(
         self,
-        files: Annotated[List[Union[StrictBytes, StrictStr]], Field(description="The file object to ingest.")],
+        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file object to ingest.")],
         document_id: Annotated[Optional[StrictStr], Field(description="Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.")] = None,
         index: Annotated[Optional[StrictStr], Field(description="Optional value to specify with index the document should be ingested. Defaults to 'default'.")] = None,
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")] = None,
@@ -983,7 +992,7 @@ class SemanticSearchApi:
     @validate_call
     def semantic_search_file_ingestion_with_http_info(
         self,
-        files: Annotated[List[Union[StrictBytes, StrictStr]], Field(description="The file object to ingest.")],
+        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file object to ingest.")],
         document_id: Annotated[Optional[StrictStr], Field(description="Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.")] = None,
         index: Annotated[Optional[StrictStr], Field(description="Optional value to specify with index the document should be ingested. Defaults to 'default'.")] = None,
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")] = None,
@@ -1081,7 +1090,7 @@ class SemanticSearchApi:
     @validate_call
     def semantic_search_file_ingestion_without_preload_content(
         self,
-        files: Annotated[List[Union[StrictBytes, StrictStr]], Field(description="The file object to ingest.")],
+        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file object to ingest.")],
         document_id: Annotated[Optional[StrictStr], Field(description="Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.")] = None,
         index: Annotated[Optional[StrictStr], Field(description="Optional value to specify with index the document should be ingested. Defaults to 'default'.")] = None,
         pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")] = None,
@@ -1199,7 +1208,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1236,12 +1247,13 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -1264,7 +1276,7 @@ class SemanticSearchApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/api/semantic/ingest/file',
+            resource_path='/api/ingest/file',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1507,7 +1519,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1522,12 +1536,13 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
 
 
         # authentication setting
@@ -1536,7 +1551,7 @@ class SemanticSearchApi:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/api/semantic/ingest/status',
+            resource_path='/api/ingest/status',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -1776,7 +1791,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -1789,12 +1806,13 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -2056,7 +2074,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2069,12 +2089,13 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -2336,7 +2357,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2349,13 +2372,14 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'text/csv', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'text/csv', 
+                    'application/problem+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -2617,7 +2641,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2630,12 +2656,13 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -2897,7 +2924,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -2910,12 +2939,13 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -2937,7 +2967,7 @@ class SemanticSearchApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/api/semantic/ingest/text',
+            resource_path='/api/ingest/text',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -3177,7 +3207,9 @@ class SemanticSearchApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -3190,12 +3222,13 @@ class SemanticSearchApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -3217,7 +3250,7 @@ class SemanticSearchApi:
 
         return self.api_client.param_serialize(
             method='POST',
-            resource_path='/api/semantic/ingest/webpage',
+            resource_path='/api/ingest/webpage',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

@@ -1,0 +1,14 @@
+## TranscriptionApi
+
+### Upload audio file for asynchronous transcription
+## Upload audio file for asynchronous transcription
+POST https://studio.aiempowerlabs.com/api/transcribe/upload?model={{model}}&language={{language}}&prompt={{prompt}}&temperature={{temperature}}&webHookUrl={{webHookUrl}}&translateTo={{translateTo}}&splitOnWord={{splitOnWord}}&languageDetection={{languageDetection}}&enableNoiseReduction={{enableNoiseReduction}}
+Content-Type: multipart/form-data
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Accept: application/problem+json
+
+### Get transcription status and data
+## Get transcription status and data
+GET https://studio.aiempowerlabs.com/api/transcribe?id={{id}}
+Accept: application/problem+json

@@ -316,7 +316,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AskDocumentResponse</returns>
-        System.Threading.Tasks.Task<AskDocumentResponse> SemanticSearchAskAsync(AskDocumentRequest askDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AskDocumentResponse> SemanticSearchAskAsync(AskDocumentRequest askDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -329,7 +329,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AskDocumentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AskDocumentResponse>> SemanticSearchAskWithHttpInfoAsync(AskDocumentRequest askDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AskDocumentResponse>> SemanticSearchAskWithHttpInfoAsync(AskDocumentRequest askDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -342,7 +342,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SemanticSearchDeleteDocumentAsync(string documentId, string index, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task SemanticSearchDeleteDocumentAsync(string documentId, string index, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -356,7 +356,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SemanticSearchDeleteDocumentWithHttpInfoAsync(string documentId, string index, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> SemanticSearchDeleteDocumentWithHttpInfoAsync(string documentId, string index, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -368,7 +368,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task SemanticSearchDeleteIndexAsync(string name, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task SemanticSearchDeleteIndexAsync(string name, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -381,7 +381,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> SemanticSearchDeleteIndexWithHttpInfoAsync(string name, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> SemanticSearchDeleteIndexWithHttpInfoAsync(string name, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -400,7 +400,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IngestDocumentResponse</returns>
-        System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchFileIngestionAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchFileIngestionAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -420,7 +420,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IngestDocumentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IngestDocumentResponse>> SemanticSearchFileIngestionWithHttpInfoAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IngestDocumentResponse>> SemanticSearchFileIngestionWithHttpInfoAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -432,7 +432,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataPipelineStatus</returns>
-        System.Threading.Tasks.Task<DataPipelineStatus> SemanticSearchIngestionStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DataPipelineStatus> SemanticSearchIngestionStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -445,7 +445,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataPipelineStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DataPipelineStatus>> SemanticSearchIngestionStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DataPipelineStatus>> SemanticSearchIngestionStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -457,7 +457,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDocumentResponse</returns>
-        System.Threading.Tasks.Task<ListDocumentResponse> SemanticSearchListAsync(ListDocumentParameters listDocumentParameters, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListDocumentResponse> SemanticSearchListAsync(ListDocumentParameters listDocumentParameters, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -470,7 +470,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDocumentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDocumentResponse>> SemanticSearchListWithHttpInfoAsync(ListDocumentParameters listDocumentParameters, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListDocumentResponse>> SemanticSearchListWithHttpInfoAsync(ListDocumentParameters listDocumentParameters, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -482,7 +482,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of QueryDocumentResponse</returns>
-        System.Threading.Tasks.Task<QueryDocumentResponse> SemanticSearchQueryAsync(QueryDocumentRequest queryDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<QueryDocumentResponse> SemanticSearchQueryAsync(QueryDocumentRequest queryDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -495,7 +495,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (QueryDocumentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<QueryDocumentResponse>> SemanticSearchQueryWithHttpInfoAsync(QueryDocumentRequest queryDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<QueryDocumentResponse>> SemanticSearchQueryWithHttpInfoAsync(QueryDocumentRequest queryDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -507,7 +507,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of KMeansCluster</returns>
-        System.Threading.Tasks.Task<KMeansCluster> SemanticSearchQueryResultsClusteringAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<KMeansCluster> SemanticSearchQueryResultsClusteringAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -520,7 +520,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (KMeansCluster)</returns>
-        System.Threading.Tasks.Task<ApiResponse<KMeansCluster>> SemanticSearchQueryResultsClusteringWithHttpInfoAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<KMeansCluster>> SemanticSearchQueryResultsClusteringWithHttpInfoAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -532,7 +532,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ReRankDocumentsResponse</returns>
-        System.Threading.Tasks.Task<ReRankDocumentsResponse> SemanticSearchRerankAsync(ReRankDocumentsRequest reRankDocumentsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ReRankDocumentsResponse> SemanticSearchRerankAsync(ReRankDocumentsRequest reRankDocumentsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -545,7 +545,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ReRankDocumentsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ReRankDocumentsResponse>> SemanticSearchRerankWithHttpInfoAsync(ReRankDocumentsRequest reRankDocumentsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ReRankDocumentsResponse>> SemanticSearchRerankWithHttpInfoAsync(ReRankDocumentsRequest reRankDocumentsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -557,7 +557,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IngestDocumentResponse</returns>
-        System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchTextIngestionAsync(IngestTextDocumentRequest ingestTextDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchTextIngestionAsync(IngestTextDocumentRequest ingestTextDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -570,7 +570,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IngestDocumentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IngestDocumentResponse>> SemanticSearchTextIngestionWithHttpInfoAsync(IngestTextDocumentRequest ingestTextDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IngestDocumentResponse>> SemanticSearchTextIngestionWithHttpInfoAsync(IngestTextDocumentRequest ingestTextDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -582,7 +582,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IngestDocumentResponse</returns>
-        System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchWebpageIngestionAsync(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchWebpageIngestionAsync(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -595,7 +595,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IngestDocumentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IngestDocumentResponse>> SemanticSearchWebpageIngestionWithHttpInfoAsync(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IngestDocumentResponse>> SemanticSearchWebpageIngestionWithHttpInfoAsync(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -796,7 +796,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AskDocumentResponse</returns>
-        public async System.Threading.Tasks.Task<AskDocumentResponse> SemanticSearchAskAsync(AskDocumentRequest askDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AskDocumentResponse> SemanticSearchAskAsync(AskDocumentRequest askDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<AskDocumentResponse> localVarResponse = await SemanticSearchAskWithHttpInfoAsync(askDocumentRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -810,7 +810,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AskDocumentResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<AskDocumentResponse>> SemanticSearchAskWithHttpInfoAsync(AskDocumentRequest askDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<AskDocumentResponse>> SemanticSearchAskWithHttpInfoAsync(AskDocumentRequest askDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'askDocumentRequest' is set
             if (askDocumentRequest == null)
@@ -951,7 +951,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SemanticSearchDeleteDocumentAsync(string documentId, string index, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task SemanticSearchDeleteDocumentAsync(string documentId, string index, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             await SemanticSearchDeleteDocumentWithHttpInfoAsync(documentId, index, operationIndex, cancellationToken).ConfigureAwait(false);
         }
@@ -965,7 +965,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<Object>> SemanticSearchDeleteDocumentWithHttpInfoAsync(string documentId, string index, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<Object>> SemanticSearchDeleteDocumentWithHttpInfoAsync(string documentId, string index, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'documentId' is set
             if (documentId == null)
@@ -1101,7 +1101,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task SemanticSearchDeleteIndexAsync(string name, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task SemanticSearchDeleteIndexAsync(string name, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             await SemanticSearchDeleteIndexWithHttpInfoAsync(name, operationIndex, cancellationToken).ConfigureAwait(false);
         }
@@ -1114,7 +1114,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<Object>> SemanticSearchDeleteIndexWithHttpInfoAsync(string name, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<Object>> SemanticSearchDeleteIndexWithHttpInfoAsync(string name, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'name' is set
             if (name == null)
@@ -1271,7 +1271,7 @@ namespace Org.OpenAPITools.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<IngestDocumentResponse>("/api/semantic/ingest/file", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<IngestDocumentResponse>("/api/ingest/file", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SemanticSearchFileIngestion", localVarResponse);
@@ -1299,7 +1299,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IngestDocumentResponse</returns>
-        public async System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchFileIngestionAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchFileIngestionAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse> localVarResponse = await SemanticSearchFileIngestionWithHttpInfoAsync(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1320,7 +1320,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IngestDocumentResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse>> SemanticSearchFileIngestionWithHttpInfoAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse>> SemanticSearchFileIngestionWithHttpInfoAsync(List<System.IO.Stream> files, string? documentId = default(string?), string? index = default(string?), List<string>? pipeline = default(List<string>?), string? webHookUrl = default(string?), string? embeddingModel = default(string?), Dictionary<string, Object>? args = default(Dictionary<string, Object>?), Dictionary<string, Object>? tags = default(Dictionary<string, Object>?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'files' is set
             if (files == null)
@@ -1392,7 +1392,7 @@ namespace Org.OpenAPITools.Api
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<IngestDocumentResponse>("/api/semantic/ingest/file", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<IngestDocumentResponse>("/api/ingest/file", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1458,7 +1458,7 @@ namespace Org.OpenAPITools.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<DataPipelineStatus>("/api/semantic/ingest/status", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<DataPipelineStatus>("/api/ingest/status", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SemanticSearchIngestionStatus", localVarResponse);
@@ -1479,7 +1479,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataPipelineStatus</returns>
-        public async System.Threading.Tasks.Task<DataPipelineStatus> SemanticSearchIngestionStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DataPipelineStatus> SemanticSearchIngestionStatusAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<DataPipelineStatus> localVarResponse = await SemanticSearchIngestionStatusWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1493,7 +1493,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataPipelineStatus)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<DataPipelineStatus>> SemanticSearchIngestionStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<DataPipelineStatus>> SemanticSearchIngestionStatusWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -1526,7 +1526,7 @@ namespace Org.OpenAPITools.Api
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<DataPipelineStatus>("/api/semantic/ingest/status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<DataPipelineStatus>("/api/ingest/status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1620,7 +1620,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDocumentResponse</returns>
-        public async System.Threading.Tasks.Task<ListDocumentResponse> SemanticSearchListAsync(ListDocumentParameters listDocumentParameters, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListDocumentResponse> SemanticSearchListAsync(ListDocumentParameters listDocumentParameters, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<ListDocumentResponse> localVarResponse = await SemanticSearchListWithHttpInfoAsync(listDocumentParameters, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1634,7 +1634,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDocumentResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<ListDocumentResponse>> SemanticSearchListWithHttpInfoAsync(ListDocumentParameters listDocumentParameters, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<ListDocumentResponse>> SemanticSearchListWithHttpInfoAsync(ListDocumentParameters listDocumentParameters, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'listDocumentParameters' is set
             if (listDocumentParameters == null)
@@ -1768,7 +1768,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of QueryDocumentResponse</returns>
-        public async System.Threading.Tasks.Task<QueryDocumentResponse> SemanticSearchQueryAsync(QueryDocumentRequest queryDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<QueryDocumentResponse> SemanticSearchQueryAsync(QueryDocumentRequest queryDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<QueryDocumentResponse> localVarResponse = await SemanticSearchQueryWithHttpInfoAsync(queryDocumentRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1782,7 +1782,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (QueryDocumentResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<QueryDocumentResponse>> SemanticSearchQueryWithHttpInfoAsync(QueryDocumentRequest queryDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<QueryDocumentResponse>> SemanticSearchQueryWithHttpInfoAsync(QueryDocumentRequest queryDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'queryDocumentRequest' is set
             if (queryDocumentRequest == null)
@@ -1917,7 +1917,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of KMeansCluster</returns>
-        public async System.Threading.Tasks.Task<KMeansCluster> SemanticSearchQueryResultsClusteringAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<KMeansCluster> SemanticSearchQueryResultsClusteringAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<KMeansCluster> localVarResponse = await SemanticSearchQueryResultsClusteringWithHttpInfoAsync(semanticSearchQueryResultsClusteringRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1931,7 +1931,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (KMeansCluster)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<KMeansCluster>> SemanticSearchQueryResultsClusteringWithHttpInfoAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<KMeansCluster>> SemanticSearchQueryResultsClusteringWithHttpInfoAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'semanticSearchQueryResultsClusteringRequest' is set
             if (semanticSearchQueryResultsClusteringRequest == null)
@@ -2066,7 +2066,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ReRankDocumentsResponse</returns>
-        public async System.Threading.Tasks.Task<ReRankDocumentsResponse> SemanticSearchRerankAsync(ReRankDocumentsRequest reRankDocumentsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ReRankDocumentsResponse> SemanticSearchRerankAsync(ReRankDocumentsRequest reRankDocumentsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<ReRankDocumentsResponse> localVarResponse = await SemanticSearchRerankWithHttpInfoAsync(reRankDocumentsRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2080,7 +2080,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ReRankDocumentsResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<ReRankDocumentsResponse>> SemanticSearchRerankWithHttpInfoAsync(ReRankDocumentsRequest reRankDocumentsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<ReRankDocumentsResponse>> SemanticSearchRerankWithHttpInfoAsync(ReRankDocumentsRequest reRankDocumentsRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'reRankDocumentsRequest' is set
             if (reRankDocumentsRequest == null)
@@ -2193,7 +2193,7 @@ namespace Org.OpenAPITools.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<IngestDocumentResponse>("/api/semantic/ingest/text", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<IngestDocumentResponse>("/api/ingest/text", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SemanticSearchTextIngestion", localVarResponse);
@@ -2214,7 +2214,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IngestDocumentResponse</returns>
-        public async System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchTextIngestionAsync(IngestTextDocumentRequest ingestTextDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchTextIngestionAsync(IngestTextDocumentRequest ingestTextDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse> localVarResponse = await SemanticSearchTextIngestionWithHttpInfoAsync(ingestTextDocumentRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2228,7 +2228,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IngestDocumentResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse>> SemanticSearchTextIngestionWithHttpInfoAsync(IngestTextDocumentRequest ingestTextDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse>> SemanticSearchTextIngestionWithHttpInfoAsync(IngestTextDocumentRequest ingestTextDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'ingestTextDocumentRequest' is set
             if (ingestTextDocumentRequest == null)
@@ -2268,7 +2268,7 @@ namespace Org.OpenAPITools.Api
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<IngestDocumentResponse>("/api/semantic/ingest/text", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<IngestDocumentResponse>("/api/ingest/text", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -2341,7 +2341,7 @@ namespace Org.OpenAPITools.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<IngestDocumentResponse>("/api/semantic/ingest/webpage", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<IngestDocumentResponse>("/api/ingest/webpage", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("SemanticSearchWebpageIngestion", localVarResponse);
@@ -2362,7 +2362,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IngestDocumentResponse</returns>
-        public async System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchWebpageIngestionAsync(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IngestDocumentResponse> SemanticSearchWebpageIngestionAsync(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse> localVarResponse = await SemanticSearchWebpageIngestionWithHttpInfoAsync(ingestWebPageDocumentRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2376,7 +2376,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IngestDocumentResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse>> SemanticSearchWebpageIngestionWithHttpInfoAsync(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IngestDocumentResponse>> SemanticSearchWebpageIngestionWithHttpInfoAsync(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'ingestWebPageDocumentRequest' is set
             if (ingestWebPageDocumentRequest == null)
@@ -2416,7 +2416,7 @@ namespace Org.OpenAPITools.Api
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<IngestDocumentResponse>("/api/semantic/ingest/webpage", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<IngestDocumentResponse>("/api/ingest/webpage", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

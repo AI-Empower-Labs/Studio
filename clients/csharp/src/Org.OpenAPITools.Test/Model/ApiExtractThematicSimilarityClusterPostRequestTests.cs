@@ -108,5 +108,14 @@ namespace Org.OpenAPITools.Test.Model
         {
             // TODO unit test for the property 'EmbeddingModel'
         }
+
+        /// <summary>
+        /// Test the property 'Seed'
+        /// </summary>
+        [Fact]
+        public void SeedTest()
+        {
+            // TODO unit test for the property 'Seed'
+        }
     }
 }

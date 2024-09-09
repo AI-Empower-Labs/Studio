@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ApiExtractThematicSimilarityClusterPostRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class ApiExtractThematicSimilarityClusterPostRequest {
   public static final String SERIALIZED_NAME_INPUT = "input";
   @SerializedName(SERIALIZED_NAME_INPUT)
@@ -78,6 +77,10 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
   private String embeddingModel;
 
+  public static final String SERIALIZED_NAME_SEED = "seed";
+  @SerializedName(SERIALIZED_NAME_SEED)
+  private Integer seed;
+
   public ApiExtractThematicSimilarityClusterPostRequest() {
   }
 
@@ -94,10 +97,10 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return this;
   }
 
-   /**
+  /**
    * The input texts for generating clusters
    * @return input
-  **/
+   */
   @javax.annotation.Nonnull
   public List<String> getInput() {
     return input;
@@ -113,12 +116,12 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return this;
   }
 
-   /**
+  /**
    * The number of clusters requested for generating clusters
    * minimum: 2
    * maximum: 1000
    * @return clusterCount
-  **/
+   */
   @javax.annotation.Nonnull
   public Integer getClusterCount() {
     return clusterCount;
@@ -134,12 +137,12 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return this;
   }
 
-   /**
+  /**
    * The maximum degree of parallelism for the KMeans clustering algorithm
    * minimum: 1
    * maximum: 100
    * @return maxDegreeOfParallelism
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMaxDegreeOfParallelism() {
     return maxDegreeOfParallelism;
@@ -155,12 +158,12 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return this;
   }
 
-   /**
+  /**
    * The maximum number of tokens
    * minimum: 1
    * maximum: 100
    * @return maxTokens
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMaxTokens() {
     return maxTokens;
@@ -176,10 +179,10 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return this;
   }
 
-   /**
+  /**
    * The name of the LLM model. Optional.
    * @return llmModel
-  **/
+   */
   @javax.annotation.Nullable
   public String getLlmModel() {
     return llmModel;
@@ -195,10 +198,10 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return this;
   }
 
-   /**
+  /**
    * The name of the embedding model used in the GenerateClusterHttpRequest. Optional.
    * @return embeddingModel
-  **/
+   */
   @javax.annotation.Nullable
   public String getEmbeddingModel() {
     return embeddingModel;
@@ -206,6 +209,25 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
 
   public void setEmbeddingModel(String embeddingModel) {
     this.embeddingModel = embeddingModel;
+  }
+
+
+  public ApiExtractThematicSimilarityClusterPostRequest seed(Integer seed) {
+    this.seed = seed;
+    return this;
+  }
+
+  /**
+   * Randomization seed. Optional.
+   * @return seed
+   */
+  @javax.annotation.Nullable
+  public Integer getSeed() {
+    return seed;
+  }
+
+  public void setSeed(Integer seed) {
+    this.seed = seed;
   }
 
 
@@ -224,7 +246,8 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
         Objects.equals(this.maxDegreeOfParallelism, apiExtractThematicSimilarityClusterPostRequest.maxDegreeOfParallelism) &&
         Objects.equals(this.maxTokens, apiExtractThematicSimilarityClusterPostRequest.maxTokens) &&
         Objects.equals(this.llmModel, apiExtractThematicSimilarityClusterPostRequest.llmModel) &&
-        Objects.equals(this.embeddingModel, apiExtractThematicSimilarityClusterPostRequest.embeddingModel);
+        Objects.equals(this.embeddingModel, apiExtractThematicSimilarityClusterPostRequest.embeddingModel) &&
+        Objects.equals(this.seed, apiExtractThematicSimilarityClusterPostRequest.seed);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -233,7 +256,7 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(input, clusterCount, maxDegreeOfParallelism, maxTokens, llmModel, embeddingModel);
+    return Objects.hash(input, clusterCount, maxDegreeOfParallelism, maxTokens, llmModel, embeddingModel, seed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -253,6 +276,7 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     sb.append("    maxTokens: ").append(toIndentedString(maxTokens)).append("\n");
     sb.append("    llmModel: ").append(toIndentedString(llmModel)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
+    sb.append("    seed: ").append(toIndentedString(seed)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -281,6 +305,7 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     openapiFields.add("maxTokens");
     openapiFields.add("llmModel");
     openapiFields.add("embeddingModel");
+    openapiFields.add("seed");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -288,12 +313,12 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     openapiRequiredFields.add("clusterCount");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ApiExtractThematicSimilarityClusterPostRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ApiExtractThematicSimilarityClusterPostRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ApiExtractThematicSimilarityClusterPostRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -359,22 +384,22 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     }
   }
 
- /**
-  * Create an instance of ApiExtractThematicSimilarityClusterPostRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ApiExtractThematicSimilarityClusterPostRequest
-  * @throws IOException if the JSON string is invalid with respect to ApiExtractThematicSimilarityClusterPostRequest
-  */
+  /**
+   * Create an instance of ApiExtractThematicSimilarityClusterPostRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ApiExtractThematicSimilarityClusterPostRequest
+   * @throws IOException if the JSON string is invalid with respect to ApiExtractThematicSimilarityClusterPostRequest
+   */
   public static ApiExtractThematicSimilarityClusterPostRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ApiExtractThematicSimilarityClusterPostRequest.class);
   }
 
- /**
-  * Convert an instance of ApiExtractThematicSimilarityClusterPostRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ApiExtractThematicSimilarityClusterPostRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

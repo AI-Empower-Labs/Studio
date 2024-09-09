@@ -155,40 +155,40 @@ func (a *TranscriptionAPIService) TranscriptionAsynchronousExecute(r ApiTranscri
 	}
 
 	if r.model != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "model", r.model, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "model", r.model, "form", "")
 	}
 	if r.language != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "language", r.language, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "language", r.language, "form", "")
 	}
 	if r.prompt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "prompt", r.prompt, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "prompt", r.prompt, "form", "")
 	}
 	if r.temperature != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "temperature", r.temperature, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "temperature", r.temperature, "form", "")
 	} else {
 		var defaultValue float64 = 0
 		r.temperature = &defaultValue
 	}
 	if r.webHookUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "webHookUrl", r.webHookUrl, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "webHookUrl", r.webHookUrl, "form", "")
 	}
 	if r.translateTo != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "translateTo", r.translateTo, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "translateTo", r.translateTo, "form", "")
 	}
 	if r.splitOnWord != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "splitOnWord", r.splitOnWord, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "splitOnWord", r.splitOnWord, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.splitOnWord = &defaultValue
 	}
 	if r.languageDetection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "languageDetection", r.languageDetection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "languageDetection", r.languageDetection, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.languageDetection = &defaultValue
 	}
 	if r.enableNoiseReduction != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "enableNoiseReduction", r.enableNoiseReduction, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "enableNoiseReduction", r.enableNoiseReduction, "form", "")
 	} else {
 		var defaultValue bool = false
 		r.enableNoiseReduction = &defaultValue
@@ -368,7 +368,7 @@ func (a *TranscriptionAPIService) TranscriptionGetByIdExecute(r ApiTranscription
 		return nil, reportError("id is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

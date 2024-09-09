@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -34,7 +34,8 @@ class ApiExtractThematicSimilarityClusterPostRequest(BaseModel):
     max_tokens: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = Field(default=10, description="The maximum number of tokens", alias="maxTokens")
     llm_model: Optional[StrictStr] = Field(default=None, description="The name of the LLM model. Optional.", alias="llmModel")
     embedding_model: Optional[StrictStr] = Field(default=None, description="The name of the embedding model used in the GenerateClusterHttpRequest. Optional.", alias="embeddingModel")
-    __properties: ClassVar[List[str]] = ["input", "clusterCount", "maxDegreeOfParallelism", "maxTokens", "llmModel", "embeddingModel"]
+    seed: Optional[StrictInt] = Field(default=None, description="Randomization seed. Optional.")
+    __properties: ClassVar[List[str]] = ["input", "clusterCount", "maxDegreeOfParallelism", "maxTokens", "llmModel", "embeddingModel", "seed"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,6 +86,11 @@ class ApiExtractThematicSimilarityClusterPostRequest(BaseModel):
         if self.embedding_model is None and "embedding_model" in self.model_fields_set:
             _dict['embeddingModel'] = None
 
+        # set to None if seed (nullable) is None
+        # and model_fields_set contains the field
+        if self.seed is None and "seed" in self.model_fields_set:
+            _dict['seed'] = None
+
         return _dict
 
     @classmethod
@@ -102,7 +108,8 @@ class ApiExtractThematicSimilarityClusterPostRequest(BaseModel):
             "maxDegreeOfParallelism": obj.get("maxDegreeOfParallelism") if obj.get("maxDegreeOfParallelism") is not None else 1,
             "maxTokens": obj.get("maxTokens") if obj.get("maxTokens") is not None else 10,
             "llmModel": obj.get("llmModel"),
-            "embeddingModel": obj.get("embeddingModel")
+            "embeddingModel": obj.get("embeddingModel"),
+            "seed": obj.get("seed")
         })
         return _obj
 

@@ -230,7 +230,7 @@ export default class SemanticSearchApi {
       let accepts = ['application/json', 'application/problem+json'];
       let returnType = IngestDocumentResponse;
       return this.apiClient.callApi(
-        '/api/semantic/ingest/file', 'POST',
+        '/api/ingest/file', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -272,7 +272,7 @@ export default class SemanticSearchApi {
       let accepts = ['application/json', 'application/problem+json'];
       let returnType = DataPipelineStatus;
       return this.apiClient.callApi(
-        '/api/semantic/ingest/status', 'GET',
+        '/api/ingest/status', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -477,7 +477,7 @@ export default class SemanticSearchApi {
       let accepts = ['application/json', 'application/problem+json'];
       let returnType = IngestDocumentResponse;
       return this.apiClient.callApi(
-        '/api/semantic/ingest/text', 'POST',
+        '/api/ingest/text', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -518,7 +518,7 @@ export default class SemanticSearchApi {
       let accepts = ['application/json', 'application/problem+json'];
       let returnType = IngestDocumentResponse;
       return this.apiClient.callApi(
-        '/api/semantic/ingest/webpage', 'POST',
+        '/api/ingest/webpage', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

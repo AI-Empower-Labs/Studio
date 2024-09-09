@@ -7,14 +7,14 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 | [**SemanticSearchAsk**](SemanticSearchApi.md#semanticsearchask) | **POST** /api/semantic/ask |  |
 | [**SemanticSearchDeleteDocument**](SemanticSearchApi.md#semanticsearchdeletedocument) | **DELETE** /api/semantic/{documentId} |  |
 | [**SemanticSearchDeleteIndex**](SemanticSearchApi.md#semanticsearchdeleteindex) | **DELETE** /api/semantic/index |  |
-| [**SemanticSearchFileIngestion**](SemanticSearchApi.md#semanticsearchfileingestion) | **POST** /api/semantic/ingest/file |  |
-| [**SemanticSearchIngestionStatus**](SemanticSearchApi.md#semanticsearchingestionstatus) | **GET** /api/semantic/ingest/status |  |
+| [**SemanticSearchFileIngestion**](SemanticSearchApi.md#semanticsearchfileingestion) | **POST** /api/ingest/file |  |
+| [**SemanticSearchIngestionStatus**](SemanticSearchApi.md#semanticsearchingestionstatus) | **GET** /api/ingest/status |  |
 | [**SemanticSearchList**](SemanticSearchApi.md#semanticsearchlist) | **POST** /api/semantic/list |  |
 | [**SemanticSearchQuery**](SemanticSearchApi.md#semanticsearchquery) | **POST** /api/semantic/query |  |
 | [**SemanticSearchQueryResultsClustering**](SemanticSearchApi.md#semanticsearchqueryresultsclustering) | **POST** /api/semantic/query-results-clustering |  |
 | [**SemanticSearchRerank**](SemanticSearchApi.md#semanticsearchrerank) | **POST** /api/semantic/rerank |  |
-| [**SemanticSearchTextIngestion**](SemanticSearchApi.md#semanticsearchtextingestion) | **POST** /api/semantic/ingest/text |  |
-| [**SemanticSearchWebpageIngestion**](SemanticSearchApi.md#semanticsearchwebpageingestion) | **POST** /api/semantic/ingest/webpage |  |
+| [**SemanticSearchTextIngestion**](SemanticSearchApi.md#semanticsearchtextingestion) | **POST** /api/ingest/text |  |
+| [**SemanticSearchWebpageIngestion**](SemanticSearchApi.md#semanticsearchwebpageingestion) | **POST** /api/ingest/webpage |  |
 
 <a id="semanticsearchask"></a>
 # **SemanticSearchAsk**

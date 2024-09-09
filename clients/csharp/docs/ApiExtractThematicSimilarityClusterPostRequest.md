@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **MaxTokens** | **int** | The maximum number of tokens | [optional] [default to 10]
 **LlmModel** | **string** | The name of the LLM model. Optional. | [optional] 
 **EmbeddingModel** | **string** | The name of the embedding model used in the GenerateClusterHttpRequest. Optional. | [optional] 
+**Seed** | **int?** | Randomization seed. Optional. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

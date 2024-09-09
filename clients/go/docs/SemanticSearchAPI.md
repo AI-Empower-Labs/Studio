@@ -7,14 +7,14 @@ Method | HTTP request | Description
 [**SemanticSearchAsk**](SemanticSearchAPI.md#SemanticSearchAsk) | **Post** /api/semantic/ask | 
 [**SemanticSearchDeleteDocument**](SemanticSearchAPI.md#SemanticSearchDeleteDocument) | **Delete** /api/semantic/{documentId} | 
 [**SemanticSearchDeleteIndex**](SemanticSearchAPI.md#SemanticSearchDeleteIndex) | **Delete** /api/semantic/index | 
-[**SemanticSearchFileIngestion**](SemanticSearchAPI.md#SemanticSearchFileIngestion) | **Post** /api/semantic/ingest/file | 
-[**SemanticSearchIngestionStatus**](SemanticSearchAPI.md#SemanticSearchIngestionStatus) | **Get** /api/semantic/ingest/status | 
+[**SemanticSearchFileIngestion**](SemanticSearchAPI.md#SemanticSearchFileIngestion) | **Post** /api/ingest/file | 
+[**SemanticSearchIngestionStatus**](SemanticSearchAPI.md#SemanticSearchIngestionStatus) | **Get** /api/ingest/status | 
 [**SemanticSearchList**](SemanticSearchAPI.md#SemanticSearchList) | **Post** /api/semantic/list | 
 [**SemanticSearchQuery**](SemanticSearchAPI.md#SemanticSearchQuery) | **Post** /api/semantic/query | 
 [**SemanticSearchQueryResultsClustering**](SemanticSearchAPI.md#SemanticSearchQueryResultsClustering) | **Post** /api/semantic/query-results-clustering | 
 [**SemanticSearchRerank**](SemanticSearchAPI.md#SemanticSearchRerank) | **Post** /api/semantic/rerank | 
-[**SemanticSearchTextIngestion**](SemanticSearchAPI.md#SemanticSearchTextIngestion) | **Post** /api/semantic/ingest/text | 
-[**SemanticSearchWebpageIngestion**](SemanticSearchAPI.md#SemanticSearchWebpageIngestion) | **Post** /api/semantic/ingest/webpage | 
+[**SemanticSearchTextIngestion**](SemanticSearchAPI.md#SemanticSearchTextIngestion) | **Post** /api/ingest/text | 
+[**SemanticSearchWebpageIngestion**](SemanticSearchAPI.md#SemanticSearchWebpageIngestion) | **Post** /api/ingest/webpage | 
 
 
 

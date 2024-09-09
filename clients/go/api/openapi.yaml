@@ -72,6 +72,51 @@ paths:
           description: Current configuration
       tags:
       - Miscellaneous
+  /api/cache:
+    delete:
+      description: Delete LLM cache entry
+      operationId: delete_llm_cache_entry
+      parameters:
+      - description: The LLM cache key to remove
+        explode: true
+        in: query
+        name: cacheKey
+        required: false
+        schema:
+          maxLength: 90
+          minLength: 50
+          type: string
+        style: form
+      responses:
+        "200":
+          description: OK - Cache was deleted
+        "400":
+          content:
+            application/problem+json:
+              example:
+                title: One or more validation errors occurred.
+                errors: {}
+              schema:
+                $ref: '#/components/schemas/HttpValidationProblemDetails'
+          description: Bad Request
+        "429":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Too Many Requests
+        "500":
+          content:
+            application/problem+json:
+              example:
+                title: Server error
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      tags:
+      - Miscellaneous
   /api/extract/entities:
     post:
       description: "This endpoint accepts a string of text and returns a list of identified\
@@ -1039,7 +1084,7 @@ paths:
       summary: List of supported languages for translation
       tags:
       - Language
-  /api/semantic/ingest/file:
+  /api/ingest/file:
     post:
       description: Import file document into semantic search
       operationId: semantic_search_file_ingestion
@@ -1137,7 +1182,7 @@ paths:
           description: Internal Server Error
       tags:
       - Semantic Search
-  /api/semantic/ingest/text:
+  /api/ingest/text:
     post:
       description: Import plain text into semantic search
       operationId: semantic_search_text_ingestion
@@ -1191,7 +1236,7 @@ paths:
           description: Internal Server Error
       tags:
       - Semantic Search
-  /api/semantic/ingest/webpage:
+  /api/ingest/webpage:
     post:
       description: Import web page text into semantic search
       operationId: semantic_search_webpage_ingestion
@@ -1243,7 +1288,7 @@ paths:
           description: Internal Server Error
       tags:
       - Semantic Search
-  /api/semantic/ingest/status:
+  /api/ingest/status:
     get:
       description: Get queue status for ingestion job
       operationId: semantic_search_ingestion_status
@@ -3950,6 +3995,10 @@ components:
             Optional.
           nullable: true
           type: string
+        seed:
+          description: Randomization seed. Optional.
+          nullable: true
+          type: integer
       required:
       - clusterCount
       - input

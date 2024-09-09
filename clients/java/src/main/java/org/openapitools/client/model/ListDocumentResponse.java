@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * ListDocumentResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class ListDocumentResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -79,10 +78,10 @@ public class ListDocumentResponse {
     return this;
   }
 
-   /**
+  /**
    * Unique record ID
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
   public String getId() {
     return id;
@@ -98,10 +97,10 @@ public class ListDocumentResponse {
     return this;
   }
 
-   /**
+  /**
    * Embedding vector
    * @return vector
-  **/
+   */
   @javax.annotation.Nullable
   public Object getVector() {
     return vector;
@@ -125,10 +124,10 @@ public class ListDocumentResponse {
     return this;
   }
 
-   /**
+  /**
    * Optional Searchable Key&#x3D;Value tags (string &#x3D;&gt; string[] collection)                Multiple values per keys are supported.  e.g. [ \&quot;Collection&#x3D;Work\&quot;, \&quot;Project&#x3D;1\&quot;, \&quot;Project&#x3D;2\&quot;, \&quot;Project&#x3D;3\&quot;, \&quot;Type&#x3D;Chat\&quot;, \&quot;LLM&#x3D;AzureAda2\&quot; ]                Use cases:   * collections, e.g. [ \&quot;Collection&#x3D;Project1\&quot;, \&quot;Collection&#x3D;Work\&quot; ]   * folders, e.g. [ \&quot;Folder&#x3D;Inbox\&quot;, \&quot;Folder&#x3D;Spam\&quot; ]   * content types, e.g. [ \&quot;Type&#x3D;Chat\&quot; ]   * versioning, e.g. [ \&quot;LLM&#x3D;AzureAda2\&quot;, \&quot;Schema&#x3D;1.0\&quot; ]   * etc.
    * @return tags
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, List<String>> getTags() {
     return tags;
@@ -152,10 +151,10 @@ public class ListDocumentResponse {
     return this;
   }
 
-   /**
+  /**
    * Optional Non-Searchable payload processed client side.                Use cases:   * citations   * original text   * descriptions   * embedding generator name   * URLs   * content type   * timestamps   * etc.
    * @return payload
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, Object> getPayload() {
     return payload;
@@ -237,12 +236,12 @@ public class ListDocumentResponse {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ListDocumentResponse
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ListDocumentResponse
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ListDocumentResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -292,22 +291,22 @@ public class ListDocumentResponse {
     }
   }
 
- /**
-  * Create an instance of ListDocumentResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ListDocumentResponse
-  * @throws IOException if the JSON string is invalid with respect to ListDocumentResponse
-  */
+  /**
+   * Create an instance of ListDocumentResponse given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ListDocumentResponse
+   * @throws IOException if the JSON string is invalid with respect to ListDocumentResponse
+   */
   public static ListDocumentResponse fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ListDocumentResponse.class);
   }
 
- /**
-  * Convert an instance of ListDocumentResponse to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ListDocumentResponse to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

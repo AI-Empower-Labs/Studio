@@ -1,0 +1,27 @@
+## LanguageApi
+
+### Detects language of a text
+## Detects language of a text
+GET https://studio.aiempowerlabs.com/api/language/detect?text={{text}}
+Accept: application/json
+Accept: application/problem+json
+
+### List of supported languages for translation
+## List of supported languages for translation
+GET https://studio.aiempowerlabs.com/api/language
+Accept: application/json
+Accept: application/problem+json
+
+### Translation of text from one language to another
+## Translation of text from one language to another
+POST https://studio.aiempowerlabs.com/api/language/translate
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "text" : "Hej verden",
+  "source" : "auto",
+  "target" : "en"
+}
+

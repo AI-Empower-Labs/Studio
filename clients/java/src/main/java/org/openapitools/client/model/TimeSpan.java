@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * TimeSpan
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class TimeSpan {
   public static final String SERIALIZED_NAME_TICKS = "ticks";
   @SerializedName(SERIALIZED_NAME_TICKS)
@@ -152,10 +151,10 @@ public class TimeSpan {
     return this;
   }
 
-   /**
+  /**
    * Get ticks
    * @return ticks
-  **/
+   */
   @javax.annotation.Nullable
   public Long getTicks() {
     return ticks;
@@ -166,10 +165,10 @@ public class TimeSpan {
   }
 
 
-   /**
+  /**
    * Get days
    * @return days
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getDays() {
     return days;
@@ -177,10 +176,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get hours
    * @return hours
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getHours() {
     return hours;
@@ -188,10 +187,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get milliseconds
    * @return milliseconds
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMilliseconds() {
     return milliseconds;
@@ -199,10 +198,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get microseconds
    * @return microseconds
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMicroseconds() {
     return microseconds;
@@ -210,10 +209,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get nanoseconds
    * @return nanoseconds
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getNanoseconds() {
     return nanoseconds;
@@ -221,10 +220,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get minutes
    * @return minutes
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMinutes() {
     return minutes;
@@ -232,10 +231,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get seconds
    * @return seconds
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getSeconds() {
     return seconds;
@@ -243,10 +242,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get totalDays
    * @return totalDays
-  **/
+   */
   @javax.annotation.Nullable
   public Double getTotalDays() {
     return totalDays;
@@ -254,10 +253,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get totalHours
    * @return totalHours
-  **/
+   */
   @javax.annotation.Nullable
   public Double getTotalHours() {
     return totalHours;
@@ -265,10 +264,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get totalMilliseconds
    * @return totalMilliseconds
-  **/
+   */
   @javax.annotation.Nullable
   public Double getTotalMilliseconds() {
     return totalMilliseconds;
@@ -276,10 +275,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get totalMicroseconds
    * @return totalMicroseconds
-  **/
+   */
   @javax.annotation.Nullable
   public Double getTotalMicroseconds() {
     return totalMicroseconds;
@@ -287,10 +286,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get totalNanoseconds
    * @return totalNanoseconds
-  **/
+   */
   @javax.annotation.Nullable
   public Double getTotalNanoseconds() {
     return totalNanoseconds;
@@ -298,10 +297,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get totalMinutes
    * @return totalMinutes
-  **/
+   */
   @javax.annotation.Nullable
   public Double getTotalMinutes() {
     return totalMinutes;
@@ -309,10 +308,10 @@ public class TimeSpan {
 
 
 
-   /**
+  /**
    * Get totalSeconds
    * @return totalSeconds
-  **/
+   */
   @javax.annotation.Nullable
   public Double getTotalSeconds() {
     return totalSeconds;
@@ -413,12 +412,12 @@ public class TimeSpan {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to TimeSpan
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to TimeSpan
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TimeSpan.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -465,22 +464,22 @@ public class TimeSpan {
     }
   }
 
- /**
-  * Create an instance of TimeSpan given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of TimeSpan
-  * @throws IOException if the JSON string is invalid with respect to TimeSpan
-  */
+  /**
+   * Create an instance of TimeSpan given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of TimeSpan
+   * @throws IOException if the JSON string is invalid with respect to TimeSpan
+   */
   public static TimeSpan fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TimeSpan.class);
   }
 
- /**
-  * Convert an instance of TimeSpan to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of TimeSpan to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -1,0 +1,106 @@
+## DataExtractionApi
+
+### Generate thematic similarity clusters using the K-Means algorithm
+## Generate thematic similarity clusters using the K-Means algorithm
+POST https://studio.aiempowerlabs.com/api/extract/thematic-similarity-cluster
+Content-Type: application/json
+Accept: application/json
+Accept: text/csv
+Accept: application/problem+json
+
+{
+ "input": "<string>",
+ "clusterCount": "<number>",
+ "maxDegreeOfParallelism": "<number>",
+ "maxTokens": "<number>",
+ "llmModel": "<string>",
+ "embeddingModel": "<string>",
+ "seed": "<number>"
+}
+
+
+### Converts data to a numerical vector array
+## Converts data to a numerical vector array
+POST https://studio.aiempowerlabs.com/api/extract/embed
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "model" : "multilingual-e5-large",
+  "text" : [ "Hello world", "AI Empower Labs rocks!" ]
+}
+
+
+### Performs keyword extraction on source text
+## Performs keyword extraction on source text
+POST https://studio.aiempowerlabs.com/api/extract/keywords
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "text" : "Hello world! Get in touch with AI Empower Labs from Malmö Sweden via www.AIEmpowerLabs.com or email info@AIEmpowerLabs.com"
+}
+
+
+### Extracts named entities from provided text
+## Extracts named entities from provided text
+POST https://studio.aiempowerlabs.com/api/extract/entities
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "text" : "Hello world! Get in touch with AI Empower Labs from Malmö Sweden via www.AIEmpowerLabs.com or email info@AIEmpowerLabs.com",
+  "entities" : [ "email", "location", "organisation", "url" ]
+}
+
+
+### Generate semantic similarity queries from text
+## Generate semantic similarity queries from text
+POST https://studio.aiempowerlabs.com/api/extract/similarity
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "query" : "Machine learning is so easy",
+  "documents" : [ "Deep learning is so straightforward", "This is so difficult, like rocket science", "I can't believe how much I struggled with this" ],
+  "model" : "multilingual-e5-large"
+}
+
+
+### Count tokens in a text
+## Count tokens in a text
+POST https://studio.aiempowerlabs.com/api/extract/tokenCount
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "name" : "multilingual-e5-large",
+  "text" : [ "Hello world", "AI Empower Labs rocks!" ]
+}
+
+
+### Converts data to a integer token array
+## Converts data to a integer token array
+POST https://studio.aiempowerlabs.com/api/extract/tokenize
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "name" : "multilingual-e5-large",
+  "text" : [ "Hello world", "AI Empower Labs rocks!" ]
+}
+
+
+### Synchronous transcribe audio
+## Synchronous transcribe audio
+POST https://studio.aiempowerlabs.com/api/extract/transcription?model={{model}}&language={{language}}&prompt={{prompt}}&temperature={{temperature}}&splitOnWord={{splitOnWord}}&languageDetection={{languageDetection}}&enableNoiseReduction={{enableNoiseReduction}}
+Content-Type: multipart/form-data
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Accept: application/problem+json

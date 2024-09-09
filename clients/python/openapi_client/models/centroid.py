@@ -77,9 +77,9 @@ class Centroid(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in data_points (list)
         _items = []
         if self.data_points:
-            for _item in self.data_points:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_data_points in self.data_points:
+                if _item_data_points:
+                    _items.append(_item_data_points.to_dict())
             _dict['dataPoints'] = _items
         return _dict
 

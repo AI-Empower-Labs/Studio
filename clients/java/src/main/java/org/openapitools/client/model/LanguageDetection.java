@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * LanguageDetection
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class LanguageDetection {
   /**
    * Gets or Sets languageCode
@@ -201,10 +200,10 @@ public class LanguageDetection {
     return this;
   }
 
-   /**
+  /**
    * Get languageCode
    * @return languageCode
-  **/
+   */
   @javax.annotation.Nullable
   public LanguageCodeEnum getLanguageCode() {
     return languageCode;
@@ -220,10 +219,10 @@ public class LanguageDetection {
     return this;
   }
 
-   /**
+  /**
    * Get confidence
    * @return confidence
-  **/
+   */
   @javax.annotation.Nullable
   public Float getConfidence() {
     return confidence;
@@ -288,12 +287,12 @@ public class LanguageDetection {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LanguageDetection
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to LanguageDetection
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LanguageDetection.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -347,22 +346,22 @@ public class LanguageDetection {
     }
   }
 
- /**
-  * Create an instance of LanguageDetection given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of LanguageDetection
-  * @throws IOException if the JSON string is invalid with respect to LanguageDetection
-  */
+  /**
+   * Create an instance of LanguageDetection given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of LanguageDetection
+   * @throws IOException if the JSON string is invalid with respect to LanguageDetection
+   */
   public static LanguageDetection fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, LanguageDetection.class);
   }
 
- /**
-  * Convert an instance of LanguageDetection to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of LanguageDetection to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

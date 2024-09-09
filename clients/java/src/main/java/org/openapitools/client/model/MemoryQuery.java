@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * MemoryQuery
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class MemoryQuery {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
@@ -79,10 +78,10 @@ public class MemoryQuery {
     return this;
   }
 
-   /**
+  /**
    * Get index
    * @return index
-  **/
+   */
   @javax.annotation.Nullable
   public String getIndex() {
     return index;
@@ -98,10 +97,10 @@ public class MemoryQuery {
     return this;
   }
 
-   /**
+  /**
    * Get question
    * @return question
-  **/
+   */
   @javax.annotation.Nullable
   public String getQuestion() {
     return question;
@@ -125,10 +124,10 @@ public class MemoryQuery {
     return this;
   }
 
-   /**
+  /**
    * Get filters
    * @return filters
-  **/
+   */
   @javax.annotation.Nullable
   public List<Map<String, List<String>>> getFilters() {
     return filters;
@@ -144,10 +143,10 @@ public class MemoryQuery {
     return this;
   }
 
-   /**
+  /**
    * Get minRelevance
    * @return minRelevance
-  **/
+   */
   @javax.annotation.Nullable
   public Double getMinRelevance() {
     return minRelevance;
@@ -229,12 +228,12 @@ public class MemoryQuery {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to MemoryQuery
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to MemoryQuery
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!MemoryQuery.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -291,22 +290,22 @@ public class MemoryQuery {
     }
   }
 
- /**
-  * Create an instance of MemoryQuery given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of MemoryQuery
-  * @throws IOException if the JSON string is invalid with respect to MemoryQuery
-  */
+  /**
+   * Create an instance of MemoryQuery given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of MemoryQuery
+   * @throws IOException if the JSON string is invalid with respect to MemoryQuery
+   */
   public static MemoryQuery fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, MemoryQuery.class);
   }
 
- /**
-  * Convert an instance of MemoryQuery to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of MemoryQuery to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

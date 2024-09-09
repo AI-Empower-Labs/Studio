@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * SemanticSearchQueryResultsClusteringRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class SemanticSearchQueryResultsClusteringRequest {
   public static final String SERIALIZED_NAME_CLUSTER_COUNT = "clusterCount";
   @SerializedName(SERIALIZED_NAME_CLUSTER_COUNT)
@@ -92,12 +91,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return this;
   }
 
-   /**
+  /**
    * The number of clusters to be used in k-means clustering.
    * minimum: 2
    * maximum: 100
    * @return clusterCount
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getClusterCount() {
     return clusterCount;
@@ -113,12 +112,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return this;
   }
 
-   /**
+  /**
    * The Maximum Degrees Of Parallelism
    * minimum: 1
    * maximum: 100
    * @return maxDegreeOfParallelism
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMaxDegreeOfParallelism() {
     return maxDegreeOfParallelism;
@@ -134,12 +133,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return this;
   }
 
-   /**
+  /**
    * The maximum number of tokens to be used in the KMeans clustering algorithm.
    * minimum: 1
    * maximum: 100
    * @return maxTokens
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getMaxTokens() {
     return maxTokens;
@@ -155,10 +154,10 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return this;
   }
 
-   /**
+  /**
    * Optional index to specify which index to search in. Defaults to &#39;default&#39;.
    * @return index
-  **/
+   */
   @javax.annotation.Nullable
   public String getIndex() {
     return index;
@@ -174,10 +173,10 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return this;
   }
 
-   /**
+  /**
    * The minimum relevance value used for querying the search result audit.
    * @return minRelevance
-  **/
+   */
   @javax.annotation.Nullable
   public BigDecimal getMinRelevance() {
     return minRelevance;
@@ -193,10 +192,10 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return this;
   }
 
-   /**
+  /**
    * The maximum relevance value to be used in the search query.
    * @return maxRelevance
-  **/
+   */
   @javax.annotation.Nullable
   public BigDecimal getMaxRelevance() {
     return maxRelevance;
@@ -212,10 +211,10 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return this;
   }
 
-   /**
+  /**
    * Specifies the name of the LLM (Language Model) to be used in the KMeans clustering algorithm.
    * @return llmModel
-  **/
+   */
   @javax.annotation.Nullable
   public String getLlmModel() {
     return llmModel;
@@ -231,10 +230,10 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return this;
   }
 
-   /**
+  /**
    * The name of the embedding model used for clustering.
    * @return embeddingModel
-  **/
+   */
   @javax.annotation.Nullable
   public String getEmbeddingModel() {
     return embeddingModel;
@@ -317,12 +316,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to SemanticSearchQueryResultsClusteringRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to SemanticSearchQueryResultsClusteringRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SemanticSearchQueryResultsClusteringRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -378,22 +377,22 @@ public class SemanticSearchQueryResultsClusteringRequest {
     }
   }
 
- /**
-  * Create an instance of SemanticSearchQueryResultsClusteringRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of SemanticSearchQueryResultsClusteringRequest
-  * @throws IOException if the JSON string is invalid with respect to SemanticSearchQueryResultsClusteringRequest
-  */
+  /**
+   * Create an instance of SemanticSearchQueryResultsClusteringRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of SemanticSearchQueryResultsClusteringRequest
+   * @throws IOException if the JSON string is invalid with respect to SemanticSearchQueryResultsClusteringRequest
+   */
   public static SemanticSearchQueryResultsClusteringRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, SemanticSearchQueryResultsClusteringRequest.class);
   }
 
- /**
-  * Convert an instance of SemanticSearchQueryResultsClusteringRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of SemanticSearchQueryResultsClusteringRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

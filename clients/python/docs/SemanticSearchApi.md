@@ -7,14 +7,14 @@ Method | HTTP request | Description
 [**semantic_search_ask**](SemanticSearchApi.md#semantic_search_ask) | **POST** /api/semantic/ask | 
 [**semantic_search_delete_document**](SemanticSearchApi.md#semantic_search_delete_document) | **DELETE** /api/semantic/{documentId} | 
 [**semantic_search_delete_index**](SemanticSearchApi.md#semantic_search_delete_index) | **DELETE** /api/semantic/index | 
-[**semantic_search_file_ingestion**](SemanticSearchApi.md#semantic_search_file_ingestion) | **POST** /api/semantic/ingest/file | 
-[**semantic_search_ingestion_status**](SemanticSearchApi.md#semantic_search_ingestion_status) | **GET** /api/semantic/ingest/status | 
+[**semantic_search_file_ingestion**](SemanticSearchApi.md#semantic_search_file_ingestion) | **POST** /api/ingest/file | 
+[**semantic_search_ingestion_status**](SemanticSearchApi.md#semantic_search_ingestion_status) | **GET** /api/ingest/status | 
 [**semantic_search_list**](SemanticSearchApi.md#semantic_search_list) | **POST** /api/semantic/list | 
 [**semantic_search_query**](SemanticSearchApi.md#semantic_search_query) | **POST** /api/semantic/query | 
 [**semantic_search_query_results_clustering**](SemanticSearchApi.md#semantic_search_query_results_clustering) | **POST** /api/semantic/query-results-clustering | 
 [**semantic_search_rerank**](SemanticSearchApi.md#semantic_search_rerank) | **POST** /api/semantic/rerank | 
-[**semantic_search_text_ingestion**](SemanticSearchApi.md#semantic_search_text_ingestion) | **POST** /api/semantic/ingest/text | 
-[**semantic_search_webpage_ingestion**](SemanticSearchApi.md#semantic_search_webpage_ingestion) | **POST** /api/semantic/ingest/webpage | 
+[**semantic_search_text_ingestion**](SemanticSearchApi.md#semantic_search_text_ingestion) | **POST** /api/ingest/text | 
+[**semantic_search_webpage_ingestion**](SemanticSearchApi.md#semantic_search_webpage_ingestion) | **POST** /api/ingest/webpage | 
 
 
 # **semantic_search_ask**

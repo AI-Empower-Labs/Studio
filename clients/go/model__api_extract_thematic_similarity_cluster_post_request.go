@@ -34,6 +34,8 @@ type ApiExtractThematicSimilarityClusterPostRequest struct {
 	LlmModel NullableString `json:"llmModel,omitempty"`
 	// The name of the embedding model used in the GenerateClusterHttpRequest. Optional.
 	EmbeddingModel NullableString `json:"embeddingModel,omitempty"`
+	// Randomization seed. Optional.
+	Seed NullableInt32 `json:"seed,omitempty"`
 }
 
 type _ApiExtractThematicSimilarityClusterPostRequest ApiExtractThematicSimilarityClusterPostRequest
@@ -261,6 +263,48 @@ func (o *ApiExtractThematicSimilarityClusterPostRequest) UnsetEmbeddingModel() {
 	o.EmbeddingModel.Unset()
 }
 
+// GetSeed returns the Seed field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApiExtractThematicSimilarityClusterPostRequest) GetSeed() int32 {
+	if o == nil || IsNil(o.Seed.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Seed.Get()
+}
+
+// GetSeedOk returns a tuple with the Seed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApiExtractThematicSimilarityClusterPostRequest) GetSeedOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Seed.Get(), o.Seed.IsSet()
+}
+
+// HasSeed returns a boolean if a field has been set.
+func (o *ApiExtractThematicSimilarityClusterPostRequest) HasSeed() bool {
+	if o != nil && o.Seed.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSeed gets a reference to the given NullableInt32 and assigns it to the Seed field.
+func (o *ApiExtractThematicSimilarityClusterPostRequest) SetSeed(v int32) {
+	o.Seed.Set(&v)
+}
+// SetSeedNil sets the value for Seed to be an explicit nil
+func (o *ApiExtractThematicSimilarityClusterPostRequest) SetSeedNil() {
+	o.Seed.Set(nil)
+}
+
+// UnsetSeed ensures that no value is present for Seed, not even an explicit nil
+func (o *ApiExtractThematicSimilarityClusterPostRequest) UnsetSeed() {
+	o.Seed.Unset()
+}
+
 func (o ApiExtractThematicSimilarityClusterPostRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -284,6 +328,9 @@ func (o ApiExtractThematicSimilarityClusterPostRequest) ToMap() (map[string]inte
 	}
 	if o.EmbeddingModel.IsSet() {
 		toSerialize["embeddingModel"] = o.EmbeddingModel.Get()
+	}
+	if o.Seed.IsSet() {
+		toSerialize["seed"] = o.Seed.Get()
 	}
 	return toSerialize, nil
 }

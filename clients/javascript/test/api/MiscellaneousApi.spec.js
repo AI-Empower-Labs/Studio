@@ -48,6 +48,16 @@
   }
 
   describe('MiscellaneousApi', function() {
+    describe('deleteLlmCacheEntry', function() {
+      it('should call deleteLlmCacheEntry successfully', function(done) {
+        //uncomment below and update the code to test deleteLlmCacheEntry
+        //instance.deleteLlmCacheEntry(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getConfiguration', function() {
       it('should call getConfiguration successfully', function(done) {
         //uncomment below and update the code to test getConfiguration

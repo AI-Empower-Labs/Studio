@@ -19,6 +19,8 @@ using Xunit;
 
 using Org.OpenAPITools.Client;
 using Org.OpenAPITools.Api;
+// uncomment below to import models
+//using Org.OpenAPITools.Model;
 
 namespace Org.OpenAPITools.Test.Api
 {
@@ -51,6 +53,17 @@ namespace Org.OpenAPITools.Test.Api
         {
             // TODO uncomment below to test 'IsType' MiscellaneousApi
             //Assert.IsType<MiscellaneousApi>(instance);
+        }
+
+        /// <summary>
+        /// Test DeleteLlmCacheEntry
+        /// </summary>
+        [Fact]
+        public void DeleteLlmCacheEntryTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string? cacheKey = null;
+            //instance.DeleteLlmCacheEntry(cacheKey);
         }
 
         /// <summary>

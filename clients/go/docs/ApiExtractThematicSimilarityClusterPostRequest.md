@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **MaxTokens** | Pointer to **int32** | The maximum number of tokens | [optional] [default to 10]
 **LlmModel** | Pointer to **NullableString** | The name of the LLM model. Optional. | [optional] 
 **EmbeddingModel** | Pointer to **NullableString** | The name of the embedding model used in the GenerateClusterHttpRequest. Optional. | [optional] 
+**Seed** | Pointer to **NullableInt32** | Randomization seed. Optional. | [optional] 
 
 ## Methods
 
@@ -190,6 +191,41 @@ HasEmbeddingModel returns a boolean if a field has been set.
 `func (o *ApiExtractThematicSimilarityClusterPostRequest) UnsetEmbeddingModel()`
 
 UnsetEmbeddingModel ensures that no value is present for EmbeddingModel, not even an explicit nil
+### GetSeed
+
+`func (o *ApiExtractThematicSimilarityClusterPostRequest) GetSeed() int32`
+
+GetSeed returns the Seed field if non-nil, zero value otherwise.
+
+### GetSeedOk
+
+`func (o *ApiExtractThematicSimilarityClusterPostRequest) GetSeedOk() (*int32, bool)`
+
+GetSeedOk returns a tuple with the Seed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeed
+
+`func (o *ApiExtractThematicSimilarityClusterPostRequest) SetSeed(v int32)`
+
+SetSeed sets Seed field to given value.
+
+### HasSeed
+
+`func (o *ApiExtractThematicSimilarityClusterPostRequest) HasSeed() bool`
+
+HasSeed returns a boolean if a field has been set.
+
+### SetSeedNil
+
+`func (o *ApiExtractThematicSimilarityClusterPostRequest) SetSeedNil(b bool)`
+
+ SetSeedNil sets the value for Seed to be an explicit nil
+
+### UnsetSeed
+`func (o *ApiExtractThematicSimilarityClusterPostRequest) UnsetSeed()`
+
+UnsetSeed ensures that no value is present for Seed, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

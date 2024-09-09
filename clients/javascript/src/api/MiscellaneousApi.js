@@ -13,6 +13,8 @@
 
 
 import ApiClient from "../ApiClient";
+import HttpValidationProblemDetails from '../model/HttpValidationProblemDetails';
+import ProblemDetails from '../model/ProblemDetails';
 
 /**
 * Miscellaneous service.
@@ -32,6 +34,45 @@ export default class MiscellaneousApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+    /**
+     * Callback function to receive the result of the deleteLlmCacheEntry operation.
+     * @callback module:api/MiscellaneousApi~deleteLlmCacheEntryCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Delete LLM cache entry
+     * @param {Object} opts Optional parameters
+     * @param {String} [cacheKey] The LLM cache key to remove
+     * @param {module:api/MiscellaneousApi~deleteLlmCacheEntryCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    deleteLlmCacheEntry(opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'cacheKey': opts['cacheKey']
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/problem+json'];
+      let returnType = null;
+      return this.apiClient.callApi(
+        '/api/cache', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the getConfiguration operation.

@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * ListDocumentParameters
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class ListDocumentParameters {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
@@ -83,10 +82,10 @@ public class ListDocumentParameters {
     return this;
   }
 
-   /**
+  /**
    * Optional index to specify which index to search in. Defaults to &#39;default&#39;
    * @return index
-  **/
+   */
   @javax.annotation.Nullable
   public String getIndex() {
     return index;
@@ -110,10 +109,10 @@ public class ListDocumentParameters {
     return this;
   }
 
-   /**
+  /**
    * Optional filtering of document id(s) and/or tags
    * @return filter
-  **/
+   */
   @javax.annotation.Nullable
   public List<DocumentFilters> getFilter() {
     return filter;
@@ -129,10 +128,10 @@ public class ListDocumentParameters {
     return this;
   }
 
-   /**
+  /**
    * Optionally specifies if embedding should be returned in response. Default is false
    * @return withEmbeddings
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getWithEmbeddings() {
     return withEmbeddings;
@@ -148,10 +147,10 @@ public class ListDocumentParameters {
     return this;
   }
 
-   /**
+  /**
    * Optional filter for specifying maximum number of entries to return. Defaults to 3
    * @return limit
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getLimit() {
     return limit;
@@ -167,10 +166,10 @@ public class ListDocumentParameters {
     return this;
   }
 
-   /**
+  /**
    * Optional filter for specifying list offset for paging. Default is 0
    * @return offset
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getOffset() {
     return offset;
@@ -255,12 +254,12 @@ public class ListDocumentParameters {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ListDocumentParameters
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ListDocumentParameters
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ListDocumentParameters.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -324,22 +323,22 @@ public class ListDocumentParameters {
     }
   }
 
- /**
-  * Create an instance of ListDocumentParameters given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ListDocumentParameters
-  * @throws IOException if the JSON string is invalid with respect to ListDocumentParameters
-  */
+  /**
+   * Create an instance of ListDocumentParameters given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ListDocumentParameters
+   * @throws IOException if the JSON string is invalid with respect to ListDocumentParameters
+   */
   public static ListDocumentParameters fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ListDocumentParameters.class);
   }
 
- /**
-  * Convert an instance of ListDocumentParameters to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ListDocumentParameters to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

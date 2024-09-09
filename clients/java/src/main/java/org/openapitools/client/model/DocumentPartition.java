@@ -42,7 +42,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * DocumentPartition
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class DocumentPartition {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -80,10 +79,10 @@ public class DocumentPartition {
     return this;
   }
 
-   /**
+  /**
    * Content of the document partition, aka chunk/block of text.
    * @return text
-  **/
+   */
   @javax.annotation.Nullable
   public String getText() {
     return text;
@@ -99,10 +98,10 @@ public class DocumentPartition {
     return this;
   }
 
-   /**
+  /**
    * Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity.
    * @return relevance
-  **/
+   */
   @javax.annotation.Nullable
   public Float getRelevance() {
     return relevance;
@@ -118,10 +117,10 @@ public class DocumentPartition {
     return this;
   }
 
-   /**
+  /**
    * Timestamp about the file/text partition.
    * @return lastUpdate
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getLastUpdate() {
     return lastUpdate;
@@ -145,10 +144,10 @@ public class DocumentPartition {
     return this;
   }
 
-   /**
+  /**
    * List of document tags
    * @return tags
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, List<String>> getTags() {
     return tags;
@@ -230,12 +229,12 @@ public class DocumentPartition {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to DocumentPartition
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to DocumentPartition
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!DocumentPartition.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -285,22 +284,22 @@ public class DocumentPartition {
     }
   }
 
- /**
-  * Create an instance of DocumentPartition given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of DocumentPartition
-  * @throws IOException if the JSON string is invalid with respect to DocumentPartition
-  */
+  /**
+   * Create an instance of DocumentPartition given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of DocumentPartition
+   * @throws IOException if the JSON string is invalid with respect to DocumentPartition
+   */
   public static DocumentPartition fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, DocumentPartition.class);
   }
 
- /**
-  * Convert an instance of DocumentPartition to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of DocumentPartition to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * SemanticSimilarityRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class SemanticSimilarityRequest {
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -74,10 +73,10 @@ public class SemanticSimilarityRequest {
     return this;
   }
 
-   /**
+  /**
    * Query text to compare with
    * @return query
-  **/
+   */
   @javax.annotation.Nullable
   public String getQuery() {
     return query;
@@ -101,10 +100,10 @@ public class SemanticSimilarityRequest {
     return this;
   }
 
-   /**
+  /**
    * Get documents
    * @return documents
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getDocuments() {
     return documents;
@@ -120,10 +119,10 @@ public class SemanticSimilarityRequest {
     return this;
   }
 
-   /**
+  /**
    * Get model
    * @return model
-  **/
+   */
   @javax.annotation.Nullable
   public String getModel() {
     return model;
@@ -202,12 +201,12 @@ public class SemanticSimilarityRequest {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to SemanticSimilarityRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to SemanticSimilarityRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SemanticSimilarityRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -264,22 +263,22 @@ public class SemanticSimilarityRequest {
     }
   }
 
- /**
-  * Create an instance of SemanticSimilarityRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of SemanticSimilarityRequest
-  * @throws IOException if the JSON string is invalid with respect to SemanticSimilarityRequest
-  */
+  /**
+   * Create an instance of SemanticSimilarityRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of SemanticSimilarityRequest
+   * @throws IOException if the JSON string is invalid with respect to SemanticSimilarityRequest
+   */
   public static SemanticSimilarityRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, SemanticSimilarityRequest.class);
   }
 
- /**
-  * Convert an instance of SemanticSimilarityRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of SemanticSimilarityRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

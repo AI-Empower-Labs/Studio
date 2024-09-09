@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * StreamableFileContent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class StreamableFileContent {
   public static final String SERIALIZED_NAME_FILE_NAME = "fileName";
   @SerializedName(SERIALIZED_NAME_FILE_NAME)
@@ -85,10 +84,10 @@ public class StreamableFileContent {
     this.lastWrite = lastWrite;
   }
 
-   /**
+  /**
    * Get fileName
    * @return fileName
-  **/
+   */
   @javax.annotation.Nullable
   public String getFileName() {
     return fileName;
@@ -96,10 +95,10 @@ public class StreamableFileContent {
 
 
 
-   /**
+  /**
    * Get fileSize
    * @return fileSize
-  **/
+   */
   @javax.annotation.Nullable
   public Long getFileSize() {
     return fileSize;
@@ -107,10 +106,10 @@ public class StreamableFileContent {
 
 
 
-   /**
+  /**
    * Get fileType
    * @return fileType
-  **/
+   */
   @javax.annotation.Nullable
   public String getFileType() {
     return fileType;
@@ -118,10 +117,10 @@ public class StreamableFileContent {
 
 
 
-   /**
+  /**
    * Get lastWrite
    * @return lastWrite
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getLastWrite() {
     return lastWrite;
@@ -200,12 +199,12 @@ public class StreamableFileContent {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to StreamableFileContent
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to StreamableFileContent
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!StreamableFileContent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -258,22 +257,22 @@ public class StreamableFileContent {
     }
   }
 
- /**
-  * Create an instance of StreamableFileContent given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of StreamableFileContent
-  * @throws IOException if the JSON string is invalid with respect to StreamableFileContent
-  */
+  /**
+   * Create an instance of StreamableFileContent given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of StreamableFileContent
+   * @throws IOException if the JSON string is invalid with respect to StreamableFileContent
+   */
   public static StreamableFileContent fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, StreamableFileContent.class);
   }
 
- /**
-  * Convert an instance of StreamableFileContent to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of StreamableFileContent to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

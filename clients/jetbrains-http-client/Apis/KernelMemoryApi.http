@@ -1,0 +1,68 @@
+## KernelMemoryApi
+
+### 
+## 
+GET https://studio.aiempowerlabs.com/download?index={{index}}&documentId={{documentId}}&filename={{filename}}
+Accept: application/json
+Accept: application/problem+json
+
+### Query documents and forward result to LLM
+## Query documents and forward result to LLM
+POST https://studio.aiempowerlabs.com/api/kernelmemory/ask
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+ "index": "<string>",
+ "question": "<string>",
+ "filters": "<string>",
+ "minRelevance": "<number>"
+}
+
+
+### Delete document from specific index
+## Delete document from specific index
+DELETE https://studio.aiempowerlabs.com/api/kernelmemory/documents?index={{index}}&documentId={{documentId}}
+Accept: application/json
+Accept: application/problem+json
+
+### Delete index
+## Delete index
+DELETE https://studio.aiempowerlabs.com/api/kernelmemory/indexes?index={{index}}
+Accept: application/json
+Accept: application/problem+json
+
+### List indexes
+## List indexes
+GET https://studio.aiempowerlabs.com/api/kernelmemory/indexes
+Accept: application/json
+Accept: application/problem+json
+
+### Search for documents in specific index
+## Search for documents in specific index
+POST https://studio.aiempowerlabs.com/api/kernelmemory/search
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+ "index": "<string>",
+ "query": "<string>",
+ "filters": "<string>",
+ "minRelevance": "<number>",
+ "limit": "<number>"
+}
+
+
+### Upload file for ingestion
+## Upload file for ingestion
+POST https://studio.aiempowerlabs.com/api/kernelmemory/upload
+Accept: application/json
+Accept: application/problem+json
+
+### Get ingestion status for specific document
+## Get ingestion status for specific document
+GET https://studio.aiempowerlabs.com/api/kernelmemory/upload-status?index={{index}}&documentId={{documentId}}
+Accept: application/json
+Accept: application/problem+json

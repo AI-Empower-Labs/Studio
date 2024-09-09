@@ -91,10 +91,10 @@ func (a *KernelMemoryAPIService) DownloadGetExecute(r ApiDownloadGetRequest) (*S
 	}
 
 	if r.index != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "documentId", r.documentId, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "filename", r.filename, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "documentId", r.documentId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "filename", r.filename, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -369,9 +369,9 @@ func (a *KernelMemoryAPIService) KernelMemoryDeleteExecute(r ApiKernelMemoryDele
 	}
 
 	if r.index != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "documentId", r.documentId, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "documentId", r.documentId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -497,7 +497,7 @@ func (a *KernelMemoryAPIService) KernelMemoryDeleteIndexExecute(r ApiKernelMemor
 	localVarFormParams := url.Values{}
 
 	if r.index != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1009,9 +1009,9 @@ func (a *KernelMemoryAPIService) KernelMemoryUploadStatusExecute(r ApiKernelMemo
 	}
 
 	if r.index != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "documentId", r.documentId, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "documentId", r.documentId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

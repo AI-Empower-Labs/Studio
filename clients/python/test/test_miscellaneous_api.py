@@ -27,6 +27,12 @@ class TestMiscellaneousApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_delete_llm_cache_entry(self) -> None:
+        """Test case for delete_llm_cache_entry
+
+        """
+        pass
+
     def test_get_configuration(self) -> None:
         """Test case for get_configuration
 

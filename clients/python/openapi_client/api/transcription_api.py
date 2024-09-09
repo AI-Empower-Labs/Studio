@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictBool, StrictBytes, StrictFloat, StrictInt, StrictStr, field_validator
-from typing import List, Optional, Union
+from typing import List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from openapi_client.models.transcription_audio_upload_result import TranscriptionAudioUploadResult
 
@@ -43,7 +43,7 @@ class TranscriptionApi:
     @validate_call
     def transcription_asynchronous(
         self,
-        files: Annotated[List[Union[StrictBytes, StrictStr]], Field(description="The file object to ingest.")],
+        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file object to ingest.")],
         model: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Model to use for transcription (Optional, default = Base)")] = None,
         language: Annotated[Optional[StrictStr], Field(description="The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional)")] = None,
         prompt: Annotated[Optional[StrictStr], Field(description="An optional text to guide the model's style or continue a previous audio segment. The prompt should match the audio language.  (optional)")] = None,
@@ -149,7 +149,7 @@ class TranscriptionApi:
     @validate_call
     def transcription_asynchronous_with_http_info(
         self,
-        files: Annotated[List[Union[StrictBytes, StrictStr]], Field(description="The file object to ingest.")],
+        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file object to ingest.")],
         model: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Model to use for transcription (Optional, default = Base)")] = None,
         language: Annotated[Optional[StrictStr], Field(description="The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional)")] = None,
         prompt: Annotated[Optional[StrictStr], Field(description="An optional text to guide the model's style or continue a previous audio segment. The prompt should match the audio language.  (optional)")] = None,
@@ -255,7 +255,7 @@ class TranscriptionApi:
     @validate_call
     def transcription_asynchronous_without_preload_content(
         self,
-        files: Annotated[List[Union[StrictBytes, StrictStr]], Field(description="The file object to ingest.")],
+        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file object to ingest.")],
         model: Annotated[Optional[Annotated[str, Field(min_length=1, strict=True)]], Field(description="Model to use for transcription (Optional, default = Base)")] = None,
         language: Annotated[Optional[StrictStr], Field(description="The language of the input audio. Supplying the input language in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format will improve accuracy and latency.  (optional)")] = None,
         prompt: Annotated[Optional[StrictStr], Field(description="An optional text to guide the model's style or continue a previous audio segment. The prompt should match the audio language.  (optional)")] = None,
@@ -382,7 +382,9 @@ class TranscriptionApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -431,12 +433,13 @@ class TranscriptionApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/json', 
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json', 
+                    'application/problem+json'
+                ]
+            )
 
         # set the HTTP header `Content-Type`
         if _content_type:
@@ -699,7 +702,9 @@ class TranscriptionApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, Union[str, bytes]] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -714,11 +719,12 @@ class TranscriptionApi:
 
 
         # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                'application/problem+json'
-            ]
-        )
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/problem+json'
+                ]
+            )
 
 
         # authentication setting

@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * TranscriptionAudioUploadResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class TranscriptionAudioUploadResult {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -64,10 +63,10 @@ public class TranscriptionAudioUploadResult {
     return this;
   }
 
-   /**
+  /**
    * Get id
    * @return id
-  **/
+   */
   @javax.annotation.Nullable
   public UUID getId() {
     return id;
@@ -129,12 +128,12 @@ public class TranscriptionAudioUploadResult {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to TranscriptionAudioUploadResult
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to TranscriptionAudioUploadResult
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!TranscriptionAudioUploadResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -184,22 +183,22 @@ public class TranscriptionAudioUploadResult {
     }
   }
 
- /**
-  * Create an instance of TranscriptionAudioUploadResult given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of TranscriptionAudioUploadResult
-  * @throws IOException if the JSON string is invalid with respect to TranscriptionAudioUploadResult
-  */
+  /**
+   * Create an instance of TranscriptionAudioUploadResult given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of TranscriptionAudioUploadResult
+   * @throws IOException if the JSON string is invalid with respect to TranscriptionAudioUploadResult
+   */
   public static TranscriptionAudioUploadResult fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, TranscriptionAudioUploadResult.class);
   }
 
- /**
-  * Convert an instance of TranscriptionAudioUploadResult to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of TranscriptionAudioUploadResult to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

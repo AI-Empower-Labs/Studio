@@ -213,7 +213,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StreamableFileContent</returns>
-        System.Threading.Tasks.Task<StreamableFileContent> DownloadGetAsync(string documentId, string filename, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StreamableFileContent> DownloadGetAsync(string documentId, string filename, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -228,7 +228,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StreamableFileContent)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StreamableFileContent>> DownloadGetWithHttpInfoAsync(string documentId, string filename, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StreamableFileContent>> DownloadGetWithHttpInfoAsync(string documentId, string filename, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Query documents and forward result to LLM
         /// </summary>
@@ -240,7 +240,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of MemoryAnswer</returns>
-        System.Threading.Tasks.Task<MemoryAnswer> KernelMemoryAskAsync(MemoryQuery memoryQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<MemoryAnswer> KernelMemoryAskAsync(MemoryQuery memoryQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Query documents and forward result to LLM
@@ -253,7 +253,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (MemoryAnswer)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MemoryAnswer>> KernelMemoryAskWithHttpInfoAsync(MemoryQuery memoryQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<MemoryAnswer>> KernelMemoryAskWithHttpInfoAsync(MemoryQuery memoryQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Delete document from specific index
         /// </summary>
@@ -266,7 +266,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteAccepted</returns>
-        System.Threading.Tasks.Task<DeleteAccepted> KernelMemoryDeleteAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DeleteAccepted> KernelMemoryDeleteAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete document from specific index
@@ -280,7 +280,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteAccepted)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteAccepted>> KernelMemoryDeleteWithHttpInfoAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DeleteAccepted>> KernelMemoryDeleteWithHttpInfoAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Delete index
         /// </summary>
@@ -292,7 +292,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteAccepted</returns>
-        System.Threading.Tasks.Task<DeleteAccepted> KernelMemoryDeleteIndexAsync(string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DeleteAccepted> KernelMemoryDeleteIndexAsync(string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Delete index
@@ -305,7 +305,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteAccepted)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteAccepted>> KernelMemoryDeleteIndexWithHttpInfoAsync(string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DeleteAccepted>> KernelMemoryDeleteIndexWithHttpInfoAsync(string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// List indexes
         /// </summary>
@@ -316,7 +316,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IndexCollection</returns>
-        System.Threading.Tasks.Task<IndexCollection> KernelMemoryGetIndexAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IndexCollection> KernelMemoryGetIndexAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// List indexes
@@ -328,7 +328,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IndexCollection)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IndexCollection>> KernelMemoryGetIndexWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IndexCollection>> KernelMemoryGetIndexWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Search for documents in specific index
         /// </summary>
@@ -340,7 +340,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SearchResult</returns>
-        System.Threading.Tasks.Task<SearchResult> KernelMemorySearchAsync(SearchQuery searchQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SearchResult> KernelMemorySearchAsync(SearchQuery searchQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Search for documents in specific index
@@ -353,7 +353,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SearchResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResult>> KernelMemorySearchWithHttpInfoAsync(SearchQuery searchQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SearchResult>> KernelMemorySearchWithHttpInfoAsync(SearchQuery searchQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Upload file for ingestion
         /// </summary>
@@ -364,7 +364,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UploadAccepted</returns>
-        System.Threading.Tasks.Task<UploadAccepted> KernelMemoryUploadAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UploadAccepted> KernelMemoryUploadAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Upload file for ingestion
@@ -376,7 +376,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UploadAccepted)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UploadAccepted>> KernelMemoryUploadWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UploadAccepted>> KernelMemoryUploadWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Get ingestion status for specific document
         /// </summary>
@@ -389,7 +389,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataPipelineStatus</returns>
-        System.Threading.Tasks.Task<DataPipelineStatus> KernelMemoryUploadStatusAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DataPipelineStatus> KernelMemoryUploadStatusAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Get ingestion status for specific document
@@ -403,7 +403,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataPipelineStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DataPipelineStatus>> KernelMemoryUploadStatusWithHttpInfoAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DataPipelineStatus>> KernelMemoryUploadStatusWithHttpInfoAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -620,7 +620,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StreamableFileContent</returns>
-        public async System.Threading.Tasks.Task<StreamableFileContent> DownloadGetAsync(string documentId, string filename, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StreamableFileContent> DownloadGetAsync(string documentId, string filename, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<StreamableFileContent> localVarResponse = await DownloadGetWithHttpInfoAsync(documentId, filename, index, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -636,7 +636,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StreamableFileContent)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<StreamableFileContent>> DownloadGetWithHttpInfoAsync(string documentId, string filename, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<StreamableFileContent>> DownloadGetWithHttpInfoAsync(string documentId, string filename, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'documentId' is set
             if (documentId == null)
@@ -780,7 +780,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of MemoryAnswer</returns>
-        public async System.Threading.Tasks.Task<MemoryAnswer> KernelMemoryAskAsync(MemoryQuery memoryQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<MemoryAnswer> KernelMemoryAskAsync(MemoryQuery memoryQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<MemoryAnswer> localVarResponse = await KernelMemoryAskWithHttpInfoAsync(memoryQuery, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -794,7 +794,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (MemoryAnswer)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<MemoryAnswer>> KernelMemoryAskWithHttpInfoAsync(MemoryQuery memoryQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<MemoryAnswer>> KernelMemoryAskWithHttpInfoAsync(MemoryQuery memoryQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'memoryQuery' is set
             if (memoryQuery == null)
@@ -934,7 +934,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteAccepted</returns>
-        public async System.Threading.Tasks.Task<DeleteAccepted> KernelMemoryDeleteAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DeleteAccepted> KernelMemoryDeleteAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<DeleteAccepted> localVarResponse = await KernelMemoryDeleteWithHttpInfoAsync(documentId, index, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -949,7 +949,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteAccepted)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<DeleteAccepted>> KernelMemoryDeleteWithHttpInfoAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<DeleteAccepted>> KernelMemoryDeleteWithHttpInfoAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'documentId' is set
             if (documentId == null)
@@ -1082,7 +1082,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteAccepted</returns>
-        public async System.Threading.Tasks.Task<DeleteAccepted> KernelMemoryDeleteIndexAsync(string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DeleteAccepted> KernelMemoryDeleteIndexAsync(string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<DeleteAccepted> localVarResponse = await KernelMemoryDeleteIndexWithHttpInfoAsync(index, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1096,7 +1096,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteAccepted)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<DeleteAccepted>> KernelMemoryDeleteIndexWithHttpInfoAsync(string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<DeleteAccepted>> KernelMemoryDeleteIndexWithHttpInfoAsync(string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -1215,7 +1215,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IndexCollection</returns>
-        public async System.Threading.Tasks.Task<IndexCollection> KernelMemoryGetIndexAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IndexCollection> KernelMemoryGetIndexAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<IndexCollection> localVarResponse = await KernelMemoryGetIndexWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1228,7 +1228,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IndexCollection)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IndexCollection>> KernelMemoryGetIndexWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<IndexCollection>> KernelMemoryGetIndexWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -1354,7 +1354,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SearchResult</returns>
-        public async System.Threading.Tasks.Task<SearchResult> KernelMemorySearchAsync(SearchQuery searchQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SearchResult> KernelMemorySearchAsync(SearchQuery searchQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<SearchResult> localVarResponse = await KernelMemorySearchWithHttpInfoAsync(searchQuery, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1368,7 +1368,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SearchResult)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<SearchResult>> KernelMemorySearchWithHttpInfoAsync(SearchQuery searchQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<SearchResult>> KernelMemorySearchWithHttpInfoAsync(SearchQuery searchQuery, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'searchQuery' is set
             if (searchQuery == null)
@@ -1491,7 +1491,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UploadAccepted</returns>
-        public async System.Threading.Tasks.Task<UploadAccepted> KernelMemoryUploadAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UploadAccepted> KernelMemoryUploadAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<UploadAccepted> localVarResponse = await KernelMemoryUploadWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1504,7 +1504,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UploadAccepted)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<UploadAccepted>> KernelMemoryUploadWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<UploadAccepted>> KernelMemoryUploadWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
@@ -1636,7 +1636,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DataPipelineStatus</returns>
-        public async System.Threading.Tasks.Task<DataPipelineStatus> KernelMemoryUploadStatusAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DataPipelineStatus> KernelMemoryUploadStatusAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<DataPipelineStatus> localVarResponse = await KernelMemoryUploadStatusWithHttpInfoAsync(documentId, index, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1651,7 +1651,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DataPipelineStatus)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<DataPipelineStatus>> KernelMemoryUploadStatusWithHttpInfoAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<DataPipelineStatus>> KernelMemoryUploadStatusWithHttpInfoAsync(string documentId, string? index = default(string?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'documentId' is set
             if (documentId == null)

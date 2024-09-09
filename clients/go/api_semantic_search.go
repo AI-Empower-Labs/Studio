@@ -223,7 +223,7 @@ func (a *SemanticSearchAPIService) SemanticSearchDeleteDocumentExecute(r ApiSema
 		return nil, reportError("index is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -519,7 +519,7 @@ func (a *SemanticSearchAPIService) SemanticSearchFileIngestionExecute(r ApiSeman
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/semantic/ingest/file"
+	localVarPath := localBasePath + "/api/ingest/file"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -529,27 +529,27 @@ func (a *SemanticSearchAPIService) SemanticSearchFileIngestionExecute(r ApiSeman
 	}
 
 	if r.documentId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "documentId", r.documentId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "documentId", r.documentId, "form", "")
 	}
 	if r.index != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "index", r.index, "form", "")
 	}
 	if r.pipeline != nil {
 		t := *r.pipeline
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "pipeline", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "pipeline", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "pipeline", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "pipeline", t, "form", "multi")
 		}
 	}
 	if r.webHookUrl != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "webHookUrl", r.webHookUrl, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "webHookUrl", r.webHookUrl, "form", "")
 	}
 	if r.embeddingModel != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "embeddingModel", r.embeddingModel, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "embeddingModel", r.embeddingModel, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data", "application/x-www-form-urlencoded"}
@@ -587,10 +587,10 @@ func (a *SemanticSearchAPIService) SemanticSearchFileIngestionExecute(r ApiSeman
 		}
 	}
 	if r.args != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "args", r.args, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "args", r.args, "", "")
 	}
 	if r.tags != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "tags", r.tags, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "tags", r.tags, "", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -706,7 +706,7 @@ func (a *SemanticSearchAPIService) SemanticSearchIngestionStatusExecute(r ApiSem
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/semantic/ingest/status"
+	localVarPath := localBasePath + "/api/ingest/status"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -715,7 +715,7 @@ func (a *SemanticSearchAPIService) SemanticSearchIngestionStatusExecute(r ApiSem
 		return localVarReturnValue, nil, reportError("id is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1426,7 +1426,7 @@ func (a *SemanticSearchAPIService) SemanticSearchTextIngestionExecute(r ApiSeman
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/semantic/ingest/text"
+	localVarPath := localBasePath + "/api/ingest/text"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1568,7 +1568,7 @@ func (a *SemanticSearchAPIService) SemanticSearchWebpageIngestionExecute(r ApiSe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/semantic/ingest/webpage"
+	localVarPath := localBasePath + "/api/ingest/webpage"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

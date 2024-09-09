@@ -242,7 +242,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of KMeansCluster</returns>
-        System.Threading.Tasks.Task<KMeansCluster> ApiExtractThematicSimilarityClusterPostAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<KMeansCluster> ApiExtractThematicSimilarityClusterPostAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Generate thematic similarity clusters using the K-Means algorithm
@@ -255,7 +255,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (KMeansCluster)</returns>
-        System.Threading.Tasks.Task<ApiResponse<KMeansCluster>> ApiExtractThematicSimilarityClusterPostWithHttpInfoAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<KMeansCluster>> ApiExtractThematicSimilarityClusterPostWithHttpInfoAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Converts data to a numerical vector array
         /// </summary>
@@ -267,7 +267,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of EmbeddingResponse</returns>
-        System.Threading.Tasks.Task<EmbeddingResponse> EmbeddingAsync(EmbeddingRequest embeddingRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<EmbeddingResponse> EmbeddingAsync(EmbeddingRequest embeddingRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Converts data to a numerical vector array
@@ -280,7 +280,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EmbeddingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EmbeddingResponse>> EmbeddingWithHttpInfoAsync(EmbeddingRequest embeddingRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<EmbeddingResponse>> EmbeddingWithHttpInfoAsync(EmbeddingRequest embeddingRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Performs keyword extraction on source text
         /// </summary>
@@ -292,7 +292,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of KeywordExtractionResponse</returns>
-        System.Threading.Tasks.Task<KeywordExtractionResponse> KeywordExtractionAsync(KeywordExtractionRequestBody keywordExtractionRequestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<KeywordExtractionResponse> KeywordExtractionAsync(KeywordExtractionRequestBody keywordExtractionRequestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Performs keyword extraction on source text
@@ -305,7 +305,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (KeywordExtractionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<KeywordExtractionResponse>> KeywordExtractionWithHttpInfoAsync(KeywordExtractionRequestBody keywordExtractionRequestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<KeywordExtractionResponse>> KeywordExtractionWithHttpInfoAsync(KeywordExtractionRequestBody keywordExtractionRequestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Extracts named entities from provided text
         /// </summary>
@@ -317,7 +317,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of NamedEntityRecognitionResponse</returns>
-        System.Threading.Tasks.Task<NamedEntityRecognitionResponse> NamedEntityRecognitionAsync(NamedEntityRecognitionRequest namedEntityRecognitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<NamedEntityRecognitionResponse> NamedEntityRecognitionAsync(NamedEntityRecognitionRequest namedEntityRecognitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Extracts named entities from provided text
@@ -330,7 +330,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (NamedEntityRecognitionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<NamedEntityRecognitionResponse>> NamedEntityRecognitionWithHttpInfoAsync(NamedEntityRecognitionRequest namedEntityRecognitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<NamedEntityRecognitionResponse>> NamedEntityRecognitionWithHttpInfoAsync(NamedEntityRecognitionRequest namedEntityRecognitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Generate semantic similarity queries from text
         /// </summary>
@@ -342,7 +342,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SemanticSimilarityResponse</returns>
-        System.Threading.Tasks.Task<SemanticSimilarityResponse> SemanticSimilarityAsync(SemanticSimilarityRequest semanticSimilarityRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SemanticSimilarityResponse> SemanticSimilarityAsync(SemanticSimilarityRequest semanticSimilarityRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Generate semantic similarity queries from text
@@ -355,7 +355,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SemanticSimilarityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SemanticSimilarityResponse>> SemanticSimilarityWithHttpInfoAsync(SemanticSimilarityRequest semanticSimilarityRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SemanticSimilarityResponse>> SemanticSimilarityWithHttpInfoAsync(SemanticSimilarityRequest semanticSimilarityRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Count tokens in a text
         /// </summary>
@@ -367,7 +367,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TokenCountResponse</returns>
-        System.Threading.Tasks.Task<TokenCountResponse> TokenCountAsync(TokenCountRequest tokenCountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TokenCountResponse> TokenCountAsync(TokenCountRequest tokenCountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Count tokens in a text
@@ -380,7 +380,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TokenCountResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TokenCountResponse>> TokenCountWithHttpInfoAsync(TokenCountRequest tokenCountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TokenCountResponse>> TokenCountWithHttpInfoAsync(TokenCountRequest tokenCountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Converts data to a integer token array
         /// </summary>
@@ -392,7 +392,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TokenizerResponse</returns>
-        System.Threading.Tasks.Task<TokenizerResponse> TokenizeAsync(TokenizerRequest tokenizerRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TokenizerResponse> TokenizeAsync(TokenizerRequest tokenizerRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Converts data to a integer token array
@@ -405,7 +405,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TokenizerResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TokenizerResponse>> TokenizeWithHttpInfoAsync(TokenizerRequest tokenizerRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TokenizerResponse>> TokenizeWithHttpInfoAsync(TokenizerRequest tokenizerRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Synchronous transcribe audio
         /// </summary>
@@ -424,7 +424,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TranscriptionResponse</returns>
-        System.Threading.Tasks.Task<TranscriptionResponse> TranscriptionSynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TranscriptionResponse> TranscriptionSynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Synchronous transcribe audio
@@ -444,7 +444,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TranscriptionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TranscriptionResponse>> TranscriptionSynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TranscriptionResponse>> TranscriptionSynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -646,7 +646,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of KMeansCluster</returns>
-        public async System.Threading.Tasks.Task<KMeansCluster> ApiExtractThematicSimilarityClusterPostAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<KMeansCluster> ApiExtractThematicSimilarityClusterPostAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<KMeansCluster> localVarResponse = await ApiExtractThematicSimilarityClusterPostWithHttpInfoAsync(apiExtractThematicSimilarityClusterPostRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -660,7 +660,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (KMeansCluster)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<KMeansCluster>> ApiExtractThematicSimilarityClusterPostWithHttpInfoAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<KMeansCluster>> ApiExtractThematicSimilarityClusterPostWithHttpInfoAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'apiExtractThematicSimilarityClusterPostRequest' is set
             if (apiExtractThematicSimilarityClusterPostRequest == null)
@@ -795,7 +795,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of EmbeddingResponse</returns>
-        public async System.Threading.Tasks.Task<EmbeddingResponse> EmbeddingAsync(EmbeddingRequest embeddingRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<EmbeddingResponse> EmbeddingAsync(EmbeddingRequest embeddingRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<EmbeddingResponse> localVarResponse = await EmbeddingWithHttpInfoAsync(embeddingRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -809,7 +809,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EmbeddingResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<EmbeddingResponse>> EmbeddingWithHttpInfoAsync(EmbeddingRequest embeddingRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<EmbeddingResponse>> EmbeddingWithHttpInfoAsync(EmbeddingRequest embeddingRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'embeddingRequest' is set
             if (embeddingRequest == null)
@@ -943,7 +943,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of KeywordExtractionResponse</returns>
-        public async System.Threading.Tasks.Task<KeywordExtractionResponse> KeywordExtractionAsync(KeywordExtractionRequestBody keywordExtractionRequestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<KeywordExtractionResponse> KeywordExtractionAsync(KeywordExtractionRequestBody keywordExtractionRequestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<KeywordExtractionResponse> localVarResponse = await KeywordExtractionWithHttpInfoAsync(keywordExtractionRequestBody, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -957,7 +957,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (KeywordExtractionResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<KeywordExtractionResponse>> KeywordExtractionWithHttpInfoAsync(KeywordExtractionRequestBody keywordExtractionRequestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<KeywordExtractionResponse>> KeywordExtractionWithHttpInfoAsync(KeywordExtractionRequestBody keywordExtractionRequestBody, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'keywordExtractionRequestBody' is set
             if (keywordExtractionRequestBody == null)
@@ -1091,7 +1091,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of NamedEntityRecognitionResponse</returns>
-        public async System.Threading.Tasks.Task<NamedEntityRecognitionResponse> NamedEntityRecognitionAsync(NamedEntityRecognitionRequest namedEntityRecognitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<NamedEntityRecognitionResponse> NamedEntityRecognitionAsync(NamedEntityRecognitionRequest namedEntityRecognitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<NamedEntityRecognitionResponse> localVarResponse = await NamedEntityRecognitionWithHttpInfoAsync(namedEntityRecognitionRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1105,7 +1105,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (NamedEntityRecognitionResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<NamedEntityRecognitionResponse>> NamedEntityRecognitionWithHttpInfoAsync(NamedEntityRecognitionRequest namedEntityRecognitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<NamedEntityRecognitionResponse>> NamedEntityRecognitionWithHttpInfoAsync(NamedEntityRecognitionRequest namedEntityRecognitionRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'namedEntityRecognitionRequest' is set
             if (namedEntityRecognitionRequest == null)
@@ -1239,7 +1239,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SemanticSimilarityResponse</returns>
-        public async System.Threading.Tasks.Task<SemanticSimilarityResponse> SemanticSimilarityAsync(SemanticSimilarityRequest semanticSimilarityRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SemanticSimilarityResponse> SemanticSimilarityAsync(SemanticSimilarityRequest semanticSimilarityRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<SemanticSimilarityResponse> localVarResponse = await SemanticSimilarityWithHttpInfoAsync(semanticSimilarityRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1253,7 +1253,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SemanticSimilarityResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<SemanticSimilarityResponse>> SemanticSimilarityWithHttpInfoAsync(SemanticSimilarityRequest semanticSimilarityRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<SemanticSimilarityResponse>> SemanticSimilarityWithHttpInfoAsync(SemanticSimilarityRequest semanticSimilarityRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'semanticSimilarityRequest' is set
             if (semanticSimilarityRequest == null)
@@ -1387,7 +1387,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TokenCountResponse</returns>
-        public async System.Threading.Tasks.Task<TokenCountResponse> TokenCountAsync(TokenCountRequest tokenCountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TokenCountResponse> TokenCountAsync(TokenCountRequest tokenCountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<TokenCountResponse> localVarResponse = await TokenCountWithHttpInfoAsync(tokenCountRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1401,7 +1401,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TokenCountResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TokenCountResponse>> TokenCountWithHttpInfoAsync(TokenCountRequest tokenCountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TokenCountResponse>> TokenCountWithHttpInfoAsync(TokenCountRequest tokenCountRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'tokenCountRequest' is set
             if (tokenCountRequest == null)
@@ -1535,7 +1535,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TokenizerResponse</returns>
-        public async System.Threading.Tasks.Task<TokenizerResponse> TokenizeAsync(TokenizerRequest tokenizerRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TokenizerResponse> TokenizeAsync(TokenizerRequest tokenizerRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<TokenizerResponse> localVarResponse = await TokenizeWithHttpInfoAsync(tokenizerRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1549,7 +1549,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TokenizerResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TokenizerResponse>> TokenizeWithHttpInfoAsync(TokenizerRequest tokenizerRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TokenizerResponse>> TokenizeWithHttpInfoAsync(TokenizerRequest tokenizerRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'tokenizerRequest' is set
             if (tokenizerRequest == null)
@@ -1736,7 +1736,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TranscriptionResponse</returns>
-        public async System.Threading.Tasks.Task<TranscriptionResponse> TranscriptionSynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TranscriptionResponse> TranscriptionSynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse> localVarResponse = await TranscriptionSynchronousWithHttpInfoAsync(files, model, language, prompt, temperature, splitOnWord, languageDetection, enableNoiseReduction, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1757,7 +1757,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TranscriptionResponse)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse>> TranscriptionSynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TranscriptionResponse>> TranscriptionSynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'files' is set
             if (files == null)

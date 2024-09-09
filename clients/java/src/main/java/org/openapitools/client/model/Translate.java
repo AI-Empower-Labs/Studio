@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * Represents a translation request with the source text, source language, and target language.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class Translate {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -342,10 +341,10 @@ public class Translate {
     return this;
   }
 
-   /**
+  /**
    * The input text to be translated.
    * @return text
-  **/
+   */
   @javax.annotation.Nullable
   public String getText() {
     return text;
@@ -361,10 +360,10 @@ public class Translate {
     return this;
   }
 
-   /**
+  /**
    * The language code of the input text.
    * @return source
-  **/
+   */
   @javax.annotation.Nullable
   public SourceEnum getSource() {
     return source;
@@ -380,10 +379,10 @@ public class Translate {
     return this;
   }
 
-   /**
+  /**
    * The language code of the desired output translation.
    * @return target
-  **/
+   */
   @javax.annotation.Nullable
   public TargetEnum getTarget() {
     return target;
@@ -462,12 +461,12 @@ public class Translate {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to Translate
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to Translate
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Translate.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -531,22 +530,22 @@ public class Translate {
     }
   }
 
- /**
-  * Create an instance of Translate given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of Translate
-  * @throws IOException if the JSON string is invalid with respect to Translate
-  */
+  /**
+   * Create an instance of Translate given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of Translate
+   * @throws IOException if the JSON string is invalid with respect to Translate
+   */
   public static Translate fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, Translate.class);
   }
 
- /**
-  * Convert an instance of Translate to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of Translate to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

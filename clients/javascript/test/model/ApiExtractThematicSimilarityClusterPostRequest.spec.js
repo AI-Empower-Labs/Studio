@@ -90,6 +90,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property seed (base name: "seed")', function() {
+      // uncomment below and update the code to test the property seed
+      //var instance = new StudioAiEmpowerLabs.ApiExtractThematicSimilarityClusterPostRequest();
+      //expect(instance).to.be();
+    });
+
   });
 
 }));

@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * Represents the response object for K-Means Clustering, contains cluster size and array of centroids
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class KMeansCluster {
   public static final String SERIALIZED_NAME_CLUSTER_SIZE = "clusterSize";
   @SerializedName(SERIALIZED_NAME_CLUSTER_SIZE)
@@ -70,10 +69,10 @@ public class KMeansCluster {
     return this;
   }
 
-   /**
+  /**
    * Size of the cluster
    * @return clusterSize
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getClusterSize() {
     return clusterSize;
@@ -97,10 +96,10 @@ public class KMeansCluster {
     return this;
   }
 
-   /**
+  /**
    * Array of Centroid objects
    * @return centroids
-  **/
+   */
   @javax.annotation.Nullable
   public List<Centroid> getCentroids() {
     return centroids;
@@ -165,12 +164,12 @@ public class KMeansCluster {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to KMeansCluster
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to KMeansCluster
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!KMeansCluster.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -231,22 +230,22 @@ public class KMeansCluster {
     }
   }
 
- /**
-  * Create an instance of KMeansCluster given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of KMeansCluster
-  * @throws IOException if the JSON string is invalid with respect to KMeansCluster
-  */
+  /**
+   * Create an instance of KMeansCluster given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of KMeansCluster
+   * @throws IOException if the JSON string is invalid with respect to KMeansCluster
+   */
   public static KMeansCluster fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, KMeansCluster.class);
   }
 
- /**
-  * Convert an instance of KMeansCluster to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of KMeansCluster to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

@@ -42,7 +42,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -54,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * IngestWebPageDocumentRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class IngestWebPageDocumentRequest {
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
@@ -96,10 +95,10 @@ public class IngestWebPageDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten
    * @return documentId
-  **/
+   */
   @javax.annotation.Nonnull
   public String getDocumentId() {
     return documentId;
@@ -115,10 +114,10 @@ public class IngestWebPageDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;
    * @return index
-  **/
+   */
   @javax.annotation.Nullable
   public String getIndex() {
     return index;
@@ -142,10 +141,10 @@ public class IngestWebPageDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Optionally add tags to ingestion
    * @return tags
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, List<String>> getTags() {
     return tags;
@@ -161,10 +160,10 @@ public class IngestWebPageDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Web page to ingest
    * @return url
-  **/
+   */
   @javax.annotation.Nonnull
   public String getUrl() {
     return url;
@@ -188,10 +187,10 @@ public class IngestWebPageDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
    * @return pipeline
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getPipeline() {
     return pipeline;
@@ -207,10 +206,10 @@ public class IngestWebPageDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Url to use for webhook callback when operation finishes or fails.
    * @return webHookUrl
-  **/
+   */
   @javax.annotation.Nullable
   public String getWebHookUrl() {
     return webHookUrl;
@@ -226,10 +225,10 @@ public class IngestWebPageDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Embedding model to use in ingestion. Optional. Default to configured default.
    * @return embeddingModel
-  **/
+   */
   @javax.annotation.Nullable
   public String getEmbeddingModel() {
     return embeddingModel;
@@ -253,10 +252,10 @@ public class IngestWebPageDocumentRequest {
     return this;
   }
 
-   /**
+  /**
    * Get args
    * @return args
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, Object> getArgs() {
     return args;
@@ -352,12 +351,12 @@ public class IngestWebPageDocumentRequest {
     openapiRequiredFields.add("url");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to IngestWebPageDocumentRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to IngestWebPageDocumentRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!IngestWebPageDocumentRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -430,22 +429,22 @@ public class IngestWebPageDocumentRequest {
     }
   }
 
- /**
-  * Create an instance of IngestWebPageDocumentRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of IngestWebPageDocumentRequest
-  * @throws IOException if the JSON string is invalid with respect to IngestWebPageDocumentRequest
-  */
+  /**
+   * Create an instance of IngestWebPageDocumentRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of IngestWebPageDocumentRequest
+   * @throws IOException if the JSON string is invalid with respect to IngestWebPageDocumentRequest
+   */
   public static IngestWebPageDocumentRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, IngestWebPageDocumentRequest.class);
   }
 
- /**
-  * Convert an instance of IngestWebPageDocumentRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of IngestWebPageDocumentRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

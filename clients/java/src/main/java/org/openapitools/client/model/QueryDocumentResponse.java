@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * QueryDocumentResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class QueryDocumentResponse {
   public static final String SERIALIZED_NAME_RELEVANT_SOURCES = "relevantSources";
   @SerializedName(SERIALIZED_NAME_RELEVANT_SOURCES)
@@ -75,10 +74,10 @@ public class QueryDocumentResponse {
     return this;
   }
 
-   /**
+  /**
    * List of the relevant sources used to produce the answer.  Key &#x3D; Document ID  Value &#x3D; List of partitions used from the document.
    * @return relevantSources
-  **/
+   */
   @javax.annotation.Nullable
   public List<DocumentCitation> getRelevantSources() {
     return relevantSources;
@@ -151,12 +150,12 @@ public class QueryDocumentResponse {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to QueryDocumentResponse
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to QueryDocumentResponse
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!QueryDocumentResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -217,22 +216,22 @@ public class QueryDocumentResponse {
     }
   }
 
- /**
-  * Create an instance of QueryDocumentResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of QueryDocumentResponse
-  * @throws IOException if the JSON string is invalid with respect to QueryDocumentResponse
-  */
+  /**
+   * Create an instance of QueryDocumentResponse given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of QueryDocumentResponse
+   * @throws IOException if the JSON string is invalid with respect to QueryDocumentResponse
+   */
   public static QueryDocumentResponse fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, QueryDocumentResponse.class);
   }
 
- /**
-  * Convert an instance of QueryDocumentResponse to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of QueryDocumentResponse to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

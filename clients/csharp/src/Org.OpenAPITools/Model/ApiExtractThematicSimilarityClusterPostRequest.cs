@@ -46,7 +46,8 @@ namespace Org.OpenAPITools.Model
         /// <param name="maxTokens">The maximum number of tokens (default to 10).</param>
         /// <param name="llmModel">The name of the LLM model. Optional..</param>
         /// <param name="embeddingModel">The name of the embedding model used in the GenerateClusterHttpRequest. Optional..</param>
-        public ApiExtractThematicSimilarityClusterPostRequest(List<string> input = default(List<string>), int clusterCount = default(int), int maxDegreeOfParallelism = 1, int maxTokens = 10, string llmModel = default(string), string embeddingModel = default(string))
+        /// <param name="seed">Randomization seed. Optional..</param>
+        public ApiExtractThematicSimilarityClusterPostRequest(List<string> input = default(List<string>), int clusterCount = default(int), int maxDegreeOfParallelism = 1, int maxTokens = 10, string llmModel = default(string), string embeddingModel = default(string), int? seed = default(int?))
         {
             // to ensure "input" is required (not null)
             if (input == null)
@@ -59,6 +60,7 @@ namespace Org.OpenAPITools.Model
             this.MaxTokens = maxTokens;
             this.LlmModel = llmModel;
             this.EmbeddingModel = embeddingModel;
+            this.Seed = seed;
         }
 
         /// <summary>
@@ -104,6 +106,13 @@ namespace Org.OpenAPITools.Model
         public string EmbeddingModel { get; set; }
 
         /// <summary>
+        /// Randomization seed. Optional.
+        /// </summary>
+        /// <value>Randomization seed. Optional.</value>
+        [DataMember(Name = "seed", EmitDefaultValue = true)]
+        public int? Seed { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -117,6 +126,7 @@ namespace Org.OpenAPITools.Model
             sb.Append("  MaxTokens: ").Append(MaxTokens).Append("\n");
             sb.Append("  LlmModel: ").Append(LlmModel).Append("\n");
             sb.Append("  EmbeddingModel: ").Append(EmbeddingModel).Append("\n");
+            sb.Append("  Seed: ").Append(Seed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

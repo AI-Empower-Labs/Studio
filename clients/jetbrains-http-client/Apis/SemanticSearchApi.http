@@ -1,0 +1,156 @@
+## SemanticSearchApi
+
+### 
+## 
+POST https://studio.aiempowerlabs.com/api/semantic/ask
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "query" : "Find invoice totals",
+  "index" : "Studio",
+  "filter" : [ {
+    "documentId" : [ "SomeUniqueId" ],
+    "tags" : {
+      "A" : [ ]
+    }
+  } ],
+  "minRelevance" : 0.8
+}
+
+
+### 
+## 
+DELETE https://studio.aiempowerlabs.com/api/semantic/{{documentId}}?index={{index}}
+Accept: application/problem+json
+
+### 
+## 
+DELETE https://studio.aiempowerlabs.com/api/semantic/index
+Accept: application/problem+json
+
+### 
+## 
+POST https://studio.aiempowerlabs.com/api/ingest/file?documentId={{documentId}}&index={{index}}&pipeline={{pipeline}}&webHookUrl={{webHookUrl}}&embeddingModel={{embeddingModel}}
+Content-Type: multipart/form-data
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Accept: application/problem+json
+
+### 
+## 
+GET https://studio.aiempowerlabs.com/api/ingest/status?id={{id}}
+Accept: application/json
+Accept: application/problem+json
+
+### 
+## 
+POST https://studio.aiempowerlabs.com/api/semantic/list
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "index" : "Studio",
+  "filter" : [ {
+    "documentId" : [ "SomeUniqueId" ],
+    "tags" : {
+      "A" : [ ]
+    }
+  } ],
+  "withEmbeddings" : false,
+  "limit" : 10
+}
+
+
+### 
+## 
+POST https://studio.aiempowerlabs.com/api/semantic/query
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "query" : "Find invoice totals",
+  "index" : "Studio",
+  "filter" : [ {
+    "documentId" : [ "SomeUniqueId" ],
+    "tags" : {
+      "A" : [ ]
+    }
+  } ],
+  "minRelevance" : 0.8,
+  "limit" : 10
+}
+
+
+### 
+## 
+POST https://studio.aiempowerlabs.com/api/semantic/query-results-clustering
+Content-Type: application/json
+Accept: application/json
+Accept: text/csv
+Accept: application/problem+json
+
+{
+ "clusterCount": "<number>",
+ "maxDegreeOfParallelism": "<number>",
+ "maxTokens": "<number>",
+ "index": "<string>",
+ "minRelevance": "<number>",
+ "maxRelevance": "<number>",
+ "llmModel": "<string>",
+ "embeddingModel": "<string>"
+}
+
+
+### 
+## 
+POST https://studio.aiempowerlabs.com/api/semantic/rerank
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "query" : "What is the capital of the United States?",
+  "documents" : [ "Carson City is the capital city of the American state of Nevada. At the  2010 United States Census, Carson City had a population of 55,274.", "The Commonwealth of the Northern Mariana Islands is a group of islands in the Pacific Ocean that are a political division controlled by the United States. Its capital is Saipan.", "Charlotte Amalie is the capital and largest city of the United States Virgin Islands. It has about 20,000 people. The city is on the island of Saint Thomas.", "Washington, D.C. (also known as simply Washington or D.C., and officially as the District of Columbia) is the capital of the United States. It is a federal district. ", "Capital punishment (the death penalty) has existed in the United States since before the United States was a country. As of 2017, capital punishment is legal in 30 of the 50 states.", "North Dakota is a state in the United States. 672,591 people lived in North Dakota in the year 2010. The capital and seat of government is Bismarck." ],
+  "limit" : 10
+}
+
+
+### 
+## 
+POST https://studio.aiempowerlabs.com/api/ingest/text
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "documentId" : "7e6ea7b1-ad67-4058-b043-dae5160ed245",
+  "index" : "Studio",
+  "tags" : {
+    "Great" : [ ],
+    "AI" : [ ],
+    "Software" : [ "true" ]
+  },
+  "text" : "Hello world"
+}
+
+
+### 
+## 
+POST https://studio.aiempowerlabs.com/api/ingest/webpage
+Content-Type: application/json
+Accept: application/json
+Accept: application/problem+json
+
+{
+  "documentId" : "7e6ea7b1-ad67-4058-b043-dae5160ed245",
+  "index" : "Studio",
+  "tags" : {
+    "Software" : [ "true" ]
+  },
+  "url" : "https://www.aiempowerlabs.com"
+}
+

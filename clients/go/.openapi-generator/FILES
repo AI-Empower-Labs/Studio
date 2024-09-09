@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -135,10 +134,4 @@ model_translate.go
 model_translate_response.go
 model_upload_accepted.go
 response.go
-test/api_data_extraction_test.go
-test/api_kernel_memory_test.go
-test/api_language_test.go
-test/api_miscellaneous_test.go
-test/api_semantic_search_test.go
-test/api_transcription_test.go
 utils.go

@@ -78,7 +78,7 @@ func (a *LanguageAPIService) LanguageDetectionExecute(r ApiLanguageDetectionRequ
 		return localVarReturnValue, nil, reportError("text is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "text", r.text, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "text", r.text, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

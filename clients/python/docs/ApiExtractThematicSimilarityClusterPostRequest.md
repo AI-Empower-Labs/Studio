@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **max_tokens** | **int** | The maximum number of tokens | [optional] [default to 10]
 **llm_model** | **str** | The name of the LLM model. Optional. | [optional] 
 **embedding_model** | **str** | The name of the embedding model used in the GenerateClusterHttpRequest. Optional. | [optional] 
+**seed** | **int** | Randomization seed. Optional. | [optional] 
 
 ## Example
 

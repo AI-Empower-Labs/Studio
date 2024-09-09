@@ -77,9 +77,9 @@ class SearchResult(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in results (list)
         _items = []
         if self.results:
-            for _item in self.results:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_results in self.results:
+                if _item_results:
+                    _items.append(_item_results.to_dict())
             _dict['results'] = _items
         # set to None if query (nullable) is None
         # and model_fields_set contains the field

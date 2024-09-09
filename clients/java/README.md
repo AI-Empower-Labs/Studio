@@ -2,8 +2,8 @@
 
 Studio - AI Empower Labs
 - API version: v1
-  - Build date: 2024-08-09T14:26:26.192689642Z[Etc/UTC]
-  - Generator version: 7.7.0-SNAPSHOT
+  - Build date: 2024-09-06T09:48:45.857739981Z[Etc/UTC]
+  - Generator version: 7.9.0-SNAPSHOT
 
 # Studio API Documentation
 
@@ -146,18 +146,19 @@ Class | Method | HTTP request | Description
 *LanguageApi* | [**languageDetection**](docs/LanguageApi.md#languageDetection) | **GET** /api/language/detect | Detects language of a text
 *LanguageApi* | [**languageGetLanguageList**](docs/LanguageApi.md#languageGetLanguageList) | **GET** /api/language | List of supported languages for translation
 *LanguageApi* | [**languageTranslate**](docs/LanguageApi.md#languageTranslate) | **POST** /api/language/translate | Translation of text from one language to another
+*MiscellaneousApi* | [**deleteLlmCacheEntry**](docs/MiscellaneousApi.md#deleteLlmCacheEntry) | **DELETE** /api/cache | 
 *MiscellaneousApi* | [**getConfiguration**](docs/MiscellaneousApi.md#getConfiguration) | **GET** /info | 
 *SemanticSearchApi* | [**semanticSearchAsk**](docs/SemanticSearchApi.md#semanticSearchAsk) | **POST** /api/semantic/ask | 
 *SemanticSearchApi* | [**semanticSearchDeleteDocument**](docs/SemanticSearchApi.md#semanticSearchDeleteDocument) | **DELETE** /api/semantic/{documentId} | 
 *SemanticSearchApi* | [**semanticSearchDeleteIndex**](docs/SemanticSearchApi.md#semanticSearchDeleteIndex) | **DELETE** /api/semantic/index | 
-*SemanticSearchApi* | [**semanticSearchFileIngestion**](docs/SemanticSearchApi.md#semanticSearchFileIngestion) | **POST** /api/semantic/ingest/file | 
-*SemanticSearchApi* | [**semanticSearchIngestionStatus**](docs/SemanticSearchApi.md#semanticSearchIngestionStatus) | **GET** /api/semantic/ingest/status | 
+*SemanticSearchApi* | [**semanticSearchFileIngestion**](docs/SemanticSearchApi.md#semanticSearchFileIngestion) | **POST** /api/ingest/file | 
+*SemanticSearchApi* | [**semanticSearchIngestionStatus**](docs/SemanticSearchApi.md#semanticSearchIngestionStatus) | **GET** /api/ingest/status | 
 *SemanticSearchApi* | [**semanticSearchList**](docs/SemanticSearchApi.md#semanticSearchList) | **POST** /api/semantic/list | 
 *SemanticSearchApi* | [**semanticSearchQuery**](docs/SemanticSearchApi.md#semanticSearchQuery) | **POST** /api/semantic/query | 
 *SemanticSearchApi* | [**semanticSearchQueryResultsClustering**](docs/SemanticSearchApi.md#semanticSearchQueryResultsClustering) | **POST** /api/semantic/query-results-clustering | 
 *SemanticSearchApi* | [**semanticSearchRerank**](docs/SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank | 
-*SemanticSearchApi* | [**semanticSearchTextIngestion**](docs/SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/semantic/ingest/text | 
-*SemanticSearchApi* | [**semanticSearchWebpageIngestion**](docs/SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/semantic/ingest/webpage | 
+*SemanticSearchApi* | [**semanticSearchTextIngestion**](docs/SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/ingest/text | 
+*SemanticSearchApi* | [**semanticSearchWebpageIngestion**](docs/SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/ingest/webpage | 
 *TranscriptionApi* | [**transcriptionAsynchronous**](docs/TranscriptionApi.md#transcriptionAsynchronous) | **POST** /api/transcribe/upload | Upload audio file for asynchronous transcription
 *TranscriptionApi* | [**transcriptionGetById**](docs/TranscriptionApi.md#transcriptionGetById) | **GET** /api/transcribe | Get transcription status and data
 

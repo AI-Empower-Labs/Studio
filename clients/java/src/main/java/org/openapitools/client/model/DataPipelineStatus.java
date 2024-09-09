@@ -43,7 +43,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -55,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * DataPipelineStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class DataPipelineStatus {
   public static final String SERIALIZED_NAME_COMPLETED = "completed";
   @SerializedName(SERIALIZED_NAME_COMPLETED)
@@ -109,10 +108,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get completed
    * @return completed
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getCompleted() {
     return completed;
@@ -128,10 +127,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get failed
    * @return failed
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getFailed() {
     return failed;
@@ -147,10 +146,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get empty
    * @return empty
-  **/
+   */
   @javax.annotation.Nullable
   public Boolean getEmpty() {
     return empty;
@@ -166,10 +165,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get index
    * @return index
-  **/
+   */
   @javax.annotation.Nullable
   public String getIndex() {
     return index;
@@ -185,10 +184,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get documentId
    * @return documentId
-  **/
+   */
   @javax.annotation.Nullable
   public String getDocumentId() {
     return documentId;
@@ -212,10 +211,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get tags
    * @return tags
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, List<String>> getTags() {
     return tags;
@@ -231,10 +230,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get creation
    * @return creation
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getCreation() {
     return creation;
@@ -250,10 +249,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get lastUpdate
    * @return lastUpdate
-  **/
+   */
   @javax.annotation.Nullable
   public OffsetDateTime getLastUpdate() {
     return lastUpdate;
@@ -277,10 +276,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get steps
    * @return steps
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getSteps() {
     return steps;
@@ -304,10 +303,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get remainingSteps
    * @return remainingSteps
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getRemainingSteps() {
     return remainingSteps;
@@ -331,10 +330,10 @@ public class DataPipelineStatus {
     return this;
   }
 
-   /**
+  /**
    * Get completedSteps
    * @return completedSteps
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getCompletedSteps() {
     return completedSteps;
@@ -437,12 +436,12 @@ public class DataPipelineStatus {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to DataPipelineStatus
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to DataPipelineStatus
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!DataPipelineStatus.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -507,22 +506,22 @@ public class DataPipelineStatus {
     }
   }
 
- /**
-  * Create an instance of DataPipelineStatus given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of DataPipelineStatus
-  * @throws IOException if the JSON string is invalid with respect to DataPipelineStatus
-  */
+  /**
+   * Create an instance of DataPipelineStatus given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of DataPipelineStatus
+   * @throws IOException if the JSON string is invalid with respect to DataPipelineStatus
+   */
   public static DataPipelineStatus fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, DataPipelineStatus.class);
   }
 
- /**
-  * Convert an instance of DataPipelineStatus to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of DataPipelineStatus to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

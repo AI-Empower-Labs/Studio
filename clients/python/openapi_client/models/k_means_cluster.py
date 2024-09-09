@@ -74,9 +74,9 @@ class KMeansCluster(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in centroids (list)
         _items = []
         if self.centroids:
-            for _item in self.centroids:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_centroids in self.centroids:
+                if _item_centroids:
+                    _items.append(_item_centroids.to_dict())
             _dict['centroids'] = _items
         return _dict
 

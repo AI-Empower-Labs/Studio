@@ -14,6 +14,8 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
+import org.openapitools.client.model.HttpValidationProblemDetails;
+import org.openapitools.client.model.ProblemDetails;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -29,6 +31,18 @@ import java.util.Map;
 public class MiscellaneousApiTest {
 
     private final MiscellaneousApi api = new MiscellaneousApi();
+
+    /**
+     * Delete LLM cache entry
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void deleteLlmCacheEntryTest() throws ApiException {
+        String cacheKey = null;
+        api.deleteLlmCacheEntry(cacheKey);
+        // TODO: test validations
+    }
 
     /**
      * Get configuration information

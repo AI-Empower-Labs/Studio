@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * NamedEntityRecognitionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class NamedEntityRecognitionResponse {
   public static final String SERIALIZED_NAME_ENTITIES = "entities";
   @SerializedName(SERIALIZED_NAME_ENTITIES)
@@ -75,10 +74,10 @@ public class NamedEntityRecognitionResponse {
     return this;
   }
 
-   /**
+  /**
    * Get entities
    * @return entities
-  **/
+   */
   @javax.annotation.Nullable
   public Map<String, List<String>> getEntities() {
     return entities;
@@ -151,12 +150,12 @@ public class NamedEntityRecognitionResponse {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to NamedEntityRecognitionResponse
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to NamedEntityRecognitionResponse
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!NamedEntityRecognitionResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -203,22 +202,22 @@ public class NamedEntityRecognitionResponse {
     }
   }
 
- /**
-  * Create an instance of NamedEntityRecognitionResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of NamedEntityRecognitionResponse
-  * @throws IOException if the JSON string is invalid with respect to NamedEntityRecognitionResponse
-  */
+  /**
+   * Create an instance of NamedEntityRecognitionResponse given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of NamedEntityRecognitionResponse
+   * @throws IOException if the JSON string is invalid with respect to NamedEntityRecognitionResponse
+   */
   public static NamedEntityRecognitionResponse fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, NamedEntityRecognitionResponse.class);
   }
 
- /**
-  * Convert an instance of NamedEntityRecognitionResponse to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of NamedEntityRecognitionResponse to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

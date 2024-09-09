@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * ReRankDocumentsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class ReRankDocumentsRequest {
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -78,10 +77,10 @@ public class ReRankDocumentsRequest {
     return this;
   }
 
-   /**
+  /**
    * Optional embedding model. Defaults to configured default
    * @return model
-  **/
+   */
   @javax.annotation.Nullable
   public String getModel() {
     return model;
@@ -97,10 +96,10 @@ public class ReRankDocumentsRequest {
     return this;
   }
 
-   /**
+  /**
    * Semantic query to find matching documents
    * @return query
-  **/
+   */
   @javax.annotation.Nullable
   public String getQuery() {
     return query;
@@ -124,10 +123,10 @@ public class ReRankDocumentsRequest {
     return this;
   }
 
-   /**
+  /**
    * Optional index to specify which index to search in. Defaults to &#39;default&#39;
    * @return documents
-  **/
+   */
   @javax.annotation.Nullable
   public List<String> getDocuments() {
     return documents;
@@ -143,10 +142,10 @@ public class ReRankDocumentsRequest {
     return this;
   }
 
-   /**
+  /**
    * Optional filter for specifying maximum number of entries to return. Defaults to 3
    * @return limit
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getLimit() {
     return limit;
@@ -228,12 +227,12 @@ public class ReRankDocumentsRequest {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ReRankDocumentsRequest
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ReRankDocumentsRequest
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ReRankDocumentsRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -290,22 +289,22 @@ public class ReRankDocumentsRequest {
     }
   }
 
- /**
-  * Create an instance of ReRankDocumentsRequest given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ReRankDocumentsRequest
-  * @throws IOException if the JSON string is invalid with respect to ReRankDocumentsRequest
-  */
+  /**
+   * Create an instance of ReRankDocumentsRequest given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ReRankDocumentsRequest
+   * @throws IOException if the JSON string is invalid with respect to ReRankDocumentsRequest
+   */
   public static ReRankDocumentsRequest fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ReRankDocumentsRequest.class);
   }
 
- /**
-  * Convert an instance of ReRankDocumentsRequest to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ReRankDocumentsRequest to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

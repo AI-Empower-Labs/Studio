@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,7 +49,7 @@ import org.openapitools.client.JSON;
 /**
  * ProblemDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class ProblemDetails {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -80,10 +79,10 @@ public class ProblemDetails {
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @javax.annotation.Nullable
   public String getType() {
     return type;
@@ -99,10 +98,10 @@ public class ProblemDetails {
     return this;
   }
 
-   /**
+  /**
    * Get title
    * @return title
-  **/
+   */
   @javax.annotation.Nullable
   public String getTitle() {
     return title;
@@ -118,10 +117,10 @@ public class ProblemDetails {
     return this;
   }
 
-   /**
+  /**
    * Get status
    * @return status
-  **/
+   */
   @javax.annotation.Nullable
   public Integer getStatus() {
     return status;
@@ -137,10 +136,10 @@ public class ProblemDetails {
     return this;
   }
 
-   /**
+  /**
    * Get detail
    * @return detail
-  **/
+   */
   @javax.annotation.Nullable
   public String getDetail() {
     return detail;
@@ -156,10 +155,10 @@ public class ProblemDetails {
     return this;
   }
 
-   /**
+  /**
    * Get instance
    * @return instance
-  **/
+   */
   @javax.annotation.Nullable
   public String getInstance() {
     return instance;
@@ -290,12 +289,12 @@ public class ProblemDetails {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ProblemDetails
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ProblemDetails
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ProblemDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -389,22 +388,22 @@ public class ProblemDetails {
     }
   }
 
- /**
-  * Create an instance of ProblemDetails given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ProblemDetails
-  * @throws IOException if the JSON string is invalid with respect to ProblemDetails
-  */
+  /**
+   * Create an instance of ProblemDetails given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ProblemDetails
+   * @throws IOException if the JSON string is invalid with respect to ProblemDetails
+   */
   public static ProblemDetails fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ProblemDetails.class);
   }
 
- /**
-  * Convert an instance of ProblemDetails to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ProblemDetails to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

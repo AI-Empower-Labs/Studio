@@ -28,7 +28,7 @@ class TestApiExtractThematicSimilarityClusterPostRequest(unittest.TestCase):
 
     def make_instance(self, include_optional) -> ApiExtractThematicSimilarityClusterPostRequest:
         """Test ApiExtractThematicSimilarityClusterPostRequest
-            include_option is a boolean, when False only required
+            include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
         # uncomment below to create an instance of `ApiExtractThematicSimilarityClusterPostRequest`
@@ -43,7 +43,8 @@ class TestApiExtractThematicSimilarityClusterPostRequest(unittest.TestCase):
                 max_degree_of_parallelism = 1,
                 max_tokens = 1,
                 llm_model = '',
-                embedding_model = ''
+                embedding_model = '',
+                seed = 56
             )
         else:
             return ApiExtractThematicSimilarityClusterPostRequest(

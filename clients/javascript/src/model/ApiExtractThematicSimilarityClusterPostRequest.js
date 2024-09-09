@@ -69,6 +69,9 @@ class ApiExtractThematicSimilarityClusterPostRequest {
             if (data.hasOwnProperty('embeddingModel')) {
                 obj['embeddingModel'] = ApiClient.convertToType(data['embeddingModel'], 'String');
             }
+            if (data.hasOwnProperty('seed')) {
+                obj['seed'] = ApiClient.convertToType(data['seed'], 'Number');
+            }
         }
         return obj;
     }
@@ -143,6 +146,12 @@ ApiExtractThematicSimilarityClusterPostRequest.prototype['llmModel'] = undefined
  * @member {String} embeddingModel
  */
 ApiExtractThematicSimilarityClusterPostRequest.prototype['embeddingModel'] = undefined;
+
+/**
+ * Randomization seed. Optional.
+ * @member {Number} seed
+ */
+ApiExtractThematicSimilarityClusterPostRequest.prototype['seed'] = undefined;
 
 
 

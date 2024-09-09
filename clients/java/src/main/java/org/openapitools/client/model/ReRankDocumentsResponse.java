@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * ReRankDocumentsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-09T14:26:26.192689642Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
 public class ReRankDocumentsResponse {
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
@@ -75,10 +74,10 @@ public class ReRankDocumentsResponse {
     return this;
   }
 
-   /**
+  /**
    * Get documents
    * @return documents
-  **/
+   */
   @javax.annotation.Nullable
   public List<ReRankDocument> getDocuments() {
     return documents;
@@ -151,12 +150,12 @@ public class ReRankDocumentsResponse {
     openapiRequiredFields = new HashSet<String>();
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ReRankDocumentsResponse
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to ReRankDocumentsResponse
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ReRankDocumentsResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -217,22 +216,22 @@ public class ReRankDocumentsResponse {
     }
   }
 
- /**
-  * Create an instance of ReRankDocumentsResponse given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of ReRankDocumentsResponse
-  * @throws IOException if the JSON string is invalid with respect to ReRankDocumentsResponse
-  */
+  /**
+   * Create an instance of ReRankDocumentsResponse given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of ReRankDocumentsResponse
+   * @throws IOException if the JSON string is invalid with respect to ReRankDocumentsResponse
+   */
   public static ReRankDocumentsResponse fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, ReRankDocumentsResponse.class);
   }
 
- /**
-  * Convert an instance of ReRankDocumentsResponse to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of ReRankDocumentsResponse to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

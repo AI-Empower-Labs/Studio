@@ -88,4 +88,12 @@ public class ApiExtractThematicSimilarityClusterPostRequestTest {
         // TODO: test embeddingModel
     }
 
+    /**
+     * Test the property 'seed'
+     */
+    @Test
+    public void seedTest() {
+        // TODO: test seed
+    }
+
 }

@@ -22,6 +22,17 @@ func Test_openapi_MiscellaneousAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test MiscellaneousAPIService DeleteLlmCacheEntry", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.MiscellaneousAPI.DeleteLlmCacheEntry(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MiscellaneousAPIService GetConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -120,7 +120,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TranscriptionAudioUploadResult</returns>
-        System.Threading.Tasks.Task<TranscriptionAudioUploadResult> TranscriptionAsynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TranscriptionAudioUploadResult> TranscriptionAsynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Upload audio file for asynchronous transcription
@@ -142,7 +142,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TranscriptionAudioUploadResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TranscriptionAudioUploadResult>> TranscriptionAsynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TranscriptionAudioUploadResult>> TranscriptionAsynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         /// <summary>
         /// Get transcription status and data
         /// </summary>
@@ -154,7 +154,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task TranscriptionGetByIdAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task TranscriptionGetByIdAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Get transcription status and data
@@ -167,7 +167,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TranscriptionGetByIdWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> TranscriptionGetByIdWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -435,7 +435,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TranscriptionAudioUploadResult</returns>
-        public async System.Threading.Tasks.Task<TranscriptionAudioUploadResult> TranscriptionAsynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TranscriptionAudioUploadResult> TranscriptionAsynchronousAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult> localVarResponse = await TranscriptionAsynchronousWithHttpInfoAsync(files, model, language, prompt, temperature, webHookUrl, translateTo, splitOnWord, languageDetection, enableNoiseReduction, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -458,7 +458,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TranscriptionAudioUploadResult)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult>> TranscriptionAsynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<TranscriptionAudioUploadResult>> TranscriptionAsynchronousWithHttpInfoAsync(List<System.IO.Stream> files, string? model = default(string?), string? language = default(string?), string? prompt = default(string?), double? temperature = default(double?), string? webHookUrl = default(string?), string? translateTo = default(string?), bool? splitOnWord = default(bool?), bool? languageDetection = default(bool?), bool? enableNoiseReduction = default(bool?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             // verify the required parameter 'files' is set
             if (files == null)
@@ -623,7 +623,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task TranscriptionGetByIdAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task TranscriptionGetByIdAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
             await TranscriptionGetByIdWithHttpInfoAsync(id, operationIndex, cancellationToken).ConfigureAwait(false);
         }
@@ -636,7 +636,7 @@ namespace Org.OpenAPITools.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<Object>> TranscriptionGetByIdWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<Object>> TranscriptionGetByIdWithHttpInfoAsync(Guid id, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
 
             Org.OpenAPITools.Client.RequestOptions localVarRequestOptions = new Org.OpenAPITools.Client.RequestOptions();
