@@ -137,7 +137,7 @@ public sealed class ChatHistoryController(
 		IAsyncEnumerable<ChatParticipant> chatParticipants = participantRepository
 			.FindByUserIdAsync(authInfo.UserId, cancellationToken);
 
-		List<ChatSession> chats = new();
+		List<ChatSession> chats = [];
 		await foreach (ChatParticipant chatParticipant in chatParticipants)
 		{
 			ChatSession? chat = null;
@@ -309,7 +309,7 @@ public sealed class ChatHistoryController(
 	/// <param name="cancellationToken"></param>
 	private async Task DeleteChatResourcesAsync(string chatId, CancellationToken cancellationToken)
 	{
-		List<Task> cleanupTasks = new();
+		List<Task> cleanupTasks = [];
 
 		// Create and store the tasks for deleting all users tied to the chat.
 		IAsyncEnumerable<ChatParticipant> participants = participantRepository.FindByChatIdAsync(chatId, cancellationToken);

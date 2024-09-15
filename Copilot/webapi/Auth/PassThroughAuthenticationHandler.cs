@@ -31,7 +31,7 @@ public class PassThroughAuthenticationHandler(
 
         Claim userIdClaim = new(ClaimConstants.Sub, DefaultUserId);
         Claim nameClaim = new(ClaimConstants.Name, DefaultUserName);
-        ClaimsIdentity identity = new(new[] { userIdClaim, nameClaim }, AuthenticationScheme);
+        ClaimsIdentity identity = new([userIdClaim, nameClaim], AuthenticationScheme);
         ClaimsPrincipal principal = new(identity);
         AuthenticationTicket ticket = new(principal, Scheme.Name);
 

@@ -65,7 +65,7 @@ public sealed class ChatMemoryController(
         // Gather the requested kernel memory.
         // Will use a dummy query since we don't care about relevance.
         // minRelevanceScore is set to 0.0 to return all memories.
-        List<string> memories = new();
+        List<string> memories = [];
         try
         {
             // Search if there is already a memory item that has a high similarity score with the new item.

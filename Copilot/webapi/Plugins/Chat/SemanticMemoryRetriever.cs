@@ -53,7 +53,7 @@ public sealed class SemanticMemoryRetriever(
 		int remainingToken = tokenLimit;
 
 		// Search for relevant memories.
-		List<(string IndexName, Citation Citation, Citation.Partition Memory)> relevantMemories = new();
+		List<(string IndexName, Citation Citation, Citation.Partition Memory)> relevantMemories = [];
 		List<Task> tasks = _memoryNames
 			.Select(memoryName => SearchMemoryAsync(memoryName))
 			.ToList();
@@ -192,7 +192,7 @@ public sealed class SemanticMemoryRetriever(
 					{
 						if (!memoryMap.TryGetValue(memoryName, out List<(string, CitationSource)>? memories))
 						{
-							memories = new List<(string, CitationSource)>();
+							memories = [];
 							memoryMap.Add(memoryName, memories);
 						}
 

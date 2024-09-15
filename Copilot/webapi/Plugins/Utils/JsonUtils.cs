@@ -39,7 +39,7 @@ public static class JsonUtils
             return jsonString;
         }
 
-        List<object> itemList = new();
+        List<object> itemList = [];
 
         // Some APIs will return a JSON response with one property key representing an embedded answer.
         // Extract this value for further processing

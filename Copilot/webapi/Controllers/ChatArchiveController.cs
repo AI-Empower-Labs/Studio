@@ -130,7 +130,7 @@ public sealed class ChatArchiveController(
         {
             // A store exception might be thrown if the collection does not exist, depending on the memory store connector.
             logger.LogError(connectorException, "Cannot search collection {MemoryName}", memoryName);
-            collectionMemoryRecords = new List<Citation>();
+            collectionMemoryRecords = [];
         }
 
         return collectionMemoryRecords;

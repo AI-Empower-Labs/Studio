@@ -181,7 +181,7 @@ public sealed class ChatController(
     {
         // Register authenticated functions with the kernel only if the request includes an auth header for the plugin.
 
-        List<Task> tasks = new();
+        List<Task> tasks = [];
 
         // GitHub
         if (authHeaders.TryGetValue("GITHUB", out string? githubAuthHeader))
