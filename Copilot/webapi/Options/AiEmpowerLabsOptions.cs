@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CopilotChat.WebApi.Options;
 
-internal sealed record AiEmpowerLabsOptions
+public sealed record AiEmpowerLabsOptions
 {
 	public const string PropertyName = "AIEmpowerLabs";
 
@@ -13,4 +13,6 @@ internal sealed record AiEmpowerLabsOptions
 
 	[Required, NotEmptyOrWhitespace]
 	public required string LlmModelName { get; init; }
+
+	public required bool EnableLangfuse { get; init; }
 }

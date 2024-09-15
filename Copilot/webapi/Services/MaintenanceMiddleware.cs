@@ -8,7 +8,6 @@ using CopilotChat.WebApi.Options;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Options;
-using Microsoft.SemanticKernel;
 
 namespace CopilotChat.WebApi.Services;
 
@@ -23,7 +22,7 @@ public class MaintenanceMiddleware(
 {
     private bool? _isInMaintenance;
 
-    public async Task Invoke(HttpContext ctx, Kernel kernel)
+    public async Task Invoke(HttpContext ctx)
     {
         // Skip inspection if _isInMaintenance explicitly false.
         if (_isInMaintenance == null || _isInMaintenance.Value)

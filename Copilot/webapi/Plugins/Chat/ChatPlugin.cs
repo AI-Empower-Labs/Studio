@@ -9,8 +9,6 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Azure.AI.OpenAI;
-
 using CopilotChat.WebApi.Auth;
 using CopilotChat.WebApi.Hubs;
 using CopilotChat.WebApi.Models.Response;
@@ -47,12 +45,6 @@ public sealed class ChatPlugin(
 	IOptions<PromptsOptions> promptOptions,
 	ILogger logger)
 {
-	/// <summary>
-	/// Tags used for Langfuse metadata in chat requests.
-	/// </summary>
-	private static readonly string[] s_langFuseTags = ["AI Empower Labs", "Copilot"];
-	private static readonly string[] s_langFuseTagsWithIntent = [..s_langFuseTags, "Intent"];
-
 	/// <summary>
 	///     Settings containing prompt texts.
 	/// </summary>
@@ -573,21 +565,17 @@ public sealed class ChatPlugin(
 	/// </summary>
 	private OpenAIPromptExecutionSettings CreateChatRequestSettings(string chatId, string userId)
 	{
-		var x = new OpenAIPromptExecutionSettings
+		OpenAIPromptExecutionSettings settings = new()
 		{
 			MaxTokens = _promptOptions.ResponseTokenLimit,
 			Temperature = _promptOptions.ResponseTemperature,
 			TopP = _promptOptions.ResponseTopP,
 			FrequencyPenalty = _promptOptions.ResponseFrequencyPenalty,
 			PresencePenalty = _promptOptions.ResponsePresencePenalty,
-			ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions,
-			AzureChatExtensionsOptions = new AzureChatExtensionsOptions
-			{
-				Extensions = { new LangfuseExtensionConfiguration(chatId, userId, s_langFuseTags) }
-			}
+			ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
 		};
 
-		return x;
+		return settings;
 	}
 
 	/// <summary>
@@ -602,11 +590,7 @@ public sealed class ChatPlugin(
 			TopP = _promptOptions.IntentTopP,
 			FrequencyPenalty = _promptOptions.IntentFrequencyPenalty,
 			PresencePenalty = _promptOptions.IntentPresencePenalty,
-			StopSequences = new[] { "] bot:" },
-			AzureChatExtensionsOptions = new AzureChatExtensionsOptions
-			{
-				Extensions = { new LangfuseExtensionConfiguration(chatId, userId, s_langFuseTagsWithIntent) }
-			}
+			StopSequences = ["] bot:"]
 		};
 	}
 

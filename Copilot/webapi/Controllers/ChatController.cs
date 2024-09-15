@@ -19,6 +19,7 @@ using CopilotChat.WebApi.Models.Response;
 using CopilotChat.WebApi.Models.Storage;
 using CopilotChat.WebApi.Options;
 using CopilotChat.WebApi.Plugins.Chat;
+using CopilotChat.WebApi.Services;
 using CopilotChat.WebApi.Storage;
 using CopilotChat.WebApi.Utilities;
 using Microsoft.AspNetCore.Http;
@@ -48,19 +49,19 @@ public sealed class ChatController(
     private const string GeneratingResponseClientCall = "ReceiveBotResponseStatus";
     private readonly ServiceOptions _serviceOptions = serviceOptions.Value;
 
-    /// <summary>
-    ///     Invokes the chat function to get a response from the bot.
-    /// </summary>
-    /// <param name="kernel">Semantic kernel obtained through dependency injection.</param>
-    /// <param name="messageRelayHubContext">Message Hub that performs the real time relay service.</param>
-    /// <param name="chatSessionRepository">Repository of chat sessions.</param>
-    /// <param name="chatParticipantRepository">Repository of chat participants.</param>
-    /// <param name="authInfo">Auth info for the current request.</param>
-    /// <param name="ask">Prompt along with its parameters.</param>
-    /// <param name="chatId">Chat ID.</param>
-    /// <param name="cancellationToken"></param>
-    /// <returns>Results containing the response from the model.</returns>
-    [Route("chats/{chatId:guid}/messages")]
+	/// <summary>
+	///     Invokes the chat function to get a response from the bot.
+	/// </summary>
+	/// <param name="kernelProvider">Semantic kernel obtained through dependency injection.</param>
+	/// <param name="messageRelayHubContext">Message Hub that performs the real time relay service.</param>
+	/// <param name="chatSessionRepository">Repository of chat sessions.</param>
+	/// <param name="chatParticipantRepository">Repository of chat participants.</param>
+	/// <param name="authInfo">Auth info for the current request.</param>
+	/// <param name="ask">Prompt along with its parameters.</param>
+	/// <param name="chatId">Chat ID.</param>
+	/// <param name="cancellationToken"></param>
+	/// <returns>Results containing the response from the model.</returns>
+	[Route("chats/{chatId:guid}/messages")]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -68,7 +69,7 @@ public sealed class ChatController(
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status504GatewayTimeout)]
     public async Task<IActionResult> ChatAsync(
-        [FromServices] Kernel kernel,
+        [FromServices] SemanticKernelProvider kernelProvider,
         [FromServices] IHubContext<MessageRelayHub> messageRelayHubContext,
         [FromServices] ChatSessionRepository chatSessionRepository,
         [FromServices] ChatParticipantRepository chatParticipantRepository,
@@ -80,6 +81,8 @@ public sealed class ChatController(
         logger.LogDebug("Chat message received");
 
         string chatIdString = chatId.ToString();
+
+		Kernel kernel = kernelProvider.KernelBuilderFactory(authInfo.UserId, chatIdString, LangfuseConstants.LangFuseTags);
 
         // Put ask's variables in the context we will use.
         KernelArguments contextVariables = GetContextVariables(ask, authInfo, chatIdString);

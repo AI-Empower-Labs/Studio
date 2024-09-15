@@ -26,14 +26,8 @@ namespace CopilotChat.WebApi.Extensions;
 /// <summary>
 ///     Extension methods for registering Semantic Kernel related services.
 /// </summary>
-internal static class SemanticKernelExtensions
+public static class SemanticKernelExtensions
 {
-    /// <summary>
-    ///     Delegate for any complimentary setup of the kernel, i.e., registering custom plugins, etc.
-    ///     See webapi/README.md#Add-Custom-Setup-to-Chat-Copilot's-Kernel for more details.
-    /// </summary>
-    public delegate Task KernelSetupHook(IServiceProvider sp, Kernel kernel);
-
     /// <summary>
     ///     Delegate to register functions with a Semantic Kernel
     /// </summary>
@@ -48,40 +42,10 @@ internal static class SemanticKernelExtensions
 
         builder.Services.AddSingleton<DocumentTypeProvider>();
 
-        // Semantic Kernel
-        builder.Services.AddScoped<Kernel>(
-            sp =>
-            {
-                SemanticKernelProvider provider = sp.GetRequiredService<SemanticKernelProvider>();
-                Kernel kernel = provider.GetCompletionKernel();
-
-                sp.GetRequiredService<RegisterFunctionsWithKernel>()(sp, kernel);
-
-                // If KernelSetupHook is not null, invoke custom kernel setup.
-                sp.GetService<KernelSetupHook>()?.Invoke(sp, kernel);
-                return kernel;
-            });
-
         // Register plugins
         builder.Services.AddScoped<RegisterFunctionsWithKernel>(_ => RegisterChatCopilotFunctionsAsync);
 
-        // Add any additional setup needed for the kernel.
-        // Uncomment the following line and pass in a custom hook for any complimentary setup of the kernel.
-        // builder.Services.AddKernelSetupHook(customHook);
-
         return builder;
-    }
-
-	/// <summary>
-	///     Register custom hook for any complimentary setup of the kernel.
-	/// </summary>
-	/// <param name="services"></param>
-	/// <param name="hook">The delegate to perform any additional setup of the kernel.</param>
-	public static IServiceCollection AddKernelSetupHook(this IServiceCollection services, KernelSetupHook hook)
-    {
-        // Add the hook to the service collection
-        services.AddScoped<KernelSetupHook>(_ => hook);
-        return services;
     }
 
     /// <summary>

@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 
 using System;
+using System.ClientModel.Primitives;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
+using System.IO;
 using System.Text.Json;
-using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 
+using CopilotChat.WebApi.Extensions;
 using CopilotChat.WebApi.Options;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +18,8 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.SemanticKernel.TextGeneration;
+
+using OpenAI;
 
 namespace CopilotChat.WebApi.Services;
 
@@ -29,90 +31,144 @@ namespace CopilotChat.WebApi.Services;
 /// <summary>
 ///     Extension methods for registering Semantic Kernel related services.
 /// </summary>
-internal sealed class SemanticKernelProvider(IOptions<AiEmpowerLabsOptions> options)
+public sealed class SemanticKernelProvider(
+	IOptions<AiEmpowerLabsOptions> options,
+	IServiceProvider sp,
+	IEnumerable<SemanticKernelExtensions.RegisterFunctionsWithKernel> registerFunctionsWithKernel)
 {
-	private readonly IKernelBuilder _builderChat = InitializeCompletionKernel(options);
-
-	/// <summary>
-	///     Produce semantic-kernel with only completion services for chat.
-	/// </summary>
-	public Kernel GetCompletionKernel()
-	{
-		lock (_builderChat)
-		{
-			return _builderChat.Build();
-		}
-	}
-
-	private static IKernelBuilder InitializeCompletionKernel(IOptions<AiEmpowerLabsOptions> options)
+	public Kernel KernelBuilderFactory(
+		string userId,
+		string chatId,
+		string[] tags)
 	{
 		IKernelBuilder builder = Kernel.CreateBuilder();
 		builder.Services.AddLogging();
-		Func<IServiceProvider, object?, OpenAIChatCompletionService> factory = (sp, _) =>
+		Func<IServiceProvider, object?, OpenAIChatCompletionService> factory = (serviceProvider, _) =>
 		{
 			Uri chatCompletionUri = new(options.Value.Url);
 			chatCompletionUri = new Uri(chatCompletionUri, "/api/openai/v1/chat/completions");
+			OpenAIClientOptions clientOptions = new();
 
-			HttpClientHandler httpMessageHandler = new();
-			RewriterHandler rewriterHandler = new(httpMessageHandler, sp.GetRequiredService<ILogger<RewriterHandler>>());
+			clientOptions.AddPolicy(new UriRewriterPipelineTransport(chatCompletionUri), PipelinePosition.BeforeTransport);
+			if (options.Value.EnableLangfuse)
+			{
+				clientOptions.AddPolicy(new CoPilotModifyingPipelineTransport(userId, chatId, tags), PipelinePosition.BeforeTransport);
+			}
 
-			return new(options.Value.LlmModelName,
-				chatCompletionUri,
-				"NoKey",
-				null,
-				new HttpClient(rewriterHandler),
-				sp.GetService<ILoggerFactory>());
+			OpenAIClient h = new("NoKey", clientOptions);
+			return new(options.Value.LlmModelName, h, serviceProvider.GetService<ILoggerFactory>());
 		};
 		builder.Services.AddKeyedSingleton<IChatCompletionService>(null, factory);
 		builder.Services.AddKeyedSingleton<ITextGenerationService>(null, factory);
+		Kernel kernel = builder.Build();
 
-		return builder;
-	}
-}
-
-/// <summary>
-/// Extract data_sources property from request and convert it to metadata property
-/// </summary>
-/// <param name="httpMessageHandler"></param>
-/// <param name="logger"></param>
-internal sealed class RewriterHandler(
-	HttpMessageHandler httpMessageHandler,
-	ILogger<RewriterHandler> logger) : DelegatingHandler(httpMessageHandler)
-{
-	protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-	{
-		if (request.Content is null)
+		foreach (SemanticKernelExtensions.RegisterFunctionsWithKernel functionsWithKernel in registerFunctionsWithKernel)
 		{
-			return await base.SendAsync(request, cancellationToken);
+			functionsWithKernel.Invoke(sp, kernel);
 		}
 
-		string requestBodyString = await request.Content.ReadAsStringAsync(cancellationToken);
-		Dictionary<string, JsonElement>? requestBody = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(requestBodyString);
-		if (requestBody is not null
-			&& requestBody.Remove("data_sources", out JsonElement dataSourcesJsonElement))
-		{
-			JsonElement[]? dataSourcesArray = dataSourcesJsonElement.Deserialize<JsonElement[]>();
-			if (dataSourcesArray is not null && dataSourcesArray.Length == 1)
-			{
-				Dictionary<string, JsonNode>? firstItemDataSources = dataSourcesArray[0].Deserialize<Dictionary<string, JsonNode>>();
-				if (firstItemDataSources is not null)
-				{
-					JsonObject doc = new();
-					foreach (KeyValuePair<string, JsonNode> pair in firstItemDataSources)
-					{
-						doc[pair.Key] = pair.Value;
-					}
+		return kernel;
+	}
 
-					requestBody.Add("metadata", doc.Deserialize<JsonElement>());
-					using JsonContent requestContent = JsonContent.Create(requestBody);
-					request.Content = requestContent;
-					return await base.SendAsync(request, cancellationToken);
+	/// <summary>
+	/// Add properties to chat completion requests, so that logging can occur in middleware.
+	/// </summary>
+	internal sealed class CoPilotModifyingPipelineTransport(string userId, string sessionId, string[] tags) : PipelinePolicy
+	{
+		public override void Process(PipelineMessage message, IReadOnlyList<PipelinePolicy> pipeline, int currentIndex)
+		{
+			if (message.Request.Content is not null)
+			{
+				using MemoryStream stream = new();
+				message.Request.Content.WriteTo(stream);
+				stream.Seek(0, SeekOrigin.Begin);
+				Dictionary<string, JsonElement>? requestBody = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(stream);
+				if (requestBody is not null)
+				{
+					requestBody.Add("session_id", JsonDocument.Parse($"\"{sessionId}\"").RootElement);
+					requestBody.Add("user_id", JsonDocument.Parse($"\"{userId}\"").RootElement);
+					requestBody.Add("tags", JsonDocument.Parse(JsonSerializer.Serialize(tags)).RootElement);
+					message.Request.Content = new DictionaryDataBinaryContent(requestBody);
 				}
+			}
+
+			if (currentIndex < pipeline.Count - 1)
+			{
+				pipeline[currentIndex + 1].Process(message, pipeline, currentIndex + 1);
 			}
 		}
 
-		logger.LogError("Could not extract langfuse metadata");
+		public override async ValueTask ProcessAsync(PipelineMessage message, IReadOnlyList<PipelinePolicy> pipeline, int currentIndex)
+		{
+			if (message.Request.Content is not null)
+			{
+				using MemoryStream stream = new();
+				await message.Request.Content.WriteToAsync(stream);
+				stream.Seek(0, SeekOrigin.Begin);
+				Dictionary<string, JsonElement>? requestBody = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(stream);
+				if (requestBody is not null)
+				{
+					requestBody.Add("session_id", JsonDocument.Parse($"\"{sessionId}\"").RootElement);
+					requestBody.Add("user_id", JsonDocument.Parse($"\"{userId}\"").RootElement);
+					requestBody.Add("tags", JsonDocument.Parse(JsonSerializer.Serialize(tags)).RootElement);
+					message.Request.Content = new DictionaryDataBinaryContent(requestBody);
+				}
+			}
 
-		return await base.SendAsync(request, cancellationToken);
+			if (currentIndex < pipeline.Count - 1)
+			{
+				await pipeline[currentIndex + 1].ProcessAsync(message, pipeline, currentIndex + 1);
+			}
+		}
+
+		private sealed class DictionaryDataBinaryContent(Dictionary<string, JsonElement> dictionary) : System.ClientModel.BinaryContent
+		{
+			private readonly byte[] _bytes = JsonSerializer.SerializeToUtf8Bytes(dictionary);
+
+			public override bool TryComputeLength(out long length)
+			{
+				length = _bytes.Length;
+				return true;
+			}
+
+			public override void WriteTo(Stream stream, CancellationToken cancellation = default)
+			{
+				stream.Write(_bytes, 0, _bytes.Length);
+			}
+
+			public override async Task WriteToAsync(Stream stream, CancellationToken cancellation = default)
+			{
+				await stream.WriteAsync(_bytes, cancellation).ConfigureAwait(false);
+			}
+
+			public override void Dispose()
+			{
+			}
+		}
+	}
+
+	/// <summary>
+	/// Overwrite chat completion endpoint
+	/// </summary>
+	/// <param name="chatCompletionUri"></param>
+	internal sealed class UriRewriterPipelineTransport(Uri chatCompletionUri) : PipelinePolicy
+	{
+		public override void Process(PipelineMessage message, IReadOnlyList<PipelinePolicy> pipeline, int currentIndex)
+		{
+			message.Request.Uri = chatCompletionUri;
+			if (currentIndex < pipeline.Count - 1)
+			{
+				pipeline[currentIndex + 1].Process(message, pipeline, currentIndex + 1);
+			}
+		}
+
+		public override async ValueTask ProcessAsync(PipelineMessage message, IReadOnlyList<PipelinePolicy> pipeline, int currentIndex)
+		{
+			message.Request.Uri = chatCompletionUri;
+			if (currentIndex < pipeline.Count - 1)
+			{
+				await pipeline[currentIndex + 1].ProcessAsync(message, pipeline, currentIndex + 1);
+			}
+		}
 	}
 }
