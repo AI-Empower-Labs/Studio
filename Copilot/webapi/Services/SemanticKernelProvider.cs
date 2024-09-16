@@ -50,10 +50,7 @@ public sealed class SemanticKernelProvider(
 			OpenAIClientOptions clientOptions = new();
 
 			clientOptions.AddPolicy(new UriRewriterPipelineTransport(chatCompletionUri), PipelinePosition.BeforeTransport);
-			if (options.Value.EnableLangfuse)
-			{
-				clientOptions.AddPolicy(new CoPilotModifyingPipelineTransport(userId, chatId, tags), PipelinePosition.BeforeTransport);
-			}
+			clientOptions.AddPolicy(new CoPilotModifyingPipelineTransport(userId, chatId, tags), PipelinePosition.BeforeTransport);
 
 			OpenAIClient h = new("NoKey", clientOptions);
 			return new(options.Value.LlmModelName, h, serviceProvider.GetService<ILoggerFactory>());
@@ -108,9 +105,14 @@ public sealed class SemanticKernelProvider(
 				Dictionary<string, JsonElement>? requestBody = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(stream);
 				if (requestBody is not null)
 				{
-					requestBody.Add("session_id", JsonDocument.Parse($"\"{sessionId}\"").RootElement);
-					requestBody.Add("user_id", JsonDocument.Parse($"\"{userId}\"").RootElement);
-					requestBody.Add("tags", JsonDocument.Parse(JsonSerializer.Serialize(tags)).RootElement);
+					requestBody.Add("extra_body", JsonDocument.Parse(
+						$$"""
+						{
+							"session_id": "{{sessionId}}",
+							"user_id": "{{userId}}",
+							"tags": {{JsonSerializer.Serialize(tags)}}
+						}
+						""").RootElement);
 					message.Request.Content = new DictionaryDataBinaryContent(requestBody);
 				}
 			}

@@ -13,6 +13,4 @@ public sealed record AiEmpowerLabsOptions
 
 	[Required, NotEmptyOrWhitespace]
 	public required string LlmModelName { get; init; }
-
-	public required bool EnableLangfuse { get; init; }
 }
