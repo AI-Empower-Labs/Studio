@@ -43,5 +43,5 @@ class AISpider(scrapy.Spider):
             'documentId': re.sub('[^a-zA-Z0-9-_.]', '', url),
             'index': 'webscrape'
         }
-        requests.post("http://localhost:8080/api/semantic/ingest/webpage", json=webpage_request)
+        requests.post("http://localhost:8080/api/ingest/webpage", json=webpage_request)
         time.sleep(1) # Don't exceed rate limits
