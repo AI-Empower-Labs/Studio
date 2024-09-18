@@ -50,7 +50,8 @@ public sealed class SemanticKernelProvider(
 			OpenAIClientOptions clientOptions = new();
 
 			clientOptions.AddPolicy(new UriRewriterPipelineTransport(chatCompletionUri), PipelinePosition.BeforeTransport);
-			clientOptions.AddPolicy(new CoPilotModifyingPipelineTransport(userId, chatId, tags), PipelinePosition.BeforeTransport);
+			// Uncomment to include request tracking with langfuse
+			//clientOptions.AddPolicy(new CoPilotModifyingPipelineTransport(userId, chatId, tags), PipelinePosition.BeforeTransport);
 
 			OpenAIClient h = new("NoKey", clientOptions);
 			return new(options.Value.LlmModelName, h, serviceProvider.GetService<ILoggerFactory>());
