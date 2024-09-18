@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,25 +23,37 @@ namespace CopilotChat.WebApi.Extensions;
 /// </summary>
 internal static class SemanticMemoryClientExtensions
 {
-	private static readonly List<string> s_pipelineSteps = [
+	private static readonly List<string> s_pipelineSteps =
+	[
 		"extract",
 		"extract_audio",
 		"sanitize",
 		"partition",
 		"gen_embeddings",
-		"save_records"];
+		"save_records"
+	];
 
 	/// <summary>
 	///     Inject <see cref="IKernelMemory" />.
 	/// </summary>
 	public static void AddSemanticMemoryServices(this WebApplicationBuilder appBuilder)
 	{
+		appBuilder.Services
+			.AddHttpClient("memoryClient")
+			.AddStandardResilienceHandler();
 		appBuilder.Services.AddSingleton(sp =>
 		{
 			IOptions<AiEmpowerLabsOptions> options = sp.GetRequiredService<IOptions<AiEmpowerLabsOptions>>();
 			Uri uri = new(options.Value.Url);
 			uri = new Uri(uri, "/api/kernelmemory");
-			IKernelMemory memory = new MemoryWebClient(uri.ToString(), "not-needed");
+
+			IHttpClientFactory httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
+			HttpClient httpClient = httpClientFactory.CreateClient("memoryClient");
+
+			IKernelMemory memory = new MemoryWebClient(
+				uri.ToString(),
+				httpClient,
+				"not-needed");
 			return memory;
 		});
 	}
