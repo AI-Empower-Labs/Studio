@@ -10,6 +10,15 @@ x-defaults:
   environment: &environment  # Defines reusable environment variables for services
     OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"  # Endpoint for OpenTelemetry collector
 
+x-deploy: &default-deploy  # Defines a reusable logging configuration using YAML anchors
+  resources:
+    reservations:
+      devices:
+        - driver: ${OLLAMA_GPU_DRIVER-nvidia}
+          count: ${OLLAMA_GPU_COUNT-1}
+          capabilities:
+            - gpu
+
 services:  # Defines the services part of the compose file
   host:  # Service definition for the main application host
     image: registry.aiempowerlabs.com/aistudio:latest  # Specifies the Docker image to use
@@ -55,14 +64,22 @@ services:  # Defines the services part of the compose file
       - ai_internal  # Connects the database service to the internal network only
 
   llama3:  # Service for LLM llama3
-    image: registry.aiempowerlabs.com/llama3:latest
+    image: ollama/ollama
     logging: *default-logging
     restart: unless-stopped
+    tty: true
+    entrypoint: ["/bin/sh", "-c", "ollama serve & ollama pull llama3.1 && tail -f /dev/null"]
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
     healthcheck:  # Health check using a curl command to a local endpoint
       test: ["CMD", "curl", "-f", "http://localhost:11434"]
       interval: 1m
       timeout: 20s
       retries: 5
+    # Uncomment below to run on GPU support
+    #deploy: &default-deploy
+    volumes:
+      - ./ollama-local:/root/.ollama
     networks:
       - ai_internal  # Connects to the internal network
 
@@ -92,6 +109,8 @@ services:  # Defines the services part of the compose file
       interval: 1m  # Health check interval
       timeout: 10s  # Timeout for the health check
       retries: 3  # Number of retries before considering the service unhealthy
+    # Uncomment below to run on GPU support
+    #deploy: &default-deploy
     networks:
       - ai_internal  # Connects to the internal network
 
@@ -109,6 +128,8 @@ services:  # Defines the services part of the compose file
       interval: 1m  # Health check interval
       timeout: 10s  # Timeout for the health check
       retries: 3  # Number of retries before considering the service unhealthy
+    # Uncomment below to run on GPU support
+    #deploy: &default-deploy
     networks:
       - ai_internal  # Connects to the internal network
 
