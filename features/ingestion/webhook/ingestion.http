@@ -1,0 +1,29 @@
+### Requires using Rest Client - https://marketplace.visualstudio.com/items?itemName=humao.rest-client - or similar
+
+@AIStudioServer=http://localhost:8080
+@ModifyingWebHookEndpoint=http://localhost:8000
+
+### This send ingestion data to AEL Studio for processing
+### The webhook_uri property points the a webhook callback for processing ingestion data
+### In this example the web server running in webserver.py that reverses text content.
+
+POST {{AIStudioServer}}/api/ingest/text
+Content-Type: application/json
+
+{
+	"documentId": "uniqueId",
+	"text": "Hello world!",
+    "args": {
+        "webhook_uri": ["{{ModifyingWebHookEndpoint}}"]
+    }
+}
+
+### This sends data directly to webserver.py for testing. No ingestion is done.
+
+POST {{ModifyingWebHookEndpoint}}
+Content-Type: application/json
+
+{
+	"documentId": "uniqueId",
+	"text": "Hello world!"
+}
