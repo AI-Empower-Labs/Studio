@@ -82,9 +82,9 @@ public sealed class ChatController(
 
         string chatIdString = chatId.ToString();
 
-		Kernel kernel = kernelProvider.KernelBuilderFactory(authInfo.UserId, chatIdString, LangfuseConstants.LangFuseTags);
+		Kernel kernel = kernelProvider.KernelBuilderFactory();
 
-        // Put ask's variables in the context we will use.
+        // Put ask variables in the context we will use.
         KernelArguments contextVariables = GetContextVariables(ask, authInfo, chatIdString);
 
         // Verify that the chat exists and that the user has access to it.

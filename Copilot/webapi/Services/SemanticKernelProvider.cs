@@ -36,10 +36,7 @@ public sealed class SemanticKernelProvider(
 	IServiceProvider sp,
 	IEnumerable<SemanticKernelExtensions.RegisterFunctionsWithKernel> registerFunctionsWithKernel)
 {
-	public Kernel KernelBuilderFactory(
-		string userId,
-		string chatId,
-		string[] tags)
+	public Kernel KernelBuilderFactory()
 	{
 		IKernelBuilder builder = Kernel.CreateBuilder();
 		builder.Services.AddLogging();
