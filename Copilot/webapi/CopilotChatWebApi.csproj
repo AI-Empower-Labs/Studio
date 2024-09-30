@@ -18,19 +18,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Marten" Version="7.27.0" />
+		<PackageReference Include="Marten" Version="7.29.0" />
 		<PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="8.9.1" />
-		<PackageReference Include="Microsoft.Identity.Web" Version="3.1.0" />
-		<PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.73.240906.1" />
-		<PackageReference Include="Microsoft.SemanticKernel" Version="1.19.0" />
-		<PackageReference Include="Microsoft.SemanticKernel.Abstractions" Version="1.19.0" />
+		<PackageReference Include="Microsoft.Identity.Web" Version="3.2.0" />
+		<PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.75.240924.1" />
+		<PackageReference Include="Microsoft.SemanticKernel" Version="1.21.1" />
+		<PackageReference Include="Microsoft.SemanticKernel.Abstractions" Version="1.21.1" />
 		<PackageReference Include="Microsoft.SemanticKernel.Connectors.MistralAI" Version="1.13.0-alpha"/>
 		<PackageReference Include="Microsoft.SemanticKernel.Plugins.Core" Version="1.5.0-alpha"/>
 		<PackageReference Include="Microsoft.SemanticKernel.Plugins.Memory" Version="1.5.0-alpha"/>
 		<PackageReference Include="Microsoft.SemanticKernel.Plugins.OpenApi" Version="1.13.0-alpha"/>
 		<PackageReference Include="Microsoft.SemanticKernel.Plugins.Web" Version="1.5.0-alpha"/>
 		<PackageReference Include="SharpToken" Version="2.0.3"/>
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.8.1" />
 	</ItemGroup>
 
 	<ItemGroup>
