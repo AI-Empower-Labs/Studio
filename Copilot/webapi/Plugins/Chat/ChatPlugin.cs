@@ -177,8 +177,10 @@ public sealed class ChatPlugin(
 			await SaveNewMessage(message, userId, userName, chatId, messageType, cancellationToken);
 
 		// Clone the context to avoid modifying the original context variables.
-		KernelArguments chatContext = new(context);
-		chatContext["knowledgeCutoff"] = _promptOptions.KnowledgeCutoffDate;
+		KernelArguments chatContext = new(context)
+		{
+			["knowledgeCutoff"] = _promptOptions.KnowledgeCutoffDate
+		};
 
 		CopilotChatMessage chatMessage =
 			await GetChatResponse(chatId, userId, chatContext, newUserMessage, cancellationToken);

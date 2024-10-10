@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 
 using System;
+using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
 using System.IO;
@@ -50,7 +51,7 @@ public sealed class SemanticKernelProvider(
 			// Uncomment to include request tracking with langfuse
 			//clientOptions.AddPolicy(new CoPilotModifyingPipelineTransport(userId, chatId, tags), PipelinePosition.BeforeTransport);
 
-			OpenAIClient h = new("NoKey", clientOptions);
+			OpenAIClient h = new(new ApiKeyCredential("NoKey"), clientOptions);
 			return new(options.Value.LlmModelName, h, serviceProvider.GetService<ILoggerFactory>());
 		};
 		builder.Services.AddKeyedSingleton<IChatCompletionService>(null, factory);

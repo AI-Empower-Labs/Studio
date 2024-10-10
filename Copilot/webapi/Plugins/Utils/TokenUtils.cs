@@ -80,12 +80,16 @@ internal static class TokenUtils
 		try
 		{
 			JsonElement jsonObject = JsonSerializer.Deserialize<JsonElement>(JsonSerializer.Serialize(usageObject));
-			if (jsonObject.TryGetProperty("TotalTokens", out JsonElement totalTokensElement)
-				&& totalTokensElement.TryGetInt32(out tokenUsage))
+			if (jsonObject.TryGetProperty("TotalTokenCount", out JsonElement totalTokensElement)
+			    && totalTokensElement.TryGetInt32(out tokenUsage))
+			{
+			}
+			else if (jsonObject.TryGetProperty("TotalTokens", out totalTokensElement)
+			         && totalTokensElement.TryGetInt32(out tokenUsage))
 			{
 			}
 			else if (jsonObject.TryGetProperty("total_tokens", out totalTokensElement)
-				&& totalTokensElement.TryGetInt32(out tokenUsage))
+			         && totalTokensElement.TryGetInt32(out tokenUsage))
 			{
 			}
 			else
