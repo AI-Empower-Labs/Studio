@@ -212,7 +212,7 @@ services:  # Defines the services part of the compose file
       - ai_public  # Connects the service to the public network
 
   aspire:
-    image: mcr.microsoft.com/dotnet/nightly/aspire-dashboard
+    image: mcr.microsoft.com/dotnet/aspire-dashboard
     logging: *default-logging  # Uses the defined reusable logging configuration
     restart: unless-stopped
     ports:
