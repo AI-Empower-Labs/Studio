@@ -5,6 +5,7 @@ using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.SemanticKernel.TextGeneration;
 
 using OpenAI;
+
+using MemoryStream = System.IO.MemoryStream;
 
 namespace CopilotChat.WebApi.Services;
 
@@ -152,7 +155,7 @@ public sealed class SemanticKernelProvider(
 	/// Overwrite chat completion endpoint
 	/// </summary>
 	/// <param name="chatCompletionUri"></param>
-	internal sealed class UriRewriterPipelineTransport(Uri chatCompletionUri) : PipelinePolicy
+	private sealed class UriRewriterPipelineTransport(Uri chatCompletionUri) : PipelinePolicy
 	{
 		public override void Process(PipelineMessage message, IReadOnlyList<PipelinePolicy> pipeline, int currentIndex)
 		{
