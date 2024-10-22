@@ -53,6 +53,8 @@ internal static class CopilotChatServiceExtensions
 
 		AddOptionsLocal<FrontendOptions>(FrontendOptions.PropertyName);
 
+		AddOptionsLocal<DocumentMemoryOptions>(DocumentMemoryOptions.PropertyName);
+
 		return services;
 
 		void AddOptionsLocal<TOptions>(string propertyName) where TOptions : class
