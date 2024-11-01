@@ -5,7 +5,6 @@ using System.ClientModel;
 using System.ClientModel.Primitives;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -47,10 +46,11 @@ public sealed class SemanticKernelProvider(
 		Func<IServiceProvider, object?, OpenAIChatCompletionService> factory = (serviceProvider, _) =>
 		{
 			Uri chatCompletionUri = new(options.Value.Url);
-			chatCompletionUri = new Uri(chatCompletionUri, "/api/openai/v1/chat/completions");
-			OpenAIClientOptions clientOptions = new();
+			OpenAIClientOptions clientOptions = new()
+			{
+				Endpoint = new Uri(chatCompletionUri, "/api/openai/v1")
+			};
 
-			clientOptions.AddPolicy(new UriRewriterPipelineTransport(chatCompletionUri), PipelinePosition.BeforeTransport);
 			// Uncomment to include request tracking with langfuse
 			//clientOptions.AddPolicy(new CoPilotModifyingPipelineTransport(userId, chatId, tags), PipelinePosition.BeforeTransport);
 
@@ -147,31 +147,6 @@ public sealed class SemanticKernelProvider(
 
 			public override void Dispose()
 			{
-			}
-		}
-	}
-
-	/// <summary>
-	/// Overwrite chat completion endpoint
-	/// </summary>
-	/// <param name="chatCompletionUri"></param>
-	private sealed class UriRewriterPipelineTransport(Uri chatCompletionUri) : PipelinePolicy
-	{
-		public override void Process(PipelineMessage message, IReadOnlyList<PipelinePolicy> pipeline, int currentIndex)
-		{
-			message.Request.Uri = chatCompletionUri;
-			if (currentIndex < pipeline.Count - 1)
-			{
-				pipeline[currentIndex + 1].Process(message, pipeline, currentIndex + 1);
-			}
-		}
-
-		public override async ValueTask ProcessAsync(PipelineMessage message, IReadOnlyList<PipelinePolicy> pipeline, int currentIndex)
-		{
-			message.Request.Uri = chatCompletionUri;
-			if (currentIndex < pipeline.Count - 1)
-			{
-				await pipeline[currentIndex + 1].ProcessAsync(message, pipeline, currentIndex + 1);
 			}
 		}
 	}
