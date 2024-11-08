@@ -71,5 +71,5 @@ class AISpider(scrapy.Spider):
 To run this program, execute the script from your command line:
 
 ```bash
-scrapy runspider .\spider.py -L INFO
+scrapy runspider ./spider.py -L INFO
 ```
