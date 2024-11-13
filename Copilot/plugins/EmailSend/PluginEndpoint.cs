@@ -44,7 +44,7 @@ public sealed class PluginEndpoint
 			Api = new PluginApi
 			{
 				Type = "openapi",
-				Url = $"{reqUrl.Scheme}://{reqUrl.Host}:{reqUrl.Port}/swagger/v1/swagger.json"
+				Url = $"{reqUrl.Scheme}://{reqUrl.Host}:{reqUrl.Port}/openapi/v1.json"
 			},
 			LogoUrl = $"{reqUrl.Scheme}://{reqUrl.Host}:{reqUrl.Port}/.well-known/icon"
 		};

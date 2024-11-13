@@ -14,8 +14,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentEmail.Smtp" Version="3.0.2"/>
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
+		<PackageReference Include="Scalar.AspNetCore" Version="1.2.36" />
 	</ItemGroup>
 
 	<ItemGroup>
