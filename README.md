@@ -334,50 +334,7 @@ The `KernelMemory` subsections allow for detailed control over various stages of
 }
 ```
 
-#### Services
-
-- **Purpose**: Manages database-specific configurations, particularly for services like PostgreSQL.
-- **Postgres**: Custom settings for table management in PostgreSQL, useful for AI data storage and retrieval.
-
-**To customize**:
-
-- **TableNamePrefix**: Define a prefix for all database tables used by the application.
-- **Columns**: Customize database column definitions to align with the data structure used by your AI models.
-- **CreateTableSql**: Adjust the SQL script for table creation to include additional fields or modify indexing strategies.
-
-```json
-"KernelMemory": {
-    "Services": {
-        "Postgres": {
-            "TableNamePrefix": "ai_memory_",
-            "Columns": {
-                "id": "pk",
-                "embedding": "vector(2048)",
-                "tags": "labels",
-                "content": "chunk",
-                "payload": "extras"
-            },
-            "CreateTableSql": [
-                "BEGIN;",
-                "CREATE TABLE IF NOT EXISTS %%table_name%% (",
-                "  pk TEXT NOT NULL PRIMARY KEY,",
-                "  embedding vector(2048),",
-                "  labels TEXT[] DEFAULT '{}'::TEXT[] NOT NULL,",
-                "  chunk TEXT DEFAULT '' NOT NULL,",
-                "  extras JSONB DEFAULT '{}'::JSONB NOT NULL,",
-                "  my_field1 TEXT DEFAULT '',",
-                "_update TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP",
-                ");",
-                "CREATE INDEX ON %%table_name%% USING GIN(labels);",
-                "CREATE INDEX ON %%table_name%% USING hnsw (embedding vector_cosine_ops);",
-                "COMMIT;"
-            ]
-        }
-    }
-}
-```
-
-### 4. [Serilog](https://github.com/serilog/serilog)
+### 3. [Serilog](https://github.com/serilog/serilog)
 
 Configures logging via Serilog.
 
