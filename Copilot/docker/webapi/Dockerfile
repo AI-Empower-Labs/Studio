@@ -1,7 +1,7 @@
 # docker build -f docker/webapi/Dockerfile -t chat-copilot-webapi .
 
 # builder
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS builder
 WORKDIR /source
 # generate dev-certs for https
 RUN dotnet dev-certs https
@@ -13,7 +13,7 @@ RUN cd webapi && \
   dotnet publish --use-current-runtime --self-contained false --no-restore -o /app
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 ENV Kestrel__Endpoints__Http__Url=http://0.0.0.0:8080
 ENV Kestrel__Endpoints__Https__Url=https://0.0.0.0:40443
 WORKDIR /app
