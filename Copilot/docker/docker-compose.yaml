@@ -1,17 +1,19 @@
 services:
   chat-copilot-webapp:
-   image: chat-copilot-webapp
-   build:
-     context: ..
-     dockerfile: docker/webapp/Dockerfile
-   ports:
-     - "3000:3000"
-   environment:
-     - REACT_APP_BACKEND_URI=http://localhost:3080
-   depends_on:
-     chat-copilot-webapi:
-       condition: service_started
+    container_name: chat-copilot-webapp
+    image: chat-copilot-webapp
+    build:
+      context: ..
+      dockerfile: docker/webapp/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_BACKEND_URI=http://localhost:3080
+    depends_on:
+      chat-copilot-webapi:
+        condition: service_started
   chat-copilot-webapi:
+    container_name: chat-copilot-webapi
     image: chat-copilot-webapi
     build:
       context: ..
@@ -24,7 +26,11 @@ services:
       - ./webapi/.env
     environment:
       - ConnectionStrings__Postgres=Host=postgres;Port=5432;User Id=$POSTGRES_USER;Database=$POSTGRES_DB;Password=$POSTGRES_PASSWORD;Pooling=true
+    depends_on:
+      postgres:
+        condition: service_started
   postgres:
+    container_name: chat-copilot-postgres
     image: ankane/pgvector:latest
     environment:
       POSTGRES_USER: $POSTGRES_USER
