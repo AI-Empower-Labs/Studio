@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using CopilotChat.WebApi.Plugins.Utils;
 using Microsoft.Extensions.Logging;
 using Microsoft.KernelMemory;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
 
 #pragma warning disable SKEXP0010
 
@@ -84,7 +86,10 @@ internal static class SemanticChatMemoryExtractor
 				options.ResponseTokenLimit -
 				TokenUtils.TokenCount(memoryPrompt);
 
-			KernelArguments memoryExtractionArguments = new(kernelArguments)
+			KernelArguments memoryExtractionArguments = new(kernelArguments, executionSettings: new Dictionary<string, PromptExecutionSettings>
+			{
+				{ PromptExecutionSettings.DefaultServiceId, new OpenAIPromptExecutionSettings { ResponseFormat = "json_object" } }
+			})
 			{
 				["tokenLimit"] = remainingToken.ToString(new NumberFormatInfo()),
 				["memoryName"] = memoryName,
