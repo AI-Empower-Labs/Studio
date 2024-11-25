@@ -1,5 +1,3 @@
-version: '3.8'  # Specifies the version of the Docker Compose file format
-
 x-logging: &default-logging  # Defines a reusable logging configuration using YAML anchors
   options:
     max-size: "100m"  # Log rotation: max log size before rotation
@@ -41,6 +39,14 @@ services:  # Defines the services part of the compose file
       - transcription
       - embedding
       - llama3
+      - redis
+
+  redis:  # Redis database service implemented in ValKey
+    image: docker.io/valkey/valkey:latest  # Image to use for Redis / ValKey
+    logging: *default-logging
+    restart: unless-stopped
+    networks:
+      - ai_internal  # Connects the database service to the internal network only
 
   postgres:  # PostgreSQL database service
     image: paradedb/paradedb:latest  # Image to use for PostgreSQL with vector extension
