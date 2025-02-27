@@ -82,176 +82,17 @@ public class KernelMemoryApi {
     }
 
     /**
-     * Build call for downloadGet
-     * @param documentId  (required)
-     * @param filename  (required)
-     * @param index  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call downloadGetCall(String documentId, String filename, String index, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/download";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (index != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("index", index));
-        }
-
-        if (documentId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("documentId", documentId));
-        }
-
-        if (filename != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filename", filename));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call downloadGetValidateBeforeCall(String documentId, String filename, String index, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'documentId' is set
-        if (documentId == null) {
-            throw new ApiException("Missing the required parameter 'documentId' when calling downloadGet(Async)");
-        }
-
-        // verify the required parameter 'filename' is set
-        if (filename == null) {
-            throw new ApiException("Missing the required parameter 'filename' when calling downloadGet(Async)");
-        }
-
-        return downloadGetCall(documentId, filename, index, _callback);
-
-    }
-
-    /**
-     * 
-     * 
-     * @param documentId  (required)
-     * @param filename  (required)
-     * @param index  (optional)
-     * @return StreamableFileContent
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
-     </table>
-     */
-    public StreamableFileContent downloadGet(String documentId, String filename, String index) throws ApiException {
-        ApiResponse<StreamableFileContent> localVarResp = downloadGetWithHttpInfo(documentId, filename, index);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * 
-     * @param documentId  (required)
-     * @param filename  (required)
-     * @param index  (optional)
-     * @return ApiResponse&lt;StreamableFileContent&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<StreamableFileContent> downloadGetWithHttpInfo(String documentId, String filename, String index) throws ApiException {
-        okhttp3.Call localVarCall = downloadGetValidateBeforeCall(documentId, filename, index, null);
-        Type localVarReturnType = new TypeToken<StreamableFileContent>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * 
-     * @param documentId  (required)
-     * @param filename  (required)
-     * @param index  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call downloadGetAsync(String documentId, String filename, String index, final ApiCallback<StreamableFileContent> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = downloadGetValidateBeforeCall(documentId, filename, index, _callback);
-        Type localVarReturnType = new TypeToken<StreamableFileContent>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for kernelMemoryAsk
      * @param memoryQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -319,10 +160,11 @@ public class KernelMemoryApi {
      * @return MemoryAnswer
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -338,10 +180,11 @@ public class KernelMemoryApi {
      * @return ApiResponse&lt;MemoryAnswer&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -359,10 +202,11 @@ public class KernelMemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -381,10 +225,11 @@ public class KernelMemoryApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -460,10 +305,11 @@ public class KernelMemoryApi {
      * @return DeleteAccepted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -480,10 +326,11 @@ public class KernelMemoryApi {
      * @return ApiResponse&lt;DeleteAccepted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -502,10 +349,11 @@ public class KernelMemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -523,10 +371,11 @@ public class KernelMemoryApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -592,10 +441,11 @@ public class KernelMemoryApi {
      * @return DeleteAccepted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -611,10 +461,11 @@ public class KernelMemoryApi {
      * @return ApiResponse&lt;DeleteAccepted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -632,10 +483,11 @@ public class KernelMemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 202 </td><td> Accepted </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -647,15 +499,180 @@ public class KernelMemoryApi {
         return localVarCall;
     }
     /**
+     * Build call for kernelMemoryDownload
+     * @param documentId  (required)
+     * @param filename  (required)
+     * @param index  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call kernelMemoryDownloadCall(String documentId, String filename, String index, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/kernelmemory/download";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (index != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("index", index));
+        }
+
+        if (documentId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("documentId", documentId));
+        }
+
+        if (filename != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filename", filename));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "application/problem+json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call kernelMemoryDownloadValidateBeforeCall(String documentId, String filename, String index, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'documentId' is set
+        if (documentId == null) {
+            throw new ApiException("Missing the required parameter 'documentId' when calling kernelMemoryDownload(Async)");
+        }
+
+        // verify the required parameter 'filename' is set
+        if (filename == null) {
+            throw new ApiException("Missing the required parameter 'filename' when calling kernelMemoryDownload(Async)");
+        }
+
+        return kernelMemoryDownloadCall(documentId, filename, index, _callback);
+
+    }
+
+    /**
+     * Download specific document
+     * 
+     * @param documentId  (required)
+     * @param filename  (required)
+     * @param index  (optional)
+     * @return StreamableFileContent
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
+     </table>
+     */
+    public StreamableFileContent kernelMemoryDownload(String documentId, String filename, String index) throws ApiException {
+        ApiResponse<StreamableFileContent> localVarResp = kernelMemoryDownloadWithHttpInfo(documentId, filename, index);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Download specific document
+     * 
+     * @param documentId  (required)
+     * @param filename  (required)
+     * @param index  (optional)
+     * @return ApiResponse&lt;StreamableFileContent&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<StreamableFileContent> kernelMemoryDownloadWithHttpInfo(String documentId, String filename, String index) throws ApiException {
+        okhttp3.Call localVarCall = kernelMemoryDownloadValidateBeforeCall(documentId, filename, index, null);
+        Type localVarReturnType = new TypeToken<StreamableFileContent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Download specific document (asynchronously)
+     * 
+     * @param documentId  (required)
+     * @param filename  (required)
+     * @param index  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call kernelMemoryDownloadAsync(String documentId, String filename, String index, final ApiCallback<StreamableFileContent> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = kernelMemoryDownloadValidateBeforeCall(documentId, filename, index, _callback);
+        Type localVarReturnType = new TypeToken<StreamableFileContent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for kernelMemoryGetIndex
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -716,10 +733,11 @@ public class KernelMemoryApi {
      * @return IndexCollection
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -734,10 +752,11 @@ public class KernelMemoryApi {
      * @return ApiResponse&lt;IndexCollection&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -754,10 +773,11 @@ public class KernelMemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -775,10 +795,11 @@ public class KernelMemoryApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -846,10 +867,11 @@ public class KernelMemoryApi {
      * @return SearchResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -865,10 +887,11 @@ public class KernelMemoryApi {
      * @return ApiResponse&lt;SearchResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -886,10 +909,11 @@ public class KernelMemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -906,11 +930,12 @@ public class KernelMemoryApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -971,11 +996,12 @@ public class KernelMemoryApi {
      * @return UploadAccepted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -990,11 +1016,12 @@ public class KernelMemoryApi {
      * @return ApiResponse&lt;UploadAccepted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -1011,11 +1038,12 @@ public class KernelMemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -1034,12 +1062,13 @@ public class KernelMemoryApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -1115,12 +1144,13 @@ public class KernelMemoryApi {
      * @return DataPipelineStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -1137,12 +1167,13 @@ public class KernelMemoryApi {
      * @return ApiResponse&lt;DataPipelineStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */
@@ -1161,12 +1192,13 @@ public class KernelMemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
         <tr><td> 503 </td><td> Service Unavailable </td><td>  -  </td></tr>
      </table>
      */

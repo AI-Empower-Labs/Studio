@@ -25,19 +25,19 @@ class CoordinateTest : ShouldSpec() {
         // uncomment below to create an instance of Coordinate
         //val modelInstance = Coordinate()
 
-        // to test the property `x` - X-axis value of the coordinate
+        // to test the property `x` - X-axis value
         should("test x") {
             // uncomment below to test the property
             //modelInstance.x shouldBe ("TODO")
         }
 
-        // to test the property `y` - Y-axis value of the coordinate
+        // to test the property `y` - Y-axis value
         should("test y") {
             // uncomment below to test the property
             //modelInstance.y shouldBe ("TODO")
         }
 
-        // to test the property `label` - Label associated with the coordinate
+        // to test the property `label` - Coordinate label
         should("test label") {
             // uncomment below to test the property
             //modelInstance.label shouldBe ("TODO")

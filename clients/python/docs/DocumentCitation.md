@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**link** | **str** | Link to the source, if available. | [optional] 
-**index** | **str** | Link to the source, if available. | [optional] 
-**document_id** | **str** | Link to the source, if available. | [optional] 
-**file_id** | **str** | Link to the source, if available. | [optional] 
-**source_content_type** | **str** | Type of source, e.g. PDF, Word, Chat, etc. | [optional] 
-**source_name** | **str** | Name of the source, e.g. file name. | [optional] 
-**source_url** | **str** | URL of the source, used for web pages and external data | [optional] 
-**partitions** | [**List[DocumentPartition]**](DocumentPartition.md) | List of chunks/blocks of text used. | [optional] 
+**link** | **str** | URL or reference to the original source document | [optional] 
+**index** | **str** | Identifier or position of the citation within the source | [optional] 
+**document_id** | **str** | Unique identifier for the document | [optional] 
+**file_id** | **str** | Unique identifier for the file in storage | [optional] 
+**source_content_type** | **str** | Format of the source (e.g., &#39;pdf&#39;, &#39;docx&#39;, &#39;chat&#39;) | [optional] 
+**source_name** | **str** | Human-readable name or title of the source | [optional] 
+**source_url** | **str** | Web URL of the source for online content | [optional] 
+**partitions** | [**List[DocumentPartition]**](DocumentPartition.md) | Array of text segments used from the source | [optional] 
 
 ## Example
 

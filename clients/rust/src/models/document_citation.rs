@@ -13,28 +13,28 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DocumentCitation {
-    /// Link to the source, if available.
+    /// URL or reference to the original source document
     #[serde(rename = "link", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub link: Option<Option<String>>,
-    /// Link to the source, if available.
+    /// Identifier or position of the citation within the source
     #[serde(rename = "index", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub index: Option<Option<String>>,
-    /// Link to the source, if available.
+    /// Unique identifier for the document
     #[serde(rename = "documentId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub document_id: Option<Option<String>>,
-    /// Link to the source, if available.
+    /// Unique identifier for the file in storage
     #[serde(rename = "fileId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub file_id: Option<Option<String>>,
-    /// Type of source, e.g. PDF, Word, Chat, etc.
+    /// Format of the source (e.g., 'pdf', 'docx', 'chat')
     #[serde(rename = "sourceContentType", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub source_content_type: Option<Option<String>>,
-    /// Name of the source, e.g. file name.
+    /// Human-readable name or title of the source
     #[serde(rename = "sourceName", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub source_name: Option<Option<String>>,
-    /// URL of the source, used for web pages and external data
+    /// Web URL of the source for online content
     #[serde(rename = "sourceUrl", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub source_url: Option<Option<String>>,
-    /// List of chunks/blocks of text used.
+    /// Array of text segments used from the source
     #[serde(rename = "partitions", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub partitions: Option<Option<Vec<models::DocumentPartition>>>,
 }

@@ -26,10 +26,10 @@ from typing_extensions import Self
 
 class Centroid(BaseModel):
     """
-    Represents a centroid for a cluster, includes coordinate and array of datapoints
+    A cluster centroid with its coordinate and associated data points
     """ # noqa: E501
     coordinate: Optional[Coordinate] = None
-    data_points: Optional[List[Coordinate]] = Field(default=None, description="Array of data points belonging to the centroid", alias="dataPoints")
+    data_points: Optional[List[Coordinate]] = Field(default=None, description="Data points assigned to this centroid", alias="dataPoints")
     __properties: ClassVar[List[str]] = ["coordinate", "dataPoints"]
 
     model_config = ConfigDict(

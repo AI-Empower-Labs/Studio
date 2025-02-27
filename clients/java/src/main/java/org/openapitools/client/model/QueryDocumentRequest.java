@@ -54,40 +54,139 @@ import org.openapitools.client.JSON;
 /**
  * QueryDocumentRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class QueryDocumentRequest {
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
+  @javax.annotation.Nullable
   private String query;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_FILTER = "filter";
   @SerializedName(SERIALIZED_NAME_FILTER)
+  @javax.annotation.Nullable
   private List<DocumentFilters> filter;
+
+  /**
+   * Optional search mode defining the context or process used in the query. Supported values are &#39;hybrid&#39;, &#39;semantic&#39;
+   */
+  @JsonAdapter(SearchModeEnum.Adapter.class)
+  public enum SearchModeEnum {
+    HYBRID("hybrid"),
+    
+    SEMANTIC("semantic");
+
+    private String value;
+
+    SearchModeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SearchModeEnum fromValue(String value) {
+      for (SearchModeEnum b : SearchModeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<SearchModeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SearchModeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SearchModeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SearchModeEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      SearchModeEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SEARCH_MODE = "searchMode";
+  @SerializedName(SERIALIZED_NAME_SEARCH_MODE)
+  @javax.annotation.Nullable
+  private SearchModeEnum searchMode;
+
+  public static final String SERIALIZED_NAME_LANGUAGE = "language";
+  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nullable
+  private String language;
+
+  public static final String SERIALIZED_NAME_LANGUAGE_DETECTION = "languageDetection";
+  @SerializedName(SERIALIZED_NAME_LANGUAGE_DETECTION)
+  @javax.annotation.Nullable
+  private Boolean languageDetection;
+
+  public static final String SERIALIZED_NAME_FTS_MIN_SCORE = "ftsMinScore";
+  @SerializedName(SERIALIZED_NAME_FTS_MIN_SCORE)
+  @javax.annotation.Nullable
+  private Float ftsMinScore;
+
+  public static final String SERIALIZED_NAME_FTS_WEIGHT = "ftsWeight";
+  @SerializedName(SERIALIZED_NAME_FTS_WEIGHT)
+  @javax.annotation.Nullable
+  private Float ftsWeight;
+
+  public static final String SERIALIZED_NAME_SEMANTIC_MIN_RELEVANCE = "semanticMinRelevance";
+  @SerializedName(SERIALIZED_NAME_SEMANTIC_MIN_RELEVANCE)
+  @javax.annotation.Nullable
+  private Double semanticMinRelevance;
+
+  public static final String SERIALIZED_NAME_SEMANTIC_WEIGHT = "semanticWeight";
+  @SerializedName(SERIALIZED_NAME_SEMANTIC_WEIGHT)
+  @javax.annotation.Nullable
+  private Float semanticWeight;
+
+  public static final String SERIALIZED_NAME_SMOOTHING_FACTOR_K = "smoothingFactorK";
+  @SerializedName(SERIALIZED_NAME_SMOOTHING_FACTOR_K)
+  @javax.annotation.Nullable
+  private Float smoothingFactorK;
 
   public static final String SERIALIZED_NAME_MIN_RELEVANCE = "minRelevance";
   @SerializedName(SERIALIZED_NAME_MIN_RELEVANCE)
+  @javax.annotation.Nullable
   private Double minRelevance;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
+  @javax.annotation.Nullable
   private Integer limit;
 
   public static final String SERIALIZED_NAME_EMBEDDING_MODEL = "embeddingModel";
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
+  @javax.annotation.Nullable
   private String embeddingModel;
 
   public static final String SERIALIZED_NAME_ARGS = "args";
   @SerializedName(SERIALIZED_NAME_ARGS)
+  @javax.annotation.Nullable
   private Map<String, Object> args;
 
   public QueryDocumentRequest() {
   }
 
-  public QueryDocumentRequest query(String query) {
+  public QueryDocumentRequest query(@javax.annotation.Nullable String query) {
     this.query = query;
     return this;
   }
@@ -101,12 +200,12 @@ public class QueryDocumentRequest {
     return query;
   }
 
-  public void setQuery(String query) {
+  public void setQuery(@javax.annotation.Nullable String query) {
     this.query = query;
   }
 
 
-  public QueryDocumentRequest index(String index) {
+  public QueryDocumentRequest index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
@@ -120,12 +219,12 @@ public class QueryDocumentRequest {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public QueryDocumentRequest filter(List<DocumentFilters> filter) {
+  public QueryDocumentRequest filter(@javax.annotation.Nullable List<DocumentFilters> filter) {
     this.filter = filter;
     return this;
   }
@@ -147,12 +246,164 @@ public class QueryDocumentRequest {
     return filter;
   }
 
-  public void setFilter(List<DocumentFilters> filter) {
+  public void setFilter(@javax.annotation.Nullable List<DocumentFilters> filter) {
     this.filter = filter;
   }
 
 
-  public QueryDocumentRequest minRelevance(Double minRelevance) {
+  public QueryDocumentRequest searchMode(@javax.annotation.Nullable SearchModeEnum searchMode) {
+    this.searchMode = searchMode;
+    return this;
+  }
+
+  /**
+   * Optional search mode defining the context or process used in the query. Supported values are &#39;hybrid&#39;, &#39;semantic&#39;
+   * @return searchMode
+   */
+  @javax.annotation.Nullable
+  public SearchModeEnum getSearchMode() {
+    return searchMode;
+  }
+
+  public void setSearchMode(@javax.annotation.Nullable SearchModeEnum searchMode) {
+    this.searchMode = searchMode;
+  }
+
+
+  public QueryDocumentRequest language(@javax.annotation.Nullable String language) {
+    this.language = language;
+    return this;
+  }
+
+  /**
+   * Specifies the language of the content.
+   * @return language
+   */
+  @javax.annotation.Nullable
+  public String getLanguage() {
+    return language;
+  }
+
+  public void setLanguage(@javax.annotation.Nullable String language) {
+    this.language = language;
+  }
+
+
+  public QueryDocumentRequest languageDetection(@javax.annotation.Nullable Boolean languageDetection) {
+    this.languageDetection = languageDetection;
+    return this;
+  }
+
+  /**
+   * Indicates whether language detection is enabled.
+   * @return languageDetection
+   */
+  @javax.annotation.Nullable
+  public Boolean getLanguageDetection() {
+    return languageDetection;
+  }
+
+  public void setLanguageDetection(@javax.annotation.Nullable Boolean languageDetection) {
+    this.languageDetection = languageDetection;
+  }
+
+
+  public QueryDocumentRequest ftsMinScore(@javax.annotation.Nullable Float ftsMinScore) {
+    this.ftsMinScore = ftsMinScore;
+    return this;
+  }
+
+  /**
+   * Minimum score for full-text search.
+   * @return ftsMinScore
+   */
+  @javax.annotation.Nullable
+  public Float getFtsMinScore() {
+    return ftsMinScore;
+  }
+
+  public void setFtsMinScore(@javax.annotation.Nullable Float ftsMinScore) {
+    this.ftsMinScore = ftsMinScore;
+  }
+
+
+  public QueryDocumentRequest ftsWeight(@javax.annotation.Nullable Float ftsWeight) {
+    this.ftsWeight = ftsWeight;
+    return this;
+  }
+
+  /**
+   * Weight for full-text search.
+   * @return ftsWeight
+   */
+  @javax.annotation.Nullable
+  public Float getFtsWeight() {
+    return ftsWeight;
+  }
+
+  public void setFtsWeight(@javax.annotation.Nullable Float ftsWeight) {
+    this.ftsWeight = ftsWeight;
+  }
+
+
+  public QueryDocumentRequest semanticMinRelevance(@javax.annotation.Nullable Double semanticMinRelevance) {
+    this.semanticMinRelevance = semanticMinRelevance;
+    return this;
+  }
+
+  /**
+   * Minimum relevance score for semantic search.
+   * @return semanticMinRelevance
+   */
+  @javax.annotation.Nullable
+  public Double getSemanticMinRelevance() {
+    return semanticMinRelevance;
+  }
+
+  public void setSemanticMinRelevance(@javax.annotation.Nullable Double semanticMinRelevance) {
+    this.semanticMinRelevance = semanticMinRelevance;
+  }
+
+
+  public QueryDocumentRequest semanticWeight(@javax.annotation.Nullable Float semanticWeight) {
+    this.semanticWeight = semanticWeight;
+    return this;
+  }
+
+  /**
+   * Weight applied for semantic search.
+   * @return semanticWeight
+   */
+  @javax.annotation.Nullable
+  public Float getSemanticWeight() {
+    return semanticWeight;
+  }
+
+  public void setSemanticWeight(@javax.annotation.Nullable Float semanticWeight) {
+    this.semanticWeight = semanticWeight;
+  }
+
+
+  public QueryDocumentRequest smoothingFactorK(@javax.annotation.Nullable Float smoothingFactorK) {
+    this.smoothingFactorK = smoothingFactorK;
+    return this;
+  }
+
+  /**
+   * Smoothing factor (k) used in calculations.
+   * @return smoothingFactorK
+   */
+  @javax.annotation.Nullable
+  public Float getSmoothingFactorK() {
+    return smoothingFactorK;
+  }
+
+  public void setSmoothingFactorK(@javax.annotation.Nullable Float smoothingFactorK) {
+    this.smoothingFactorK = smoothingFactorK;
+  }
+
+
+  public QueryDocumentRequest minRelevance(@javax.annotation.Nullable Double minRelevance) {
     this.minRelevance = minRelevance;
     return this;
   }
@@ -166,12 +417,12 @@ public class QueryDocumentRequest {
     return minRelevance;
   }
 
-  public void setMinRelevance(Double minRelevance) {
+  public void setMinRelevance(@javax.annotation.Nullable Double minRelevance) {
     this.minRelevance = minRelevance;
   }
 
 
-  public QueryDocumentRequest limit(Integer limit) {
+  public QueryDocumentRequest limit(@javax.annotation.Nullable Integer limit) {
     this.limit = limit;
     return this;
   }
@@ -185,12 +436,12 @@ public class QueryDocumentRequest {
     return limit;
   }
 
-  public void setLimit(Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Integer limit) {
     this.limit = limit;
   }
 
 
-  public QueryDocumentRequest embeddingModel(String embeddingModel) {
+  public QueryDocumentRequest embeddingModel(@javax.annotation.Nullable String embeddingModel) {
     this.embeddingModel = embeddingModel;
     return this;
   }
@@ -204,12 +455,12 @@ public class QueryDocumentRequest {
     return embeddingModel;
   }
 
-  public void setEmbeddingModel(String embeddingModel) {
+  public void setEmbeddingModel(@javax.annotation.Nullable String embeddingModel) {
     this.embeddingModel = embeddingModel;
   }
 
 
-  public QueryDocumentRequest args(Map<String, Object> args) {
+  public QueryDocumentRequest args(@javax.annotation.Nullable Map<String, Object> args) {
     this.args = args;
     return this;
   }
@@ -231,7 +482,7 @@ public class QueryDocumentRequest {
     return args;
   }
 
-  public void setArgs(Map<String, Object> args) {
+  public void setArgs(@javax.annotation.Nullable Map<String, Object> args) {
     this.args = args;
   }
 
@@ -249,6 +500,14 @@ public class QueryDocumentRequest {
     return Objects.equals(this.query, queryDocumentRequest.query) &&
         Objects.equals(this.index, queryDocumentRequest.index) &&
         Objects.equals(this.filter, queryDocumentRequest.filter) &&
+        Objects.equals(this.searchMode, queryDocumentRequest.searchMode) &&
+        Objects.equals(this.language, queryDocumentRequest.language) &&
+        Objects.equals(this.languageDetection, queryDocumentRequest.languageDetection) &&
+        Objects.equals(this.ftsMinScore, queryDocumentRequest.ftsMinScore) &&
+        Objects.equals(this.ftsWeight, queryDocumentRequest.ftsWeight) &&
+        Objects.equals(this.semanticMinRelevance, queryDocumentRequest.semanticMinRelevance) &&
+        Objects.equals(this.semanticWeight, queryDocumentRequest.semanticWeight) &&
+        Objects.equals(this.smoothingFactorK, queryDocumentRequest.smoothingFactorK) &&
         Objects.equals(this.minRelevance, queryDocumentRequest.minRelevance) &&
         Objects.equals(this.limit, queryDocumentRequest.limit) &&
         Objects.equals(this.embeddingModel, queryDocumentRequest.embeddingModel) &&
@@ -261,7 +520,7 @@ public class QueryDocumentRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(query, index, filter, minRelevance, limit, embeddingModel, args);
+    return Objects.hash(query, index, filter, searchMode, language, languageDetection, ftsMinScore, ftsWeight, semanticMinRelevance, semanticWeight, smoothingFactorK, minRelevance, limit, embeddingModel, args);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -278,6 +537,14 @@ public class QueryDocumentRequest {
     sb.append("    query: ").append(toIndentedString(query)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    filter: ").append(toIndentedString(filter)).append("\n");
+    sb.append("    searchMode: ").append(toIndentedString(searchMode)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
+    sb.append("    languageDetection: ").append(toIndentedString(languageDetection)).append("\n");
+    sb.append("    ftsMinScore: ").append(toIndentedString(ftsMinScore)).append("\n");
+    sb.append("    ftsWeight: ").append(toIndentedString(ftsWeight)).append("\n");
+    sb.append("    semanticMinRelevance: ").append(toIndentedString(semanticMinRelevance)).append("\n");
+    sb.append("    semanticWeight: ").append(toIndentedString(semanticWeight)).append("\n");
+    sb.append("    smoothingFactorK: ").append(toIndentedString(smoothingFactorK)).append("\n");
     sb.append("    minRelevance: ").append(toIndentedString(minRelevance)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
@@ -307,6 +574,14 @@ public class QueryDocumentRequest {
     openapiFields.add("query");
     openapiFields.add("index");
     openapiFields.add("filter");
+    openapiFields.add("searchMode");
+    openapiFields.add("language");
+    openapiFields.add("languageDetection");
+    openapiFields.add("ftsMinScore");
+    openapiFields.add("ftsWeight");
+    openapiFields.add("semanticMinRelevance");
+    openapiFields.add("semanticWeight");
+    openapiFields.add("smoothingFactorK");
     openapiFields.add("minRelevance");
     openapiFields.add("limit");
     openapiFields.add("embeddingModel");
@@ -356,6 +631,16 @@ public class QueryDocumentRequest {
             DocumentFilters.validateJsonElement(jsonArrayfilter.get(i));
           };
         }
+      }
+      if ((jsonObj.get("searchMode") != null && !jsonObj.get("searchMode").isJsonNull()) && !jsonObj.get("searchMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `searchMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("searchMode").toString()));
+      }
+      // validate the optional field `searchMode`
+      if (jsonObj.get("searchMode") != null && !jsonObj.get("searchMode").isJsonNull()) {
+        SearchModeEnum.validateJsonElement(jsonObj.get("searchMode"));
+      }
+      if ((jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) && !jsonObj.get("language").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));
       }
       if ((jsonObj.get("embeddingModel") != null && !jsonObj.get("embeddingModel").isJsonNull()) && !jsonObj.get("embeddingModel").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `embeddingModel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("embeddingModel").toString()));

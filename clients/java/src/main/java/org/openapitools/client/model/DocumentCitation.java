@@ -52,50 +52,58 @@ import org.openapitools.client.JSON;
 /**
  * DocumentCitation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class DocumentCitation {
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
+  @javax.annotation.Nullable
   private String documentId;
 
   public static final String SERIALIZED_NAME_FILE_ID = "fileId";
   @SerializedName(SERIALIZED_NAME_FILE_ID)
+  @javax.annotation.Nullable
   private String fileId;
 
   public static final String SERIALIZED_NAME_SOURCE_CONTENT_TYPE = "sourceContentType";
   @SerializedName(SERIALIZED_NAME_SOURCE_CONTENT_TYPE)
+  @javax.annotation.Nullable
   private String sourceContentType;
 
   public static final String SERIALIZED_NAME_SOURCE_NAME = "sourceName";
   @SerializedName(SERIALIZED_NAME_SOURCE_NAME)
+  @javax.annotation.Nullable
   private String sourceName;
 
   public static final String SERIALIZED_NAME_SOURCE_URL = "sourceUrl";
   @SerializedName(SERIALIZED_NAME_SOURCE_URL)
+  @javax.annotation.Nullable
   private String sourceUrl;
 
   public static final String SERIALIZED_NAME_PARTITIONS = "partitions";
   @SerializedName(SERIALIZED_NAME_PARTITIONS)
+  @javax.annotation.Nullable
   private List<DocumentPartition> partitions;
 
   public DocumentCitation() {
   }
 
-  public DocumentCitation link(String link) {
+  public DocumentCitation link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
 
   /**
-   * Link to the source, if available.
+   * URL or reference to the original source document
    * @return link
    */
   @javax.annotation.Nullable
@@ -103,18 +111,18 @@ public class DocumentCitation {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public DocumentCitation index(String index) {
+  public DocumentCitation index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
 
   /**
-   * Link to the source, if available.
+   * Identifier or position of the citation within the source
    * @return index
    */
   @javax.annotation.Nullable
@@ -122,18 +130,18 @@ public class DocumentCitation {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public DocumentCitation documentId(String documentId) {
+  public DocumentCitation documentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
     return this;
   }
 
   /**
-   * Link to the source, if available.
+   * Unique identifier for the document
    * @return documentId
    */
   @javax.annotation.Nullable
@@ -141,18 +149,18 @@ public class DocumentCitation {
     return documentId;
   }
 
-  public void setDocumentId(String documentId) {
+  public void setDocumentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
   }
 
 
-  public DocumentCitation fileId(String fileId) {
+  public DocumentCitation fileId(@javax.annotation.Nullable String fileId) {
     this.fileId = fileId;
     return this;
   }
 
   /**
-   * Link to the source, if available.
+   * Unique identifier for the file in storage
    * @return fileId
    */
   @javax.annotation.Nullable
@@ -160,18 +168,18 @@ public class DocumentCitation {
     return fileId;
   }
 
-  public void setFileId(String fileId) {
+  public void setFileId(@javax.annotation.Nullable String fileId) {
     this.fileId = fileId;
   }
 
 
-  public DocumentCitation sourceContentType(String sourceContentType) {
+  public DocumentCitation sourceContentType(@javax.annotation.Nullable String sourceContentType) {
     this.sourceContentType = sourceContentType;
     return this;
   }
 
   /**
-   * Type of source, e.g. PDF, Word, Chat, etc.
+   * Format of the source (e.g., &#39;pdf&#39;, &#39;docx&#39;, &#39;chat&#39;)
    * @return sourceContentType
    */
   @javax.annotation.Nullable
@@ -179,18 +187,18 @@ public class DocumentCitation {
     return sourceContentType;
   }
 
-  public void setSourceContentType(String sourceContentType) {
+  public void setSourceContentType(@javax.annotation.Nullable String sourceContentType) {
     this.sourceContentType = sourceContentType;
   }
 
 
-  public DocumentCitation sourceName(String sourceName) {
+  public DocumentCitation sourceName(@javax.annotation.Nullable String sourceName) {
     this.sourceName = sourceName;
     return this;
   }
 
   /**
-   * Name of the source, e.g. file name.
+   * Human-readable name or title of the source
    * @return sourceName
    */
   @javax.annotation.Nullable
@@ -198,18 +206,18 @@ public class DocumentCitation {
     return sourceName;
   }
 
-  public void setSourceName(String sourceName) {
+  public void setSourceName(@javax.annotation.Nullable String sourceName) {
     this.sourceName = sourceName;
   }
 
 
-  public DocumentCitation sourceUrl(String sourceUrl) {
+  public DocumentCitation sourceUrl(@javax.annotation.Nullable String sourceUrl) {
     this.sourceUrl = sourceUrl;
     return this;
   }
 
   /**
-   * URL of the source, used for web pages and external data
+   * Web URL of the source for online content
    * @return sourceUrl
    */
   @javax.annotation.Nullable
@@ -217,12 +225,12 @@ public class DocumentCitation {
     return sourceUrl;
   }
 
-  public void setSourceUrl(String sourceUrl) {
+  public void setSourceUrl(@javax.annotation.Nullable String sourceUrl) {
     this.sourceUrl = sourceUrl;
   }
 
 
-  public DocumentCitation partitions(List<DocumentPartition> partitions) {
+  public DocumentCitation partitions(@javax.annotation.Nullable List<DocumentPartition> partitions) {
     this.partitions = partitions;
     return this;
   }
@@ -236,7 +244,7 @@ public class DocumentCitation {
   }
 
   /**
-   * List of chunks/blocks of text used.
+   * Array of text segments used from the source
    * @return partitions
    */
   @javax.annotation.Nullable
@@ -244,7 +252,7 @@ public class DocumentCitation {
     return partitions;
   }
 
-  public void setPartitions(List<DocumentPartition> partitions) {
+  public void setPartitions(@javax.annotation.Nullable List<DocumentPartition> partitions) {
     this.partitions = partitions;
   }
 

@@ -4,14 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**document_id** | **String** | Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten | 
-**index** | Option<**String**> | Optional value to specify with index the document should be ingested. Defaults to 'default' | [optional]
-**tags** | Option<[**std::collections::HashMap<String, Vec<String>>**](Vec.md)> | Optionally add tags to ingestion | [optional]
 **url** | **String** | Web page to ingest | 
-**pipeline** | Option<**Vec<String>**> | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional]
-**web_hook_url** | Option<**String**> | Url to use for webhook callback when operation finishes or fails. | [optional]
-**embedding_model** | Option<**String**> | Embedding model to use in ingestion. Optional. Default to configured default. | [optional]
-**args** | Option<[**std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md)> |  | [optional]
+**document_id** | **String** | Unique identifier for the document to ingest. | 
+**index** | Option<**String**> | Optional index name where the document will be stored. | [optional]
+**web_hook_url** | Option<**String**> | Optional webhook URL to notify upon completion. | [optional]
+**embedding_model_name** | Option<**String**> | Optional name of the embedding model to use during ingestion. | [optional]
+**context** | Option<**std::collections::HashMap<String, String>**> | Optional key-value pairs for additional context or metadata. | [optional]
+**tags** | Option<[**std::collections::HashMap<String, Vec<String>>**](Vec.md)> | A collection of tags associated with the document. Tags can be language-specific. | [optional]
+**ingestion_pipeline** | Option<**Vec<String>**> | Optional list of ingestion pipeline steps. Allows custom processing. | [optional]
+**language_auto_detection** | Option<**bool**> | Enable automatic language detection for document content. | [optional][default to false]
+**language** | Option<**String**> | Force a specific language for full-text search. Use 'simple' for no language or leave empty. | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

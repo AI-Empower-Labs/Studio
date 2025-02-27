@@ -54,6 +54,12 @@
       //expect(instance).to.be.a(StudioAiEmpowerLabs.IngestWebPageDocumentRequest);
     });
 
+    it('should have the property url (base name: "url")', function() {
+      // uncomment below and update the code to test the property url
+      //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property documentId (base name: "documentId")', function() {
       // uncomment below and update the code to test the property documentId
       //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
@@ -66,38 +72,44 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property tags (base name: "tags")', function() {
-      // uncomment below and update the code to test the property tags
-      //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property url (base name: "url")', function() {
-      // uncomment below and update the code to test the property url
-      //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property pipeline (base name: "pipeline")', function() {
-      // uncomment below and update the code to test the property pipeline
-      //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
-      //expect(instance).to.be();
-    });
-
     it('should have the property webHookUrl (base name: "webHookUrl")', function() {
       // uncomment below and update the code to test the property webHookUrl
       //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property embeddingModel (base name: "embeddingModel")', function() {
-      // uncomment below and update the code to test the property embeddingModel
+    it('should have the property embeddingModelName (base name: "embeddingModelName")', function() {
+      // uncomment below and update the code to test the property embeddingModelName
       //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
       //expect(instance).to.be();
     });
 
-    it('should have the property args (base name: "args")', function() {
-      // uncomment below and update the code to test the property args
+    it('should have the property context (base name: "context")', function() {
+      // uncomment below and update the code to test the property context
+      //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property tags (base name: "tags")', function() {
+      // uncomment below and update the code to test the property tags
+      //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property ingestionPipeline (base name: "ingestionPipeline")', function() {
+      // uncomment below and update the code to test the property ingestionPipeline
+      //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property languageAutoDetection (base name: "languageAutoDetection")', function() {
+      // uncomment below and update the code to test the property languageAutoDetection
+      //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property language (base name: "language")', function() {
+      // uncomment below and update the code to test the property language
       //var instance = new StudioAiEmpowerLabs.IngestWebPageDocumentRequest();
       //expect(instance).to.be();
     });

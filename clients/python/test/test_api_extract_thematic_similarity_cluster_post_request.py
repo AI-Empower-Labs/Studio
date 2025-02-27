@@ -41,7 +41,6 @@ class TestApiExtractThematicSimilarityClusterPostRequest(unittest.TestCase):
                     ],
                 cluster_count = 2,
                 max_degree_of_parallelism = 1,
-                max_tokens = 1,
                 llm_model = '',
                 embedding_model = '',
                 seed = 56

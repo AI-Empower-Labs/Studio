@@ -19,8 +19,6 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.SemanticSearchApi
-import org.openapitools.client.models.AskDocumentRequest
-import org.openapitools.client.models.AskDocumentResponse
 import org.openapitools.client.models.DataPipelineStatus
 import org.openapitools.client.models.HttpValidationProblemDetails
 import org.openapitools.client.models.IngestDocumentResponse
@@ -41,14 +39,6 @@ class SemanticSearchApiTest : ShouldSpec() {
         // uncomment below to create an instance of SemanticSearchApi
         //val apiInstance = SemanticSearchApi()
 
-        // to test semanticSearchAsk
-        should("test semanticSearchAsk") {
-            // uncomment below to test semanticSearchAsk
-            //val askDocumentRequest : AskDocumentRequest = {"query":"Find invoice totals","index":"Studio","filter":[{"documentId":["SomeUniqueId"],"tags":{"A":[]}}],"minRelevance":0.8} // AskDocumentRequest | 
-            //val result : AskDocumentResponse = apiInstance.semanticSearchAsk(askDocumentRequest)
-            //result shouldBe ("TODO")
-        }
-
         // to test semanticSearchDeleteDocument
         should("test semanticSearchDeleteDocument") {
             // uncomment below to test semanticSearchDeleteDocument
@@ -67,15 +57,22 @@ class SemanticSearchApiTest : ShouldSpec() {
         // to test semanticSearchFileIngestion
         should("test semanticSearchFileIngestion") {
             // uncomment below to test semanticSearchFileIngestion
-            //val files : kotlin.collections.List<java.io.File> = /path/to/file.txt // kotlin.collections.List<java.io.File> | The file object to ingest.
-            //val documentId : kotlin.String = documentId_example // kotlin.String | Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.
-            //val index : kotlin.String = index_example // kotlin.String | Optional value to specify with index the document should be ingested. Defaults to 'default'.
-            //val pipeline : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
-            //val webHookUrl : kotlin.String = webHookUrl_example // kotlin.String | Url to use for webhook callback when operation finishes or fails.
-            //val embeddingModel : kotlin.String = embeddingModel_example // kotlin.String | Embedding model to use in ingestion. Optional. Default to configured default.
-            //val args : kotlin.collections.Map<kotlin.String, kotlin.Any> = Object // kotlin.collections.Map<kotlin.String, kotlin.Any> | 
-            //val tags : kotlin.collections.Map<kotlin.String, kotlin.Any> = Object // kotlin.collections.Map<kotlin.String, kotlin.Any> | Tags to associate with ingestion
-            //val result : IngestDocumentResponse = apiInstance.semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags)
+            //val documentId2 : kotlin.String = documentId_example // kotlin.String | Unique identifier for the document to ingest.
+            //val files : kotlin.collections.List<java.io.File> = /path/to/file.txt // kotlin.collections.List<java.io.File> | A collection of files to be ingested. Must contain at least one file.
+            //val documentId : kotlin.String = doc123 // kotlin.String | A unique identifier for the document within the index. Documents with the same ID will be overwritten.
+            //val index : kotlin.String = my_custom_index // kotlin.String | The name of the index where the document will be ingested. Defaults to 'default' if not specified.
+            //val pipeline : kotlin.collections.List<kotlin.String> = ["step1","step2"] // kotlin.collections.List<kotlin.String> | An array of ingestion pipeline step names. If not provided, server default steps will be used.
+            //val webHookUrl : java.net.URI = https://example.com/webhook // java.net.URI | A URL to receive a callback via webhook when the ingestion process is completed or fails.
+            //val embeddingModel : kotlin.String = model_v2 // kotlin.String | The embedding model to use during ingestion. If not specified, the server's default model will be applied.
+            //val index2 : kotlin.String = index_example // kotlin.String | Optional index name where the document will be stored.
+            //val webHookUrl2 : java.net.URI = webHookUrl_example // java.net.URI | Optional webhook URL to notify upon completion.
+            //val embeddingModelName : kotlin.String = embeddingModelName_example // kotlin.String | Optional name of the embedding model to use during ingestion.
+            //val context : kotlin.collections.Map<kotlin.String, kotlin.String> =  // kotlin.collections.Map<kotlin.String, kotlin.String> | Optional key-value pairs for additional context or metadata.
+            //val tags : kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>> =  // kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>> | A collection of tags associated with the document. Tags can be language-specific.
+            //val ingestionPipeline : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Optional list of ingestion pipeline steps. Allows custom processing.
+            //val languageAutoDetection : kotlin.Boolean = true // kotlin.Boolean | Enable automatic language detection for document content.
+            //val language : kotlin.String = language_example // kotlin.String | Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+            //val result : IngestDocumentResponse = apiInstance.semanticSearchFileIngestion(documentId2, files, documentId, index, pipeline, webHookUrl, embeddingModel, index2, webHookUrl2, embeddingModelName, context, tags, ingestionPipeline, languageAutoDetection, language)
             //result shouldBe ("TODO")
         }
 

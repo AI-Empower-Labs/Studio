@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**clusterSize** | **Number** | Size of the cluster | [optional] 
-**centroids** | [**[Centroid]**](Centroid.md) | Array of Centroid objects | [optional] 
+**clusterSize** | **Number** | Number of points in the cluster | 
+**centroids** | [**[Centroid]**](Centroid.md) | List of cluster centroids | 
 
 

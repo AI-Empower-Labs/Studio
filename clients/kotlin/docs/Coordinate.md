@@ -4,9 +4,9 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **x** | **kotlin.Float** | X-axis value of the coordinate |  [optional] |
-| **y** | **kotlin.Float** | Y-axis value of the coordinate |  [optional] |
-| **label** | **kotlin.String** | Label associated with the coordinate |  [optional] |
+| **x** | **kotlin.Float** | X-axis value |  [optional] |
+| **y** | **kotlin.Float** | Y-axis value |  [optional] |
+| **label** | **kotlin.String** | Coordinate label |  [optional] |
 
 
 

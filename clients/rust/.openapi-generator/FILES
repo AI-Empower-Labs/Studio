@@ -4,8 +4,6 @@
 Cargo.toml
 README.md
 docs/ApiExtractThematicSimilarityClusterPostRequest.md
-docs/AskDocumentRequest.md
-docs/AskDocumentResponse.md
 docs/Centroid.md
 docs/Citation.md
 docs/Coordinate.md
@@ -77,8 +75,6 @@ src/apis/semantic_search_api.rs
 src/apis/transcription_api.rs
 src/lib.rs
 src/models/_api_extract_thematic_similarity_cluster_post_request.rs
-src/models/ask_document_request.rs
-src/models/ask_document_response.rs
 src/models/centroid.rs
 src/models/citation.rs
 src/models/coordinate.rs

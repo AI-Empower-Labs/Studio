@@ -10,9 +10,9 @@
 
 
 use reqwest;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de::Error as _};
 use crate::{apis::ResponseContent, models};
-use super::{Error, configuration};
+use super::{Error, configuration, ContentType};
 
 
 /// struct for typed errors of method [`delete_llm_cache_entry`]
@@ -34,61 +34,66 @@ pub enum GetConfigurationError {
 
 
 /// Delete LLM cache entry
-pub async fn delete_llm_cache_entry(configuration: &configuration::Configuration, cache_key: Option<&str>) -> Result<(), Error<DeleteLlmCacheEntryError>> {
-    let local_var_configuration = configuration;
+pub async fn delete_llm_cache_entry(configuration: &configuration::Configuration, key: Option<&str>) -> Result<(), Error<DeleteLlmCacheEntryError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_key = key;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/cache", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/cache", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = cache_key {
-        local_var_req_builder = local_var_req_builder.query(&[("cacheKey", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_key {
+        req_builder = req_builder.query(&[("key", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+    if !status.is_client_error() && !status.is_server_error() {
         Ok(())
     } else {
-        let local_var_entity: Option<DeleteLlmCacheEntryError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<DeleteLlmCacheEntryError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get configuration information
 pub async fn get_configuration(configuration: &configuration::Configuration, ) -> Result<Vec<std::collections::HashMap<String, Vec<String>>>, Error<GetConfigurationError>> {
-    let local_var_configuration = configuration;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/info", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/info", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `Vec&lt;std::collections::HashMap&lt;String, Vec&lt;String&gt;&gt;&gt;`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `Vec&lt;std::collections::HashMap&lt;String, Vec&lt;String&gt;&gt;&gt;`")))),
+        }
     } else {
-        let local_var_entity: Option<GetConfigurationError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<GetConfigurationError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 

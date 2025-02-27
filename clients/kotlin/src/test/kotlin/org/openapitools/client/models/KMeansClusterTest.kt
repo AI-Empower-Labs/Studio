@@ -26,13 +26,13 @@ class KMeansClusterTest : ShouldSpec() {
         // uncomment below to create an instance of KMeansCluster
         //val modelInstance = KMeansCluster()
 
-        // to test the property `clusterSize` - Size of the cluster
+        // to test the property `clusterSize` - Number of points in the cluster
         should("test clusterSize") {
             // uncomment below to test the property
             //modelInstance.clusterSize shouldBe ("TODO")
         }
 
-        // to test the property `centroids` - Array of Centroid objects
+        // to test the property `centroids` - List of cluster centroids
         should("test centroids") {
             // uncomment below to test the property
             //modelInstance.centroids shouldBe ("TODO")

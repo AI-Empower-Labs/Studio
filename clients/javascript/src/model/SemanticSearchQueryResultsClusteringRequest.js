@@ -34,6 +34,8 @@ class SemanticSearchQueryResultsClusteringRequest {
      * Only for internal use.
      */
     static initialize(obj) { 
+        obj['clusterCount'] = 3;
+        obj['maxDegreeOfParallelism'] = 1;
     }
 
     /**
@@ -52,9 +54,6 @@ class SemanticSearchQueryResultsClusteringRequest {
             }
             if (data.hasOwnProperty('maxDegreeOfParallelism')) {
                 obj['maxDegreeOfParallelism'] = ApiClient.convertToType(data['maxDegreeOfParallelism'], 'Number');
-            }
-            if (data.hasOwnProperty('maxTokens')) {
-                obj['maxTokens'] = ApiClient.convertToType(data['maxTokens'], 'Number');
             }
             if (data.hasOwnProperty('index')) {
                 obj['index'] = ApiClient.convertToType(data['index'], 'String');
@@ -115,13 +114,6 @@ SemanticSearchQueryResultsClusteringRequest.prototype['clusterCount'] = 3;
  * @default 1
  */
 SemanticSearchQueryResultsClusteringRequest.prototype['maxDegreeOfParallelism'] = 1;
-
-/**
- * The maximum number of tokens to be used in the KMeans clustering algorithm.
- * @member {Number} maxTokens
- * @default 10
- */
-SemanticSearchQueryResultsClusteringRequest.prototype['maxTokens'] = 10;
 
 /**
  * Optional index to specify which index to search in. Defaults to 'default'.

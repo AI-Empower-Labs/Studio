@@ -29,27 +29,25 @@ servers:
 - description: Development
   url: http://localhost:8080
 tags:
-- description: Interface for Extracting Diverse Data Types from Textual and Auditory
-    Inputs
+- description: Extract diverse data types from text and audio inputs.
   name: Data Extraction
-- description: |-
-    Kernel Memory compatible endpoints.
-    Kernel Memory (KM) is a multi-modal AI Service specialized in the efficient indexing of documents and information through custom continuous data pipelines, with support for Retrieval Augmented Generation (RAG), synthetic memory, prompt engineering, and custom semantic memory processing.
+- description: "Kernel Memory (KM) compatible endpoints. KM is a multi-modal AI service\
+    \ for efficient document and information indexing using custom continuous data\
+    \ pipelines. Supports Retrieval Augmented Generation (RAG), synthetic memory,\
+    \ prompt engineering, and custom semantic memory processing. [Learn more](https://microsoft.github.io/kernel-memory/)"
   externalDocs:
-    description: Kernel memory
+    description: Kernel Memory documentation
     url: https://microsoft.github.io/kernel-memory/
   name: Kernel Memory
-- description: |-
-    A text translation service is a digital platform that enables users to convert written content from one language to another, facilitating communication and understanding across different cultures and languages. These services employ advanced algorithms and artificial intelligence, including machine learning and natural language processing technologies, to accurately interpret and translate the nuances, idioms, and context of the source text into the target language. They cater to a wide range of needs, from casual conversations and travel assistance to professional and academic document translation, offering support for numerous languages from around the globe.
-
-    The service typically offers a user-friendly interface where users can input the text they wish to translate, select the source and target languages, and receive the translated text almost instantaneously. Many text translation services also provide additional features such as text-to-speech, language detection, and the capability to handle specialized terminology from various fields like legal, medical, and technical sectors. With continuous improvements in translation accuracy and the expansion of supported languages, these services have become invaluable tools for global communication, education, business, and access to information.
+- description: "Translate text between multiple languages. Uses advanced algorithms\
+    \ and AI (machine learning and natural language processing) to accurately translate\
+    \ nuances, idioms, and context.  Supports various needs, from casual conversations\
+    \ to professional document translation."
   name: Language
-- description: |-
-    Semantic search is a sophisticated data searching technique that seeks to improve search accuracy by understanding the searcher's intent and the contextual meaning of the terms as they appear in the searchable dataspace, whether on the Web or within a specific database or platform. Unlike traditional keyword-based searches, which only surface results based on the exact match of search terms, semantic search delves into the interrelatedness of words, considering synonyms, variations, and the context in which terms are used to produce more relevant results.
-
-    This approach relies on natural language processing (NLP), machine learning, and semantic technologies to comprehend and interpret the user's query at a deeper level. By doing so, it can identify content that is conceptually similar to the search query, even if the exact words are not present in the content. Semantic search systems often utilize ontologies and knowledge graphs to understand the relationships between different concepts and entities across a wide range of subjects.
-
-    The application of semantic search technology enhances user experiences across various platforms, including search engines, e-commerce sites, customer service portals, and information retrieval systems, by making searches more intuitive and efficient. It significantly benefits areas requiring high precision and understanding in searches, such as academic research, legal document retrieval, and targeted marketing. As semantic search technology continues to evolve, it promises to further refine the way we interact with and retrieve information, leading to more insightful, accurate, and contextually relevant search outcomes.
+- description: "Improve search accuracy by understanding user intent and the contextual\
+    \ meaning of search terms.  Unlike keyword searches, semantic search considers\
+    \ synonyms, variations, and context to provide more relevant results. Uses natural\
+    \ language processing (NLP), machine learning, and semantic technologies."
   name: Semantic Search
 paths:
   /info:
@@ -80,7 +78,7 @@ paths:
       - description: The LLM cache key to remove
         explode: true
         in: query
-        name: cacheKey
+        name: key
         required: false
         schema:
           maxLength: 90
@@ -94,27 +92,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       tags:
       - Miscellaneous
   /api/extract/entities:
@@ -149,27 +152,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Extracts named entities from provided text
       tags:
       - Data Extraction
@@ -200,27 +208,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Performs keyword extraction on source text
       tags:
       - Data Extraction
@@ -258,27 +271,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Converts data to a numerical vector array
       tags:
       - Data Extraction
@@ -310,27 +328,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Converts data to a integer token array
       tags:
       - Data Extraction
@@ -361,27 +384,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Count tokens in a text
       tags:
       - Data Extraction
@@ -425,27 +453,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Generate semantic similarity queries from text
       tags:
       - Data Extraction
@@ -480,27 +513,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Generate thematic similarity clusters using the K-Means algorithm
       tags:
       - Data Extraction
@@ -641,27 +679,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Synchronous transcribe audio
       tags:
       - Data Extraction
@@ -679,23 +722,26 @@ paths:
           content:
             application/json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "503":
           content:
             application/json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Service Unavailable
@@ -724,10 +770,11 @@ paths:
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "503":
           content:
             application/json:
@@ -750,10 +797,11 @@ paths:
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "503":
           content:
             application/json:
@@ -792,10 +840,11 @@ paths:
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "503":
           content:
             application/json:
@@ -826,10 +875,11 @@ paths:
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "503":
           content:
             application/json:
@@ -860,10 +910,11 @@ paths:
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "503":
           content:
             application/json:
@@ -902,15 +953,17 @@ paths:
           content:
             application/json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "404":
           content:
             application/json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
@@ -918,10 +971,11 @@ paths:
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "503":
           content:
             application/json:
@@ -931,8 +985,9 @@ paths:
       summary: Get ingestion status for specific document
       tags:
       - Kernel Memory
-  /download:
+  /api/kernelmemory/download:
     get:
+      operationId: kernel_memory_download
       parameters:
       - explode: true
         in: query
@@ -972,16 +1027,18 @@ paths:
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "503":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Service Unavailable
+      summary: Download specific document
       tags:
       - Kernel Memory
   /api/language/translate:
@@ -1016,11 +1073,14 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
       summary: Translation of text from one language to another
       tags:
       - Language
@@ -1053,11 +1113,14 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
       summary: Detects language of a text
       tags:
       - Language
@@ -1076,64 +1139,78 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
       summary: List of supported languages for translation
       tags:
       - Language
   /api/ingest/file:
     post:
-      description: Import file document into semantic search
+      description: "Uploads and ingests a file document into the semantic search index.\
+        \ Supports optional configuration of index, ingestion pipeline, embedding\
+        \ model, and webhook for processing status."
       operationId: semantic_search_file_ingestion
       parameters:
-      - description: Id that uniquely identifies content within an index. Previously
-          ingested documents with the same id will be overwritten schema.
+      - description: A unique identifier for the document within the index. Documents
+          with the same ID will be overwritten.
         explode: true
         in: query
         name: documentId
         required: false
         schema:
+          example: doc123
           type: string
         style: form
-      - description: Optional value to specify with index the document should be ingested.
-          Defaults to 'default'.
+      - description: The name of the index where the document will be ingested. Defaults
+          to 'default' if not specified.
         explode: true
         in: query
         name: index
         required: false
         schema:
+          example: my_custom_index
           type: string
         style: form
-      - description: Optional value to specify ingestion pipeline steps. Defaults
-          to server configured defaults.
+      - description: "An array of ingestion pipeline step names. If not provided,\
+          \ server default steps will be used."
         explode: true
         in: query
         name: pipeline
         required: false
         schema:
+          example:
+          - step1
+          - step2
           items:
             type: string
           type: array
         style: form
-      - description: Url to use for webhook callback when operation finishes or fails.
+      - description: A URL to receive a callback via webhook when the ingestion process
+          is completed or fails.
         explode: true
         in: query
         name: webHookUrl
         required: false
         schema:
+          example: https://example.com/webhook
+          format: uri
           nullable: true
           type: string
         style: form
-      - description: Embedding model to use in ingestion. Optional. Default to configured
-          default.
+      - description: "The embedding model to use during ingestion. If not specified,\
+          \ the server's default model will be applied."
         explode: true
         in: query
         name: embeddingModel
         required: false
         schema:
+          example: model_v2
           nullable: true
           type: string
         style: form
@@ -1154,37 +1231,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IngestDocumentResponse'
-          description: Created ingestion job
+          description: Ingestion job successfully created.
         "400":
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
+      summary: Ingest a File into Semantic Search
       tags:
       - Semantic Search
   /api/ingest/text:
     post:
-      description: Import plain text into semantic search
+      description: Ingests a plain text document into the semantic search index. This
+        endpoint allows associating tags and specifying the target index for enhanced
+        search capabilities.
       operationId: semantic_search_text_ingestion
       requestBody:
         content:
@@ -1213,27 +1298,33 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
+      summary: Ingest Plain Text for Semantic Search
       tags:
       - Semantic Search
   /api/ingest/webpage:
@@ -1265,27 +1356,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       tags:
       - Semantic Search
   /api/ingest/status:
@@ -1312,16 +1408,20 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "404":
           content:
             application/json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Not Found
@@ -1329,23 +1429,25 @@ paths:
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       tags:
       - Semantic Search
   /api/semantic/query:
     post:
-      description: Query ingested documents using semantic search
+      description: Performs semantic or hybrid search over previously ingested data.
       operationId: semantic_search_query
       requestBody:
         content:
@@ -1391,27 +1493,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       tags:
       - Semantic Search
   /api/semantic/list:
@@ -1459,99 +1566,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      tags:
-      - Semantic Search
-  /api/semantic/ask:
-    post:
-      description: Ask questions over ingested documents
-      operationId: semantic_search_ask
-      requestBody:
-        content:
-          application/json:
-            example:
-              query: Find invoice totals
-              index: Studio
-              filter:
-              - documentId:
-                - SomeUniqueId
-                tags:
-                  A: []
-              minRelevance: 0.8
-            schema:
-              allOf:
-              - $ref: '#/components/schemas/AskDocumentRequest'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              example:
-                noResult: false
-                text: The total invoice amount is $9.99
-                relevantSources:
-                - link: https://www.AIEmpowerLabs.com/invoice/1
-                  index: Studio
-                  documentId: http_www.AIEmpowerLabs.com/invoice/1
-                  fileId: 404628099ff2466e9ef342425df120b4
-                  sourceContentType: text/x-uri
-                  sourceName: content.url
-                  sourceUrl: https://www.AIEmpowerLabs.com/invoice/1
-                  partitions:
-                  - text: <invoice>
-                    relevance: 0.85534734
-                    lastUpdate: 2024-03-07T13:08:13.6347502+00:00
-                    tags:
-                      __document_id:
-                      - https-www.AIEmpowerLabs.com
-              schema:
-                $ref: '#/components/schemas/AskDocumentResponse'
-          description: OK
-        "400":
-          content:
-            application/problem+json:
-              example:
-                title: One or more validation errors occurred.
-                errors: {}
-              schema:
-                $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
-        "429":
-          content:
-            application/problem+json:
-              example:
-                title: Server error
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
-        "500":
-          content:
-            application/problem+json:
-              example:
-                title: Server error
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       tags:
       - Semantic Search
   /api/semantic/{documentId}:
@@ -1580,30 +1620,35 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       tags:
       - Semantic Search
-  /api/semantic/index:
+  /api/semantic/index/{name}:
     delete:
       description: Delete specific index by name
       operationId: semantic_search_delete_index
@@ -1622,27 +1667,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       tags:
       - Semantic Search
   /api/semantic/query-results-clustering:
@@ -1678,27 +1728,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       tags:
       - Semantic Search
   /api/semantic/rerank:
@@ -1772,27 +1827,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       tags:
       - Semantic Search
   /api/transcribe/upload:
@@ -1944,27 +2004,32 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Upload audio file for asynchronous transcription
       tags:
       - Transcription
@@ -2008,35 +2073,41 @@ paths:
           content:
             application/problem+json:
               example:
-                title: One or more validation errors occurred.
-                errors: {}
+                title: Validation Error
+                detail: The documentId parameter is required.
+                errors:
+                  documentId:
+                  - This field is required.
               schema:
                 $ref: '#/components/schemas/HttpValidationProblemDetails'
-          description: Bad Request
+          description: Invalid request parameters or validation error.
         "429":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Too Many Requests
+                detail: Rate limit of 100 requests per minute exceeded.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Too Many Requests
+          description: Request rate limit exceeded.
         "500":
           content:
             application/problem+json:
               example:
-                title: Server error
+                title: Server Error
+                detail: An unexpected error occurred while processing the request.
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
+          description: Internal server error.
       summary: Get transcription status and data
       tags:
       - Transcription
 components:
   schemas:
     KMeansCluster:
-      description: "Represents the response object for K-Means Clustering, contains\
-        \ cluster size and array of centroids"
+      additionalProperties: false
+      description: Response object for K-Means Clustering containing cluster size
+        and centroids array
       example:
         centroids:
         - coordinate:
@@ -2064,17 +2135,21 @@ components:
         clusterSize: 0
       properties:
         clusterSize:
-          description: Size of the cluster
+          description: Number of points in the cluster
+          minimum: 0
           type: integer
         centroids:
-          description: Array of Centroid objects
+          description: List of cluster centroids
           items:
             $ref: '#/components/schemas/Centroid'
+          minItems: 1
           type: array
+      required:
+      - centroids
+      - clusterSize
       type: object
     Centroid:
-      description: "Represents a centroid for a cluster, includes coordinate and array\
-        \ of datapoints"
+      description: A cluster centroid with its coordinate and associated data points
       example:
         coordinate:
           x: 6.0274563
@@ -2091,7 +2166,7 @@ components:
         coordinate:
           $ref: '#/components/schemas/Coordinate'
         dataPoints:
-          description: Array of data points belonging to the centroid
+          description: Data points assigned to this centroid
           items:
             $ref: '#/components/schemas/Coordinate'
           type: array
@@ -2103,148 +2178,16 @@ components:
         label: label
       properties:
         x:
-          description: X-axis value of the coordinate
+          description: X-axis value
           format: float
           type: number
         "y":
-          description: Y-axis value of the coordinate
+          description: Y-axis value
           format: float
           type: number
         label:
-          description: Label associated with the coordinate
+          description: Coordinate label
           type: string
-      type: object
-    AskDocumentRequest:
-      additionalProperties: false
-      example:
-        filter:
-        - documentId:
-          - documentId
-          - documentId
-          tags:
-            key:
-            - tags
-            - tags
-        - documentId:
-          - documentId
-          - documentId
-          tags:
-            key:
-            - tags
-            - tags
-        args:
-          key: ""
-        query: query
-        index: index
-        embeddingModel: embeddingModel
-        llmModel: llmModel
-        minRelevance: 0.8008281904610115
-      properties:
-        query:
-          description: Semantic query to find matching documents and ask questions
-            over
-          nullable: true
-          type: string
-        index:
-          description: Optional index to specify which index to search in. Defaults
-            to 'default'
-          nullable: true
-          type: string
-        filter:
-          description: Optional filtering of document id(s) and/or tags
-          items:
-            $ref: '#/components/schemas/DocumentFilters'
-          nullable: true
-          type: array
-        minRelevance:
-          description: Optional filter to specify minimum relevance. Typically values
-            between 0 and 1
-          format: double
-          nullable: true
-          type: number
-        llmModel:
-          description: Large language model to use in query
-          nullable: true
-          type: string
-        embeddingModel:
-          description: Embedding model to use in query
-          nullable: true
-          type: string
-        args:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
-      type: object
-    AskDocumentResponse:
-      additionalProperties: false
-      example:
-        noResult: true
-        text: text
-        noResultReason: noResultReason
-        relevantSources:
-        - sourceUrl: sourceUrl
-          partitions:
-          - lastUpdate: 2000-01-23T04:56:07.000+00:00
-            text: text
-            relevance: 0.8008282
-            tags:
-              key:
-              - tags
-              - tags
-          - lastUpdate: 2000-01-23T04:56:07.000+00:00
-            text: text
-            relevance: 0.8008282
-            tags:
-              key:
-              - tags
-              - tags
-          link: link
-          index: index
-          documentId: documentId
-          sourceContentType: sourceContentType
-          sourceName: sourceName
-          fileId: fileId
-        - sourceUrl: sourceUrl
-          partitions:
-          - lastUpdate: 2000-01-23T04:56:07.000+00:00
-            text: text
-            relevance: 0.8008282
-            tags:
-              key:
-              - tags
-              - tags
-          - lastUpdate: 2000-01-23T04:56:07.000+00:00
-            text: text
-            relevance: 0.8008282
-            tags:
-              key:
-              - tags
-              - tags
-          link: link
-          index: index
-          documentId: documentId
-          sourceContentType: sourceContentType
-          sourceName: sourceName
-          fileId: fileId
-      properties:
-        noResult:
-          type: boolean
-        noResultReason:
-          description: Content of the answer.
-          nullable: true
-          type: string
-        text:
-          description: Content of the answer.
-          nullable: true
-          type: string
-        relevantSources:
-          description: "List of the relevant sources used to produce the answer.\r\
-            \nKey = Document ID\r\nValue = List of partitions used from the document."
-          items:
-            $ref: '#/components/schemas/DocumentCitation'
-          nullable: true
-          type: array
       type: object
     UploadFiles:
       properties:
@@ -2416,16 +2359,26 @@ components:
       example:
         sourceUrl: sourceUrl
         partitions:
-        - lastUpdate: 2000-01-23T04:56:07.000+00:00
+        - semanticRrf: 5.962134
+          fullTextSearchRank: 0.8008282
+          semanticSimilarity: 6.0274563
+          rrfScore: 5.637377
+          lastUpdate: 2000-01-23T04:56:07.000+00:00
+          language: language
           text: text
-          relevance: 0.8008282
+          fullTextSearchRrf: 1.4658129
           tags:
             key:
             - tags
             - tags
-        - lastUpdate: 2000-01-23T04:56:07.000+00:00
+        - semanticRrf: 5.962134
+          fullTextSearchRank: 0.8008282
+          semanticSimilarity: 6.0274563
+          rrfScore: 5.637377
+          lastUpdate: 2000-01-23T04:56:07.000+00:00
+          language: language
           text: text
-          relevance: 0.8008282
+          fullTextSearchRrf: 1.4658129
           tags:
             key:
             - tags
@@ -2438,35 +2391,35 @@ components:
         fileId: fileId
       properties:
         link:
-          description: "Link to the source, if available."
+          description: URL or reference to the original source document
           nullable: true
           type: string
         index:
-          description: "Link to the source, if available."
+          description: Identifier or position of the citation within the source
           nullable: true
           type: string
         documentId:
-          description: "Link to the source, if available."
+          description: Unique identifier for the document
           nullable: true
           type: string
         fileId:
-          description: "Link to the source, if available."
+          description: Unique identifier for the file in storage
           nullable: true
           type: string
         sourceContentType:
-          description: "Type of source, e.g. PDF, Word, Chat, etc."
+          description: "Format of the source (e.g., 'pdf', 'docx', 'chat')"
           nullable: true
           type: string
         sourceName:
-          description: "Name of the source, e.g. file name."
+          description: Human-readable name or title of the source
           nullable: true
           type: string
         sourceUrl:
-          description: "URL of the source, used for web pages and external data"
+          description: Web URL of the source for online content
           nullable: true
           type: string
         partitions:
-          description: List of chunks/blocks of text used.
+          description: Array of text segments used from the source
           items:
             $ref: '#/components/schemas/DocumentPartition'
           nullable: true
@@ -2499,9 +2452,14 @@ components:
     DocumentPartition:
       additionalProperties: false
       example:
+        semanticRrf: 5.962134
+        fullTextSearchRank: 0.8008282
+        semanticSimilarity: 6.0274563
+        rrfScore: 5.637377
         lastUpdate: 2000-01-23T04:56:07.000+00:00
+        language: language
         text: text
-        relevance: 0.8008282
+        fullTextSearchRrf: 1.4658129
         tags:
           key:
           - tags
@@ -2511,11 +2469,40 @@ components:
           description: "Content of the document partition, aka chunk/block of text."
           nullable: true
           type: string
-        relevance:
-          description: "Relevance of this partition against the given query.\r\nValue\
-            \ usually is between 0 and 1, when using cosine similarity."
+        fullTextSearchRank:
+          description: "Rank value calculated from full-text search, used to determine\
+            \ the relevance of search results."
           format: float
+          nullable: true
           type: number
+        semanticSimilarity:
+          description: Represents the semantic similarity score associated with a
+            record.
+          format: float
+          nullable: true
+          type: number
+        fullTextSearchRrf:
+          description: Reciprocal rank fusion (RRF) score specifically derived from
+            full-text search relevance.
+          format: float
+          nullable: true
+          type: number
+        semanticRrf:
+          description: Reciprocal Rank Fusion (RRF) score based on semantic similarity
+          format: float
+          nullable: true
+          type: number
+        rrfScore:
+          description: "Represents the combined Reciprocal Rank Fusion (RRF) score,\
+            \ which integrates results from multiple ranking methods such as semantic\
+            \ similarity and full-text search to enhance result relevance."
+          format: float
+          nullable: true
+          type: number
+        language:
+          description: Language of partition if any. Optional.
+          nullable: true
+          type: string
         lastUpdate:
           description: Timestamp about the file/text partition.
           format: date-time
@@ -2723,92 +2710,240 @@ components:
       type: object
     IngestFileRequest:
       properties:
+        documentId:
+          description: Unique identifier for the document to ingest.
+          example: 20250225.103045.abcd1234efgh5678
+          type: string
+        index:
+          description: Optional index name where the document will be stored.
+          example: my-index
+          nullable: true
+          type: string
+        webHookUrl:
+          description: Optional webhook URL to notify upon completion.
+          example: https://example.com/webhook
+          format: uri
+          nullable: true
+          type: string
+        embeddingModelName:
+          description: Optional name of the embedding model to use during ingestion.
+          example: embedding
+          nullable: true
+          type: string
         files:
-          description: The file object to ingest.
+          description: A collection of files to be ingested. Must contain at least
+            one file.
+          example:
+          - document.pdf
+          - image.png
           items:
             format: binary
             type: string
           type: array
-        args:
+        context:
           additionalProperties:
-            nullable: true
+            type: string
+          description: Optional key-value pairs for additional context or metadata.
+          example:
+            userId: "12345"
+            priority: 10
+            isTest: false
           nullable: true
           type: object
         tags:
-          additionalProperties: {}
-          description: Tags to associate with ingestion
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          description: A collection of tags associated with the document. Tags can
+            be language-specific.
           example:
             en:
             - Hello
             - World
             fr:
             - Bonjour
+          nullable: true
           type: object
+        ingestionPipeline:
+          description: Optional list of ingestion pipeline steps. Allows custom processing.
+          example:
+          - step1
+          - step2
+          - step3
+          items:
+            type: string
+          nullable: true
+          type: array
+        languageAutoDetection:
+          default: false
+          description: Enable automatic language detection for document content.
+          example: true
+          type: boolean
+        language:
+          description: Force a specific language for full-text search. Use 'simple'
+            for no language or leave empty.
+          enum:
+          - arabic
+          - armenian
+          - basque
+          - catalan
+          - danish
+          - dutch
+          - english
+          - finnish
+          - french
+          - german
+          - greek
+          - hindi
+          - hungarian
+          - indonesian
+          - irish
+          - italian
+          - lithuanian
+          - nepali
+          - norwegian
+          - portuguese
+          - romanian
+          - russian
+          - serbian
+          - spanish
+          - swedish
+          - tamil
+          - turkish
+          - yiddish
+          - simple
+          example: english
+          nullable: true
+          type: string
       required:
+      - documentId
       - files
       type: object
     IngestTextDocumentRequest:
       additionalProperties: false
       example:
-        pipeline:
-        - pipeline
-        - pipeline
-        args:
-          key: ""
-        webHookUrl: webHookUrl
-        index: index
-        documentId: documentId
+        ingestionPipeline:
+        - step1
+        - step2
+        - step3
+        webHookUrl: https://example.com/webhook
+        languageAutoDetection: true
+        context:
+          userId: "12345"
+          priority: 10
+          isTest: false
+        index: my-index
+        documentId: 20250225.103045.abcd1234efgh5678
+        language: english
         text: text
-        embeddingModel: embeddingModel
+        embeddingModelName: embedding
         tags:
-          key:
-          - tags
-          - tags
+          en:
+          - Hello
+          - World
+          fr:
+          - Bonjour
       properties:
+        text:
+          description: Text to ingest
+          type: string
         documentId:
-          description: Id that uniquely identifies content. Previously ingested documents
-            with the same id will be overwritten
-          maxLength: 255
-          minLength: 1
+          description: Unique identifier for the document to ingest.
+          example: 20250225.103045.abcd1234efgh5678
           type: string
         index:
-          description: Optional value to specify with index the document should be
-            ingested. Defaults to 'default'
+          description: Optional index name where the document will be stored.
+          example: my-index
           nullable: true
           type: string
+        webHookUrl:
+          description: Optional webhook URL to notify upon completion.
+          example: https://example.com/webhook
+          format: uri
+          nullable: true
+          type: string
+        embeddingModelName:
+          description: Optional name of the embedding model to use during ingestion.
+          example: embedding
+          nullable: true
+          type: string
+        context:
+          additionalProperties:
+            type: string
+          description: Optional key-value pairs for additional context or metadata.
+          example:
+            userId: "12345"
+            priority: 10
+            isTest: false
+          nullable: true
+          type: object
         tags:
           additionalProperties:
             items:
               type: string
             type: array
-          description: Optionally add tags to ingestion
+          description: A collection of tags associated with the document. Tags can
+            be language-specific.
+          example:
+            en:
+            - Hello
+            - World
+            fr:
+            - Bonjour
           nullable: true
           type: object
-        text:
-          description: Text to ingest
-          type: string
-        pipeline:
-          description: Optional value to specify ingestion pipeline steps. Defaults
-            to server configured defaults.
+        ingestionPipeline:
+          description: Optional list of ingestion pipeline steps. Allows custom processing.
+          example:
+          - step1
+          - step2
+          - step3
           items:
             type: string
           nullable: true
           type: array
-        webHookUrl:
-          description: Url to use for webhook callback when operation finishes or
-            fails.
+        languageAutoDetection:
+          default: false
+          description: Enable automatic language detection for document content.
+          example: true
+          type: boolean
+        language:
+          description: Force a specific language for full-text search. Use 'simple'
+            for no language or leave empty.
+          enum:
+          - arabic
+          - armenian
+          - basque
+          - catalan
+          - danish
+          - dutch
+          - english
+          - finnish
+          - french
+          - german
+          - greek
+          - hindi
+          - hungarian
+          - indonesian
+          - irish
+          - italian
+          - lithuanian
+          - nepali
+          - norwegian
+          - portuguese
+          - romanian
+          - russian
+          - serbian
+          - spanish
+          - swedish
+          - tamil
+          - turkish
+          - yiddish
+          - simple
+          example: english
           nullable: true
           type: string
-        embeddingModel:
-          description: Embedding model to use in ingestion. Optional. Default to configured
-            default.
-          nullable: true
-          type: string
-        args:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
       required:
       - documentId
       - text
@@ -2816,65 +2951,127 @@ components:
     IngestWebPageDocumentRequest:
       additionalProperties: false
       example:
-        pipeline:
-        - pipeline
-        - pipeline
-        args:
-          key: ""
-        webHookUrl: webHookUrl
-        index: index
-        documentId: documentId
-        embeddingModel: embeddingModel
+        ingestionPipeline:
+        - step1
+        - step2
+        - step3
+        webHookUrl: https://example.com/webhook
+        languageAutoDetection: true
+        context:
+          userId: "12345"
+          priority: 10
+          isTest: false
+        index: my-index
+        documentId: 20250225.103045.abcd1234efgh5678
+        language: english
+        embeddingModelName: embedding
         url: url
         tags:
-          key:
-          - tags
-          - tags
+          en:
+          - Hello
+          - World
+          fr:
+          - Bonjour
       properties:
+        url:
+          description: Web page to ingest
+          type: string
         documentId:
-          description: Id that uniquely identifies content. Previously ingested documents
-            with the same id will be overwritten
-          maxLength: 255
-          minLength: 1
+          description: Unique identifier for the document to ingest.
+          example: 20250225.103045.abcd1234efgh5678
           type: string
         index:
-          description: Optional value to specify with index the document should be
-            ingested. Defaults to 'default'
+          description: Optional index name where the document will be stored.
+          example: my-index
           nullable: true
           type: string
+        webHookUrl:
+          description: Optional webhook URL to notify upon completion.
+          example: https://example.com/webhook
+          format: uri
+          nullable: true
+          type: string
+        embeddingModelName:
+          description: Optional name of the embedding model to use during ingestion.
+          example: embedding
+          nullable: true
+          type: string
+        context:
+          additionalProperties:
+            type: string
+          description: Optional key-value pairs for additional context or metadata.
+          example:
+            userId: "12345"
+            priority: 10
+            isTest: false
+          nullable: true
+          type: object
         tags:
           additionalProperties:
             items:
               type: string
             type: array
-          description: Optionally add tags to ingestion
+          description: A collection of tags associated with the document. Tags can
+            be language-specific.
+          example:
+            en:
+            - Hello
+            - World
+            fr:
+            - Bonjour
           nullable: true
           type: object
-        url:
-          description: Web page to ingest
-          type: string
-        pipeline:
-          description: Optional value to specify ingestion pipeline steps. Defaults
-            to server configured defaults.
+        ingestionPipeline:
+          description: Optional list of ingestion pipeline steps. Allows custom processing.
+          example:
+          - step1
+          - step2
+          - step3
           items:
             type: string
           nullable: true
           type: array
-        webHookUrl:
-          description: Url to use for webhook callback when operation finishes or
-            fails.
+        languageAutoDetection:
+          default: false
+          description: Enable automatic language detection for document content.
+          example: true
+          type: boolean
+        language:
+          description: Force a specific language for full-text search. Use 'simple'
+            for no language or leave empty.
+          enum:
+          - arabic
+          - armenian
+          - basque
+          - catalan
+          - danish
+          - dutch
+          - english
+          - finnish
+          - french
+          - german
+          - greek
+          - hindi
+          - hungarian
+          - indonesian
+          - irish
+          - italian
+          - lithuanian
+          - nepali
+          - norwegian
+          - portuguese
+          - romanian
+          - russian
+          - serbian
+          - spanish
+          - swedish
+          - tamil
+          - turkish
+          - yiddish
+          - simple
+          example: english
           nullable: true
           type: string
-        embeddingModel:
-          description: Embedding model to use in ingestion. Optional. Default to configured
-            default.
-          nullable: true
-          type: string
-        args:
-          additionalProperties:
-            nullable: true
-          nullable: true
-          type: object
       required:
       - documentId
       - url
@@ -3314,6 +3511,12 @@ components:
     QueryDocumentRequest:
       additionalProperties: false
       example:
+        query: query
+        ftsMinScore: 0.8008282
+        searchMode: hybrid
+        index: index
+        language: language
+        minRelevance: 2.3021358869347655
         filter:
         - documentId:
           - documentId
@@ -3329,13 +3532,15 @@ components:
             key:
             - tags
             - tags
+        smoothingFactorK: 5.637377
         args:
           key: ""
-        query: query
-        limit: 6
-        index: index
+        ftsWeight: 6.0274563
+        languageDetection: true
+        semanticWeight: 5.962134
+        limit: 7
+        semanticMinRelevance: 1.4658129805029452
         embeddingModel: embeddingModel
-        minRelevance: 0.8008281904610115
       properties:
         query:
           description: Semantic query to find matching documents
@@ -3352,6 +3557,47 @@ components:
             $ref: '#/components/schemas/DocumentFilters'
           nullable: true
           type: array
+        searchMode:
+          description: "Optional search mode defining the context or process used\
+            \ in the query. Supported values are 'hybrid', 'semantic'"
+          enum:
+          - hybrid
+          - semantic
+          nullable: true
+          type: string
+        language:
+          description: Specifies the language of the content.
+          nullable: true
+          type: string
+        languageDetection:
+          description: Indicates whether language detection is enabled.
+          nullable: true
+          type: boolean
+        ftsMinScore:
+          description: Minimum score for full-text search.
+          format: float
+          nullable: true
+          type: number
+        ftsWeight:
+          description: Weight for full-text search.
+          format: float
+          nullable: true
+          type: number
+        semanticMinRelevance:
+          description: Minimum relevance score for semantic search.
+          format: double
+          nullable: true
+          type: number
+        semanticWeight:
+          description: Weight applied for semantic search.
+          format: float
+          nullable: true
+          type: number
+        smoothingFactorK:
+          description: Smoothing factor (k) used in calculations.
+          format: float
+          nullable: true
+          type: number
         minRelevance:
           description: Optional filter to specify minimum relevance. Typically values
             between 0 and 1
@@ -3380,16 +3626,26 @@ components:
         relevantSources:
         - sourceUrl: sourceUrl
           partitions:
-          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+          - semanticRrf: 5.962134
+            fullTextSearchRank: 0.8008282
+            semanticSimilarity: 6.0274563
+            rrfScore: 5.637377
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            language: language
             text: text
-            relevance: 0.8008282
+            fullTextSearchRrf: 1.4658129
             tags:
               key:
               - tags
               - tags
-          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+          - semanticRrf: 5.962134
+            fullTextSearchRank: 0.8008282
+            semanticSimilarity: 6.0274563
+            rrfScore: 5.637377
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            language: language
             text: text
-            relevance: 0.8008282
+            fullTextSearchRrf: 1.4658129
             tags:
               key:
               - tags
@@ -3402,16 +3658,26 @@ components:
           fileId: fileId
         - sourceUrl: sourceUrl
           partitions:
-          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+          - semanticRrf: 5.962134
+            fullTextSearchRank: 0.8008282
+            semanticSimilarity: 6.0274563
+            rrfScore: 5.637377
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            language: language
             text: text
-            relevance: 0.8008282
+            fullTextSearchRrf: 1.4658129
             tags:
               key:
               - tags
               - tags
-          - lastUpdate: 2000-01-23T04:56:07.000+00:00
+          - semanticRrf: 5.962134
+            fullTextSearchRank: 0.8008282
+            semanticSimilarity: 6.0274563
+            rrfScore: 5.637377
+            lastUpdate: 2000-01-23T04:56:07.000+00:00
+            language: language
             text: text
-            relevance: 0.8008282
+            fullTextSearchRrf: 1.4658129
             tags:
               key:
               - tags
@@ -3980,12 +4246,6 @@ components:
           maximum: 100
           minimum: 1
           type: integer
-        maxTokens:
-          default: 10
-          description: The maximum number of tokens
-          maximum: 100
-          minimum: 1
-          type: integer
         llmModel:
           description: The name of the LLM model. Optional.
           nullable: true
@@ -4014,13 +4274,6 @@ components:
         maxDegreeOfParallelism:
           default: 1
           description: The Maximum Degrees Of Parallelism
-          maximum: 100
-          minimum: 1
-          type: integer
-        maxTokens:
-          default: 10
-          description: The maximum number of tokens to be used in the KMeans clustering
-            algorithm.
           maximum: 100
           minimum: 1
           type: integer

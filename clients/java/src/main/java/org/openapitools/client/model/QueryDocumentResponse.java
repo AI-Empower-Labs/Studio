@@ -52,16 +52,17 @@ import org.openapitools.client.JSON;
 /**
  * QueryDocumentResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class QueryDocumentResponse {
   public static final String SERIALIZED_NAME_RELEVANT_SOURCES = "relevantSources";
   @SerializedName(SERIALIZED_NAME_RELEVANT_SOURCES)
+  @javax.annotation.Nullable
   private List<DocumentCitation> relevantSources;
 
   public QueryDocumentResponse() {
   }
 
-  public QueryDocumentResponse relevantSources(List<DocumentCitation> relevantSources) {
+  public QueryDocumentResponse relevantSources(@javax.annotation.Nullable List<DocumentCitation> relevantSources) {
     this.relevantSources = relevantSources;
     return this;
   }
@@ -83,7 +84,7 @@ public class QueryDocumentResponse {
     return relevantSources;
   }
 
-  public void setRelevantSources(List<DocumentCitation> relevantSources) {
+  public void setRelevantSources(@javax.annotation.Nullable List<DocumentCitation> relevantSources) {
     this.relevantSources = relevantSources;
   }
 

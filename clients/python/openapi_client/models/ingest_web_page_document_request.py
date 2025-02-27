@@ -18,9 +18,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,15 +27,27 @@ class IngestWebPageDocumentRequest(BaseModel):
     """
     IngestWebPageDocumentRequest
     """ # noqa: E501
-    document_id: Annotated[str, Field(min_length=1, strict=True, max_length=255)] = Field(description="Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten", alias="documentId")
-    index: Optional[StrictStr] = Field(default=None, description="Optional value to specify with index the document should be ingested. Defaults to 'default'")
-    tags: Optional[Dict[str, List[StrictStr]]] = Field(default=None, description="Optionally add tags to ingestion")
     url: StrictStr = Field(description="Web page to ingest")
-    pipeline: Optional[List[StrictStr]] = Field(default=None, description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")
-    web_hook_url: Optional[StrictStr] = Field(default=None, description="Url to use for webhook callback when operation finishes or fails.", alias="webHookUrl")
-    embedding_model: Optional[StrictStr] = Field(default=None, description="Embedding model to use in ingestion. Optional. Default to configured default.", alias="embeddingModel")
-    args: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["documentId", "index", "tags", "url", "pipeline", "webHookUrl", "embeddingModel", "args"]
+    document_id: StrictStr = Field(description="Unique identifier for the document to ingest.", alias="documentId")
+    index: Optional[StrictStr] = Field(default=None, description="Optional index name where the document will be stored.")
+    web_hook_url: Optional[StrictStr] = Field(default=None, description="Optional webhook URL to notify upon completion.", alias="webHookUrl")
+    embedding_model_name: Optional[StrictStr] = Field(default=None, description="Optional name of the embedding model to use during ingestion.", alias="embeddingModelName")
+    context: Optional[Dict[str, StrictStr]] = Field(default=None, description="Optional key-value pairs for additional context or metadata.")
+    tags: Optional[Dict[str, List[StrictStr]]] = Field(default=None, description="A collection of tags associated with the document. Tags can be language-specific.")
+    ingestion_pipeline: Optional[List[StrictStr]] = Field(default=None, description="Optional list of ingestion pipeline steps. Allows custom processing.", alias="ingestionPipeline")
+    language_auto_detection: Optional[StrictBool] = Field(default=False, description="Enable automatic language detection for document content.", alias="languageAutoDetection")
+    language: Optional[StrictStr] = Field(default=None, description="Force a specific language for full-text search. Use 'simple' for no language or leave empty.")
+    __properties: ClassVar[List[str]] = ["url", "documentId", "index", "webHookUrl", "embeddingModelName", "context", "tags", "ingestionPipeline", "languageAutoDetection", "language"]
+
+    @field_validator('language')
+    def language_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['arabic', 'armenian', 'basque', 'catalan', 'danish', 'dutch', 'english', 'finnish', 'french', 'german', 'greek', 'hindi', 'hungarian', 'indonesian', 'irish', 'italian', 'lithuanian', 'nepali', 'norwegian', 'portuguese', 'romanian', 'russian', 'serbian', 'spanish', 'swedish', 'tamil', 'turkish', 'yiddish', 'simple']):
+            raise ValueError("must be one of enum values ('arabic', 'armenian', 'basque', 'catalan', 'danish', 'dutch', 'english', 'finnish', 'french', 'german', 'greek', 'hindi', 'hungarian', 'indonesian', 'irish', 'italian', 'lithuanian', 'nepali', 'norwegian', 'portuguese', 'romanian', 'russian', 'serbian', 'spanish', 'swedish', 'tamil', 'turkish', 'yiddish', 'simple')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -82,30 +93,35 @@ class IngestWebPageDocumentRequest(BaseModel):
         if self.index is None and "index" in self.model_fields_set:
             _dict['index'] = None
 
-        # set to None if tags (nullable) is None
-        # and model_fields_set contains the field
-        if self.tags is None and "tags" in self.model_fields_set:
-            _dict['tags'] = None
-
-        # set to None if pipeline (nullable) is None
-        # and model_fields_set contains the field
-        if self.pipeline is None and "pipeline" in self.model_fields_set:
-            _dict['pipeline'] = None
-
         # set to None if web_hook_url (nullable) is None
         # and model_fields_set contains the field
         if self.web_hook_url is None and "web_hook_url" in self.model_fields_set:
             _dict['webHookUrl'] = None
 
-        # set to None if embedding_model (nullable) is None
+        # set to None if embedding_model_name (nullable) is None
         # and model_fields_set contains the field
-        if self.embedding_model is None and "embedding_model" in self.model_fields_set:
-            _dict['embeddingModel'] = None
+        if self.embedding_model_name is None and "embedding_model_name" in self.model_fields_set:
+            _dict['embeddingModelName'] = None
 
-        # set to None if args (nullable) is None
+        # set to None if context (nullable) is None
         # and model_fields_set contains the field
-        if self.args is None and "args" in self.model_fields_set:
-            _dict['args'] = None
+        if self.context is None and "context" in self.model_fields_set:
+            _dict['context'] = None
+
+        # set to None if tags (nullable) is None
+        # and model_fields_set contains the field
+        if self.tags is None and "tags" in self.model_fields_set:
+            _dict['tags'] = None
+
+        # set to None if ingestion_pipeline (nullable) is None
+        # and model_fields_set contains the field
+        if self.ingestion_pipeline is None and "ingestion_pipeline" in self.model_fields_set:
+            _dict['ingestionPipeline'] = None
+
+        # set to None if language (nullable) is None
+        # and model_fields_set contains the field
+        if self.language is None and "language" in self.model_fields_set:
+            _dict['language'] = None
 
         return _dict
 
@@ -119,14 +135,16 @@ class IngestWebPageDocumentRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "url": obj.get("url"),
             "documentId": obj.get("documentId"),
             "index": obj.get("index"),
-            "tags": obj.get("tags"),
-            "url": obj.get("url"),
-            "pipeline": obj.get("pipeline"),
             "webHookUrl": obj.get("webHookUrl"),
-            "embeddingModel": obj.get("embeddingModel"),
-            "args": obj.get("args")
+            "embeddingModelName": obj.get("embeddingModelName"),
+            "context": obj.get("context"),
+            "tags": obj.get("tags"),
+            "ingestionPipeline": obj.get("ingestionPipeline"),
+            "languageAutoDetection": obj.get("languageAutoDetection") if obj.get("languageAutoDetection") is not None else False,
+            "language": obj.get("language")
         })
         return _obj
 

@@ -51,24 +51,27 @@ import org.openapitools.client.JSON;
 /**
  * NamedEntityRecognitionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class NamedEntityRecognitionRequest {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nonnull
   private String text;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
+  @javax.annotation.Nullable
   private String model;
 
   public static final String SERIALIZED_NAME_ENTITIES = "entities";
   @SerializedName(SERIALIZED_NAME_ENTITIES)
+  @javax.annotation.Nonnull
   private List<String> entities = new ArrayList<>();
 
   public NamedEntityRecognitionRequest() {
   }
 
-  public NamedEntityRecognitionRequest text(String text) {
+  public NamedEntityRecognitionRequest text(@javax.annotation.Nonnull String text) {
     this.text = text;
     return this;
   }
@@ -82,12 +85,12 @@ public class NamedEntityRecognitionRequest {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nonnull String text) {
     this.text = text;
   }
 
 
-  public NamedEntityRecognitionRequest model(String model) {
+  public NamedEntityRecognitionRequest model(@javax.annotation.Nullable String model) {
     this.model = model;
     return this;
   }
@@ -101,12 +104,12 @@ public class NamedEntityRecognitionRequest {
     return model;
   }
 
-  public void setModel(String model) {
+  public void setModel(@javax.annotation.Nullable String model) {
     this.model = model;
   }
 
 
-  public NamedEntityRecognitionRequest entities(List<String> entities) {
+  public NamedEntityRecognitionRequest entities(@javax.annotation.Nonnull List<String> entities) {
     this.entities = entities;
     return this;
   }
@@ -128,7 +131,7 @@ public class NamedEntityRecognitionRequest {
     return entities;
   }
 
-  public void setEntities(List<String> entities) {
+  public void setEntities(@javax.annotation.Nonnull List<String> entities) {
     this.entities = entities;
   }
 

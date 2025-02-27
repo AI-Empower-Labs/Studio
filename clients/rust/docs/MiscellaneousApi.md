@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## delete_llm_cache_entry
 
-> delete_llm_cache_entry(cache_key)
+> delete_llm_cache_entry(key)
 
 
 Delete LLM cache entry
@@ -21,7 +21,7 @@ Delete LLM cache entry
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**cache_key** | Option<**String**> | The LLM cache key to remove |  |
+**key** | Option<**String**> | The LLM cache key to remove |  |
 
 ### Return type
 

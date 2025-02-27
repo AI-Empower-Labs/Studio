@@ -50,28 +50,32 @@ import org.openapitools.client.JSON;
 /**
  * IngestDocumentResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class IngestDocumentResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
+  @javax.annotation.Nullable
   private String documentId;
 
   public static final String SERIALIZED_NAME_PIPELINE = "pipeline";
   @SerializedName(SERIALIZED_NAME_PIPELINE)
+  @javax.annotation.Nullable
   private List<String> pipeline = new ArrayList<>();
 
   public IngestDocumentResponse() {
   }
 
-  public IngestDocumentResponse id(String id) {
+  public IngestDocumentResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -85,12 +89,12 @@ public class IngestDocumentResponse {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public IngestDocumentResponse index(String index) {
+  public IngestDocumentResponse index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
@@ -104,12 +108,12 @@ public class IngestDocumentResponse {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public IngestDocumentResponse documentId(String documentId) {
+  public IngestDocumentResponse documentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
     return this;
   }
@@ -123,12 +127,12 @@ public class IngestDocumentResponse {
     return documentId;
   }
 
-  public void setDocumentId(String documentId) {
+  public void setDocumentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
   }
 
 
-  public IngestDocumentResponse pipeline(List<String> pipeline) {
+  public IngestDocumentResponse pipeline(@javax.annotation.Nullable List<String> pipeline) {
     this.pipeline = pipeline;
     return this;
   }
@@ -150,7 +154,7 @@ public class IngestDocumentResponse {
     return pipeline;
   }
 
-  public void setPipeline(List<String> pipeline) {
+  public void setPipeline(@javax.annotation.Nullable List<String> pipeline) {
     this.pipeline = pipeline;
   }
 

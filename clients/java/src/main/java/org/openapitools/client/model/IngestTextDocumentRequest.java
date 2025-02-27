@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -53,109 +54,168 @@ import org.openapitools.client.JSON;
 /**
  * IngestTextDocumentRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class IngestTextDocumentRequest {
+  public static final String SERIALIZED_NAME_TEXT = "text";
+  @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nonnull
+  private String text;
+
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
+  @javax.annotation.Nonnull
   private String documentId;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
-
-  public static final String SERIALIZED_NAME_TAGS = "tags";
-  @SerializedName(SERIALIZED_NAME_TAGS)
-  private Map<String, List<String>> tags;
-
-  public static final String SERIALIZED_NAME_TEXT = "text";
-  @SerializedName(SERIALIZED_NAME_TEXT)
-  private String text;
-
-  public static final String SERIALIZED_NAME_PIPELINE = "pipeline";
-  @SerializedName(SERIALIZED_NAME_PIPELINE)
-  private List<String> pipeline;
 
   public static final String SERIALIZED_NAME_WEB_HOOK_URL = "webHookUrl";
   @SerializedName(SERIALIZED_NAME_WEB_HOOK_URL)
-  private String webHookUrl;
+  @javax.annotation.Nullable
+  private URI webHookUrl;
 
-  public static final String SERIALIZED_NAME_EMBEDDING_MODEL = "embeddingModel";
-  @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
-  private String embeddingModel;
+  public static final String SERIALIZED_NAME_EMBEDDING_MODEL_NAME = "embeddingModelName";
+  @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL_NAME)
+  @javax.annotation.Nullable
+  private String embeddingModelName;
 
-  public static final String SERIALIZED_NAME_ARGS = "args";
-  @SerializedName(SERIALIZED_NAME_ARGS)
-  private Map<String, Object> args;
+  public static final String SERIALIZED_NAME_CONTEXT = "context";
+  @SerializedName(SERIALIZED_NAME_CONTEXT)
+  @javax.annotation.Nullable
+  private Map<String, String> context;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  @javax.annotation.Nullable
+  private Map<String, List<String>> tags;
+
+  public static final String SERIALIZED_NAME_INGESTION_PIPELINE = "ingestionPipeline";
+  @SerializedName(SERIALIZED_NAME_INGESTION_PIPELINE)
+  @javax.annotation.Nullable
+  private List<String> ingestionPipeline;
+
+  public static final String SERIALIZED_NAME_LANGUAGE_AUTO_DETECTION = "languageAutoDetection";
+  @SerializedName(SERIALIZED_NAME_LANGUAGE_AUTO_DETECTION)
+  @javax.annotation.Nullable
+  private Boolean languageAutoDetection = false;
+
+  /**
+   * Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty.
+   */
+  @JsonAdapter(LanguageEnum.Adapter.class)
+  public enum LanguageEnum {
+    ARABIC("arabic"),
+    
+    ARMENIAN("armenian"),
+    
+    BASQUE("basque"),
+    
+    CATALAN("catalan"),
+    
+    DANISH("danish"),
+    
+    DUTCH("dutch"),
+    
+    ENGLISH("english"),
+    
+    FINNISH("finnish"),
+    
+    FRENCH("french"),
+    
+    GERMAN("german"),
+    
+    GREEK("greek"),
+    
+    HINDI("hindi"),
+    
+    HUNGARIAN("hungarian"),
+    
+    INDONESIAN("indonesian"),
+    
+    IRISH("irish"),
+    
+    ITALIAN("italian"),
+    
+    LITHUANIAN("lithuanian"),
+    
+    NEPALI("nepali"),
+    
+    NORWEGIAN("norwegian"),
+    
+    PORTUGUESE("portuguese"),
+    
+    ROMANIAN("romanian"),
+    
+    RUSSIAN("russian"),
+    
+    SERBIAN("serbian"),
+    
+    SPANISH("spanish"),
+    
+    SWEDISH("swedish"),
+    
+    TAMIL("tamil"),
+    
+    TURKISH("turkish"),
+    
+    YIDDISH("yiddish"),
+    
+    SIMPLE("simple");
+
+    private String value;
+
+    LanguageEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static LanguageEnum fromValue(String value) {
+      for (LanguageEnum b : LanguageEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<LanguageEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final LanguageEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public LanguageEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return LanguageEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      LanguageEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_LANGUAGE = "language";
+  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nullable
+  private LanguageEnum language;
 
   public IngestTextDocumentRequest() {
   }
 
-  public IngestTextDocumentRequest documentId(String documentId) {
-    this.documentId = documentId;
-    return this;
-  }
-
-  /**
-   * Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten
-   * @return documentId
-   */
-  @javax.annotation.Nonnull
-  public String getDocumentId() {
-    return documentId;
-  }
-
-  public void setDocumentId(String documentId) {
-    this.documentId = documentId;
-  }
-
-
-  public IngestTextDocumentRequest index(String index) {
-    this.index = index;
-    return this;
-  }
-
-  /**
-   * Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;
-   * @return index
-   */
-  @javax.annotation.Nullable
-  public String getIndex() {
-    return index;
-  }
-
-  public void setIndex(String index) {
-    this.index = index;
-  }
-
-
-  public IngestTextDocumentRequest tags(Map<String, List<String>> tags) {
-    this.tags = tags;
-    return this;
-  }
-
-  public IngestTextDocumentRequest putTagsItem(String key, List<String> tagsItem) {
-    if (this.tags == null) {
-      this.tags = new HashMap<>();
-    }
-    this.tags.put(key, tagsItem);
-    return this;
-  }
-
-  /**
-   * Optionally add tags to ingestion
-   * @return tags
-   */
-  @javax.annotation.Nullable
-  public Map<String, List<String>> getTags() {
-    return tags;
-  }
-
-  public void setTags(Map<String, List<String>> tags) {
-    this.tags = tags;
-  }
-
-
-  public IngestTextDocumentRequest text(String text) {
+  public IngestTextDocumentRequest text(@javax.annotation.Nonnull String text) {
     this.text = text;
     return this;
   }
@@ -169,100 +229,203 @@ public class IngestTextDocumentRequest {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nonnull String text) {
     this.text = text;
   }
 
 
-  public IngestTextDocumentRequest pipeline(List<String> pipeline) {
-    this.pipeline = pipeline;
-    return this;
-  }
-
-  public IngestTextDocumentRequest addPipelineItem(String pipelineItem) {
-    if (this.pipeline == null) {
-      this.pipeline = new ArrayList<>();
-    }
-    this.pipeline.add(pipelineItem);
+  public IngestTextDocumentRequest documentId(@javax.annotation.Nonnull String documentId) {
+    this.documentId = documentId;
     return this;
   }
 
   /**
-   * Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
-   * @return pipeline
+   * Unique identifier for the document to ingest.
+   * @return documentId
+   */
+  @javax.annotation.Nonnull
+  public String getDocumentId() {
+    return documentId;
+  }
+
+  public void setDocumentId(@javax.annotation.Nonnull String documentId) {
+    this.documentId = documentId;
+  }
+
+
+  public IngestTextDocumentRequest index(@javax.annotation.Nullable String index) {
+    this.index = index;
+    return this;
+  }
+
+  /**
+   * Optional index name where the document will be stored.
+   * @return index
    */
   @javax.annotation.Nullable
-  public List<String> getPipeline() {
-    return pipeline;
+  public String getIndex() {
+    return index;
   }
 
-  public void setPipeline(List<String> pipeline) {
-    this.pipeline = pipeline;
+  public void setIndex(@javax.annotation.Nullable String index) {
+    this.index = index;
   }
 
 
-  public IngestTextDocumentRequest webHookUrl(String webHookUrl) {
+  public IngestTextDocumentRequest webHookUrl(@javax.annotation.Nullable URI webHookUrl) {
     this.webHookUrl = webHookUrl;
     return this;
   }
 
   /**
-   * Url to use for webhook callback when operation finishes or fails.
+   * Optional webhook URL to notify upon completion.
    * @return webHookUrl
    */
   @javax.annotation.Nullable
-  public String getWebHookUrl() {
+  public URI getWebHookUrl() {
     return webHookUrl;
   }
 
-  public void setWebHookUrl(String webHookUrl) {
+  public void setWebHookUrl(@javax.annotation.Nullable URI webHookUrl) {
     this.webHookUrl = webHookUrl;
   }
 
 
-  public IngestTextDocumentRequest embeddingModel(String embeddingModel) {
-    this.embeddingModel = embeddingModel;
+  public IngestTextDocumentRequest embeddingModelName(@javax.annotation.Nullable String embeddingModelName) {
+    this.embeddingModelName = embeddingModelName;
     return this;
   }
 
   /**
-   * Embedding model to use in ingestion. Optional. Default to configured default.
-   * @return embeddingModel
+   * Optional name of the embedding model to use during ingestion.
+   * @return embeddingModelName
    */
   @javax.annotation.Nullable
-  public String getEmbeddingModel() {
-    return embeddingModel;
+  public String getEmbeddingModelName() {
+    return embeddingModelName;
   }
 
-  public void setEmbeddingModel(String embeddingModel) {
-    this.embeddingModel = embeddingModel;
+  public void setEmbeddingModelName(@javax.annotation.Nullable String embeddingModelName) {
+    this.embeddingModelName = embeddingModelName;
   }
 
 
-  public IngestTextDocumentRequest args(Map<String, Object> args) {
-    this.args = args;
+  public IngestTextDocumentRequest context(@javax.annotation.Nullable Map<String, String> context) {
+    this.context = context;
     return this;
   }
 
-  public IngestTextDocumentRequest putArgsItem(String key, Object argsItem) {
-    if (this.args == null) {
-      this.args = new HashMap<>();
+  public IngestTextDocumentRequest putContextItem(String key, String contextItem) {
+    if (this.context == null) {
+      this.context = new HashMap<>();
     }
-    this.args.put(key, argsItem);
+    this.context.put(key, contextItem);
     return this;
   }
 
   /**
-   * Get args
-   * @return args
+   * Optional key-value pairs for additional context or metadata.
+   * @return context
    */
   @javax.annotation.Nullable
-  public Map<String, Object> getArgs() {
-    return args;
+  public Map<String, String> getContext() {
+    return context;
   }
 
-  public void setArgs(Map<String, Object> args) {
-    this.args = args;
+  public void setContext(@javax.annotation.Nullable Map<String, String> context) {
+    this.context = context;
+  }
+
+
+  public IngestTextDocumentRequest tags(@javax.annotation.Nullable Map<String, List<String>> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public IngestTextDocumentRequest putTagsItem(String key, List<String> tagsItem) {
+    if (this.tags == null) {
+      this.tags = new HashMap<>();
+    }
+    this.tags.put(key, tagsItem);
+    return this;
+  }
+
+  /**
+   * A collection of tags associated with the document. Tags can be language-specific.
+   * @return tags
+   */
+  @javax.annotation.Nullable
+  public Map<String, List<String>> getTags() {
+    return tags;
+  }
+
+  public void setTags(@javax.annotation.Nullable Map<String, List<String>> tags) {
+    this.tags = tags;
+  }
+
+
+  public IngestTextDocumentRequest ingestionPipeline(@javax.annotation.Nullable List<String> ingestionPipeline) {
+    this.ingestionPipeline = ingestionPipeline;
+    return this;
+  }
+
+  public IngestTextDocumentRequest addIngestionPipelineItem(String ingestionPipelineItem) {
+    if (this.ingestionPipeline == null) {
+      this.ingestionPipeline = new ArrayList<>();
+    }
+    this.ingestionPipeline.add(ingestionPipelineItem);
+    return this;
+  }
+
+  /**
+   * Optional list of ingestion pipeline steps. Allows custom processing.
+   * @return ingestionPipeline
+   */
+  @javax.annotation.Nullable
+  public List<String> getIngestionPipeline() {
+    return ingestionPipeline;
+  }
+
+  public void setIngestionPipeline(@javax.annotation.Nullable List<String> ingestionPipeline) {
+    this.ingestionPipeline = ingestionPipeline;
+  }
+
+
+  public IngestTextDocumentRequest languageAutoDetection(@javax.annotation.Nullable Boolean languageAutoDetection) {
+    this.languageAutoDetection = languageAutoDetection;
+    return this;
+  }
+
+  /**
+   * Enable automatic language detection for document content.
+   * @return languageAutoDetection
+   */
+  @javax.annotation.Nullable
+  public Boolean getLanguageAutoDetection() {
+    return languageAutoDetection;
+  }
+
+  public void setLanguageAutoDetection(@javax.annotation.Nullable Boolean languageAutoDetection) {
+    this.languageAutoDetection = languageAutoDetection;
+  }
+
+
+  public IngestTextDocumentRequest language(@javax.annotation.Nullable LanguageEnum language) {
+    this.language = language;
+    return this;
+  }
+
+  /**
+   * Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty.
+   * @return language
+   */
+  @javax.annotation.Nullable
+  public LanguageEnum getLanguage() {
+    return language;
+  }
+
+  public void setLanguage(@javax.annotation.Nullable LanguageEnum language) {
+    this.language = language;
   }
 
 
@@ -276,14 +439,16 @@ public class IngestTextDocumentRequest {
       return false;
     }
     IngestTextDocumentRequest ingestTextDocumentRequest = (IngestTextDocumentRequest) o;
-    return Objects.equals(this.documentId, ingestTextDocumentRequest.documentId) &&
+    return Objects.equals(this.text, ingestTextDocumentRequest.text) &&
+        Objects.equals(this.documentId, ingestTextDocumentRequest.documentId) &&
         Objects.equals(this.index, ingestTextDocumentRequest.index) &&
-        Objects.equals(this.tags, ingestTextDocumentRequest.tags) &&
-        Objects.equals(this.text, ingestTextDocumentRequest.text) &&
-        Objects.equals(this.pipeline, ingestTextDocumentRequest.pipeline) &&
         Objects.equals(this.webHookUrl, ingestTextDocumentRequest.webHookUrl) &&
-        Objects.equals(this.embeddingModel, ingestTextDocumentRequest.embeddingModel) &&
-        Objects.equals(this.args, ingestTextDocumentRequest.args);
+        Objects.equals(this.embeddingModelName, ingestTextDocumentRequest.embeddingModelName) &&
+        Objects.equals(this.context, ingestTextDocumentRequest.context) &&
+        Objects.equals(this.tags, ingestTextDocumentRequest.tags) &&
+        Objects.equals(this.ingestionPipeline, ingestTextDocumentRequest.ingestionPipeline) &&
+        Objects.equals(this.languageAutoDetection, ingestTextDocumentRequest.languageAutoDetection) &&
+        Objects.equals(this.language, ingestTextDocumentRequest.language);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -292,7 +457,7 @@ public class IngestTextDocumentRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(documentId, index, tags, text, pipeline, webHookUrl, embeddingModel, args);
+    return Objects.hash(text, documentId, index, webHookUrl, embeddingModelName, context, tags, ingestionPipeline, languageAutoDetection, language);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -306,14 +471,16 @@ public class IngestTextDocumentRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IngestTextDocumentRequest {\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    documentId: ").append(toIndentedString(documentId)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    pipeline: ").append(toIndentedString(pipeline)).append("\n");
     sb.append("    webHookUrl: ").append(toIndentedString(webHookUrl)).append("\n");
-    sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
-    sb.append("    args: ").append(toIndentedString(args)).append("\n");
+    sb.append("    embeddingModelName: ").append(toIndentedString(embeddingModelName)).append("\n");
+    sb.append("    context: ").append(toIndentedString(context)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    ingestionPipeline: ").append(toIndentedString(ingestionPipeline)).append("\n");
+    sb.append("    languageAutoDetection: ").append(toIndentedString(languageAutoDetection)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -336,19 +503,21 @@ public class IngestTextDocumentRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("text");
     openapiFields.add("documentId");
     openapiFields.add("index");
-    openapiFields.add("tags");
-    openapiFields.add("text");
-    openapiFields.add("pipeline");
     openapiFields.add("webHookUrl");
-    openapiFields.add("embeddingModel");
-    openapiFields.add("args");
+    openapiFields.add("embeddingModelName");
+    openapiFields.add("context");
+    openapiFields.add("tags");
+    openapiFields.add("ingestionPipeline");
+    openapiFields.add("languageAutoDetection");
+    openapiFields.add("language");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("documentId");
     openapiRequiredFields.add("text");
+    openapiRequiredFields.add("documentId");
   }
 
   /**
@@ -379,24 +548,31 @@ public class IngestTextDocumentRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      }
       if (!jsonObj.get("documentId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `documentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentId").toString()));
       }
       if ((jsonObj.get("index") != null && !jsonObj.get("index").isJsonNull()) && !jsonObj.get("index").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `index` to be a primitive type in the JSON string but got `%s`", jsonObj.get("index").toString()));
       }
-      if (!jsonObj.get("text").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("pipeline") != null && !jsonObj.get("pipeline").isJsonNull() && !jsonObj.get("pipeline").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `pipeline` to be an array in the JSON string but got `%s`", jsonObj.get("pipeline").toString()));
-      }
       if ((jsonObj.get("webHookUrl") != null && !jsonObj.get("webHookUrl").isJsonNull()) && !jsonObj.get("webHookUrl").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `webHookUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("webHookUrl").toString()));
       }
-      if ((jsonObj.get("embeddingModel") != null && !jsonObj.get("embeddingModel").isJsonNull()) && !jsonObj.get("embeddingModel").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `embeddingModel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("embeddingModel").toString()));
+      if ((jsonObj.get("embeddingModelName") != null && !jsonObj.get("embeddingModelName").isJsonNull()) && !jsonObj.get("embeddingModelName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `embeddingModelName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("embeddingModelName").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("ingestionPipeline") != null && !jsonObj.get("ingestionPipeline").isJsonNull() && !jsonObj.get("ingestionPipeline").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ingestionPipeline` to be an array in the JSON string but got `%s`", jsonObj.get("ingestionPipeline").toString()));
+      }
+      if ((jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) && !jsonObj.get("language").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));
+      }
+      // validate the optional field `language`
+      if (jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) {
+        LanguageEnum.validateJsonElement(jsonObj.get("language"));
       }
   }
 

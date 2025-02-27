@@ -46,7 +46,12 @@ class TestDocumentCitation(unittest.TestCase):
                 partitions = [
                     openapi_client.models.document_partition.DocumentPartition(
                         text = '', 
-                        relevance = 1.337, 
+                        full_text_search_rank = 1.337, 
+                        semantic_similarity = 1.337, 
+                        full_text_search_rrf = 1.337, 
+                        semantic_rrf = 1.337, 
+                        rrf_score = 1.337, 
+                        language = '', 
                         last_update = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'), 
                         tags = {
                             'key' : [

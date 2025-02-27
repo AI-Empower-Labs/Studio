@@ -52,16 +52,17 @@ import org.openapitools.client.JSON;
 /**
  * IndexCollection
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class IndexCollection {
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
+  @javax.annotation.Nullable
   private List<IndexDetails> results;
 
   public IndexCollection() {
   }
 
-  public IndexCollection results(List<IndexDetails> results) {
+  public IndexCollection results(@javax.annotation.Nullable List<IndexDetails> results) {
     this.results = results;
     return this;
   }
@@ -83,7 +84,7 @@ public class IndexCollection {
     return results;
   }
 
-  public void setResults(List<IndexDetails> results) {
+  public void setResults(@javax.annotation.Nullable List<IndexDetails> results) {
     this.results = results;
   }
 

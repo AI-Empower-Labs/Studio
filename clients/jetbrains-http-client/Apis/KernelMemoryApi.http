@@ -1,11 +1,5 @@
 ## KernelMemoryApi
 
-### 
-## 
-GET https://studio.aiempowerlabs.com/download?index={{index}}&documentId={{documentId}}&filename={{filename}}
-Accept: application/json
-Accept: application/problem+json
-
 ### Query documents and forward result to LLM
 ## Query documents and forward result to LLM
 POST https://studio.aiempowerlabs.com/api/kernelmemory/ask
@@ -30,6 +24,12 @@ Accept: application/problem+json
 ### Delete index
 ## Delete index
 DELETE https://studio.aiempowerlabs.com/api/kernelmemory/indexes?index={{index}}
+Accept: application/json
+Accept: application/problem+json
+
+### Download specific document
+## Download specific document
+GET https://studio.aiempowerlabs.com/api/kernelmemory/download?index={{index}}&documentId={{documentId}}&filename={{filename}}
 Accept: application/json
 Accept: application/problem+json
 

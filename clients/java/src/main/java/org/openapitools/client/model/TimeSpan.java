@@ -48,66 +48,81 @@ import org.openapitools.client.JSON;
 /**
  * TimeSpan
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class TimeSpan {
   public static final String SERIALIZED_NAME_TICKS = "ticks";
   @SerializedName(SERIALIZED_NAME_TICKS)
+  @javax.annotation.Nullable
   private Long ticks;
 
   public static final String SERIALIZED_NAME_DAYS = "days";
   @SerializedName(SERIALIZED_NAME_DAYS)
+  @javax.annotation.Nullable
   private Integer days;
 
   public static final String SERIALIZED_NAME_HOURS = "hours";
   @SerializedName(SERIALIZED_NAME_HOURS)
+  @javax.annotation.Nullable
   private Integer hours;
 
   public static final String SERIALIZED_NAME_MILLISECONDS = "milliseconds";
   @SerializedName(SERIALIZED_NAME_MILLISECONDS)
+  @javax.annotation.Nullable
   private Integer milliseconds;
 
   public static final String SERIALIZED_NAME_MICROSECONDS = "microseconds";
   @SerializedName(SERIALIZED_NAME_MICROSECONDS)
+  @javax.annotation.Nullable
   private Integer microseconds;
 
   public static final String SERIALIZED_NAME_NANOSECONDS = "nanoseconds";
   @SerializedName(SERIALIZED_NAME_NANOSECONDS)
+  @javax.annotation.Nullable
   private Integer nanoseconds;
 
   public static final String SERIALIZED_NAME_MINUTES = "minutes";
   @SerializedName(SERIALIZED_NAME_MINUTES)
+  @javax.annotation.Nullable
   private Integer minutes;
 
   public static final String SERIALIZED_NAME_SECONDS = "seconds";
   @SerializedName(SERIALIZED_NAME_SECONDS)
+  @javax.annotation.Nullable
   private Integer seconds;
 
   public static final String SERIALIZED_NAME_TOTAL_DAYS = "totalDays";
   @SerializedName(SERIALIZED_NAME_TOTAL_DAYS)
+  @javax.annotation.Nullable
   private Double totalDays;
 
   public static final String SERIALIZED_NAME_TOTAL_HOURS = "totalHours";
   @SerializedName(SERIALIZED_NAME_TOTAL_HOURS)
+  @javax.annotation.Nullable
   private Double totalHours;
 
   public static final String SERIALIZED_NAME_TOTAL_MILLISECONDS = "totalMilliseconds";
   @SerializedName(SERIALIZED_NAME_TOTAL_MILLISECONDS)
+  @javax.annotation.Nullable
   private Double totalMilliseconds;
 
   public static final String SERIALIZED_NAME_TOTAL_MICROSECONDS = "totalMicroseconds";
   @SerializedName(SERIALIZED_NAME_TOTAL_MICROSECONDS)
+  @javax.annotation.Nullable
   private Double totalMicroseconds;
 
   public static final String SERIALIZED_NAME_TOTAL_NANOSECONDS = "totalNanoseconds";
   @SerializedName(SERIALIZED_NAME_TOTAL_NANOSECONDS)
+  @javax.annotation.Nullable
   private Double totalNanoseconds;
 
   public static final String SERIALIZED_NAME_TOTAL_MINUTES = "totalMinutes";
   @SerializedName(SERIALIZED_NAME_TOTAL_MINUTES)
+  @javax.annotation.Nullable
   private Double totalMinutes;
 
   public static final String SERIALIZED_NAME_TOTAL_SECONDS = "totalSeconds";
   @SerializedName(SERIALIZED_NAME_TOTAL_SECONDS)
+  @javax.annotation.Nullable
   private Double totalSeconds;
 
   public TimeSpan() {
@@ -146,7 +161,7 @@ public class TimeSpan {
     this.totalSeconds = totalSeconds;
   }
 
-  public TimeSpan ticks(Long ticks) {
+  public TimeSpan ticks(@javax.annotation.Nullable Long ticks) {
     this.ticks = ticks;
     return this;
   }
@@ -160,7 +175,7 @@ public class TimeSpan {
     return ticks;
   }
 
-  public void setTicks(Long ticks) {
+  public void setTicks(@javax.annotation.Nullable Long ticks) {
     this.ticks = ticks;
   }
 

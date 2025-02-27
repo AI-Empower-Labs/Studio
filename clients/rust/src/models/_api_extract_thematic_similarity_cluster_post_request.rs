@@ -22,9 +22,6 @@ pub struct ApiExtractThematicSimilarityClusterPostRequest {
     /// The maximum degree of parallelism for the KMeans clustering algorithm
     #[serde(rename = "maxDegreeOfParallelism", skip_serializing_if = "Option::is_none")]
     pub max_degree_of_parallelism: Option<i32>,
-    /// The maximum number of tokens
-    #[serde(rename = "maxTokens", skip_serializing_if = "Option::is_none")]
-    pub max_tokens: Option<i32>,
     /// The name of the LLM model. Optional.
     #[serde(rename = "llmModel", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub llm_model: Option<Option<String>>,
@@ -42,7 +39,6 @@ impl ApiExtractThematicSimilarityClusterPostRequest {
             input,
             cluster_count,
             max_degree_of_parallelism: None,
-            max_tokens: None,
             llm_model: None,
             embedding_model: None,
             seed: None,

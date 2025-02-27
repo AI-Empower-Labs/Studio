@@ -52,44 +52,52 @@ import org.openapitools.client.JSON;
 /**
  * Citation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class Citation {
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
+  @javax.annotation.Nullable
   private String documentId;
 
   public static final String SERIALIZED_NAME_FILE_ID = "fileId";
   @SerializedName(SERIALIZED_NAME_FILE_ID)
+  @javax.annotation.Nullable
   private String fileId;
 
   public static final String SERIALIZED_NAME_SOURCE_CONTENT_TYPE = "sourceContentType";
   @SerializedName(SERIALIZED_NAME_SOURCE_CONTENT_TYPE)
+  @javax.annotation.Nullable
   private String sourceContentType;
 
   public static final String SERIALIZED_NAME_SOURCE_NAME = "sourceName";
   @SerializedName(SERIALIZED_NAME_SOURCE_NAME)
+  @javax.annotation.Nullable
   private String sourceName;
 
   public static final String SERIALIZED_NAME_SOURCE_URL = "sourceUrl";
   @SerializedName(SERIALIZED_NAME_SOURCE_URL)
+  @javax.annotation.Nullable
   private String sourceUrl;
 
   public static final String SERIALIZED_NAME_PARTITIONS = "partitions";
   @SerializedName(SERIALIZED_NAME_PARTITIONS)
+  @javax.annotation.Nullable
   private List<Partition> partitions;
 
   public Citation() {
   }
 
-  public Citation link(String link) {
+  public Citation link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -103,12 +111,12 @@ public class Citation {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
 
-  public Citation index(String index) {
+  public Citation index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
@@ -122,12 +130,12 @@ public class Citation {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public Citation documentId(String documentId) {
+  public Citation documentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
     return this;
   }
@@ -141,12 +149,12 @@ public class Citation {
     return documentId;
   }
 
-  public void setDocumentId(String documentId) {
+  public void setDocumentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
   }
 
 
-  public Citation fileId(String fileId) {
+  public Citation fileId(@javax.annotation.Nullable String fileId) {
     this.fileId = fileId;
     return this;
   }
@@ -160,12 +168,12 @@ public class Citation {
     return fileId;
   }
 
-  public void setFileId(String fileId) {
+  public void setFileId(@javax.annotation.Nullable String fileId) {
     this.fileId = fileId;
   }
 
 
-  public Citation sourceContentType(String sourceContentType) {
+  public Citation sourceContentType(@javax.annotation.Nullable String sourceContentType) {
     this.sourceContentType = sourceContentType;
     return this;
   }
@@ -179,12 +187,12 @@ public class Citation {
     return sourceContentType;
   }
 
-  public void setSourceContentType(String sourceContentType) {
+  public void setSourceContentType(@javax.annotation.Nullable String sourceContentType) {
     this.sourceContentType = sourceContentType;
   }
 
 
-  public Citation sourceName(String sourceName) {
+  public Citation sourceName(@javax.annotation.Nullable String sourceName) {
     this.sourceName = sourceName;
     return this;
   }
@@ -198,12 +206,12 @@ public class Citation {
     return sourceName;
   }
 
-  public void setSourceName(String sourceName) {
+  public void setSourceName(@javax.annotation.Nullable String sourceName) {
     this.sourceName = sourceName;
   }
 
 
-  public Citation sourceUrl(String sourceUrl) {
+  public Citation sourceUrl(@javax.annotation.Nullable String sourceUrl) {
     this.sourceUrl = sourceUrl;
     return this;
   }
@@ -217,12 +225,12 @@ public class Citation {
     return sourceUrl;
   }
 
-  public void setSourceUrl(String sourceUrl) {
+  public void setSourceUrl(@javax.annotation.Nullable String sourceUrl) {
     this.sourceUrl = sourceUrl;
   }
 
 
-  public Citation partitions(List<Partition> partitions) {
+  public Citation partitions(@javax.annotation.Nullable List<Partition> partitions) {
     this.partitions = partitions;
     return this;
   }
@@ -244,7 +252,7 @@ public class Citation {
     return partitions;
   }
 
-  public void setPartitions(List<Partition> partitions) {
+  public void setPartitions(@javax.annotation.Nullable List<Partition> partitions) {
     this.partitions = partitions;
   }
 

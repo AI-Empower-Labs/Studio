@@ -49,6 +49,14 @@ class TestQueryDocumentRequest(unittest.TestCase):
                                 ]
                             }, )
                     ],
+                search_mode = 'hybrid',
+                language = '',
+                language_detection = True,
+                fts_min_score = 1.337,
+                fts_weight = 1.337,
+                semantic_min_relevance = 1.337,
+                semantic_weight = 1.337,
+                smoothing_factor_k = 1.337,
                 min_relevance = 1.337,
                 limit = 56,
                 embedding_model = '',

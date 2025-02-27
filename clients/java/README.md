@@ -2,8 +2,8 @@
 
 Studio - AI Empower Labs
 - API version: v1
-  - Build date: 2024-09-06T09:48:45.857739981Z[Etc/UTC]
-  - Generator version: 7.9.0-SNAPSHOT
+  - Build date: 2025-02-27T12:37:37.320941922Z[Etc/UTC]
+  - Generator version: 7.12.0-SNAPSHOT
 
 # Studio API Documentation
 
@@ -96,7 +96,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
+import org.openapitools.client.model.*;
 import org.openapitools.client.api.DataExtractionApi;
 
 public class Example {
@@ -135,10 +135,10 @@ Class | Method | HTTP request | Description
 *DataExtractionApi* | [**tokenCount**](docs/DataExtractionApi.md#tokenCount) | **POST** /api/extract/tokenCount | Count tokens in a text
 *DataExtractionApi* | [**tokenize**](docs/DataExtractionApi.md#tokenize) | **POST** /api/extract/tokenize | Converts data to a integer token array
 *DataExtractionApi* | [**transcriptionSynchronous**](docs/DataExtractionApi.md#transcriptionSynchronous) | **POST** /api/extract/transcription | Synchronous transcribe audio
-*KernelMemoryApi* | [**downloadGet**](docs/KernelMemoryApi.md#downloadGet) | **GET** /download | 
 *KernelMemoryApi* | [**kernelMemoryAsk**](docs/KernelMemoryApi.md#kernelMemoryAsk) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM
 *KernelMemoryApi* | [**kernelMemoryDelete**](docs/KernelMemoryApi.md#kernelMemoryDelete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index
 *KernelMemoryApi* | [**kernelMemoryDeleteIndex**](docs/KernelMemoryApi.md#kernelMemoryDeleteIndex) | **DELETE** /api/kernelmemory/indexes | Delete index
+*KernelMemoryApi* | [**kernelMemoryDownload**](docs/KernelMemoryApi.md#kernelMemoryDownload) | **GET** /api/kernelmemory/download | Download specific document
 *KernelMemoryApi* | [**kernelMemoryGetIndex**](docs/KernelMemoryApi.md#kernelMemoryGetIndex) | **GET** /api/kernelmemory/indexes | List indexes
 *KernelMemoryApi* | [**kernelMemorySearch**](docs/KernelMemoryApi.md#kernelMemorySearch) | **POST** /api/kernelmemory/search | Search for documents in specific index
 *KernelMemoryApi* | [**kernelMemoryUpload**](docs/KernelMemoryApi.md#kernelMemoryUpload) | **POST** /api/kernelmemory/upload | Upload file for ingestion
@@ -148,16 +148,15 @@ Class | Method | HTTP request | Description
 *LanguageApi* | [**languageTranslate**](docs/LanguageApi.md#languageTranslate) | **POST** /api/language/translate | Translation of text from one language to another
 *MiscellaneousApi* | [**deleteLlmCacheEntry**](docs/MiscellaneousApi.md#deleteLlmCacheEntry) | **DELETE** /api/cache | 
 *MiscellaneousApi* | [**getConfiguration**](docs/MiscellaneousApi.md#getConfiguration) | **GET** /info | 
-*SemanticSearchApi* | [**semanticSearchAsk**](docs/SemanticSearchApi.md#semanticSearchAsk) | **POST** /api/semantic/ask | 
 *SemanticSearchApi* | [**semanticSearchDeleteDocument**](docs/SemanticSearchApi.md#semanticSearchDeleteDocument) | **DELETE** /api/semantic/{documentId} | 
-*SemanticSearchApi* | [**semanticSearchDeleteIndex**](docs/SemanticSearchApi.md#semanticSearchDeleteIndex) | **DELETE** /api/semantic/index | 
-*SemanticSearchApi* | [**semanticSearchFileIngestion**](docs/SemanticSearchApi.md#semanticSearchFileIngestion) | **POST** /api/ingest/file | 
+*SemanticSearchApi* | [**semanticSearchDeleteIndex**](docs/SemanticSearchApi.md#semanticSearchDeleteIndex) | **DELETE** /api/semantic/index/{name} | 
+*SemanticSearchApi* | [**semanticSearchFileIngestion**](docs/SemanticSearchApi.md#semanticSearchFileIngestion) | **POST** /api/ingest/file | Ingest a File into Semantic Search
 *SemanticSearchApi* | [**semanticSearchIngestionStatus**](docs/SemanticSearchApi.md#semanticSearchIngestionStatus) | **GET** /api/ingest/status | 
 *SemanticSearchApi* | [**semanticSearchList**](docs/SemanticSearchApi.md#semanticSearchList) | **POST** /api/semantic/list | 
 *SemanticSearchApi* | [**semanticSearchQuery**](docs/SemanticSearchApi.md#semanticSearchQuery) | **POST** /api/semantic/query | 
 *SemanticSearchApi* | [**semanticSearchQueryResultsClustering**](docs/SemanticSearchApi.md#semanticSearchQueryResultsClustering) | **POST** /api/semantic/query-results-clustering | 
 *SemanticSearchApi* | [**semanticSearchRerank**](docs/SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank | 
-*SemanticSearchApi* | [**semanticSearchTextIngestion**](docs/SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/ingest/text | 
+*SemanticSearchApi* | [**semanticSearchTextIngestion**](docs/SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/ingest/text | Ingest Plain Text for Semantic Search
 *SemanticSearchApi* | [**semanticSearchWebpageIngestion**](docs/SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/ingest/webpage | 
 *TranscriptionApi* | [**transcriptionAsynchronous**](docs/TranscriptionApi.md#transcriptionAsynchronous) | **POST** /api/transcribe/upload | Upload audio file for asynchronous transcription
 *TranscriptionApi* | [**transcriptionGetById**](docs/TranscriptionApi.md#transcriptionGetById) | **GET** /api/transcribe | Get transcription status and data
@@ -166,8 +165,6 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [ApiExtractThematicSimilarityClusterPostRequest](docs/ApiExtractThematicSimilarityClusterPostRequest.md)
- - [AskDocumentRequest](docs/AskDocumentRequest.md)
- - [AskDocumentResponse](docs/AskDocumentResponse.md)
  - [Centroid](docs/Centroid.md)
  - [Citation](docs/Citation.md)
  - [Coordinate](docs/Coordinate.md)

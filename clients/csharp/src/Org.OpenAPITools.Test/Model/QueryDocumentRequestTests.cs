@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -80,6 +79,78 @@ namespace Org.OpenAPITools.Test.Model
         public void FilterTest()
         {
             // TODO unit test for the property 'Filter'
+        }
+
+        /// <summary>
+        /// Test the property 'SearchMode'
+        /// </summary>
+        [Fact]
+        public void SearchModeTest()
+        {
+            // TODO unit test for the property 'SearchMode'
+        }
+
+        /// <summary>
+        /// Test the property 'Language'
+        /// </summary>
+        [Fact]
+        public void LanguageTest()
+        {
+            // TODO unit test for the property 'Language'
+        }
+
+        /// <summary>
+        /// Test the property 'LanguageDetection'
+        /// </summary>
+        [Fact]
+        public void LanguageDetectionTest()
+        {
+            // TODO unit test for the property 'LanguageDetection'
+        }
+
+        /// <summary>
+        /// Test the property 'FtsMinScore'
+        /// </summary>
+        [Fact]
+        public void FtsMinScoreTest()
+        {
+            // TODO unit test for the property 'FtsMinScore'
+        }
+
+        /// <summary>
+        /// Test the property 'FtsWeight'
+        /// </summary>
+        [Fact]
+        public void FtsWeightTest()
+        {
+            // TODO unit test for the property 'FtsWeight'
+        }
+
+        /// <summary>
+        /// Test the property 'SemanticMinRelevance'
+        /// </summary>
+        [Fact]
+        public void SemanticMinRelevanceTest()
+        {
+            // TODO unit test for the property 'SemanticMinRelevance'
+        }
+
+        /// <summary>
+        /// Test the property 'SemanticWeight'
+        /// </summary>
+        [Fact]
+        public void SemanticWeightTest()
+        {
+            // TODO unit test for the property 'SemanticWeight'
+        }
+
+        /// <summary>
+        /// Test the property 'SmoothingFactorK'
+        /// </summary>
+        [Fact]
+        public void SmoothingFactorKTest()
+        {
+            // TODO unit test for the property 'SmoothingFactorK'
         }
 
         /// <summary>

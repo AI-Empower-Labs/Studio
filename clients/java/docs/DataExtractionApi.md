@@ -73,9 +73,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 
 <a id="embedding"></a>
 # **embedding**
@@ -138,9 +138,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 
 <a id="keywordExtraction"></a>
 # **keywordExtraction**
@@ -203,9 +203,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 
 <a id="namedEntityRecognition"></a>
 # **namedEntityRecognition**
@@ -268,9 +268,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 
 <a id="semanticSimilarity"></a>
 # **semanticSimilarity**
@@ -333,9 +333,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 
 <a id="tokenCount"></a>
 # **tokenCount**
@@ -398,9 +398,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 
 <a id="tokenize"></a>
 # **tokenize**
@@ -463,9 +463,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 
 <a id="transcriptionSynchronous"></a>
 # **transcriptionSynchronous**
@@ -542,7 +542,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 

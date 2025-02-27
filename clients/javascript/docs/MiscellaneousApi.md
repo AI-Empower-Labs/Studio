@@ -24,7 +24,7 @@ import StudioAiEmpowerLabs from 'studio_ai_empower_labs';
 
 let apiInstance = new StudioAiEmpowerLabs.MiscellaneousApi();
 let opts = {
-  'cacheKey': "cacheKey_example" // String | The LLM cache key to remove
+  'key': "key_example" // String | The LLM cache key to remove
 };
 apiInstance.deleteLlmCacheEntry(opts, (error, data, response) => {
   if (error) {
@@ -40,7 +40,7 @@ apiInstance.deleteLlmCacheEntry(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cacheKey** | **String**| The LLM cache key to remove | [optional] 
+ **key** | **String**| The LLM cache key to remove | [optional] 
 
 ### Return type
 

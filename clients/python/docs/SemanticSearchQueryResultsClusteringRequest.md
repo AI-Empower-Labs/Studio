@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cluster_count** | **int** | The number of clusters to be used in k-means clustering. | [optional] [default to 3]
 **max_degree_of_parallelism** | **int** | The Maximum Degrees Of Parallelism | [optional] [default to 1]
-**max_tokens** | **int** | The maximum number of tokens to be used in the KMeans clustering algorithm. | [optional] [default to 10]
 **index** | **str** | Optional index to specify which index to search in. Defaults to &#39;default&#39;. | [optional] 
 **min_relevance** | **float** | The minimum relevance value used for querying the search result audit. | [optional] 
 **max_relevance** | **float** | The maximum relevance value to be used in the search query. | [optional] 

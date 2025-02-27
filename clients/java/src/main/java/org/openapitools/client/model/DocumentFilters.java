@@ -53,20 +53,22 @@ import org.openapitools.client.JSON;
 /**
  * DocumentFilters
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class DocumentFilters {
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
+  @javax.annotation.Nullable
   private List<String> documentId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
+  @javax.annotation.Nullable
   private Map<String, List<String>> tags;
 
   public DocumentFilters() {
   }
 
-  public DocumentFilters documentId(List<String> documentId) {
+  public DocumentFilters documentId(@javax.annotation.Nullable List<String> documentId) {
     this.documentId = documentId;
     return this;
   }
@@ -88,12 +90,12 @@ public class DocumentFilters {
     return documentId;
   }
 
-  public void setDocumentId(List<String> documentId) {
+  public void setDocumentId(@javax.annotation.Nullable List<String> documentId) {
     this.documentId = documentId;
   }
 
 
-  public DocumentFilters tags(Map<String, List<String>> tags) {
+  public DocumentFilters tags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
     return this;
   }
@@ -115,7 +117,7 @@ public class DocumentFilters {
     return tags;
   }
 
-  public void setTags(Map<String, List<String>> tags) {
+  public void setTags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
   }
 

@@ -53,36 +53,42 @@ import org.openapitools.client.JSON;
 /**
  * Partition
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class Partition {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private String text;
 
   public static final String SERIALIZED_NAME_RELEVANCE = "relevance";
   @SerializedName(SERIALIZED_NAME_RELEVANCE)
+  @javax.annotation.Nullable
   private Float relevance;
 
   public static final String SERIALIZED_NAME_PARTITION_NUMBER = "partitionNumber";
   @SerializedName(SERIALIZED_NAME_PARTITION_NUMBER)
+  @javax.annotation.Nullable
   private Integer partitionNumber;
 
   public static final String SERIALIZED_NAME_SECTION_NUMBER = "sectionNumber";
   @SerializedName(SERIALIZED_NAME_SECTION_NUMBER)
+  @javax.annotation.Nullable
   private Integer sectionNumber;
 
   public static final String SERIALIZED_NAME_LAST_UPDATE = "lastUpdate";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATE)
+  @javax.annotation.Nullable
   private OffsetDateTime lastUpdate;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
+  @javax.annotation.Nullable
   private Map<String, List<String>> tags;
 
   public Partition() {
   }
 
-  public Partition text(String text) {
+  public Partition text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -96,12 +102,12 @@ public class Partition {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 
 
-  public Partition relevance(Float relevance) {
+  public Partition relevance(@javax.annotation.Nullable Float relevance) {
     this.relevance = relevance;
     return this;
   }
@@ -115,12 +121,12 @@ public class Partition {
     return relevance;
   }
 
-  public void setRelevance(Float relevance) {
+  public void setRelevance(@javax.annotation.Nullable Float relevance) {
     this.relevance = relevance;
   }
 
 
-  public Partition partitionNumber(Integer partitionNumber) {
+  public Partition partitionNumber(@javax.annotation.Nullable Integer partitionNumber) {
     this.partitionNumber = partitionNumber;
     return this;
   }
@@ -134,12 +140,12 @@ public class Partition {
     return partitionNumber;
   }
 
-  public void setPartitionNumber(Integer partitionNumber) {
+  public void setPartitionNumber(@javax.annotation.Nullable Integer partitionNumber) {
     this.partitionNumber = partitionNumber;
   }
 
 
-  public Partition sectionNumber(Integer sectionNumber) {
+  public Partition sectionNumber(@javax.annotation.Nullable Integer sectionNumber) {
     this.sectionNumber = sectionNumber;
     return this;
   }
@@ -153,12 +159,12 @@ public class Partition {
     return sectionNumber;
   }
 
-  public void setSectionNumber(Integer sectionNumber) {
+  public void setSectionNumber(@javax.annotation.Nullable Integer sectionNumber) {
     this.sectionNumber = sectionNumber;
   }
 
 
-  public Partition lastUpdate(OffsetDateTime lastUpdate) {
+  public Partition lastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
     return this;
   }
@@ -172,12 +178,12 @@ public class Partition {
     return lastUpdate;
   }
 
-  public void setLastUpdate(OffsetDateTime lastUpdate) {
+  public void setLastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
   }
 
 
-  public Partition tags(Map<String, List<String>> tags) {
+  public Partition tags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
     return this;
   }
@@ -199,7 +205,7 @@ public class Partition {
     return tags;
   }
 
-  public void setTags(Map<String, List<String>> tags) {
+  public void setTags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
   }
 

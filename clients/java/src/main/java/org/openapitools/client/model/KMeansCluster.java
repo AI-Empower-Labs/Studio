@@ -49,41 +49,44 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Represents the response object for K-Means Clustering, contains cluster size and array of centroids
+ * Response object for K-Means Clustering containing cluster size and centroids array
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class KMeansCluster {
   public static final String SERIALIZED_NAME_CLUSTER_SIZE = "clusterSize";
   @SerializedName(SERIALIZED_NAME_CLUSTER_SIZE)
+  @javax.annotation.Nonnull
   private Integer clusterSize;
 
   public static final String SERIALIZED_NAME_CENTROIDS = "centroids";
   @SerializedName(SERIALIZED_NAME_CENTROIDS)
+  @javax.annotation.Nonnull
   private List<Centroid> centroids = new ArrayList<>();
 
   public KMeansCluster() {
   }
 
-  public KMeansCluster clusterSize(Integer clusterSize) {
+  public KMeansCluster clusterSize(@javax.annotation.Nonnull Integer clusterSize) {
     this.clusterSize = clusterSize;
     return this;
   }
 
   /**
-   * Size of the cluster
+   * Number of points in the cluster
+   * minimum: 0
    * @return clusterSize
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Integer getClusterSize() {
     return clusterSize;
   }
 
-  public void setClusterSize(Integer clusterSize) {
+  public void setClusterSize(@javax.annotation.Nonnull Integer clusterSize) {
     this.clusterSize = clusterSize;
   }
 
 
-  public KMeansCluster centroids(List<Centroid> centroids) {
+  public KMeansCluster centroids(@javax.annotation.Nonnull List<Centroid> centroids) {
     this.centroids = centroids;
     return this;
   }
@@ -97,15 +100,15 @@ public class KMeansCluster {
   }
 
   /**
-   * Array of Centroid objects
+   * List of cluster centroids
    * @return centroids
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public List<Centroid> getCentroids() {
     return centroids;
   }
 
-  public void setCentroids(List<Centroid> centroids) {
+  public void setCentroids(@javax.annotation.Nonnull List<Centroid> centroids) {
     this.centroids = centroids;
   }
 
@@ -162,6 +165,8 @@ public class KMeansCluster {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("clusterSize");
+    openapiRequiredFields.add("centroids");
   }
 
   /**
@@ -184,21 +189,24 @@ public class KMeansCluster {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `KMeansCluster` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("centroids") != null && !jsonObj.get("centroids").isJsonNull()) {
-        JsonArray jsonArraycentroids = jsonObj.getAsJsonArray("centroids");
-        if (jsonArraycentroids != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("centroids").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `centroids` to be an array in the JSON string but got `%s`", jsonObj.get("centroids").toString()));
-          }
 
-          // validate the optional field `centroids` (array)
-          for (int i = 0; i < jsonArraycentroids.size(); i++) {
-            Centroid.validateJsonElement(jsonArraycentroids.get(i));
-          };
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : KMeansCluster.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the json data is an array
+      if (!jsonObj.get("centroids").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `centroids` to be an array in the JSON string but got `%s`", jsonObj.get("centroids").toString()));
+      }
+
+      JsonArray jsonArraycentroids = jsonObj.getAsJsonArray("centroids");
+      // validate the required field `centroids` (array)
+      for (int i = 0; i < jsonArraycentroids.size(); i++) {
+        Centroid.validateJsonElement(jsonArraycentroids.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

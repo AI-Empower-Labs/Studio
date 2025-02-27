@@ -26,49 +26,49 @@ class DocumentCitationTest : ShouldSpec() {
         // uncomment below to create an instance of DocumentCitation
         //val modelInstance = DocumentCitation()
 
-        // to test the property `link` - Link to the source, if available.
+        // to test the property `link` - URL or reference to the original source document
         should("test link") {
             // uncomment below to test the property
             //modelInstance.link shouldBe ("TODO")
         }
 
-        // to test the property `index` - Link to the source, if available.
+        // to test the property `index` - Identifier or position of the citation within the source
         should("test index") {
             // uncomment below to test the property
             //modelInstance.index shouldBe ("TODO")
         }
 
-        // to test the property `documentId` - Link to the source, if available.
+        // to test the property `documentId` - Unique identifier for the document
         should("test documentId") {
             // uncomment below to test the property
             //modelInstance.documentId shouldBe ("TODO")
         }
 
-        // to test the property `fileId` - Link to the source, if available.
+        // to test the property `fileId` - Unique identifier for the file in storage
         should("test fileId") {
             // uncomment below to test the property
             //modelInstance.fileId shouldBe ("TODO")
         }
 
-        // to test the property `sourceContentType` - Type of source, e.g. PDF, Word, Chat, etc.
+        // to test the property `sourceContentType` - Format of the source (e.g., 'pdf', 'docx', 'chat')
         should("test sourceContentType") {
             // uncomment below to test the property
             //modelInstance.sourceContentType shouldBe ("TODO")
         }
 
-        // to test the property `sourceName` - Name of the source, e.g. file name.
+        // to test the property `sourceName` - Human-readable name or title of the source
         should("test sourceName") {
             // uncomment below to test the property
             //modelInstance.sourceName shouldBe ("TODO")
         }
 
-        // to test the property `sourceUrl` - URL of the source, used for web pages and external data
+        // to test the property `sourceUrl` - Web URL of the source for online content
         should("test sourceUrl") {
             // uncomment below to test the property
             //modelInstance.sourceUrl shouldBe ("TODO")
         }
 
-        // to test the property `partitions` - List of chunks/blocks of text used.
+        // to test the property `partitions` - Array of text segments used from the source
         should("test partitions") {
             // uncomment below to test the property
             //modelInstance.partitions shouldBe ("TODO")

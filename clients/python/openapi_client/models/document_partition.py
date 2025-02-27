@@ -29,10 +29,15 @@ class DocumentPartition(BaseModel):
     DocumentPartition
     """ # noqa: E501
     text: Optional[StrictStr] = Field(default=None, description="Content of the document partition, aka chunk/block of text.")
-    relevance: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity.")
+    full_text_search_rank: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Rank value calculated from full-text search, used to determine the relevance of search results.", alias="fullTextSearchRank")
+    semantic_similarity: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Represents the semantic similarity score associated with a record.", alias="semanticSimilarity")
+    full_text_search_rrf: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Reciprocal rank fusion (RRF) score specifically derived from full-text search relevance.", alias="fullTextSearchRrf")
+    semantic_rrf: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Reciprocal Rank Fusion (RRF) score based on semantic similarity", alias="semanticRrf")
+    rrf_score: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Represents the combined Reciprocal Rank Fusion (RRF) score, which integrates results from multiple ranking methods such as semantic similarity and full-text search to enhance result relevance.", alias="rrfScore")
+    language: Optional[StrictStr] = Field(default=None, description="Language of partition if any. Optional.")
     last_update: Optional[datetime] = Field(default=None, description="Timestamp about the file/text partition.", alias="lastUpdate")
     tags: Optional[Dict[str, List[StrictStr]]] = Field(default=None, description="List of document tags")
-    __properties: ClassVar[List[str]] = ["text", "relevance", "lastUpdate", "tags"]
+    __properties: ClassVar[List[str]] = ["text", "fullTextSearchRank", "semanticSimilarity", "fullTextSearchRrf", "semanticRrf", "rrfScore", "language", "lastUpdate", "tags"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +83,36 @@ class DocumentPartition(BaseModel):
         if self.text is None and "text" in self.model_fields_set:
             _dict['text'] = None
 
+        # set to None if full_text_search_rank (nullable) is None
+        # and model_fields_set contains the field
+        if self.full_text_search_rank is None and "full_text_search_rank" in self.model_fields_set:
+            _dict['fullTextSearchRank'] = None
+
+        # set to None if semantic_similarity (nullable) is None
+        # and model_fields_set contains the field
+        if self.semantic_similarity is None and "semantic_similarity" in self.model_fields_set:
+            _dict['semanticSimilarity'] = None
+
+        # set to None if full_text_search_rrf (nullable) is None
+        # and model_fields_set contains the field
+        if self.full_text_search_rrf is None and "full_text_search_rrf" in self.model_fields_set:
+            _dict['fullTextSearchRrf'] = None
+
+        # set to None if semantic_rrf (nullable) is None
+        # and model_fields_set contains the field
+        if self.semantic_rrf is None and "semantic_rrf" in self.model_fields_set:
+            _dict['semanticRrf'] = None
+
+        # set to None if rrf_score (nullable) is None
+        # and model_fields_set contains the field
+        if self.rrf_score is None and "rrf_score" in self.model_fields_set:
+            _dict['rrfScore'] = None
+
+        # set to None if language (nullable) is None
+        # and model_fields_set contains the field
+        if self.language is None and "language" in self.model_fields_set:
+            _dict['language'] = None
+
         # set to None if tags (nullable) is None
         # and model_fields_set contains the field
         if self.tags is None and "tags" in self.model_fields_set:
@@ -96,7 +131,12 @@ class DocumentPartition(BaseModel):
 
         _obj = cls.model_validate({
             "text": obj.get("text"),
-            "relevance": obj.get("relevance"),
+            "fullTextSearchRank": obj.get("fullTextSearchRank"),
+            "semanticSimilarity": obj.get("semanticSimilarity"),
+            "fullTextSearchRrf": obj.get("fullTextSearchRrf"),
+            "semanticRrf": obj.get("semanticRrf"),
+            "rrfScore": obj.get("rrfScore"),
+            "language": obj.get("language"),
             "lastUpdate": obj.get("lastUpdate"),
             "tags": obj.get("tags")
         })

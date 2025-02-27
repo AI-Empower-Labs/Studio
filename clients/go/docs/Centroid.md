@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Coordinate** | Pointer to [**Coordinate**](Coordinate.md) |  | [optional] 
-**DataPoints** | Pointer to [**[]Coordinate**](Coordinate.md) | Array of data points belonging to the centroid | [optional] 
+**DataPoints** | Pointer to [**[]Coordinate**](Coordinate.md) | Data points assigned to this centroid | [optional] 
 
 ## Methods
 

@@ -52,28 +52,32 @@ import org.openapitools.client.JSON;
 /**
  * ListDocumentResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ListDocumentResponse {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private String id;
 
   public static final String SERIALIZED_NAME_VECTOR = "vector";
   @SerializedName(SERIALIZED_NAME_VECTOR)
+  @javax.annotation.Nullable
   private Object vector;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
+  @javax.annotation.Nullable
   private Map<String, List<String>> tags = new HashMap<>();
 
   public static final String SERIALIZED_NAME_PAYLOAD = "payload";
   @SerializedName(SERIALIZED_NAME_PAYLOAD)
+  @javax.annotation.Nullable
   private Map<String, Object> payload;
 
   public ListDocumentResponse() {
   }
 
-  public ListDocumentResponse id(String id) {
+  public ListDocumentResponse id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
   }
@@ -87,12 +91,12 @@ public class ListDocumentResponse {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
 
-  public ListDocumentResponse vector(Object vector) {
+  public ListDocumentResponse vector(@javax.annotation.Nullable Object vector) {
     this.vector = vector;
     return this;
   }
@@ -106,12 +110,12 @@ public class ListDocumentResponse {
     return vector;
   }
 
-  public void setVector(Object vector) {
+  public void setVector(@javax.annotation.Nullable Object vector) {
     this.vector = vector;
   }
 
 
-  public ListDocumentResponse tags(Map<String, List<String>> tags) {
+  public ListDocumentResponse tags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
     return this;
   }
@@ -133,12 +137,12 @@ public class ListDocumentResponse {
     return tags;
   }
 
-  public void setTags(Map<String, List<String>> tags) {
+  public void setTags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
   }
 
 
-  public ListDocumentResponse payload(Map<String, Object> payload) {
+  public ListDocumentResponse payload(@javax.annotation.Nullable Map<String, Object> payload) {
     this.payload = payload;
     return this;
   }
@@ -160,7 +164,7 @@ public class ListDocumentResponse {
     return payload;
   }
 
-  public void setPayload(Map<String, Object> payload) {
+  public void setPayload(@javax.annotation.Nullable Map<String, Object> payload) {
     this.payload = payload;
   }
 

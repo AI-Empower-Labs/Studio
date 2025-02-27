@@ -4,84 +4,17 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SemanticSearchAsk**](SemanticSearchAPI.md#SemanticSearchAsk) | **Post** /api/semantic/ask | 
 [**SemanticSearchDeleteDocument**](SemanticSearchAPI.md#SemanticSearchDeleteDocument) | **Delete** /api/semantic/{documentId} | 
-[**SemanticSearchDeleteIndex**](SemanticSearchAPI.md#SemanticSearchDeleteIndex) | **Delete** /api/semantic/index | 
-[**SemanticSearchFileIngestion**](SemanticSearchAPI.md#SemanticSearchFileIngestion) | **Post** /api/ingest/file | 
+[**SemanticSearchDeleteIndex**](SemanticSearchAPI.md#SemanticSearchDeleteIndex) | **Delete** /api/semantic/index/{name} | 
+[**SemanticSearchFileIngestion**](SemanticSearchAPI.md#SemanticSearchFileIngestion) | **Post** /api/ingest/file | Ingest a File into Semantic Search
 [**SemanticSearchIngestionStatus**](SemanticSearchAPI.md#SemanticSearchIngestionStatus) | **Get** /api/ingest/status | 
 [**SemanticSearchList**](SemanticSearchAPI.md#SemanticSearchList) | **Post** /api/semantic/list | 
 [**SemanticSearchQuery**](SemanticSearchAPI.md#SemanticSearchQuery) | **Post** /api/semantic/query | 
 [**SemanticSearchQueryResultsClustering**](SemanticSearchAPI.md#SemanticSearchQueryResultsClustering) | **Post** /api/semantic/query-results-clustering | 
 [**SemanticSearchRerank**](SemanticSearchAPI.md#SemanticSearchRerank) | **Post** /api/semantic/rerank | 
-[**SemanticSearchTextIngestion**](SemanticSearchAPI.md#SemanticSearchTextIngestion) | **Post** /api/ingest/text | 
+[**SemanticSearchTextIngestion**](SemanticSearchAPI.md#SemanticSearchTextIngestion) | **Post** /api/ingest/text | Ingest Plain Text for Semantic Search
 [**SemanticSearchWebpageIngestion**](SemanticSearchAPI.md#SemanticSearchWebpageIngestion) | **Post** /api/ingest/webpage | 
 
-
-
-## SemanticSearchAsk
-
-> AskDocumentResponse SemanticSearchAsk(ctx).AskDocumentRequest(askDocumentRequest).Execute()
-
-
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	askDocumentRequest := *openapiclient.NewAskDocumentRequest() // AskDocumentRequest | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SemanticSearchAPI.SemanticSearchAsk(context.Background()).AskDocumentRequest(askDocumentRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SemanticSearchAPI.SemanticSearchAsk``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SemanticSearchAsk`: AskDocumentResponse
-	fmt.Fprintf(os.Stdout, "Response from `SemanticSearchAPI.SemanticSearchAsk`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSemanticSearchAskRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **askDocumentRequest** | [**AskDocumentRequest**](AskDocumentRequest.md) |  | 
-
-### Return type
-
-[**AskDocumentResponse**](AskDocumentResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## SemanticSearchDeleteDocument
@@ -224,9 +157,9 @@ No authorization required
 
 ## SemanticSearchFileIngestion
 
-> IngestDocumentResponse SemanticSearchFileIngestion(ctx).Files(files).DocumentId(documentId).Index(index).Pipeline(pipeline).WebHookUrl(webHookUrl).EmbeddingModel(embeddingModel).Args(args).Tags(tags).Execute()
+> IngestDocumentResponse SemanticSearchFileIngestion(ctx).DocumentId2(documentId2).Files(files).DocumentId(documentId).Index(index).Pipeline(pipeline).WebHookUrl(webHookUrl).EmbeddingModel(embeddingModel).Index2(index2).WebHookUrl2(webHookUrl2).EmbeddingModelName(embeddingModelName).Context(context).Tags(tags).IngestionPipeline(ingestionPipeline).LanguageAutoDetection(languageAutoDetection).Language(language).Execute()
 
-
+Ingest a File into Semantic Search
 
 
 
@@ -243,18 +176,25 @@ import (
 )
 
 func main() {
-	files := []*os.File{"TODO"} // []*os.File | The file object to ingest.
-	documentId := "documentId_example" // string | Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. (optional)
-	index := "index_example" // string | Optional value to specify with index the document should be ingested. Defaults to 'default'. (optional)
-	pipeline := []string{"Inner_example"} // []string | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
-	webHookUrl := "webHookUrl_example" // string | Url to use for webhook callback when operation finishes or fails. (optional)
-	embeddingModel := "embeddingModel_example" // string | Embedding model to use in ingestion. Optional. Default to configured default. (optional)
-	args := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} |  (optional)
-	tags := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} | Tags to associate with ingestion (optional)
+	documentId2 := "documentId_example" // string | Unique identifier for the document to ingest.
+	files := []*os.File{"TODO"} // []*os.File | A collection of files to be ingested. Must contain at least one file.
+	documentId := "doc123" // string | A unique identifier for the document within the index. Documents with the same ID will be overwritten. (optional)
+	index := "my_custom_index" // string | The name of the index where the document will be ingested. Defaults to 'default' if not specified. (optional)
+	pipeline := []string{"Inner_example"} // []string | An array of ingestion pipeline step names. If not provided, server default steps will be used. (optional)
+	webHookUrl := "https://example.com/webhook" // string | A URL to receive a callback via webhook when the ingestion process is completed or fails. (optional)
+	embeddingModel := "model_v2" // string | The embedding model to use during ingestion. If not specified, the server's default model will be applied. (optional)
+	index2 := "index_example" // string | Optional index name where the document will be stored. (optional)
+	webHookUrl2 := "webHookUrl_example" // string | Optional webhook URL to notify upon completion. (optional)
+	embeddingModelName := "embeddingModelName_example" // string | Optional name of the embedding model to use during ingestion. (optional)
+	context := map[string]string{"key": "Inner_example"} // map[string]string | Optional key-value pairs for additional context or metadata. (optional)
+	tags := map[string][]string{"key": []string{"Inner_example"}} // map[string][]string | A collection of tags associated with the document. Tags can be language-specific. (optional)
+	ingestionPipeline := []string{"Inner_example"} // []string | Optional list of ingestion pipeline steps. Allows custom processing. (optional)
+	languageAutoDetection := true // bool | Enable automatic language detection for document content. (optional) (default to false)
+	language := "language_example" // string | Force a specific language for full-text search. Use 'simple' for no language or leave empty. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SemanticSearchAPI.SemanticSearchFileIngestion(context.Background()).Files(files).DocumentId(documentId).Index(index).Pipeline(pipeline).WebHookUrl(webHookUrl).EmbeddingModel(embeddingModel).Args(args).Tags(tags).Execute()
+	resp, r, err := apiClient.SemanticSearchAPI.SemanticSearchFileIngestion(context.Background()).DocumentId2(documentId2).Files(files).DocumentId(documentId).Index(index).Pipeline(pipeline).WebHookUrl(webHookUrl).EmbeddingModel(embeddingModel).Index2(index2).WebHookUrl2(webHookUrl2).EmbeddingModelName(embeddingModelName).Context(context).Tags(tags).IngestionPipeline(ingestionPipeline).LanguageAutoDetection(languageAutoDetection).Language(language).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SemanticSearchAPI.SemanticSearchFileIngestion``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -275,14 +215,21 @@ Other parameters are passed through a pointer to a apiSemanticSearchFileIngestio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **files** | **[]*os.File** | The file object to ingest. | 
- **documentId** | **string** | Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. | 
- **index** | **string** | Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. | 
- **pipeline** | **[]string** | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | 
- **webHookUrl** | **string** | Url to use for webhook callback when operation finishes or fails. | 
- **embeddingModel** | **string** | Embedding model to use in ingestion. Optional. Default to configured default. | 
- **args** | **map[string]interface{}** |  | 
- **tags** | **map[string]interface{}** | Tags to associate with ingestion | 
+ **documentId2** | **string** | Unique identifier for the document to ingest. | 
+ **files** | **[]*os.File** | A collection of files to be ingested. Must contain at least one file. | 
+ **documentId** | **string** | A unique identifier for the document within the index. Documents with the same ID will be overwritten. | 
+ **index** | **string** | The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. | 
+ **pipeline** | **[]string** | An array of ingestion pipeline step names. If not provided, server default steps will be used. | 
+ **webHookUrl** | **string** | A URL to receive a callback via webhook when the ingestion process is completed or fails. | 
+ **embeddingModel** | **string** | The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. | 
+ **index2** | **string** | Optional index name where the document will be stored. | 
+ **webHookUrl2** | **string** | Optional webhook URL to notify upon completion. | 
+ **embeddingModelName** | **string** | Optional name of the embedding model to use during ingestion. | 
+ **context** | **map[string]string** | Optional key-value pairs for additional context or metadata. | 
+ **tags** | **map[string][]string** | A collection of tags associated with the document. Tags can be language-specific. | 
+ **ingestionPipeline** | **[]string** | Optional list of ingestion pipeline steps. Allows custom processing. | 
+ **languageAutoDetection** | **bool** | Enable automatic language detection for document content. | [default to false]
+ **language** | **string** | Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. | 
 
 ### Return type
 
@@ -636,7 +583,7 @@ No authorization required
 
 > IngestDocumentResponse SemanticSearchTextIngestion(ctx).IngestTextDocumentRequest(ingestTextDocumentRequest).Execute()
 
-
+Ingest Plain Text for Semantic Search
 
 
 
@@ -653,7 +600,7 @@ import (
 )
 
 func main() {
-	ingestTextDocumentRequest := *openapiclient.NewIngestTextDocumentRequest("DocumentId_example", "Text_example") // IngestTextDocumentRequest | 
+	ingestTextDocumentRequest := *openapiclient.NewIngestTextDocumentRequest("Text_example", "20250225.103045.abcd1234efgh5678") // IngestTextDocumentRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -719,7 +666,7 @@ import (
 )
 
 func main() {
-	ingestWebPageDocumentRequest := *openapiclient.NewIngestWebPageDocumentRequest("DocumentId_example", "Url_example") // IngestWebPageDocumentRequest | 
+	ingestWebPageDocumentRequest := *openapiclient.NewIngestWebPageDocumentRequest("Url_example", "20250225.103045.abcd1234efgh5678") // IngestWebPageDocumentRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

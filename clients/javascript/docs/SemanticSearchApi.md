@@ -4,63 +4,17 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**semanticSearchAsk**](SemanticSearchApi.md#semanticSearchAsk) | **POST** /api/semantic/ask | 
 [**semanticSearchDeleteDocument**](SemanticSearchApi.md#semanticSearchDeleteDocument) | **DELETE** /api/semantic/{documentId} | 
-[**semanticSearchDeleteIndex**](SemanticSearchApi.md#semanticSearchDeleteIndex) | **DELETE** /api/semantic/index | 
-[**semanticSearchFileIngestion**](SemanticSearchApi.md#semanticSearchFileIngestion) | **POST** /api/ingest/file | 
+[**semanticSearchDeleteIndex**](SemanticSearchApi.md#semanticSearchDeleteIndex) | **DELETE** /api/semantic/index/{name} | 
+[**semanticSearchFileIngestion**](SemanticSearchApi.md#semanticSearchFileIngestion) | **POST** /api/ingest/file | Ingest a File into Semantic Search
 [**semanticSearchIngestionStatus**](SemanticSearchApi.md#semanticSearchIngestionStatus) | **GET** /api/ingest/status | 
 [**semanticSearchList**](SemanticSearchApi.md#semanticSearchList) | **POST** /api/semantic/list | 
 [**semanticSearchQuery**](SemanticSearchApi.md#semanticSearchQuery) | **POST** /api/semantic/query | 
 [**semanticSearchQueryResultsClustering**](SemanticSearchApi.md#semanticSearchQueryResultsClustering) | **POST** /api/semantic/query-results-clustering | 
 [**semanticSearchRerank**](SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank | 
-[**semanticSearchTextIngestion**](SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/ingest/text | 
+[**semanticSearchTextIngestion**](SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/ingest/text | Ingest Plain Text for Semantic Search
 [**semanticSearchWebpageIngestion**](SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/ingest/webpage | 
 
-
-
-## semanticSearchAsk
-
-> AskDocumentResponse semanticSearchAsk(askDocumentRequest)
-
-
-
-Ask questions over ingested documents
-
-### Example
-
-```javascript
-import StudioAiEmpowerLabs from 'studio_ai_empower_labs';
-
-let apiInstance = new StudioAiEmpowerLabs.SemanticSearchApi();
-let askDocumentRequest = {"query":"Find invoice totals","index":"Studio","filter":[{"documentId":["SomeUniqueId"],"tags":{"A":[]}}],"minRelevance":0.8}; // AskDocumentRequest | 
-apiInstance.semanticSearchAsk(askDocumentRequest, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **askDocumentRequest** | [**AskDocumentRequest**](AskDocumentRequest.md)|  | 
-
-### Return type
-
-[**AskDocumentResponse**](AskDocumentResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
 
 
 ## semanticSearchDeleteDocument
@@ -157,11 +111,11 @@ No authorization required
 
 ## semanticSearchFileIngestion
 
-> IngestDocumentResponse semanticSearchFileIngestion(files, opts)
+> IngestDocumentResponse semanticSearchFileIngestion(documentId2, files, opts)
 
+Ingest a File into Semantic Search
 
-
-Import file document into semantic search
+Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
 
 ### Example
 
@@ -169,17 +123,24 @@ Import file document into semantic search
 import StudioAiEmpowerLabs from 'studio_ai_empower_labs';
 
 let apiInstance = new StudioAiEmpowerLabs.SemanticSearchApi();
-let files = ["null"]; // [File] | The file object to ingest.
+let documentId2 = "documentId_example"; // String | Unique identifier for the document to ingest.
+let files = ["null"]; // [File] | A collection of files to be ingested. Must contain at least one file.
 let opts = {
-  'documentId': "documentId_example", // String | Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.
-  'index': "index_example", // String | Optional value to specify with index the document should be ingested. Defaults to 'default'.
-  'pipeline': ["null"], // [String] | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
-  'webHookUrl': "webHookUrl_example", // String | Url to use for webhook callback when operation finishes or fails.
-  'embeddingModel': "embeddingModel_example", // String | Embedding model to use in ingestion. Optional. Default to configured default.
-  'args': {key: null}, // {String: Object} | 
-  'tags': {key: null} // {String: Object} | Tags to associate with ingestion
+  'documentId': "doc123", // String | A unique identifier for the document within the index. Documents with the same ID will be overwritten.
+  'index': "my_custom_index", // String | The name of the index where the document will be ingested. Defaults to 'default' if not specified.
+  'pipeline': ["null"], // [String] | An array of ingestion pipeline step names. If not provided, server default steps will be used.
+  'webHookUrl': "https://example.com/webhook", // String | A URL to receive a callback via webhook when the ingestion process is completed or fails.
+  'embeddingModel': "model_v2", // String | The embedding model to use during ingestion. If not specified, the server's default model will be applied.
+  'index2': "index_example", // String | Optional index name where the document will be stored.
+  'webHookUrl2': "webHookUrl_example", // String | Optional webhook URL to notify upon completion.
+  'embeddingModelName': "embeddingModelName_example", // String | Optional name of the embedding model to use during ingestion.
+  'context': {key: "null"}, // {String: String} | Optional key-value pairs for additional context or metadata.
+  'tags': {key: null}, // {String: [String]} | A collection of tags associated with the document. Tags can be language-specific.
+  'ingestionPipeline': ["null"], // [String] | Optional list of ingestion pipeline steps. Allows custom processing.
+  'languageAutoDetection': false, // Boolean | Enable automatic language detection for document content.
+  'language': "language_example" // String | Force a specific language for full-text search. Use 'simple' for no language or leave empty.
 };
-apiInstance.semanticSearchFileIngestion(files, opts, (error, data, response) => {
+apiInstance.semanticSearchFileIngestion(documentId2, files, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -193,14 +154,21 @@ apiInstance.semanticSearchFileIngestion(files, opts, (error, data, response) => 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **files** | **[File]**| The file object to ingest. | 
- **documentId** | **String**| Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. | [optional] 
- **index** | **String**| Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. | [optional] 
- **pipeline** | [**[String]**](String.md)| Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] 
- **webHookUrl** | **String**| Url to use for webhook callback when operation finishes or fails. | [optional] 
- **embeddingModel** | **String**| Embedding model to use in ingestion. Optional. Default to configured default. | [optional] 
- **args** | [**{String: Object}**](Object.md)|  | [optional] 
- **tags** | [**{String: Object}**](Object.md)| Tags to associate with ingestion | [optional] 
+ **documentId2** | **String**| Unique identifier for the document to ingest. | 
+ **files** | **[File]**| A collection of files to be ingested. Must contain at least one file. | 
+ **documentId** | **String**| A unique identifier for the document within the index. Documents with the same ID will be overwritten. | [optional] 
+ **index** | **String**| The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. | [optional] 
+ **pipeline** | [**[String]**](String.md)| An array of ingestion pipeline step names. If not provided, server default steps will be used. | [optional] 
+ **webHookUrl** | **String**| A URL to receive a callback via webhook when the ingestion process is completed or fails. | [optional] 
+ **embeddingModel** | **String**| The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. | [optional] 
+ **index2** | **String**| Optional index name where the document will be stored. | [optional] 
+ **webHookUrl2** | **String**| Optional webhook URL to notify upon completion. | [optional] 
+ **embeddingModelName** | **String**| Optional name of the embedding model to use during ingestion. | [optional] 
+ **context** | [**{String: String}**](Object.md)| Optional key-value pairs for additional context or metadata. | [optional] 
+ **tags** | [**{String: [String]}**](Object.md)| A collection of tags associated with the document. Tags can be language-specific. | [optional] 
+ **ingestionPipeline** | [**[String]**](String.md)| Optional list of ingestion pipeline steps. Allows custom processing. | [optional] 
+ **languageAutoDetection** | **Boolean**| Enable automatic language detection for document content. | [optional] [default to false]
+ **language** | **String**| Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. | [optional] 
 
 ### Return type
 
@@ -312,7 +280,7 @@ No authorization required
 
 
 
-Query ingested documents using semantic search
+Performs semantic or hybrid search over previously ingested data.
 
 ### Example
 
@@ -445,9 +413,9 @@ No authorization required
 
 > IngestDocumentResponse semanticSearchTextIngestion(ingestTextDocumentRequest)
 
+Ingest Plain Text for Semantic Search
 
-
-Import plain text into semantic search
+Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
 
 ### Example
 

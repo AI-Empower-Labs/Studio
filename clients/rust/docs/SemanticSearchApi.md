@@ -4,48 +4,17 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**semantic_search_ask**](SemanticSearchApi.md#semantic_search_ask) | **POST** /api/semantic/ask | 
 [**semantic_search_delete_document**](SemanticSearchApi.md#semantic_search_delete_document) | **DELETE** /api/semantic/{documentId} | 
-[**semantic_search_delete_index**](SemanticSearchApi.md#semantic_search_delete_index) | **DELETE** /api/semantic/index | 
-[**semantic_search_file_ingestion**](SemanticSearchApi.md#semantic_search_file_ingestion) | **POST** /api/ingest/file | 
+[**semantic_search_delete_index**](SemanticSearchApi.md#semantic_search_delete_index) | **DELETE** /api/semantic/index/{name} | 
+[**semantic_search_file_ingestion**](SemanticSearchApi.md#semantic_search_file_ingestion) | **POST** /api/ingest/file | Ingest a File into Semantic Search
 [**semantic_search_ingestion_status**](SemanticSearchApi.md#semantic_search_ingestion_status) | **GET** /api/ingest/status | 
 [**semantic_search_list**](SemanticSearchApi.md#semantic_search_list) | **POST** /api/semantic/list | 
 [**semantic_search_query**](SemanticSearchApi.md#semantic_search_query) | **POST** /api/semantic/query | 
 [**semantic_search_query_results_clustering**](SemanticSearchApi.md#semantic_search_query_results_clustering) | **POST** /api/semantic/query-results-clustering | 
 [**semantic_search_rerank**](SemanticSearchApi.md#semantic_search_rerank) | **POST** /api/semantic/rerank | 
-[**semantic_search_text_ingestion**](SemanticSearchApi.md#semantic_search_text_ingestion) | **POST** /api/ingest/text | 
+[**semantic_search_text_ingestion**](SemanticSearchApi.md#semantic_search_text_ingestion) | **POST** /api/ingest/text | Ingest Plain Text for Semantic Search
 [**semantic_search_webpage_ingestion**](SemanticSearchApi.md#semantic_search_webpage_ingestion) | **POST** /api/ingest/webpage | 
 
-
-
-## semantic_search_ask
-
-> models::AskDocumentResponse semantic_search_ask(ask_document_request)
-
-
-Ask questions over ingested documents
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**ask_document_request** | [**AskDocumentRequest**](AskDocumentRequest.md) |  | [required] |
-
-### Return type
-
-[**models::AskDocumentResponse**](AskDocumentResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## semantic_search_delete_document
@@ -111,24 +80,31 @@ No authorization required
 
 ## semantic_search_file_ingestion
 
-> models::IngestDocumentResponse semantic_search_file_ingestion(files, document_id, index, pipeline, web_hook_url, embedding_model, args, tags)
+> models::IngestDocumentResponse semantic_search_file_ingestion(files, document_id, index, pipeline, web_hook_url, embedding_model, document_id2, index2, web_hook_url2, embedding_model_name, context, tags, ingestion_pipeline, language_auto_detection, language)
+Ingest a File into Semantic Search
 
-
-Import file document into semantic search
+Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
 
 ### Parameters
 
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**files** | [**Vec<std::path::PathBuf>**](std::path::PathBuf.md) | The file object to ingest. | [required] |
-**document_id** | Option<**String**> | Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. |  |
-**index** | Option<**String**> | Optional value to specify with index the document should be ingested. Defaults to 'default'. |  |
-**pipeline** | Option<[**Vec<String>**](String.md)> | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. |  |
-**web_hook_url** | Option<**String**> | Url to use for webhook callback when operation finishes or fails. |  |
-**embedding_model** | Option<**String**> | Embedding model to use in ingestion. Optional. Default to configured default. |  |
-**args** | Option<[**std::collections::HashMap<String, serde_json::Value>**](std::collections::HashMap.md)> |  |  |
-**tags** | Option<[**std::collections::HashMap<String, serde_json::Value>**](std::collections::HashMap.md)> | Tags to associate with ingestion |  |
+**files** | [**Vec<std::path::PathBuf>**](std::path::PathBuf.md) | A collection of files to be ingested. Must contain at least one file. | [required] |
+**document_id** | Option<**String**> | A unique identifier for the document within the index. Documents with the same ID will be overwritten. |  |
+**index** | Option<**String**> | The name of the index where the document will be ingested. Defaults to 'default' if not specified. |  |
+**pipeline** | Option<[**Vec<String>**](String.md)> | An array of ingestion pipeline step names. If not provided, server default steps will be used. |  |
+**web_hook_url** | Option<**String**> | A URL to receive a callback via webhook when the ingestion process is completed or fails. |  |
+**embedding_model** | Option<**String**> | The embedding model to use during ingestion. If not specified, the server's default model will be applied. |  |
+**document_id2** | Option<**String**> | Unique identifier for the document to ingest. |  |
+**index2** | Option<**String**> | Optional index name where the document will be stored. |  |
+**web_hook_url2** | Option<**String**> | Optional webhook URL to notify upon completion. |  |
+**embedding_model_name** | Option<**String**> | Optional name of the embedding model to use during ingestion. |  |
+**context** | Option<[**std::collections::HashMap<String, String>**](std::collections::HashMap.md)> | Optional key-value pairs for additional context or metadata. |  |
+**tags** | Option<[**std::collections::HashMap<String, Vec<String>>**](std::collections::HashMap.md)> | A collection of tags associated with the document. Tags can be language-specific. |  |
+**ingestion_pipeline** | Option<[**Vec<String>**](String.md)> | Optional list of ingestion pipeline steps. Allows custom processing. |  |
+**language_auto_detection** | Option<**bool**> | Enable automatic language detection for document content. |  |[default to false]
+**language** | Option<**String**> | Force a specific language for full-text search. Use 'simple' for no language or leave empty. |  |
 
 ### Return type
 
@@ -211,7 +187,7 @@ No authorization required
 > models::QueryDocumentResponse semantic_search_query(query_document_request)
 
 
-Query ingested documents using semantic search
+Performs semantic or hybrid search over previously ingested data.
 
 ### Parameters
 
@@ -299,9 +275,9 @@ No authorization required
 ## semantic_search_text_ingestion
 
 > models::IngestDocumentResponse semantic_search_text_ingestion(ingest_text_document_request)
+Ingest Plain Text for Semantic Search
 
-
-Import plain text into semantic search
+Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
 
 ### Parameters
 

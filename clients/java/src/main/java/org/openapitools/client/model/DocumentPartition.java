@@ -53,28 +53,57 @@ import org.openapitools.client.JSON;
 /**
  * DocumentPartition
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class DocumentPartition {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private String text;
 
-  public static final String SERIALIZED_NAME_RELEVANCE = "relevance";
-  @SerializedName(SERIALIZED_NAME_RELEVANCE)
-  private Float relevance;
+  public static final String SERIALIZED_NAME_FULL_TEXT_SEARCH_RANK = "fullTextSearchRank";
+  @SerializedName(SERIALIZED_NAME_FULL_TEXT_SEARCH_RANK)
+  @javax.annotation.Nullable
+  private Float fullTextSearchRank;
+
+  public static final String SERIALIZED_NAME_SEMANTIC_SIMILARITY = "semanticSimilarity";
+  @SerializedName(SERIALIZED_NAME_SEMANTIC_SIMILARITY)
+  @javax.annotation.Nullable
+  private Float semanticSimilarity;
+
+  public static final String SERIALIZED_NAME_FULL_TEXT_SEARCH_RRF = "fullTextSearchRrf";
+  @SerializedName(SERIALIZED_NAME_FULL_TEXT_SEARCH_RRF)
+  @javax.annotation.Nullable
+  private Float fullTextSearchRrf;
+
+  public static final String SERIALIZED_NAME_SEMANTIC_RRF = "semanticRrf";
+  @SerializedName(SERIALIZED_NAME_SEMANTIC_RRF)
+  @javax.annotation.Nullable
+  private Float semanticRrf;
+
+  public static final String SERIALIZED_NAME_RRF_SCORE = "rrfScore";
+  @SerializedName(SERIALIZED_NAME_RRF_SCORE)
+  @javax.annotation.Nullable
+  private Float rrfScore;
+
+  public static final String SERIALIZED_NAME_LANGUAGE = "language";
+  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nullable
+  private String language;
 
   public static final String SERIALIZED_NAME_LAST_UPDATE = "lastUpdate";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATE)
+  @javax.annotation.Nullable
   private OffsetDateTime lastUpdate;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
+  @javax.annotation.Nullable
   private Map<String, List<String>> tags;
 
   public DocumentPartition() {
   }
 
-  public DocumentPartition text(String text) {
+  public DocumentPartition text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -88,31 +117,126 @@ public class DocumentPartition {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 
 
-  public DocumentPartition relevance(Float relevance) {
-    this.relevance = relevance;
+  public DocumentPartition fullTextSearchRank(@javax.annotation.Nullable Float fullTextSearchRank) {
+    this.fullTextSearchRank = fullTextSearchRank;
     return this;
   }
 
   /**
-   * Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity.
-   * @return relevance
+   * Rank value calculated from full-text search, used to determine the relevance of search results.
+   * @return fullTextSearchRank
    */
   @javax.annotation.Nullable
-  public Float getRelevance() {
-    return relevance;
+  public Float getFullTextSearchRank() {
+    return fullTextSearchRank;
   }
 
-  public void setRelevance(Float relevance) {
-    this.relevance = relevance;
+  public void setFullTextSearchRank(@javax.annotation.Nullable Float fullTextSearchRank) {
+    this.fullTextSearchRank = fullTextSearchRank;
   }
 
 
-  public DocumentPartition lastUpdate(OffsetDateTime lastUpdate) {
+  public DocumentPartition semanticSimilarity(@javax.annotation.Nullable Float semanticSimilarity) {
+    this.semanticSimilarity = semanticSimilarity;
+    return this;
+  }
+
+  /**
+   * Represents the semantic similarity score associated with a record.
+   * @return semanticSimilarity
+   */
+  @javax.annotation.Nullable
+  public Float getSemanticSimilarity() {
+    return semanticSimilarity;
+  }
+
+  public void setSemanticSimilarity(@javax.annotation.Nullable Float semanticSimilarity) {
+    this.semanticSimilarity = semanticSimilarity;
+  }
+
+
+  public DocumentPartition fullTextSearchRrf(@javax.annotation.Nullable Float fullTextSearchRrf) {
+    this.fullTextSearchRrf = fullTextSearchRrf;
+    return this;
+  }
+
+  /**
+   * Reciprocal rank fusion (RRF) score specifically derived from full-text search relevance.
+   * @return fullTextSearchRrf
+   */
+  @javax.annotation.Nullable
+  public Float getFullTextSearchRrf() {
+    return fullTextSearchRrf;
+  }
+
+  public void setFullTextSearchRrf(@javax.annotation.Nullable Float fullTextSearchRrf) {
+    this.fullTextSearchRrf = fullTextSearchRrf;
+  }
+
+
+  public DocumentPartition semanticRrf(@javax.annotation.Nullable Float semanticRrf) {
+    this.semanticRrf = semanticRrf;
+    return this;
+  }
+
+  /**
+   * Reciprocal Rank Fusion (RRF) score based on semantic similarity
+   * @return semanticRrf
+   */
+  @javax.annotation.Nullable
+  public Float getSemanticRrf() {
+    return semanticRrf;
+  }
+
+  public void setSemanticRrf(@javax.annotation.Nullable Float semanticRrf) {
+    this.semanticRrf = semanticRrf;
+  }
+
+
+  public DocumentPartition rrfScore(@javax.annotation.Nullable Float rrfScore) {
+    this.rrfScore = rrfScore;
+    return this;
+  }
+
+  /**
+   * Represents the combined Reciprocal Rank Fusion (RRF) score, which integrates results from multiple ranking methods such as semantic similarity and full-text search to enhance result relevance.
+   * @return rrfScore
+   */
+  @javax.annotation.Nullable
+  public Float getRrfScore() {
+    return rrfScore;
+  }
+
+  public void setRrfScore(@javax.annotation.Nullable Float rrfScore) {
+    this.rrfScore = rrfScore;
+  }
+
+
+  public DocumentPartition language(@javax.annotation.Nullable String language) {
+    this.language = language;
+    return this;
+  }
+
+  /**
+   * Language of partition if any. Optional.
+   * @return language
+   */
+  @javax.annotation.Nullable
+  public String getLanguage() {
+    return language;
+  }
+
+  public void setLanguage(@javax.annotation.Nullable String language) {
+    this.language = language;
+  }
+
+
+  public DocumentPartition lastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
     return this;
   }
@@ -126,12 +250,12 @@ public class DocumentPartition {
     return lastUpdate;
   }
 
-  public void setLastUpdate(OffsetDateTime lastUpdate) {
+  public void setLastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
   }
 
 
-  public DocumentPartition tags(Map<String, List<String>> tags) {
+  public DocumentPartition tags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
     return this;
   }
@@ -153,7 +277,7 @@ public class DocumentPartition {
     return tags;
   }
 
-  public void setTags(Map<String, List<String>> tags) {
+  public void setTags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
   }
 
@@ -169,7 +293,12 @@ public class DocumentPartition {
     }
     DocumentPartition documentPartition = (DocumentPartition) o;
     return Objects.equals(this.text, documentPartition.text) &&
-        Objects.equals(this.relevance, documentPartition.relevance) &&
+        Objects.equals(this.fullTextSearchRank, documentPartition.fullTextSearchRank) &&
+        Objects.equals(this.semanticSimilarity, documentPartition.semanticSimilarity) &&
+        Objects.equals(this.fullTextSearchRrf, documentPartition.fullTextSearchRrf) &&
+        Objects.equals(this.semanticRrf, documentPartition.semanticRrf) &&
+        Objects.equals(this.rrfScore, documentPartition.rrfScore) &&
+        Objects.equals(this.language, documentPartition.language) &&
         Objects.equals(this.lastUpdate, documentPartition.lastUpdate) &&
         Objects.equals(this.tags, documentPartition.tags);
   }
@@ -180,7 +309,7 @@ public class DocumentPartition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, relevance, lastUpdate, tags);
+    return Objects.hash(text, fullTextSearchRank, semanticSimilarity, fullTextSearchRrf, semanticRrf, rrfScore, language, lastUpdate, tags);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -195,7 +324,12 @@ public class DocumentPartition {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentPartition {\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    relevance: ").append(toIndentedString(relevance)).append("\n");
+    sb.append("    fullTextSearchRank: ").append(toIndentedString(fullTextSearchRank)).append("\n");
+    sb.append("    semanticSimilarity: ").append(toIndentedString(semanticSimilarity)).append("\n");
+    sb.append("    fullTextSearchRrf: ").append(toIndentedString(fullTextSearchRrf)).append("\n");
+    sb.append("    semanticRrf: ").append(toIndentedString(semanticRrf)).append("\n");
+    sb.append("    rrfScore: ").append(toIndentedString(rrfScore)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
     sb.append("    lastUpdate: ").append(toIndentedString(lastUpdate)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
@@ -221,7 +355,12 @@ public class DocumentPartition {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("text");
-    openapiFields.add("relevance");
+    openapiFields.add("fullTextSearchRank");
+    openapiFields.add("semanticSimilarity");
+    openapiFields.add("fullTextSearchRrf");
+    openapiFields.add("semanticRrf");
+    openapiFields.add("rrfScore");
+    openapiFields.add("language");
     openapiFields.add("lastUpdate");
     openapiFields.add("tags");
 
@@ -252,6 +391,9 @@ public class DocumentPartition {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+      }
+      if ((jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) && !jsonObj.get("language").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));
       }
   }
 

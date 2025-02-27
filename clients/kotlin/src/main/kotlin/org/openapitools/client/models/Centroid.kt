@@ -21,10 +21,10 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Represents a centroid for a cluster, includes coordinate and array of datapoints
+ * A cluster centroid with its coordinate and associated data points
  *
  * @param coordinate 
- * @param dataPoints Array of data points belonging to the centroid
+ * @param dataPoints Data points assigned to this centroid
  */
 
 
@@ -33,7 +33,7 @@ data class Centroid (
     @Json(name = "coordinate")
     val coordinate: Coordinate? = null,
 
-    /* Array of data points belonging to the centroid */
+    /* Data points assigned to this centroid */
     @Json(name = "dataPoints")
     val dataPoints: kotlin.collections.List<Coordinate>? = null
 

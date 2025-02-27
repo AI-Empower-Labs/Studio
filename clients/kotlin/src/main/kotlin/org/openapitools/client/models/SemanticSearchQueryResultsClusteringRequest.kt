@@ -24,7 +24,6 @@ import com.squareup.moshi.JsonClass
  *
  * @param clusterCount The number of clusters to be used in k-means clustering.
  * @param maxDegreeOfParallelism The Maximum Degrees Of Parallelism
- * @param maxTokens The maximum number of tokens to be used in the KMeans clustering algorithm.
  * @param index Optional index to specify which index to search in. Defaults to 'default'.
  * @param minRelevance The minimum relevance value used for querying the search result audit.
  * @param maxRelevance The maximum relevance value to be used in the search query.
@@ -42,10 +41,6 @@ data class SemanticSearchQueryResultsClusteringRequest (
     /* The Maximum Degrees Of Parallelism */
     @Json(name = "maxDegreeOfParallelism")
     val maxDegreeOfParallelism: kotlin.Int? = 1,
-
-    /* The maximum number of tokens to be used in the KMeans clustering algorithm. */
-    @Json(name = "maxTokens")
-    val maxTokens: kotlin.Int? = 10,
 
     /* Optional index to specify which index to search in. Defaults to 'default'. */
     @Json(name = "index")

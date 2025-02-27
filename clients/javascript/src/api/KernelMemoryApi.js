@@ -44,57 +44,6 @@ export default class KernelMemoryApi {
 
 
     /**
-     * Callback function to receive the result of the downloadGet operation.
-     * @callback module:api/KernelMemoryApi~downloadGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/StreamableFileContent} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * @param {String} documentId 
-     * @param {String} filename 
-     * @param {Object} opts Optional parameters
-     * @param {String} [index] 
-     * @param {module:api/KernelMemoryApi~downloadGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/StreamableFileContent}
-     */
-    downloadGet(documentId, filename, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'documentId' is set
-      if (documentId === undefined || documentId === null) {
-        throw new Error("Missing the required parameter 'documentId' when calling downloadGet");
-      }
-      // verify the required parameter 'filename' is set
-      if (filename === undefined || filename === null) {
-        throw new Error("Missing the required parameter 'filename' when calling downloadGet");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'index': opts['index'],
-        'documentId': documentId,
-        'filename': filename
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = [];
-      let accepts = ['application/json', 'application/problem+json'];
-      let returnType = StreamableFileContent;
-      return this.apiClient.callApi(
-        '/download', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the kernelMemoryAsk operation.
      * @callback module:api/KernelMemoryApi~kernelMemoryAskCallback
      * @param {String} error Error message, if any.
@@ -216,6 +165,58 @@ export default class KernelMemoryApi {
       let returnType = DeleteAccepted;
       return this.apiClient.callApi(
         '/api/kernelmemory/indexes', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the kernelMemoryDownload operation.
+     * @callback module:api/KernelMemoryApi~kernelMemoryDownloadCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/StreamableFileContent} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Download specific document
+     * @param {String} documentId 
+     * @param {String} filename 
+     * @param {Object} opts Optional parameters
+     * @param {String} [index] 
+     * @param {module:api/KernelMemoryApi~kernelMemoryDownloadCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/StreamableFileContent}
+     */
+    kernelMemoryDownload(documentId, filename, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'documentId' is set
+      if (documentId === undefined || documentId === null) {
+        throw new Error("Missing the required parameter 'documentId' when calling kernelMemoryDownload");
+      }
+      // verify the required parameter 'filename' is set
+      if (filename === undefined || filename === null) {
+        throw new Error("Missing the required parameter 'filename' when calling kernelMemoryDownload");
+      }
+
+      let pathParams = {
+      };
+      let queryParams = {
+        'index': opts['index'],
+        'documentId': documentId,
+        'filename': filename
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = [];
+      let contentTypes = [];
+      let accepts = ['application/json', 'application/problem+json'];
+      let returnType = StreamableFileContent;
+      return this.apiClient.callApi(
+        '/api/kernelmemory/download', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

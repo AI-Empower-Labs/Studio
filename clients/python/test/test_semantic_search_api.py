@@ -27,12 +27,6 @@ class TestSemanticSearchApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_semantic_search_ask(self) -> None:
-        """Test case for semantic_search_ask
-
-        """
-        pass
-
     def test_semantic_search_delete_document(self) -> None:
         """Test case for semantic_search_delete_document
 
@@ -48,6 +42,7 @@ class TestSemanticSearchApi(unittest.TestCase):
     def test_semantic_search_file_ingestion(self) -> None:
         """Test case for semantic_search_file_ingestion
 
+        Ingest a File into Semantic Search
         """
         pass
 
@@ -84,6 +79,7 @@ class TestSemanticSearchApi(unittest.TestCase):
     def test_semantic_search_text_ingestion(self) -> None:
         """Test case for semantic_search_text_ingestion
 
+        Ingest Plain Text for Semantic Search
         """
         pass
 

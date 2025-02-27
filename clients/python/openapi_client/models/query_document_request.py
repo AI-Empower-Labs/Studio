@@ -18,7 +18,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from openapi_client.models.document_filters import DocumentFilters
 from typing import Optional, Set
@@ -31,11 +31,29 @@ class QueryDocumentRequest(BaseModel):
     query: Optional[StrictStr] = Field(default=None, description="Semantic query to find matching documents")
     index: Optional[StrictStr] = Field(default=None, description="Optional index to specify which index to search in. Defaults to 'default'")
     filter: Optional[List[DocumentFilters]] = Field(default=None, description="Optional filtering of document id(s) and/or tags")
+    search_mode: Optional[StrictStr] = Field(default=None, description="Optional search mode defining the context or process used in the query. Supported values are 'hybrid', 'semantic'", alias="searchMode")
+    language: Optional[StrictStr] = Field(default=None, description="Specifies the language of the content.")
+    language_detection: Optional[StrictBool] = Field(default=None, description="Indicates whether language detection is enabled.", alias="languageDetection")
+    fts_min_score: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Minimum score for full-text search.", alias="ftsMinScore")
+    fts_weight: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Weight for full-text search.", alias="ftsWeight")
+    semantic_min_relevance: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Minimum relevance score for semantic search.", alias="semanticMinRelevance")
+    semantic_weight: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Weight applied for semantic search.", alias="semanticWeight")
+    smoothing_factor_k: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Smoothing factor (k) used in calculations.", alias="smoothingFactorK")
     min_relevance: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Optional filter to specify minimum relevance. Typically values between 0 and 1", alias="minRelevance")
     limit: Optional[StrictInt] = Field(default=None, description="Optional filter for specifying maximum number of entries to return. Defaults to 3")
     embedding_model: Optional[StrictStr] = Field(default=None, description="Embedding model to use in query", alias="embeddingModel")
     args: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["query", "index", "filter", "minRelevance", "limit", "embeddingModel", "args"]
+    __properties: ClassVar[List[str]] = ["query", "index", "filter", "searchMode", "language", "languageDetection", "ftsMinScore", "ftsWeight", "semanticMinRelevance", "semanticWeight", "smoothingFactorK", "minRelevance", "limit", "embeddingModel", "args"]
+
+    @field_validator('search_mode')
+    def search_mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(['hybrid', 'semantic']):
+            raise ValueError("must be one of enum values ('hybrid', 'semantic')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,6 +116,46 @@ class QueryDocumentRequest(BaseModel):
         if self.filter is None and "filter" in self.model_fields_set:
             _dict['filter'] = None
 
+        # set to None if search_mode (nullable) is None
+        # and model_fields_set contains the field
+        if self.search_mode is None and "search_mode" in self.model_fields_set:
+            _dict['searchMode'] = None
+
+        # set to None if language (nullable) is None
+        # and model_fields_set contains the field
+        if self.language is None and "language" in self.model_fields_set:
+            _dict['language'] = None
+
+        # set to None if language_detection (nullable) is None
+        # and model_fields_set contains the field
+        if self.language_detection is None and "language_detection" in self.model_fields_set:
+            _dict['languageDetection'] = None
+
+        # set to None if fts_min_score (nullable) is None
+        # and model_fields_set contains the field
+        if self.fts_min_score is None and "fts_min_score" in self.model_fields_set:
+            _dict['ftsMinScore'] = None
+
+        # set to None if fts_weight (nullable) is None
+        # and model_fields_set contains the field
+        if self.fts_weight is None and "fts_weight" in self.model_fields_set:
+            _dict['ftsWeight'] = None
+
+        # set to None if semantic_min_relevance (nullable) is None
+        # and model_fields_set contains the field
+        if self.semantic_min_relevance is None and "semantic_min_relevance" in self.model_fields_set:
+            _dict['semanticMinRelevance'] = None
+
+        # set to None if semantic_weight (nullable) is None
+        # and model_fields_set contains the field
+        if self.semantic_weight is None and "semantic_weight" in self.model_fields_set:
+            _dict['semanticWeight'] = None
+
+        # set to None if smoothing_factor_k (nullable) is None
+        # and model_fields_set contains the field
+        if self.smoothing_factor_k is None and "smoothing_factor_k" in self.model_fields_set:
+            _dict['smoothingFactorK'] = None
+
         # set to None if min_relevance (nullable) is None
         # and model_fields_set contains the field
         if self.min_relevance is None and "min_relevance" in self.model_fields_set:
@@ -133,6 +191,14 @@ class QueryDocumentRequest(BaseModel):
             "query": obj.get("query"),
             "index": obj.get("index"),
             "filter": [DocumentFilters.from_dict(_item) for _item in obj["filter"]] if obj.get("filter") is not None else None,
+            "searchMode": obj.get("searchMode"),
+            "language": obj.get("language"),
+            "languageDetection": obj.get("languageDetection"),
+            "ftsMinScore": obj.get("ftsMinScore"),
+            "ftsWeight": obj.get("ftsWeight"),
+            "semanticMinRelevance": obj.get("semanticMinRelevance"),
+            "semanticWeight": obj.get("semanticWeight"),
+            "smoothingFactorK": obj.get("smoothingFactorK"),
             "minRelevance": obj.get("minRelevance"),
             "limit": obj.get("limit"),
             "embeddingModel": obj.get("embeddingModel"),

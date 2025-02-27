@@ -22,52 +22,100 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param documentId Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten
  * @param text Text to ingest
- * @param index Optional value to specify with index the document should be ingested. Defaults to 'default'
- * @param tags Optionally add tags to ingestion
- * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
- * @param webHookUrl Url to use for webhook callback when operation finishes or fails.
- * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default.
- * @param args 
+ * @param documentId Unique identifier for the document to ingest.
+ * @param index Optional index name where the document will be stored.
+ * @param webHookUrl Optional webhook URL to notify upon completion.
+ * @param embeddingModelName Optional name of the embedding model to use during ingestion.
+ * @param context Optional key-value pairs for additional context or metadata.
+ * @param tags A collection of tags associated with the document. Tags can be language-specific.
+ * @param ingestionPipeline Optional list of ingestion pipeline steps. Allows custom processing.
+ * @param languageAutoDetection Enable automatic language detection for document content.
+ * @param language Force a specific language for full-text search. Use 'simple' for no language or leave empty.
  */
 
 
 data class IngestTextDocumentRequest (
 
-    /* Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten */
-    @Json(name = "documentId")
-    val documentId: kotlin.String,
-
     /* Text to ingest */
     @Json(name = "text")
     val text: kotlin.String,
 
-    /* Optional value to specify with index the document should be ingested. Defaults to 'default' */
+    /* Unique identifier for the document to ingest. */
+    @Json(name = "documentId")
+    val documentId: kotlin.String,
+
+    /* Optional index name where the document will be stored. */
     @Json(name = "index")
     val index: kotlin.String? = null,
 
-    /* Optionally add tags to ingestion */
+    /* Optional webhook URL to notify upon completion. */
+    @Json(name = "webHookUrl")
+    val webHookUrl: java.net.URI? = null,
+
+    /* Optional name of the embedding model to use during ingestion. */
+    @Json(name = "embeddingModelName")
+    val embeddingModelName: kotlin.String? = null,
+
+    /* Optional key-value pairs for additional context or metadata. */
+    @Json(name = "context")
+    val context: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
+
+    /* A collection of tags associated with the document. Tags can be language-specific. */
     @Json(name = "tags")
     val tags: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>? = null,
 
-    /* Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. */
-    @Json(name = "pipeline")
-    val pipeline: kotlin.collections.List<kotlin.String>? = null,
+    /* Optional list of ingestion pipeline steps. Allows custom processing. */
+    @Json(name = "ingestionPipeline")
+    val ingestionPipeline: kotlin.collections.List<kotlin.String>? = null,
 
-    /* Url to use for webhook callback when operation finishes or fails. */
-    @Json(name = "webHookUrl")
-    val webHookUrl: kotlin.String? = null,
+    /* Enable automatic language detection for document content. */
+    @Json(name = "languageAutoDetection")
+    val languageAutoDetection: kotlin.Boolean? = false,
 
-    /* Embedding model to use in ingestion. Optional. Default to configured default. */
-    @Json(name = "embeddingModel")
-    val embeddingModel: kotlin.String? = null,
-
-    @Json(name = "args")
-    val args: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null
+    /* Force a specific language for full-text search. Use 'simple' for no language or leave empty. */
+    @Json(name = "language")
+    val language: IngestTextDocumentRequest.Language? = null
 
 ) {
 
+    /**
+     * Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+     *
+     * Values: arabic,armenian,basque,catalan,danish,dutch,english,finnish,french,german,greek,hindi,hungarian,indonesian,irish,italian,lithuanian,nepali,norwegian,portuguese,romanian,russian,serbian,spanish,swedish,tamil,turkish,yiddish,simple
+     */
+    @JsonClass(generateAdapter = false)
+    enum class Language(val value: kotlin.String) {
+        @Json(name = "arabic") arabic("arabic"),
+        @Json(name = "armenian") armenian("armenian"),
+        @Json(name = "basque") basque("basque"),
+        @Json(name = "catalan") catalan("catalan"),
+        @Json(name = "danish") danish("danish"),
+        @Json(name = "dutch") dutch("dutch"),
+        @Json(name = "english") english("english"),
+        @Json(name = "finnish") finnish("finnish"),
+        @Json(name = "french") french("french"),
+        @Json(name = "german") german("german"),
+        @Json(name = "greek") greek("greek"),
+        @Json(name = "hindi") hindi("hindi"),
+        @Json(name = "hungarian") hungarian("hungarian"),
+        @Json(name = "indonesian") indonesian("indonesian"),
+        @Json(name = "irish") irish("irish"),
+        @Json(name = "italian") italian("italian"),
+        @Json(name = "lithuanian") lithuanian("lithuanian"),
+        @Json(name = "nepali") nepali("nepali"),
+        @Json(name = "norwegian") norwegian("norwegian"),
+        @Json(name = "portuguese") portuguese("portuguese"),
+        @Json(name = "romanian") romanian("romanian"),
+        @Json(name = "russian") russian("russian"),
+        @Json(name = "serbian") serbian("serbian"),
+        @Json(name = "spanish") spanish("spanish"),
+        @Json(name = "swedish") swedish("swedish"),
+        @Json(name = "tamil") tamil("tamil"),
+        @Json(name = "turkish") turkish("turkish"),
+        @Json(name = "yiddish") yiddish("yiddish"),
+        @Json(name = "simple") simple("simple");
+    }
 
 }
 

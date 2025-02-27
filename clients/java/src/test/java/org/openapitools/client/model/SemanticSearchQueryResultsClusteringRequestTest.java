@@ -55,14 +55,6 @@ public class SemanticSearchQueryResultsClusteringRequestTest {
     }
 
     /**
-     * Test the property 'maxTokens'
-     */
-    @Test
-    public void maxTokensTest() {
-        // TODO: test maxTokens
-    }
-
-    /**
      * Test the property 'index'
      */
     @Test

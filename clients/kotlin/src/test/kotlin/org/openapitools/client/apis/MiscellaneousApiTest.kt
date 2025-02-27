@@ -30,8 +30,8 @@ class MiscellaneousApiTest : ShouldSpec() {
         // to test deleteLlmCacheEntry
         should("test deleteLlmCacheEntry") {
             // uncomment below to test deleteLlmCacheEntry
-            //val cacheKey : kotlin.String = cacheKey_example // kotlin.String | The LLM cache key to remove
-            //apiInstance.deleteLlmCacheEntry(cacheKey)
+            //val key : kotlin.String = key_example // kotlin.String | The LLM cache key to remove
+            //apiInstance.deleteLlmCacheEntry(key)
         }
 
         // to test getConfiguration

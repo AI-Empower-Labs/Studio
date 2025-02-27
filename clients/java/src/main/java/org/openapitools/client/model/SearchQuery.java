@@ -52,32 +52,37 @@ import org.openapitools.client.JSON;
 /**
  * SearchQuery
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class SearchQuery {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
+  @javax.annotation.Nullable
   private String query;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
+  @javax.annotation.Nullable
   private List<Map<String, List<String>>> filters;
 
   public static final String SERIALIZED_NAME_MIN_RELEVANCE = "minRelevance";
   @SerializedName(SERIALIZED_NAME_MIN_RELEVANCE)
+  @javax.annotation.Nullable
   private Double minRelevance;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
+  @javax.annotation.Nullable
   private Integer limit;
 
   public SearchQuery() {
   }
 
-  public SearchQuery index(String index) {
+  public SearchQuery index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
@@ -91,12 +96,12 @@ public class SearchQuery {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public SearchQuery query(String query) {
+  public SearchQuery query(@javax.annotation.Nullable String query) {
     this.query = query;
     return this;
   }
@@ -110,12 +115,12 @@ public class SearchQuery {
     return query;
   }
 
-  public void setQuery(String query) {
+  public void setQuery(@javax.annotation.Nullable String query) {
     this.query = query;
   }
 
 
-  public SearchQuery filters(List<Map<String, List<String>>> filters) {
+  public SearchQuery filters(@javax.annotation.Nullable List<Map<String, List<String>>> filters) {
     this.filters = filters;
     return this;
   }
@@ -137,12 +142,12 @@ public class SearchQuery {
     return filters;
   }
 
-  public void setFilters(List<Map<String, List<String>>> filters) {
+  public void setFilters(@javax.annotation.Nullable List<Map<String, List<String>>> filters) {
     this.filters = filters;
   }
 
 
-  public SearchQuery minRelevance(Double minRelevance) {
+  public SearchQuery minRelevance(@javax.annotation.Nullable Double minRelevance) {
     this.minRelevance = minRelevance;
     return this;
   }
@@ -156,12 +161,12 @@ public class SearchQuery {
     return minRelevance;
   }
 
-  public void setMinRelevance(Double minRelevance) {
+  public void setMinRelevance(@javax.annotation.Nullable Double minRelevance) {
     this.minRelevance = minRelevance;
   }
 
 
-  public SearchQuery limit(Integer limit) {
+  public SearchQuery limit(@javax.annotation.Nullable Integer limit) {
     this.limit = limit;
     return this;
   }
@@ -175,7 +180,7 @@ public class SearchQuery {
     return limit;
   }
 
-  public void setLimit(Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Integer limit) {
     this.limit = limit;
   }
 

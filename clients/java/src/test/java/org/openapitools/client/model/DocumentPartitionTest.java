@@ -51,11 +51,51 @@ public class DocumentPartitionTest {
     }
 
     /**
-     * Test the property 'relevance'
+     * Test the property 'fullTextSearchRank'
      */
     @Test
-    public void relevanceTest() {
-        // TODO: test relevance
+    public void fullTextSearchRankTest() {
+        // TODO: test fullTextSearchRank
+    }
+
+    /**
+     * Test the property 'semanticSimilarity'
+     */
+    @Test
+    public void semanticSimilarityTest() {
+        // TODO: test semanticSimilarity
+    }
+
+    /**
+     * Test the property 'fullTextSearchRrf'
+     */
+    @Test
+    public void fullTextSearchRrfTest() {
+        // TODO: test fullTextSearchRrf
+    }
+
+    /**
+     * Test the property 'semanticRrf'
+     */
+    @Test
+    public void semanticRrfTest() {
+        // TODO: test semanticRrf
+    }
+
+    /**
+     * Test the property 'rrfScore'
+     */
+    @Test
+    public void rrfScoreTest() {
+        // TODO: test rrfScore
+    }
+
+    /**
+     * Test the property 'language'
+     */
+    @Test
+    public void languageTest() {
+        // TODO: test language
     }
 
     /**

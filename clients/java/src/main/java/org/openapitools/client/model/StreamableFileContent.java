@@ -50,22 +50,26 @@ import org.openapitools.client.JSON;
 /**
  * StreamableFileContent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class StreamableFileContent {
   public static final String SERIALIZED_NAME_FILE_NAME = "fileName";
   @SerializedName(SERIALIZED_NAME_FILE_NAME)
+  @javax.annotation.Nullable
   private String fileName;
 
   public static final String SERIALIZED_NAME_FILE_SIZE = "fileSize";
   @SerializedName(SERIALIZED_NAME_FILE_SIZE)
+  @javax.annotation.Nullable
   private Long fileSize;
 
   public static final String SERIALIZED_NAME_FILE_TYPE = "fileType";
   @SerializedName(SERIALIZED_NAME_FILE_TYPE)
+  @javax.annotation.Nullable
   private String fileType;
 
   public static final String SERIALIZED_NAME_LAST_WRITE = "lastWrite";
   @SerializedName(SERIALIZED_NAME_LAST_WRITE)
+  @javax.annotation.Nullable
   private OffsetDateTime lastWrite;
 
   public StreamableFileContent() {

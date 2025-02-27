@@ -21,22 +21,22 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
- * Represents the response object for K-Means Clustering, contains cluster size and array of centroids
+ * Response object for K-Means Clustering containing cluster size and centroids array
  *
- * @param clusterSize Size of the cluster
- * @param centroids Array of Centroid objects
+ * @param clusterSize Number of points in the cluster
+ * @param centroids List of cluster centroids
  */
 
 
 data class KMeansCluster (
 
-    /* Size of the cluster */
+    /* Number of points in the cluster */
     @Json(name = "clusterSize")
-    val clusterSize: kotlin.Int? = null,
+    val clusterSize: kotlin.Int,
 
-    /* Array of Centroid objects */
+    /* List of cluster centroids */
     @Json(name = "centroids")
-    val centroids: kotlin.collections.List<Centroid>? = null
+    val centroids: kotlin.collections.List<Centroid>
 
 ) {
 

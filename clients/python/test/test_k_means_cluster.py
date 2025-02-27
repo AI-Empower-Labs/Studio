@@ -36,7 +36,7 @@ class TestKMeansCluster(unittest.TestCase):
         model = KMeansCluster()
         if include_optional:
             return KMeansCluster(
-                cluster_size = 56,
+                cluster_size = 0,
                 centroids = [
                     openapi_client.models.centroid.Centroid(
                         coordinate = openapi_client.models.coordinate.Coordinate(
@@ -53,6 +53,20 @@ class TestKMeansCluster(unittest.TestCase):
             )
         else:
             return KMeansCluster(
+                cluster_size = 0,
+                centroids = [
+                    openapi_client.models.centroid.Centroid(
+                        coordinate = openapi_client.models.coordinate.Coordinate(
+                            x = 1.337, 
+                            y = 1.337, 
+                            label = '', ), 
+                        data_points = [
+                            openapi_client.models.coordinate.Coordinate(
+                                x = 1.337, 
+                                y = 1.337, 
+                                label = '', )
+                            ], )
+                    ],
         )
         """
 

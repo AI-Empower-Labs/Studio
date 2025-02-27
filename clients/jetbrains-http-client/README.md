@@ -22,10 +22,10 @@ Class | Method | HTTP request | Description
 *DataExtractionApi* | [**tokenCount**](Apis/DataExtractionApi.http#tokencount) | **POST** /api/extract/tokenCount | Count tokens in a text
 *DataExtractionApi* | [**tokenize**](Apis/DataExtractionApi.http#tokenize) | **POST** /api/extract/tokenize | Converts data to a integer token array
 *DataExtractionApi* | [**transcriptionSynchronous**](Apis/DataExtractionApi.http#transcriptionsynchronous) | **POST** /api/extract/transcription | Synchronous transcribe audio
-*KernelMemoryApi* | [**downloadGet**](Apis/KernelMemoryApi.http#downloadget) | **GET** /download | 
 *KernelMemoryApi* | [**kernelMemoryAsk**](Apis/KernelMemoryApi.http#kernelmemoryask) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM
 *KernelMemoryApi* | [**kernelMemoryDelete**](Apis/KernelMemoryApi.http#kernelmemorydelete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index
 *KernelMemoryApi* | [**kernelMemoryDeleteIndex**](Apis/KernelMemoryApi.http#kernelmemorydeleteindex) | **DELETE** /api/kernelmemory/indexes | Delete index
+*KernelMemoryApi* | [**kernelMemoryDownload**](Apis/KernelMemoryApi.http#kernelmemorydownload) | **GET** /api/kernelmemory/download | Download specific document
 *KernelMemoryApi* | [**kernelMemoryGetIndex**](Apis/KernelMemoryApi.http#kernelmemorygetindex) | **GET** /api/kernelmemory/indexes | List indexes
 *KernelMemoryApi* | [**kernelMemorySearch**](Apis/KernelMemoryApi.http#kernelmemorysearch) | **POST** /api/kernelmemory/search | Search for documents in specific index
 *KernelMemoryApi* | [**kernelMemoryUpload**](Apis/KernelMemoryApi.http#kernelmemoryupload) | **POST** /api/kernelmemory/upload | Upload file for ingestion
@@ -35,16 +35,15 @@ Class | Method | HTTP request | Description
 *LanguageApi* | [**languageTranslate**](Apis/LanguageApi.http#languagetranslate) | **POST** /api/language/translate | Translation of text from one language to another
 *MiscellaneousApi* | [**deleteLlmCacheEntry**](Apis/MiscellaneousApi.http#deletellmcacheentry) | **DELETE** /api/cache | 
 *MiscellaneousApi* | [**getConfiguration**](Apis/MiscellaneousApi.http#getconfiguration) | **GET** /info | 
-*SemanticSearchApi* | [**semanticSearchAsk**](Apis/SemanticSearchApi.http#semanticsearchask) | **POST** /api/semantic/ask | 
 *SemanticSearchApi* | [**semanticSearchDeleteDocument**](Apis/SemanticSearchApi.http#semanticsearchdeletedocument) | **DELETE** /api/semantic/{documentId} | 
-*SemanticSearchApi* | [**semanticSearchDeleteIndex**](Apis/SemanticSearchApi.http#semanticsearchdeleteindex) | **DELETE** /api/semantic/index | 
-*SemanticSearchApi* | [**semanticSearchFileIngestion**](Apis/SemanticSearchApi.http#semanticsearchfileingestion) | **POST** /api/ingest/file | 
+*SemanticSearchApi* | [**semanticSearchDeleteIndex**](Apis/SemanticSearchApi.http#semanticsearchdeleteindex) | **DELETE** /api/semantic/index/{name} | 
+*SemanticSearchApi* | [**semanticSearchFileIngestion**](Apis/SemanticSearchApi.http#semanticsearchfileingestion) | **POST** /api/ingest/file | Ingest a File into Semantic Search
 *SemanticSearchApi* | [**semanticSearchIngestionStatus**](Apis/SemanticSearchApi.http#semanticsearchingestionstatus) | **GET** /api/ingest/status | 
 *SemanticSearchApi* | [**semanticSearchList**](Apis/SemanticSearchApi.http#semanticsearchlist) | **POST** /api/semantic/list | 
 *SemanticSearchApi* | [**semanticSearchQuery**](Apis/SemanticSearchApi.http#semanticsearchquery) | **POST** /api/semantic/query | 
 *SemanticSearchApi* | [**semanticSearchQueryResultsClustering**](Apis/SemanticSearchApi.http#semanticsearchqueryresultsclustering) | **POST** /api/semantic/query-results-clustering | 
 *SemanticSearchApi* | [**semanticSearchRerank**](Apis/SemanticSearchApi.http#semanticsearchrerank) | **POST** /api/semantic/rerank | 
-*SemanticSearchApi* | [**semanticSearchTextIngestion**](Apis/SemanticSearchApi.http#semanticsearchtextingestion) | **POST** /api/ingest/text | 
+*SemanticSearchApi* | [**semanticSearchTextIngestion**](Apis/SemanticSearchApi.http#semanticsearchtextingestion) | **POST** /api/ingest/text | Ingest Plain Text for Semantic Search
 *SemanticSearchApi* | [**semanticSearchWebpageIngestion**](Apis/SemanticSearchApi.http#semanticsearchwebpageingestion) | **POST** /api/ingest/webpage | 
 *TranscriptionApi* | [**transcriptionAsynchronous**](Apis/TranscriptionApi.http#transcriptionasynchronous) | **POST** /api/transcribe/upload | Upload audio file for asynchronous transcription
 *TranscriptionApi* | [**transcriptionGetById**](Apis/TranscriptionApi.http#transcriptiongetbyid) | **GET** /api/transcribe | Get transcription status and data

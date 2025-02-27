@@ -51,28 +51,32 @@ import org.openapitools.client.JSON;
 /**
  * ReRankDocumentsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ReRankDocumentsRequest {
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
+  @javax.annotation.Nullable
   private String model;
 
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
+  @javax.annotation.Nullable
   private String query;
 
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
+  @javax.annotation.Nullable
   private List<String> documents;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
+  @javax.annotation.Nullable
   private Integer limit;
 
   public ReRankDocumentsRequest() {
   }
 
-  public ReRankDocumentsRequest model(String model) {
+  public ReRankDocumentsRequest model(@javax.annotation.Nullable String model) {
     this.model = model;
     return this;
   }
@@ -86,12 +90,12 @@ public class ReRankDocumentsRequest {
     return model;
   }
 
-  public void setModel(String model) {
+  public void setModel(@javax.annotation.Nullable String model) {
     this.model = model;
   }
 
 
-  public ReRankDocumentsRequest query(String query) {
+  public ReRankDocumentsRequest query(@javax.annotation.Nullable String query) {
     this.query = query;
     return this;
   }
@@ -105,12 +109,12 @@ public class ReRankDocumentsRequest {
     return query;
   }
 
-  public void setQuery(String query) {
+  public void setQuery(@javax.annotation.Nullable String query) {
     this.query = query;
   }
 
 
-  public ReRankDocumentsRequest documents(List<String> documents) {
+  public ReRankDocumentsRequest documents(@javax.annotation.Nullable List<String> documents) {
     this.documents = documents;
     return this;
   }
@@ -132,12 +136,12 @@ public class ReRankDocumentsRequest {
     return documents;
   }
 
-  public void setDocuments(List<String> documents) {
+  public void setDocuments(@javax.annotation.Nullable List<String> documents) {
     this.documents = documents;
   }
 
 
-  public ReRankDocumentsRequest limit(Integer limit) {
+  public ReRankDocumentsRequest limit(@javax.annotation.Nullable Integer limit) {
     this.limit = limit;
     return this;
   }
@@ -151,7 +155,7 @@ public class ReRankDocumentsRequest {
     return limit;
   }
 
-  public void setLimit(Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Integer limit) {
     this.limit = limit;
   }
 

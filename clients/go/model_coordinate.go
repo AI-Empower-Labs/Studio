@@ -20,11 +20,11 @@ var _ MappedNullable = &Coordinate{}
 
 // Coordinate struct for Coordinate
 type Coordinate struct {
-	// X-axis value of the coordinate
+	// X-axis value
 	X *float32 `json:"x,omitempty"`
-	// Y-axis value of the coordinate
+	// Y-axis value
 	Y *float32 `json:"y,omitempty"`
-	// Label associated with the coordinate
+	// Coordinate label
 	Label *string `json:"label,omitempty"`
 }
 

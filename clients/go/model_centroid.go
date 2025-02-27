@@ -18,10 +18,10 @@ import (
 // checks if the Centroid type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Centroid{}
 
-// Centroid Represents a centroid for a cluster, includes coordinate and array of datapoints
+// Centroid A cluster centroid with its coordinate and associated data points
 type Centroid struct {
 	Coordinate *Coordinate `json:"coordinate,omitempty"`
-	// Array of data points belonging to the centroid
+	// Data points assigned to this centroid
 	DataPoints []Coordinate `json:"dataPoints,omitempty"`
 }
 

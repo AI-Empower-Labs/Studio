@@ -31,11 +31,10 @@ class ApiExtractThematicSimilarityClusterPostRequest(BaseModel):
     input: List[StrictStr] = Field(description="The input texts for generating clusters")
     cluster_count: Annotated[int, Field(le=1000, strict=True, ge=2)] = Field(description="The number of clusters requested for generating clusters", alias="clusterCount")
     max_degree_of_parallelism: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = Field(default=1, description="The maximum degree of parallelism for the KMeans clustering algorithm", alias="maxDegreeOfParallelism")
-    max_tokens: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = Field(default=10, description="The maximum number of tokens", alias="maxTokens")
     llm_model: Optional[StrictStr] = Field(default=None, description="The name of the LLM model. Optional.", alias="llmModel")
     embedding_model: Optional[StrictStr] = Field(default=None, description="The name of the embedding model used in the GenerateClusterHttpRequest. Optional.", alias="embeddingModel")
     seed: Optional[StrictInt] = Field(default=None, description="Randomization seed. Optional.")
-    __properties: ClassVar[List[str]] = ["input", "clusterCount", "maxDegreeOfParallelism", "maxTokens", "llmModel", "embeddingModel", "seed"]
+    __properties: ClassVar[List[str]] = ["input", "clusterCount", "maxDegreeOfParallelism", "llmModel", "embeddingModel", "seed"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -106,7 +105,6 @@ class ApiExtractThematicSimilarityClusterPostRequest(BaseModel):
             "input": obj.get("input"),
             "clusterCount": obj.get("clusterCount"),
             "maxDegreeOfParallelism": obj.get("maxDegreeOfParallelism") if obj.get("maxDegreeOfParallelism") is not None else 1,
-            "maxTokens": obj.get("maxTokens") if obj.get("maxTokens") is not None else 10,
             "llmModel": obj.get("llmModel"),
             "embeddingModel": obj.get("embeddingModel"),
             "seed": obj.get("seed")

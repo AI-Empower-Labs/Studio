@@ -53,24 +53,27 @@ import org.openapitools.client.JSON;
 /**
  * TranscriptionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class TranscriptionResponse {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private String text;
 
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
+  @javax.annotation.Nullable
   private TimeSpan duration;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
   private List<SegmentData> data;
 
   public TranscriptionResponse() {
   }
 
-  public TranscriptionResponse text(String text) {
+  public TranscriptionResponse text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -84,12 +87,12 @@ public class TranscriptionResponse {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 
 
-  public TranscriptionResponse duration(TimeSpan duration) {
+  public TranscriptionResponse duration(@javax.annotation.Nullable TimeSpan duration) {
     this.duration = duration;
     return this;
   }
@@ -103,12 +106,12 @@ public class TranscriptionResponse {
     return duration;
   }
 
-  public void setDuration(TimeSpan duration) {
+  public void setDuration(@javax.annotation.Nullable TimeSpan duration) {
     this.duration = duration;
   }
 
 
-  public TranscriptionResponse data(List<SegmentData> data) {
+  public TranscriptionResponse data(@javax.annotation.Nullable List<SegmentData> data) {
     this.data = data;
     return this;
   }
@@ -130,7 +133,7 @@ public class TranscriptionResponse {
     return data;
   }
 
-  public void setData(List<SegmentData> data) {
+  public void setData(@javax.annotation.Nullable List<SegmentData> data) {
     this.data = data;
   }
 

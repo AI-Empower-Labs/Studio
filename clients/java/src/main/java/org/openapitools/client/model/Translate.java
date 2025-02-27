@@ -49,10 +49,11 @@ import org.openapitools.client.JSON;
 /**
  * Represents a translation request with the source text, source language, and target language.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class Translate {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private String text;
 
   /**
@@ -193,6 +194,7 @@ public class Translate {
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
+  @javax.annotation.Nullable
   private SourceEnum source;
 
   /**
@@ -331,12 +333,13 @@ public class Translate {
 
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
+  @javax.annotation.Nullable
   private TargetEnum target;
 
   public Translate() {
   }
 
-  public Translate text(String text) {
+  public Translate text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -350,12 +353,12 @@ public class Translate {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 
 
-  public Translate source(SourceEnum source) {
+  public Translate source(@javax.annotation.Nullable SourceEnum source) {
     this.source = source;
     return this;
   }
@@ -369,12 +372,12 @@ public class Translate {
     return source;
   }
 
-  public void setSource(SourceEnum source) {
+  public void setSource(@javax.annotation.Nullable SourceEnum source) {
     this.source = source;
   }
 
 
-  public Translate target(TargetEnum target) {
+  public Translate target(@javax.annotation.Nullable TargetEnum target) {
     this.target = target;
     return this;
   }
@@ -388,7 +391,7 @@ public class Translate {
     return target;
   }
 
-  public void setTarget(TargetEnum target) {
+  public void setTarget(@javax.annotation.Nullable TargetEnum target) {
     this.target = target;
   }
 

@@ -27,9 +27,9 @@ class Coordinate(BaseModel):
     """
     Coordinate
     """ # noqa: E501
-    x: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="X-axis value of the coordinate")
-    y: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Y-axis value of the coordinate")
-    label: Optional[StrictStr] = Field(default=None, description="Label associated with the coordinate")
+    x: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="X-axis value")
+    y: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Y-axis value")
+    label: Optional[StrictStr] = Field(default=None, description="Coordinate label")
     __properties: ClassVar[List[str]] = ["x", "y", "label"]
 
     model_config = ConfigDict(

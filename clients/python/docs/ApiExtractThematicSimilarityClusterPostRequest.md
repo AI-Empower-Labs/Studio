@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **input** | **List[str]** | The input texts for generating clusters | 
 **cluster_count** | **int** | The number of clusters requested for generating clusters | 
 **max_degree_of_parallelism** | **int** | The maximum degree of parallelism for the KMeans clustering algorithm | [optional] [default to 1]
-**max_tokens** | **int** | The maximum number of tokens | [optional] [default to 10]
 **llm_model** | **str** | The name of the LLM model. Optional. | [optional] 
 **embedding_model** | **str** | The name of the embedding model used in the GenerateClusterHttpRequest. Optional. | [optional] 
 **seed** | **int** | Randomization seed. Optional. | [optional] 

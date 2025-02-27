@@ -4,8 +4,8 @@
 ## Properties
 | Name | Type | Description | Notes |
 | ------------ | ------------- | ------------- | ------------- |
-| **clusterSize** | **kotlin.Int** | Size of the cluster |  [optional] |
-| **centroids** | [**kotlin.collections.List&lt;Centroid&gt;**](Centroid.md) | Array of Centroid objects |  [optional] |
+| **clusterSize** | **kotlin.Int** | Number of points in the cluster |  |
+| **centroids** | [**kotlin.collections.List&lt;Centroid&gt;**](Centroid.md) | List of cluster centroids |  |
 
 
 

@@ -48,30 +48,33 @@ import org.openapitools.client.JSON;
 /**
  * Coordinate
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class Coordinate {
   public static final String SERIALIZED_NAME_X = "x";
   @SerializedName(SERIALIZED_NAME_X)
+  @javax.annotation.Nullable
   private Float x;
 
   public static final String SERIALIZED_NAME_Y = "y";
   @SerializedName(SERIALIZED_NAME_Y)
+  @javax.annotation.Nullable
   private Float y;
 
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
+  @javax.annotation.Nullable
   private String label;
 
   public Coordinate() {
   }
 
-  public Coordinate x(Float x) {
+  public Coordinate x(@javax.annotation.Nullable Float x) {
     this.x = x;
     return this;
   }
 
   /**
-   * X-axis value of the coordinate
+   * X-axis value
    * @return x
    */
   @javax.annotation.Nullable
@@ -79,18 +82,18 @@ public class Coordinate {
     return x;
   }
 
-  public void setX(Float x) {
+  public void setX(@javax.annotation.Nullable Float x) {
     this.x = x;
   }
 
 
-  public Coordinate y(Float y) {
+  public Coordinate y(@javax.annotation.Nullable Float y) {
     this.y = y;
     return this;
   }
 
   /**
-   * Y-axis value of the coordinate
+   * Y-axis value
    * @return y
    */
   @javax.annotation.Nullable
@@ -98,18 +101,18 @@ public class Coordinate {
     return y;
   }
 
-  public void setY(Float y) {
+  public void setY(@javax.annotation.Nullable Float y) {
     this.y = y;
   }
 
 
-  public Coordinate label(String label) {
+  public Coordinate label(@javax.annotation.Nullable String label) {
     this.label = label;
     return this;
   }
 
   /**
-   * Label associated with the coordinate
+   * Coordinate label
    * @return label
    */
   @javax.annotation.Nullable
@@ -117,7 +120,7 @@ public class Coordinate {
     return label;
   }
 
-  public void setLabel(String label) {
+  public void setLabel(@javax.annotation.Nullable String label) {
     this.label = label;
   }
 

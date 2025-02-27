@@ -22,21 +22,26 @@ var _ MappedNullable = &IngestTextDocumentRequest{}
 
 // IngestTextDocumentRequest struct for IngestTextDocumentRequest
 type IngestTextDocumentRequest struct {
-	// Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten
-	DocumentId string `json:"documentId"`
-	// Optional value to specify with index the document should be ingested. Defaults to 'default'
-	Index NullableString `json:"index,omitempty"`
-	// Optionally add tags to ingestion
-	Tags map[string][]string `json:"tags,omitempty"`
 	// Text to ingest
 	Text string `json:"text"`
-	// Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
-	Pipeline []string `json:"pipeline,omitempty"`
-	// Url to use for webhook callback when operation finishes or fails.
+	// Unique identifier for the document to ingest.
+	DocumentId string `json:"documentId"`
+	// Optional index name where the document will be stored.
+	Index NullableString `json:"index,omitempty"`
+	// Optional webhook URL to notify upon completion.
 	WebHookUrl NullableString `json:"webHookUrl,omitempty"`
-	// Embedding model to use in ingestion. Optional. Default to configured default.
-	EmbeddingModel NullableString `json:"embeddingModel,omitempty"`
-	Args map[string]interface{} `json:"args,omitempty"`
+	// Optional name of the embedding model to use during ingestion.
+	EmbeddingModelName NullableString `json:"embeddingModelName,omitempty"`
+	// Optional key-value pairs for additional context or metadata.
+	Context map[string]string `json:"context,omitempty"`
+	// A collection of tags associated with the document. Tags can be language-specific.
+	Tags map[string][]string `json:"tags,omitempty"`
+	// Optional list of ingestion pipeline steps. Allows custom processing.
+	IngestionPipeline []string `json:"ingestionPipeline,omitempty"`
+	// Enable automatic language detection for document content.
+	LanguageAutoDetection *bool `json:"languageAutoDetection,omitempty"`
+	// Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+	Language NullableString `json:"language,omitempty"`
 }
 
 type _IngestTextDocumentRequest IngestTextDocumentRequest
@@ -45,10 +50,12 @@ type _IngestTextDocumentRequest IngestTextDocumentRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIngestTextDocumentRequest(documentId string, text string) *IngestTextDocumentRequest {
+func NewIngestTextDocumentRequest(text string, documentId string) *IngestTextDocumentRequest {
 	this := IngestTextDocumentRequest{}
-	this.DocumentId = documentId
 	this.Text = text
+	this.DocumentId = documentId
+	var languageAutoDetection bool = false
+	this.LanguageAutoDetection = &languageAutoDetection
 	return &this
 }
 
@@ -57,7 +64,33 @@ func NewIngestTextDocumentRequest(documentId string, text string) *IngestTextDoc
 // but it doesn't guarantee that properties required by API are set
 func NewIngestTextDocumentRequestWithDefaults() *IngestTextDocumentRequest {
 	this := IngestTextDocumentRequest{}
+	var languageAutoDetection bool = false
+	this.LanguageAutoDetection = &languageAutoDetection
 	return &this
+}
+
+// GetText returns the Text field value
+func (o *IngestTextDocumentRequest) GetText() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Text
+}
+
+// GetTextOk returns a tuple with the Text field value
+// and a boolean to check if the value has been set.
+func (o *IngestTextDocumentRequest) GetTextOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Text, true
+}
+
+// SetText sets field value
+func (o *IngestTextDocumentRequest) SetText(v string) {
+	o.Text = v
 }
 
 // GetDocumentId returns the DocumentId field value
@@ -126,96 +159,6 @@ func (o *IngestTextDocumentRequest) UnsetIndex() {
 	o.Index.Unset()
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IngestTextDocumentRequest) GetTags() map[string][]string {
-	if o == nil {
-		var ret map[string][]string
-		return ret
-	}
-	return o.Tags
-}
-
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IngestTextDocumentRequest) GetTagsOk() (*map[string][]string, bool) {
-	if o == nil || IsNil(o.Tags) {
-		return nil, false
-	}
-	return &o.Tags, true
-}
-
-// HasTags returns a boolean if a field has been set.
-func (o *IngestTextDocumentRequest) HasTags() bool {
-	if o != nil && !IsNil(o.Tags) {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given map[string][]string and assigns it to the Tags field.
-func (o *IngestTextDocumentRequest) SetTags(v map[string][]string) {
-	o.Tags = v
-}
-
-// GetText returns the Text field value
-func (o *IngestTextDocumentRequest) GetText() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Text
-}
-
-// GetTextOk returns a tuple with the Text field value
-// and a boolean to check if the value has been set.
-func (o *IngestTextDocumentRequest) GetTextOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Text, true
-}
-
-// SetText sets field value
-func (o *IngestTextDocumentRequest) SetText(v string) {
-	o.Text = v
-}
-
-// GetPipeline returns the Pipeline field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IngestTextDocumentRequest) GetPipeline() []string {
-	if o == nil {
-		var ret []string
-		return ret
-	}
-	return o.Pipeline
-}
-
-// GetPipelineOk returns a tuple with the Pipeline field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IngestTextDocumentRequest) GetPipelineOk() ([]string, bool) {
-	if o == nil || IsNil(o.Pipeline) {
-		return nil, false
-	}
-	return o.Pipeline, true
-}
-
-// HasPipeline returns a boolean if a field has been set.
-func (o *IngestTextDocumentRequest) HasPipeline() bool {
-	if o != nil && !IsNil(o.Pipeline) {
-		return true
-	}
-
-	return false
-}
-
-// SetPipeline gets a reference to the given []string and assigns it to the Pipeline field.
-func (o *IngestTextDocumentRequest) SetPipeline(v []string) {
-	o.Pipeline = v
-}
-
 // GetWebHookUrl returns the WebHookUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IngestTextDocumentRequest) GetWebHookUrl() string {
 	if o == nil || IsNil(o.WebHookUrl.Get()) {
@@ -258,79 +201,219 @@ func (o *IngestTextDocumentRequest) UnsetWebHookUrl() {
 	o.WebHookUrl.Unset()
 }
 
-// GetEmbeddingModel returns the EmbeddingModel field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IngestTextDocumentRequest) GetEmbeddingModel() string {
-	if o == nil || IsNil(o.EmbeddingModel.Get()) {
+// GetEmbeddingModelName returns the EmbeddingModelName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IngestTextDocumentRequest) GetEmbeddingModelName() string {
+	if o == nil || IsNil(o.EmbeddingModelName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.EmbeddingModel.Get()
+	return *o.EmbeddingModelName.Get()
 }
 
-// GetEmbeddingModelOk returns a tuple with the EmbeddingModel field value if set, nil otherwise
+// GetEmbeddingModelNameOk returns a tuple with the EmbeddingModelName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IngestTextDocumentRequest) GetEmbeddingModelOk() (*string, bool) {
+func (o *IngestTextDocumentRequest) GetEmbeddingModelNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.EmbeddingModel.Get(), o.EmbeddingModel.IsSet()
+	return o.EmbeddingModelName.Get(), o.EmbeddingModelName.IsSet()
 }
 
-// HasEmbeddingModel returns a boolean if a field has been set.
-func (o *IngestTextDocumentRequest) HasEmbeddingModel() bool {
-	if o != nil && o.EmbeddingModel.IsSet() {
+// HasEmbeddingModelName returns a boolean if a field has been set.
+func (o *IngestTextDocumentRequest) HasEmbeddingModelName() bool {
+	if o != nil && o.EmbeddingModelName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEmbeddingModel gets a reference to the given NullableString and assigns it to the EmbeddingModel field.
-func (o *IngestTextDocumentRequest) SetEmbeddingModel(v string) {
-	o.EmbeddingModel.Set(&v)
+// SetEmbeddingModelName gets a reference to the given NullableString and assigns it to the EmbeddingModelName field.
+func (o *IngestTextDocumentRequest) SetEmbeddingModelName(v string) {
+	o.EmbeddingModelName.Set(&v)
 }
-// SetEmbeddingModelNil sets the value for EmbeddingModel to be an explicit nil
-func (o *IngestTextDocumentRequest) SetEmbeddingModelNil() {
-	o.EmbeddingModel.Set(nil)
-}
-
-// UnsetEmbeddingModel ensures that no value is present for EmbeddingModel, not even an explicit nil
-func (o *IngestTextDocumentRequest) UnsetEmbeddingModel() {
-	o.EmbeddingModel.Unset()
+// SetEmbeddingModelNameNil sets the value for EmbeddingModelName to be an explicit nil
+func (o *IngestTextDocumentRequest) SetEmbeddingModelNameNil() {
+	o.EmbeddingModelName.Set(nil)
 }
 
-// GetArgs returns the Args field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IngestTextDocumentRequest) GetArgs() map[string]interface{} {
+// UnsetEmbeddingModelName ensures that no value is present for EmbeddingModelName, not even an explicit nil
+func (o *IngestTextDocumentRequest) UnsetEmbeddingModelName() {
+	o.EmbeddingModelName.Unset()
+}
+
+// GetContext returns the Context field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IngestTextDocumentRequest) GetContext() map[string]string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
-	return o.Args
+	return o.Context
 }
 
-// GetArgsOk returns a tuple with the Args field value if set, nil otherwise
+// GetContextOk returns a tuple with the Context field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IngestTextDocumentRequest) GetArgsOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Args) {
-		return map[string]interface{}{}, false
+func (o *IngestTextDocumentRequest) GetContextOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.Context) {
+		return nil, false
 	}
-	return o.Args, true
+	return &o.Context, true
 }
 
-// HasArgs returns a boolean if a field has been set.
-func (o *IngestTextDocumentRequest) HasArgs() bool {
-	if o != nil && !IsNil(o.Args) {
+// HasContext returns a boolean if a field has been set.
+func (o *IngestTextDocumentRequest) HasContext() bool {
+	if o != nil && !IsNil(o.Context) {
 		return true
 	}
 
 	return false
 }
 
-// SetArgs gets a reference to the given map[string]interface{} and assigns it to the Args field.
-func (o *IngestTextDocumentRequest) SetArgs(v map[string]interface{}) {
-	o.Args = v
+// SetContext gets a reference to the given map[string]string and assigns it to the Context field.
+func (o *IngestTextDocumentRequest) SetContext(v map[string]string) {
+	o.Context = v
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IngestTextDocumentRequest) GetTags() map[string][]string {
+	if o == nil {
+		var ret map[string][]string
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IngestTextDocumentRequest) GetTagsOk() (*map[string][]string, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+	return &o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *IngestTextDocumentRequest) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given map[string][]string and assigns it to the Tags field.
+func (o *IngestTextDocumentRequest) SetTags(v map[string][]string) {
+	o.Tags = v
+}
+
+// GetIngestionPipeline returns the IngestionPipeline field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IngestTextDocumentRequest) GetIngestionPipeline() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.IngestionPipeline
+}
+
+// GetIngestionPipelineOk returns a tuple with the IngestionPipeline field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IngestTextDocumentRequest) GetIngestionPipelineOk() ([]string, bool) {
+	if o == nil || IsNil(o.IngestionPipeline) {
+		return nil, false
+	}
+	return o.IngestionPipeline, true
+}
+
+// HasIngestionPipeline returns a boolean if a field has been set.
+func (o *IngestTextDocumentRequest) HasIngestionPipeline() bool {
+	if o != nil && !IsNil(o.IngestionPipeline) {
+		return true
+	}
+
+	return false
+}
+
+// SetIngestionPipeline gets a reference to the given []string and assigns it to the IngestionPipeline field.
+func (o *IngestTextDocumentRequest) SetIngestionPipeline(v []string) {
+	o.IngestionPipeline = v
+}
+
+// GetLanguageAutoDetection returns the LanguageAutoDetection field value if set, zero value otherwise.
+func (o *IngestTextDocumentRequest) GetLanguageAutoDetection() bool {
+	if o == nil || IsNil(o.LanguageAutoDetection) {
+		var ret bool
+		return ret
+	}
+	return *o.LanguageAutoDetection
+}
+
+// GetLanguageAutoDetectionOk returns a tuple with the LanguageAutoDetection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IngestTextDocumentRequest) GetLanguageAutoDetectionOk() (*bool, bool) {
+	if o == nil || IsNil(o.LanguageAutoDetection) {
+		return nil, false
+	}
+	return o.LanguageAutoDetection, true
+}
+
+// HasLanguageAutoDetection returns a boolean if a field has been set.
+func (o *IngestTextDocumentRequest) HasLanguageAutoDetection() bool {
+	if o != nil && !IsNil(o.LanguageAutoDetection) {
+		return true
+	}
+
+	return false
+}
+
+// SetLanguageAutoDetection gets a reference to the given bool and assigns it to the LanguageAutoDetection field.
+func (o *IngestTextDocumentRequest) SetLanguageAutoDetection(v bool) {
+	o.LanguageAutoDetection = &v
+}
+
+// GetLanguage returns the Language field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IngestTextDocumentRequest) GetLanguage() string {
+	if o == nil || IsNil(o.Language.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Language.Get()
+}
+
+// GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IngestTextDocumentRequest) GetLanguageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Language.Get(), o.Language.IsSet()
+}
+
+// HasLanguage returns a boolean if a field has been set.
+func (o *IngestTextDocumentRequest) HasLanguage() bool {
+	if o != nil && o.Language.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLanguage gets a reference to the given NullableString and assigns it to the Language field.
+func (o *IngestTextDocumentRequest) SetLanguage(v string) {
+	o.Language.Set(&v)
+}
+// SetLanguageNil sets the value for Language to be an explicit nil
+func (o *IngestTextDocumentRequest) SetLanguageNil() {
+	o.Language.Set(nil)
+}
+
+// UnsetLanguage ensures that no value is present for Language, not even an explicit nil
+func (o *IngestTextDocumentRequest) UnsetLanguage() {
+	o.Language.Unset()
 }
 
 func (o IngestTextDocumentRequest) MarshalJSON() ([]byte, error) {
@@ -343,25 +426,31 @@ func (o IngestTextDocumentRequest) MarshalJSON() ([]byte, error) {
 
 func (o IngestTextDocumentRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["text"] = o.Text
 	toSerialize["documentId"] = o.DocumentId
 	if o.Index.IsSet() {
 		toSerialize["index"] = o.Index.Get()
 	}
-	if o.Tags != nil {
-		toSerialize["tags"] = o.Tags
-	}
-	toSerialize["text"] = o.Text
-	if o.Pipeline != nil {
-		toSerialize["pipeline"] = o.Pipeline
-	}
 	if o.WebHookUrl.IsSet() {
 		toSerialize["webHookUrl"] = o.WebHookUrl.Get()
 	}
-	if o.EmbeddingModel.IsSet() {
-		toSerialize["embeddingModel"] = o.EmbeddingModel.Get()
+	if o.EmbeddingModelName.IsSet() {
+		toSerialize["embeddingModelName"] = o.EmbeddingModelName.Get()
 	}
-	if o.Args != nil {
-		toSerialize["args"] = o.Args
+	if o.Context != nil {
+		toSerialize["context"] = o.Context
+	}
+	if o.Tags != nil {
+		toSerialize["tags"] = o.Tags
+	}
+	if o.IngestionPipeline != nil {
+		toSerialize["ingestionPipeline"] = o.IngestionPipeline
+	}
+	if !IsNil(o.LanguageAutoDetection) {
+		toSerialize["languageAutoDetection"] = o.LanguageAutoDetection
+	}
+	if o.Language.IsSet() {
+		toSerialize["language"] = o.Language.Get()
 	}
 	return toSerialize, nil
 }
@@ -371,8 +460,8 @@ func (o *IngestTextDocumentRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"documentId",
 		"text",
+		"documentId",
 	}
 
 	allProperties := make(map[string]interface{})

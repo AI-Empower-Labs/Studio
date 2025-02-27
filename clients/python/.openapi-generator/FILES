@@ -5,8 +5,6 @@
 .travis.yml
 README.md
 docs/ApiExtractThematicSimilarityClusterPostRequest.md
-docs/AskDocumentRequest.md
-docs/AskDocumentResponse.md
 docs/Centroid.md
 docs/Citation.md
 docs/Coordinate.md
@@ -82,8 +80,6 @@ openapi_client/configuration.py
 openapi_client/exceptions.py
 openapi_client/models/__init__.py
 openapi_client/models/api_extract_thematic_similarity_cluster_post_request.py
-openapi_client/models/ask_document_request.py
-openapi_client/models/ask_document_response.py
 openapi_client/models/centroid.py
 openapi_client/models/citation.py
 openapi_client/models/coordinate.py
@@ -147,8 +143,6 @@ setup.py
 test-requirements.txt
 test/__init__.py
 test/test_api_extract_thematic_similarity_cluster_post_request.py
-test/test_ask_document_request.py
-test/test_ask_document_response.py
 test/test_centroid.py
 test/test_citation.py
 test/test_coordinate.py

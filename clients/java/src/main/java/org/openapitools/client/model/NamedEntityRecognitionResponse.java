@@ -52,16 +52,17 @@ import org.openapitools.client.JSON;
 /**
  * NamedEntityRecognitionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class NamedEntityRecognitionResponse {
   public static final String SERIALIZED_NAME_ENTITIES = "entities";
   @SerializedName(SERIALIZED_NAME_ENTITIES)
+  @javax.annotation.Nullable
   private Map<String, List<String>> entities;
 
   public NamedEntityRecognitionResponse() {
   }
 
-  public NamedEntityRecognitionResponse entities(Map<String, List<String>> entities) {
+  public NamedEntityRecognitionResponse entities(@javax.annotation.Nullable Map<String, List<String>> entities) {
     this.entities = entities;
     return this;
   }
@@ -83,7 +84,7 @@ public class NamedEntityRecognitionResponse {
     return entities;
   }
 
-  public void setEntities(Map<String, List<String>> entities) {
+  public void setEntities(@javax.annotation.Nullable Map<String, List<String>> entities) {
     this.entities = entities;
   }
 

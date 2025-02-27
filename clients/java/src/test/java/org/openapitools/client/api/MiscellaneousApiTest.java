@@ -39,8 +39,8 @@ public class MiscellaneousApiTest {
      */
     @Test
     public void deleteLlmCacheEntryTest() throws ApiException {
-        String cacheKey = null;
-        api.deleteLlmCacheEntry(cacheKey);
+        String key = null;
+        api.deleteLlmCacheEntry(key);
         // TODO: test validations
     }
 

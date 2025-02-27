@@ -52,16 +52,17 @@ import org.openapitools.client.JSON;
 /**
  * ReRankDocumentsResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ReRankDocumentsResponse {
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
+  @javax.annotation.Nullable
   private List<ReRankDocument> documents;
 
   public ReRankDocumentsResponse() {
   }
 
-  public ReRankDocumentsResponse documents(List<ReRankDocument> documents) {
+  public ReRankDocumentsResponse documents(@javax.annotation.Nullable List<ReRankDocument> documents) {
     this.documents = documents;
     return this;
   }
@@ -83,7 +84,7 @@ public class ReRankDocumentsResponse {
     return documents;
   }
 
-  public void setDocuments(List<ReRankDocument> documents) {
+  public void setDocuments(@javax.annotation.Nullable List<ReRankDocument> documents) {
     this.documents = documents;
   }
 

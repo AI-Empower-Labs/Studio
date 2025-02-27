@@ -7,6 +7,14 @@ Name | Type | Description | Notes
 **Query** | Pointer to **NullableString** | Semantic query to find matching documents | [optional] 
 **Index** | Pointer to **NullableString** | Optional index to specify which index to search in. Defaults to &#39;default&#39; | [optional] 
 **Filter** | Pointer to [**[]DocumentFilters**](DocumentFilters.md) | Optional filtering of document id(s) and/or tags | [optional] 
+**SearchMode** | Pointer to **NullableString** | Optional search mode defining the context or process used in the query. Supported values are &#39;hybrid&#39;, &#39;semantic&#39; | [optional] 
+**Language** | Pointer to **NullableString** | Specifies the language of the content. | [optional] 
+**LanguageDetection** | Pointer to **NullableBool** | Indicates whether language detection is enabled. | [optional] 
+**FtsMinScore** | Pointer to **NullableFloat32** | Minimum score for full-text search. | [optional] 
+**FtsWeight** | Pointer to **NullableFloat32** | Weight for full-text search. | [optional] 
+**SemanticMinRelevance** | Pointer to **NullableFloat64** | Minimum relevance score for semantic search. | [optional] 
+**SemanticWeight** | Pointer to **NullableFloat32** | Weight applied for semantic search. | [optional] 
+**SmoothingFactorK** | Pointer to **NullableFloat32** | Smoothing factor (k) used in calculations. | [optional] 
 **MinRelevance** | Pointer to **NullableFloat64** | Optional filter to specify minimum relevance. Typically values between 0 and 1 | [optional] 
 **Limit** | Pointer to **NullableInt32** | Optional filter for specifying maximum number of entries to return. Defaults to 3 | [optional] 
 **EmbeddingModel** | Pointer to **NullableString** | Embedding model to use in query | [optional] 
@@ -136,6 +144,286 @@ HasFilter returns a boolean if a field has been set.
 `func (o *QueryDocumentRequest) UnsetFilter()`
 
 UnsetFilter ensures that no value is present for Filter, not even an explicit nil
+### GetSearchMode
+
+`func (o *QueryDocumentRequest) GetSearchMode() string`
+
+GetSearchMode returns the SearchMode field if non-nil, zero value otherwise.
+
+### GetSearchModeOk
+
+`func (o *QueryDocumentRequest) GetSearchModeOk() (*string, bool)`
+
+GetSearchModeOk returns a tuple with the SearchMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchMode
+
+`func (o *QueryDocumentRequest) SetSearchMode(v string)`
+
+SetSearchMode sets SearchMode field to given value.
+
+### HasSearchMode
+
+`func (o *QueryDocumentRequest) HasSearchMode() bool`
+
+HasSearchMode returns a boolean if a field has been set.
+
+### SetSearchModeNil
+
+`func (o *QueryDocumentRequest) SetSearchModeNil(b bool)`
+
+ SetSearchModeNil sets the value for SearchMode to be an explicit nil
+
+### UnsetSearchMode
+`func (o *QueryDocumentRequest) UnsetSearchMode()`
+
+UnsetSearchMode ensures that no value is present for SearchMode, not even an explicit nil
+### GetLanguage
+
+`func (o *QueryDocumentRequest) GetLanguage() string`
+
+GetLanguage returns the Language field if non-nil, zero value otherwise.
+
+### GetLanguageOk
+
+`func (o *QueryDocumentRequest) GetLanguageOk() (*string, bool)`
+
+GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLanguage
+
+`func (o *QueryDocumentRequest) SetLanguage(v string)`
+
+SetLanguage sets Language field to given value.
+
+### HasLanguage
+
+`func (o *QueryDocumentRequest) HasLanguage() bool`
+
+HasLanguage returns a boolean if a field has been set.
+
+### SetLanguageNil
+
+`func (o *QueryDocumentRequest) SetLanguageNil(b bool)`
+
+ SetLanguageNil sets the value for Language to be an explicit nil
+
+### UnsetLanguage
+`func (o *QueryDocumentRequest) UnsetLanguage()`
+
+UnsetLanguage ensures that no value is present for Language, not even an explicit nil
+### GetLanguageDetection
+
+`func (o *QueryDocumentRequest) GetLanguageDetection() bool`
+
+GetLanguageDetection returns the LanguageDetection field if non-nil, zero value otherwise.
+
+### GetLanguageDetectionOk
+
+`func (o *QueryDocumentRequest) GetLanguageDetectionOk() (*bool, bool)`
+
+GetLanguageDetectionOk returns a tuple with the LanguageDetection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLanguageDetection
+
+`func (o *QueryDocumentRequest) SetLanguageDetection(v bool)`
+
+SetLanguageDetection sets LanguageDetection field to given value.
+
+### HasLanguageDetection
+
+`func (o *QueryDocumentRequest) HasLanguageDetection() bool`
+
+HasLanguageDetection returns a boolean if a field has been set.
+
+### SetLanguageDetectionNil
+
+`func (o *QueryDocumentRequest) SetLanguageDetectionNil(b bool)`
+
+ SetLanguageDetectionNil sets the value for LanguageDetection to be an explicit nil
+
+### UnsetLanguageDetection
+`func (o *QueryDocumentRequest) UnsetLanguageDetection()`
+
+UnsetLanguageDetection ensures that no value is present for LanguageDetection, not even an explicit nil
+### GetFtsMinScore
+
+`func (o *QueryDocumentRequest) GetFtsMinScore() float32`
+
+GetFtsMinScore returns the FtsMinScore field if non-nil, zero value otherwise.
+
+### GetFtsMinScoreOk
+
+`func (o *QueryDocumentRequest) GetFtsMinScoreOk() (*float32, bool)`
+
+GetFtsMinScoreOk returns a tuple with the FtsMinScore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFtsMinScore
+
+`func (o *QueryDocumentRequest) SetFtsMinScore(v float32)`
+
+SetFtsMinScore sets FtsMinScore field to given value.
+
+### HasFtsMinScore
+
+`func (o *QueryDocumentRequest) HasFtsMinScore() bool`
+
+HasFtsMinScore returns a boolean if a field has been set.
+
+### SetFtsMinScoreNil
+
+`func (o *QueryDocumentRequest) SetFtsMinScoreNil(b bool)`
+
+ SetFtsMinScoreNil sets the value for FtsMinScore to be an explicit nil
+
+### UnsetFtsMinScore
+`func (o *QueryDocumentRequest) UnsetFtsMinScore()`
+
+UnsetFtsMinScore ensures that no value is present for FtsMinScore, not even an explicit nil
+### GetFtsWeight
+
+`func (o *QueryDocumentRequest) GetFtsWeight() float32`
+
+GetFtsWeight returns the FtsWeight field if non-nil, zero value otherwise.
+
+### GetFtsWeightOk
+
+`func (o *QueryDocumentRequest) GetFtsWeightOk() (*float32, bool)`
+
+GetFtsWeightOk returns a tuple with the FtsWeight field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFtsWeight
+
+`func (o *QueryDocumentRequest) SetFtsWeight(v float32)`
+
+SetFtsWeight sets FtsWeight field to given value.
+
+### HasFtsWeight
+
+`func (o *QueryDocumentRequest) HasFtsWeight() bool`
+
+HasFtsWeight returns a boolean if a field has been set.
+
+### SetFtsWeightNil
+
+`func (o *QueryDocumentRequest) SetFtsWeightNil(b bool)`
+
+ SetFtsWeightNil sets the value for FtsWeight to be an explicit nil
+
+### UnsetFtsWeight
+`func (o *QueryDocumentRequest) UnsetFtsWeight()`
+
+UnsetFtsWeight ensures that no value is present for FtsWeight, not even an explicit nil
+### GetSemanticMinRelevance
+
+`func (o *QueryDocumentRequest) GetSemanticMinRelevance() float64`
+
+GetSemanticMinRelevance returns the SemanticMinRelevance field if non-nil, zero value otherwise.
+
+### GetSemanticMinRelevanceOk
+
+`func (o *QueryDocumentRequest) GetSemanticMinRelevanceOk() (*float64, bool)`
+
+GetSemanticMinRelevanceOk returns a tuple with the SemanticMinRelevance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSemanticMinRelevance
+
+`func (o *QueryDocumentRequest) SetSemanticMinRelevance(v float64)`
+
+SetSemanticMinRelevance sets SemanticMinRelevance field to given value.
+
+### HasSemanticMinRelevance
+
+`func (o *QueryDocumentRequest) HasSemanticMinRelevance() bool`
+
+HasSemanticMinRelevance returns a boolean if a field has been set.
+
+### SetSemanticMinRelevanceNil
+
+`func (o *QueryDocumentRequest) SetSemanticMinRelevanceNil(b bool)`
+
+ SetSemanticMinRelevanceNil sets the value for SemanticMinRelevance to be an explicit nil
+
+### UnsetSemanticMinRelevance
+`func (o *QueryDocumentRequest) UnsetSemanticMinRelevance()`
+
+UnsetSemanticMinRelevance ensures that no value is present for SemanticMinRelevance, not even an explicit nil
+### GetSemanticWeight
+
+`func (o *QueryDocumentRequest) GetSemanticWeight() float32`
+
+GetSemanticWeight returns the SemanticWeight field if non-nil, zero value otherwise.
+
+### GetSemanticWeightOk
+
+`func (o *QueryDocumentRequest) GetSemanticWeightOk() (*float32, bool)`
+
+GetSemanticWeightOk returns a tuple with the SemanticWeight field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSemanticWeight
+
+`func (o *QueryDocumentRequest) SetSemanticWeight(v float32)`
+
+SetSemanticWeight sets SemanticWeight field to given value.
+
+### HasSemanticWeight
+
+`func (o *QueryDocumentRequest) HasSemanticWeight() bool`
+
+HasSemanticWeight returns a boolean if a field has been set.
+
+### SetSemanticWeightNil
+
+`func (o *QueryDocumentRequest) SetSemanticWeightNil(b bool)`
+
+ SetSemanticWeightNil sets the value for SemanticWeight to be an explicit nil
+
+### UnsetSemanticWeight
+`func (o *QueryDocumentRequest) UnsetSemanticWeight()`
+
+UnsetSemanticWeight ensures that no value is present for SemanticWeight, not even an explicit nil
+### GetSmoothingFactorK
+
+`func (o *QueryDocumentRequest) GetSmoothingFactorK() float32`
+
+GetSmoothingFactorK returns the SmoothingFactorK field if non-nil, zero value otherwise.
+
+### GetSmoothingFactorKOk
+
+`func (o *QueryDocumentRequest) GetSmoothingFactorKOk() (*float32, bool)`
+
+GetSmoothingFactorKOk returns a tuple with the SmoothingFactorK field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSmoothingFactorK
+
+`func (o *QueryDocumentRequest) SetSmoothingFactorK(v float32)`
+
+SetSmoothingFactorK sets SmoothingFactorK field to given value.
+
+### HasSmoothingFactorK
+
+`func (o *QueryDocumentRequest) HasSmoothingFactorK() bool`
+
+HasSmoothingFactorK returns a boolean if a field has been set.
+
+### SetSmoothingFactorKNil
+
+`func (o *QueryDocumentRequest) SetSmoothingFactorKNil(b bool)`
+
+ SetSmoothingFactorKNil sets the value for SmoothingFactorK to be an explicit nil
+
+### UnsetSmoothingFactorK
+`func (o *QueryDocumentRequest) UnsetSmoothingFactorK()`
+
+UnsetSmoothingFactorK ensures that no value is present for SmoothingFactorK, not even an explicit nil
 ### GetMinRelevance
 
 `func (o *QueryDocumentRequest) GetMinRelevance() float64`

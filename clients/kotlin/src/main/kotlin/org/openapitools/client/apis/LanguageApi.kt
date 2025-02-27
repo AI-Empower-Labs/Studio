@@ -50,6 +50,7 @@ class LanguageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     }
 
     /**
+     * GET /api/language/detect
      * Detects language of a text
      * Accepts text input and returns information about the language in which the text is written.  The response from the endpoint includes the detected language represented by a language code (e.g., EN for English, ES for Spanish) and may also provide a confidence score indicating the likelihood that the detected language is correct. This type of endpoint is useful for applications requiring automatic language recognition, such as content localization, multilingual support systems, and global data analysis tools.
      * @param text 
@@ -81,6 +82,7 @@ class LanguageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     }
 
     /**
+     * GET /api/language/detect
      * Detects language of a text
      * Accepts text input and returns information about the language in which the text is written.  The response from the endpoint includes the detected language represented by a language code (e.g., EN for English, ES for Spanish) and may also provide a confidence score indicating the likelihood that the detected language is correct. This type of endpoint is useful for applications requiring automatic language recognition, such as content localization, multilingual support systems, and global data analysis tools.
      * @param text 
@@ -124,6 +126,7 @@ class LanguageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     }
 
     /**
+     * GET /api/language
      * List of supported languages for translation
      * Returns a list of supported languages, and translation targets
      * @return GetLanguageResponse
@@ -154,6 +157,7 @@ class LanguageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     }
 
     /**
+     * GET /api/language
      * List of supported languages for translation
      * Returns a list of supported languages, and translation targets
      * @return ApiResponse<GetLanguageResponse?>
@@ -192,6 +196,7 @@ class LanguageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     }
 
     /**
+     * POST /api/language/translate
      * Translation of text from one language to another
      * This endpoint provides a simplified interface for text translation, making it accessible for various applications, including web and mobile apps that require multilingual support.
      * @param translate 
@@ -223,6 +228,7 @@ class LanguageApi(basePath: kotlin.String = defaultBasePath, client: Call.Factor
     }
 
     /**
+     * POST /api/language/translate
      * Translation of text from one language to another
      * This endpoint provides a simplified interface for text translation, making it accessible for various applications, including web and mobile apps that require multilingual support.
      * @param translate 

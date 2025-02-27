@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**link** | **String** | Link to the source, if available. | [optional] 
-**index** | **String** | Link to the source, if available. | [optional] 
-**documentId** | **String** | Link to the source, if available. | [optional] 
-**fileId** | **String** | Link to the source, if available. | [optional] 
-**sourceContentType** | **String** | Type of source, e.g. PDF, Word, Chat, etc. | [optional] 
-**sourceName** | **String** | Name of the source, e.g. file name. | [optional] 
-**sourceUrl** | **String** | URL of the source, used for web pages and external data | [optional] 
-**partitions** | [**[DocumentPartition]**](DocumentPartition.md) | List of chunks/blocks of text used. | [optional] 
+**link** | **String** | URL or reference to the original source document | [optional] 
+**index** | **String** | Identifier or position of the citation within the source | [optional] 
+**documentId** | **String** | Unique identifier for the document | [optional] 
+**fileId** | **String** | Unique identifier for the file in storage | [optional] 
+**sourceContentType** | **String** | Format of the source (e.g., &#39;pdf&#39;, &#39;docx&#39;, &#39;chat&#39;) | [optional] 
+**sourceName** | **String** | Human-readable name or title of the source | [optional] 
+**sourceUrl** | **String** | Web URL of the source for online content | [optional] 
+**partitions** | [**[DocumentPartition]**](DocumentPartition.md) | Array of text segments used from the source | [optional] 
 
 

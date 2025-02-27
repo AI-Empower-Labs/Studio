@@ -26,12 +26,12 @@ type MiscellaneousAPIService service
 type ApiDeleteLlmCacheEntryRequest struct {
 	ctx context.Context
 	ApiService *MiscellaneousAPIService
-	cacheKey *string
+	key *string
 }
 
 // The LLM cache key to remove
-func (r ApiDeleteLlmCacheEntryRequest) CacheKey(cacheKey string) ApiDeleteLlmCacheEntryRequest {
-	r.cacheKey = &cacheKey
+func (r ApiDeleteLlmCacheEntryRequest) Key(key string) ApiDeleteLlmCacheEntryRequest {
+	r.key = &key
 	return r
 }
 
@@ -73,8 +73,8 @@ func (a *MiscellaneousAPIService) DeleteLlmCacheEntryExecute(r ApiDeleteLlmCache
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.cacheKey != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "cacheKey", r.cacheKey, "form", "")
+	if r.key != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

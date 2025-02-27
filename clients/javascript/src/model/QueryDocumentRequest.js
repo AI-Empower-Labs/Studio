@@ -57,6 +57,30 @@ class QueryDocumentRequest {
             if (data.hasOwnProperty('filter')) {
                 obj['filter'] = ApiClient.convertToType(data['filter'], [DocumentFilters]);
             }
+            if (data.hasOwnProperty('searchMode')) {
+                obj['searchMode'] = ApiClient.convertToType(data['searchMode'], 'String');
+            }
+            if (data.hasOwnProperty('language')) {
+                obj['language'] = ApiClient.convertToType(data['language'], 'String');
+            }
+            if (data.hasOwnProperty('languageDetection')) {
+                obj['languageDetection'] = ApiClient.convertToType(data['languageDetection'], 'Boolean');
+            }
+            if (data.hasOwnProperty('ftsMinScore')) {
+                obj['ftsMinScore'] = ApiClient.convertToType(data['ftsMinScore'], 'Number');
+            }
+            if (data.hasOwnProperty('ftsWeight')) {
+                obj['ftsWeight'] = ApiClient.convertToType(data['ftsWeight'], 'Number');
+            }
+            if (data.hasOwnProperty('semanticMinRelevance')) {
+                obj['semanticMinRelevance'] = ApiClient.convertToType(data['semanticMinRelevance'], 'Number');
+            }
+            if (data.hasOwnProperty('semanticWeight')) {
+                obj['semanticWeight'] = ApiClient.convertToType(data['semanticWeight'], 'Number');
+            }
+            if (data.hasOwnProperty('smoothingFactorK')) {
+                obj['smoothingFactorK'] = ApiClient.convertToType(data['smoothingFactorK'], 'Number');
+            }
             if (data.hasOwnProperty('minRelevance')) {
                 obj['minRelevance'] = ApiClient.convertToType(data['minRelevance'], 'Number');
             }
@@ -98,6 +122,14 @@ class QueryDocumentRequest {
             };
         }
         // ensure the json data is a string
+        if (data['searchMode'] && !(typeof data['searchMode'] === 'string' || data['searchMode'] instanceof String)) {
+            throw new Error("Expected the field `searchMode` to be a primitive type in the JSON string but got " + data['searchMode']);
+        }
+        // ensure the json data is a string
+        if (data['language'] && !(typeof data['language'] === 'string' || data['language'] instanceof String)) {
+            throw new Error("Expected the field `language` to be a primitive type in the JSON string but got " + data['language']);
+        }
+        // ensure the json data is a string
         if (data['embeddingModel'] && !(typeof data['embeddingModel'] === 'string' || data['embeddingModel'] instanceof String)) {
             throw new Error("Expected the field `embeddingModel` to be a primitive type in the JSON string but got " + data['embeddingModel']);
         }
@@ -129,6 +161,54 @@ QueryDocumentRequest.prototype['index'] = undefined;
 QueryDocumentRequest.prototype['filter'] = undefined;
 
 /**
+ * Optional search mode defining the context or process used in the query. Supported values are 'hybrid', 'semantic'
+ * @member {module:model/QueryDocumentRequest.SearchModeEnum} searchMode
+ */
+QueryDocumentRequest.prototype['searchMode'] = undefined;
+
+/**
+ * Specifies the language of the content.
+ * @member {String} language
+ */
+QueryDocumentRequest.prototype['language'] = undefined;
+
+/**
+ * Indicates whether language detection is enabled.
+ * @member {Boolean} languageDetection
+ */
+QueryDocumentRequest.prototype['languageDetection'] = undefined;
+
+/**
+ * Minimum score for full-text search.
+ * @member {Number} ftsMinScore
+ */
+QueryDocumentRequest.prototype['ftsMinScore'] = undefined;
+
+/**
+ * Weight for full-text search.
+ * @member {Number} ftsWeight
+ */
+QueryDocumentRequest.prototype['ftsWeight'] = undefined;
+
+/**
+ * Minimum relevance score for semantic search.
+ * @member {Number} semanticMinRelevance
+ */
+QueryDocumentRequest.prototype['semanticMinRelevance'] = undefined;
+
+/**
+ * Weight applied for semantic search.
+ * @member {Number} semanticWeight
+ */
+QueryDocumentRequest.prototype['semanticWeight'] = undefined;
+
+/**
+ * Smoothing factor (k) used in calculations.
+ * @member {Number} smoothingFactorK
+ */
+QueryDocumentRequest.prototype['smoothingFactorK'] = undefined;
+
+/**
  * Optional filter to specify minimum relevance. Typically values between 0 and 1
  * @member {Number} minRelevance
  */
@@ -153,6 +233,27 @@ QueryDocumentRequest.prototype['args'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>searchMode</code> property.
+ * @enum {String}
+ * @readonly
+ */
+QueryDocumentRequest['SearchModeEnum'] = {
+
+    /**
+     * value: "hybrid"
+     * @const
+     */
+    "hybrid": "hybrid",
+
+    /**
+     * value: "semantic"
+     * @const
+     */
+    "semantic": "semantic"
+};
 
 
 

@@ -52,32 +52,37 @@ import org.openapitools.client.JSON;
 /**
  * ListDocumentParameters
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ListDocumentParameters {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_FILTER = "filter";
   @SerializedName(SERIALIZED_NAME_FILTER)
+  @javax.annotation.Nullable
   private List<DocumentFilters> filter;
 
   public static final String SERIALIZED_NAME_WITH_EMBEDDINGS = "withEmbeddings";
   @SerializedName(SERIALIZED_NAME_WITH_EMBEDDINGS)
+  @javax.annotation.Nullable
   private Boolean withEmbeddings;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
+  @javax.annotation.Nullable
   private Integer limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
+  @javax.annotation.Nullable
   private Integer offset;
 
   public ListDocumentParameters() {
   }
 
-  public ListDocumentParameters index(String index) {
+  public ListDocumentParameters index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
@@ -91,12 +96,12 @@ public class ListDocumentParameters {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public ListDocumentParameters filter(List<DocumentFilters> filter) {
+  public ListDocumentParameters filter(@javax.annotation.Nullable List<DocumentFilters> filter) {
     this.filter = filter;
     return this;
   }
@@ -118,12 +123,12 @@ public class ListDocumentParameters {
     return filter;
   }
 
-  public void setFilter(List<DocumentFilters> filter) {
+  public void setFilter(@javax.annotation.Nullable List<DocumentFilters> filter) {
     this.filter = filter;
   }
 
 
-  public ListDocumentParameters withEmbeddings(Boolean withEmbeddings) {
+  public ListDocumentParameters withEmbeddings(@javax.annotation.Nullable Boolean withEmbeddings) {
     this.withEmbeddings = withEmbeddings;
     return this;
   }
@@ -137,12 +142,12 @@ public class ListDocumentParameters {
     return withEmbeddings;
   }
 
-  public void setWithEmbeddings(Boolean withEmbeddings) {
+  public void setWithEmbeddings(@javax.annotation.Nullable Boolean withEmbeddings) {
     this.withEmbeddings = withEmbeddings;
   }
 
 
-  public ListDocumentParameters limit(Integer limit) {
+  public ListDocumentParameters limit(@javax.annotation.Nullable Integer limit) {
     this.limit = limit;
     return this;
   }
@@ -156,12 +161,12 @@ public class ListDocumentParameters {
     return limit;
   }
 
-  public void setLimit(Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Integer limit) {
     this.limit = limit;
   }
 
 
-  public ListDocumentParameters offset(Integer offset) {
+  public ListDocumentParameters offset(@javax.annotation.Nullable Integer offset) {
     this.offset = offset;
     return this;
   }
@@ -175,7 +180,7 @@ public class ListDocumentParameters {
     return offset;
   }
 
-  public void setOffset(Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Integer offset) {
     this.offset = offset;
   }
 

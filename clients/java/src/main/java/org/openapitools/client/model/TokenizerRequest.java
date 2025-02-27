@@ -51,20 +51,22 @@ import org.openapitools.client.JSON;
 /**
  * TokenizerRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class TokenizerRequest {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private List<String> text = new ArrayList<>();
 
   public TokenizerRequest() {
   }
 
-  public TokenizerRequest name(String name) {
+  public TokenizerRequest name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -78,12 +80,12 @@ public class TokenizerRequest {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public TokenizerRequest text(List<String> text) {
+  public TokenizerRequest text(@javax.annotation.Nullable List<String> text) {
     this.text = text;
     return this;
   }
@@ -105,7 +107,7 @@ public class TokenizerRequest {
     return text;
   }
 
-  public void setText(List<String> text) {
+  public void setText(@javax.annotation.Nullable List<String> text) {
     this.text = text;
   }
 

@@ -80,19 +80,19 @@ class Coordinate {
 
 
 /**
- * X-axis value of the coordinate
+ * X-axis value
  * @member {Number} x
  */
 Coordinate.prototype['x'] = undefined;
 
 /**
- * Y-axis value of the coordinate
+ * Y-axis value
  * @member {Number} y
  */
 Coordinate.prototype['y'] = undefined;
 
 /**
- * Label associated with the coordinate
+ * Coordinate label
  * @member {String} label
  */
 Coordinate.prototype['label'] = undefined;

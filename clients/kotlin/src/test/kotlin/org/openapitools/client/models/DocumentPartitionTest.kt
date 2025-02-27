@@ -31,10 +31,40 @@ class DocumentPartitionTest : ShouldSpec() {
             //modelInstance.text shouldBe ("TODO")
         }
 
-        // to test the property `relevance` - Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity.
-        should("test relevance") {
+        // to test the property `fullTextSearchRank` - Rank value calculated from full-text search, used to determine the relevance of search results.
+        should("test fullTextSearchRank") {
             // uncomment below to test the property
-            //modelInstance.relevance shouldBe ("TODO")
+            //modelInstance.fullTextSearchRank shouldBe ("TODO")
+        }
+
+        // to test the property `semanticSimilarity` - Represents the semantic similarity score associated with a record.
+        should("test semanticSimilarity") {
+            // uncomment below to test the property
+            //modelInstance.semanticSimilarity shouldBe ("TODO")
+        }
+
+        // to test the property `fullTextSearchRrf` - Reciprocal rank fusion (RRF) score specifically derived from full-text search relevance.
+        should("test fullTextSearchRrf") {
+            // uncomment below to test the property
+            //modelInstance.fullTextSearchRrf shouldBe ("TODO")
+        }
+
+        // to test the property `semanticRrf` - Reciprocal Rank Fusion (RRF) score based on semantic similarity
+        should("test semanticRrf") {
+            // uncomment below to test the property
+            //modelInstance.semanticRrf shouldBe ("TODO")
+        }
+
+        // to test the property `rrfScore` - Represents the combined Reciprocal Rank Fusion (RRF) score, which integrates results from multiple ranking methods such as semantic similarity and full-text search to enhance result relevance.
+        should("test rrfScore") {
+            // uncomment below to test the property
+            //modelInstance.rrfScore shouldBe ("TODO")
+        }
+
+        // to test the property `language` - Language of partition if any. Optional.
+        should("test language") {
+            // uncomment below to test the property
+            //modelInstance.language shouldBe ("TODO")
         }
 
         // to test the property `lastUpdate` - Timestamp about the file/text partition.

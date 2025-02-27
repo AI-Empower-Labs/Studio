@@ -43,12 +43,6 @@ class ApiExtractThematicSimilarityClusterPostRequestTest : ShouldSpec() {
             //modelInstance.maxDegreeOfParallelism shouldBe ("TODO")
         }
 
-        // to test the property `maxTokens` - The maximum number of tokens
-        should("test maxTokens") {
-            // uncomment below to test the property
-            //modelInstance.maxTokens shouldBe ("TODO")
-        }
-
         // to test the property `llmModel` - The name of the LLM model. Optional.
         should("test llmModel") {
             // uncomment below to test the property

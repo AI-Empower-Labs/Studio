@@ -47,9 +47,10 @@ class MiscellaneousApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     }
 
     /**
+     * DELETE /api/cache
      * 
      * Delete LLM cache entry
-     * @param cacheKey The LLM cache key to remove (optional)
+     * @param key The LLM cache key to remove (optional)
      * @return void
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -58,8 +59,8 @@ class MiscellaneousApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * @throws ServerException If the API returns a server error response
      */
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun deleteLlmCacheEntry(cacheKey: kotlin.String? = null) : Unit {
-        val localVarResponse = deleteLlmCacheEntryWithHttpInfo(cacheKey = cacheKey)
+    fun deleteLlmCacheEntry(key: kotlin.String? = null) : Unit {
+        val localVarResponse = deleteLlmCacheEntryWithHttpInfo(key = key)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> Unit
@@ -77,16 +78,17 @@ class MiscellaneousApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     }
 
     /**
+     * DELETE /api/cache
      * 
      * Delete LLM cache entry
-     * @param cacheKey The LLM cache key to remove (optional)
+     * @param key The LLM cache key to remove (optional)
      * @return ApiResponse<Unit?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Throws(IllegalStateException::class, IOException::class)
-    fun deleteLlmCacheEntryWithHttpInfo(cacheKey: kotlin.String?) : ApiResponse<Unit?> {
-        val localVariableConfig = deleteLlmCacheEntryRequestConfig(cacheKey = cacheKey)
+    fun deleteLlmCacheEntryWithHttpInfo(key: kotlin.String?) : ApiResponse<Unit?> {
+        val localVariableConfig = deleteLlmCacheEntryRequestConfig(key = key)
 
         return request<Unit, Unit>(
             localVariableConfig
@@ -96,15 +98,15 @@ class MiscellaneousApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * To obtain the request config of the operation deleteLlmCacheEntry
      *
-     * @param cacheKey The LLM cache key to remove (optional)
+     * @param key The LLM cache key to remove (optional)
      * @return RequestConfig
      */
-    fun deleteLlmCacheEntryRequestConfig(cacheKey: kotlin.String?) : RequestConfig<Unit> {
+    fun deleteLlmCacheEntryRequestConfig(key: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
-                if (cacheKey != null) {
-                    put("cacheKey", listOf(cacheKey.toString()))
+                if (key != null) {
+                    put("key", listOf(key.toString()))
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -121,6 +123,7 @@ class MiscellaneousApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     }
 
     /**
+     * GET /info
      * 
      * Get configuration information
      * @return kotlin.collections.List<kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>>
@@ -151,6 +154,7 @@ class MiscellaneousApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     }
 
     /**
+     * GET /info
      * 
      * Get configuration information
      * @return ApiResponse<kotlin.collections.List<kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>>?>

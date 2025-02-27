@@ -5,14 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**document_id** | **str** | Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten | 
-**index** | **str** | Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39; | [optional] 
-**tags** | **Dict[str, List[str]]** | Optionally add tags to ingestion | [optional] 
 **url** | **str** | Web page to ingest | 
-**pipeline** | **List[str]** | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] 
-**web_hook_url** | **str** | Url to use for webhook callback when operation finishes or fails. | [optional] 
-**embedding_model** | **str** | Embedding model to use in ingestion. Optional. Default to configured default. | [optional] 
-**args** | **Dict[str, Optional[object]]** |  | [optional] 
+**document_id** | **str** | Unique identifier for the document to ingest. | 
+**index** | **str** | Optional index name where the document will be stored. | [optional] 
+**web_hook_url** | **str** | Optional webhook URL to notify upon completion. | [optional] 
+**embedding_model_name** | **str** | Optional name of the embedding model to use during ingestion. | [optional] 
+**context** | **Dict[str, str]** | Optional key-value pairs for additional context or metadata. | [optional] 
+**tags** | **Dict[str, List[str]]** | A collection of tags associated with the document. Tags can be language-specific. | [optional] 
+**ingestion_pipeline** | **List[str]** | Optional list of ingestion pipeline steps. Allows custom processing. | [optional] 
+**language_auto_detection** | **bool** | Enable automatic language detection for document content. | [optional] [default to False]
+**language** | **str** | Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. | [optional] 
 
 ## Example
 

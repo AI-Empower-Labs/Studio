@@ -66,12 +66,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property maxTokens (base name: "maxTokens")', function() {
-      // uncomment below and update the code to test the property maxTokens
-      //var instance = new StudioAiEmpowerLabs.SemanticSearchQueryResultsClusteringRequest();
-      //expect(instance).to.be();
-    });
-
     it('should have the property index (base name: "index")', function() {
       // uncomment below and update the code to test the property index
       //var instance = new StudioAiEmpowerLabs.SemanticSearchQueryResultsClusteringRequest();

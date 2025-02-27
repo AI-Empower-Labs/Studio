@@ -72,6 +72,54 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property searchMode (base name: "searchMode")', function() {
+      // uncomment below and update the code to test the property searchMode
+      //var instance = new StudioAiEmpowerLabs.QueryDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property language (base name: "language")', function() {
+      // uncomment below and update the code to test the property language
+      //var instance = new StudioAiEmpowerLabs.QueryDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property languageDetection (base name: "languageDetection")', function() {
+      // uncomment below and update the code to test the property languageDetection
+      //var instance = new StudioAiEmpowerLabs.QueryDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property ftsMinScore (base name: "ftsMinScore")', function() {
+      // uncomment below and update the code to test the property ftsMinScore
+      //var instance = new StudioAiEmpowerLabs.QueryDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property ftsWeight (base name: "ftsWeight")', function() {
+      // uncomment below and update the code to test the property ftsWeight
+      //var instance = new StudioAiEmpowerLabs.QueryDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property semanticMinRelevance (base name: "semanticMinRelevance")', function() {
+      // uncomment below and update the code to test the property semanticMinRelevance
+      //var instance = new StudioAiEmpowerLabs.QueryDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property semanticWeight (base name: "semanticWeight")', function() {
+      // uncomment below and update the code to test the property semanticWeight
+      //var instance = new StudioAiEmpowerLabs.QueryDocumentRequest();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property smoothingFactorK (base name: "smoothingFactorK")', function() {
+      // uncomment below and update the code to test the property smoothingFactorK
+      //var instance = new StudioAiEmpowerLabs.QueryDocumentRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property minRelevance (base name: "minRelevance")', function() {
       // uncomment below and update the code to test the property minRelevance
       //var instance = new StudioAiEmpowerLabs.QueryDocumentRequest();

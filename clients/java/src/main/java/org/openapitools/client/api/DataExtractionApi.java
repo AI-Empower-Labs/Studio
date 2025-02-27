@@ -96,12 +96,13 @@ public class DataExtractionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call apiExtractThematicSimilarityClusterPostCall(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, final ApiCallback _callback) throws ApiException {
@@ -169,12 +170,13 @@ public class DataExtractionApi {
      * @return KMeansCluster
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public KMeansCluster apiExtractThematicSimilarityClusterPost(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest) throws ApiException {
@@ -189,12 +191,13 @@ public class DataExtractionApi {
      * @return ApiResponse&lt;KMeansCluster&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<KMeansCluster> apiExtractThematicSimilarityClusterPostWithHttpInfo(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest) throws ApiException {
@@ -211,12 +214,13 @@ public class DataExtractionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call apiExtractThematicSimilarityClusterPostAsync(ApiExtractThematicSimilarityClusterPostRequest apiExtractThematicSimilarityClusterPostRequest, final ApiCallback<KMeansCluster> _callback) throws ApiException {
@@ -233,12 +237,13 @@ public class DataExtractionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call embeddingCall(EmbeddingRequest embeddingRequest, final ApiCallback _callback) throws ApiException {
@@ -305,12 +310,13 @@ public class DataExtractionApi {
      * @return EmbeddingResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public EmbeddingResponse embedding(EmbeddingRequest embeddingRequest) throws ApiException {
@@ -325,12 +331,13 @@ public class DataExtractionApi {
      * @return ApiResponse&lt;EmbeddingResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<EmbeddingResponse> embeddingWithHttpInfo(EmbeddingRequest embeddingRequest) throws ApiException {
@@ -347,12 +354,13 @@ public class DataExtractionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call embeddingAsync(EmbeddingRequest embeddingRequest, final ApiCallback<EmbeddingResponse> _callback) throws ApiException {
@@ -369,12 +377,13 @@ public class DataExtractionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call keywordExtractionCall(KeywordExtractionRequestBody keywordExtractionRequestBody, final ApiCallback _callback) throws ApiException {
@@ -441,12 +450,13 @@ public class DataExtractionApi {
      * @return KeywordExtractionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public KeywordExtractionResponse keywordExtraction(KeywordExtractionRequestBody keywordExtractionRequestBody) throws ApiException {
@@ -461,12 +471,13 @@ public class DataExtractionApi {
      * @return ApiResponse&lt;KeywordExtractionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<KeywordExtractionResponse> keywordExtractionWithHttpInfo(KeywordExtractionRequestBody keywordExtractionRequestBody) throws ApiException {
@@ -483,12 +494,13 @@ public class DataExtractionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call keywordExtractionAsync(KeywordExtractionRequestBody keywordExtractionRequestBody, final ApiCallback<KeywordExtractionResponse> _callback) throws ApiException {
@@ -505,12 +517,13 @@ public class DataExtractionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call namedEntityRecognitionCall(NamedEntityRecognitionRequest namedEntityRecognitionRequest, final ApiCallback _callback) throws ApiException {
@@ -577,12 +590,13 @@ public class DataExtractionApi {
      * @return NamedEntityRecognitionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public NamedEntityRecognitionResponse namedEntityRecognition(NamedEntityRecognitionRequest namedEntityRecognitionRequest) throws ApiException {
@@ -597,12 +611,13 @@ public class DataExtractionApi {
      * @return ApiResponse&lt;NamedEntityRecognitionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<NamedEntityRecognitionResponse> namedEntityRecognitionWithHttpInfo(NamedEntityRecognitionRequest namedEntityRecognitionRequest) throws ApiException {
@@ -619,12 +634,13 @@ public class DataExtractionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call namedEntityRecognitionAsync(NamedEntityRecognitionRequest namedEntityRecognitionRequest, final ApiCallback<NamedEntityRecognitionResponse> _callback) throws ApiException {
@@ -641,12 +657,13 @@ public class DataExtractionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSimilarityCall(SemanticSimilarityRequest semanticSimilarityRequest, final ApiCallback _callback) throws ApiException {
@@ -713,12 +730,13 @@ public class DataExtractionApi {
      * @return SemanticSimilarityResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public SemanticSimilarityResponse semanticSimilarity(SemanticSimilarityRequest semanticSimilarityRequest) throws ApiException {
@@ -733,12 +751,13 @@ public class DataExtractionApi {
      * @return ApiResponse&lt;SemanticSimilarityResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<SemanticSimilarityResponse> semanticSimilarityWithHttpInfo(SemanticSimilarityRequest semanticSimilarityRequest) throws ApiException {
@@ -755,12 +774,13 @@ public class DataExtractionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSimilarityAsync(SemanticSimilarityRequest semanticSimilarityRequest, final ApiCallback<SemanticSimilarityResponse> _callback) throws ApiException {
@@ -777,12 +797,13 @@ public class DataExtractionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call tokenCountCall(TokenCountRequest tokenCountRequest, final ApiCallback _callback) throws ApiException {
@@ -849,12 +870,13 @@ public class DataExtractionApi {
      * @return TokenCountResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public TokenCountResponse tokenCount(TokenCountRequest tokenCountRequest) throws ApiException {
@@ -869,12 +891,13 @@ public class DataExtractionApi {
      * @return ApiResponse&lt;TokenCountResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<TokenCountResponse> tokenCountWithHttpInfo(TokenCountRequest tokenCountRequest) throws ApiException {
@@ -891,12 +914,13 @@ public class DataExtractionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call tokenCountAsync(TokenCountRequest tokenCountRequest, final ApiCallback<TokenCountResponse> _callback) throws ApiException {
@@ -913,12 +937,13 @@ public class DataExtractionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call tokenizeCall(TokenizerRequest tokenizerRequest, final ApiCallback _callback) throws ApiException {
@@ -985,12 +1010,13 @@ public class DataExtractionApi {
      * @return TokenizerResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public TokenizerResponse tokenize(TokenizerRequest tokenizerRequest) throws ApiException {
@@ -1005,12 +1031,13 @@ public class DataExtractionApi {
      * @return ApiResponse&lt;TokenizerResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<TokenizerResponse> tokenizeWithHttpInfo(TokenizerRequest tokenizerRequest) throws ApiException {
@@ -1027,12 +1054,13 @@ public class DataExtractionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call tokenizeAsync(TokenizerRequest tokenizerRequest, final ApiCallback<TokenizerResponse> _callback) throws ApiException {
@@ -1056,12 +1084,13 @@ public class DataExtractionApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call transcriptionSynchronousCall(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction, final ApiCallback _callback) throws ApiException {
@@ -1168,12 +1197,13 @@ public class DataExtractionApi {
      * @return TranscriptionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public TranscriptionResponse transcriptionSynchronous(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction) throws ApiException {
@@ -1195,12 +1225,13 @@ public class DataExtractionApi {
      * @return ApiResponse&lt;TranscriptionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<TranscriptionResponse> transcriptionSynchronousWithHttpInfo(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction) throws ApiException {
@@ -1224,12 +1255,13 @@ public class DataExtractionApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call transcriptionSynchronousAsync(List<File> files, String model, String language, String prompt, Double temperature, Boolean splitOnWord, Boolean languageDetection, Boolean enableNoiseReduction, final ApiCallback<TranscriptionResponse> _callback) throws ApiException {

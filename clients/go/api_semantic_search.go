@@ -25,148 +25,6 @@ import (
 // SemanticSearchAPIService SemanticSearchAPI service
 type SemanticSearchAPIService service
 
-type ApiSemanticSearchAskRequest struct {
-	ctx context.Context
-	ApiService *SemanticSearchAPIService
-	askDocumentRequest *AskDocumentRequest
-}
-
-func (r ApiSemanticSearchAskRequest) AskDocumentRequest(askDocumentRequest AskDocumentRequest) ApiSemanticSearchAskRequest {
-	r.askDocumentRequest = &askDocumentRequest
-	return r
-}
-
-func (r ApiSemanticSearchAskRequest) Execute() (*AskDocumentResponse, *http.Response, error) {
-	return r.ApiService.SemanticSearchAskExecute(r)
-}
-
-/*
-SemanticSearchAsk Method for SemanticSearchAsk
-
-Ask questions over ingested documents
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSemanticSearchAskRequest
-*/
-func (a *SemanticSearchAPIService) SemanticSearchAsk(ctx context.Context) ApiSemanticSearchAskRequest {
-	return ApiSemanticSearchAskRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return AskDocumentResponse
-func (a *SemanticSearchAPIService) SemanticSearchAskExecute(r ApiSemanticSearchAskRequest) (*AskDocumentResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AskDocumentResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SemanticSearchAPIService.SemanticSearchAsk")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/semantic/ask"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.askDocumentRequest == nil {
-		return localVarReturnValue, nil, reportError("askDocumentRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.askDocumentRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v HttpValidationProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiSemanticSearchDeleteDocumentRequest struct {
 	ctx context.Context
 	ApiService *SemanticSearchAPIService
@@ -341,7 +199,7 @@ func (a *SemanticSearchAPIService) SemanticSearchDeleteIndexExecute(r ApiSemanti
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/semantic/index"
+	localVarPath := localBasePath + "/api/semantic/index/{name}"
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(parameterValueToString(r.name, "name")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -428,60 +286,110 @@ func (a *SemanticSearchAPIService) SemanticSearchDeleteIndexExecute(r ApiSemanti
 type ApiSemanticSearchFileIngestionRequest struct {
 	ctx context.Context
 	ApiService *SemanticSearchAPIService
+	documentId2 *string
 	files []*os.File
 	documentId *string
 	index *string
 	pipeline *[]string
 	webHookUrl *string
 	embeddingModel *string
-	args *map[string]interface{}
-	tags *map[string]interface{}
+	index2 *string
+	webHookUrl2 *string
+	embeddingModelName *string
+	context *map[string]string
+	tags *map[string][]string
+	ingestionPipeline *[]string
+	languageAutoDetection *bool
+	language *string
 }
 
-// The file object to ingest.
+// Unique identifier for the document to ingest.
+func (r ApiSemanticSearchFileIngestionRequest) DocumentId2(documentId2 string) ApiSemanticSearchFileIngestionRequest {
+	r.documentId2 = &documentId2
+	return r
+}
+
+// A collection of files to be ingested. Must contain at least one file.
 func (r ApiSemanticSearchFileIngestionRequest) Files(files []*os.File) ApiSemanticSearchFileIngestionRequest {
 	r.files = files
 	return r
 }
 
-// Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.
+// A unique identifier for the document within the index. Documents with the same ID will be overwritten.
 func (r ApiSemanticSearchFileIngestionRequest) DocumentId(documentId string) ApiSemanticSearchFileIngestionRequest {
 	r.documentId = &documentId
 	return r
 }
 
-// Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;.
+// The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified.
 func (r ApiSemanticSearchFileIngestionRequest) Index(index string) ApiSemanticSearchFileIngestionRequest {
 	r.index = &index
 	return r
 }
 
-// Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
+// An array of ingestion pipeline step names. If not provided, server default steps will be used.
 func (r ApiSemanticSearchFileIngestionRequest) Pipeline(pipeline []string) ApiSemanticSearchFileIngestionRequest {
 	r.pipeline = &pipeline
 	return r
 }
 
-// Url to use for webhook callback when operation finishes or fails.
+// A URL to receive a callback via webhook when the ingestion process is completed or fails.
 func (r ApiSemanticSearchFileIngestionRequest) WebHookUrl(webHookUrl string) ApiSemanticSearchFileIngestionRequest {
 	r.webHookUrl = &webHookUrl
 	return r
 }
 
-// Embedding model to use in ingestion. Optional. Default to configured default.
+// The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied.
 func (r ApiSemanticSearchFileIngestionRequest) EmbeddingModel(embeddingModel string) ApiSemanticSearchFileIngestionRequest {
 	r.embeddingModel = &embeddingModel
 	return r
 }
 
-func (r ApiSemanticSearchFileIngestionRequest) Args(args map[string]interface{}) ApiSemanticSearchFileIngestionRequest {
-	r.args = &args
+// Optional index name where the document will be stored.
+func (r ApiSemanticSearchFileIngestionRequest) Index2(index2 string) ApiSemanticSearchFileIngestionRequest {
+	r.index2 = &index2
 	return r
 }
 
-// Tags to associate with ingestion
-func (r ApiSemanticSearchFileIngestionRequest) Tags(tags map[string]interface{}) ApiSemanticSearchFileIngestionRequest {
+// Optional webhook URL to notify upon completion.
+func (r ApiSemanticSearchFileIngestionRequest) WebHookUrl2(webHookUrl2 string) ApiSemanticSearchFileIngestionRequest {
+	r.webHookUrl2 = &webHookUrl2
+	return r
+}
+
+// Optional name of the embedding model to use during ingestion.
+func (r ApiSemanticSearchFileIngestionRequest) EmbeddingModelName(embeddingModelName string) ApiSemanticSearchFileIngestionRequest {
+	r.embeddingModelName = &embeddingModelName
+	return r
+}
+
+// Optional key-value pairs for additional context or metadata.
+func (r ApiSemanticSearchFileIngestionRequest) Context(context map[string]string) ApiSemanticSearchFileIngestionRequest {
+	r.context = &context
+	return r
+}
+
+// A collection of tags associated with the document. Tags can be language-specific.
+func (r ApiSemanticSearchFileIngestionRequest) Tags(tags map[string][]string) ApiSemanticSearchFileIngestionRequest {
 	r.tags = &tags
+	return r
+}
+
+// Optional list of ingestion pipeline steps. Allows custom processing.
+func (r ApiSemanticSearchFileIngestionRequest) IngestionPipeline(ingestionPipeline []string) ApiSemanticSearchFileIngestionRequest {
+	r.ingestionPipeline = &ingestionPipeline
+	return r
+}
+
+// Enable automatic language detection for document content.
+func (r ApiSemanticSearchFileIngestionRequest) LanguageAutoDetection(languageAutoDetection bool) ApiSemanticSearchFileIngestionRequest {
+	r.languageAutoDetection = &languageAutoDetection
+	return r
+}
+
+// Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty.
+func (r ApiSemanticSearchFileIngestionRequest) Language(language string) ApiSemanticSearchFileIngestionRequest {
+	r.language = &language
 	return r
 }
 
@@ -490,9 +398,9 @@ func (r ApiSemanticSearchFileIngestionRequest) Execute() (*IngestDocumentRespons
 }
 
 /*
-SemanticSearchFileIngestion Method for SemanticSearchFileIngestion
+SemanticSearchFileIngestion Ingest a File into Semantic Search
 
-Import file document into semantic search
+Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSemanticSearchFileIngestionRequest
@@ -524,6 +432,9 @@ func (a *SemanticSearchAPIService) SemanticSearchFileIngestionExecute(r ApiSeman
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.documentId2 == nil {
+		return localVarReturnValue, nil, reportError("documentId2 is required and must be specified")
+	}
 	if r.files == nil {
 		return localVarReturnValue, nil, reportError("files is required and must be specified")
 	}
@@ -568,6 +479,16 @@ func (a *SemanticSearchAPIService) SemanticSearchFileIngestionExecute(r ApiSeman
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	parameterAddToHeaderOrQuery(localVarFormParams, "documentId", r.documentId2, "", "")
+	if r.index2 != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "index", r.index2, "", "")
+	}
+	if r.webHookUrl2 != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "webHookUrl", r.webHookUrl2, "", "")
+	}
+	if r.embeddingModelName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "embeddingModelName", r.embeddingModelName, "", "")
+	}
 	var filesLocalVarFormFileName string
 	var filesLocalVarFileName     string
 	var filesLocalVarFileBytes    []byte
@@ -586,11 +507,20 @@ func (a *SemanticSearchAPIService) SemanticSearchFileIngestionExecute(r ApiSeman
 			formFiles = append(formFiles, formFile{fileBytes: filesLocalVarFileBytes, fileName: filesLocalVarFileName, formFileName: filesLocalVarFormFileName})
 		}
 	}
-	if r.args != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "args", r.args, "", "")
+	if r.context != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "context", r.context, "", "")
 	}
 	if r.tags != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "tags", r.tags, "", "")
+	}
+	if r.ingestionPipeline != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "ingestionPipeline", r.ingestionPipeline, "", "csv")
+	}
+	if r.languageAutoDetection != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "languageAutoDetection", r.languageAutoDetection, "", "")
+	}
+	if r.language != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "language", r.language, "", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -973,7 +903,7 @@ func (r ApiSemanticSearchQueryRequest) Execute() (*QueryDocumentResponse, *http.
 /*
 SemanticSearchQuery Method for SemanticSearchQuery
 
-Query ingested documents using semantic search
+Performs semantic or hybrid search over previously ingested data.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSemanticSearchQueryRequest
@@ -1397,9 +1327,9 @@ func (r ApiSemanticSearchTextIngestionRequest) Execute() (*IngestDocumentRespons
 }
 
 /*
-SemanticSearchTextIngestion Method for SemanticSearchTextIngestion
+SemanticSearchTextIngestion Ingest Plain Text for Semantic Search
 
-Import plain text into semantic search
+Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSemanticSearchTextIngestionRequest

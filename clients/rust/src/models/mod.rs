@@ -1,9 +1,5 @@
 pub mod _api_extract_thematic_similarity_cluster_post_request;
 pub use self::_api_extract_thematic_similarity_cluster_post_request::ApiExtractThematicSimilarityClusterPostRequest;
-pub mod ask_document_request;
-pub use self::ask_document_request::AskDocumentRequest;
-pub mod ask_document_response;
-pub use self::ask_document_response::AskDocumentResponse;
 pub mod centroid;
 pub use self::centroid::Centroid;
 pub mod citation;

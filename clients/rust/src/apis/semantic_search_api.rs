@@ -10,20 +10,10 @@
 
 
 use reqwest;
-use serde::{Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de::Error as _};
 use crate::{apis::ResponseContent, models};
-use super::{Error, configuration};
+use super::{Error, configuration, ContentType};
 
-
-/// struct for typed errors of method [`semantic_search_ask`]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum SemanticSearchAskError {
-    Status400(models::HttpValidationProblemDetails),
-    Status429(models::ProblemDetails),
-    Status500(models::ProblemDetails),
-    UnknownValue(serde_json::Value),
-}
 
 /// struct for typed errors of method [`semantic_search_delete_document`]
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -127,347 +117,422 @@ pub enum SemanticSearchWebpageIngestionError {
 }
 
 
-/// Ask questions over ingested documents
-pub async fn semantic_search_ask(configuration: &configuration::Configuration, ask_document_request: models::AskDocumentRequest) -> Result<models::AskDocumentResponse, Error<SemanticSearchAskError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/api/semantic/ask", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    local_var_req_builder = local_var_req_builder.json(&ask_document_request);
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<SemanticSearchAskError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
-}
-
 /// Delete specific document by id
 pub async fn semantic_search_delete_document(configuration: &configuration::Configuration, document_id: &str, index: &str) -> Result<(), Error<SemanticSearchDeleteDocumentError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_document_id = document_id;
+    let p_index = index;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/semantic/{documentId}", configuration.base_path, documentId=crate::apis::urlencode(p_document_id));
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/semantic/{documentId}", local_var_configuration.base_path, documentId=crate::apis::urlencode(document_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("index", &index.to_string())]);
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    req_builder = req_builder.query(&[("index", &p_index.to_string())]);
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+    if !status.is_client_error() && !status.is_server_error() {
         Ok(())
     } else {
-        let local_var_entity: Option<SemanticSearchDeleteDocumentError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchDeleteDocumentError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Delete specific index by name
 pub async fn semantic_search_delete_index(configuration: &configuration::Configuration, name: &str) -> Result<(), Error<SemanticSearchDeleteIndexError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_name = name;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/semantic/index/{name}", configuration.base_path, name=crate::apis::urlencode(p_name));
+    let mut req_builder = configuration.client.request(reqwest::Method::DELETE, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/semantic/index", local_var_configuration.base_path, name=crate::apis::urlencode(name));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::DELETE, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
+    if !status.is_client_error() && !status.is_server_error() {
         Ok(())
     } else {
-        let local_var_entity: Option<SemanticSearchDeleteIndexError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchDeleteIndexError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
-/// Import file document into semantic search
-pub async fn semantic_search_file_ingestion(configuration: &configuration::Configuration, files: Vec<std::path::PathBuf>, document_id: Option<&str>, index: Option<&str>, pipeline: Option<Vec<String>>, web_hook_url: Option<&str>, embedding_model: Option<&str>, args: Option<std::collections::HashMap<String, serde_json::Value>>, tags: Option<std::collections::HashMap<String, serde_json::Value>>) -> Result<models::IngestDocumentResponse, Error<SemanticSearchFileIngestionError>> {
-    let local_var_configuration = configuration;
+/// Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
+pub async fn semantic_search_file_ingestion(configuration: &configuration::Configuration, files: Vec<std::path::PathBuf>, document_id: Option<&str>, index: Option<&str>, pipeline: Option<Vec<String>>, web_hook_url: Option<&str>, embedding_model: Option<&str>, document_id2: Option<&str>, index2: Option<&str>, web_hook_url2: Option<&str>, embedding_model_name: Option<&str>, context: Option<std::collections::HashMap<String, String>>, tags: Option<std::collections::HashMap<String, Vec<String>>>, ingestion_pipeline: Option<Vec<String>>, language_auto_detection: Option<bool>, language: Option<&str>) -> Result<models::IngestDocumentResponse, Error<SemanticSearchFileIngestionError>> {
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_files = files;
+    let p_document_id = document_id;
+    let p_index = index;
+    let p_pipeline = pipeline;
+    let p_web_hook_url = web_hook_url;
+    let p_embedding_model = embedding_model;
+    let p_document_id = document_id2;
+    let p_index = index2;
+    let p_web_hook_url = web_hook_url2;
+    let p_embedding_model_name = embedding_model_name;
+    let p_context = context;
+    let p_tags = tags;
+    let p_ingestion_pipeline = ingestion_pipeline;
+    let p_language_auto_detection = language_auto_detection;
+    let p_language = language;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/ingest/file", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/ingest/file", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_str) = document_id {
-        local_var_req_builder = local_var_req_builder.query(&[("documentId", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_document_id {
+        req_builder = req_builder.query(&[("documentId", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = index {
-        local_var_req_builder = local_var_req_builder.query(&[("index", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_index {
+        req_builder = req_builder.query(&[("index", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = pipeline {
-        local_var_req_builder = match "multi" {
-            "multi" => local_var_req_builder.query(&local_var_str.into_iter().map(|p| ("pipeline".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
-            _ => local_var_req_builder.query(&[("pipeline", &local_var_str.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
+    if let Some(ref param_value) = p_pipeline {
+        req_builder = match "multi" {
+            "multi" => req_builder.query(&param_value.into_iter().map(|p| ("pipeline".to_owned(), p.to_string())).collect::<Vec<(std::string::String, std::string::String)>>()),
+            _ => req_builder.query(&[("pipeline", &param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string())]),
         };
     }
-    if let Some(ref local_var_str) = web_hook_url {
-        local_var_req_builder = local_var_req_builder.query(&[("webHookUrl", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_web_hook_url {
+        req_builder = req_builder.query(&[("webHookUrl", &param_value.to_string())]);
     }
-    if let Some(ref local_var_str) = embedding_model {
-        local_var_req_builder = local_var_req_builder.query(&[("embeddingModel", &local_var_str.to_string())]);
+    if let Some(ref param_value) = p_embedding_model {
+        req_builder = req_builder.query(&[("embeddingModel", &param_value.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    let mut local_var_form = reqwest::multipart::Form::new();
+    let mut multipart_form = reqwest::multipart::Form::new();
+    if let Some(param_value) = p_document_id {
+        multipart_form = multipart_form.text("documentId", param_value.to_string());
+    }
+    if let Some(param_value) = p_index {
+        multipart_form = multipart_form.text("index", param_value.to_string());
+    }
+    if let Some(param_value) = p_web_hook_url {
+        multipart_form = multipart_form.text("webHookUrl", param_value.to_string());
+    }
+    if let Some(param_value) = p_embedding_model_name {
+        multipart_form = multipart_form.text("embeddingModelName", param_value.to_string());
+    }
     // TODO: support file upload for 'files' parameter
-    if let Some(local_var_param_value) = args {
-        local_var_form = local_var_form.text("args", local_var_param_value.to_string());
+    if let Some(param_value) = p_context {
+        multipart_form = multipart_form.text("context", param_value.to_string());
     }
-    if let Some(local_var_param_value) = tags {
-        local_var_form = local_var_form.text("tags", local_var_param_value.to_string());
+    if let Some(param_value) = p_tags {
+        multipart_form = multipart_form.text("tags", param_value.to_string());
     }
-    local_var_req_builder = local_var_req_builder.multipart(local_var_form);
+    if let Some(param_value) = p_ingestion_pipeline {
+        multipart_form = multipart_form.text("ingestionPipeline", param_value.into_iter().map(|p| p.to_string()).collect::<Vec<String>>().join(",").to_string());
+    }
+    if let Some(param_value) = p_language_auto_detection {
+        multipart_form = multipart_form.text("languageAutoDetection", param_value.to_string());
+    }
+    if let Some(param_value) = p_language {
+        multipart_form = multipart_form.text("language", param_value.to_string());
+    }
+    req_builder = req_builder.multipart(multipart_form);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::IngestDocumentResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::IngestDocumentResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<SemanticSearchFileIngestionError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchFileIngestionError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Get queue status for ingestion job
 pub async fn semantic_search_ingestion_status(configuration: &configuration::Configuration, id: &str) -> Result<models::DataPipelineStatus, Error<SemanticSearchIngestionStatusError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_id = id;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/ingest/status", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::GET, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/ingest/status", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    local_var_req_builder = local_var_req_builder.query(&[("id", &id.to_string())]);
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    req_builder = req_builder.query(&[("id", &p_id.to_string())]);
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::DataPipelineStatus`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::DataPipelineStatus`")))),
+        }
     } else {
-        let local_var_entity: Option<SemanticSearchIngestionStatusError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchIngestionStatusError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// List - and filter - for ingested documents
 pub async fn semantic_search_list(configuration: &configuration::Configuration, list_document_parameters: models::ListDocumentParameters) -> Result<models::ListDocumentResponse, Error<SemanticSearchListError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_list_document_parameters = list_document_parameters;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/semantic/list", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/semantic/list", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    local_var_req_builder = local_var_req_builder.json(&list_document_parameters);
+    req_builder = req_builder.json(&p_list_document_parameters);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ListDocumentResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ListDocumentResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<SemanticSearchListError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchListError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
-/// Query ingested documents using semantic search
+/// Performs semantic or hybrid search over previously ingested data.
 pub async fn semantic_search_query(configuration: &configuration::Configuration, query_document_request: models::QueryDocumentRequest) -> Result<models::QueryDocumentResponse, Error<SemanticSearchQueryError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_query_document_request = query_document_request;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/semantic/query", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/semantic/query", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    local_var_req_builder = local_var_req_builder.json(&query_document_request);
+    req_builder = req_builder.json(&p_query_document_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::QueryDocumentResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::QueryDocumentResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<SemanticSearchQueryError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchQueryError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Perform k-means clustering over semantic search log entries
 pub async fn semantic_search_query_results_clustering(configuration: &configuration::Configuration, semantic_search_query_results_clustering_request: models::SemanticSearchQueryResultsClusteringRequest) -> Result<models::KMeansCluster, Error<SemanticSearchQueryResultsClusteringError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_semantic_search_query_results_clustering_request = semantic_search_query_results_clustering_request;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/semantic/query-results-clustering", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/semantic/query-results-clustering", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    local_var_req_builder = local_var_req_builder.json(&semantic_search_query_results_clustering_request);
+    req_builder = req_builder.json(&p_semantic_search_query_results_clustering_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::KMeansCluster`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::KMeansCluster`")))),
+        }
     } else {
-        let local_var_entity: Option<SemanticSearchQueryResultsClusteringError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchQueryResultsClusteringError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Rerank documents
 pub async fn semantic_search_rerank(configuration: &configuration::Configuration, re_rank_documents_request: models::ReRankDocumentsRequest) -> Result<models::ReRankDocumentsResponse, Error<SemanticSearchRerankError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_re_rank_documents_request = re_rank_documents_request;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/semantic/rerank", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/semantic/rerank", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    local_var_req_builder = local_var_req_builder.json(&re_rank_documents_request);
+    req_builder = req_builder.json(&p_re_rank_documents_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::ReRankDocumentsResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::ReRankDocumentsResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<SemanticSearchRerankError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchRerankError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
-/// Import plain text into semantic search
+/// Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
 pub async fn semantic_search_text_ingestion(configuration: &configuration::Configuration, ingest_text_document_request: models::IngestTextDocumentRequest) -> Result<models::IngestDocumentResponse, Error<SemanticSearchTextIngestionError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ingest_text_document_request = ingest_text_document_request;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/ingest/text", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/ingest/text", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    local_var_req_builder = local_var_req_builder.json(&ingest_text_document_request);
+    req_builder = req_builder.json(&p_ingest_text_document_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::IngestDocumentResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::IngestDocumentResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<SemanticSearchTextIngestionError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchTextIngestionError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 
 /// Import web page text into semantic search
 pub async fn semantic_search_webpage_ingestion(configuration: &configuration::Configuration, ingest_web_page_document_request: models::IngestWebPageDocumentRequest) -> Result<models::IngestDocumentResponse, Error<SemanticSearchWebpageIngestionError>> {
-    let local_var_configuration = configuration;
+    // add a prefix to parameters to efficiently prevent name collisions
+    let p_ingest_web_page_document_request = ingest_web_page_document_request;
 
-    let local_var_client = &local_var_configuration.client;
+    let uri_str = format!("{}/api/ingest/webpage", configuration.base_path);
+    let mut req_builder = configuration.client.request(reqwest::Method::POST, &uri_str);
 
-    let local_var_uri_str = format!("{}/api/ingest/webpage", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::POST, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
+    if let Some(ref user_agent) = configuration.user_agent {
+        req_builder = req_builder.header(reqwest::header::USER_AGENT, user_agent.clone());
     }
-    local_var_req_builder = local_var_req_builder.json(&ingest_web_page_document_request);
+    req_builder = req_builder.json(&p_ingest_web_page_document_request);
 
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
+    let req = req_builder.build()?;
+    let resp = configuration.client.execute(req).await?;
 
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
+    let status = resp.status();
+    let content_type = resp
+        .headers()
+        .get("content-type")
+        .and_then(|v| v.to_str().ok())
+        .unwrap_or("application/octet-stream");
+    let content_type = super::ContentType::from(content_type);
 
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
+    if !status.is_client_error() && !status.is_server_error() {
+        let content = resp.text().await?;
+        match content_type {
+            ContentType::Json => serde_json::from_str(&content).map_err(Error::from),
+            ContentType::Text => return Err(Error::from(serde_json::Error::custom("Received `text/plain` content type response that cannot be converted to `models::IngestDocumentResponse`"))),
+            ContentType::Unsupported(unknown_type) => return Err(Error::from(serde_json::Error::custom(format!("Received `{unknown_type}` content type response that cannot be converted to `models::IngestDocumentResponse`")))),
+        }
     } else {
-        let local_var_entity: Option<SemanticSearchWebpageIngestionError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
+        let content = resp.text().await?;
+        let entity: Option<SemanticSearchWebpageIngestionError> = serde_json::from_str(&content).ok();
+        Err(Error::ResponseError(ResponseContent { status, content, entity }))
     }
 }
 

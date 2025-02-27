@@ -4,63 +4,15 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**downloadGet**](KernelMemoryApi.md#downloadGet) | **GET** /download |  |
 | [**kernelMemoryAsk**](KernelMemoryApi.md#kernelMemoryAsk) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM |
 | [**kernelMemoryDelete**](KernelMemoryApi.md#kernelMemoryDelete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index |
 | [**kernelMemoryDeleteIndex**](KernelMemoryApi.md#kernelMemoryDeleteIndex) | **DELETE** /api/kernelmemory/indexes | Delete index |
+| [**kernelMemoryDownload**](KernelMemoryApi.md#kernelMemoryDownload) | **GET** /api/kernelmemory/download | Download specific document |
 | [**kernelMemoryGetIndex**](KernelMemoryApi.md#kernelMemoryGetIndex) | **GET** /api/kernelmemory/indexes | List indexes |
 | [**kernelMemorySearch**](KernelMemoryApi.md#kernelMemorySearch) | **POST** /api/kernelmemory/search | Search for documents in specific index |
 | [**kernelMemoryUpload**](KernelMemoryApi.md#kernelMemoryUpload) | **POST** /api/kernelmemory/upload | Upload file for ingestion |
 | [**kernelMemoryUploadStatus**](KernelMemoryApi.md#kernelMemoryUploadStatus) | **GET** /api/kernelmemory/upload-status | Get ingestion status for specific document |
 
-
-<a id="downloadGet"></a>
-# **downloadGet**
-> StreamableFileContent downloadGet(documentId, filename, index)
-
-
-
-### Example
-```kotlin
-// Import classes:
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
-
-val apiInstance = KernelMemoryApi()
-val documentId : kotlin.String = documentId_example // kotlin.String | 
-val filename : kotlin.String = filename_example // kotlin.String | 
-val index : kotlin.String = index_example // kotlin.String | 
-try {
-    val result : StreamableFileContent = apiInstance.downloadGet(documentId, filename, index)
-    println(result)
-} catch (e: ClientException) {
-    println("4xx response calling KernelMemoryApi#downloadGet")
-    e.printStackTrace()
-} catch (e: ServerException) {
-    println("5xx response calling KernelMemoryApi#downloadGet")
-    e.printStackTrace()
-}
-```
-
-### Parameters
-| **documentId** | **kotlin.String**|  | |
-| **filename** | **kotlin.String**|  | |
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **index** | **kotlin.String**|  | [optional] |
-
-### Return type
-
-[**StreamableFileContent**](StreamableFileContent.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/problem+json
 
 <a id="kernelMemoryAsk"></a>
 # **kernelMemoryAsk**
@@ -186,6 +138,54 @@ try {
 ### Return type
 
 [**DeleteAccepted**](DeleteAccepted.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+<a id="kernelMemoryDownload"></a>
+# **kernelMemoryDownload**
+> StreamableFileContent kernelMemoryDownload(documentId, filename, index)
+
+Download specific document
+
+### Example
+```kotlin
+// Import classes:
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
+
+val apiInstance = KernelMemoryApi()
+val documentId : kotlin.String = documentId_example // kotlin.String | 
+val filename : kotlin.String = filename_example // kotlin.String | 
+val index : kotlin.String = index_example // kotlin.String | 
+try {
+    val result : StreamableFileContent = apiInstance.kernelMemoryDownload(documentId, filename, index)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling KernelMemoryApi#kernelMemoryDownload")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling KernelMemoryApi#kernelMemoryDownload")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+| **documentId** | **kotlin.String**|  | |
+| **filename** | **kotlin.String**|  | |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **index** | **kotlin.String**|  | [optional] |
+
+### Return type
+
+[**StreamableFileContent**](StreamableFileContent.md)
 
 ### Authorization
 

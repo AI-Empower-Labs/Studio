@@ -7,8 +7,6 @@ api/openapi.yaml
 build.gradle
 build.sbt
 docs/ApiExtractThematicSimilarityClusterPostRequest.md
-docs/AskDocumentRequest.md
-docs/AskDocumentResponse.md
 docs/Centroid.md
 docs/Citation.md
 docs/Coordinate.md
@@ -103,8 +101,6 @@ src/main/java/org/openapitools/client/auth/HttpBasicAuth.java
 src/main/java/org/openapitools/client/auth/HttpBearerAuth.java
 src/main/java/org/openapitools/client/model/AbstractOpenApiSchema.java
 src/main/java/org/openapitools/client/model/ApiExtractThematicSimilarityClusterPostRequest.java
-src/main/java/org/openapitools/client/model/AskDocumentRequest.java
-src/main/java/org/openapitools/client/model/AskDocumentResponse.java
 src/main/java/org/openapitools/client/model/Centroid.java
 src/main/java/org/openapitools/client/model/Citation.java
 src/main/java/org/openapitools/client/model/Coordinate.java
@@ -166,8 +162,6 @@ src/test/java/org/openapitools/client/api/MiscellaneousApiTest.java
 src/test/java/org/openapitools/client/api/SemanticSearchApiTest.java
 src/test/java/org/openapitools/client/api/TranscriptionApiTest.java
 src/test/java/org/openapitools/client/model/ApiExtractThematicSimilarityClusterPostRequestTest.java
-src/test/java/org/openapitools/client/model/AskDocumentRequestTest.java
-src/test/java/org/openapitools/client/model/AskDocumentResponseTest.java
 src/test/java/org/openapitools/client/model/CentroidTest.java
 src/test/java/org/openapitools/client/model/CitationTest.java
 src/test/java/org/openapitools/client/model/CoordinateTest.java

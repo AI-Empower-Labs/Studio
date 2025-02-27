@@ -51,24 +51,27 @@ import org.openapitools.client.JSON;
 /**
  * SupportedLanguage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class SupportedLanguage {
   public static final String SERIALIZED_NAME_LANGUAGE_CODE = "languageCode";
   @SerializedName(SERIALIZED_NAME_LANGUAGE_CODE)
+  @javax.annotation.Nullable
   private String languageCode;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nullable
   private String name;
 
   public static final String SERIALIZED_NAME_TARGETS = "targets";
   @SerializedName(SERIALIZED_NAME_TARGETS)
+  @javax.annotation.Nullable
   private List<String> targets;
 
   public SupportedLanguage() {
   }
 
-  public SupportedLanguage languageCode(String languageCode) {
+  public SupportedLanguage languageCode(@javax.annotation.Nullable String languageCode) {
     this.languageCode = languageCode;
     return this;
   }
@@ -82,12 +85,12 @@ public class SupportedLanguage {
     return languageCode;
   }
 
-  public void setLanguageCode(String languageCode) {
+  public void setLanguageCode(@javax.annotation.Nullable String languageCode) {
     this.languageCode = languageCode;
   }
 
 
-  public SupportedLanguage name(String name) {
+  public SupportedLanguage name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -101,12 +104,12 @@ public class SupportedLanguage {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
 
-  public SupportedLanguage targets(List<String> targets) {
+  public SupportedLanguage targets(@javax.annotation.Nullable List<String> targets) {
     this.targets = targets;
     return this;
   }
@@ -128,7 +131,7 @@ public class SupportedLanguage {
     return targets;
   }
 
-  public void setTargets(List<String> targets) {
+  public void setTargets(@javax.annotation.Nullable List<String> targets) {
     this.targets = targets;
   }
 

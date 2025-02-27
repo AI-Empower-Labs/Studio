@@ -48,7 +48,7 @@ import org.openapitools.client.JSON;
 /**
  * LanguageDetection
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class LanguageDetection {
   /**
    * Gets or Sets languageCode
@@ -186,16 +186,18 @@ public class LanguageDetection {
 
   public static final String SERIALIZED_NAME_LANGUAGE_CODE = "languageCode";
   @SerializedName(SERIALIZED_NAME_LANGUAGE_CODE)
+  @javax.annotation.Nullable
   private LanguageCodeEnum languageCode;
 
   public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
   @SerializedName(SERIALIZED_NAME_CONFIDENCE)
+  @javax.annotation.Nullable
   private Float confidence;
 
   public LanguageDetection() {
   }
 
-  public LanguageDetection languageCode(LanguageCodeEnum languageCode) {
+  public LanguageDetection languageCode(@javax.annotation.Nullable LanguageCodeEnum languageCode) {
     this.languageCode = languageCode;
     return this;
   }
@@ -209,12 +211,12 @@ public class LanguageDetection {
     return languageCode;
   }
 
-  public void setLanguageCode(LanguageCodeEnum languageCode) {
+  public void setLanguageCode(@javax.annotation.Nullable LanguageCodeEnum languageCode) {
     this.languageCode = languageCode;
   }
 
 
-  public LanguageDetection confidence(Float confidence) {
+  public LanguageDetection confidence(@javax.annotation.Nullable Float confidence) {
     this.confidence = confidence;
     return this;
   }
@@ -228,7 +230,7 @@ public class LanguageDetection {
     return confidence;
   }
 
-  public void setConfidence(Float confidence) {
+  public void setConfidence(@javax.annotation.Nullable Float confidence) {
     this.confidence = confidence;
   }
 

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Link** | Pointer to **NullableString** | Link to the source, if available. | [optional] 
-**Index** | Pointer to **NullableString** | Link to the source, if available. | [optional] 
-**DocumentId** | Pointer to **NullableString** | Link to the source, if available. | [optional] 
-**FileId** | Pointer to **NullableString** | Link to the source, if available. | [optional] 
-**SourceContentType** | Pointer to **NullableString** | Type of source, e.g. PDF, Word, Chat, etc. | [optional] 
-**SourceName** | Pointer to **NullableString** | Name of the source, e.g. file name. | [optional] 
-**SourceUrl** | Pointer to **NullableString** | URL of the source, used for web pages and external data | [optional] 
-**Partitions** | Pointer to [**[]DocumentPartition**](DocumentPartition.md) | List of chunks/blocks of text used. | [optional] 
+**Link** | Pointer to **NullableString** | URL or reference to the original source document | [optional] 
+**Index** | Pointer to **NullableString** | Identifier or position of the citation within the source | [optional] 
+**DocumentId** | Pointer to **NullableString** | Unique identifier for the document | [optional] 
+**FileId** | Pointer to **NullableString** | Unique identifier for the file in storage | [optional] 
+**SourceContentType** | Pointer to **NullableString** | Format of the source (e.g., &#39;pdf&#39;, &#39;docx&#39;, &#39;chat&#39;) | [optional] 
+**SourceName** | Pointer to **NullableString** | Human-readable name or title of the source | [optional] 
+**SourceUrl** | Pointer to **NullableString** | Web URL of the source for online content | [optional] 
+**Partitions** | Pointer to [**[]DocumentPartition**](DocumentPartition.md) | Array of text segments used from the source | [optional] 
 
 ## Methods
 

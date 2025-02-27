@@ -51,16 +51,17 @@ import org.openapitools.client.JSON;
 /**
  * KeywordExtractionResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class KeywordExtractionResponse {
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
+  @javax.annotation.Nullable
   private List<String> keywords;
 
   public KeywordExtractionResponse() {
   }
 
-  public KeywordExtractionResponse keywords(List<String> keywords) {
+  public KeywordExtractionResponse keywords(@javax.annotation.Nullable List<String> keywords) {
     this.keywords = keywords;
     return this;
   }
@@ -82,7 +83,7 @@ public class KeywordExtractionResponse {
     return keywords;
   }
 
-  public void setKeywords(List<String> keywords) {
+  public void setKeywords(@javax.annotation.Nullable List<String> keywords) {
     this.keywords = keywords;
   }
 

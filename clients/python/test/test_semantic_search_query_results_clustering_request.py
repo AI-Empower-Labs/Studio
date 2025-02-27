@@ -38,7 +38,6 @@ class TestSemanticSearchQueryResultsClusteringRequest(unittest.TestCase):
             return SemanticSearchQueryResultsClusteringRequest(
                 cluster_count = 2,
                 max_degree_of_parallelism = 1,
-                max_tokens = 1,
                 index = '',
                 min_relevance = 1.337,
                 max_relevance = 1.337,

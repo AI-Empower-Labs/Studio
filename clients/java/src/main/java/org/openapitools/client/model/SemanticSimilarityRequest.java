@@ -51,24 +51,27 @@ import org.openapitools.client.JSON;
 /**
  * SemanticSimilarityRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class SemanticSimilarityRequest {
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
+  @javax.annotation.Nullable
   private String query;
 
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
+  @javax.annotation.Nullable
   private List<String> documents = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
+  @javax.annotation.Nullable
   private String model;
 
   public SemanticSimilarityRequest() {
   }
 
-  public SemanticSimilarityRequest query(String query) {
+  public SemanticSimilarityRequest query(@javax.annotation.Nullable String query) {
     this.query = query;
     return this;
   }
@@ -82,12 +85,12 @@ public class SemanticSimilarityRequest {
     return query;
   }
 
-  public void setQuery(String query) {
+  public void setQuery(@javax.annotation.Nullable String query) {
     this.query = query;
   }
 
 
-  public SemanticSimilarityRequest documents(List<String> documents) {
+  public SemanticSimilarityRequest documents(@javax.annotation.Nullable List<String> documents) {
     this.documents = documents;
     return this;
   }
@@ -109,12 +112,12 @@ public class SemanticSimilarityRequest {
     return documents;
   }
 
-  public void setDocuments(List<String> documents) {
+  public void setDocuments(@javax.annotation.Nullable List<String> documents) {
     this.documents = documents;
   }
 
 
-  public SemanticSimilarityRequest model(String model) {
+  public SemanticSimilarityRequest model(@javax.annotation.Nullable String model) {
     this.model = model;
     return this;
   }
@@ -128,7 +131,7 @@ public class SemanticSimilarityRequest {
     return model;
   }
 
-  public void setModel(String model) {
+  public void setModel(@javax.annotation.Nullable String model) {
     this.model = model;
   }
 

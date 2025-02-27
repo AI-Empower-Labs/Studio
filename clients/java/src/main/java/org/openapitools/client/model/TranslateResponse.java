@@ -49,16 +49,17 @@ import org.openapitools.client.JSON;
 /**
  * TranslateResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class TranslateResponse {
   public static final String SERIALIZED_NAME_TRANSLATED_TEXT = "translatedText";
   @SerializedName(SERIALIZED_NAME_TRANSLATED_TEXT)
+  @javax.annotation.Nullable
   private String translatedText;
 
   public TranslateResponse() {
   }
 
-  public TranslateResponse translatedText(String translatedText) {
+  public TranslateResponse translatedText(@javax.annotation.Nullable String translatedText) {
     this.translatedText = translatedText;
     return this;
   }
@@ -72,7 +73,7 @@ public class TranslateResponse {
     return translatedText;
   }
 
-  public void setTranslatedText(String translatedText) {
+  public void setTranslatedText(@javax.annotation.Nullable String translatedText) {
     this.translatedText = translatedText;
   }
 

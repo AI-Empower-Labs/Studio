@@ -22,12 +22,12 @@ class IngestTextDocumentRequest {
     /**
      * Constructs a new <code>IngestTextDocumentRequest</code>.
      * @alias module:model/IngestTextDocumentRequest
-     * @param documentId {String} Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten
      * @param text {String} Text to ingest
+     * @param documentId {String} Unique identifier for the document to ingest.
      */
-    constructor(documentId, text) { 
+    constructor(text, documentId) { 
         
-        IngestTextDocumentRequest.initialize(this, documentId, text);
+        IngestTextDocumentRequest.initialize(this, text, documentId);
     }
 
     /**
@@ -35,9 +35,10 @@ class IngestTextDocumentRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, documentId, text) { 
-        obj['documentId'] = documentId;
+    static initialize(obj, text, documentId) { 
         obj['text'] = text;
+        obj['documentId'] = documentId;
+        obj['languageAutoDetection'] = false;
     }
 
     /**
@@ -51,29 +52,35 @@ class IngestTextDocumentRequest {
         if (data) {
             obj = obj || new IngestTextDocumentRequest();
 
+            if (data.hasOwnProperty('text')) {
+                obj['text'] = ApiClient.convertToType(data['text'], 'String');
+            }
             if (data.hasOwnProperty('documentId')) {
                 obj['documentId'] = ApiClient.convertToType(data['documentId'], 'String');
             }
             if (data.hasOwnProperty('index')) {
                 obj['index'] = ApiClient.convertToType(data['index'], 'String');
             }
-            if (data.hasOwnProperty('tags')) {
-                obj['tags'] = ApiClient.convertToType(data['tags'], {'String': ['String']});
-            }
-            if (data.hasOwnProperty('text')) {
-                obj['text'] = ApiClient.convertToType(data['text'], 'String');
-            }
-            if (data.hasOwnProperty('pipeline')) {
-                obj['pipeline'] = ApiClient.convertToType(data['pipeline'], ['String']);
-            }
             if (data.hasOwnProperty('webHookUrl')) {
                 obj['webHookUrl'] = ApiClient.convertToType(data['webHookUrl'], 'String');
             }
-            if (data.hasOwnProperty('embeddingModel')) {
-                obj['embeddingModel'] = ApiClient.convertToType(data['embeddingModel'], 'String');
+            if (data.hasOwnProperty('embeddingModelName')) {
+                obj['embeddingModelName'] = ApiClient.convertToType(data['embeddingModelName'], 'String');
             }
-            if (data.hasOwnProperty('args')) {
-                obj['args'] = ApiClient.convertToType(data['args'], {'String': Object});
+            if (data.hasOwnProperty('context')) {
+                obj['context'] = ApiClient.convertToType(data['context'], {'String': 'String'});
+            }
+            if (data.hasOwnProperty('tags')) {
+                obj['tags'] = ApiClient.convertToType(data['tags'], {'String': ['String']});
+            }
+            if (data.hasOwnProperty('ingestionPipeline')) {
+                obj['ingestionPipeline'] = ApiClient.convertToType(data['ingestionPipeline'], ['String']);
+            }
+            if (data.hasOwnProperty('languageAutoDetection')) {
+                obj['languageAutoDetection'] = ApiClient.convertToType(data['languageAutoDetection'], 'Boolean');
+            }
+            if (data.hasOwnProperty('language')) {
+                obj['language'] = ApiClient.convertToType(data['language'], 'String');
             }
         }
         return obj;
@@ -92,6 +99,10 @@ class IngestTextDocumentRequest {
             }
         }
         // ensure the json data is a string
+        if (data['text'] && !(typeof data['text'] === 'string' || data['text'] instanceof String)) {
+            throw new Error("Expected the field `text` to be a primitive type in the JSON string but got " + data['text']);
+        }
+        // ensure the json data is a string
         if (data['documentId'] && !(typeof data['documentId'] === 'string' || data['documentId'] instanceof String)) {
             throw new Error("Expected the field `documentId` to be a primitive type in the JSON string but got " + data['documentId']);
         }
@@ -100,20 +111,20 @@ class IngestTextDocumentRequest {
             throw new Error("Expected the field `index` to be a primitive type in the JSON string but got " + data['index']);
         }
         // ensure the json data is a string
-        if (data['text'] && !(typeof data['text'] === 'string' || data['text'] instanceof String)) {
-            throw new Error("Expected the field `text` to be a primitive type in the JSON string but got " + data['text']);
-        }
-        // ensure the json data is an array
-        if (!Array.isArray(data['pipeline'])) {
-            throw new Error("Expected the field `pipeline` to be an array in the JSON data but got " + data['pipeline']);
-        }
-        // ensure the json data is a string
         if (data['webHookUrl'] && !(typeof data['webHookUrl'] === 'string' || data['webHookUrl'] instanceof String)) {
             throw new Error("Expected the field `webHookUrl` to be a primitive type in the JSON string but got " + data['webHookUrl']);
         }
         // ensure the json data is a string
-        if (data['embeddingModel'] && !(typeof data['embeddingModel'] === 'string' || data['embeddingModel'] instanceof String)) {
-            throw new Error("Expected the field `embeddingModel` to be a primitive type in the JSON string but got " + data['embeddingModel']);
+        if (data['embeddingModelName'] && !(typeof data['embeddingModelName'] === 'string' || data['embeddingModelName'] instanceof String)) {
+            throw new Error("Expected the field `embeddingModelName` to be a primitive type in the JSON string but got " + data['embeddingModelName']);
+        }
+        // ensure the json data is an array
+        if (!Array.isArray(data['ingestionPipeline'])) {
+            throw new Error("Expected the field `ingestionPipeline` to be an array in the JSON data but got " + data['ingestionPipeline']);
+        }
+        // ensure the json data is a string
+        if (data['language'] && !(typeof data['language'] === 'string' || data['language'] instanceof String)) {
+            throw new Error("Expected the field `language` to be a primitive type in the JSON string but got " + data['language']);
         }
 
         return true;
@@ -122,25 +133,7 @@ class IngestTextDocumentRequest {
 
 }
 
-IngestTextDocumentRequest.RequiredProperties = ["documentId", "text"];
-
-/**
- * Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten
- * @member {String} documentId
- */
-IngestTextDocumentRequest.prototype['documentId'] = undefined;
-
-/**
- * Optional value to specify with index the document should be ingested. Defaults to 'default'
- * @member {String} index
- */
-IngestTextDocumentRequest.prototype['index'] = undefined;
-
-/**
- * Optionally add tags to ingestion
- * @member {Object.<String, Array.<String>>} tags
- */
-IngestTextDocumentRequest.prototype['tags'] = undefined;
+IngestTextDocumentRequest.RequiredProperties = ["text", "documentId"];
 
 /**
  * Text to ingest
@@ -149,30 +142,245 @@ IngestTextDocumentRequest.prototype['tags'] = undefined;
 IngestTextDocumentRequest.prototype['text'] = undefined;
 
 /**
- * Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
- * @member {Array.<String>} pipeline
+ * Unique identifier for the document to ingest.
+ * @member {String} documentId
  */
-IngestTextDocumentRequest.prototype['pipeline'] = undefined;
+IngestTextDocumentRequest.prototype['documentId'] = undefined;
 
 /**
- * Url to use for webhook callback when operation finishes or fails.
+ * Optional index name where the document will be stored.
+ * @member {String} index
+ */
+IngestTextDocumentRequest.prototype['index'] = undefined;
+
+/**
+ * Optional webhook URL to notify upon completion.
  * @member {String} webHookUrl
  */
 IngestTextDocumentRequest.prototype['webHookUrl'] = undefined;
 
 /**
- * Embedding model to use in ingestion. Optional. Default to configured default.
- * @member {String} embeddingModel
+ * Optional name of the embedding model to use during ingestion.
+ * @member {String} embeddingModelName
  */
-IngestTextDocumentRequest.prototype['embeddingModel'] = undefined;
+IngestTextDocumentRequest.prototype['embeddingModelName'] = undefined;
 
 /**
- * @member {Object.<String, Object>} args
+ * Optional key-value pairs for additional context or metadata.
+ * @member {Object.<String, String>} context
  */
-IngestTextDocumentRequest.prototype['args'] = undefined;
+IngestTextDocumentRequest.prototype['context'] = undefined;
+
+/**
+ * A collection of tags associated with the document. Tags can be language-specific.
+ * @member {Object.<String, Array.<String>>} tags
+ */
+IngestTextDocumentRequest.prototype['tags'] = undefined;
+
+/**
+ * Optional list of ingestion pipeline steps. Allows custom processing.
+ * @member {Array.<String>} ingestionPipeline
+ */
+IngestTextDocumentRequest.prototype['ingestionPipeline'] = undefined;
+
+/**
+ * Enable automatic language detection for document content.
+ * @member {Boolean} languageAutoDetection
+ * @default false
+ */
+IngestTextDocumentRequest.prototype['languageAutoDetection'] = false;
+
+/**
+ * Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+ * @member {module:model/IngestTextDocumentRequest.LanguageEnum} language
+ */
+IngestTextDocumentRequest.prototype['language'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>language</code> property.
+ * @enum {String}
+ * @readonly
+ */
+IngestTextDocumentRequest['LanguageEnum'] = {
+
+    /**
+     * value: "arabic"
+     * @const
+     */
+    "arabic": "arabic",
+
+    /**
+     * value: "armenian"
+     * @const
+     */
+    "armenian": "armenian",
+
+    /**
+     * value: "basque"
+     * @const
+     */
+    "basque": "basque",
+
+    /**
+     * value: "catalan"
+     * @const
+     */
+    "catalan": "catalan",
+
+    /**
+     * value: "danish"
+     * @const
+     */
+    "danish": "danish",
+
+    /**
+     * value: "dutch"
+     * @const
+     */
+    "dutch": "dutch",
+
+    /**
+     * value: "english"
+     * @const
+     */
+    "english": "english",
+
+    /**
+     * value: "finnish"
+     * @const
+     */
+    "finnish": "finnish",
+
+    /**
+     * value: "french"
+     * @const
+     */
+    "french": "french",
+
+    /**
+     * value: "german"
+     * @const
+     */
+    "german": "german",
+
+    /**
+     * value: "greek"
+     * @const
+     */
+    "greek": "greek",
+
+    /**
+     * value: "hindi"
+     * @const
+     */
+    "hindi": "hindi",
+
+    /**
+     * value: "hungarian"
+     * @const
+     */
+    "hungarian": "hungarian",
+
+    /**
+     * value: "indonesian"
+     * @const
+     */
+    "indonesian": "indonesian",
+
+    /**
+     * value: "irish"
+     * @const
+     */
+    "irish": "irish",
+
+    /**
+     * value: "italian"
+     * @const
+     */
+    "italian": "italian",
+
+    /**
+     * value: "lithuanian"
+     * @const
+     */
+    "lithuanian": "lithuanian",
+
+    /**
+     * value: "nepali"
+     * @const
+     */
+    "nepali": "nepali",
+
+    /**
+     * value: "norwegian"
+     * @const
+     */
+    "norwegian": "norwegian",
+
+    /**
+     * value: "portuguese"
+     * @const
+     */
+    "portuguese": "portuguese",
+
+    /**
+     * value: "romanian"
+     * @const
+     */
+    "romanian": "romanian",
+
+    /**
+     * value: "russian"
+     * @const
+     */
+    "russian": "russian",
+
+    /**
+     * value: "serbian"
+     * @const
+     */
+    "serbian": "serbian",
+
+    /**
+     * value: "spanish"
+     * @const
+     */
+    "spanish": "spanish",
+
+    /**
+     * value: "swedish"
+     * @const
+     */
+    "swedish": "swedish",
+
+    /**
+     * value: "tamil"
+     * @const
+     */
+    "tamil": "tamil",
+
+    /**
+     * value: "turkish"
+     * @const
+     */
+    "turkish": "turkish",
+
+    /**
+     * value: "yiddish"
+     * @const
+     */
+    "yiddish": "yiddish",
+
+    /**
+     * value: "simple"
+     * @const
+     */
+    "simple": "simple"
+};
 
 
 

@@ -75,20 +75,21 @@ public class MiscellaneousApi {
 
     /**
      * Build call for deleteLlmCacheEntry
-     * @param cacheKey The LLM cache key to remove (optional)
+     * @param key The LLM cache key to remove (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK - Cache was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteLlmCacheEntryCall(String cacheKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteLlmCacheEntryCall(String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -113,8 +114,8 @@ public class MiscellaneousApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (cacheKey != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cacheKey", cacheKey));
+        if (key != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("key", key));
         }
 
         final String[] localVarAccepts = {
@@ -137,68 +138,71 @@ public class MiscellaneousApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteLlmCacheEntryValidateBeforeCall(String cacheKey, final ApiCallback _callback) throws ApiException {
-        return deleteLlmCacheEntryCall(cacheKey, _callback);
+    private okhttp3.Call deleteLlmCacheEntryValidateBeforeCall(String key, final ApiCallback _callback) throws ApiException {
+        return deleteLlmCacheEntryCall(key, _callback);
 
     }
 
     /**
      * 
      * Delete LLM cache entry
-     * @param cacheKey The LLM cache key to remove (optional)
+     * @param key The LLM cache key to remove (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK - Cache was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteLlmCacheEntry(String cacheKey) throws ApiException {
-        deleteLlmCacheEntryWithHttpInfo(cacheKey);
+    public void deleteLlmCacheEntry(String key) throws ApiException {
+        deleteLlmCacheEntryWithHttpInfo(key);
     }
 
     /**
      * 
      * Delete LLM cache entry
-     * @param cacheKey The LLM cache key to remove (optional)
+     * @param key The LLM cache key to remove (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK - Cache was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteLlmCacheEntryWithHttpInfo(String cacheKey) throws ApiException {
-        okhttp3.Call localVarCall = deleteLlmCacheEntryValidateBeforeCall(cacheKey, null);
+    public ApiResponse<Void> deleteLlmCacheEntryWithHttpInfo(String key) throws ApiException {
+        okhttp3.Call localVarCall = deleteLlmCacheEntryValidateBeforeCall(key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      *  (asynchronously)
      * Delete LLM cache entry
-     * @param cacheKey The LLM cache key to remove (optional)
+     * @param key The LLM cache key to remove (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK - Cache was deleted </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteLlmCacheEntryAsync(String cacheKey, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteLlmCacheEntryAsync(String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteLlmCacheEntryValidateBeforeCall(cacheKey, _callback);
+        okhttp3.Call localVarCall = deleteLlmCacheEntryValidateBeforeCall(key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -208,7 +212,8 @@ public class MiscellaneousApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Current configuration </td><td>  -  </td></tr>
      </table>
@@ -269,7 +274,8 @@ public class MiscellaneousApi {
      * @return List&lt;Map&lt;String, List&lt;String&gt;&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Current configuration </td><td>  -  </td></tr>
      </table>
@@ -285,7 +291,8 @@ public class MiscellaneousApi {
      * @return ApiResponse&lt;List&lt;Map&lt;String, List&lt;String&gt;&gt;&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Current configuration </td><td>  -  </td></tr>
      </table>
@@ -303,7 +310,8 @@ public class MiscellaneousApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Current configuration </td><td>  -  </td></tr>
      </table>

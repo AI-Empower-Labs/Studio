@@ -20,21 +20,21 @@ var _ MappedNullable = &DocumentCitation{}
 
 // DocumentCitation struct for DocumentCitation
 type DocumentCitation struct {
-	// Link to the source, if available.
+	// URL or reference to the original source document
 	Link NullableString `json:"link,omitempty"`
-	// Link to the source, if available.
+	// Identifier or position of the citation within the source
 	Index NullableString `json:"index,omitempty"`
-	// Link to the source, if available.
+	// Unique identifier for the document
 	DocumentId NullableString `json:"documentId,omitempty"`
-	// Link to the source, if available.
+	// Unique identifier for the file in storage
 	FileId NullableString `json:"fileId,omitempty"`
-	// Type of source, e.g. PDF, Word, Chat, etc.
+	// Format of the source (e.g., 'pdf', 'docx', 'chat')
 	SourceContentType NullableString `json:"sourceContentType,omitempty"`
-	// Name of the source, e.g. file name.
+	// Human-readable name or title of the source
 	SourceName NullableString `json:"sourceName,omitempty"`
-	// URL of the source, used for web pages and external data
+	// Web URL of the source for online content
 	SourceUrl NullableString `json:"sourceUrl,omitempty"`
-	// List of chunks/blocks of text used.
+	// Array of text segments used from the source
 	Partitions []DocumentPartition `json:"partitions,omitempty"`
 }
 

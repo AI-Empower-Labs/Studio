@@ -18,18 +18,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, ClassVar, Dict, List
+from typing_extensions import Annotated
 from openapi_client.models.centroid import Centroid
 from typing import Optional, Set
 from typing_extensions import Self
 
 class KMeansCluster(BaseModel):
     """
-    Represents the response object for K-Means Clustering, contains cluster size and array of centroids
+    Response object for K-Means Clustering containing cluster size and centroids array
     """ # noqa: E501
-    cluster_size: Optional[StrictInt] = Field(default=None, description="Size of the cluster", alias="clusterSize")
-    centroids: Optional[List[Centroid]] = Field(default=None, description="Array of Centroid objects")
+    cluster_size: Annotated[int, Field(strict=True, ge=0)] = Field(description="Number of points in the cluster", alias="clusterSize")
+    centroids: Annotated[List[Centroid], Field(min_length=1)] = Field(description="List of cluster centroids")
     __properties: ClassVar[List[str]] = ["clusterSize", "centroids"]
 
     model_config = ConfigDict(

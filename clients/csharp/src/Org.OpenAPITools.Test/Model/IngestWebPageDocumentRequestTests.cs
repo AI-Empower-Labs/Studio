@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -56,6 +55,15 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'Url'
+        /// </summary>
+        [Fact]
+        public void UrlTest()
+        {
+            // TODO unit test for the property 'Url'
+        }
+
+        /// <summary>
         /// Test the property 'DocumentId'
         /// </summary>
         [Fact]
@@ -74,33 +82,6 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Tags'
-        /// </summary>
-        [Fact]
-        public void TagsTest()
-        {
-            // TODO unit test for the property 'Tags'
-        }
-
-        /// <summary>
-        /// Test the property 'Url'
-        /// </summary>
-        [Fact]
-        public void UrlTest()
-        {
-            // TODO unit test for the property 'Url'
-        }
-
-        /// <summary>
-        /// Test the property 'Pipeline'
-        /// </summary>
-        [Fact]
-        public void PipelineTest()
-        {
-            // TODO unit test for the property 'Pipeline'
-        }
-
-        /// <summary>
         /// Test the property 'WebHookUrl'
         /// </summary>
         [Fact]
@@ -110,21 +91,57 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'EmbeddingModel'
+        /// Test the property 'EmbeddingModelName'
         /// </summary>
         [Fact]
-        public void EmbeddingModelTest()
+        public void EmbeddingModelNameTest()
         {
-            // TODO unit test for the property 'EmbeddingModel'
+            // TODO unit test for the property 'EmbeddingModelName'
         }
 
         /// <summary>
-        /// Test the property 'Args'
+        /// Test the property 'Context'
         /// </summary>
         [Fact]
-        public void ArgsTest()
+        public void ContextTest()
         {
-            // TODO unit test for the property 'Args'
+            // TODO unit test for the property 'Context'
+        }
+
+        /// <summary>
+        /// Test the property 'Tags'
+        /// </summary>
+        [Fact]
+        public void TagsTest()
+        {
+            // TODO unit test for the property 'Tags'
+        }
+
+        /// <summary>
+        /// Test the property 'IngestionPipeline'
+        /// </summary>
+        [Fact]
+        public void IngestionPipelineTest()
+        {
+            // TODO unit test for the property 'IngestionPipeline'
+        }
+
+        /// <summary>
+        /// Test the property 'LanguageAutoDetection'
+        /// </summary>
+        [Fact]
+        public void LanguageAutoDetectionTest()
+        {
+            // TODO unit test for the property 'LanguageAutoDetection'
+        }
+
+        /// <summary>
+        /// Test the property 'Language'
+        /// </summary>
+        [Fact]
+        public void LanguageTest()
+        {
+            // TODO unit test for the property 'Language'
         }
     }
 }

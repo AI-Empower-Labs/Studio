@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -80,15 +79,6 @@ namespace Org.OpenAPITools.Test.Model
         public void MaxDegreeOfParallelismTest()
         {
             // TODO unit test for the property 'MaxDegreeOfParallelism'
-        }
-
-        /// <summary>
-        /// Test the property 'MaxTokens'
-        /// </summary>
-        [Fact]
-        public void MaxTokensTest()
-        {
-            // TODO unit test for the property 'MaxTokens'
         }
 
         /// <summary>

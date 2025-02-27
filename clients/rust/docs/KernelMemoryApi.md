@@ -4,45 +4,15 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**download_get**](KernelMemoryApi.md#download_get) | **GET** /download | 
 [**kernel_memory_ask**](KernelMemoryApi.md#kernel_memory_ask) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM
 [**kernel_memory_delete**](KernelMemoryApi.md#kernel_memory_delete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index
 [**kernel_memory_delete_index**](KernelMemoryApi.md#kernel_memory_delete_index) | **DELETE** /api/kernelmemory/indexes | Delete index
+[**kernel_memory_download**](KernelMemoryApi.md#kernel_memory_download) | **GET** /api/kernelmemory/download | Download specific document
 [**kernel_memory_get_index**](KernelMemoryApi.md#kernel_memory_get_index) | **GET** /api/kernelmemory/indexes | List indexes
 [**kernel_memory_search**](KernelMemoryApi.md#kernel_memory_search) | **POST** /api/kernelmemory/search | Search for documents in specific index
 [**kernel_memory_upload**](KernelMemoryApi.md#kernel_memory_upload) | **POST** /api/kernelmemory/upload | Upload file for ingestion
 [**kernel_memory_upload_status**](KernelMemoryApi.md#kernel_memory_upload_status) | **GET** /api/kernelmemory/upload-status | Get ingestion status for specific document
 
-
-
-## download_get
-
-> models::StreamableFileContent download_get(document_id, filename, index)
-
-
-### Parameters
-
-
-Name | Type | Description  | Required | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-**document_id** | **String** |  | [required] |
-**filename** | **String** |  | [required] |
-**index** | Option<**String**> |  |  |
-
-### Return type
-
-[**models::StreamableFileContent**](StreamableFileContent.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## kernel_memory_ask
@@ -117,6 +87,36 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**models::DeleteAccepted**](DeleteAccepted.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## kernel_memory_download
+
+> models::StreamableFileContent kernel_memory_download(document_id, filename, index)
+Download specific document
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**document_id** | **String** |  | [required] |
+**filename** | **String** |  | [required] |
+**index** | Option<**String**> |  |  |
+
+### Return type
+
+[**models::StreamableFileContent**](StreamableFileContent.md)
 
 ### Authorization
 

@@ -83,10 +83,11 @@ public class LanguageApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call languageDetectionCall(String text, final ApiCallback _callback) throws ApiException {
@@ -156,10 +157,11 @@ public class LanguageApi {
      * @return DetectLanguageResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public DetectLanguageResponse languageDetection(String text) throws ApiException {
@@ -174,10 +176,11 @@ public class LanguageApi {
      * @return ApiResponse&lt;DetectLanguageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<DetectLanguageResponse> languageDetectionWithHttpInfo(String text) throws ApiException {
@@ -194,10 +197,11 @@ public class LanguageApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call languageDetectionAsync(String text, final ApiCallback<DetectLanguageResponse> _callback) throws ApiException {
@@ -213,10 +217,11 @@ public class LanguageApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call languageGetLanguageListCall(final ApiCallback _callback) throws ApiException {
@@ -276,10 +281,11 @@ public class LanguageApi {
      * @return GetLanguageResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public GetLanguageResponse languageGetLanguageList() throws ApiException {
@@ -293,10 +299,11 @@ public class LanguageApi {
      * @return ApiResponse&lt;GetLanguageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<GetLanguageResponse> languageGetLanguageListWithHttpInfo() throws ApiException {
@@ -312,10 +319,11 @@ public class LanguageApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call languageGetLanguageListAsync(final ApiCallback<GetLanguageResponse> _callback) throws ApiException {
@@ -332,10 +340,11 @@ public class LanguageApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call languageTranslateCall(Translate translate, final ApiCallback _callback) throws ApiException {
@@ -402,10 +411,11 @@ public class LanguageApi {
      * @return TranslateResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public TranslateResponse languageTranslate(Translate translate) throws ApiException {
@@ -420,10 +430,11 @@ public class LanguageApi {
      * @return ApiResponse&lt;TranslateResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<TranslateResponse> languageTranslateWithHttpInfo(Translate translate) throws ApiException {
@@ -440,10 +451,11 @@ public class LanguageApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call languageTranslateAsync(Translate translate, final ApiCallback<TranslateResponse> _callback) throws ApiException {

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## DeleteLlmCacheEntry
 
-> DeleteLlmCacheEntry(ctx).CacheKey(cacheKey).Execute()
+> DeleteLlmCacheEntry(ctx).Key(key).Execute()
 
 
 
@@ -30,11 +30,11 @@ import (
 )
 
 func main() {
-	cacheKey := "cacheKey_example" // string | The LLM cache key to remove (optional)
+	key := "key_example" // string | The LLM cache key to remove (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.MiscellaneousAPI.DeleteLlmCacheEntry(context.Background()).CacheKey(cacheKey).Execute()
+	r, err := apiClient.MiscellaneousAPI.DeleteLlmCacheEntry(context.Background()).Key(key).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MiscellaneousAPI.DeleteLlmCacheEntry``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,7 +53,7 @@ Other parameters are passed through a pointer to a apiDeleteLlmCacheEntryRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cacheKey** | **string** | The LLM cache key to remove | 
+ **key** | **string** | The LLM cache key to remove | 
 
 ### Return type
 

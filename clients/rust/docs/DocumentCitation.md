@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**link** | Option<**String**> | Link to the source, if available. | [optional]
-**index** | Option<**String**> | Link to the source, if available. | [optional]
-**document_id** | Option<**String**> | Link to the source, if available. | [optional]
-**file_id** | Option<**String**> | Link to the source, if available. | [optional]
-**source_content_type** | Option<**String**> | Type of source, e.g. PDF, Word, Chat, etc. | [optional]
-**source_name** | Option<**String**> | Name of the source, e.g. file name. | [optional]
-**source_url** | Option<**String**> | URL of the source, used for web pages and external data | [optional]
-**partitions** | Option<[**Vec<models::DocumentPartition>**](DocumentPartition.md)> | List of chunks/blocks of text used. | [optional]
+**link** | Option<**String**> | URL or reference to the original source document | [optional]
+**index** | Option<**String**> | Identifier or position of the citation within the source | [optional]
+**document_id** | Option<**String**> | Unique identifier for the document | [optional]
+**file_id** | Option<**String**> | Unique identifier for the file in storage | [optional]
+**source_content_type** | Option<**String**> | Format of the source (e.g., 'pdf', 'docx', 'chat') | [optional]
+**source_name** | Option<**String**> | Human-readable name or title of the source | [optional]
+**source_url** | Option<**String**> | Web URL of the source for online content | [optional]
+**partitions** | Option<[**Vec<models::DocumentPartition>**](DocumentPartition.md)> | Array of text segments used from the source | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,8 +4,6 @@
 .travis.yml
 README.md
 docs/ApiExtractThematicSimilarityClusterPostRequest.md
-docs/AskDocumentRequest.md
-docs/AskDocumentResponse.md
 docs/Centroid.md
 docs/Citation.md
 docs/Coordinate.md
@@ -78,8 +76,6 @@ src/api/SemanticSearchApi.js
 src/api/TranscriptionApi.js
 src/index.js
 src/model/ApiExtractThematicSimilarityClusterPostRequest.js
-src/model/AskDocumentRequest.js
-src/model/AskDocumentResponse.js
 src/model/Centroid.js
 src/model/Citation.js
 src/model/Coordinate.js
@@ -141,8 +137,6 @@ test/api/MiscellaneousApi.spec.js
 test/api/SemanticSearchApi.spec.js
 test/api/TranscriptionApi.spec.js
 test/model/ApiExtractThematicSimilarityClusterPostRequest.spec.js
-test/model/AskDocumentRequest.spec.js
-test/model/AskDocumentResponse.spec.js
 test/model/Centroid.spec.js
 test/model/Citation.spec.js
 test/model/Coordinate.spec.js

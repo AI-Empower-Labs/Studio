@@ -48,16 +48,6 @@
   }
 
   describe('SemanticSearchApi', function() {
-    describe('semanticSearchAsk', function() {
-      it('should call semanticSearchAsk successfully', function(done) {
-        //uncomment below and update the code to test semanticSearchAsk
-        //instance.semanticSearchAsk(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('semanticSearchDeleteDocument', function() {
       it('should call semanticSearchDeleteDocument successfully', function(done) {
         //uncomment below and update the code to test semanticSearchDeleteDocument

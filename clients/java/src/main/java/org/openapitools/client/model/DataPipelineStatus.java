@@ -54,56 +54,67 @@ import org.openapitools.client.JSON;
 /**
  * DataPipelineStatus
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class DataPipelineStatus {
   public static final String SERIALIZED_NAME_COMPLETED = "completed";
   @SerializedName(SERIALIZED_NAME_COMPLETED)
+  @javax.annotation.Nullable
   private Boolean completed;
 
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
+  @javax.annotation.Nullable
   private Boolean failed;
 
   public static final String SERIALIZED_NAME_EMPTY = "empty";
   @SerializedName(SERIALIZED_NAME_EMPTY)
+  @javax.annotation.Nullable
   private Boolean empty;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "document_id";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
+  @javax.annotation.Nullable
   private String documentId;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
+  @javax.annotation.Nullable
   private Map<String, List<String>> tags;
 
   public static final String SERIALIZED_NAME_CREATION = "creation";
   @SerializedName(SERIALIZED_NAME_CREATION)
+  @javax.annotation.Nullable
   private OffsetDateTime creation;
 
   public static final String SERIALIZED_NAME_LAST_UPDATE = "last_update";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATE)
+  @javax.annotation.Nullable
   private OffsetDateTime lastUpdate;
 
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
+  @javax.annotation.Nullable
   private List<String> steps;
 
   public static final String SERIALIZED_NAME_REMAINING_STEPS = "remaining_steps";
   @SerializedName(SERIALIZED_NAME_REMAINING_STEPS)
+  @javax.annotation.Nullable
   private List<String> remainingSteps;
 
   public static final String SERIALIZED_NAME_COMPLETED_STEPS = "completed_steps";
   @SerializedName(SERIALIZED_NAME_COMPLETED_STEPS)
+  @javax.annotation.Nullable
   private List<String> completedSteps;
 
   public DataPipelineStatus() {
   }
 
-  public DataPipelineStatus completed(Boolean completed) {
+  public DataPipelineStatus completed(@javax.annotation.Nullable Boolean completed) {
     this.completed = completed;
     return this;
   }
@@ -117,12 +128,12 @@ public class DataPipelineStatus {
     return completed;
   }
 
-  public void setCompleted(Boolean completed) {
+  public void setCompleted(@javax.annotation.Nullable Boolean completed) {
     this.completed = completed;
   }
 
 
-  public DataPipelineStatus failed(Boolean failed) {
+  public DataPipelineStatus failed(@javax.annotation.Nullable Boolean failed) {
     this.failed = failed;
     return this;
   }
@@ -136,12 +147,12 @@ public class DataPipelineStatus {
     return failed;
   }
 
-  public void setFailed(Boolean failed) {
+  public void setFailed(@javax.annotation.Nullable Boolean failed) {
     this.failed = failed;
   }
 
 
-  public DataPipelineStatus empty(Boolean empty) {
+  public DataPipelineStatus empty(@javax.annotation.Nullable Boolean empty) {
     this.empty = empty;
     return this;
   }
@@ -155,12 +166,12 @@ public class DataPipelineStatus {
     return empty;
   }
 
-  public void setEmpty(Boolean empty) {
+  public void setEmpty(@javax.annotation.Nullable Boolean empty) {
     this.empty = empty;
   }
 
 
-  public DataPipelineStatus index(String index) {
+  public DataPipelineStatus index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
@@ -174,12 +185,12 @@ public class DataPipelineStatus {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public DataPipelineStatus documentId(String documentId) {
+  public DataPipelineStatus documentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
     return this;
   }
@@ -193,12 +204,12 @@ public class DataPipelineStatus {
     return documentId;
   }
 
-  public void setDocumentId(String documentId) {
+  public void setDocumentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
   }
 
 
-  public DataPipelineStatus tags(Map<String, List<String>> tags) {
+  public DataPipelineStatus tags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
     return this;
   }
@@ -220,12 +231,12 @@ public class DataPipelineStatus {
     return tags;
   }
 
-  public void setTags(Map<String, List<String>> tags) {
+  public void setTags(@javax.annotation.Nullable Map<String, List<String>> tags) {
     this.tags = tags;
   }
 
 
-  public DataPipelineStatus creation(OffsetDateTime creation) {
+  public DataPipelineStatus creation(@javax.annotation.Nullable OffsetDateTime creation) {
     this.creation = creation;
     return this;
   }
@@ -239,12 +250,12 @@ public class DataPipelineStatus {
     return creation;
   }
 
-  public void setCreation(OffsetDateTime creation) {
+  public void setCreation(@javax.annotation.Nullable OffsetDateTime creation) {
     this.creation = creation;
   }
 
 
-  public DataPipelineStatus lastUpdate(OffsetDateTime lastUpdate) {
+  public DataPipelineStatus lastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
     return this;
   }
@@ -258,12 +269,12 @@ public class DataPipelineStatus {
     return lastUpdate;
   }
 
-  public void setLastUpdate(OffsetDateTime lastUpdate) {
+  public void setLastUpdate(@javax.annotation.Nullable OffsetDateTime lastUpdate) {
     this.lastUpdate = lastUpdate;
   }
 
 
-  public DataPipelineStatus steps(List<String> steps) {
+  public DataPipelineStatus steps(@javax.annotation.Nullable List<String> steps) {
     this.steps = steps;
     return this;
   }
@@ -285,12 +296,12 @@ public class DataPipelineStatus {
     return steps;
   }
 
-  public void setSteps(List<String> steps) {
+  public void setSteps(@javax.annotation.Nullable List<String> steps) {
     this.steps = steps;
   }
 
 
-  public DataPipelineStatus remainingSteps(List<String> remainingSteps) {
+  public DataPipelineStatus remainingSteps(@javax.annotation.Nullable List<String> remainingSteps) {
     this.remainingSteps = remainingSteps;
     return this;
   }
@@ -312,12 +323,12 @@ public class DataPipelineStatus {
     return remainingSteps;
   }
 
-  public void setRemainingSteps(List<String> remainingSteps) {
+  public void setRemainingSteps(@javax.annotation.Nullable List<String> remainingSteps) {
     this.remainingSteps = remainingSteps;
   }
 
 
-  public DataPipelineStatus completedSteps(List<String> completedSteps) {
+  public DataPipelineStatus completedSteps(@javax.annotation.Nullable List<String> completedSteps) {
     this.completedSteps = completedSteps;
     return this;
   }
@@ -339,7 +350,7 @@ public class DataPipelineStatus {
     return completedSteps;
   }
 
-  public void setCompletedSteps(List<String> completedSteps) {
+  public void setCompletedSteps(@javax.annotation.Nullable List<String> completedSteps) {
     this.completedSteps = completedSteps;
   }
 

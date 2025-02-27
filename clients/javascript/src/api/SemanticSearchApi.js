@@ -13,8 +13,6 @@
 
 
 import ApiClient from "../ApiClient";
-import AskDocumentRequest from '../model/AskDocumentRequest';
-import AskDocumentResponse from '../model/AskDocumentResponse';
 import DataPipelineStatus from '../model/DataPipelineStatus';
 import HttpValidationProblemDetails from '../model/HttpValidationProblemDetails';
 import IngestDocumentResponse from '../model/IngestDocumentResponse';
@@ -48,47 +46,6 @@ export default class SemanticSearchApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
-
-    /**
-     * Callback function to receive the result of the semanticSearchAsk operation.
-     * @callback module:api/SemanticSearchApi~semanticSearchAskCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/AskDocumentResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Ask questions over ingested documents
-     * @param {module:model/AskDocumentRequest} askDocumentRequest 
-     * @param {module:api/SemanticSearchApi~semanticSearchAskCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AskDocumentResponse}
-     */
-    semanticSearchAsk(askDocumentRequest, callback) {
-      let postBody = askDocumentRequest;
-      // verify the required parameter 'askDocumentRequest' is set
-      if (askDocumentRequest === undefined || askDocumentRequest === null) {
-        throw new Error("Missing the required parameter 'askDocumentRequest' when calling semanticSearchAsk");
-      }
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = [];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json', 'application/problem+json'];
-      let returnType = AskDocumentResponse;
-      return this.apiClient.callApi(
-        '/api/semantic/ask', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
 
     /**
      * Callback function to receive the result of the semanticSearchDeleteDocument operation.
@@ -172,7 +129,7 @@ export default class SemanticSearchApi {
       let accepts = ['application/problem+json'];
       let returnType = null;
       return this.apiClient.callApi(
-        '/api/semantic/index', 'DELETE',
+        '/api/semantic/index/{name}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -187,22 +144,34 @@ export default class SemanticSearchApi {
      */
 
     /**
-     * Import file document into semantic search
-     * @param {Array.<File>} files The file object to ingest.
+     * Ingest a File into Semantic Search
+     * Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
+     * @param {String} documentId2 Unique identifier for the document to ingest.
+     * @param {Array.<File>} files A collection of files to be ingested. Must contain at least one file.
      * @param {Object} opts Optional parameters
-     * @param {String} [documentId] Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.
-     * @param {String} [index] Optional value to specify with index the document should be ingested. Defaults to 'default'.
-     * @param {Array.<String>} [pipeline] Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
-     * @param {String} [webHookUrl] Url to use for webhook callback when operation finishes or fails.
-     * @param {String} [embeddingModel] Embedding model to use in ingestion. Optional. Default to configured default.
-     * @param {Object.<String, {String: Object}>} [args] 
-     * @param {Object.<String, {String: Object}>} [tags] Tags to associate with ingestion
+     * @param {String} [documentId] A unique identifier for the document within the index. Documents with the same ID will be overwritten.
+     * @param {String} [index] The name of the index where the document will be ingested. Defaults to 'default' if not specified.
+     * @param {Array.<String>} [pipeline] An array of ingestion pipeline step names. If not provided, server default steps will be used.
+     * @param {String} [webHookUrl] A URL to receive a callback via webhook when the ingestion process is completed or fails.
+     * @param {String} [embeddingModel] The embedding model to use during ingestion. If not specified, the server's default model will be applied.
+     * @param {String} [index2] Optional index name where the document will be stored.
+     * @param {String} [webHookUrl2] Optional webhook URL to notify upon completion.
+     * @param {String} [embeddingModelName] Optional name of the embedding model to use during ingestion.
+     * @param {Object.<String, {String: String}>} [context] Optional key-value pairs for additional context or metadata.
+     * @param {Object.<String, {String: [String]}>} [tags] A collection of tags associated with the document. Tags can be language-specific.
+     * @param {Array.<String>} [ingestionPipeline] Optional list of ingestion pipeline steps. Allows custom processing.
+     * @param {Boolean} [languageAutoDetection = false)] Enable automatic language detection for document content.
+     * @param {module:model/String} [language] Force a specific language for full-text search. Use 'simple' for no language or leave empty.
      * @param {module:api/SemanticSearchApi~semanticSearchFileIngestionCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/IngestDocumentResponse}
      */
-    semanticSearchFileIngestion(files, opts, callback) {
+    semanticSearchFileIngestion(documentId2, files, opts, callback) {
       opts = opts || {};
       let postBody = null;
+      // verify the required parameter 'documentId2' is set
+      if (documentId2 === undefined || documentId2 === null) {
+        throw new Error("Missing the required parameter 'documentId2' when calling semanticSearchFileIngestion");
+      }
       // verify the required parameter 'files' is set
       if (files === undefined || files === null) {
         throw new Error("Missing the required parameter 'files' when calling semanticSearchFileIngestion");
@@ -220,9 +189,16 @@ export default class SemanticSearchApi {
       let headerParams = {
       };
       let formParams = {
+        'documentId': documentId2,
+        'index': opts['index2'],
+        'webHookUrl': opts['webHookUrl2'],
+        'embeddingModelName': opts['embeddingModelName'],
         'files': this.apiClient.buildCollectionParam(files, 'passthrough'),
-        'args': opts['args'],
-        'tags': opts['tags']
+        'context': opts['context'],
+        'tags': opts['tags'],
+        'ingestionPipeline': this.apiClient.buildCollectionParam(opts['ingestionPipeline'], 'csv'),
+        'languageAutoDetection': opts['languageAutoDetection'],
+        'language': opts['language']
       };
 
       let authNames = [];
@@ -328,7 +304,7 @@ export default class SemanticSearchApi {
      */
 
     /**
-     * Query ingested documents using semantic search
+     * Performs semantic or hybrid search over previously ingested data.
      * @param {module:model/QueryDocumentRequest} queryDocumentRequest 
      * @param {module:api/SemanticSearchApi~semanticSearchQueryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/QueryDocumentResponse}
@@ -451,7 +427,8 @@ export default class SemanticSearchApi {
      */
 
     /**
-     * Import plain text into semantic search
+     * Ingest Plain Text for Semantic Search
+     * Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
      * @param {module:model/IngestTextDocumentRequest} ingestTextDocumentRequest 
      * @param {module:api/SemanticSearchApi~semanticSearchTextIngestionCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/IngestDocumentResponse}

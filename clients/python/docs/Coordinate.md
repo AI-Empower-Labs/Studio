@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**x** | **float** | X-axis value of the coordinate | [optional] 
-**y** | **float** | Y-axis value of the coordinate | [optional] 
-**label** | **str** | Label associated with the coordinate | [optional] 
+**x** | **float** | X-axis value | [optional] 
+**y** | **float** | Y-axis value | [optional] 
+**label** | **str** | Coordinate label | [optional] 
 
 ## Example
 

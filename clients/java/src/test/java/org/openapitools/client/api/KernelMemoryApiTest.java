@@ -41,18 +41,6 @@ public class KernelMemoryApiTest {
     private final KernelMemoryApi api = new KernelMemoryApi();
 
     /**
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void downloadGetTest() throws ApiException {
-        String documentId = null;
-        String filename = null;
-        String index = null;
-        StreamableFileContent response = api.downloadGet(documentId, filename, index);
-        // TODO: test validations
-    }
-
-    /**
      * Query documents and forward result to LLM
      *
      * @throws ApiException if the Api call fails
@@ -86,6 +74,20 @@ public class KernelMemoryApiTest {
     public void kernelMemoryDeleteIndexTest() throws ApiException {
         String index = null;
         DeleteAccepted response = api.kernelMemoryDeleteIndex(index);
+        // TODO: test validations
+    }
+
+    /**
+     * Download specific document
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void kernelMemoryDownloadTest() throws ApiException {
+        String documentId = null;
+        String filename = null;
+        String index = null;
+        StreamableFileContent response = api.kernelMemoryDownload(documentId, filename, index);
         // TODO: test validations
     }
 

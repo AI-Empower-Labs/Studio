@@ -52,36 +52,42 @@ import org.openapitools.client.JSON;
 /**
  * HttpValidationProblemDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class HttpValidationProblemDetails {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nullable
   private String type;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
+  @javax.annotation.Nullable
   private String title;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private Integer status;
 
   public static final String SERIALIZED_NAME_DETAIL = "detail";
   @SerializedName(SERIALIZED_NAME_DETAIL)
+  @javax.annotation.Nullable
   private String detail;
 
   public static final String SERIALIZED_NAME_INSTANCE = "instance";
   @SerializedName(SERIALIZED_NAME_INSTANCE)
+  @javax.annotation.Nullable
   private String instance;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
+  @javax.annotation.Nullable
   private Map<String, List<String>> errors;
 
   public HttpValidationProblemDetails() {
   }
 
-  public HttpValidationProblemDetails type(String type) {
+  public HttpValidationProblemDetails type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
   }
@@ -95,12 +101,12 @@ public class HttpValidationProblemDetails {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 
 
-  public HttpValidationProblemDetails title(String title) {
+  public HttpValidationProblemDetails title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
   }
@@ -114,12 +120,12 @@ public class HttpValidationProblemDetails {
     return title;
   }
 
-  public void setTitle(String title) {
+  public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
 
 
-  public HttpValidationProblemDetails status(Integer status) {
+  public HttpValidationProblemDetails status(@javax.annotation.Nullable Integer status) {
     this.status = status;
     return this;
   }
@@ -133,12 +139,12 @@ public class HttpValidationProblemDetails {
     return status;
   }
 
-  public void setStatus(Integer status) {
+  public void setStatus(@javax.annotation.Nullable Integer status) {
     this.status = status;
   }
 
 
-  public HttpValidationProblemDetails detail(String detail) {
+  public HttpValidationProblemDetails detail(@javax.annotation.Nullable String detail) {
     this.detail = detail;
     return this;
   }
@@ -152,12 +158,12 @@ public class HttpValidationProblemDetails {
     return detail;
   }
 
-  public void setDetail(String detail) {
+  public void setDetail(@javax.annotation.Nullable String detail) {
     this.detail = detail;
   }
 
 
-  public HttpValidationProblemDetails instance(String instance) {
+  public HttpValidationProblemDetails instance(@javax.annotation.Nullable String instance) {
     this.instance = instance;
     return this;
   }
@@ -171,12 +177,12 @@ public class HttpValidationProblemDetails {
     return instance;
   }
 
-  public void setInstance(String instance) {
+  public void setInstance(@javax.annotation.Nullable String instance) {
     this.instance = instance;
   }
 
 
-  public HttpValidationProblemDetails errors(Map<String, List<String>> errors) {
+  public HttpValidationProblemDetails errors(@javax.annotation.Nullable Map<String, List<String>> errors) {
     this.errors = errors;
     return this;
   }
@@ -198,7 +204,7 @@ public class HttpValidationProblemDetails {
     return errors;
   }
 
-  public void setErrors(Map<String, List<String>> errors) {
+  public void setErrors(@javax.annotation.Nullable Map<String, List<String>> errors) {
     this.errors = errors;
   }
 

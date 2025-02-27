@@ -14,8 +14,6 @@
 
 import ApiClient from './ApiClient';
 import ApiExtractThematicSimilarityClusterPostRequest from './model/ApiExtractThematicSimilarityClusterPostRequest';
-import AskDocumentRequest from './model/AskDocumentRequest';
-import AskDocumentResponse from './model/AskDocumentResponse';
 import Centroid from './model/Centroid';
 import Citation from './model/Citation';
 import Coordinate from './model/Coordinate';
@@ -121,18 +119,6 @@ export {
      * @property {module:model/ApiExtractThematicSimilarityClusterPostRequest}
      */
     ApiExtractThematicSimilarityClusterPostRequest,
-
-    /**
-     * The AskDocumentRequest model constructor.
-     * @property {module:model/AskDocumentRequest}
-     */
-    AskDocumentRequest,
-
-    /**
-     * The AskDocumentResponse model constructor.
-     * @property {module:model/AskDocumentResponse}
-     */
-    AskDocumentResponse,
 
     /**
      * The Centroid model constructor.

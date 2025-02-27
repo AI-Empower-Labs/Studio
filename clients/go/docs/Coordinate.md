@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**X** | Pointer to **float32** | X-axis value of the coordinate | [optional] 
-**Y** | Pointer to **float32** | Y-axis value of the coordinate | [optional] 
-**Label** | Pointer to **string** | Label associated with the coordinate | [optional] 
+**X** | Pointer to **float32** | X-axis value | [optional] 
+**Y** | Pointer to **float32** | Y-axis value | [optional] 
+**Label** | Pointer to **string** | Coordinate label | [optional] 
 
 ## Methods
 

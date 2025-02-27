@@ -22,12 +22,14 @@ import Centroid from './Centroid';
 class KMeansCluster {
     /**
      * Constructs a new <code>KMeansCluster</code>.
-     * Represents the response object for K-Means Clustering, contains cluster size and array of centroids
+     * Response object for K-Means Clustering containing cluster size and centroids array
      * @alias module:model/KMeansCluster
+     * @param clusterSize {Number} Number of points in the cluster
+     * @param centroids {Array.<module:model/Centroid>} List of cluster centroids
      */
-    constructor() { 
+    constructor(clusterSize, centroids) { 
         
-        KMeansCluster.initialize(this);
+        KMeansCluster.initialize(this, clusterSize, centroids);
     }
 
     /**
@@ -35,7 +37,9 @@ class KMeansCluster {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) { 
+    static initialize(obj, clusterSize, centroids) { 
+        obj['clusterSize'] = clusterSize;
+        obj['centroids'] = centroids;
     }
 
     /**
@@ -65,6 +69,12 @@ class KMeansCluster {
      * @return {boolean} to indicate whether the JSON data is valid with respect to <code>KMeansCluster</code>.
      */
     static validateJSON(data) {
+        // check to make sure all required properties are present in the JSON string
+        for (const property of KMeansCluster.RequiredProperties) {
+            if (!data.hasOwnProperty(property)) {
+                throw new Error("The required field `" + property + "` is not found in the JSON data: " + JSON.stringify(data));
+            }
+        }
         if (data['centroids']) { // data not null
             // ensure the json data is an array
             if (!Array.isArray(data['centroids'])) {
@@ -82,16 +92,16 @@ class KMeansCluster {
 
 }
 
-
+KMeansCluster.RequiredProperties = ["clusterSize", "centroids"];
 
 /**
- * Size of the cluster
+ * Number of points in the cluster
  * @member {Number} clusterSize
  */
 KMeansCluster.prototype['clusterSize'] = undefined;
 
 /**
- * Array of Centroid objects
+ * List of cluster centroids
  * @member {Array.<module:model/Centroid>} centroids
  */
 KMeansCluster.prototype['centroids'] = undefined;

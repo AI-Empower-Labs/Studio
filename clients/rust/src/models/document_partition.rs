@@ -16,9 +16,24 @@ pub struct DocumentPartition {
     /// Content of the document partition, aka chunk/block of text.
     #[serde(rename = "text", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub text: Option<Option<String>>,
-    /// Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity.
-    #[serde(rename = "relevance", skip_serializing_if = "Option::is_none")]
-    pub relevance: Option<f32>,
+    /// Rank value calculated from full-text search, used to determine the relevance of search results.
+    #[serde(rename = "fullTextSearchRank", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub full_text_search_rank: Option<Option<f32>>,
+    /// Represents the semantic similarity score associated with a record.
+    #[serde(rename = "semanticSimilarity", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub semantic_similarity: Option<Option<f32>>,
+    /// Reciprocal rank fusion (RRF) score specifically derived from full-text search relevance.
+    #[serde(rename = "fullTextSearchRrf", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub full_text_search_rrf: Option<Option<f32>>,
+    /// Reciprocal Rank Fusion (RRF) score based on semantic similarity
+    #[serde(rename = "semanticRrf", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub semantic_rrf: Option<Option<f32>>,
+    /// Represents the combined Reciprocal Rank Fusion (RRF) score, which integrates results from multiple ranking methods such as semantic similarity and full-text search to enhance result relevance.
+    #[serde(rename = "rrfScore", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub rrf_score: Option<Option<f32>>,
+    /// Language of partition if any. Optional.
+    #[serde(rename = "language", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub language: Option<Option<String>>,
     /// Timestamp about the file/text partition.
     #[serde(rename = "lastUpdate", skip_serializing_if = "Option::is_none")]
     pub last_update: Option<String>,
@@ -31,7 +46,12 @@ impl DocumentPartition {
     pub fn new() -> DocumentPartition {
         DocumentPartition {
             text: None,
-            relevance: None,
+            full_text_search_rank: None,
+            semantic_similarity: None,
+            full_text_search_rrf: None,
+            semantic_rrf: None,
+            rrf_score: None,
+            language: None,
             last_update: None,
             tags: None,
         }

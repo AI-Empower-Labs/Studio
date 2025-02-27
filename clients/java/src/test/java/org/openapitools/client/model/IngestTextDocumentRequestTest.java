@@ -19,6 +19,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,6 +44,14 @@ public class IngestTextDocumentRequestTest {
     }
 
     /**
+     * Test the property 'text'
+     */
+    @Test
+    public void textTest() {
+        // TODO: test text
+    }
+
+    /**
      * Test the property 'documentId'
      */
     @Test
@@ -59,30 +68,6 @@ public class IngestTextDocumentRequestTest {
     }
 
     /**
-     * Test the property 'tags'
-     */
-    @Test
-    public void tagsTest() {
-        // TODO: test tags
-    }
-
-    /**
-     * Test the property 'text'
-     */
-    @Test
-    public void textTest() {
-        // TODO: test text
-    }
-
-    /**
-     * Test the property 'pipeline'
-     */
-    @Test
-    public void pipelineTest() {
-        // TODO: test pipeline
-    }
-
-    /**
      * Test the property 'webHookUrl'
      */
     @Test
@@ -91,19 +76,51 @@ public class IngestTextDocumentRequestTest {
     }
 
     /**
-     * Test the property 'embeddingModel'
+     * Test the property 'embeddingModelName'
      */
     @Test
-    public void embeddingModelTest() {
-        // TODO: test embeddingModel
+    public void embeddingModelNameTest() {
+        // TODO: test embeddingModelName
     }
 
     /**
-     * Test the property 'args'
+     * Test the property 'context'
      */
     @Test
-    public void argsTest() {
-        // TODO: test args
+    public void contextTest() {
+        // TODO: test context
+    }
+
+    /**
+     * Test the property 'tags'
+     */
+    @Test
+    public void tagsTest() {
+        // TODO: test tags
+    }
+
+    /**
+     * Test the property 'ingestionPipeline'
+     */
+    @Test
+    public void ingestionPipelineTest() {
+        // TODO: test ingestionPipeline
+    }
+
+    /**
+     * Test the property 'languageAutoDetection'
+     */
+    @Test
+    public void languageAutoDetectionTest() {
+        // TODO: test languageAutoDetection
+    }
+
+    /**
+     * Test the property 'language'
+     */
+    @Test
+    public void languageTest() {
+        // TODO: test language
     }
 
 }

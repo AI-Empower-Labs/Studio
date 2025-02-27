@@ -4,20 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DocumentId** | **string** | Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten | 
-**Index** | Pointer to **NullableString** | Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39; | [optional] 
-**Tags** | Pointer to **map[string][]string** | Optionally add tags to ingestion | [optional] 
 **Url** | **string** | Web page to ingest | 
-**Pipeline** | Pointer to **[]string** | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] 
-**WebHookUrl** | Pointer to **NullableString** | Url to use for webhook callback when operation finishes or fails. | [optional] 
-**EmbeddingModel** | Pointer to **NullableString** | Embedding model to use in ingestion. Optional. Default to configured default. | [optional] 
-**Args** | Pointer to **map[string]interface{}** |  | [optional] 
+**DocumentId** | **string** | Unique identifier for the document to ingest. | 
+**Index** | Pointer to **NullableString** | Optional index name where the document will be stored. | [optional] 
+**WebHookUrl** | Pointer to **NullableString** | Optional webhook URL to notify upon completion. | [optional] 
+**EmbeddingModelName** | Pointer to **NullableString** | Optional name of the embedding model to use during ingestion. | [optional] 
+**Context** | Pointer to **map[string]string** | Optional key-value pairs for additional context or metadata. | [optional] 
+**Tags** | Pointer to **map[string][]string** | A collection of tags associated with the document. Tags can be language-specific. | [optional] 
+**IngestionPipeline** | Pointer to **[]string** | Optional list of ingestion pipeline steps. Allows custom processing. | [optional] 
+**LanguageAutoDetection** | Pointer to **bool** | Enable automatic language detection for document content. | [optional] [default to false]
+**Language** | Pointer to **NullableString** | Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. | [optional] 
 
 ## Methods
 
 ### NewIngestWebPageDocumentRequest
 
-`func NewIngestWebPageDocumentRequest(documentId string, url string, ) *IngestWebPageDocumentRequest`
+`func NewIngestWebPageDocumentRequest(url string, documentId string, ) *IngestWebPageDocumentRequest`
 
 NewIngestWebPageDocumentRequest instantiates a new IngestWebPageDocumentRequest object
 This constructor will assign default values to properties that have it defined,
@@ -31,6 +33,26 @@ will change when the set of required properties is changed
 NewIngestWebPageDocumentRequestWithDefaults instantiates a new IngestWebPageDocumentRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetUrl
+
+`func (o *IngestWebPageDocumentRequest) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *IngestWebPageDocumentRequest) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *IngestWebPageDocumentRequest) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
+
 
 ### GetDocumentId
 
@@ -87,96 +109,6 @@ HasIndex returns a boolean if a field has been set.
 `func (o *IngestWebPageDocumentRequest) UnsetIndex()`
 
 UnsetIndex ensures that no value is present for Index, not even an explicit nil
-### GetTags
-
-`func (o *IngestWebPageDocumentRequest) GetTags() map[string][]string`
-
-GetTags returns the Tags field if non-nil, zero value otherwise.
-
-### GetTagsOk
-
-`func (o *IngestWebPageDocumentRequest) GetTagsOk() (*map[string][]string, bool)`
-
-GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTags
-
-`func (o *IngestWebPageDocumentRequest) SetTags(v map[string][]string)`
-
-SetTags sets Tags field to given value.
-
-### HasTags
-
-`func (o *IngestWebPageDocumentRequest) HasTags() bool`
-
-HasTags returns a boolean if a field has been set.
-
-### SetTagsNil
-
-`func (o *IngestWebPageDocumentRequest) SetTagsNil(b bool)`
-
- SetTagsNil sets the value for Tags to be an explicit nil
-
-### UnsetTags
-`func (o *IngestWebPageDocumentRequest) UnsetTags()`
-
-UnsetTags ensures that no value is present for Tags, not even an explicit nil
-### GetUrl
-
-`func (o *IngestWebPageDocumentRequest) GetUrl() string`
-
-GetUrl returns the Url field if non-nil, zero value otherwise.
-
-### GetUrlOk
-
-`func (o *IngestWebPageDocumentRequest) GetUrlOk() (*string, bool)`
-
-GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUrl
-
-`func (o *IngestWebPageDocumentRequest) SetUrl(v string)`
-
-SetUrl sets Url field to given value.
-
-
-### GetPipeline
-
-`func (o *IngestWebPageDocumentRequest) GetPipeline() []string`
-
-GetPipeline returns the Pipeline field if non-nil, zero value otherwise.
-
-### GetPipelineOk
-
-`func (o *IngestWebPageDocumentRequest) GetPipelineOk() (*[]string, bool)`
-
-GetPipelineOk returns a tuple with the Pipeline field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPipeline
-
-`func (o *IngestWebPageDocumentRequest) SetPipeline(v []string)`
-
-SetPipeline sets Pipeline field to given value.
-
-### HasPipeline
-
-`func (o *IngestWebPageDocumentRequest) HasPipeline() bool`
-
-HasPipeline returns a boolean if a field has been set.
-
-### SetPipelineNil
-
-`func (o *IngestWebPageDocumentRequest) SetPipelineNil(b bool)`
-
- SetPipelineNil sets the value for Pipeline to be an explicit nil
-
-### UnsetPipeline
-`func (o *IngestWebPageDocumentRequest) UnsetPipeline()`
-
-UnsetPipeline ensures that no value is present for Pipeline, not even an explicit nil
 ### GetWebHookUrl
 
 `func (o *IngestWebPageDocumentRequest) GetWebHookUrl() string`
@@ -212,76 +144,206 @@ HasWebHookUrl returns a boolean if a field has been set.
 `func (o *IngestWebPageDocumentRequest) UnsetWebHookUrl()`
 
 UnsetWebHookUrl ensures that no value is present for WebHookUrl, not even an explicit nil
-### GetEmbeddingModel
+### GetEmbeddingModelName
 
-`func (o *IngestWebPageDocumentRequest) GetEmbeddingModel() string`
+`func (o *IngestWebPageDocumentRequest) GetEmbeddingModelName() string`
 
-GetEmbeddingModel returns the EmbeddingModel field if non-nil, zero value otherwise.
+GetEmbeddingModelName returns the EmbeddingModelName field if non-nil, zero value otherwise.
 
-### GetEmbeddingModelOk
+### GetEmbeddingModelNameOk
 
-`func (o *IngestWebPageDocumentRequest) GetEmbeddingModelOk() (*string, bool)`
+`func (o *IngestWebPageDocumentRequest) GetEmbeddingModelNameOk() (*string, bool)`
 
-GetEmbeddingModelOk returns a tuple with the EmbeddingModel field if it's non-nil, zero value otherwise
+GetEmbeddingModelNameOk returns a tuple with the EmbeddingModelName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEmbeddingModel
+### SetEmbeddingModelName
 
-`func (o *IngestWebPageDocumentRequest) SetEmbeddingModel(v string)`
+`func (o *IngestWebPageDocumentRequest) SetEmbeddingModelName(v string)`
 
-SetEmbeddingModel sets EmbeddingModel field to given value.
+SetEmbeddingModelName sets EmbeddingModelName field to given value.
 
-### HasEmbeddingModel
+### HasEmbeddingModelName
 
-`func (o *IngestWebPageDocumentRequest) HasEmbeddingModel() bool`
+`func (o *IngestWebPageDocumentRequest) HasEmbeddingModelName() bool`
 
-HasEmbeddingModel returns a boolean if a field has been set.
+HasEmbeddingModelName returns a boolean if a field has been set.
 
-### SetEmbeddingModelNil
+### SetEmbeddingModelNameNil
 
-`func (o *IngestWebPageDocumentRequest) SetEmbeddingModelNil(b bool)`
+`func (o *IngestWebPageDocumentRequest) SetEmbeddingModelNameNil(b bool)`
 
- SetEmbeddingModelNil sets the value for EmbeddingModel to be an explicit nil
+ SetEmbeddingModelNameNil sets the value for EmbeddingModelName to be an explicit nil
 
-### UnsetEmbeddingModel
-`func (o *IngestWebPageDocumentRequest) UnsetEmbeddingModel()`
+### UnsetEmbeddingModelName
+`func (o *IngestWebPageDocumentRequest) UnsetEmbeddingModelName()`
 
-UnsetEmbeddingModel ensures that no value is present for EmbeddingModel, not even an explicit nil
-### GetArgs
+UnsetEmbeddingModelName ensures that no value is present for EmbeddingModelName, not even an explicit nil
+### GetContext
 
-`func (o *IngestWebPageDocumentRequest) GetArgs() map[string]interface{}`
+`func (o *IngestWebPageDocumentRequest) GetContext() map[string]string`
 
-GetArgs returns the Args field if non-nil, zero value otherwise.
+GetContext returns the Context field if non-nil, zero value otherwise.
 
-### GetArgsOk
+### GetContextOk
 
-`func (o *IngestWebPageDocumentRequest) GetArgsOk() (*map[string]interface{}, bool)`
+`func (o *IngestWebPageDocumentRequest) GetContextOk() (*map[string]string, bool)`
 
-GetArgsOk returns a tuple with the Args field if it's non-nil, zero value otherwise
+GetContextOk returns a tuple with the Context field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetArgs
+### SetContext
 
-`func (o *IngestWebPageDocumentRequest) SetArgs(v map[string]interface{})`
+`func (o *IngestWebPageDocumentRequest) SetContext(v map[string]string)`
 
-SetArgs sets Args field to given value.
+SetContext sets Context field to given value.
 
-### HasArgs
+### HasContext
 
-`func (o *IngestWebPageDocumentRequest) HasArgs() bool`
+`func (o *IngestWebPageDocumentRequest) HasContext() bool`
 
-HasArgs returns a boolean if a field has been set.
+HasContext returns a boolean if a field has been set.
 
-### SetArgsNil
+### SetContextNil
 
-`func (o *IngestWebPageDocumentRequest) SetArgsNil(b bool)`
+`func (o *IngestWebPageDocumentRequest) SetContextNil(b bool)`
 
- SetArgsNil sets the value for Args to be an explicit nil
+ SetContextNil sets the value for Context to be an explicit nil
 
-### UnsetArgs
-`func (o *IngestWebPageDocumentRequest) UnsetArgs()`
+### UnsetContext
+`func (o *IngestWebPageDocumentRequest) UnsetContext()`
 
-UnsetArgs ensures that no value is present for Args, not even an explicit nil
+UnsetContext ensures that no value is present for Context, not even an explicit nil
+### GetTags
+
+`func (o *IngestWebPageDocumentRequest) GetTags() map[string][]string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *IngestWebPageDocumentRequest) GetTagsOk() (*map[string][]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *IngestWebPageDocumentRequest) SetTags(v map[string][]string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *IngestWebPageDocumentRequest) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *IngestWebPageDocumentRequest) SetTagsNil(b bool)`
+
+ SetTagsNil sets the value for Tags to be an explicit nil
+
+### UnsetTags
+`func (o *IngestWebPageDocumentRequest) UnsetTags()`
+
+UnsetTags ensures that no value is present for Tags, not even an explicit nil
+### GetIngestionPipeline
+
+`func (o *IngestWebPageDocumentRequest) GetIngestionPipeline() []string`
+
+GetIngestionPipeline returns the IngestionPipeline field if non-nil, zero value otherwise.
+
+### GetIngestionPipelineOk
+
+`func (o *IngestWebPageDocumentRequest) GetIngestionPipelineOk() (*[]string, bool)`
+
+GetIngestionPipelineOk returns a tuple with the IngestionPipeline field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIngestionPipeline
+
+`func (o *IngestWebPageDocumentRequest) SetIngestionPipeline(v []string)`
+
+SetIngestionPipeline sets IngestionPipeline field to given value.
+
+### HasIngestionPipeline
+
+`func (o *IngestWebPageDocumentRequest) HasIngestionPipeline() bool`
+
+HasIngestionPipeline returns a boolean if a field has been set.
+
+### SetIngestionPipelineNil
+
+`func (o *IngestWebPageDocumentRequest) SetIngestionPipelineNil(b bool)`
+
+ SetIngestionPipelineNil sets the value for IngestionPipeline to be an explicit nil
+
+### UnsetIngestionPipeline
+`func (o *IngestWebPageDocumentRequest) UnsetIngestionPipeline()`
+
+UnsetIngestionPipeline ensures that no value is present for IngestionPipeline, not even an explicit nil
+### GetLanguageAutoDetection
+
+`func (o *IngestWebPageDocumentRequest) GetLanguageAutoDetection() bool`
+
+GetLanguageAutoDetection returns the LanguageAutoDetection field if non-nil, zero value otherwise.
+
+### GetLanguageAutoDetectionOk
+
+`func (o *IngestWebPageDocumentRequest) GetLanguageAutoDetectionOk() (*bool, bool)`
+
+GetLanguageAutoDetectionOk returns a tuple with the LanguageAutoDetection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLanguageAutoDetection
+
+`func (o *IngestWebPageDocumentRequest) SetLanguageAutoDetection(v bool)`
+
+SetLanguageAutoDetection sets LanguageAutoDetection field to given value.
+
+### HasLanguageAutoDetection
+
+`func (o *IngestWebPageDocumentRequest) HasLanguageAutoDetection() bool`
+
+HasLanguageAutoDetection returns a boolean if a field has been set.
+
+### GetLanguage
+
+`func (o *IngestWebPageDocumentRequest) GetLanguage() string`
+
+GetLanguage returns the Language field if non-nil, zero value otherwise.
+
+### GetLanguageOk
+
+`func (o *IngestWebPageDocumentRequest) GetLanguageOk() (*string, bool)`
+
+GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLanguage
+
+`func (o *IngestWebPageDocumentRequest) SetLanguage(v string)`
+
+SetLanguage sets Language field to given value.
+
+### HasLanguage
+
+`func (o *IngestWebPageDocumentRequest) HasLanguage() bool`
+
+HasLanguage returns a boolean if a field has been set.
+
+### SetLanguageNil
+
+`func (o *IngestWebPageDocumentRequest) SetLanguageNil(b bool)`
+
+ SetLanguageNil sets the value for Language to be an explicit nil
+
+### UnsetLanguage
+`func (o *IngestWebPageDocumentRequest) UnsetLanguage()`
+
+UnsetLanguage ensures that no value is present for Language, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

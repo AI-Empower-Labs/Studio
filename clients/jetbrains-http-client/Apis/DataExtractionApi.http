@@ -12,7 +12,6 @@ Accept: application/problem+json
  "input": "<string>",
  "clusterCount": "<number>",
  "maxDegreeOfParallelism": "<number>",
- "maxTokens": "<number>",
  "llmModel": "<string>",
  "embeddingModel": "<string>",
  "seed": "<number>"

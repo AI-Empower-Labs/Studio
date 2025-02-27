@@ -4,83 +4,15 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DownloadGet**](KernelMemoryAPI.md#DownloadGet) | **Get** /download | 
 [**KernelMemoryAsk**](KernelMemoryAPI.md#KernelMemoryAsk) | **Post** /api/kernelmemory/ask | Query documents and forward result to LLM
 [**KernelMemoryDelete**](KernelMemoryAPI.md#KernelMemoryDelete) | **Delete** /api/kernelmemory/documents | Delete document from specific index
 [**KernelMemoryDeleteIndex**](KernelMemoryAPI.md#KernelMemoryDeleteIndex) | **Delete** /api/kernelmemory/indexes | Delete index
+[**KernelMemoryDownload**](KernelMemoryAPI.md#KernelMemoryDownload) | **Get** /api/kernelmemory/download | Download specific document
 [**KernelMemoryGetIndex**](KernelMemoryAPI.md#KernelMemoryGetIndex) | **Get** /api/kernelmemory/indexes | List indexes
 [**KernelMemorySearch**](KernelMemoryAPI.md#KernelMemorySearch) | **Post** /api/kernelmemory/search | Search for documents in specific index
 [**KernelMemoryUpload**](KernelMemoryAPI.md#KernelMemoryUpload) | **Post** /api/kernelmemory/upload | Upload file for ingestion
 [**KernelMemoryUploadStatus**](KernelMemoryAPI.md#KernelMemoryUploadStatus) | **Get** /api/kernelmemory/upload-status | Get ingestion status for specific document
 
-
-
-## DownloadGet
-
-> StreamableFileContent DownloadGet(ctx).DocumentId(documentId).Filename(filename).Index(index).Execute()
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	documentId := "documentId_example" // string | 
-	filename := "filename_example" // string | 
-	index := "index_example" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.KernelMemoryAPI.DownloadGet(context.Background()).DocumentId(documentId).Filename(filename).Index(index).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `KernelMemoryAPI.DownloadGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DownloadGet`: StreamableFileContent
-	fmt.Fprintf(os.Stdout, "Response from `KernelMemoryAPI.DownloadGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDownloadGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **documentId** | **string** |  | 
- **filename** | **string** |  | 
- **index** | **string** |  | 
-
-### Return type
-
-[**StreamableFileContent**](StreamableFileContent.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## KernelMemoryAsk
@@ -262,6 +194,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeleteAccepted**](DeleteAccepted.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KernelMemoryDownload
+
+> StreamableFileContent KernelMemoryDownload(ctx).DocumentId(documentId).Filename(filename).Index(index).Execute()
+
+Download specific document
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	documentId := "documentId_example" // string | 
+	filename := "filename_example" // string | 
+	index := "index_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.KernelMemoryAPI.KernelMemoryDownload(context.Background()).DocumentId(documentId).Filename(filename).Index(index).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `KernelMemoryAPI.KernelMemoryDownload``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `KernelMemoryDownload`: StreamableFileContent
+	fmt.Fprintf(os.Stdout, "Response from `KernelMemoryAPI.KernelMemoryDownload`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKernelMemoryDownloadRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **documentId** | **string** |  | 
+ **filename** | **string** |  | 
+ **index** | **string** |  | 
+
+### Return type
+
+[**StreamableFileContent**](StreamableFileContent.md)
 
 ### Authorization
 

@@ -38,6 +38,7 @@ class ApiExtractThematicSimilarityClusterPostRequest {
     static initialize(obj, input, clusterCount) { 
         obj['input'] = input;
         obj['clusterCount'] = clusterCount;
+        obj['maxDegreeOfParallelism'] = 1;
     }
 
     /**
@@ -59,9 +60,6 @@ class ApiExtractThematicSimilarityClusterPostRequest {
             }
             if (data.hasOwnProperty('maxDegreeOfParallelism')) {
                 obj['maxDegreeOfParallelism'] = ApiClient.convertToType(data['maxDegreeOfParallelism'], 'Number');
-            }
-            if (data.hasOwnProperty('maxTokens')) {
-                obj['maxTokens'] = ApiClient.convertToType(data['maxTokens'], 'Number');
             }
             if (data.hasOwnProperty('llmModel')) {
                 obj['llmModel'] = ApiClient.convertToType(data['llmModel'], 'String');
@@ -127,13 +125,6 @@ ApiExtractThematicSimilarityClusterPostRequest.prototype['clusterCount'] = undef
  * @default 1
  */
 ApiExtractThematicSimilarityClusterPostRequest.prototype['maxDegreeOfParallelism'] = 1;
-
-/**
- * The maximum number of tokens
- * @member {Number} maxTokens
- * @default 10
- */
-ApiExtractThematicSimilarityClusterPostRequest.prototype['maxTokens'] = 10;
 
 /**
  * The name of the LLM model. Optional.

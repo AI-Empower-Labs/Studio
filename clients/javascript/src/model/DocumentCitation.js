@@ -130,49 +130,49 @@ class DocumentCitation {
 
 
 /**
- * Link to the source, if available.
+ * URL or reference to the original source document
  * @member {String} link
  */
 DocumentCitation.prototype['link'] = undefined;
 
 /**
- * Link to the source, if available.
+ * Identifier or position of the citation within the source
  * @member {String} index
  */
 DocumentCitation.prototype['index'] = undefined;
 
 /**
- * Link to the source, if available.
+ * Unique identifier for the document
  * @member {String} documentId
  */
 DocumentCitation.prototype['documentId'] = undefined;
 
 /**
- * Link to the source, if available.
+ * Unique identifier for the file in storage
  * @member {String} fileId
  */
 DocumentCitation.prototype['fileId'] = undefined;
 
 /**
- * Type of source, e.g. PDF, Word, Chat, etc.
+ * Format of the source (e.g., 'pdf', 'docx', 'chat')
  * @member {String} sourceContentType
  */
 DocumentCitation.prototype['sourceContentType'] = undefined;
 
 /**
- * Name of the source, e.g. file name.
+ * Human-readable name or title of the source
  * @member {String} sourceName
  */
 DocumentCitation.prototype['sourceName'] = undefined;
 
 /**
- * URL of the source, used for web pages and external data
+ * Web URL of the source for online content
  * @member {String} sourceUrl
  */
 DocumentCitation.prototype['sourceUrl'] = undefined;
 
 /**
- * List of chunks/blocks of text used.
+ * Array of text segments used from the source
  * @member {Array.<module:model/DocumentPartition>} partitions
  */
 DocumentCitation.prototype['partitions'] = undefined;

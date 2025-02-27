@@ -6,7 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **str** | Content of the document partition, aka chunk/block of text. | [optional] 
-**relevance** | **float** | Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity. | [optional] 
+**full_text_search_rank** | **float** | Rank value calculated from full-text search, used to determine the relevance of search results. | [optional] 
+**semantic_similarity** | **float** | Represents the semantic similarity score associated with a record. | [optional] 
+**full_text_search_rrf** | **float** | Reciprocal rank fusion (RRF) score specifically derived from full-text search relevance. | [optional] 
+**semantic_rrf** | **float** | Reciprocal Rank Fusion (RRF) score based on semantic similarity | [optional] 
+**rrf_score** | **float** | Represents the combined Reciprocal Rank Fusion (RRF) score, which integrates results from multiple ranking methods such as semantic similarity and full-text search to enhance result relevance. | [optional] 
+**language** | **str** | Language of partition if any. Optional. | [optional] 
 **last_update** | **datetime** | Timestamp about the file/text partition. | [optional] 
 **tags** | **Dict[str, List[str]]** | List of document tags | [optional] 
 

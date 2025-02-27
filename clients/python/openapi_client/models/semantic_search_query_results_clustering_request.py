@@ -30,13 +30,12 @@ class SemanticSearchQueryResultsClusteringRequest(BaseModel):
     """ # noqa: E501
     cluster_count: Optional[Annotated[int, Field(le=100, strict=True, ge=2)]] = Field(default=3, description="The number of clusters to be used in k-means clustering.", alias="clusterCount")
     max_degree_of_parallelism: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = Field(default=1, description="The Maximum Degrees Of Parallelism", alias="maxDegreeOfParallelism")
-    max_tokens: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = Field(default=10, description="The maximum number of tokens to be used in the KMeans clustering algorithm.", alias="maxTokens")
     index: Optional[StrictStr] = Field(default=None, description="Optional index to specify which index to search in. Defaults to 'default'.")
     min_relevance: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The minimum relevance value used for querying the search result audit.", alias="minRelevance")
     max_relevance: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The maximum relevance value to be used in the search query.", alias="maxRelevance")
     llm_model: Optional[StrictStr] = Field(default=None, description="Specifies the name of the LLM (Language Model) to be used in the KMeans clustering algorithm.", alias="llmModel")
     embedding_model: Optional[StrictStr] = Field(default=None, description="The name of the embedding model used for clustering.", alias="embeddingModel")
-    __properties: ClassVar[List[str]] = ["clusterCount", "maxDegreeOfParallelism", "maxTokens", "index", "minRelevance", "maxRelevance", "llmModel", "embeddingModel"]
+    __properties: ClassVar[List[str]] = ["clusterCount", "maxDegreeOfParallelism", "index", "minRelevance", "maxRelevance", "llmModel", "embeddingModel"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -91,7 +90,6 @@ class SemanticSearchQueryResultsClusteringRequest(BaseModel):
         _obj = cls.model_validate({
             "clusterCount": obj.get("clusterCount") if obj.get("clusterCount") is not None else 3,
             "maxDegreeOfParallelism": obj.get("maxDegreeOfParallelism") if obj.get("maxDegreeOfParallelism") is not None else 1,
-            "maxTokens": obj.get("maxTokens") if obj.get("maxTokens") is not None else 10,
             "index": obj.get("index"),
             "minRelevance": obj.get("minRelevance"),
             "maxRelevance": obj.get("maxRelevance"),

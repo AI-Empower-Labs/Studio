@@ -32,7 +32,7 @@ class CentroidTest : ShouldSpec() {
             //modelInstance.coordinate shouldBe ("TODO")
         }
 
-        // to test the property `dataPoints` - Array of data points belonging to the centroid
+        // to test the property `dataPoints` - Data points assigned to this centroid
         should("test dataPoints") {
             // uncomment below to test the property
             //modelInstance.dataPoints shouldBe ("TODO")

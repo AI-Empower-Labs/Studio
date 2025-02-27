@@ -17,11 +17,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictBytes, StrictStr
-from typing import Any, Dict, List, Optional, Tuple, Union
+from pydantic import Field, StrictBool, StrictBytes, StrictStr, field_validator
+from typing import Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from openapi_client.models.ask_document_request import AskDocumentRequest
-from openapi_client.models.ask_document_response import AskDocumentResponse
 from openapi_client.models.data_pipeline_status import DataPipelineStatus
 from openapi_client.models.ingest_document_response import IngestDocumentResponse
 from openapi_client.models.ingest_text_document_request import IngestTextDocumentRequest
@@ -51,289 +49,6 @@ class SemanticSearchApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
-
-
-    @validate_call
-    def semantic_search_ask(
-        self,
-        ask_document_request: AskDocumentRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> AskDocumentResponse:
-        """semantic_search_ask
-
-        Ask questions over ingested documents
-
-        :param ask_document_request: (required)
-        :type ask_document_request: AskDocumentRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._semantic_search_ask_serialize(
-            ask_document_request=ask_document_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AskDocumentResponse",
-            '400': "HttpValidationProblemDetails",
-            '429': "ProblemDetails",
-            '500': "ProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def semantic_search_ask_with_http_info(
-        self,
-        ask_document_request: AskDocumentRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[AskDocumentResponse]:
-        """semantic_search_ask
-
-        Ask questions over ingested documents
-
-        :param ask_document_request: (required)
-        :type ask_document_request: AskDocumentRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._semantic_search_ask_serialize(
-            ask_document_request=ask_document_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AskDocumentResponse",
-            '400': "HttpValidationProblemDetails",
-            '429': "ProblemDetails",
-            '500': "ProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def semantic_search_ask_without_preload_content(
-        self,
-        ask_document_request: AskDocumentRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """semantic_search_ask
-
-        Ask questions over ingested documents
-
-        :param ask_document_request: (required)
-        :type ask_document_request: AskDocumentRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._semantic_search_ask_serialize(
-            ask_document_request=ask_document_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "AskDocumentResponse",
-            '400': "HttpValidationProblemDetails",
-            '429': "ProblemDetails",
-            '500': "ProblemDetails",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _semantic_search_ask_serialize(
-        self,
-        ask_document_request,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-        if ask_document_request is not None:
-            _body_params = ask_document_request
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json', 
-                    'application/problem+json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/api/semantic/ask',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
 
 
     @validate_call
@@ -875,7 +590,7 @@ class SemanticSearchApi:
 
         return self.api_client.param_serialize(
             method='DELETE',
-            resource_path='/api/semantic/index',
+            resource_path='/api/semantic/index/{name}',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -894,14 +609,21 @@ class SemanticSearchApi:
     @validate_call
     def semantic_search_file_ingestion(
         self,
-        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file object to ingest.")],
-        document_id: Annotated[Optional[StrictStr], Field(description="Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.")] = None,
-        index: Annotated[Optional[StrictStr], Field(description="Optional value to specify with index the document should be ingested. Defaults to 'default'.")] = None,
-        pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")] = None,
-        web_hook_url: Annotated[Optional[StrictStr], Field(description="Url to use for webhook callback when operation finishes or fails.")] = None,
-        embedding_model: Annotated[Optional[StrictStr], Field(description="Embedding model to use in ingestion. Optional. Default to configured default.")] = None,
-        args: Optional[Dict[str, Any]] = None,
-        tags: Annotated[Optional[Dict[str, Any]], Field(description="Tags to associate with ingestion")] = None,
+        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="A collection of files to be ingested. Must contain at least one file.")],
+        document_id: Annotated[Optional[StrictStr], Field(description="A unique identifier for the document within the index. Documents with the same ID will be overwritten.")] = None,
+        index: Annotated[Optional[StrictStr], Field(description="The name of the index where the document will be ingested. Defaults to 'default' if not specified.")] = None,
+        pipeline: Annotated[Optional[List[StrictStr]], Field(description="An array of ingestion pipeline step names. If not provided, server default steps will be used.")] = None,
+        web_hook_url: Annotated[Optional[StrictStr], Field(description="A URL to receive a callback via webhook when the ingestion process is completed or fails.")] = None,
+        embedding_model: Annotated[Optional[StrictStr], Field(description="The embedding model to use during ingestion. If not specified, the server's default model will be applied.")] = None,
+        document_id2: Annotated[Optional[StrictStr], Field(description="Unique identifier for the document to ingest.")] = None,
+        index2: Annotated[Optional[StrictStr], Field(description="Optional index name where the document will be stored.")] = None,
+        web_hook_url2: Annotated[Optional[StrictStr], Field(description="Optional webhook URL to notify upon completion.")] = None,
+        embedding_model_name: Annotated[Optional[StrictStr], Field(description="Optional name of the embedding model to use during ingestion.")] = None,
+        context: Annotated[Optional[Dict[str, StrictStr]], Field(description="Optional key-value pairs for additional context or metadata.")] = None,
+        tags: Annotated[Optional[Dict[str, List[StrictStr]]], Field(description="A collection of tags associated with the document. Tags can be language-specific.")] = None,
+        ingestion_pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional list of ingestion pipeline steps. Allows custom processing.")] = None,
+        language_auto_detection: Annotated[Optional[StrictBool], Field(description="Enable automatic language detection for document content.")] = None,
+        language: Annotated[Optional[StrictStr], Field(description="Force a specific language for full-text search. Use 'simple' for no language or leave empty.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -915,26 +637,40 @@ class SemanticSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IngestDocumentResponse:
-        """semantic_search_file_ingestion
+        """Ingest a File into Semantic Search
 
-        Import file document into semantic search
+        Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
 
-        :param files: The file object to ingest. (required)
+        :param files: A collection of files to be ingested. Must contain at least one file. (required)
         :type files: List[bytearray]
-        :param document_id: Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.
+        :param document_id: A unique identifier for the document within the index. Documents with the same ID will be overwritten.
         :type document_id: str
-        :param index: Optional value to specify with index the document should be ingested. Defaults to 'default'.
+        :param index: The name of the index where the document will be ingested. Defaults to 'default' if not specified.
         :type index: str
-        :param pipeline: Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
+        :param pipeline: An array of ingestion pipeline step names. If not provided, server default steps will be used.
         :type pipeline: List[str]
-        :param web_hook_url: Url to use for webhook callback when operation finishes or fails.
+        :param web_hook_url: A URL to receive a callback via webhook when the ingestion process is completed or fails.
         :type web_hook_url: str
-        :param embedding_model: Embedding model to use in ingestion. Optional. Default to configured default.
+        :param embedding_model: The embedding model to use during ingestion. If not specified, the server's default model will be applied.
         :type embedding_model: str
-        :param args:
-        :type args: Dict[str, Optional[object]]
-        :param tags: Tags to associate with ingestion
-        :type tags: Dict[str, object]
+        :param document_id2: Unique identifier for the document to ingest.
+        :type document_id2: str
+        :param index2: Optional index name where the document will be stored.
+        :type index2: str
+        :param web_hook_url2: Optional webhook URL to notify upon completion.
+        :type web_hook_url2: str
+        :param embedding_model_name: Optional name of the embedding model to use during ingestion.
+        :type embedding_model_name: str
+        :param context: Optional key-value pairs for additional context or metadata.
+        :type context: Dict[str, str]
+        :param tags: A collection of tags associated with the document. Tags can be language-specific.
+        :type tags: Dict[str, List[str]]
+        :param ingestion_pipeline: Optional list of ingestion pipeline steps. Allows custom processing.
+        :type ingestion_pipeline: List[str]
+        :param language_auto_detection: Enable automatic language detection for document content.
+        :type language_auto_detection: bool
+        :param language: Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+        :type language: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -964,8 +700,15 @@ class SemanticSearchApi:
             pipeline=pipeline,
             web_hook_url=web_hook_url,
             embedding_model=embedding_model,
-            args=args,
+            document_id2=document_id2,
+            index2=index2,
+            web_hook_url2=web_hook_url2,
+            embedding_model_name=embedding_model_name,
+            context=context,
             tags=tags,
+            ingestion_pipeline=ingestion_pipeline,
+            language_auto_detection=language_auto_detection,
+            language=language,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -992,14 +735,21 @@ class SemanticSearchApi:
     @validate_call
     def semantic_search_file_ingestion_with_http_info(
         self,
-        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file object to ingest.")],
-        document_id: Annotated[Optional[StrictStr], Field(description="Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.")] = None,
-        index: Annotated[Optional[StrictStr], Field(description="Optional value to specify with index the document should be ingested. Defaults to 'default'.")] = None,
-        pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")] = None,
-        web_hook_url: Annotated[Optional[StrictStr], Field(description="Url to use for webhook callback when operation finishes or fails.")] = None,
-        embedding_model: Annotated[Optional[StrictStr], Field(description="Embedding model to use in ingestion. Optional. Default to configured default.")] = None,
-        args: Optional[Dict[str, Any]] = None,
-        tags: Annotated[Optional[Dict[str, Any]], Field(description="Tags to associate with ingestion")] = None,
+        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="A collection of files to be ingested. Must contain at least one file.")],
+        document_id: Annotated[Optional[StrictStr], Field(description="A unique identifier for the document within the index. Documents with the same ID will be overwritten.")] = None,
+        index: Annotated[Optional[StrictStr], Field(description="The name of the index where the document will be ingested. Defaults to 'default' if not specified.")] = None,
+        pipeline: Annotated[Optional[List[StrictStr]], Field(description="An array of ingestion pipeline step names. If not provided, server default steps will be used.")] = None,
+        web_hook_url: Annotated[Optional[StrictStr], Field(description="A URL to receive a callback via webhook when the ingestion process is completed or fails.")] = None,
+        embedding_model: Annotated[Optional[StrictStr], Field(description="The embedding model to use during ingestion. If not specified, the server's default model will be applied.")] = None,
+        document_id2: Annotated[Optional[StrictStr], Field(description="Unique identifier for the document to ingest.")] = None,
+        index2: Annotated[Optional[StrictStr], Field(description="Optional index name where the document will be stored.")] = None,
+        web_hook_url2: Annotated[Optional[StrictStr], Field(description="Optional webhook URL to notify upon completion.")] = None,
+        embedding_model_name: Annotated[Optional[StrictStr], Field(description="Optional name of the embedding model to use during ingestion.")] = None,
+        context: Annotated[Optional[Dict[str, StrictStr]], Field(description="Optional key-value pairs for additional context or metadata.")] = None,
+        tags: Annotated[Optional[Dict[str, List[StrictStr]]], Field(description="A collection of tags associated with the document. Tags can be language-specific.")] = None,
+        ingestion_pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional list of ingestion pipeline steps. Allows custom processing.")] = None,
+        language_auto_detection: Annotated[Optional[StrictBool], Field(description="Enable automatic language detection for document content.")] = None,
+        language: Annotated[Optional[StrictStr], Field(description="Force a specific language for full-text search. Use 'simple' for no language or leave empty.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1013,26 +763,40 @@ class SemanticSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IngestDocumentResponse]:
-        """semantic_search_file_ingestion
+        """Ingest a File into Semantic Search
 
-        Import file document into semantic search
+        Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
 
-        :param files: The file object to ingest. (required)
+        :param files: A collection of files to be ingested. Must contain at least one file. (required)
         :type files: List[bytearray]
-        :param document_id: Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.
+        :param document_id: A unique identifier for the document within the index. Documents with the same ID will be overwritten.
         :type document_id: str
-        :param index: Optional value to specify with index the document should be ingested. Defaults to 'default'.
+        :param index: The name of the index where the document will be ingested. Defaults to 'default' if not specified.
         :type index: str
-        :param pipeline: Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
+        :param pipeline: An array of ingestion pipeline step names. If not provided, server default steps will be used.
         :type pipeline: List[str]
-        :param web_hook_url: Url to use for webhook callback when operation finishes or fails.
+        :param web_hook_url: A URL to receive a callback via webhook when the ingestion process is completed or fails.
         :type web_hook_url: str
-        :param embedding_model: Embedding model to use in ingestion. Optional. Default to configured default.
+        :param embedding_model: The embedding model to use during ingestion. If not specified, the server's default model will be applied.
         :type embedding_model: str
-        :param args:
-        :type args: Dict[str, Optional[object]]
-        :param tags: Tags to associate with ingestion
-        :type tags: Dict[str, object]
+        :param document_id2: Unique identifier for the document to ingest.
+        :type document_id2: str
+        :param index2: Optional index name where the document will be stored.
+        :type index2: str
+        :param web_hook_url2: Optional webhook URL to notify upon completion.
+        :type web_hook_url2: str
+        :param embedding_model_name: Optional name of the embedding model to use during ingestion.
+        :type embedding_model_name: str
+        :param context: Optional key-value pairs for additional context or metadata.
+        :type context: Dict[str, str]
+        :param tags: A collection of tags associated with the document. Tags can be language-specific.
+        :type tags: Dict[str, List[str]]
+        :param ingestion_pipeline: Optional list of ingestion pipeline steps. Allows custom processing.
+        :type ingestion_pipeline: List[str]
+        :param language_auto_detection: Enable automatic language detection for document content.
+        :type language_auto_detection: bool
+        :param language: Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+        :type language: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1062,8 +826,15 @@ class SemanticSearchApi:
             pipeline=pipeline,
             web_hook_url=web_hook_url,
             embedding_model=embedding_model,
-            args=args,
+            document_id2=document_id2,
+            index2=index2,
+            web_hook_url2=web_hook_url2,
+            embedding_model_name=embedding_model_name,
+            context=context,
             tags=tags,
+            ingestion_pipeline=ingestion_pipeline,
+            language_auto_detection=language_auto_detection,
+            language=language,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1090,14 +861,21 @@ class SemanticSearchApi:
     @validate_call
     def semantic_search_file_ingestion_without_preload_content(
         self,
-        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="The file object to ingest.")],
-        document_id: Annotated[Optional[StrictStr], Field(description="Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.")] = None,
-        index: Annotated[Optional[StrictStr], Field(description="Optional value to specify with index the document should be ingested. Defaults to 'default'.")] = None,
-        pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.")] = None,
-        web_hook_url: Annotated[Optional[StrictStr], Field(description="Url to use for webhook callback when operation finishes or fails.")] = None,
-        embedding_model: Annotated[Optional[StrictStr], Field(description="Embedding model to use in ingestion. Optional. Default to configured default.")] = None,
-        args: Optional[Dict[str, Any]] = None,
-        tags: Annotated[Optional[Dict[str, Any]], Field(description="Tags to associate with ingestion")] = None,
+        files: Annotated[List[Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]], Field(description="A collection of files to be ingested. Must contain at least one file.")],
+        document_id: Annotated[Optional[StrictStr], Field(description="A unique identifier for the document within the index. Documents with the same ID will be overwritten.")] = None,
+        index: Annotated[Optional[StrictStr], Field(description="The name of the index where the document will be ingested. Defaults to 'default' if not specified.")] = None,
+        pipeline: Annotated[Optional[List[StrictStr]], Field(description="An array of ingestion pipeline step names. If not provided, server default steps will be used.")] = None,
+        web_hook_url: Annotated[Optional[StrictStr], Field(description="A URL to receive a callback via webhook when the ingestion process is completed or fails.")] = None,
+        embedding_model: Annotated[Optional[StrictStr], Field(description="The embedding model to use during ingestion. If not specified, the server's default model will be applied.")] = None,
+        document_id2: Annotated[Optional[StrictStr], Field(description="Unique identifier for the document to ingest.")] = None,
+        index2: Annotated[Optional[StrictStr], Field(description="Optional index name where the document will be stored.")] = None,
+        web_hook_url2: Annotated[Optional[StrictStr], Field(description="Optional webhook URL to notify upon completion.")] = None,
+        embedding_model_name: Annotated[Optional[StrictStr], Field(description="Optional name of the embedding model to use during ingestion.")] = None,
+        context: Annotated[Optional[Dict[str, StrictStr]], Field(description="Optional key-value pairs for additional context or metadata.")] = None,
+        tags: Annotated[Optional[Dict[str, List[StrictStr]]], Field(description="A collection of tags associated with the document. Tags can be language-specific.")] = None,
+        ingestion_pipeline: Annotated[Optional[List[StrictStr]], Field(description="Optional list of ingestion pipeline steps. Allows custom processing.")] = None,
+        language_auto_detection: Annotated[Optional[StrictBool], Field(description="Enable automatic language detection for document content.")] = None,
+        language: Annotated[Optional[StrictStr], Field(description="Force a specific language for full-text search. Use 'simple' for no language or leave empty.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1111,26 +889,40 @@ class SemanticSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """semantic_search_file_ingestion
+        """Ingest a File into Semantic Search
 
-        Import file document into semantic search
+        Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
 
-        :param files: The file object to ingest. (required)
+        :param files: A collection of files to be ingested. Must contain at least one file. (required)
         :type files: List[bytearray]
-        :param document_id: Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.
+        :param document_id: A unique identifier for the document within the index. Documents with the same ID will be overwritten.
         :type document_id: str
-        :param index: Optional value to specify with index the document should be ingested. Defaults to 'default'.
+        :param index: The name of the index where the document will be ingested. Defaults to 'default' if not specified.
         :type index: str
-        :param pipeline: Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
+        :param pipeline: An array of ingestion pipeline step names. If not provided, server default steps will be used.
         :type pipeline: List[str]
-        :param web_hook_url: Url to use for webhook callback when operation finishes or fails.
+        :param web_hook_url: A URL to receive a callback via webhook when the ingestion process is completed or fails.
         :type web_hook_url: str
-        :param embedding_model: Embedding model to use in ingestion. Optional. Default to configured default.
+        :param embedding_model: The embedding model to use during ingestion. If not specified, the server's default model will be applied.
         :type embedding_model: str
-        :param args:
-        :type args: Dict[str, Optional[object]]
-        :param tags: Tags to associate with ingestion
-        :type tags: Dict[str, object]
+        :param document_id2: Unique identifier for the document to ingest.
+        :type document_id2: str
+        :param index2: Optional index name where the document will be stored.
+        :type index2: str
+        :param web_hook_url2: Optional webhook URL to notify upon completion.
+        :type web_hook_url2: str
+        :param embedding_model_name: Optional name of the embedding model to use during ingestion.
+        :type embedding_model_name: str
+        :param context: Optional key-value pairs for additional context or metadata.
+        :type context: Dict[str, str]
+        :param tags: A collection of tags associated with the document. Tags can be language-specific.
+        :type tags: Dict[str, List[str]]
+        :param ingestion_pipeline: Optional list of ingestion pipeline steps. Allows custom processing.
+        :type ingestion_pipeline: List[str]
+        :param language_auto_detection: Enable automatic language detection for document content.
+        :type language_auto_detection: bool
+        :param language: Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+        :type language: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1160,8 +952,15 @@ class SemanticSearchApi:
             pipeline=pipeline,
             web_hook_url=web_hook_url,
             embedding_model=embedding_model,
-            args=args,
+            document_id2=document_id2,
+            index2=index2,
+            web_hook_url2=web_hook_url2,
+            embedding_model_name=embedding_model_name,
+            context=context,
             tags=tags,
+            ingestion_pipeline=ingestion_pipeline,
+            language_auto_detection=language_auto_detection,
+            language=language,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1189,8 +988,15 @@ class SemanticSearchApi:
         pipeline,
         web_hook_url,
         embedding_model,
-        args,
+        document_id2,
+        index2,
+        web_hook_url2,
+        embedding_model_name,
+        context,
         tags,
+        ingestion_pipeline,
+        language_auto_detection,
+        language,
         _request_auth,
         _content_type,
         _headers,
@@ -1202,6 +1008,7 @@ class SemanticSearchApi:
         _collection_formats: Dict[str, str] = {
             'files': 'csv',
             'pipeline': 'multi',
+            'ingestionPipeline': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -1237,12 +1044,26 @@ class SemanticSearchApi:
             
         # process the header parameters
         # process the form parameters
+        if document_id2 is not None:
+            _form_params.append(('documentId', document_id2))
+        if index2 is not None:
+            _form_params.append(('index', index2))
+        if web_hook_url2 is not None:
+            _form_params.append(('webHookUrl', web_hook_url2))
+        if embedding_model_name is not None:
+            _form_params.append(('embeddingModelName', embedding_model_name))
         if files is not None:
             _files['files'] = files
-        if args is not None:
-            _form_params.append(('args', args))
+        if context is not None:
+            _form_params.append(('context', context))
         if tags is not None:
             _form_params.append(('tags', tags))
+        if ingestion_pipeline is not None:
+            _form_params.append(('ingestionPipeline', ingestion_pipeline))
+        if language_auto_detection is not None:
+            _form_params.append(('languageAutoDetection', language_auto_detection))
+        if language is not None:
+            _form_params.append(('language', language))
         # process the body parameter
 
 
@@ -1869,7 +1690,7 @@ class SemanticSearchApi:
     ) -> QueryDocumentResponse:
         """semantic_search_query
 
-        Query ingested documents using semantic search
+        Performs semantic or hybrid search over previously ingested data.
 
         :param query_document_request: (required)
         :type query_document_request: QueryDocumentRequest
@@ -1939,7 +1760,7 @@ class SemanticSearchApi:
     ) -> ApiResponse[QueryDocumentResponse]:
         """semantic_search_query
 
-        Query ingested documents using semantic search
+        Performs semantic or hybrid search over previously ingested data.
 
         :param query_document_request: (required)
         :type query_document_request: QueryDocumentRequest
@@ -2009,7 +1830,7 @@ class SemanticSearchApi:
     ) -> RESTResponseType:
         """semantic_search_query
 
-        Query ingested documents using semantic search
+        Performs semantic or hybrid search over previously ingested data.
 
         :param query_document_request: (required)
         :type query_document_request: QueryDocumentRequest
@@ -2717,9 +2538,9 @@ class SemanticSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> IngestDocumentResponse:
-        """semantic_search_text_ingestion
+        """Ingest Plain Text for Semantic Search
 
-        Import plain text into semantic search
+        Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
 
         :param ingest_text_document_request: (required)
         :type ingest_text_document_request: IngestTextDocumentRequest
@@ -2787,9 +2608,9 @@ class SemanticSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[IngestDocumentResponse]:
-        """semantic_search_text_ingestion
+        """Ingest Plain Text for Semantic Search
 
-        Import plain text into semantic search
+        Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
 
         :param ingest_text_document_request: (required)
         :type ingest_text_document_request: IngestTextDocumentRequest
@@ -2857,9 +2678,9 @@ class SemanticSearchApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """semantic_search_text_ingestion
+        """Ingest Plain Text for Semantic Search
 
-        Import plain text into semantic search
+        Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
 
         :param ingest_text_document_request: (required)
         :type ingest_text_document_request: IngestTextDocumentRequest

@@ -49,44 +49,47 @@ import org.openapitools.client.JSON;
 /**
  * SemanticSearchQueryResultsClusteringRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class SemanticSearchQueryResultsClusteringRequest {
   public static final String SERIALIZED_NAME_CLUSTER_COUNT = "clusterCount";
   @SerializedName(SERIALIZED_NAME_CLUSTER_COUNT)
+  @javax.annotation.Nullable
   private Integer clusterCount = 3;
 
   public static final String SERIALIZED_NAME_MAX_DEGREE_OF_PARALLELISM = "maxDegreeOfParallelism";
   @SerializedName(SERIALIZED_NAME_MAX_DEGREE_OF_PARALLELISM)
+  @javax.annotation.Nullable
   private Integer maxDegreeOfParallelism = 1;
-
-  public static final String SERIALIZED_NAME_MAX_TOKENS = "maxTokens";
-  @SerializedName(SERIALIZED_NAME_MAX_TOKENS)
-  private Integer maxTokens = 10;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_MIN_RELEVANCE = "minRelevance";
   @SerializedName(SERIALIZED_NAME_MIN_RELEVANCE)
+  @javax.annotation.Nullable
   private BigDecimal minRelevance;
 
   public static final String SERIALIZED_NAME_MAX_RELEVANCE = "maxRelevance";
   @SerializedName(SERIALIZED_NAME_MAX_RELEVANCE)
+  @javax.annotation.Nullable
   private BigDecimal maxRelevance;
 
   public static final String SERIALIZED_NAME_LLM_MODEL = "llmModel";
   @SerializedName(SERIALIZED_NAME_LLM_MODEL)
+  @javax.annotation.Nullable
   private String llmModel;
 
   public static final String SERIALIZED_NAME_EMBEDDING_MODEL = "embeddingModel";
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
+  @javax.annotation.Nullable
   private String embeddingModel;
 
   public SemanticSearchQueryResultsClusteringRequest() {
   }
 
-  public SemanticSearchQueryResultsClusteringRequest clusterCount(Integer clusterCount) {
+  public SemanticSearchQueryResultsClusteringRequest clusterCount(@javax.annotation.Nullable Integer clusterCount) {
     this.clusterCount = clusterCount;
     return this;
   }
@@ -102,12 +105,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return clusterCount;
   }
 
-  public void setClusterCount(Integer clusterCount) {
+  public void setClusterCount(@javax.annotation.Nullable Integer clusterCount) {
     this.clusterCount = clusterCount;
   }
 
 
-  public SemanticSearchQueryResultsClusteringRequest maxDegreeOfParallelism(Integer maxDegreeOfParallelism) {
+  public SemanticSearchQueryResultsClusteringRequest maxDegreeOfParallelism(@javax.annotation.Nullable Integer maxDegreeOfParallelism) {
     this.maxDegreeOfParallelism = maxDegreeOfParallelism;
     return this;
   }
@@ -123,33 +126,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return maxDegreeOfParallelism;
   }
 
-  public void setMaxDegreeOfParallelism(Integer maxDegreeOfParallelism) {
+  public void setMaxDegreeOfParallelism(@javax.annotation.Nullable Integer maxDegreeOfParallelism) {
     this.maxDegreeOfParallelism = maxDegreeOfParallelism;
   }
 
 
-  public SemanticSearchQueryResultsClusteringRequest maxTokens(Integer maxTokens) {
-    this.maxTokens = maxTokens;
-    return this;
-  }
-
-  /**
-   * The maximum number of tokens to be used in the KMeans clustering algorithm.
-   * minimum: 1
-   * maximum: 100
-   * @return maxTokens
-   */
-  @javax.annotation.Nullable
-  public Integer getMaxTokens() {
-    return maxTokens;
-  }
-
-  public void setMaxTokens(Integer maxTokens) {
-    this.maxTokens = maxTokens;
-  }
-
-
-  public SemanticSearchQueryResultsClusteringRequest index(String index) {
+  public SemanticSearchQueryResultsClusteringRequest index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
@@ -163,12 +145,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public SemanticSearchQueryResultsClusteringRequest minRelevance(BigDecimal minRelevance) {
+  public SemanticSearchQueryResultsClusteringRequest minRelevance(@javax.annotation.Nullable BigDecimal minRelevance) {
     this.minRelevance = minRelevance;
     return this;
   }
@@ -182,12 +164,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return minRelevance;
   }
 
-  public void setMinRelevance(BigDecimal minRelevance) {
+  public void setMinRelevance(@javax.annotation.Nullable BigDecimal minRelevance) {
     this.minRelevance = minRelevance;
   }
 
 
-  public SemanticSearchQueryResultsClusteringRequest maxRelevance(BigDecimal maxRelevance) {
+  public SemanticSearchQueryResultsClusteringRequest maxRelevance(@javax.annotation.Nullable BigDecimal maxRelevance) {
     this.maxRelevance = maxRelevance;
     return this;
   }
@@ -201,12 +183,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return maxRelevance;
   }
 
-  public void setMaxRelevance(BigDecimal maxRelevance) {
+  public void setMaxRelevance(@javax.annotation.Nullable BigDecimal maxRelevance) {
     this.maxRelevance = maxRelevance;
   }
 
 
-  public SemanticSearchQueryResultsClusteringRequest llmModel(String llmModel) {
+  public SemanticSearchQueryResultsClusteringRequest llmModel(@javax.annotation.Nullable String llmModel) {
     this.llmModel = llmModel;
     return this;
   }
@@ -220,12 +202,12 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return llmModel;
   }
 
-  public void setLlmModel(String llmModel) {
+  public void setLlmModel(@javax.annotation.Nullable String llmModel) {
     this.llmModel = llmModel;
   }
 
 
-  public SemanticSearchQueryResultsClusteringRequest embeddingModel(String embeddingModel) {
+  public SemanticSearchQueryResultsClusteringRequest embeddingModel(@javax.annotation.Nullable String embeddingModel) {
     this.embeddingModel = embeddingModel;
     return this;
   }
@@ -239,7 +221,7 @@ public class SemanticSearchQueryResultsClusteringRequest {
     return embeddingModel;
   }
 
-  public void setEmbeddingModel(String embeddingModel) {
+  public void setEmbeddingModel(@javax.annotation.Nullable String embeddingModel) {
     this.embeddingModel = embeddingModel;
   }
 
@@ -256,7 +238,6 @@ public class SemanticSearchQueryResultsClusteringRequest {
     SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest = (SemanticSearchQueryResultsClusteringRequest) o;
     return Objects.equals(this.clusterCount, semanticSearchQueryResultsClusteringRequest.clusterCount) &&
         Objects.equals(this.maxDegreeOfParallelism, semanticSearchQueryResultsClusteringRequest.maxDegreeOfParallelism) &&
-        Objects.equals(this.maxTokens, semanticSearchQueryResultsClusteringRequest.maxTokens) &&
         Objects.equals(this.index, semanticSearchQueryResultsClusteringRequest.index) &&
         Objects.equals(this.minRelevance, semanticSearchQueryResultsClusteringRequest.minRelevance) &&
         Objects.equals(this.maxRelevance, semanticSearchQueryResultsClusteringRequest.maxRelevance) &&
@@ -266,7 +247,7 @@ public class SemanticSearchQueryResultsClusteringRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(clusterCount, maxDegreeOfParallelism, maxTokens, index, minRelevance, maxRelevance, llmModel, embeddingModel);
+    return Objects.hash(clusterCount, maxDegreeOfParallelism, index, minRelevance, maxRelevance, llmModel, embeddingModel);
   }
 
   @Override
@@ -275,7 +256,6 @@ public class SemanticSearchQueryResultsClusteringRequest {
     sb.append("class SemanticSearchQueryResultsClusteringRequest {\n");
     sb.append("    clusterCount: ").append(toIndentedString(clusterCount)).append("\n");
     sb.append("    maxDegreeOfParallelism: ").append(toIndentedString(maxDegreeOfParallelism)).append("\n");
-    sb.append("    maxTokens: ").append(toIndentedString(maxTokens)).append("\n");
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    minRelevance: ").append(toIndentedString(minRelevance)).append("\n");
     sb.append("    maxRelevance: ").append(toIndentedString(maxRelevance)).append("\n");
@@ -305,7 +285,6 @@ public class SemanticSearchQueryResultsClusteringRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("clusterCount");
     openapiFields.add("maxDegreeOfParallelism");
-    openapiFields.add("maxTokens");
     openapiFields.add("index");
     openapiFields.add("minRelevance");
     openapiFields.add("maxRelevance");

@@ -51,40 +51,42 @@ import org.openapitools.client.JSON;
 /**
  * ApiExtractThematicSimilarityClusterPostRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ApiExtractThematicSimilarityClusterPostRequest {
   public static final String SERIALIZED_NAME_INPUT = "input";
   @SerializedName(SERIALIZED_NAME_INPUT)
+  @javax.annotation.Nonnull
   private List<String> input = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CLUSTER_COUNT = "clusterCount";
   @SerializedName(SERIALIZED_NAME_CLUSTER_COUNT)
+  @javax.annotation.Nonnull
   private Integer clusterCount;
 
   public static final String SERIALIZED_NAME_MAX_DEGREE_OF_PARALLELISM = "maxDegreeOfParallelism";
   @SerializedName(SERIALIZED_NAME_MAX_DEGREE_OF_PARALLELISM)
+  @javax.annotation.Nullable
   private Integer maxDegreeOfParallelism = 1;
-
-  public static final String SERIALIZED_NAME_MAX_TOKENS = "maxTokens";
-  @SerializedName(SERIALIZED_NAME_MAX_TOKENS)
-  private Integer maxTokens = 10;
 
   public static final String SERIALIZED_NAME_LLM_MODEL = "llmModel";
   @SerializedName(SERIALIZED_NAME_LLM_MODEL)
+  @javax.annotation.Nullable
   private String llmModel;
 
   public static final String SERIALIZED_NAME_EMBEDDING_MODEL = "embeddingModel";
   @SerializedName(SERIALIZED_NAME_EMBEDDING_MODEL)
+  @javax.annotation.Nullable
   private String embeddingModel;
 
   public static final String SERIALIZED_NAME_SEED = "seed";
   @SerializedName(SERIALIZED_NAME_SEED)
+  @javax.annotation.Nullable
   private Integer seed;
 
   public ApiExtractThematicSimilarityClusterPostRequest() {
   }
 
-  public ApiExtractThematicSimilarityClusterPostRequest input(List<String> input) {
+  public ApiExtractThematicSimilarityClusterPostRequest input(@javax.annotation.Nonnull List<String> input) {
     this.input = input;
     return this;
   }
@@ -106,12 +108,12 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return input;
   }
 
-  public void setInput(List<String> input) {
+  public void setInput(@javax.annotation.Nonnull List<String> input) {
     this.input = input;
   }
 
 
-  public ApiExtractThematicSimilarityClusterPostRequest clusterCount(Integer clusterCount) {
+  public ApiExtractThematicSimilarityClusterPostRequest clusterCount(@javax.annotation.Nonnull Integer clusterCount) {
     this.clusterCount = clusterCount;
     return this;
   }
@@ -127,12 +129,12 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return clusterCount;
   }
 
-  public void setClusterCount(Integer clusterCount) {
+  public void setClusterCount(@javax.annotation.Nonnull Integer clusterCount) {
     this.clusterCount = clusterCount;
   }
 
 
-  public ApiExtractThematicSimilarityClusterPostRequest maxDegreeOfParallelism(Integer maxDegreeOfParallelism) {
+  public ApiExtractThematicSimilarityClusterPostRequest maxDegreeOfParallelism(@javax.annotation.Nullable Integer maxDegreeOfParallelism) {
     this.maxDegreeOfParallelism = maxDegreeOfParallelism;
     return this;
   }
@@ -148,33 +150,12 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return maxDegreeOfParallelism;
   }
 
-  public void setMaxDegreeOfParallelism(Integer maxDegreeOfParallelism) {
+  public void setMaxDegreeOfParallelism(@javax.annotation.Nullable Integer maxDegreeOfParallelism) {
     this.maxDegreeOfParallelism = maxDegreeOfParallelism;
   }
 
 
-  public ApiExtractThematicSimilarityClusterPostRequest maxTokens(Integer maxTokens) {
-    this.maxTokens = maxTokens;
-    return this;
-  }
-
-  /**
-   * The maximum number of tokens
-   * minimum: 1
-   * maximum: 100
-   * @return maxTokens
-   */
-  @javax.annotation.Nullable
-  public Integer getMaxTokens() {
-    return maxTokens;
-  }
-
-  public void setMaxTokens(Integer maxTokens) {
-    this.maxTokens = maxTokens;
-  }
-
-
-  public ApiExtractThematicSimilarityClusterPostRequest llmModel(String llmModel) {
+  public ApiExtractThematicSimilarityClusterPostRequest llmModel(@javax.annotation.Nullable String llmModel) {
     this.llmModel = llmModel;
     return this;
   }
@@ -188,12 +169,12 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return llmModel;
   }
 
-  public void setLlmModel(String llmModel) {
+  public void setLlmModel(@javax.annotation.Nullable String llmModel) {
     this.llmModel = llmModel;
   }
 
 
-  public ApiExtractThematicSimilarityClusterPostRequest embeddingModel(String embeddingModel) {
+  public ApiExtractThematicSimilarityClusterPostRequest embeddingModel(@javax.annotation.Nullable String embeddingModel) {
     this.embeddingModel = embeddingModel;
     return this;
   }
@@ -207,12 +188,12 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return embeddingModel;
   }
 
-  public void setEmbeddingModel(String embeddingModel) {
+  public void setEmbeddingModel(@javax.annotation.Nullable String embeddingModel) {
     this.embeddingModel = embeddingModel;
   }
 
 
-  public ApiExtractThematicSimilarityClusterPostRequest seed(Integer seed) {
+  public ApiExtractThematicSimilarityClusterPostRequest seed(@javax.annotation.Nullable Integer seed) {
     this.seed = seed;
     return this;
   }
@@ -226,7 +207,7 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return seed;
   }
 
-  public void setSeed(Integer seed) {
+  public void setSeed(@javax.annotation.Nullable Integer seed) {
     this.seed = seed;
   }
 
@@ -244,7 +225,6 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     return Objects.equals(this.input, apiExtractThematicSimilarityClusterPostRequest.input) &&
         Objects.equals(this.clusterCount, apiExtractThematicSimilarityClusterPostRequest.clusterCount) &&
         Objects.equals(this.maxDegreeOfParallelism, apiExtractThematicSimilarityClusterPostRequest.maxDegreeOfParallelism) &&
-        Objects.equals(this.maxTokens, apiExtractThematicSimilarityClusterPostRequest.maxTokens) &&
         Objects.equals(this.llmModel, apiExtractThematicSimilarityClusterPostRequest.llmModel) &&
         Objects.equals(this.embeddingModel, apiExtractThematicSimilarityClusterPostRequest.embeddingModel) &&
         Objects.equals(this.seed, apiExtractThematicSimilarityClusterPostRequest.seed);
@@ -256,7 +236,7 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(input, clusterCount, maxDegreeOfParallelism, maxTokens, llmModel, embeddingModel, seed);
+    return Objects.hash(input, clusterCount, maxDegreeOfParallelism, llmModel, embeddingModel, seed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -273,7 +253,6 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     sb.append("    input: ").append(toIndentedString(input)).append("\n");
     sb.append("    clusterCount: ").append(toIndentedString(clusterCount)).append("\n");
     sb.append("    maxDegreeOfParallelism: ").append(toIndentedString(maxDegreeOfParallelism)).append("\n");
-    sb.append("    maxTokens: ").append(toIndentedString(maxTokens)).append("\n");
     sb.append("    llmModel: ").append(toIndentedString(llmModel)).append("\n");
     sb.append("    embeddingModel: ").append(toIndentedString(embeddingModel)).append("\n");
     sb.append("    seed: ").append(toIndentedString(seed)).append("\n");
@@ -302,7 +281,6 @@ public class ApiExtractThematicSimilarityClusterPostRequest {
     openapiFields.add("input");
     openapiFields.add("clusterCount");
     openapiFields.add("maxDegreeOfParallelism");
-    openapiFields.add("maxTokens");
     openapiFields.add("llmModel");
     openapiFields.add("embeddingModel");
     openapiFields.add("seed");

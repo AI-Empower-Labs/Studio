@@ -26,6 +26,14 @@ import com.squareup.moshi.JsonClass
  * @param query Semantic query to find matching documents
  * @param index Optional index to specify which index to search in. Defaults to 'default'
  * @param filter Optional filtering of document id(s) and/or tags
+ * @param searchMode Optional search mode defining the context or process used in the query. Supported values are 'hybrid', 'semantic'
+ * @param language Specifies the language of the content.
+ * @param languageDetection Indicates whether language detection is enabled.
+ * @param ftsMinScore Minimum score for full-text search.
+ * @param ftsWeight Weight for full-text search.
+ * @param semanticMinRelevance Minimum relevance score for semantic search.
+ * @param semanticWeight Weight applied for semantic search.
+ * @param smoothingFactorK Smoothing factor (k) used in calculations.
  * @param minRelevance Optional filter to specify minimum relevance. Typically values between 0 and 1
  * @param limit Optional filter for specifying maximum number of entries to return. Defaults to 3
  * @param embeddingModel Embedding model to use in query
@@ -47,6 +55,38 @@ data class QueryDocumentRequest (
     @Json(name = "filter")
     val filter: kotlin.collections.List<DocumentFilters>? = null,
 
+    /* Optional search mode defining the context or process used in the query. Supported values are 'hybrid', 'semantic' */
+    @Json(name = "searchMode")
+    val searchMode: QueryDocumentRequest.SearchMode? = null,
+
+    /* Specifies the language of the content. */
+    @Json(name = "language")
+    val language: kotlin.String? = null,
+
+    /* Indicates whether language detection is enabled. */
+    @Json(name = "languageDetection")
+    val languageDetection: kotlin.Boolean? = null,
+
+    /* Minimum score for full-text search. */
+    @Json(name = "ftsMinScore")
+    val ftsMinScore: kotlin.Float? = null,
+
+    /* Weight for full-text search. */
+    @Json(name = "ftsWeight")
+    val ftsWeight: kotlin.Float? = null,
+
+    /* Minimum relevance score for semantic search. */
+    @Json(name = "semanticMinRelevance")
+    val semanticMinRelevance: kotlin.Double? = null,
+
+    /* Weight applied for semantic search. */
+    @Json(name = "semanticWeight")
+    val semanticWeight: kotlin.Float? = null,
+
+    /* Smoothing factor (k) used in calculations. */
+    @Json(name = "smoothingFactorK")
+    val smoothingFactorK: kotlin.Float? = null,
+
     /* Optional filter to specify minimum relevance. Typically values between 0 and 1 */
     @Json(name = "minRelevance")
     val minRelevance: kotlin.Double? = null,
@@ -64,6 +104,16 @@ data class QueryDocumentRequest (
 
 ) {
 
+    /**
+     * Optional search mode defining the context or process used in the query. Supported values are 'hybrid', 'semantic'
+     *
+     * Values: hybrid,semantic
+     */
+    @JsonClass(generateAdapter = false)
+    enum class SearchMode(val value: kotlin.String) {
+        @Json(name = "hybrid") hybrid("hybrid"),
+        @Json(name = "semantic") semantic("semantic");
+    }
 
 }
 

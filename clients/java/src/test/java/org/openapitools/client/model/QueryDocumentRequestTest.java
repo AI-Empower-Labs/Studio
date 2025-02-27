@@ -68,6 +68,70 @@ public class QueryDocumentRequestTest {
     }
 
     /**
+     * Test the property 'searchMode'
+     */
+    @Test
+    public void searchModeTest() {
+        // TODO: test searchMode
+    }
+
+    /**
+     * Test the property 'language'
+     */
+    @Test
+    public void languageTest() {
+        // TODO: test language
+    }
+
+    /**
+     * Test the property 'languageDetection'
+     */
+    @Test
+    public void languageDetectionTest() {
+        // TODO: test languageDetection
+    }
+
+    /**
+     * Test the property 'ftsMinScore'
+     */
+    @Test
+    public void ftsMinScoreTest() {
+        // TODO: test ftsMinScore
+    }
+
+    /**
+     * Test the property 'ftsWeight'
+     */
+    @Test
+    public void ftsWeightTest() {
+        // TODO: test ftsWeight
+    }
+
+    /**
+     * Test the property 'semanticMinRelevance'
+     */
+    @Test
+    public void semanticMinRelevanceTest() {
+        // TODO: test semanticMinRelevance
+    }
+
+    /**
+     * Test the property 'semanticWeight'
+     */
+    @Test
+    public void semanticWeightTest() {
+        // TODO: test semanticWeight
+    }
+
+    /**
+     * Test the property 'smoothingFactorK'
+     */
+    @Test
+    public void smoothingFactorKTest() {
+        // TODO: test smoothingFactorK
+    }
+
+    /**
      * Test the property 'minRelevance'
      */
     @Test

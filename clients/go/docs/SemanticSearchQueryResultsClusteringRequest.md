@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterCount** | Pointer to **int32** | The number of clusters to be used in k-means clustering. | [optional] [default to 3]
 **MaxDegreeOfParallelism** | Pointer to **int32** | The Maximum Degrees Of Parallelism | [optional] [default to 1]
-**MaxTokens** | Pointer to **int32** | The maximum number of tokens to be used in the KMeans clustering algorithm. | [optional] [default to 10]
 **Index** | Pointer to **string** | Optional index to specify which index to search in. Defaults to &#39;default&#39;. | [optional] 
 **MinRelevance** | Pointer to **float32** | The minimum relevance value used for querying the search result audit. | [optional] 
 **MaxRelevance** | Pointer to **float32** | The maximum relevance value to be used in the search query. | [optional] 
@@ -81,31 +80,6 @@ SetMaxDegreeOfParallelism sets MaxDegreeOfParallelism field to given value.
 `func (o *SemanticSearchQueryResultsClusteringRequest) HasMaxDegreeOfParallelism() bool`
 
 HasMaxDegreeOfParallelism returns a boolean if a field has been set.
-
-### GetMaxTokens
-
-`func (o *SemanticSearchQueryResultsClusteringRequest) GetMaxTokens() int32`
-
-GetMaxTokens returns the MaxTokens field if non-nil, zero value otherwise.
-
-### GetMaxTokensOk
-
-`func (o *SemanticSearchQueryResultsClusteringRequest) GetMaxTokensOk() (*int32, bool)`
-
-GetMaxTokensOk returns a tuple with the MaxTokens field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMaxTokens
-
-`func (o *SemanticSearchQueryResultsClusteringRequest) SetMaxTokens(v int32)`
-
-SetMaxTokens sets MaxTokens field to given value.
-
-### HasMaxTokens
-
-`func (o *SemanticSearchQueryResultsClusteringRequest) HasMaxTokens() bool`
-
-HasMaxTokens returns a boolean if a field has been set.
 
 ### GetIndex
 

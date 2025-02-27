@@ -52,32 +52,37 @@ import org.openapitools.client.JSON;
 /**
  * MemoryAnswer
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class MemoryAnswer {
   public static final String SERIALIZED_NAME_QUESTION = "question";
   @SerializedName(SERIALIZED_NAME_QUESTION)
+  @javax.annotation.Nullable
   private String question;
 
   public static final String SERIALIZED_NAME_NO_RESULT = "noResult";
   @SerializedName(SERIALIZED_NAME_NO_RESULT)
+  @javax.annotation.Nullable
   private Boolean noResult;
 
   public static final String SERIALIZED_NAME_NO_RESULT_REASON = "noResultReason";
   @SerializedName(SERIALIZED_NAME_NO_RESULT_REASON)
+  @javax.annotation.Nullable
   private String noResultReason;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private String text;
 
   public static final String SERIALIZED_NAME_RELEVANT_SOURCES = "relevantSources";
   @SerializedName(SERIALIZED_NAME_RELEVANT_SOURCES)
+  @javax.annotation.Nullable
   private List<Citation> relevantSources;
 
   public MemoryAnswer() {
   }
 
-  public MemoryAnswer question(String question) {
+  public MemoryAnswer question(@javax.annotation.Nullable String question) {
     this.question = question;
     return this;
   }
@@ -91,12 +96,12 @@ public class MemoryAnswer {
     return question;
   }
 
-  public void setQuestion(String question) {
+  public void setQuestion(@javax.annotation.Nullable String question) {
     this.question = question;
   }
 
 
-  public MemoryAnswer noResult(Boolean noResult) {
+  public MemoryAnswer noResult(@javax.annotation.Nullable Boolean noResult) {
     this.noResult = noResult;
     return this;
   }
@@ -110,12 +115,12 @@ public class MemoryAnswer {
     return noResult;
   }
 
-  public void setNoResult(Boolean noResult) {
+  public void setNoResult(@javax.annotation.Nullable Boolean noResult) {
     this.noResult = noResult;
   }
 
 
-  public MemoryAnswer noResultReason(String noResultReason) {
+  public MemoryAnswer noResultReason(@javax.annotation.Nullable String noResultReason) {
     this.noResultReason = noResultReason;
     return this;
   }
@@ -129,12 +134,12 @@ public class MemoryAnswer {
     return noResultReason;
   }
 
-  public void setNoResultReason(String noResultReason) {
+  public void setNoResultReason(@javax.annotation.Nullable String noResultReason) {
     this.noResultReason = noResultReason;
   }
 
 
-  public MemoryAnswer text(String text) {
+  public MemoryAnswer text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -148,12 +153,12 @@ public class MemoryAnswer {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 
 
-  public MemoryAnswer relevantSources(List<Citation> relevantSources) {
+  public MemoryAnswer relevantSources(@javax.annotation.Nullable List<Citation> relevantSources) {
     this.relevantSources = relevantSources;
     return this;
   }
@@ -175,7 +180,7 @@ public class MemoryAnswer {
     return relevantSources;
   }
 
-  public void setRelevantSources(List<Citation> relevantSources) {
+  public void setRelevantSources(@javax.annotation.Nullable List<Citation> relevantSources) {
     this.relevantSources = relevantSources;
   }
 

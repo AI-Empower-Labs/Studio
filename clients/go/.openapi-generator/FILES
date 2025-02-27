@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -11,8 +12,6 @@ api_transcription.go
 client.go
 configuration.go
 docs/ApiExtractThematicSimilarityClusterPostRequest.md
-docs/AskDocumentRequest.md
-docs/AskDocumentResponse.md
 docs/Centroid.md
 docs/Citation.md
 docs/Coordinate.md
@@ -77,8 +76,6 @@ git_push.sh
 go.mod
 go.sum
 model__api_extract_thematic_similarity_cluster_post_request.go
-model_ask_document_request.go
-model_ask_document_response.go
 model_centroid.go
 model_citation.go
 model_coordinate.go
@@ -134,4 +131,10 @@ model_translate.go
 model_translate_response.go
 model_upload_accepted.go
 response.go
+test/api_data_extraction_test.go
+test/api_kernel_memory_test.go
+test/api_language_test.go
+test/api_miscellaneous_test.go
+test/api_semantic_search_test.go
+test/api_transcription_test.go
 utils.go

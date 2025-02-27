@@ -23,48 +23,48 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param link Link to the source, if available.
- * @param index Link to the source, if available.
- * @param documentId Link to the source, if available.
- * @param fileId Link to the source, if available.
- * @param sourceContentType Type of source, e.g. PDF, Word, Chat, etc.
- * @param sourceName Name of the source, e.g. file name.
- * @param sourceUrl URL of the source, used for web pages and external data
- * @param partitions List of chunks/blocks of text used.
+ * @param link URL or reference to the original source document
+ * @param index Identifier or position of the citation within the source
+ * @param documentId Unique identifier for the document
+ * @param fileId Unique identifier for the file in storage
+ * @param sourceContentType Format of the source (e.g., 'pdf', 'docx', 'chat')
+ * @param sourceName Human-readable name or title of the source
+ * @param sourceUrl Web URL of the source for online content
+ * @param partitions Array of text segments used from the source
  */
 
 
 data class DocumentCitation (
 
-    /* Link to the source, if available. */
+    /* URL or reference to the original source document */
     @Json(name = "link")
     val link: kotlin.String? = null,
 
-    /* Link to the source, if available. */
+    /* Identifier or position of the citation within the source */
     @Json(name = "index")
     val index: kotlin.String? = null,
 
-    /* Link to the source, if available. */
+    /* Unique identifier for the document */
     @Json(name = "documentId")
     val documentId: kotlin.String? = null,
 
-    /* Link to the source, if available. */
+    /* Unique identifier for the file in storage */
     @Json(name = "fileId")
     val fileId: kotlin.String? = null,
 
-    /* Type of source, e.g. PDF, Word, Chat, etc. */
+    /* Format of the source (e.g., 'pdf', 'docx', 'chat') */
     @Json(name = "sourceContentType")
     val sourceContentType: kotlin.String? = null,
 
-    /* Name of the source, e.g. file name. */
+    /* Human-readable name or title of the source */
     @Json(name = "sourceName")
     val sourceName: kotlin.String? = null,
 
-    /* URL of the source, used for web pages and external data */
+    /* Web URL of the source for online content */
     @Json(name = "sourceUrl")
     val sourceUrl: kotlin.String? = null,
 
-    /* List of chunks/blocks of text used. */
+    /* Array of text segments used from the source */
     @Json(name = "partitions")
     val partitions: kotlin.collections.List<DocumentPartition>? = null
 

@@ -9,9 +9,7 @@ Method | HTTP request | Description
 
 
 # **delete_llm_cache_entry**
-> delete_llm_cache_entry(cache_key=cache_key)
-
-
+> delete_llm_cache_entry(key=key)
 
 Delete LLM cache entry
 
@@ -34,10 +32,10 @@ configuration = openapi_client.Configuration(
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.MiscellaneousApi(api_client)
-    cache_key = 'cache_key_example' # str | The LLM cache key to remove (optional)
+    key = 'key_example' # str | The LLM cache key to remove (optional)
 
     try:
-        api_instance.delete_llm_cache_entry(cache_key=cache_key)
+        api_instance.delete_llm_cache_entry(key=key)
     except Exception as e:
         print("Exception when calling MiscellaneousApi->delete_llm_cache_entry: %s\n" % e)
 ```
@@ -49,7 +47,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cache_key** | **str**| The LLM cache key to remove | [optional] 
+ **key** | **str**| The LLM cache key to remove | [optional] 
 
 ### Return type
 
@@ -69,16 +67,14 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK - Cache was deleted |  -  |
-**400** | Bad Request |  -  |
-**429** | Too Many Requests |  -  |
-**500** | Internal Server Error |  -  |
+**400** | Invalid request parameters or validation error. |  -  |
+**429** | Request rate limit exceeded. |  -  |
+**500** | Internal server error. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_configuration**
 > List[Dict[str, List[str]]] get_configuration()
-
-
 
 Get configuration information
 

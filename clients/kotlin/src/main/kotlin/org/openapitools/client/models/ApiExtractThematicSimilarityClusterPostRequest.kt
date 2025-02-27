@@ -25,7 +25,6 @@ import com.squareup.moshi.JsonClass
  * @param input The input texts for generating clusters
  * @param clusterCount The number of clusters requested for generating clusters
  * @param maxDegreeOfParallelism The maximum degree of parallelism for the KMeans clustering algorithm
- * @param maxTokens The maximum number of tokens
  * @param llmModel The name of the LLM model. Optional.
  * @param embeddingModel The name of the embedding model used in the GenerateClusterHttpRequest. Optional.
  * @param seed Randomization seed. Optional.
@@ -45,10 +44,6 @@ data class ApiExtractThematicSimilarityClusterPostRequest (
     /* The maximum degree of parallelism for the KMeans clustering algorithm */
     @Json(name = "maxDegreeOfParallelism")
     val maxDegreeOfParallelism: kotlin.Int? = 1,
-
-    /* The maximum number of tokens */
-    @Json(name = "maxTokens")
-    val maxTokens: kotlin.Int? = 10,
 
     /* The name of the LLM model. Optional. */
     @Json(name = "llmModel")

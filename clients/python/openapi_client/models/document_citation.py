@@ -28,14 +28,14 @@ class DocumentCitation(BaseModel):
     """
     DocumentCitation
     """ # noqa: E501
-    link: Optional[StrictStr] = Field(default=None, description="Link to the source, if available.")
-    index: Optional[StrictStr] = Field(default=None, description="Link to the source, if available.")
-    document_id: Optional[StrictStr] = Field(default=None, description="Link to the source, if available.", alias="documentId")
-    file_id: Optional[StrictStr] = Field(default=None, description="Link to the source, if available.", alias="fileId")
-    source_content_type: Optional[StrictStr] = Field(default=None, description="Type of source, e.g. PDF, Word, Chat, etc.", alias="sourceContentType")
-    source_name: Optional[StrictStr] = Field(default=None, description="Name of the source, e.g. file name.", alias="sourceName")
-    source_url: Optional[StrictStr] = Field(default=None, description="URL of the source, used for web pages and external data", alias="sourceUrl")
-    partitions: Optional[List[DocumentPartition]] = Field(default=None, description="List of chunks/blocks of text used.")
+    link: Optional[StrictStr] = Field(default=None, description="URL or reference to the original source document")
+    index: Optional[StrictStr] = Field(default=None, description="Identifier or position of the citation within the source")
+    document_id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the document", alias="documentId")
+    file_id: Optional[StrictStr] = Field(default=None, description="Unique identifier for the file in storage", alias="fileId")
+    source_content_type: Optional[StrictStr] = Field(default=None, description="Format of the source (e.g., 'pdf', 'docx', 'chat')", alias="sourceContentType")
+    source_name: Optional[StrictStr] = Field(default=None, description="Human-readable name or title of the source", alias="sourceName")
+    source_url: Optional[StrictStr] = Field(default=None, description="Web URL of the source for online content", alias="sourceUrl")
+    partitions: Optional[List[DocumentPartition]] = Field(default=None, description="Array of text segments used from the source")
     __properties: ClassVar[List[str]] = ["link", "index", "documentId", "fileId", "sourceContentType", "sourceName", "sourceUrl", "partitions"]
 
     model_config = ConfigDict(

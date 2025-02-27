@@ -26,6 +26,22 @@ type QueryDocumentRequest struct {
 	Index NullableString `json:"index,omitempty"`
 	// Optional filtering of document id(s) and/or tags
 	Filter []DocumentFilters `json:"filter,omitempty"`
+	// Optional search mode defining the context or process used in the query. Supported values are 'hybrid', 'semantic'
+	SearchMode NullableString `json:"searchMode,omitempty"`
+	// Specifies the language of the content.
+	Language NullableString `json:"language,omitempty"`
+	// Indicates whether language detection is enabled.
+	LanguageDetection NullableBool `json:"languageDetection,omitempty"`
+	// Minimum score for full-text search.
+	FtsMinScore NullableFloat32 `json:"ftsMinScore,omitempty"`
+	// Weight for full-text search.
+	FtsWeight NullableFloat32 `json:"ftsWeight,omitempty"`
+	// Minimum relevance score for semantic search.
+	SemanticMinRelevance NullableFloat64 `json:"semanticMinRelevance,omitempty"`
+	// Weight applied for semantic search.
+	SemanticWeight NullableFloat32 `json:"semanticWeight,omitempty"`
+	// Smoothing factor (k) used in calculations.
+	SmoothingFactorK NullableFloat32 `json:"smoothingFactorK,omitempty"`
 	// Optional filter to specify minimum relevance. Typically values between 0 and 1
 	MinRelevance NullableFloat64 `json:"minRelevance,omitempty"`
 	// Optional filter for specifying maximum number of entries to return. Defaults to 3
@@ -167,6 +183,342 @@ func (o *QueryDocumentRequest) HasFilter() bool {
 // SetFilter gets a reference to the given []DocumentFilters and assigns it to the Filter field.
 func (o *QueryDocumentRequest) SetFilter(v []DocumentFilters) {
 	o.Filter = v
+}
+
+// GetSearchMode returns the SearchMode field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *QueryDocumentRequest) GetSearchMode() string {
+	if o == nil || IsNil(o.SearchMode.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SearchMode.Get()
+}
+
+// GetSearchModeOk returns a tuple with the SearchMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *QueryDocumentRequest) GetSearchModeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SearchMode.Get(), o.SearchMode.IsSet()
+}
+
+// HasSearchMode returns a boolean if a field has been set.
+func (o *QueryDocumentRequest) HasSearchMode() bool {
+	if o != nil && o.SearchMode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchMode gets a reference to the given NullableString and assigns it to the SearchMode field.
+func (o *QueryDocumentRequest) SetSearchMode(v string) {
+	o.SearchMode.Set(&v)
+}
+// SetSearchModeNil sets the value for SearchMode to be an explicit nil
+func (o *QueryDocumentRequest) SetSearchModeNil() {
+	o.SearchMode.Set(nil)
+}
+
+// UnsetSearchMode ensures that no value is present for SearchMode, not even an explicit nil
+func (o *QueryDocumentRequest) UnsetSearchMode() {
+	o.SearchMode.Unset()
+}
+
+// GetLanguage returns the Language field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *QueryDocumentRequest) GetLanguage() string {
+	if o == nil || IsNil(o.Language.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Language.Get()
+}
+
+// GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *QueryDocumentRequest) GetLanguageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Language.Get(), o.Language.IsSet()
+}
+
+// HasLanguage returns a boolean if a field has been set.
+func (o *QueryDocumentRequest) HasLanguage() bool {
+	if o != nil && o.Language.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLanguage gets a reference to the given NullableString and assigns it to the Language field.
+func (o *QueryDocumentRequest) SetLanguage(v string) {
+	o.Language.Set(&v)
+}
+// SetLanguageNil sets the value for Language to be an explicit nil
+func (o *QueryDocumentRequest) SetLanguageNil() {
+	o.Language.Set(nil)
+}
+
+// UnsetLanguage ensures that no value is present for Language, not even an explicit nil
+func (o *QueryDocumentRequest) UnsetLanguage() {
+	o.Language.Unset()
+}
+
+// GetLanguageDetection returns the LanguageDetection field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *QueryDocumentRequest) GetLanguageDetection() bool {
+	if o == nil || IsNil(o.LanguageDetection.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.LanguageDetection.Get()
+}
+
+// GetLanguageDetectionOk returns a tuple with the LanguageDetection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *QueryDocumentRequest) GetLanguageDetectionOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LanguageDetection.Get(), o.LanguageDetection.IsSet()
+}
+
+// HasLanguageDetection returns a boolean if a field has been set.
+func (o *QueryDocumentRequest) HasLanguageDetection() bool {
+	if o != nil && o.LanguageDetection.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLanguageDetection gets a reference to the given NullableBool and assigns it to the LanguageDetection field.
+func (o *QueryDocumentRequest) SetLanguageDetection(v bool) {
+	o.LanguageDetection.Set(&v)
+}
+// SetLanguageDetectionNil sets the value for LanguageDetection to be an explicit nil
+func (o *QueryDocumentRequest) SetLanguageDetectionNil() {
+	o.LanguageDetection.Set(nil)
+}
+
+// UnsetLanguageDetection ensures that no value is present for LanguageDetection, not even an explicit nil
+func (o *QueryDocumentRequest) UnsetLanguageDetection() {
+	o.LanguageDetection.Unset()
+}
+
+// GetFtsMinScore returns the FtsMinScore field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *QueryDocumentRequest) GetFtsMinScore() float32 {
+	if o == nil || IsNil(o.FtsMinScore.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FtsMinScore.Get()
+}
+
+// GetFtsMinScoreOk returns a tuple with the FtsMinScore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *QueryDocumentRequest) GetFtsMinScoreOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FtsMinScore.Get(), o.FtsMinScore.IsSet()
+}
+
+// HasFtsMinScore returns a boolean if a field has been set.
+func (o *QueryDocumentRequest) HasFtsMinScore() bool {
+	if o != nil && o.FtsMinScore.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFtsMinScore gets a reference to the given NullableFloat32 and assigns it to the FtsMinScore field.
+func (o *QueryDocumentRequest) SetFtsMinScore(v float32) {
+	o.FtsMinScore.Set(&v)
+}
+// SetFtsMinScoreNil sets the value for FtsMinScore to be an explicit nil
+func (o *QueryDocumentRequest) SetFtsMinScoreNil() {
+	o.FtsMinScore.Set(nil)
+}
+
+// UnsetFtsMinScore ensures that no value is present for FtsMinScore, not even an explicit nil
+func (o *QueryDocumentRequest) UnsetFtsMinScore() {
+	o.FtsMinScore.Unset()
+}
+
+// GetFtsWeight returns the FtsWeight field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *QueryDocumentRequest) GetFtsWeight() float32 {
+	if o == nil || IsNil(o.FtsWeight.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FtsWeight.Get()
+}
+
+// GetFtsWeightOk returns a tuple with the FtsWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *QueryDocumentRequest) GetFtsWeightOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FtsWeight.Get(), o.FtsWeight.IsSet()
+}
+
+// HasFtsWeight returns a boolean if a field has been set.
+func (o *QueryDocumentRequest) HasFtsWeight() bool {
+	if o != nil && o.FtsWeight.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFtsWeight gets a reference to the given NullableFloat32 and assigns it to the FtsWeight field.
+func (o *QueryDocumentRequest) SetFtsWeight(v float32) {
+	o.FtsWeight.Set(&v)
+}
+// SetFtsWeightNil sets the value for FtsWeight to be an explicit nil
+func (o *QueryDocumentRequest) SetFtsWeightNil() {
+	o.FtsWeight.Set(nil)
+}
+
+// UnsetFtsWeight ensures that no value is present for FtsWeight, not even an explicit nil
+func (o *QueryDocumentRequest) UnsetFtsWeight() {
+	o.FtsWeight.Unset()
+}
+
+// GetSemanticMinRelevance returns the SemanticMinRelevance field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *QueryDocumentRequest) GetSemanticMinRelevance() float64 {
+	if o == nil || IsNil(o.SemanticMinRelevance.Get()) {
+		var ret float64
+		return ret
+	}
+	return *o.SemanticMinRelevance.Get()
+}
+
+// GetSemanticMinRelevanceOk returns a tuple with the SemanticMinRelevance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *QueryDocumentRequest) GetSemanticMinRelevanceOk() (*float64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SemanticMinRelevance.Get(), o.SemanticMinRelevance.IsSet()
+}
+
+// HasSemanticMinRelevance returns a boolean if a field has been set.
+func (o *QueryDocumentRequest) HasSemanticMinRelevance() bool {
+	if o != nil && o.SemanticMinRelevance.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSemanticMinRelevance gets a reference to the given NullableFloat64 and assigns it to the SemanticMinRelevance field.
+func (o *QueryDocumentRequest) SetSemanticMinRelevance(v float64) {
+	o.SemanticMinRelevance.Set(&v)
+}
+// SetSemanticMinRelevanceNil sets the value for SemanticMinRelevance to be an explicit nil
+func (o *QueryDocumentRequest) SetSemanticMinRelevanceNil() {
+	o.SemanticMinRelevance.Set(nil)
+}
+
+// UnsetSemanticMinRelevance ensures that no value is present for SemanticMinRelevance, not even an explicit nil
+func (o *QueryDocumentRequest) UnsetSemanticMinRelevance() {
+	o.SemanticMinRelevance.Unset()
+}
+
+// GetSemanticWeight returns the SemanticWeight field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *QueryDocumentRequest) GetSemanticWeight() float32 {
+	if o == nil || IsNil(o.SemanticWeight.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.SemanticWeight.Get()
+}
+
+// GetSemanticWeightOk returns a tuple with the SemanticWeight field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *QueryDocumentRequest) GetSemanticWeightOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SemanticWeight.Get(), o.SemanticWeight.IsSet()
+}
+
+// HasSemanticWeight returns a boolean if a field has been set.
+func (o *QueryDocumentRequest) HasSemanticWeight() bool {
+	if o != nil && o.SemanticWeight.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSemanticWeight gets a reference to the given NullableFloat32 and assigns it to the SemanticWeight field.
+func (o *QueryDocumentRequest) SetSemanticWeight(v float32) {
+	o.SemanticWeight.Set(&v)
+}
+// SetSemanticWeightNil sets the value for SemanticWeight to be an explicit nil
+func (o *QueryDocumentRequest) SetSemanticWeightNil() {
+	o.SemanticWeight.Set(nil)
+}
+
+// UnsetSemanticWeight ensures that no value is present for SemanticWeight, not even an explicit nil
+func (o *QueryDocumentRequest) UnsetSemanticWeight() {
+	o.SemanticWeight.Unset()
+}
+
+// GetSmoothingFactorK returns the SmoothingFactorK field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *QueryDocumentRequest) GetSmoothingFactorK() float32 {
+	if o == nil || IsNil(o.SmoothingFactorK.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.SmoothingFactorK.Get()
+}
+
+// GetSmoothingFactorKOk returns a tuple with the SmoothingFactorK field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *QueryDocumentRequest) GetSmoothingFactorKOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SmoothingFactorK.Get(), o.SmoothingFactorK.IsSet()
+}
+
+// HasSmoothingFactorK returns a boolean if a field has been set.
+func (o *QueryDocumentRequest) HasSmoothingFactorK() bool {
+	if o != nil && o.SmoothingFactorK.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSmoothingFactorK gets a reference to the given NullableFloat32 and assigns it to the SmoothingFactorK field.
+func (o *QueryDocumentRequest) SetSmoothingFactorK(v float32) {
+	o.SmoothingFactorK.Set(&v)
+}
+// SetSmoothingFactorKNil sets the value for SmoothingFactorK to be an explicit nil
+func (o *QueryDocumentRequest) SetSmoothingFactorKNil() {
+	o.SmoothingFactorK.Set(nil)
+}
+
+// UnsetSmoothingFactorK ensures that no value is present for SmoothingFactorK, not even an explicit nil
+func (o *QueryDocumentRequest) UnsetSmoothingFactorK() {
+	o.SmoothingFactorK.Unset()
 }
 
 // GetMinRelevance returns the MinRelevance field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -346,6 +698,30 @@ func (o QueryDocumentRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Filter != nil {
 		toSerialize["filter"] = o.Filter
+	}
+	if o.SearchMode.IsSet() {
+		toSerialize["searchMode"] = o.SearchMode.Get()
+	}
+	if o.Language.IsSet() {
+		toSerialize["language"] = o.Language.Get()
+	}
+	if o.LanguageDetection.IsSet() {
+		toSerialize["languageDetection"] = o.LanguageDetection.Get()
+	}
+	if o.FtsMinScore.IsSet() {
+		toSerialize["ftsMinScore"] = o.FtsMinScore.Get()
+	}
+	if o.FtsWeight.IsSet() {
+		toSerialize["ftsWeight"] = o.FtsWeight.Get()
+	}
+	if o.SemanticMinRelevance.IsSet() {
+		toSerialize["semanticMinRelevance"] = o.SemanticMinRelevance.Get()
+	}
+	if o.SemanticWeight.IsSet() {
+		toSerialize["semanticWeight"] = o.SemanticWeight.Get()
+	}
+	if o.SmoothingFactorK.IsSet() {
+		toSerialize["smoothingFactorK"] = o.SmoothingFactorK.Get()
 	}
 	if o.MinRelevance.IsSet() {
 		toSerialize["minRelevance"] = o.MinRelevance.Get()

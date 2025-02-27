@@ -22,7 +22,7 @@ import Coordinate from './Coordinate';
 class Centroid {
     /**
      * Constructs a new <code>Centroid</code>.
-     * Represents a centroid for a cluster, includes coordinate and array of datapoints
+     * A cluster centroid with its coordinate and associated data points
      * @alias module:model/Centroid
      */
     constructor() { 
@@ -94,7 +94,7 @@ class Centroid {
 Centroid.prototype['coordinate'] = undefined;
 
 /**
- * Array of data points belonging to the centroid
+ * Data points assigned to this centroid
  * @member {Array.<module:model/Coordinate>} dataPoints
  */
 Centroid.prototype['dataPoints'] = undefined;

@@ -19,8 +19,6 @@ import java.io.IOException
 import okhttp3.Call
 import okhttp3.HttpUrl
 
-import org.openapitools.client.models.AskDocumentRequest
-import org.openapitools.client.models.AskDocumentResponse
 import org.openapitools.client.models.DataPipelineStatus
 import org.openapitools.client.models.HttpValidationProblemDetails
 import org.openapitools.client.models.IngestDocumentResponse
@@ -61,78 +59,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * 
-     * Ask questions over ingested documents
-     * @param askDocumentRequest 
-     * @return AskDocumentResponse
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun semanticSearchAsk(askDocumentRequest: AskDocumentRequest) : AskDocumentResponse {
-        val localVarResponse = semanticSearchAskWithHttpInfo(askDocumentRequest = askDocumentRequest)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as AskDocumentResponse
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * 
-     * Ask questions over ingested documents
-     * @param askDocumentRequest 
-     * @return ApiResponse<AskDocumentResponse?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun semanticSearchAskWithHttpInfo(askDocumentRequest: AskDocumentRequest) : ApiResponse<AskDocumentResponse?> {
-        val localVariableConfig = semanticSearchAskRequestConfig(askDocumentRequest = askDocumentRequest)
-
-        return request<AskDocumentRequest, AskDocumentResponse>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation semanticSearchAsk
-     *
-     * @param askDocumentRequest 
-     * @return RequestConfig
-     */
-    fun semanticSearchAskRequestConfig(askDocumentRequest: AskDocumentRequest) : RequestConfig<AskDocumentRequest> {
-        val localVariableBody = askDocumentRequest
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Content-Type"] = "application/json"
-        localVariableHeaders["Accept"] = "application/json, application/problem+json"
-
-        return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/api/semantic/ask",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = false,
-            body = localVariableBody
-        )
-    }
-
-    /**
+     * DELETE /api/semantic/{documentId}
      * 
      * Delete specific document by id
      * @param documentId 
@@ -164,6 +91,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * DELETE /api/semantic/{documentId}
      * 
      * Delete specific document by id
      * @param documentId 
@@ -208,6 +136,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * DELETE /api/semantic/index/{name}
      * 
      * Delete specific index by name
      * @param name 
@@ -238,6 +167,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * DELETE /api/semantic/index/{name}
      * 
      * Delete specific index by name
      * @param name 
@@ -268,7 +198,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
 
         return RequestConfig(
             method = RequestMethod.DELETE,
-            path = "/api/semantic/index".replace("{"+"name"+"}", encodeURIComponent(name.toString())),
+            path = "/api/semantic/index/{name}".replace("{"+"name"+"}", encodeURIComponent(name.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = false,
@@ -277,16 +207,68 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * 
-     * Import file document into semantic search
-     * @param files The file object to ingest.
-     * @param documentId Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. (optional)
-     * @param index Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. (optional)
-     * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
-     * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
-     * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
-     * @param args  (optional)
-     * @param tags Tags to associate with ingestion (optional)
+     * enum for parameter language
+     */
+     enum class LanguageSemanticSearchFileIngestion(val value: kotlin.String) {
+         @Json(name = "arabic") arabic("arabic"),
+         @Json(name = "armenian") armenian("armenian"),
+         @Json(name = "basque") basque("basque"),
+         @Json(name = "catalan") catalan("catalan"),
+         @Json(name = "danish") danish("danish"),
+         @Json(name = "dutch") dutch("dutch"),
+         @Json(name = "english") english("english"),
+         @Json(name = "finnish") finnish("finnish"),
+         @Json(name = "french") french("french"),
+         @Json(name = "german") german("german"),
+         @Json(name = "greek") greek("greek"),
+         @Json(name = "hindi") hindi("hindi"),
+         @Json(name = "hungarian") hungarian("hungarian"),
+         @Json(name = "indonesian") indonesian("indonesian"),
+         @Json(name = "irish") irish("irish"),
+         @Json(name = "italian") italian("italian"),
+         @Json(name = "lithuanian") lithuanian("lithuanian"),
+         @Json(name = "nepali") nepali("nepali"),
+         @Json(name = "norwegian") norwegian("norwegian"),
+         @Json(name = "portuguese") portuguese("portuguese"),
+         @Json(name = "romanian") romanian("romanian"),
+         @Json(name = "russian") russian("russian"),
+         @Json(name = "serbian") serbian("serbian"),
+         @Json(name = "spanish") spanish("spanish"),
+         @Json(name = "swedish") swedish("swedish"),
+         @Json(name = "tamil") tamil("tamil"),
+         @Json(name = "turkish") turkish("turkish"),
+         @Json(name = "yiddish") yiddish("yiddish"),
+         @Json(name = "simple") simple("simple");
+
+        /**
+         * Override [toString()] to avoid using the enum variable name as the value, and instead use
+         * the actual value defined in the API spec file.
+         *
+         * This solves a problem when the variable name and its value are different, and ensures that
+         * the client sends the correct enum values to the server always.
+         */
+        override fun toString(): kotlin.String = "$value"
+     }
+
+    /**
+     * POST /api/ingest/file
+     * Ingest a File into Semantic Search
+     * Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
+     * @param documentId2 Unique identifier for the document to ingest.
+     * @param files A collection of files to be ingested. Must contain at least one file.
+     * @param documentId A unique identifier for the document within the index. Documents with the same ID will be overwritten. (optional)
+     * @param index The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. (optional)
+     * @param pipeline An array of ingestion pipeline step names. If not provided, server default steps will be used. (optional)
+     * @param webHookUrl A URL to receive a callback via webhook when the ingestion process is completed or fails. (optional)
+     * @param embeddingModel The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. (optional)
+     * @param index2 Optional index name where the document will be stored. (optional)
+     * @param webHookUrl2 Optional webhook URL to notify upon completion. (optional)
+     * @param embeddingModelName Optional name of the embedding model to use during ingestion. (optional)
+     * @param context Optional key-value pairs for additional context or metadata. (optional)
+     * @param tags A collection of tags associated with the document. Tags can be language-specific. (optional)
+     * @param ingestionPipeline Optional list of ingestion pipeline steps. Allows custom processing. (optional)
+     * @param languageAutoDetection Enable automatic language detection for document content. (optional, default to false)
+     * @param language Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. (optional)
      * @return IngestDocumentResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -296,8 +278,8 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun semanticSearchFileIngestion(files: kotlin.collections.List<java.io.File>, documentId: kotlin.String? = null, index: kotlin.String? = null, pipeline: kotlin.collections.List<kotlin.String>? = null, webHookUrl: kotlin.String? = null, embeddingModel: kotlin.String? = null, args: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null, tags: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null) : IngestDocumentResponse {
-        val localVarResponse = semanticSearchFileIngestionWithHttpInfo(files = files, documentId = documentId, index = index, pipeline = pipeline, webHookUrl = webHookUrl, embeddingModel = embeddingModel, args = args, tags = tags)
+    fun semanticSearchFileIngestion(documentId2: kotlin.String, files: kotlin.collections.List<java.io.File>, documentId: kotlin.String? = null, index: kotlin.String? = null, pipeline: kotlin.collections.List<kotlin.String>? = null, webHookUrl: java.net.URI? = null, embeddingModel: kotlin.String? = null, index2: kotlin.String? = null, webHookUrl2: java.net.URI? = null, embeddingModelName: kotlin.String? = null, context: kotlin.collections.Map<kotlin.String, kotlin.String>? = null, tags: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>? = null, ingestionPipeline: kotlin.collections.List<kotlin.String>? = null, languageAutoDetection: kotlin.Boolean? = false, language: LanguageSemanticSearchFileIngestion? = null) : IngestDocumentResponse {
+        val localVarResponse = semanticSearchFileIngestionWithHttpInfo(documentId2 = documentId2, files = files, documentId = documentId, index = index, pipeline = pipeline, webHookUrl = webHookUrl, embeddingModel = embeddingModel, index2 = index2, webHookUrl2 = webHookUrl2, embeddingModelName = embeddingModelName, context = context, tags = tags, ingestionPipeline = ingestionPipeline, languageAutoDetection = languageAutoDetection, language = language)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as IngestDocumentResponse
@@ -315,24 +297,32 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * 
-     * Import file document into semantic search
-     * @param files The file object to ingest.
-     * @param documentId Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. (optional)
-     * @param index Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. (optional)
-     * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
-     * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
-     * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
-     * @param args  (optional)
-     * @param tags Tags to associate with ingestion (optional)
+     * POST /api/ingest/file
+     * Ingest a File into Semantic Search
+     * Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
+     * @param documentId2 Unique identifier for the document to ingest.
+     * @param files A collection of files to be ingested. Must contain at least one file.
+     * @param documentId A unique identifier for the document within the index. Documents with the same ID will be overwritten. (optional)
+     * @param index The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. (optional)
+     * @param pipeline An array of ingestion pipeline step names. If not provided, server default steps will be used. (optional)
+     * @param webHookUrl A URL to receive a callback via webhook when the ingestion process is completed or fails. (optional)
+     * @param embeddingModel The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. (optional)
+     * @param index2 Optional index name where the document will be stored. (optional)
+     * @param webHookUrl2 Optional webhook URL to notify upon completion. (optional)
+     * @param embeddingModelName Optional name of the embedding model to use during ingestion. (optional)
+     * @param context Optional key-value pairs for additional context or metadata. (optional)
+     * @param tags A collection of tags associated with the document. Tags can be language-specific. (optional)
+     * @param ingestionPipeline Optional list of ingestion pipeline steps. Allows custom processing. (optional)
+     * @param languageAutoDetection Enable automatic language detection for document content. (optional, default to false)
+     * @param language Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. (optional)
      * @return ApiResponse<IngestDocumentResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun semanticSearchFileIngestionWithHttpInfo(files: kotlin.collections.List<java.io.File>, documentId: kotlin.String?, index: kotlin.String?, pipeline: kotlin.collections.List<kotlin.String>?, webHookUrl: kotlin.String?, embeddingModel: kotlin.String?, args: kotlin.collections.Map<kotlin.String, kotlin.Any>?, tags: kotlin.collections.Map<kotlin.String, kotlin.Any>?) : ApiResponse<IngestDocumentResponse?> {
-        val localVariableConfig = semanticSearchFileIngestionRequestConfig(files = files, documentId = documentId, index = index, pipeline = pipeline, webHookUrl = webHookUrl, embeddingModel = embeddingModel, args = args, tags = tags)
+    fun semanticSearchFileIngestionWithHttpInfo(documentId2: kotlin.String, files: kotlin.collections.List<java.io.File>, documentId: kotlin.String?, index: kotlin.String?, pipeline: kotlin.collections.List<kotlin.String>?, webHookUrl: java.net.URI?, embeddingModel: kotlin.String?, index2: kotlin.String?, webHookUrl2: java.net.URI?, embeddingModelName: kotlin.String?, context: kotlin.collections.Map<kotlin.String, kotlin.String>?, tags: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>?, ingestionPipeline: kotlin.collections.List<kotlin.String>?, languageAutoDetection: kotlin.Boolean?, language: LanguageSemanticSearchFileIngestion?) : ApiResponse<IngestDocumentResponse?> {
+        val localVariableConfig = semanticSearchFileIngestionRequestConfig(documentId2 = documentId2, files = files, documentId = documentId, index = index, pipeline = pipeline, webHookUrl = webHookUrl, embeddingModel = embeddingModel, index2 = index2, webHookUrl2 = webHookUrl2, embeddingModelName = embeddingModelName, context = context, tags = tags, ingestionPipeline = ingestionPipeline, languageAutoDetection = languageAutoDetection, language = language)
 
         return request<Map<String, PartConfig<*>>, IngestDocumentResponse>(
             localVariableConfig
@@ -342,21 +332,35 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     /**
      * To obtain the request config of the operation semanticSearchFileIngestion
      *
-     * @param files The file object to ingest.
-     * @param documentId Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. (optional)
-     * @param index Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. (optional)
-     * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
-     * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
-     * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
-     * @param args  (optional)
-     * @param tags Tags to associate with ingestion (optional)
+     * @param documentId2 Unique identifier for the document to ingest.
+     * @param files A collection of files to be ingested. Must contain at least one file.
+     * @param documentId A unique identifier for the document within the index. Documents with the same ID will be overwritten. (optional)
+     * @param index The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. (optional)
+     * @param pipeline An array of ingestion pipeline step names. If not provided, server default steps will be used. (optional)
+     * @param webHookUrl A URL to receive a callback via webhook when the ingestion process is completed or fails. (optional)
+     * @param embeddingModel The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. (optional)
+     * @param index2 Optional index name where the document will be stored. (optional)
+     * @param webHookUrl2 Optional webhook URL to notify upon completion. (optional)
+     * @param embeddingModelName Optional name of the embedding model to use during ingestion. (optional)
+     * @param context Optional key-value pairs for additional context or metadata. (optional)
+     * @param tags A collection of tags associated with the document. Tags can be language-specific. (optional)
+     * @param ingestionPipeline Optional list of ingestion pipeline steps. Allows custom processing. (optional)
+     * @param languageAutoDetection Enable automatic language detection for document content. (optional, default to false)
+     * @param language Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. (optional)
      * @return RequestConfig
      */
-    fun semanticSearchFileIngestionRequestConfig(files: kotlin.collections.List<java.io.File>, documentId: kotlin.String?, index: kotlin.String?, pipeline: kotlin.collections.List<kotlin.String>?, webHookUrl: kotlin.String?, embeddingModel: kotlin.String?, args: kotlin.collections.Map<kotlin.String, kotlin.Any>?, tags: kotlin.collections.Map<kotlin.String, kotlin.Any>?) : RequestConfig<Map<String, PartConfig<*>>> {
+    fun semanticSearchFileIngestionRequestConfig(documentId2: kotlin.String, files: kotlin.collections.List<java.io.File>, documentId: kotlin.String?, index: kotlin.String?, pipeline: kotlin.collections.List<kotlin.String>?, webHookUrl: java.net.URI?, embeddingModel: kotlin.String?, index2: kotlin.String?, webHookUrl2: java.net.URI?, embeddingModelName: kotlin.String?, context: kotlin.collections.Map<kotlin.String, kotlin.String>?, tags: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>?, ingestionPipeline: kotlin.collections.List<kotlin.String>?, languageAutoDetection: kotlin.Boolean?, language: LanguageSemanticSearchFileIngestion?) : RequestConfig<Map<String, PartConfig<*>>> {
         val localVariableBody = mapOf(
+            "documentId" to PartConfig(body = documentId2, headers = mutableMapOf()),
+            "index" to PartConfig(body = index2, headers = mutableMapOf()),
+            "webHookUrl" to PartConfig(body = webHookUrl2, headers = mutableMapOf()),
+            "embeddingModelName" to PartConfig(body = embeddingModelName, headers = mutableMapOf()),
             "files" to PartConfig(body = files, headers = mutableMapOf()),
-            "args" to PartConfig(body = args, headers = mutableMapOf()),
-            "tags" to PartConfig(body = tags, headers = mutableMapOf()),)
+            "context" to PartConfig(body = context, headers = mutableMapOf()),
+            "tags" to PartConfig(body = tags, headers = mutableMapOf()),
+            "ingestionPipeline" to PartConfig(body = ingestionPipeline, headers = mutableMapOf()),
+            "languageAutoDetection" to PartConfig(body = languageAutoDetection, headers = mutableMapOf()),
+            "language" to PartConfig(body = language?.value, headers = mutableMapOf()),)
         val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
             .apply {
                 if (documentId != null) {
@@ -389,6 +393,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * GET /api/ingest/status
      * 
      * Get queue status for ingestion job
      * @param id 
@@ -420,6 +425,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * GET /api/ingest/status
      * 
      * Get queue status for ingestion job
      * @param id 
@@ -463,6 +469,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/semantic/list
      * 
      * List - and filter - for ingested documents
      * @param listDocumentParameters 
@@ -494,6 +501,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/semantic/list
      * 
      * List - and filter - for ingested documents
      * @param listDocumentParameters 
@@ -535,8 +543,9 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/semantic/query
      * 
-     * Query ingested documents using semantic search
+     * Performs semantic or hybrid search over previously ingested data.
      * @param queryDocumentRequest 
      * @return QueryDocumentResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -566,8 +575,9 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/semantic/query
      * 
-     * Query ingested documents using semantic search
+     * Performs semantic or hybrid search over previously ingested data.
      * @param queryDocumentRequest 
      * @return ApiResponse<QueryDocumentResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -607,6 +617,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/semantic/query-results-clustering
      * 
      * Perform k-means clustering over semantic search log entries
      * @param semanticSearchQueryResultsClusteringRequest 
@@ -638,6 +649,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/semantic/query-results-clustering
      * 
      * Perform k-means clustering over semantic search log entries
      * @param semanticSearchQueryResultsClusteringRequest 
@@ -679,6 +691,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/semantic/rerank
      * 
      * Rerank documents
      * @param reRankDocumentsRequest 
@@ -710,6 +723,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/semantic/rerank
      * 
      * Rerank documents
      * @param reRankDocumentsRequest 
@@ -751,8 +765,9 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * 
-     * Import plain text into semantic search
+     * POST /api/ingest/text
+     * Ingest Plain Text for Semantic Search
+     * Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
      * @param ingestTextDocumentRequest 
      * @return IngestDocumentResponse
      * @throws IllegalStateException If the request is not correctly configured
@@ -782,8 +797,9 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
-     * 
-     * Import plain text into semantic search
+     * POST /api/ingest/text
+     * Ingest Plain Text for Semantic Search
+     * Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
      * @param ingestTextDocumentRequest 
      * @return ApiResponse<IngestDocumentResponse?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -823,6 +839,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/ingest/webpage
      * 
      * Import web page text into semantic search
      * @param ingestWebPageDocumentRequest 
@@ -854,6 +871,7 @@ class SemanticSearchApi(basePath: kotlin.String = defaultBasePath, client: Call.
     }
 
     /**
+     * POST /api/ingest/webpage
      * 
      * Import web page text into semantic search
      * @param ingestWebPageDocumentRequest 

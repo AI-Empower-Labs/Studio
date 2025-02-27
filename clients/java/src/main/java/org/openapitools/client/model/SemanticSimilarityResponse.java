@@ -52,16 +52,17 @@ import org.openapitools.client.JSON;
 /**
  * SemanticSimilarityResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class SemanticSimilarityResponse {
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
+  @javax.annotation.Nullable
   private List<SemanticSimilarityDocument> documents;
 
   public SemanticSimilarityResponse() {
   }
 
-  public SemanticSimilarityResponse documents(List<SemanticSimilarityDocument> documents) {
+  public SemanticSimilarityResponse documents(@javax.annotation.Nullable List<SemanticSimilarityDocument> documents) {
     this.documents = documents;
     return this;
   }
@@ -83,7 +84,7 @@ public class SemanticSimilarityResponse {
     return documents;
   }
 
-  public void setDocuments(List<SemanticSimilarityDocument> documents) {
+  public void setDocuments(@javax.annotation.Nullable List<SemanticSimilarityDocument> documents) {
     this.documents = documents;
   }
 

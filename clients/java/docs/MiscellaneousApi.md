@@ -10,7 +10,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 <a id="deleteLlmCacheEntry"></a>
 # **deleteLlmCacheEntry**
-> deleteLlmCacheEntry(cacheKey)
+> deleteLlmCacheEntry(key)
 
 
 
@@ -31,9 +31,9 @@ public class Example {
     defaultClient.setBasePath("https://studio.aiempowerlabs.com");
 
     MiscellaneousApi apiInstance = new MiscellaneousApi(defaultClient);
-    String cacheKey = "cacheKey_example"; // String | The LLM cache key to remove
+    String key = "key_example"; // String | The LLM cache key to remove
     try {
-      apiInstance.deleteLlmCacheEntry(cacheKey);
+      apiInstance.deleteLlmCacheEntry(key);
     } catch (ApiException e) {
       System.err.println("Exception when calling MiscellaneousApi#deleteLlmCacheEntry");
       System.err.println("Status code: " + e.getCode());
@@ -49,7 +49,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **cacheKey** | **String**| The LLM cache key to remove | [optional] |
+| **key** | **String**| The LLM cache key to remove | [optional] |
 
 ### Return type
 
@@ -68,9 +68,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK - Cache was deleted |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 
 <a id="getConfiguration"></a>
 # **getConfiguration**

@@ -19,9 +19,6 @@ pub struct SemanticSearchQueryResultsClusteringRequest {
     /// The Maximum Degrees Of Parallelism
     #[serde(rename = "maxDegreeOfParallelism", skip_serializing_if = "Option::is_none")]
     pub max_degree_of_parallelism: Option<i32>,
-    /// The maximum number of tokens to be used in the KMeans clustering algorithm.
-    #[serde(rename = "maxTokens", skip_serializing_if = "Option::is_none")]
-    pub max_tokens: Option<i32>,
     /// Optional index to specify which index to search in. Defaults to 'default'.
     #[serde(rename = "index", skip_serializing_if = "Option::is_none")]
     pub index: Option<String>,
@@ -44,7 +41,6 @@ impl SemanticSearchQueryResultsClusteringRequest {
         SemanticSearchQueryResultsClusteringRequest {
             cluster_count: None,
             max_degree_of_parallelism: None,
-            max_tokens: None,
             index: None,
             min_relevance: None,
             max_relevance: None,

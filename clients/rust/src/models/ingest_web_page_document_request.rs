@@ -13,43 +13,120 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct IngestWebPageDocumentRequest {
-    /// Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten
-    #[serde(rename = "documentId")]
-    pub document_id: String,
-    /// Optional value to specify with index the document should be ingested. Defaults to 'default'
-    #[serde(rename = "index", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub index: Option<Option<String>>,
-    /// Optionally add tags to ingestion
-    #[serde(rename = "tags", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Option<std::collections::HashMap<String, Vec<String>>>>,
     /// Web page to ingest
     #[serde(rename = "url")]
     pub url: String,
-    /// Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
-    #[serde(rename = "pipeline", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub pipeline: Option<Option<Vec<String>>>,
-    /// Url to use for webhook callback when operation finishes or fails.
+    /// Unique identifier for the document to ingest.
+    #[serde(rename = "documentId")]
+    pub document_id: String,
+    /// Optional index name where the document will be stored.
+    #[serde(rename = "index", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub index: Option<Option<String>>,
+    /// Optional webhook URL to notify upon completion.
     #[serde(rename = "webHookUrl", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub web_hook_url: Option<Option<String>>,
-    /// Embedding model to use in ingestion. Optional. Default to configured default.
-    #[serde(rename = "embeddingModel", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub embedding_model: Option<Option<String>>,
-    #[serde(rename = "args", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub args: Option<Option<std::collections::HashMap<String, serde_json::Value>>>,
+    /// Optional name of the embedding model to use during ingestion.
+    #[serde(rename = "embeddingModelName", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub embedding_model_name: Option<Option<String>>,
+    /// Optional key-value pairs for additional context or metadata.
+    #[serde(rename = "context", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub context: Option<Option<std::collections::HashMap<String, String>>>,
+    /// A collection of tags associated with the document. Tags can be language-specific.
+    #[serde(rename = "tags", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub tags: Option<Option<std::collections::HashMap<String, Vec<String>>>>,
+    /// Optional list of ingestion pipeline steps. Allows custom processing.
+    #[serde(rename = "ingestionPipeline", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub ingestion_pipeline: Option<Option<Vec<String>>>,
+    /// Enable automatic language detection for document content.
+    #[serde(rename = "languageAutoDetection", skip_serializing_if = "Option::is_none")]
+    pub language_auto_detection: Option<bool>,
+    /// Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+    #[serde(rename = "language", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub language: Option<Option<Language>>,
 }
 
 impl IngestWebPageDocumentRequest {
-    pub fn new(document_id: String, url: String) -> IngestWebPageDocumentRequest {
+    pub fn new(url: String, document_id: String) -> IngestWebPageDocumentRequest {
         IngestWebPageDocumentRequest {
+            url,
             document_id,
             index: None,
-            tags: None,
-            url,
-            pipeline: None,
             web_hook_url: None,
-            embedding_model: None,
-            args: None,
+            embedding_model_name: None,
+            context: None,
+            tags: None,
+            ingestion_pipeline: None,
+            language_auto_detection: None,
+            language: None,
         }
+    }
+}
+/// Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Language {
+    #[serde(rename = "arabic")]
+    Arabic,
+    #[serde(rename = "armenian")]
+    Armenian,
+    #[serde(rename = "basque")]
+    Basque,
+    #[serde(rename = "catalan")]
+    Catalan,
+    #[serde(rename = "danish")]
+    Danish,
+    #[serde(rename = "dutch")]
+    Dutch,
+    #[serde(rename = "english")]
+    English,
+    #[serde(rename = "finnish")]
+    Finnish,
+    #[serde(rename = "french")]
+    French,
+    #[serde(rename = "german")]
+    German,
+    #[serde(rename = "greek")]
+    Greek,
+    #[serde(rename = "hindi")]
+    Hindi,
+    #[serde(rename = "hungarian")]
+    Hungarian,
+    #[serde(rename = "indonesian")]
+    Indonesian,
+    #[serde(rename = "irish")]
+    Irish,
+    #[serde(rename = "italian")]
+    Italian,
+    #[serde(rename = "lithuanian")]
+    Lithuanian,
+    #[serde(rename = "nepali")]
+    Nepali,
+    #[serde(rename = "norwegian")]
+    Norwegian,
+    #[serde(rename = "portuguese")]
+    Portuguese,
+    #[serde(rename = "romanian")]
+    Romanian,
+    #[serde(rename = "russian")]
+    Russian,
+    #[serde(rename = "serbian")]
+    Serbian,
+    #[serde(rename = "spanish")]
+    Spanish,
+    #[serde(rename = "swedish")]
+    Swedish,
+    #[serde(rename = "tamil")]
+    Tamil,
+    #[serde(rename = "turkish")]
+    Turkish,
+    #[serde(rename = "yiddish")]
+    Yiddish,
+    #[serde(rename = "simple")]
+    Simple,
+}
+
+impl Default for Language {
+    fn default() -> Language {
+        Self::Arabic
     }
 }
 

@@ -52,28 +52,32 @@ import org.openapitools.client.JSON;
 /**
  * MemoryQuery
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class MemoryQuery {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_QUESTION = "question";
   @SerializedName(SERIALIZED_NAME_QUESTION)
+  @javax.annotation.Nullable
   private String question;
 
   public static final String SERIALIZED_NAME_FILTERS = "filters";
   @SerializedName(SERIALIZED_NAME_FILTERS)
+  @javax.annotation.Nullable
   private List<Map<String, List<String>>> filters;
 
   public static final String SERIALIZED_NAME_MIN_RELEVANCE = "minRelevance";
   @SerializedName(SERIALIZED_NAME_MIN_RELEVANCE)
+  @javax.annotation.Nullable
   private Double minRelevance;
 
   public MemoryQuery() {
   }
 
-  public MemoryQuery index(String index) {
+  public MemoryQuery index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
@@ -87,12 +91,12 @@ public class MemoryQuery {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public MemoryQuery question(String question) {
+  public MemoryQuery question(@javax.annotation.Nullable String question) {
     this.question = question;
     return this;
   }
@@ -106,12 +110,12 @@ public class MemoryQuery {
     return question;
   }
 
-  public void setQuestion(String question) {
+  public void setQuestion(@javax.annotation.Nullable String question) {
     this.question = question;
   }
 
 
-  public MemoryQuery filters(List<Map<String, List<String>>> filters) {
+  public MemoryQuery filters(@javax.annotation.Nullable List<Map<String, List<String>>> filters) {
     this.filters = filters;
     return this;
   }
@@ -133,12 +137,12 @@ public class MemoryQuery {
     return filters;
   }
 
-  public void setFilters(List<Map<String, List<String>>> filters) {
+  public void setFilters(@javax.annotation.Nullable List<Map<String, List<String>>> filters) {
     this.filters = filters;
   }
 
 
-  public MemoryQuery minRelevance(Double minRelevance) {
+  public MemoryQuery minRelevance(@javax.annotation.Nullable Double minRelevance) {
     this.minRelevance = minRelevance;
     return this;
   }
@@ -152,7 +156,7 @@ public class MemoryQuery {
     return minRelevance;
   }
 
-  public void setMinRelevance(Double minRelevance) {
+  public void setMinRelevance(@javax.annotation.Nullable Double minRelevance) {
     this.minRelevance = minRelevance;
   }
 

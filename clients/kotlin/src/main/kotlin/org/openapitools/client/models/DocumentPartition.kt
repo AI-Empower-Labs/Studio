@@ -23,7 +23,12 @@ import com.squareup.moshi.JsonClass
  * 
  *
  * @param text Content of the document partition, aka chunk/block of text.
- * @param relevance Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity.
+ * @param fullTextSearchRank Rank value calculated from full-text search, used to determine the relevance of search results.
+ * @param semanticSimilarity Represents the semantic similarity score associated with a record.
+ * @param fullTextSearchRrf Reciprocal rank fusion (RRF) score specifically derived from full-text search relevance.
+ * @param semanticRrf Reciprocal Rank Fusion (RRF) score based on semantic similarity
+ * @param rrfScore Represents the combined Reciprocal Rank Fusion (RRF) score, which integrates results from multiple ranking methods such as semantic similarity and full-text search to enhance result relevance.
+ * @param language Language of partition if any. Optional.
  * @param lastUpdate Timestamp about the file/text partition.
  * @param tags List of document tags
  */
@@ -35,9 +40,29 @@ data class DocumentPartition (
     @Json(name = "text")
     val text: kotlin.String? = null,
 
-    /* Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity. */
-    @Json(name = "relevance")
-    val relevance: kotlin.Float? = null,
+    /* Rank value calculated from full-text search, used to determine the relevance of search results. */
+    @Json(name = "fullTextSearchRank")
+    val fullTextSearchRank: kotlin.Float? = null,
+
+    /* Represents the semantic similarity score associated with a record. */
+    @Json(name = "semanticSimilarity")
+    val semanticSimilarity: kotlin.Float? = null,
+
+    /* Reciprocal rank fusion (RRF) score specifically derived from full-text search relevance. */
+    @Json(name = "fullTextSearchRrf")
+    val fullTextSearchRrf: kotlin.Float? = null,
+
+    /* Reciprocal Rank Fusion (RRF) score based on semantic similarity */
+    @Json(name = "semanticRrf")
+    val semanticRrf: kotlin.Float? = null,
+
+    /* Represents the combined Reciprocal Rank Fusion (RRF) score, which integrates results from multiple ranking methods such as semantic similarity and full-text search to enhance result relevance. */
+    @Json(name = "rrfScore")
+    val rrfScore: kotlin.Float? = null,
+
+    /* Language of partition if any. Optional. */
+    @Json(name = "language")
+    val language: kotlin.String? = null,
 
     /* Timestamp about the file/text partition. */
     @Json(name = "lastUpdate")

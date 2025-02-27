@@ -87,9 +87,9 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 
 <a id="transcriptionGetById"></a>
 # **transcriptionGetById**
@@ -151,7 +151,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **429** | Too Many Requests |  -  |
-| **500** | Internal Server Error |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
+| **429** | Request rate limit exceeded. |  -  |
+| **500** | Internal server error. |  -  |
 

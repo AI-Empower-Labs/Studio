@@ -2,8 +2,6 @@
 README.md
 build.gradle
 docs/ApiExtractThematicSimilarityClusterPostRequest.md
-docs/AskDocumentRequest.md
-docs/AskDocumentResponse.md
 docs/Centroid.md
 docs/Citation.md
 docs/Coordinate.md
@@ -93,8 +91,6 @@ src/main/kotlin/org/openapitools/client/infrastructure/Serializer.kt
 src/main/kotlin/org/openapitools/client/infrastructure/URIAdapter.kt
 src/main/kotlin/org/openapitools/client/infrastructure/UUIDAdapter.kt
 src/main/kotlin/org/openapitools/client/models/ApiExtractThematicSimilarityClusterPostRequest.kt
-src/main/kotlin/org/openapitools/client/models/AskDocumentRequest.kt
-src/main/kotlin/org/openapitools/client/models/AskDocumentResponse.kt
 src/main/kotlin/org/openapitools/client/models/Centroid.kt
 src/main/kotlin/org/openapitools/client/models/Citation.kt
 src/main/kotlin/org/openapitools/client/models/Coordinate.kt
@@ -156,8 +152,6 @@ src/test/kotlin/org/openapitools/client/apis/MiscellaneousApiTest.kt
 src/test/kotlin/org/openapitools/client/apis/SemanticSearchApiTest.kt
 src/test/kotlin/org/openapitools/client/apis/TranscriptionApiTest.kt
 src/test/kotlin/org/openapitools/client/models/ApiExtractThematicSimilarityClusterPostRequestTest.kt
-src/test/kotlin/org/openapitools/client/models/AskDocumentRequestTest.kt
-src/test/kotlin/org/openapitools/client/models/AskDocumentResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/CentroidTest.kt
 src/test/kotlin/org/openapitools/client/models/CitationTest.kt
 src/test/kotlin/org/openapitools/client/models/CoordinateTest.kt

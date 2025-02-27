@@ -49,16 +49,17 @@ import org.openapitools.client.JSON;
 /**
  * TranscriptionAudioUploadResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class TranscriptionAudioUploadResult {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nullable
   private UUID id;
 
   public TranscriptionAudioUploadResult() {
   }
 
-  public TranscriptionAudioUploadResult id(UUID id) {
+  public TranscriptionAudioUploadResult id(@javax.annotation.Nullable UUID id) {
     this.id = id;
     return this;
   }
@@ -72,7 +73,7 @@ public class TranscriptionAudioUploadResult {
     return id;
   }
 
-  public void setId(UUID id) {
+  public void setId(@javax.annotation.Nullable UUID id) {
     this.id = id;
   }
 

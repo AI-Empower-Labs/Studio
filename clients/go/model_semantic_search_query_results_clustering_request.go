@@ -24,8 +24,6 @@ type SemanticSearchQueryResultsClusteringRequest struct {
 	ClusterCount *int32 `json:"clusterCount,omitempty"`
 	// The Maximum Degrees Of Parallelism
 	MaxDegreeOfParallelism *int32 `json:"maxDegreeOfParallelism,omitempty"`
-	// The maximum number of tokens to be used in the KMeans clustering algorithm.
-	MaxTokens *int32 `json:"maxTokens,omitempty"`
 	// Optional index to specify which index to search in. Defaults to 'default'.
 	Index *string `json:"index,omitempty"`
 	// The minimum relevance value used for querying the search result audit.
@@ -48,8 +46,6 @@ func NewSemanticSearchQueryResultsClusteringRequest() *SemanticSearchQueryResult
 	this.ClusterCount = &clusterCount
 	var maxDegreeOfParallelism int32 = 1
 	this.MaxDegreeOfParallelism = &maxDegreeOfParallelism
-	var maxTokens int32 = 10
-	this.MaxTokens = &maxTokens
 	return &this
 }
 
@@ -62,8 +58,6 @@ func NewSemanticSearchQueryResultsClusteringRequestWithDefaults() *SemanticSearc
 	this.ClusterCount = &clusterCount
 	var maxDegreeOfParallelism int32 = 1
 	this.MaxDegreeOfParallelism = &maxDegreeOfParallelism
-	var maxTokens int32 = 10
-	this.MaxTokens = &maxTokens
 	return &this
 }
 
@@ -129,38 +123,6 @@ func (o *SemanticSearchQueryResultsClusteringRequest) HasMaxDegreeOfParallelism(
 // SetMaxDegreeOfParallelism gets a reference to the given int32 and assigns it to the MaxDegreeOfParallelism field.
 func (o *SemanticSearchQueryResultsClusteringRequest) SetMaxDegreeOfParallelism(v int32) {
 	o.MaxDegreeOfParallelism = &v
-}
-
-// GetMaxTokens returns the MaxTokens field value if set, zero value otherwise.
-func (o *SemanticSearchQueryResultsClusteringRequest) GetMaxTokens() int32 {
-	if o == nil || IsNil(o.MaxTokens) {
-		var ret int32
-		return ret
-	}
-	return *o.MaxTokens
-}
-
-// GetMaxTokensOk returns a tuple with the MaxTokens field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SemanticSearchQueryResultsClusteringRequest) GetMaxTokensOk() (*int32, bool) {
-	if o == nil || IsNil(o.MaxTokens) {
-		return nil, false
-	}
-	return o.MaxTokens, true
-}
-
-// HasMaxTokens returns a boolean if a field has been set.
-func (o *SemanticSearchQueryResultsClusteringRequest) HasMaxTokens() bool {
-	if o != nil && !IsNil(o.MaxTokens) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxTokens gets a reference to the given int32 and assigns it to the MaxTokens field.
-func (o *SemanticSearchQueryResultsClusteringRequest) SetMaxTokens(v int32) {
-	o.MaxTokens = &v
 }
 
 // GetIndex returns the Index field value if set, zero value otherwise.
@@ -338,9 +300,6 @@ func (o SemanticSearchQueryResultsClusteringRequest) ToMap() (map[string]interfa
 	}
 	if !IsNil(o.MaxDegreeOfParallelism) {
 		toSerialize["maxDegreeOfParallelism"] = o.MaxDegreeOfParallelism
-	}
-	if !IsNil(o.MaxTokens) {
-		toSerialize["maxTokens"] = o.MaxTokens
 	}
 	if !IsNil(o.Index) {
 		toSerialize["index"] = o.Index

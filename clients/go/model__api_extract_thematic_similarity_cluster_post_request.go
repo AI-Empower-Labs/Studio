@@ -28,8 +28,6 @@ type ApiExtractThematicSimilarityClusterPostRequest struct {
 	ClusterCount int32 `json:"clusterCount"`
 	// The maximum degree of parallelism for the KMeans clustering algorithm
 	MaxDegreeOfParallelism *int32 `json:"maxDegreeOfParallelism,omitempty"`
-	// The maximum number of tokens
-	MaxTokens *int32 `json:"maxTokens,omitempty"`
 	// The name of the LLM model. Optional.
 	LlmModel NullableString `json:"llmModel,omitempty"`
 	// The name of the embedding model used in the GenerateClusterHttpRequest. Optional.
@@ -50,8 +48,6 @@ func NewApiExtractThematicSimilarityClusterPostRequest(input []string, clusterCo
 	this.ClusterCount = clusterCount
 	var maxDegreeOfParallelism int32 = 1
 	this.MaxDegreeOfParallelism = &maxDegreeOfParallelism
-	var maxTokens int32 = 10
-	this.MaxTokens = &maxTokens
 	return &this
 }
 
@@ -62,8 +58,6 @@ func NewApiExtractThematicSimilarityClusterPostRequestWithDefaults() *ApiExtract
 	this := ApiExtractThematicSimilarityClusterPostRequest{}
 	var maxDegreeOfParallelism int32 = 1
 	this.MaxDegreeOfParallelism = &maxDegreeOfParallelism
-	var maxTokens int32 = 10
-	this.MaxTokens = &maxTokens
 	return &this
 }
 
@@ -145,38 +139,6 @@ func (o *ApiExtractThematicSimilarityClusterPostRequest) HasMaxDegreeOfParalleli
 // SetMaxDegreeOfParallelism gets a reference to the given int32 and assigns it to the MaxDegreeOfParallelism field.
 func (o *ApiExtractThematicSimilarityClusterPostRequest) SetMaxDegreeOfParallelism(v int32) {
 	o.MaxDegreeOfParallelism = &v
-}
-
-// GetMaxTokens returns the MaxTokens field value if set, zero value otherwise.
-func (o *ApiExtractThematicSimilarityClusterPostRequest) GetMaxTokens() int32 {
-	if o == nil || IsNil(o.MaxTokens) {
-		var ret int32
-		return ret
-	}
-	return *o.MaxTokens
-}
-
-// GetMaxTokensOk returns a tuple with the MaxTokens field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApiExtractThematicSimilarityClusterPostRequest) GetMaxTokensOk() (*int32, bool) {
-	if o == nil || IsNil(o.MaxTokens) {
-		return nil, false
-	}
-	return o.MaxTokens, true
-}
-
-// HasMaxTokens returns a boolean if a field has been set.
-func (o *ApiExtractThematicSimilarityClusterPostRequest) HasMaxTokens() bool {
-	if o != nil && !IsNil(o.MaxTokens) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxTokens gets a reference to the given int32 and assigns it to the MaxTokens field.
-func (o *ApiExtractThematicSimilarityClusterPostRequest) SetMaxTokens(v int32) {
-	o.MaxTokens = &v
 }
 
 // GetLlmModel returns the LlmModel field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -319,9 +281,6 @@ func (o ApiExtractThematicSimilarityClusterPostRequest) ToMap() (map[string]inte
 	toSerialize["clusterCount"] = o.ClusterCount
 	if !IsNil(o.MaxDegreeOfParallelism) {
 		toSerialize["maxDegreeOfParallelism"] = o.MaxDegreeOfParallelism
-	}
-	if !IsNil(o.MaxTokens) {
-		toSerialize["maxTokens"] = o.MaxTokens
 	}
 	if o.LlmModel.IsSet() {
 		toSerialize["llmModel"] = o.LlmModel.Get()

@@ -4,64 +4,17 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**semanticSearchAsk**](SemanticSearchApi.md#semanticSearchAsk) | **POST** /api/semantic/ask |  |
 | [**semanticSearchDeleteDocument**](SemanticSearchApi.md#semanticSearchDeleteDocument) | **DELETE** /api/semantic/{documentId} |  |
-| [**semanticSearchDeleteIndex**](SemanticSearchApi.md#semanticSearchDeleteIndex) | **DELETE** /api/semantic/index |  |
-| [**semanticSearchFileIngestion**](SemanticSearchApi.md#semanticSearchFileIngestion) | **POST** /api/ingest/file |  |
+| [**semanticSearchDeleteIndex**](SemanticSearchApi.md#semanticSearchDeleteIndex) | **DELETE** /api/semantic/index/{name} |  |
+| [**semanticSearchFileIngestion**](SemanticSearchApi.md#semanticSearchFileIngestion) | **POST** /api/ingest/file | Ingest a File into Semantic Search |
 | [**semanticSearchIngestionStatus**](SemanticSearchApi.md#semanticSearchIngestionStatus) | **GET** /api/ingest/status |  |
 | [**semanticSearchList**](SemanticSearchApi.md#semanticSearchList) | **POST** /api/semantic/list |  |
 | [**semanticSearchQuery**](SemanticSearchApi.md#semanticSearchQuery) | **POST** /api/semantic/query |  |
 | [**semanticSearchQueryResultsClustering**](SemanticSearchApi.md#semanticSearchQueryResultsClustering) | **POST** /api/semantic/query-results-clustering |  |
 | [**semanticSearchRerank**](SemanticSearchApi.md#semanticSearchRerank) | **POST** /api/semantic/rerank |  |
-| [**semanticSearchTextIngestion**](SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/ingest/text |  |
+| [**semanticSearchTextIngestion**](SemanticSearchApi.md#semanticSearchTextIngestion) | **POST** /api/ingest/text | Ingest Plain Text for Semantic Search |
 | [**semanticSearchWebpageIngestion**](SemanticSearchApi.md#semanticSearchWebpageIngestion) | **POST** /api/ingest/webpage |  |
 
-
-<a id="semanticSearchAsk"></a>
-# **semanticSearchAsk**
-> AskDocumentResponse semanticSearchAsk(askDocumentRequest)
-
-
-
-Ask questions over ingested documents
-
-### Example
-```kotlin
-// Import classes:
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
-
-val apiInstance = SemanticSearchApi()
-val askDocumentRequest : AskDocumentRequest = {"query":"Find invoice totals","index":"Studio","filter":[{"documentId":["SomeUniqueId"],"tags":{"A":[]}}],"minRelevance":0.8} // AskDocumentRequest | 
-try {
-    val result : AskDocumentResponse = apiInstance.semanticSearchAsk(askDocumentRequest)
-    println(result)
-} catch (e: ClientException) {
-    println("4xx response calling SemanticSearchApi#semanticSearchAsk")
-    e.printStackTrace()
-} catch (e: ServerException) {
-    println("5xx response calling SemanticSearchApi#semanticSearchAsk")
-    e.printStackTrace()
-}
-```
-
-### Parameters
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **askDocumentRequest** | [**AskDocumentRequest**](AskDocumentRequest.md)|  | |
-
-### Return type
-
-[**AskDocumentResponse**](AskDocumentResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json, application/problem+json
 
 <a id="semanticSearchDeleteDocument"></a>
 # **semanticSearchDeleteDocument**
@@ -157,11 +110,11 @@ No authorization required
 
 <a id="semanticSearchFileIngestion"></a>
 # **semanticSearchFileIngestion**
-> IngestDocumentResponse semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags)
+> IngestDocumentResponse semanticSearchFileIngestion(documentId2, files, documentId, index, pipeline, webHookUrl, embeddingModel, index2, webHookUrl2, embeddingModelName, context, tags, ingestionPipeline, languageAutoDetection, language)
 
+Ingest a File into Semantic Search
 
-
-Import file document into semantic search
+Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
 
 ### Example
 ```kotlin
@@ -170,16 +123,23 @@ Import file document into semantic search
 //import org.openapitools.client.models.*
 
 val apiInstance = SemanticSearchApi()
-val files : kotlin.collections.List<java.io.File> = /path/to/file.txt // kotlin.collections.List<java.io.File> | The file object to ingest.
-val documentId : kotlin.String = documentId_example // kotlin.String | Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema.
-val index : kotlin.String = index_example // kotlin.String | Optional value to specify with index the document should be ingested. Defaults to 'default'.
-val pipeline : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
-val webHookUrl : kotlin.String = webHookUrl_example // kotlin.String | Url to use for webhook callback when operation finishes or fails.
-val embeddingModel : kotlin.String = embeddingModel_example // kotlin.String | Embedding model to use in ingestion. Optional. Default to configured default.
-val args : kotlin.collections.Map<kotlin.String, kotlin.Any> = Object // kotlin.collections.Map<kotlin.String, kotlin.Any> | 
-val tags : kotlin.collections.Map<kotlin.String, kotlin.Any> = Object // kotlin.collections.Map<kotlin.String, kotlin.Any> | Tags to associate with ingestion
+val documentId2 : kotlin.String = documentId_example // kotlin.String | Unique identifier for the document to ingest.
+val files : kotlin.collections.List<java.io.File> = /path/to/file.txt // kotlin.collections.List<java.io.File> | A collection of files to be ingested. Must contain at least one file.
+val documentId : kotlin.String = doc123 // kotlin.String | A unique identifier for the document within the index. Documents with the same ID will be overwritten.
+val index : kotlin.String = my_custom_index // kotlin.String | The name of the index where the document will be ingested. Defaults to 'default' if not specified.
+val pipeline : kotlin.collections.List<kotlin.String> = ["step1","step2"] // kotlin.collections.List<kotlin.String> | An array of ingestion pipeline step names. If not provided, server default steps will be used.
+val webHookUrl : java.net.URI = https://example.com/webhook // java.net.URI | A URL to receive a callback via webhook when the ingestion process is completed or fails.
+val embeddingModel : kotlin.String = model_v2 // kotlin.String | The embedding model to use during ingestion. If not specified, the server's default model will be applied.
+val index2 : kotlin.String = index_example // kotlin.String | Optional index name where the document will be stored.
+val webHookUrl2 : java.net.URI = webHookUrl_example // java.net.URI | Optional webhook URL to notify upon completion.
+val embeddingModelName : kotlin.String = embeddingModelName_example // kotlin.String | Optional name of the embedding model to use during ingestion.
+val context : kotlin.collections.Map<kotlin.String, kotlin.String> =  // kotlin.collections.Map<kotlin.String, kotlin.String> | Optional key-value pairs for additional context or metadata.
+val tags : kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>> =  // kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>> | A collection of tags associated with the document. Tags can be language-specific.
+val ingestionPipeline : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Optional list of ingestion pipeline steps. Allows custom processing.
+val languageAutoDetection : kotlin.Boolean = true // kotlin.Boolean | Enable automatic language detection for document content.
+val language : kotlin.String = language_example // kotlin.String | Force a specific language for full-text search. Use 'simple' for no language or leave empty.
 try {
-    val result : IngestDocumentResponse = apiInstance.semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags)
+    val result : IngestDocumentResponse = apiInstance.semanticSearchFileIngestion(documentId2, files, documentId, index, pipeline, webHookUrl, embeddingModel, index2, webHookUrl2, embeddingModelName, context, tags, ingestionPipeline, languageAutoDetection, language)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling SemanticSearchApi#semanticSearchFileIngestion")
@@ -191,16 +151,23 @@ try {
 ```
 
 ### Parameters
-| **files** | **kotlin.collections.List&lt;java.io.File&gt;**| The file object to ingest. | |
-| **documentId** | **kotlin.String**| Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. | [optional] |
-| **index** | **kotlin.String**| Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. | [optional] |
-| **pipeline** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. | [optional] |
-| **webHookUrl** | **kotlin.String**| Url to use for webhook callback when operation finishes or fails. | [optional] |
-| **embeddingModel** | **kotlin.String**| Embedding model to use in ingestion. Optional. Default to configured default. | [optional] |
-| **args** | [**kotlin.collections.Map&lt;kotlin.String, kotlin.Any&gt;**](kotlin.collections.Map.md)|  | [optional] |
+| **documentId2** | **kotlin.String**| Unique identifier for the document to ingest. | |
+| **files** | **kotlin.collections.List&lt;java.io.File&gt;**| A collection of files to be ingested. Must contain at least one file. | |
+| **documentId** | **kotlin.String**| A unique identifier for the document within the index. Documents with the same ID will be overwritten. | [optional] |
+| **index** | **kotlin.String**| The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. | [optional] |
+| **pipeline** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| An array of ingestion pipeline step names. If not provided, server default steps will be used. | [optional] |
+| **webHookUrl** | **java.net.URI**| A URL to receive a callback via webhook when the ingestion process is completed or fails. | [optional] |
+| **embeddingModel** | **kotlin.String**| The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. | [optional] |
+| **index2** | **kotlin.String**| Optional index name where the document will be stored. | [optional] |
+| **webHookUrl2** | **java.net.URI**| Optional webhook URL to notify upon completion. | [optional] |
+| **embeddingModelName** | **kotlin.String**| Optional name of the embedding model to use during ingestion. | [optional] |
+| **context** | [**kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt;**](kotlin.collections.Map.md)| Optional key-value pairs for additional context or metadata. | [optional] |
+| **tags** | [**kotlin.collections.Map&lt;kotlin.String, kotlin.collections.List&lt;kotlin.String&gt;&gt;**](kotlin.collections.Map.md)| A collection of tags associated with the document. Tags can be language-specific. | [optional] |
+| **ingestionPipeline** | [**kotlin.collections.List&lt;kotlin.String&gt;**](kotlin.String.md)| Optional list of ingestion pipeline steps. Allows custom processing. | [optional] |
+| **languageAutoDetection** | **kotlin.Boolean**| Enable automatic language detection for document content. | [optional] [default to false] |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tags** | [**kotlin.collections.Map&lt;kotlin.String, kotlin.Any&gt;**](kotlin.collections.Map.md)| Tags to associate with ingestion | [optional] |
+| **language** | **kotlin.String**| Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. | [optional] [enum: arabic, armenian, basque, catalan, danish, dutch, english, finnish, french, german, greek, hindi, hungarian, indonesian, irish, italian, lithuanian, nepali, norwegian, portuguese, romanian, russian, serbian, spanish, swedish, tamil, turkish, yiddish, simple] |
 
 ### Return type
 
@@ -313,7 +280,7 @@ No authorization required
 
 
 
-Query ingested documents using semantic search
+Performs semantic or hybrid search over previously ingested data.
 
 ### Example
 ```kotlin
@@ -449,9 +416,9 @@ No authorization required
 # **semanticSearchTextIngestion**
 > IngestDocumentResponse semanticSearchTextIngestion(ingestTextDocumentRequest)
 
+Ingest Plain Text for Semantic Search
 
-
-Import plain text into semantic search
+Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
 
 ### Example
 ```kotlin

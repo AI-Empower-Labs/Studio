@@ -49,20 +49,22 @@ import org.openapitools.client.JSON;
 /**
  * SemanticSimilarityDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class SemanticSimilarityDocument {
   public static final String SERIALIZED_NAME_DOCUMENT = "document";
   @SerializedName(SERIALIZED_NAME_DOCUMENT)
+  @javax.annotation.Nullable
   private String document;
 
   public static final String SERIALIZED_NAME_DISTANCE = "distance";
   @SerializedName(SERIALIZED_NAME_DISTANCE)
+  @javax.annotation.Nullable
   private Float distance;
 
   public SemanticSimilarityDocument() {
   }
 
-  public SemanticSimilarityDocument document(String document) {
+  public SemanticSimilarityDocument document(@javax.annotation.Nullable String document) {
     this.document = document;
     return this;
   }
@@ -76,12 +78,12 @@ public class SemanticSimilarityDocument {
     return document;
   }
 
-  public void setDocument(String document) {
+  public void setDocument(@javax.annotation.Nullable String document) {
     this.document = document;
   }
 
 
-  public SemanticSimilarityDocument distance(Float distance) {
+  public SemanticSimilarityDocument distance(@javax.annotation.Nullable Float distance) {
     this.distance = distance;
     return this;
   }
@@ -95,7 +97,7 @@ public class SemanticSimilarityDocument {
     return distance;
   }
 
-  public void setDistance(Float distance) {
+  public void setDistance(@javax.annotation.Nullable Float distance) {
     this.distance = distance;
   }
 

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClusterSize** | Pointer to **int32** | Size of the cluster | [optional] 
-**Centroids** | Pointer to [**[]Centroid**](Centroid.md) | Array of Centroid objects | [optional] 
+**ClusterSize** | **int32** | Number of points in the cluster | 
+**Centroids** | [**[]Centroid**](Centroid.md) | List of cluster centroids | 
 
 ## Methods
 
 ### NewKMeansCluster
 
-`func NewKMeansCluster() *KMeansCluster`
+`func NewKMeansCluster(clusterSize int32, centroids []Centroid, ) *KMeansCluster`
 
 NewKMeansCluster instantiates a new KMeansCluster object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetClusterSize sets ClusterSize field to given value.
 
-### HasClusterSize
-
-`func (o *KMeansCluster) HasClusterSize() bool`
-
-HasClusterSize returns a boolean if a field has been set.
 
 ### GetCentroids
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetCentroids sets Centroids field to given value.
 
-### HasCentroids
-
-`func (o *KMeansCluster) HasCentroids() bool`
-
-HasCentroids returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

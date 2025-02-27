@@ -25,52 +25,64 @@ class IngestWebPageDocumentRequestTest : ShouldSpec() {
         // uncomment below to create an instance of IngestWebPageDocumentRequest
         //val modelInstance = IngestWebPageDocumentRequest()
 
-        // to test the property `documentId` - Id that uniquely identifies content. Previously ingested documents with the same id will be overwritten
-        should("test documentId") {
-            // uncomment below to test the property
-            //modelInstance.documentId shouldBe ("TODO")
-        }
-
         // to test the property `url` - Web page to ingest
         should("test url") {
             // uncomment below to test the property
             //modelInstance.url shouldBe ("TODO")
         }
 
-        // to test the property `index` - Optional value to specify with index the document should be ingested. Defaults to 'default'
+        // to test the property `documentId` - Unique identifier for the document to ingest.
+        should("test documentId") {
+            // uncomment below to test the property
+            //modelInstance.documentId shouldBe ("TODO")
+        }
+
+        // to test the property `index` - Optional index name where the document will be stored.
         should("test index") {
             // uncomment below to test the property
             //modelInstance.index shouldBe ("TODO")
         }
 
-        // to test the property `tags` - Optionally add tags to ingestion
-        should("test tags") {
-            // uncomment below to test the property
-            //modelInstance.tags shouldBe ("TODO")
-        }
-
-        // to test the property `pipeline` - Optional value to specify ingestion pipeline steps. Defaults to server configured defaults.
-        should("test pipeline") {
-            // uncomment below to test the property
-            //modelInstance.pipeline shouldBe ("TODO")
-        }
-
-        // to test the property `webHookUrl` - Url to use for webhook callback when operation finishes or fails.
+        // to test the property `webHookUrl` - Optional webhook URL to notify upon completion.
         should("test webHookUrl") {
             // uncomment below to test the property
             //modelInstance.webHookUrl shouldBe ("TODO")
         }
 
-        // to test the property `embeddingModel` - Embedding model to use in ingestion. Optional. Default to configured default.
-        should("test embeddingModel") {
+        // to test the property `embeddingModelName` - Optional name of the embedding model to use during ingestion.
+        should("test embeddingModelName") {
             // uncomment below to test the property
-            //modelInstance.embeddingModel shouldBe ("TODO")
+            //modelInstance.embeddingModelName shouldBe ("TODO")
         }
 
-        // to test the property `args`
-        should("test args") {
+        // to test the property `context` - Optional key-value pairs for additional context or metadata.
+        should("test context") {
             // uncomment below to test the property
-            //modelInstance.args shouldBe ("TODO")
+            //modelInstance.context shouldBe ("TODO")
+        }
+
+        // to test the property `tags` - A collection of tags associated with the document. Tags can be language-specific.
+        should("test tags") {
+            // uncomment below to test the property
+            //modelInstance.tags shouldBe ("TODO")
+        }
+
+        // to test the property `ingestionPipeline` - Optional list of ingestion pipeline steps. Allows custom processing.
+        should("test ingestionPipeline") {
+            // uncomment below to test the property
+            //modelInstance.ingestionPipeline shouldBe ("TODO")
+        }
+
+        // to test the property `languageAutoDetection` - Enable automatic language detection for document content.
+        should("test languageAutoDetection") {
+            // uncomment below to test the property
+            //modelInstance.languageAutoDetection shouldBe ("TODO")
+        }
+
+        // to test the property `language` - Force a specific language for full-text search. Use 'simple' for no language or leave empty.
+        should("test language") {
+            // uncomment below to test the property
+            //modelInstance.language shouldBe ("TODO")
         }
 
     }

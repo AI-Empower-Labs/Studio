@@ -2,7 +2,7 @@
 
 ### 
 ## 
-DELETE https://studio.aiempowerlabs.com/api/cache?cacheKey={{cacheKey}}
+DELETE https://studio.aiempowerlabs.com/api/cache?key={{key}}
 Accept: application/problem+json
 
 ### 

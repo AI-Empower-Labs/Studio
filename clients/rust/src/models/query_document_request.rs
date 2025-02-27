@@ -22,6 +22,30 @@ pub struct QueryDocumentRequest {
     /// Optional filtering of document id(s) and/or tags
     #[serde(rename = "filter", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub filter: Option<Option<Vec<models::DocumentFilters>>>,
+    /// Optional search mode defining the context or process used in the query. Supported values are 'hybrid', 'semantic'
+    #[serde(rename = "searchMode", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub search_mode: Option<Option<SearchMode>>,
+    /// Specifies the language of the content.
+    #[serde(rename = "language", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub language: Option<Option<String>>,
+    /// Indicates whether language detection is enabled.
+    #[serde(rename = "languageDetection", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub language_detection: Option<Option<bool>>,
+    /// Minimum score for full-text search.
+    #[serde(rename = "ftsMinScore", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub fts_min_score: Option<Option<f32>>,
+    /// Weight for full-text search.
+    #[serde(rename = "ftsWeight", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub fts_weight: Option<Option<f32>>,
+    /// Minimum relevance score for semantic search.
+    #[serde(rename = "semanticMinRelevance", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub semantic_min_relevance: Option<Option<f64>>,
+    /// Weight applied for semantic search.
+    #[serde(rename = "semanticWeight", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub semantic_weight: Option<Option<f32>>,
+    /// Smoothing factor (k) used in calculations.
+    #[serde(rename = "smoothingFactorK", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    pub smoothing_factor_k: Option<Option<f32>>,
     /// Optional filter to specify minimum relevance. Typically values between 0 and 1
     #[serde(rename = "minRelevance", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub min_relevance: Option<Option<f64>>,
@@ -41,11 +65,33 @@ impl QueryDocumentRequest {
             query: None,
             index: None,
             filter: None,
+            search_mode: None,
+            language: None,
+            language_detection: None,
+            fts_min_score: None,
+            fts_weight: None,
+            semantic_min_relevance: None,
+            semantic_weight: None,
+            smoothing_factor_k: None,
             min_relevance: None,
             limit: None,
             embedding_model: None,
             args: None,
         }
+    }
+}
+/// Optional search mode defining the context or process used in the query. Supported values are 'hybrid', 'semantic'
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum SearchMode {
+    #[serde(rename = "hybrid")]
+    Hybrid,
+    #[serde(rename = "semantic")]
+    Semantic,
+}
+
+impl Default for SearchMode {
+    fn default() -> SearchMode {
+        Self::Hybrid
     }
 }
 

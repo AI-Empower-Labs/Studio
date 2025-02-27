@@ -48,16 +48,6 @@
   }
 
   describe('KernelMemoryApi', function() {
-    describe('downloadGet', function() {
-      it('should call downloadGet successfully', function(done) {
-        //uncomment below and update the code to test downloadGet
-        //instance.downloadGet(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('kernelMemoryAsk', function() {
       it('should call kernelMemoryAsk successfully', function(done) {
         //uncomment below and update the code to test kernelMemoryAsk
@@ -82,6 +72,16 @@
       it('should call kernelMemoryDeleteIndex successfully', function(done) {
         //uncomment below and update the code to test kernelMemoryDeleteIndex
         //instance.kernelMemoryDeleteIndex(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('kernelMemoryDownload', function() {
+      it('should call kernelMemoryDownload successfully', function(done) {
+        //uncomment below and update the code to test kernelMemoryDownload
+        //instance.kernelMemoryDownload(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

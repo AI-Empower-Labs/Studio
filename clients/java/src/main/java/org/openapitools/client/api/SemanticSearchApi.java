@@ -27,8 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.AskDocumentRequest;
-import org.openapitools.client.model.AskDocumentResponse;
 import org.openapitools.client.model.DataPipelineStatus;
 import java.io.File;
 import org.openapitools.client.model.HttpValidationProblemDetails;
@@ -44,6 +42,7 @@ import org.openapitools.client.model.QueryDocumentResponse;
 import org.openapitools.client.model.ReRankDocumentsRequest;
 import org.openapitools.client.model.ReRankDocumentsResponse;
 import org.openapitools.client.model.SemanticSearchQueryResultsClusteringRequest;
+import java.net.URI;
 import java.util.UUID;
 
 import java.lang.reflect.Type;
@@ -90,142 +89,6 @@ public class SemanticSearchApi {
     }
 
     /**
-     * Build call for semanticSearchAsk
-     * @param askDocumentRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call semanticSearchAskCall(AskDocumentRequest askDocumentRequest, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = askDocumentRequest;
-
-        // create path and map variables
-        String localVarPath = "/api/semantic/ask";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json",
-            "application/problem+json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call semanticSearchAskValidateBeforeCall(AskDocumentRequest askDocumentRequest, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'askDocumentRequest' is set
-        if (askDocumentRequest == null) {
-            throw new ApiException("Missing the required parameter 'askDocumentRequest' when calling semanticSearchAsk(Async)");
-        }
-
-        return semanticSearchAskCall(askDocumentRequest, _callback);
-
-    }
-
-    /**
-     * 
-     * Ask questions over ingested documents
-     * @param askDocumentRequest  (required)
-     * @return AskDocumentResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public AskDocumentResponse semanticSearchAsk(AskDocumentRequest askDocumentRequest) throws ApiException {
-        ApiResponse<AskDocumentResponse> localVarResp = semanticSearchAskWithHttpInfo(askDocumentRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Ask questions over ingested documents
-     * @param askDocumentRequest  (required)
-     * @return ApiResponse&lt;AskDocumentResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<AskDocumentResponse> semanticSearchAskWithHttpInfo(AskDocumentRequest askDocumentRequest) throws ApiException {
-        okhttp3.Call localVarCall = semanticSearchAskValidateBeforeCall(askDocumentRequest, null);
-        Type localVarReturnType = new TypeToken<AskDocumentResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Ask questions over ingested documents
-     * @param askDocumentRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call semanticSearchAskAsync(AskDocumentRequest askDocumentRequest, final ApiCallback<AskDocumentResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = semanticSearchAskValidateBeforeCall(askDocumentRequest, _callback);
-        Type localVarReturnType = new TypeToken<AskDocumentResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for semanticSearchDeleteDocument
      * @param documentId  (required)
      * @param index  (required)
@@ -233,12 +96,13 @@ public class SemanticSearchApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchDeleteDocumentCall(String documentId, String index, final ApiCallback _callback) throws ApiException {
@@ -313,12 +177,13 @@ public class SemanticSearchApi {
      * @param index  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public void semanticSearchDeleteDocument(String documentId, String index) throws ApiException {
@@ -333,12 +198,13 @@ public class SemanticSearchApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> semanticSearchDeleteDocumentWithHttpInfo(String documentId, String index) throws ApiException {
@@ -355,12 +221,13 @@ public class SemanticSearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchDeleteDocumentAsync(String documentId, String index, final ApiCallback<Void> _callback) throws ApiException {
@@ -376,12 +243,13 @@ public class SemanticSearchApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchDeleteIndexCall(String name, final ApiCallback _callback) throws ApiException {
@@ -401,7 +269,7 @@ public class SemanticSearchApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/api/semantic/index"
+        String localVarPath = "/api/semantic/index/{name}"
             .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -446,12 +314,13 @@ public class SemanticSearchApi {
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public void semanticSearchDeleteIndex(String name) throws ApiException {
@@ -465,12 +334,13 @@ public class SemanticSearchApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> semanticSearchDeleteIndexWithHttpInfo(String name) throws ApiException {
@@ -486,12 +356,13 @@ public class SemanticSearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchDeleteIndexAsync(String name, final ApiCallback<Void> _callback) throws ApiException {
@@ -502,27 +373,35 @@ public class SemanticSearchApi {
     }
     /**
      * Build call for semanticSearchFileIngestion
-     * @param files The file object to ingest. (required)
-     * @param documentId Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. (optional)
-     * @param index Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. (optional)
-     * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
-     * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
-     * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
-     * @param args  (optional)
-     * @param tags Tags to associate with ingestion (optional)
+     * @param documentId2 Unique identifier for the document to ingest. (required)
+     * @param files A collection of files to be ingested. Must contain at least one file. (required)
+     * @param documentId A unique identifier for the document within the index. Documents with the same ID will be overwritten. (optional)
+     * @param index The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. (optional)
+     * @param pipeline An array of ingestion pipeline step names. If not provided, server default steps will be used. (optional)
+     * @param webHookUrl A URL to receive a callback via webhook when the ingestion process is completed or fails. (optional)
+     * @param embeddingModel The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. (optional)
+     * @param index2 Optional index name where the document will be stored. (optional)
+     * @param webHookUrl2 Optional webhook URL to notify upon completion. (optional)
+     * @param embeddingModelName Optional name of the embedding model to use during ingestion. (optional)
+     * @param context Optional key-value pairs for additional context or metadata. (optional)
+     * @param tags A collection of tags associated with the document. Tags can be language-specific. (optional)
+     * @param ingestionPipeline Optional list of ingestion pipeline steps. Allows custom processing. (optional)
+     * @param languageAutoDetection Enable automatic language detection for document content. (optional, default to false)
+     * @param language Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Ingestion job successfully created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call semanticSearchFileIngestionCall(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call semanticSearchFileIngestionCall(String documentId2, List<File> files, String documentId, String index, List<String> pipeline, URI webHookUrl, String embeddingModel, String index2, URI webHookUrl2, String embeddingModelName, Map<String, String> context, Map<String, List<String>> tags, List<String> ingestionPipeline, Boolean languageAutoDetection, String language, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -547,16 +426,44 @@ public class SemanticSearchApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (documentId2 != null) {
+            localVarFormParams.put("documentId", documentId2);
+        }
+
+        if (index2 != null) {
+            localVarFormParams.put("index", index2);
+        }
+
+        if (webHookUrl2 != null) {
+            localVarFormParams.put("webHookUrl", webHookUrl2);
+        }
+
+        if (embeddingModelName != null) {
+            localVarFormParams.put("embeddingModelName", embeddingModelName);
+        }
+
         if (files != null) {
             localVarFormParams.put("files", files);
         }
 
-        if (args != null) {
-            localVarFormParams.put("args", args);
+        if (context != null) {
+            localVarFormParams.put("context", context);
         }
 
         if (tags != null) {
             localVarFormParams.put("tags", tags);
+        }
+
+        if (ingestionPipeline != null) {
+            localVarFormParams.put("ingestionPipeline", ingestionPipeline);
+        }
+
+        if (languageAutoDetection != null) {
+            localVarFormParams.put("languageAutoDetection", languageAutoDetection);
+        }
+
+        if (language != null) {
+            localVarFormParams.put("language", language);
         }
 
         if (documentId != null) {
@@ -602,97 +509,126 @@ public class SemanticSearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call semanticSearchFileIngestionValidateBeforeCall(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call semanticSearchFileIngestionValidateBeforeCall(String documentId2, List<File> files, String documentId, String index, List<String> pipeline, URI webHookUrl, String embeddingModel, String index2, URI webHookUrl2, String embeddingModelName, Map<String, String> context, Map<String, List<String>> tags, List<String> ingestionPipeline, Boolean languageAutoDetection, String language, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'documentId2' is set
+        if (documentId2 == null) {
+            throw new ApiException("Missing the required parameter 'documentId2' when calling semanticSearchFileIngestion(Async)");
+        }
+
         // verify the required parameter 'files' is set
         if (files == null) {
             throw new ApiException("Missing the required parameter 'files' when calling semanticSearchFileIngestion(Async)");
         }
 
-        return semanticSearchFileIngestionCall(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags, _callback);
+        return semanticSearchFileIngestionCall(documentId2, files, documentId, index, pipeline, webHookUrl, embeddingModel, index2, webHookUrl2, embeddingModelName, context, tags, ingestionPipeline, languageAutoDetection, language, _callback);
 
     }
 
     /**
-     * 
-     * Import file document into semantic search
-     * @param files The file object to ingest. (required)
-     * @param documentId Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. (optional)
-     * @param index Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. (optional)
-     * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
-     * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
-     * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
-     * @param args  (optional)
-     * @param tags Tags to associate with ingestion (optional)
+     * Ingest a File into Semantic Search
+     * Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
+     * @param documentId2 Unique identifier for the document to ingest. (required)
+     * @param files A collection of files to be ingested. Must contain at least one file. (required)
+     * @param documentId A unique identifier for the document within the index. Documents with the same ID will be overwritten. (optional)
+     * @param index The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. (optional)
+     * @param pipeline An array of ingestion pipeline step names. If not provided, server default steps will be used. (optional)
+     * @param webHookUrl A URL to receive a callback via webhook when the ingestion process is completed or fails. (optional)
+     * @param embeddingModel The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. (optional)
+     * @param index2 Optional index name where the document will be stored. (optional)
+     * @param webHookUrl2 Optional webhook URL to notify upon completion. (optional)
+     * @param embeddingModelName Optional name of the embedding model to use during ingestion. (optional)
+     * @param context Optional key-value pairs for additional context or metadata. (optional)
+     * @param tags A collection of tags associated with the document. Tags can be language-specific. (optional)
+     * @param ingestionPipeline Optional list of ingestion pipeline steps. Allows custom processing. (optional)
+     * @param languageAutoDetection Enable automatic language detection for document content. (optional, default to false)
+     * @param language Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. (optional)
      * @return IngestDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Ingestion job successfully created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public IngestDocumentResponse semanticSearchFileIngestion(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags) throws ApiException {
-        ApiResponse<IngestDocumentResponse> localVarResp = semanticSearchFileIngestionWithHttpInfo(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags);
+    public IngestDocumentResponse semanticSearchFileIngestion(String documentId2, List<File> files, String documentId, String index, List<String> pipeline, URI webHookUrl, String embeddingModel, String index2, URI webHookUrl2, String embeddingModelName, Map<String, String> context, Map<String, List<String>> tags, List<String> ingestionPipeline, Boolean languageAutoDetection, String language) throws ApiException {
+        ApiResponse<IngestDocumentResponse> localVarResp = semanticSearchFileIngestionWithHttpInfo(documentId2, files, documentId, index, pipeline, webHookUrl, embeddingModel, index2, webHookUrl2, embeddingModelName, context, tags, ingestionPipeline, languageAutoDetection, language);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Import file document into semantic search
-     * @param files The file object to ingest. (required)
-     * @param documentId Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. (optional)
-     * @param index Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. (optional)
-     * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
-     * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
-     * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
-     * @param args  (optional)
-     * @param tags Tags to associate with ingestion (optional)
+     * Ingest a File into Semantic Search
+     * Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
+     * @param documentId2 Unique identifier for the document to ingest. (required)
+     * @param files A collection of files to be ingested. Must contain at least one file. (required)
+     * @param documentId A unique identifier for the document within the index. Documents with the same ID will be overwritten. (optional)
+     * @param index The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. (optional)
+     * @param pipeline An array of ingestion pipeline step names. If not provided, server default steps will be used. (optional)
+     * @param webHookUrl A URL to receive a callback via webhook when the ingestion process is completed or fails. (optional)
+     * @param embeddingModel The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. (optional)
+     * @param index2 Optional index name where the document will be stored. (optional)
+     * @param webHookUrl2 Optional webhook URL to notify upon completion. (optional)
+     * @param embeddingModelName Optional name of the embedding model to use during ingestion. (optional)
+     * @param context Optional key-value pairs for additional context or metadata. (optional)
+     * @param tags A collection of tags associated with the document. Tags can be language-specific. (optional)
+     * @param ingestionPipeline Optional list of ingestion pipeline steps. Allows custom processing. (optional)
+     * @param languageAutoDetection Enable automatic language detection for document content. (optional, default to false)
+     * @param language Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. (optional)
      * @return ApiResponse&lt;IngestDocumentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Ingestion job successfully created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngestDocumentResponse> semanticSearchFileIngestionWithHttpInfo(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags) throws ApiException {
-        okhttp3.Call localVarCall = semanticSearchFileIngestionValidateBeforeCall(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags, null);
+    public ApiResponse<IngestDocumentResponse> semanticSearchFileIngestionWithHttpInfo(String documentId2, List<File> files, String documentId, String index, List<String> pipeline, URI webHookUrl, String embeddingModel, String index2, URI webHookUrl2, String embeddingModelName, Map<String, String> context, Map<String, List<String>> tags, List<String> ingestionPipeline, Boolean languageAutoDetection, String language) throws ApiException {
+        okhttp3.Call localVarCall = semanticSearchFileIngestionValidateBeforeCall(documentId2, files, documentId, index, pipeline, webHookUrl, embeddingModel, index2, webHookUrl2, embeddingModelName, context, tags, ingestionPipeline, languageAutoDetection, language, null);
         Type localVarReturnType = new TypeToken<IngestDocumentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Import file document into semantic search
-     * @param files The file object to ingest. (required)
-     * @param documentId Id that uniquely identifies content within an index. Previously ingested documents with the same id will be overwritten schema. (optional)
-     * @param index Optional value to specify with index the document should be ingested. Defaults to &#39;default&#39;. (optional)
-     * @param pipeline Optional value to specify ingestion pipeline steps. Defaults to server configured defaults. (optional)
-     * @param webHookUrl Url to use for webhook callback when operation finishes or fails. (optional)
-     * @param embeddingModel Embedding model to use in ingestion. Optional. Default to configured default. (optional)
-     * @param args  (optional)
-     * @param tags Tags to associate with ingestion (optional)
+     * Ingest a File into Semantic Search (asynchronously)
+     * Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
+     * @param documentId2 Unique identifier for the document to ingest. (required)
+     * @param files A collection of files to be ingested. Must contain at least one file. (required)
+     * @param documentId A unique identifier for the document within the index. Documents with the same ID will be overwritten. (optional)
+     * @param index The name of the index where the document will be ingested. Defaults to &#39;default&#39; if not specified. (optional)
+     * @param pipeline An array of ingestion pipeline step names. If not provided, server default steps will be used. (optional)
+     * @param webHookUrl A URL to receive a callback via webhook when the ingestion process is completed or fails. (optional)
+     * @param embeddingModel The embedding model to use during ingestion. If not specified, the server&#39;s default model will be applied. (optional)
+     * @param index2 Optional index name where the document will be stored. (optional)
+     * @param webHookUrl2 Optional webhook URL to notify upon completion. (optional)
+     * @param embeddingModelName Optional name of the embedding model to use during ingestion. (optional)
+     * @param context Optional key-value pairs for additional context or metadata. (optional)
+     * @param tags A collection of tags associated with the document. Tags can be language-specific. (optional)
+     * @param ingestionPipeline Optional list of ingestion pipeline steps. Allows custom processing. (optional)
+     * @param languageAutoDetection Enable automatic language detection for document content. (optional, default to false)
+     * @param language Force a specific language for full-text search. Use &#39;simple&#39; for no language or leave empty. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Ingestion job successfully created. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call semanticSearchFileIngestionAsync(List<File> files, String documentId, String index, List<String> pipeline, String webHookUrl, String embeddingModel, Map<String, Object> args, Map<String, Object> tags, final ApiCallback<IngestDocumentResponse> _callback) throws ApiException {
+    public okhttp3.Call semanticSearchFileIngestionAsync(String documentId2, List<File> files, String documentId, String index, List<String> pipeline, URI webHookUrl, String embeddingModel, String index2, URI webHookUrl2, String embeddingModelName, Map<String, String> context, Map<String, List<String>> tags, List<String> ingestionPipeline, Boolean languageAutoDetection, String language, final ApiCallback<IngestDocumentResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = semanticSearchFileIngestionValidateBeforeCall(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags, _callback);
+        okhttp3.Call localVarCall = semanticSearchFileIngestionValidateBeforeCall(documentId2, files, documentId, index, pipeline, webHookUrl, embeddingModel, index2, webHookUrl2, embeddingModelName, context, tags, ingestionPipeline, languageAutoDetection, language, _callback);
         Type localVarReturnType = new TypeToken<IngestDocumentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -704,13 +640,14 @@ public class SemanticSearchApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchIngestionStatusCall(UUID id, final ApiCallback _callback) throws ApiException {
@@ -780,13 +717,14 @@ public class SemanticSearchApi {
      * @return DataPipelineStatus
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public DataPipelineStatus semanticSearchIngestionStatus(UUID id) throws ApiException {
@@ -801,13 +739,14 @@ public class SemanticSearchApi {
      * @return ApiResponse&lt;DataPipelineStatus&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<DataPipelineStatus> semanticSearchIngestionStatusWithHttpInfo(UUID id) throws ApiException {
@@ -824,13 +763,14 @@ public class SemanticSearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> Not Found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchIngestionStatusAsync(UUID id, final ApiCallback<DataPipelineStatus> _callback) throws ApiException {
@@ -847,12 +787,13 @@ public class SemanticSearchApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchListCall(ListDocumentParameters listDocumentParameters, final ApiCallback _callback) throws ApiException {
@@ -919,12 +860,13 @@ public class SemanticSearchApi {
      * @return ListDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ListDocumentResponse semanticSearchList(ListDocumentParameters listDocumentParameters) throws ApiException {
@@ -939,12 +881,13 @@ public class SemanticSearchApi {
      * @return ApiResponse&lt;ListDocumentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ListDocumentResponse> semanticSearchListWithHttpInfo(ListDocumentParameters listDocumentParameters) throws ApiException {
@@ -961,12 +904,13 @@ public class SemanticSearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchListAsync(ListDocumentParameters listDocumentParameters, final ApiCallback<ListDocumentResponse> _callback) throws ApiException {
@@ -983,12 +927,13 @@ public class SemanticSearchApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchQueryCall(QueryDocumentRequest queryDocumentRequest, final ApiCallback _callback) throws ApiException {
@@ -1050,17 +995,18 @@ public class SemanticSearchApi {
 
     /**
      * 
-     * Query ingested documents using semantic search
+     * Performs semantic or hybrid search over previously ingested data.
      * @param queryDocumentRequest  (required)
      * @return QueryDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public QueryDocumentResponse semanticSearchQuery(QueryDocumentRequest queryDocumentRequest) throws ApiException {
@@ -1070,17 +1016,18 @@ public class SemanticSearchApi {
 
     /**
      * 
-     * Query ingested documents using semantic search
+     * Performs semantic or hybrid search over previously ingested data.
      * @param queryDocumentRequest  (required)
      * @return ApiResponse&lt;QueryDocumentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<QueryDocumentResponse> semanticSearchQueryWithHttpInfo(QueryDocumentRequest queryDocumentRequest) throws ApiException {
@@ -1091,18 +1038,19 @@ public class SemanticSearchApi {
 
     /**
      *  (asynchronously)
-     * Query ingested documents using semantic search
+     * Performs semantic or hybrid search over previously ingested data.
      * @param queryDocumentRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchQueryAsync(QueryDocumentRequest queryDocumentRequest, final ApiCallback<QueryDocumentResponse> _callback) throws ApiException {
@@ -1119,12 +1067,13 @@ public class SemanticSearchApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchQueryResultsClusteringCall(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, final ApiCallback _callback) throws ApiException {
@@ -1192,12 +1141,13 @@ public class SemanticSearchApi {
      * @return KMeansCluster
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public KMeansCluster semanticSearchQueryResultsClustering(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest) throws ApiException {
@@ -1212,12 +1162,13 @@ public class SemanticSearchApi {
      * @return ApiResponse&lt;KMeansCluster&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<KMeansCluster> semanticSearchQueryResultsClusteringWithHttpInfo(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest) throws ApiException {
@@ -1234,12 +1185,13 @@ public class SemanticSearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchQueryResultsClusteringAsync(SemanticSearchQueryResultsClusteringRequest semanticSearchQueryResultsClusteringRequest, final ApiCallback<KMeansCluster> _callback) throws ApiException {
@@ -1256,12 +1208,13 @@ public class SemanticSearchApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchRerankCall(ReRankDocumentsRequest reRankDocumentsRequest, final ApiCallback _callback) throws ApiException {
@@ -1328,12 +1281,13 @@ public class SemanticSearchApi {
      * @return ReRankDocumentsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ReRankDocumentsResponse semanticSearchRerank(ReRankDocumentsRequest reRankDocumentsRequest) throws ApiException {
@@ -1348,12 +1302,13 @@ public class SemanticSearchApi {
      * @return ApiResponse&lt;ReRankDocumentsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<ReRankDocumentsResponse> semanticSearchRerankWithHttpInfo(ReRankDocumentsRequest reRankDocumentsRequest) throws ApiException {
@@ -1370,12 +1325,13 @@ public class SemanticSearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchRerankAsync(ReRankDocumentsRequest reRankDocumentsRequest, final ApiCallback<ReRankDocumentsResponse> _callback) throws ApiException {
@@ -1392,12 +1348,13 @@ public class SemanticSearchApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchTextIngestionCall(IngestTextDocumentRequest ingestTextDocumentRequest, final ApiCallback _callback) throws ApiException {
@@ -1458,18 +1415,19 @@ public class SemanticSearchApi {
     }
 
     /**
-     * 
-     * Import plain text into semantic search
+     * Ingest Plain Text for Semantic Search
+     * Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
      * @param ingestTextDocumentRequest  (required)
      * @return IngestDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public IngestDocumentResponse semanticSearchTextIngestion(IngestTextDocumentRequest ingestTextDocumentRequest) throws ApiException {
@@ -1478,18 +1436,19 @@ public class SemanticSearchApi {
     }
 
     /**
-     * 
-     * Import plain text into semantic search
+     * Ingest Plain Text for Semantic Search
+     * Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
      * @param ingestTextDocumentRequest  (required)
      * @return ApiResponse&lt;IngestDocumentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<IngestDocumentResponse> semanticSearchTextIngestionWithHttpInfo(IngestTextDocumentRequest ingestTextDocumentRequest) throws ApiException {
@@ -1499,19 +1458,20 @@ public class SemanticSearchApi {
     }
 
     /**
-     *  (asynchronously)
-     * Import plain text into semantic search
+     * Ingest Plain Text for Semantic Search (asynchronously)
+     * Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
      * @param ingestTextDocumentRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchTextIngestionAsync(IngestTextDocumentRequest ingestTextDocumentRequest, final ApiCallback<IngestDocumentResponse> _callback) throws ApiException {
@@ -1528,12 +1488,13 @@ public class SemanticSearchApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchWebpageIngestionCall(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, final ApiCallback _callback) throws ApiException {
@@ -1600,12 +1561,13 @@ public class SemanticSearchApi {
      * @return IngestDocumentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public IngestDocumentResponse semanticSearchWebpageIngestion(IngestWebPageDocumentRequest ingestWebPageDocumentRequest) throws ApiException {
@@ -1620,12 +1582,13 @@ public class SemanticSearchApi {
      * @return ApiResponse&lt;IngestDocumentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<IngestDocumentResponse> semanticSearchWebpageIngestionWithHttpInfo(IngestWebPageDocumentRequest ingestWebPageDocumentRequest) throws ApiException {
@@ -1642,12 +1605,13 @@ public class SemanticSearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
-     <table summary="Response Details" border="1">
+     <table border="1">
+       <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 201 </td><td> Created ingestion job </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal Server Error </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Invalid request parameters or validation error. </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Request rate limit exceeded. </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> Internal server error. </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call semanticSearchWebpageIngestionAsync(IngestWebPageDocumentRequest ingestWebPageDocumentRequest, final ApiCallback<IngestDocumentResponse> _callback) throws ApiException {

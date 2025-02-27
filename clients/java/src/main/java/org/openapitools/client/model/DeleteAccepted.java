@@ -49,24 +49,27 @@ import org.openapitools.client.JSON;
 /**
  * DeleteAccepted
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class DeleteAccepted {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private String index;
 
   public static final String SERIALIZED_NAME_DOCUMENT_ID = "documentId";
   @SerializedName(SERIALIZED_NAME_DOCUMENT_ID)
+  @javax.annotation.Nullable
   private String documentId;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nullable
   private String message;
 
   public DeleteAccepted() {
   }
 
-  public DeleteAccepted index(String index) {
+  public DeleteAccepted index(@javax.annotation.Nullable String index) {
     this.index = index;
     return this;
   }
@@ -80,12 +83,12 @@ public class DeleteAccepted {
     return index;
   }
 
-  public void setIndex(String index) {
+  public void setIndex(@javax.annotation.Nullable String index) {
     this.index = index;
   }
 
 
-  public DeleteAccepted documentId(String documentId) {
+  public DeleteAccepted documentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
     return this;
   }
@@ -99,12 +102,12 @@ public class DeleteAccepted {
     return documentId;
   }
 
-  public void setDocumentId(String documentId) {
+  public void setDocumentId(@javax.annotation.Nullable String documentId) {
     this.documentId = documentId;
   }
 
 
-  public DeleteAccepted message(String message) {
+  public DeleteAccepted message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
   }
@@ -118,7 +121,7 @@ public class DeleteAccepted {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 

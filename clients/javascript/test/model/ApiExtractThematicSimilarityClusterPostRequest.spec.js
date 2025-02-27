@@ -72,12 +72,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property maxTokens (base name: "maxTokens")', function() {
-      // uncomment below and update the code to test the property maxTokens
-      //var instance = new StudioAiEmpowerLabs.ApiExtractThematicSimilarityClusterPostRequest();
-      //expect(instance).to.be();
-    });
-
     it('should have the property llmModel (base name: "llmModel")', function() {
       // uncomment below and update the code to test the property llmModel
       //var instance = new StudioAiEmpowerLabs.ApiExtractThematicSimilarityClusterPostRequest();

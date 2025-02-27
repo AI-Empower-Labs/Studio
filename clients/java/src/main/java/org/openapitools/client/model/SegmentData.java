@@ -50,32 +50,37 @@ import org.openapitools.client.JSON;
 /**
  * SegmentData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class SegmentData {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private String text;
 
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
+  @javax.annotation.Nullable
   private TimeSpan start;
 
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
+  @javax.annotation.Nullable
   private TimeSpan end;
 
   public static final String SERIALIZED_NAME_PROBABILITY = "probability";
   @SerializedName(SERIALIZED_NAME_PROBABILITY)
+  @javax.annotation.Nullable
   private Float probability;
 
   public static final String SERIALIZED_NAME_LANGUAGE = "language";
   @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  @javax.annotation.Nullable
   private String language;
 
   public SegmentData() {
   }
 
-  public SegmentData text(String text) {
+  public SegmentData text(@javax.annotation.Nullable String text) {
     this.text = text;
     return this;
   }
@@ -89,12 +94,12 @@ public class SegmentData {
     return text;
   }
 
-  public void setText(String text) {
+  public void setText(@javax.annotation.Nullable String text) {
     this.text = text;
   }
 
 
-  public SegmentData start(TimeSpan start) {
+  public SegmentData start(@javax.annotation.Nullable TimeSpan start) {
     this.start = start;
     return this;
   }
@@ -108,12 +113,12 @@ public class SegmentData {
     return start;
   }
 
-  public void setStart(TimeSpan start) {
+  public void setStart(@javax.annotation.Nullable TimeSpan start) {
     this.start = start;
   }
 
 
-  public SegmentData end(TimeSpan end) {
+  public SegmentData end(@javax.annotation.Nullable TimeSpan end) {
     this.end = end;
     return this;
   }
@@ -127,12 +132,12 @@ public class SegmentData {
     return end;
   }
 
-  public void setEnd(TimeSpan end) {
+  public void setEnd(@javax.annotation.Nullable TimeSpan end) {
     this.end = end;
   }
 
 
-  public SegmentData probability(Float probability) {
+  public SegmentData probability(@javax.annotation.Nullable Float probability) {
     this.probability = probability;
     return this;
   }
@@ -146,12 +151,12 @@ public class SegmentData {
     return probability;
   }
 
-  public void setProbability(Float probability) {
+  public void setProbability(@javax.annotation.Nullable Float probability) {
     this.probability = probability;
   }
 
 
-  public SegmentData language(String language) {
+  public SegmentData language(@javax.annotation.Nullable String language) {
     this.language = language;
     return this;
   }
@@ -165,7 +170,7 @@ public class SegmentData {
     return language;
   }
 
-  public void setLanguage(String language) {
+  public void setLanguage(@javax.annotation.Nullable String language) {
     this.language = language;
   }
 

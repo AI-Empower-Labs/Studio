@@ -2,36 +2,16 @@
 
 ### 
 ## 
-POST https://studio.aiempowerlabs.com/api/semantic/ask
-Content-Type: application/json
-Accept: application/json
-Accept: application/problem+json
-
-{
-  "query" : "Find invoice totals",
-  "index" : "Studio",
-  "filter" : [ {
-    "documentId" : [ "SomeUniqueId" ],
-    "tags" : {
-      "A" : [ ]
-    }
-  } ],
-  "minRelevance" : 0.8
-}
-
-
-### 
-## 
 DELETE https://studio.aiempowerlabs.com/api/semantic/{{documentId}}?index={{index}}
 Accept: application/problem+json
 
 ### 
 ## 
-DELETE https://studio.aiempowerlabs.com/api/semantic/index
+DELETE https://studio.aiempowerlabs.com/api/semantic/index/{{name}}
 Accept: application/problem+json
 
-### 
-## 
+### Ingest a File into Semantic Search
+## Ingest a File into Semantic Search
 POST https://studio.aiempowerlabs.com/api/ingest/file?documentId={{documentId}}&index={{index}}&pipeline={{pipeline}}&webHookUrl={{webHookUrl}}&embeddingModel={{embeddingModel}}
 Content-Type: multipart/form-data
 Content-Type: application/x-www-form-urlencoded
@@ -96,7 +76,6 @@ Accept: application/problem+json
 {
  "clusterCount": "<number>",
  "maxDegreeOfParallelism": "<number>",
- "maxTokens": "<number>",
  "index": "<string>",
  "minRelevance": "<number>",
  "maxRelevance": "<number>",
@@ -119,8 +98,8 @@ Accept: application/problem+json
 }
 
 
-### 
-## 
+### Ingest Plain Text for Semantic Search
+## Ingest Plain Text for Semantic Search
 POST https://studio.aiempowerlabs.com/api/ingest/text
 Content-Type: application/json
 Accept: application/json

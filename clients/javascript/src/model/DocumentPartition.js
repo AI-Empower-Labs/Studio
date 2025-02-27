@@ -50,8 +50,23 @@ class DocumentPartition {
             if (data.hasOwnProperty('text')) {
                 obj['text'] = ApiClient.convertToType(data['text'], 'String');
             }
-            if (data.hasOwnProperty('relevance')) {
-                obj['relevance'] = ApiClient.convertToType(data['relevance'], 'Number');
+            if (data.hasOwnProperty('fullTextSearchRank')) {
+                obj['fullTextSearchRank'] = ApiClient.convertToType(data['fullTextSearchRank'], 'Number');
+            }
+            if (data.hasOwnProperty('semanticSimilarity')) {
+                obj['semanticSimilarity'] = ApiClient.convertToType(data['semanticSimilarity'], 'Number');
+            }
+            if (data.hasOwnProperty('fullTextSearchRrf')) {
+                obj['fullTextSearchRrf'] = ApiClient.convertToType(data['fullTextSearchRrf'], 'Number');
+            }
+            if (data.hasOwnProperty('semanticRrf')) {
+                obj['semanticRrf'] = ApiClient.convertToType(data['semanticRrf'], 'Number');
+            }
+            if (data.hasOwnProperty('rrfScore')) {
+                obj['rrfScore'] = ApiClient.convertToType(data['rrfScore'], 'Number');
+            }
+            if (data.hasOwnProperty('language')) {
+                obj['language'] = ApiClient.convertToType(data['language'], 'String');
             }
             if (data.hasOwnProperty('lastUpdate')) {
                 obj['lastUpdate'] = ApiClient.convertToType(data['lastUpdate'], 'Date');
@@ -73,6 +88,10 @@ class DocumentPartition {
         if (data['text'] && !(typeof data['text'] === 'string' || data['text'] instanceof String)) {
             throw new Error("Expected the field `text` to be a primitive type in the JSON string but got " + data['text']);
         }
+        // ensure the json data is a string
+        if (data['language'] && !(typeof data['language'] === 'string' || data['language'] instanceof String)) {
+            throw new Error("Expected the field `language` to be a primitive type in the JSON string but got " + data['language']);
+        }
 
         return true;
     }
@@ -89,10 +108,40 @@ class DocumentPartition {
 DocumentPartition.prototype['text'] = undefined;
 
 /**
- * Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity.
- * @member {Number} relevance
+ * Rank value calculated from full-text search, used to determine the relevance of search results.
+ * @member {Number} fullTextSearchRank
  */
-DocumentPartition.prototype['relevance'] = undefined;
+DocumentPartition.prototype['fullTextSearchRank'] = undefined;
+
+/**
+ * Represents the semantic similarity score associated with a record.
+ * @member {Number} semanticSimilarity
+ */
+DocumentPartition.prototype['semanticSimilarity'] = undefined;
+
+/**
+ * Reciprocal rank fusion (RRF) score specifically derived from full-text search relevance.
+ * @member {Number} fullTextSearchRrf
+ */
+DocumentPartition.prototype['fullTextSearchRrf'] = undefined;
+
+/**
+ * Reciprocal Rank Fusion (RRF) score based on semantic similarity
+ * @member {Number} semanticRrf
+ */
+DocumentPartition.prototype['semanticRrf'] = undefined;
+
+/**
+ * Represents the combined Reciprocal Rank Fusion (RRF) score, which integrates results from multiple ranking methods such as semantic similarity and full-text search to enhance result relevance.
+ * @member {Number} rrfScore
+ */
+DocumentPartition.prototype['rrfScore'] = undefined;
+
+/**
+ * Language of partition if any. Optional.
+ * @member {String} language
+ */
+DocumentPartition.prototype['language'] = undefined;
 
 /**
  * Timestamp about the file/text partition.

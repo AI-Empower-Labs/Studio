@@ -2,14 +2,14 @@
 
 # KMeansCluster
 
-Represents the response object for K-Means Clustering, contains cluster size and array of centroids
+Response object for K-Means Clustering containing cluster size and centroids array
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**clusterSize** | **Integer** | Size of the cluster |  [optional] |
-|**centroids** | [**List&lt;Centroid&gt;**](Centroid.md) | Array of Centroid objects |  [optional] |
+|**clusterSize** | **Integer** | Number of points in the cluster |  |
+|**centroids** | [**List&lt;Centroid&gt;**](Centroid.md) | List of cluster centroids |  |
 
 
 

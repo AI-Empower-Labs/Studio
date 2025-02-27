@@ -35,16 +35,6 @@ class KernelMemoryApiTest : ShouldSpec() {
         // uncomment below to create an instance of KernelMemoryApi
         //val apiInstance = KernelMemoryApi()
 
-        // to test downloadGet
-        should("test downloadGet") {
-            // uncomment below to test downloadGet
-            //val documentId : kotlin.String = documentId_example // kotlin.String | 
-            //val filename : kotlin.String = filename_example // kotlin.String | 
-            //val index : kotlin.String = index_example // kotlin.String | 
-            //val result : StreamableFileContent = apiInstance.downloadGet(documentId, filename, index)
-            //result shouldBe ("TODO")
-        }
-
         // to test kernelMemoryAsk
         should("test kernelMemoryAsk") {
             // uncomment below to test kernelMemoryAsk
@@ -67,6 +57,16 @@ class KernelMemoryApiTest : ShouldSpec() {
             // uncomment below to test kernelMemoryDeleteIndex
             //val index : kotlin.String = index_example // kotlin.String | 
             //val result : DeleteAccepted = apiInstance.kernelMemoryDeleteIndex(index)
+            //result shouldBe ("TODO")
+        }
+
+        // to test kernelMemoryDownload
+        should("test kernelMemoryDownload") {
+            // uncomment below to test kernelMemoryDownload
+            //val documentId : kotlin.String = documentId_example // kotlin.String | 
+            //val filename : kotlin.String = filename_example // kotlin.String | 
+            //val index : kotlin.String = index_example // kotlin.String | 
+            //val result : StreamableFileContent = apiInstance.kernelMemoryDownload(documentId, filename, index)
             //result shouldBe ("TODO")
         }
 

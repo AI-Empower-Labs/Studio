@@ -51,20 +51,22 @@ import org.openapitools.client.JSON;
 /**
  * EmbeddingRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class EmbeddingRequest {
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
+  @javax.annotation.Nullable
   private String model;
 
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
+  @javax.annotation.Nullable
   private List<String> text = new ArrayList<>();
 
   public EmbeddingRequest() {
   }
 
-  public EmbeddingRequest model(String model) {
+  public EmbeddingRequest model(@javax.annotation.Nullable String model) {
     this.model = model;
     return this;
   }
@@ -78,12 +80,12 @@ public class EmbeddingRequest {
     return model;
   }
 
-  public void setModel(String model) {
+  public void setModel(@javax.annotation.Nullable String model) {
     this.model = model;
   }
 
 
-  public EmbeddingRequest text(List<String> text) {
+  public EmbeddingRequest text(@javax.annotation.Nullable List<String> text) {
     this.text = text;
     return this;
   }
@@ -105,7 +107,7 @@ public class EmbeddingRequest {
     return text;
   }
 
-  public void setText(List<String> text) {
+  public void setText(@javax.annotation.Nullable List<String> text) {
     this.text = text;
   }
 

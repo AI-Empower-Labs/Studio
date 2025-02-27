@@ -11,23 +11,23 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// KMeansCluster : Represents the response object for K-Means Clustering, contains cluster size and array of centroids
+/// KMeansCluster : Response object for K-Means Clustering containing cluster size and centroids array
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct KMeansCluster {
-    /// Size of the cluster
-    #[serde(rename = "clusterSize", skip_serializing_if = "Option::is_none")]
-    pub cluster_size: Option<i32>,
-    /// Array of Centroid objects
-    #[serde(rename = "centroids", skip_serializing_if = "Option::is_none")]
-    pub centroids: Option<Vec<models::Centroid>>,
+    /// Number of points in the cluster
+    #[serde(rename = "clusterSize")]
+    pub cluster_size: i32,
+    /// List of cluster centroids
+    #[serde(rename = "centroids")]
+    pub centroids: Vec<models::Centroid>,
 }
 
 impl KMeansCluster {
-    /// Represents the response object for K-Means Clustering, contains cluster size and array of centroids
-    pub fn new() -> KMeansCluster {
+    /// Response object for K-Means Clustering containing cluster size and centroids array
+    pub fn new(cluster_size: i32, centroids: Vec<models::Centroid>) -> KMeansCluster {
         KMeansCluster {
-            cluster_size: None,
-            centroids: None,
+            cluster_size,
+            centroids,
         }
     }
 }

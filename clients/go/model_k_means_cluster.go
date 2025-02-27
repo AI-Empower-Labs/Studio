@@ -13,25 +13,31 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KMeansCluster type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &KMeansCluster{}
 
-// KMeansCluster Represents the response object for K-Means Clustering, contains cluster size and array of centroids
+// KMeansCluster Response object for K-Means Clustering containing cluster size and centroids array
 type KMeansCluster struct {
-	// Size of the cluster
-	ClusterSize *int32 `json:"clusterSize,omitempty"`
-	// Array of Centroid objects
-	Centroids []Centroid `json:"centroids,omitempty"`
+	// Number of points in the cluster
+	ClusterSize int32 `json:"clusterSize"`
+	// List of cluster centroids
+	Centroids []Centroid `json:"centroids"`
 }
+
+type _KMeansCluster KMeansCluster
 
 // NewKMeansCluster instantiates a new KMeansCluster object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKMeansCluster() *KMeansCluster {
+func NewKMeansCluster(clusterSize int32, centroids []Centroid) *KMeansCluster {
 	this := KMeansCluster{}
+	this.ClusterSize = clusterSize
+	this.Centroids = centroids
 	return &this
 }
 
@@ -43,66 +49,50 @@ func NewKMeansClusterWithDefaults() *KMeansCluster {
 	return &this
 }
 
-// GetClusterSize returns the ClusterSize field value if set, zero value otherwise.
+// GetClusterSize returns the ClusterSize field value
 func (o *KMeansCluster) GetClusterSize() int32 {
-	if o == nil || IsNil(o.ClusterSize) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ClusterSize
+
+	return o.ClusterSize
 }
 
-// GetClusterSizeOk returns a tuple with the ClusterSize field value if set, nil otherwise
+// GetClusterSizeOk returns a tuple with the ClusterSize field value
 // and a boolean to check if the value has been set.
 func (o *KMeansCluster) GetClusterSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.ClusterSize) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ClusterSize, true
+	return &o.ClusterSize, true
 }
 
-// HasClusterSize returns a boolean if a field has been set.
-func (o *KMeansCluster) HasClusterSize() bool {
-	if o != nil && !IsNil(o.ClusterSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetClusterSize gets a reference to the given int32 and assigns it to the ClusterSize field.
+// SetClusterSize sets field value
 func (o *KMeansCluster) SetClusterSize(v int32) {
-	o.ClusterSize = &v
+	o.ClusterSize = v
 }
 
-// GetCentroids returns the Centroids field value if set, zero value otherwise.
+// GetCentroids returns the Centroids field value
 func (o *KMeansCluster) GetCentroids() []Centroid {
-	if o == nil || IsNil(o.Centroids) {
+	if o == nil {
 		var ret []Centroid
 		return ret
 	}
+
 	return o.Centroids
 }
 
-// GetCentroidsOk returns a tuple with the Centroids field value if set, nil otherwise
+// GetCentroidsOk returns a tuple with the Centroids field value
 // and a boolean to check if the value has been set.
 func (o *KMeansCluster) GetCentroidsOk() ([]Centroid, bool) {
-	if o == nil || IsNil(o.Centroids) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Centroids, true
 }
 
-// HasCentroids returns a boolean if a field has been set.
-func (o *KMeansCluster) HasCentroids() bool {
-	if o != nil && !IsNil(o.Centroids) {
-		return true
-	}
-
-	return false
-}
-
-// SetCentroids gets a reference to the given []Centroid and assigns it to the Centroids field.
+// SetCentroids sets field value
 func (o *KMeansCluster) SetCentroids(v []Centroid) {
 	o.Centroids = v
 }
@@ -117,13 +107,47 @@ func (o KMeansCluster) MarshalJSON() ([]byte, error) {
 
 func (o KMeansCluster) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ClusterSize) {
-		toSerialize["clusterSize"] = o.ClusterSize
-	}
-	if !IsNil(o.Centroids) {
-		toSerialize["centroids"] = o.Centroids
-	}
+	toSerialize["clusterSize"] = o.ClusterSize
+	toSerialize["centroids"] = o.Centroids
 	return toSerialize, nil
+}
+
+func (o *KMeansCluster) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"clusterSize",
+		"centroids",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKMeansCluster := _KMeansCluster{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKMeansCluster)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KMeansCluster(varKMeansCluster)
+
+	return err
 }
 
 type NullableKMeansCluster struct {

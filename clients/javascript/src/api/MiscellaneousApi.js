@@ -46,7 +46,7 @@ export default class MiscellaneousApi {
     /**
      * Delete LLM cache entry
      * @param {Object} opts Optional parameters
-     * @param {String} [cacheKey] The LLM cache key to remove
+     * @param {String} [key] The LLM cache key to remove
      * @param {module:api/MiscellaneousApi~deleteLlmCacheEntryCallback} callback The callback function, accepting three arguments: error, data, response
      */
     deleteLlmCacheEntry(opts, callback) {
@@ -56,7 +56,7 @@ export default class MiscellaneousApi {
       let pathParams = {
       };
       let queryParams = {
-        'cacheKey': opts['cacheKey']
+        'key': opts['key']
       };
       let headerParams = {
       };

@@ -10,7 +10,7 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 <a id="deleteLlmCacheEntry"></a>
 # **deleteLlmCacheEntry**
-> deleteLlmCacheEntry(cacheKey)
+> deleteLlmCacheEntry(key)
 
 
 
@@ -23,9 +23,9 @@ Delete LLM cache entry
 //import org.openapitools.client.models.*
 
 val apiInstance = MiscellaneousApi()
-val cacheKey : kotlin.String = cacheKey_example // kotlin.String | The LLM cache key to remove
+val key : kotlin.String = key_example // kotlin.String | The LLM cache key to remove
 try {
-    apiInstance.deleteLlmCacheEntry(cacheKey)
+    apiInstance.deleteLlmCacheEntry(key)
 } catch (e: ClientException) {
     println("4xx response calling MiscellaneousApi#deleteLlmCacheEntry")
     e.printStackTrace()
@@ -38,7 +38,7 @@ try {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cacheKey** | **kotlin.String**| The LLM cache key to remove | [optional] |
+| **key** | **kotlin.String**| The LLM cache key to remove | [optional] |
 
 ### Return type
 

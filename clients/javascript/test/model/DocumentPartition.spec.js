@@ -60,8 +60,38 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property relevance (base name: "relevance")', function() {
-      // uncomment below and update the code to test the property relevance
+    it('should have the property fullTextSearchRank (base name: "fullTextSearchRank")', function() {
+      // uncomment below and update the code to test the property fullTextSearchRank
+      //var instance = new StudioAiEmpowerLabs.DocumentPartition();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property semanticSimilarity (base name: "semanticSimilarity")', function() {
+      // uncomment below and update the code to test the property semanticSimilarity
+      //var instance = new StudioAiEmpowerLabs.DocumentPartition();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property fullTextSearchRrf (base name: "fullTextSearchRrf")', function() {
+      // uncomment below and update the code to test the property fullTextSearchRrf
+      //var instance = new StudioAiEmpowerLabs.DocumentPartition();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property semanticRrf (base name: "semanticRrf")', function() {
+      // uncomment below and update the code to test the property semanticRrf
+      //var instance = new StudioAiEmpowerLabs.DocumentPartition();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property rrfScore (base name: "rrfScore")', function() {
+      // uncomment below and update the code to test the property rrfScore
+      //var instance = new StudioAiEmpowerLabs.DocumentPartition();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property language (base name: "language")', function() {
+      // uncomment below and update the code to test the property language
       //var instance = new StudioAiEmpowerLabs.DocumentPartition();
       //expect(instance).to.be();
     });

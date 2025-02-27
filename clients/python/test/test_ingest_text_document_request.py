@@ -36,27 +36,21 @@ class TestIngestTextDocumentRequest(unittest.TestCase):
         model = IngestTextDocumentRequest()
         if include_optional:
             return IngestTextDocumentRequest(
-                document_id = '0',
-                index = '',
-                tags = {
-                    'key' : [
-                        ''
-                        ]
-                    },
                 text = '',
-                pipeline = [
-                    ''
-                    ],
-                web_hook_url = '',
-                embedding_model = '',
-                args = {
-                    'key' : null
-                    }
+                document_id = '20250225.103045.abcd1234efgh5678',
+                index = 'my-index',
+                web_hook_url = 'https://example.com/webhook',
+                embedding_model_name = 'embedding',
+                context = {"userId":"12345","priority":10,"isTest":false},
+                tags = {"en":["Hello","World"],"fr":["Bonjour"]},
+                ingestion_pipeline = ["step1","step2","step3"],
+                language_auto_detection = True,
+                language = 'english'
             )
         else:
             return IngestTextDocumentRequest(
-                document_id = '0',
                 text = '',
+                document_id = '20250225.103045.abcd1234efgh5678',
         )
         """
 

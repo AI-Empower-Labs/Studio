@@ -23,8 +23,18 @@ var _ MappedNullable = &DocumentPartition{}
 type DocumentPartition struct {
 	// Content of the document partition, aka chunk/block of text.
 	Text NullableString `json:"text,omitempty"`
-	// Relevance of this partition against the given query.  Value usually is between 0 and 1, when using cosine similarity.
-	Relevance *float32 `json:"relevance,omitempty"`
+	// Rank value calculated from full-text search, used to determine the relevance of search results.
+	FullTextSearchRank NullableFloat32 `json:"fullTextSearchRank,omitempty"`
+	// Represents the semantic similarity score associated with a record.
+	SemanticSimilarity NullableFloat32 `json:"semanticSimilarity,omitempty"`
+	// Reciprocal rank fusion (RRF) score specifically derived from full-text search relevance.
+	FullTextSearchRrf NullableFloat32 `json:"fullTextSearchRrf,omitempty"`
+	// Reciprocal Rank Fusion (RRF) score based on semantic similarity
+	SemanticRrf NullableFloat32 `json:"semanticRrf,omitempty"`
+	// Represents the combined Reciprocal Rank Fusion (RRF) score, which integrates results from multiple ranking methods such as semantic similarity and full-text search to enhance result relevance.
+	RrfScore NullableFloat32 `json:"rrfScore,omitempty"`
+	// Language of partition if any. Optional.
+	Language NullableString `json:"language,omitempty"`
 	// Timestamp about the file/text partition.
 	LastUpdate *time.Time `json:"lastUpdate,omitempty"`
 	// List of document tags
@@ -90,36 +100,256 @@ func (o *DocumentPartition) UnsetText() {
 	o.Text.Unset()
 }
 
-// GetRelevance returns the Relevance field value if set, zero value otherwise.
-func (o *DocumentPartition) GetRelevance() float32 {
-	if o == nil || IsNil(o.Relevance) {
+// GetFullTextSearchRank returns the FullTextSearchRank field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DocumentPartition) GetFullTextSearchRank() float32 {
+	if o == nil || IsNil(o.FullTextSearchRank.Get()) {
 		var ret float32
 		return ret
 	}
-	return *o.Relevance
+	return *o.FullTextSearchRank.Get()
 }
 
-// GetRelevanceOk returns a tuple with the Relevance field value if set, nil otherwise
+// GetFullTextSearchRankOk returns a tuple with the FullTextSearchRank field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DocumentPartition) GetRelevanceOk() (*float32, bool) {
-	if o == nil || IsNil(o.Relevance) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DocumentPartition) GetFullTextSearchRankOk() (*float32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Relevance, true
+	return o.FullTextSearchRank.Get(), o.FullTextSearchRank.IsSet()
 }
 
-// HasRelevance returns a boolean if a field has been set.
-func (o *DocumentPartition) HasRelevance() bool {
-	if o != nil && !IsNil(o.Relevance) {
+// HasFullTextSearchRank returns a boolean if a field has been set.
+func (o *DocumentPartition) HasFullTextSearchRank() bool {
+	if o != nil && o.FullTextSearchRank.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRelevance gets a reference to the given float32 and assigns it to the Relevance field.
-func (o *DocumentPartition) SetRelevance(v float32) {
-	o.Relevance = &v
+// SetFullTextSearchRank gets a reference to the given NullableFloat32 and assigns it to the FullTextSearchRank field.
+func (o *DocumentPartition) SetFullTextSearchRank(v float32) {
+	o.FullTextSearchRank.Set(&v)
+}
+// SetFullTextSearchRankNil sets the value for FullTextSearchRank to be an explicit nil
+func (o *DocumentPartition) SetFullTextSearchRankNil() {
+	o.FullTextSearchRank.Set(nil)
+}
+
+// UnsetFullTextSearchRank ensures that no value is present for FullTextSearchRank, not even an explicit nil
+func (o *DocumentPartition) UnsetFullTextSearchRank() {
+	o.FullTextSearchRank.Unset()
+}
+
+// GetSemanticSimilarity returns the SemanticSimilarity field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DocumentPartition) GetSemanticSimilarity() float32 {
+	if o == nil || IsNil(o.SemanticSimilarity.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.SemanticSimilarity.Get()
+}
+
+// GetSemanticSimilarityOk returns a tuple with the SemanticSimilarity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DocumentPartition) GetSemanticSimilarityOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SemanticSimilarity.Get(), o.SemanticSimilarity.IsSet()
+}
+
+// HasSemanticSimilarity returns a boolean if a field has been set.
+func (o *DocumentPartition) HasSemanticSimilarity() bool {
+	if o != nil && o.SemanticSimilarity.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSemanticSimilarity gets a reference to the given NullableFloat32 and assigns it to the SemanticSimilarity field.
+func (o *DocumentPartition) SetSemanticSimilarity(v float32) {
+	o.SemanticSimilarity.Set(&v)
+}
+// SetSemanticSimilarityNil sets the value for SemanticSimilarity to be an explicit nil
+func (o *DocumentPartition) SetSemanticSimilarityNil() {
+	o.SemanticSimilarity.Set(nil)
+}
+
+// UnsetSemanticSimilarity ensures that no value is present for SemanticSimilarity, not even an explicit nil
+func (o *DocumentPartition) UnsetSemanticSimilarity() {
+	o.SemanticSimilarity.Unset()
+}
+
+// GetFullTextSearchRrf returns the FullTextSearchRrf field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DocumentPartition) GetFullTextSearchRrf() float32 {
+	if o == nil || IsNil(o.FullTextSearchRrf.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.FullTextSearchRrf.Get()
+}
+
+// GetFullTextSearchRrfOk returns a tuple with the FullTextSearchRrf field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DocumentPartition) GetFullTextSearchRrfOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FullTextSearchRrf.Get(), o.FullTextSearchRrf.IsSet()
+}
+
+// HasFullTextSearchRrf returns a boolean if a field has been set.
+func (o *DocumentPartition) HasFullTextSearchRrf() bool {
+	if o != nil && o.FullTextSearchRrf.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFullTextSearchRrf gets a reference to the given NullableFloat32 and assigns it to the FullTextSearchRrf field.
+func (o *DocumentPartition) SetFullTextSearchRrf(v float32) {
+	o.FullTextSearchRrf.Set(&v)
+}
+// SetFullTextSearchRrfNil sets the value for FullTextSearchRrf to be an explicit nil
+func (o *DocumentPartition) SetFullTextSearchRrfNil() {
+	o.FullTextSearchRrf.Set(nil)
+}
+
+// UnsetFullTextSearchRrf ensures that no value is present for FullTextSearchRrf, not even an explicit nil
+func (o *DocumentPartition) UnsetFullTextSearchRrf() {
+	o.FullTextSearchRrf.Unset()
+}
+
+// GetSemanticRrf returns the SemanticRrf field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DocumentPartition) GetSemanticRrf() float32 {
+	if o == nil || IsNil(o.SemanticRrf.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.SemanticRrf.Get()
+}
+
+// GetSemanticRrfOk returns a tuple with the SemanticRrf field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DocumentPartition) GetSemanticRrfOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SemanticRrf.Get(), o.SemanticRrf.IsSet()
+}
+
+// HasSemanticRrf returns a boolean if a field has been set.
+func (o *DocumentPartition) HasSemanticRrf() bool {
+	if o != nil && o.SemanticRrf.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSemanticRrf gets a reference to the given NullableFloat32 and assigns it to the SemanticRrf field.
+func (o *DocumentPartition) SetSemanticRrf(v float32) {
+	o.SemanticRrf.Set(&v)
+}
+// SetSemanticRrfNil sets the value for SemanticRrf to be an explicit nil
+func (o *DocumentPartition) SetSemanticRrfNil() {
+	o.SemanticRrf.Set(nil)
+}
+
+// UnsetSemanticRrf ensures that no value is present for SemanticRrf, not even an explicit nil
+func (o *DocumentPartition) UnsetSemanticRrf() {
+	o.SemanticRrf.Unset()
+}
+
+// GetRrfScore returns the RrfScore field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DocumentPartition) GetRrfScore() float32 {
+	if o == nil || IsNil(o.RrfScore.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.RrfScore.Get()
+}
+
+// GetRrfScoreOk returns a tuple with the RrfScore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DocumentPartition) GetRrfScoreOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RrfScore.Get(), o.RrfScore.IsSet()
+}
+
+// HasRrfScore returns a boolean if a field has been set.
+func (o *DocumentPartition) HasRrfScore() bool {
+	if o != nil && o.RrfScore.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRrfScore gets a reference to the given NullableFloat32 and assigns it to the RrfScore field.
+func (o *DocumentPartition) SetRrfScore(v float32) {
+	o.RrfScore.Set(&v)
+}
+// SetRrfScoreNil sets the value for RrfScore to be an explicit nil
+func (o *DocumentPartition) SetRrfScoreNil() {
+	o.RrfScore.Set(nil)
+}
+
+// UnsetRrfScore ensures that no value is present for RrfScore, not even an explicit nil
+func (o *DocumentPartition) UnsetRrfScore() {
+	o.RrfScore.Unset()
+}
+
+// GetLanguage returns the Language field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DocumentPartition) GetLanguage() string {
+	if o == nil || IsNil(o.Language.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Language.Get()
+}
+
+// GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DocumentPartition) GetLanguageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Language.Get(), o.Language.IsSet()
+}
+
+// HasLanguage returns a boolean if a field has been set.
+func (o *DocumentPartition) HasLanguage() bool {
+	if o != nil && o.Language.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLanguage gets a reference to the given NullableString and assigns it to the Language field.
+func (o *DocumentPartition) SetLanguage(v string) {
+	o.Language.Set(&v)
+}
+// SetLanguageNil sets the value for Language to be an explicit nil
+func (o *DocumentPartition) SetLanguageNil() {
+	o.Language.Set(nil)
+}
+
+// UnsetLanguage ensures that no value is present for Language, not even an explicit nil
+func (o *DocumentPartition) UnsetLanguage() {
+	o.Language.Unset()
 }
 
 // GetLastUpdate returns the LastUpdate field value if set, zero value otherwise.
@@ -200,8 +430,23 @@ func (o DocumentPartition) ToMap() (map[string]interface{}, error) {
 	if o.Text.IsSet() {
 		toSerialize["text"] = o.Text.Get()
 	}
-	if !IsNil(o.Relevance) {
-		toSerialize["relevance"] = o.Relevance
+	if o.FullTextSearchRank.IsSet() {
+		toSerialize["fullTextSearchRank"] = o.FullTextSearchRank.Get()
+	}
+	if o.SemanticSimilarity.IsSet() {
+		toSerialize["semanticSimilarity"] = o.SemanticSimilarity.Get()
+	}
+	if o.FullTextSearchRrf.IsSet() {
+		toSerialize["fullTextSearchRrf"] = o.FullTextSearchRrf.Get()
+	}
+	if o.SemanticRrf.IsSet() {
+		toSerialize["semanticRrf"] = o.SemanticRrf.Get()
+	}
+	if o.RrfScore.IsSet() {
+		toSerialize["rrfScore"] = o.RrfScore.Get()
+	}
+	if o.Language.IsSet() {
+		toSerialize["language"] = o.Language.Get()
 	}
 	if !IsNil(o.LastUpdate) {
 		toSerialize["lastUpdate"] = o.LastUpdate

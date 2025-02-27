@@ -52,18 +52,21 @@ import org.openapitools.client.JSON;
 /**
  * SearchResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class SearchResult {
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
+  @javax.annotation.Nullable
   private String query;
 
   public static final String SERIALIZED_NAME_NO_RESULT = "noResult";
   @SerializedName(SERIALIZED_NAME_NO_RESULT)
+  @javax.annotation.Nullable
   private Boolean noResult;
 
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
+  @javax.annotation.Nullable
   private List<Citation> results;
 
   public SearchResult() {
@@ -76,7 +79,7 @@ public class SearchResult {
     this.noResult = noResult;
   }
 
-  public SearchResult query(String query) {
+  public SearchResult query(@javax.annotation.Nullable String query) {
     this.query = query;
     return this;
   }
@@ -90,7 +93,7 @@ public class SearchResult {
     return query;
   }
 
-  public void setQuery(String query) {
+  public void setQuery(@javax.annotation.Nullable String query) {
     this.query = query;
   }
 
@@ -106,7 +109,7 @@ public class SearchResult {
 
 
 
-  public SearchResult results(List<Citation> results) {
+  public SearchResult results(@javax.annotation.Nullable List<Citation> results) {
     this.results = results;
     return this;
   }
@@ -128,7 +131,7 @@ public class SearchResult {
     return results;
   }
 
-  public void setResults(List<Citation> results) {
+  public void setResults(@javax.annotation.Nullable List<Citation> results) {
     this.results = results;
   }
 

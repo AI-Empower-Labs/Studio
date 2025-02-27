@@ -42,7 +42,7 @@ class MiscellaneousApi:
     @validate_call
     def delete_llm_cache_entry(
         self,
-        cache_key: Annotated[Optional[Annotated[str, Field(min_length=50, strict=True, max_length=90)]], Field(description="The LLM cache key to remove")] = None,
+        key: Annotated[Optional[Annotated[str, Field(min_length=50, strict=True, max_length=90)]], Field(description="The LLM cache key to remove")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -60,8 +60,8 @@ class MiscellaneousApi:
 
         Delete LLM cache entry
 
-        :param cache_key: The LLM cache key to remove
-        :type cache_key: str
+        :param key: The LLM cache key to remove
+        :type key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -85,7 +85,7 @@ class MiscellaneousApi:
         """ # noqa: E501
 
         _param = self._delete_llm_cache_entry_serialize(
-            cache_key=cache_key,
+            key=key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -112,7 +112,7 @@ class MiscellaneousApi:
     @validate_call
     def delete_llm_cache_entry_with_http_info(
         self,
-        cache_key: Annotated[Optional[Annotated[str, Field(min_length=50, strict=True, max_length=90)]], Field(description="The LLM cache key to remove")] = None,
+        key: Annotated[Optional[Annotated[str, Field(min_length=50, strict=True, max_length=90)]], Field(description="The LLM cache key to remove")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -130,8 +130,8 @@ class MiscellaneousApi:
 
         Delete LLM cache entry
 
-        :param cache_key: The LLM cache key to remove
-        :type cache_key: str
+        :param key: The LLM cache key to remove
+        :type key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -155,7 +155,7 @@ class MiscellaneousApi:
         """ # noqa: E501
 
         _param = self._delete_llm_cache_entry_serialize(
-            cache_key=cache_key,
+            key=key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -182,7 +182,7 @@ class MiscellaneousApi:
     @validate_call
     def delete_llm_cache_entry_without_preload_content(
         self,
-        cache_key: Annotated[Optional[Annotated[str, Field(min_length=50, strict=True, max_length=90)]], Field(description="The LLM cache key to remove")] = None,
+        key: Annotated[Optional[Annotated[str, Field(min_length=50, strict=True, max_length=90)]], Field(description="The LLM cache key to remove")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -200,8 +200,8 @@ class MiscellaneousApi:
 
         Delete LLM cache entry
 
-        :param cache_key: The LLM cache key to remove
-        :type cache_key: str
+        :param key: The LLM cache key to remove
+        :type key: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -225,7 +225,7 @@ class MiscellaneousApi:
         """ # noqa: E501
 
         _param = self._delete_llm_cache_entry_serialize(
-            cache_key=cache_key,
+            key=key,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -247,7 +247,7 @@ class MiscellaneousApi:
 
     def _delete_llm_cache_entry_serialize(
         self,
-        cache_key,
+        key,
         _request_auth,
         _content_type,
         _headers,
@@ -270,9 +270,9 @@ class MiscellaneousApi:
 
         # process the path parameters
         # process the query parameters
-        if cache_key is not None:
+        if key is not None:
             
-            _query_params.append(('cacheKey', cache_key))
+            _query_params.append(('key', key))
             
         # process the header parameters
         # process the form parameters

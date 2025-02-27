@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Input** | **[]string** | The input texts for generating clusters | 
 **ClusterCount** | **int32** | The number of clusters requested for generating clusters | 
 **MaxDegreeOfParallelism** | Pointer to **int32** | The maximum degree of parallelism for the KMeans clustering algorithm | [optional] [default to 1]
-**MaxTokens** | Pointer to **int32** | The maximum number of tokens | [optional] [default to 10]
 **LlmModel** | Pointer to **NullableString** | The name of the LLM model. Optional. | [optional] 
 **EmbeddingModel** | Pointer to **NullableString** | The name of the embedding model used in the GenerateClusterHttpRequest. Optional. | [optional] 
 **Seed** | Pointer to **NullableInt32** | Randomization seed. Optional. | [optional] 
@@ -95,31 +94,6 @@ SetMaxDegreeOfParallelism sets MaxDegreeOfParallelism field to given value.
 `func (o *ApiExtractThematicSimilarityClusterPostRequest) HasMaxDegreeOfParallelism() bool`
 
 HasMaxDegreeOfParallelism returns a boolean if a field has been set.
-
-### GetMaxTokens
-
-`func (o *ApiExtractThematicSimilarityClusterPostRequest) GetMaxTokens() int32`
-
-GetMaxTokens returns the MaxTokens field if non-nil, zero value otherwise.
-
-### GetMaxTokensOk
-
-`func (o *ApiExtractThematicSimilarityClusterPostRequest) GetMaxTokensOk() (*int32, bool)`
-
-GetMaxTokensOk returns a tuple with the MaxTokens field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMaxTokens
-
-`func (o *ApiExtractThematicSimilarityClusterPostRequest) SetMaxTokens(v int32)`
-
-SetMaxTokens sets MaxTokens field to given value.
-
-### HasMaxTokens
-
-`func (o *ApiExtractThematicSimilarityClusterPostRequest) HasMaxTokens() bool`
-
-HasMaxTokens returns a boolean if a field has been set.
 
 ### GetLlmModel
 

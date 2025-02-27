@@ -55,90 +55,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * 
-     * 
-     * @param documentId 
-     * @param filename 
-     * @param index  (optional)
-     * @return StreamableFileContent
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun downloadGet(documentId: kotlin.String, filename: kotlin.String, index: kotlin.String? = null) : StreamableFileContent {
-        val localVarResponse = downloadGetWithHttpInfo(documentId = documentId, filename = filename, index = index)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as StreamableFileContent
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * 
-     * 
-     * @param documentId 
-     * @param filename 
-     * @param index  (optional)
-     * @return ApiResponse<StreamableFileContent?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun downloadGetWithHttpInfo(documentId: kotlin.String, filename: kotlin.String, index: kotlin.String?) : ApiResponse<StreamableFileContent?> {
-        val localVariableConfig = downloadGetRequestConfig(documentId = documentId, filename = filename, index = index)
-
-        return request<Unit, StreamableFileContent>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation downloadGet
-     *
-     * @param documentId 
-     * @param filename 
-     * @param index  (optional)
-     * @return RequestConfig
-     */
-    fun downloadGetRequestConfig(documentId: kotlin.String, filename: kotlin.String, index: kotlin.String?) : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
-            .apply {
-                if (index != null) {
-                    put("index", listOf(index.toString()))
-                }
-                put("documentId", listOf(documentId.toString()))
-                put("filename", listOf(filename.toString()))
-            }
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json, application/problem+json"
-
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/download",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = false,
-            body = localVariableBody
-        )
-    }
-
-    /**
+     * POST /api/kernelmemory/ask
      * Query documents and forward result to LLM
      * 
      * @param memoryQuery 
@@ -170,6 +87,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * POST /api/kernelmemory/ask
      * Query documents and forward result to LLM
      * 
      * @param memoryQuery 
@@ -211,6 +129,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * DELETE /api/kernelmemory/documents
      * Delete document from specific index
      * 
      * @param documentId 
@@ -243,6 +162,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * DELETE /api/kernelmemory/documents
      * Delete document from specific index
      * 
      * @param documentId 
@@ -291,6 +211,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * DELETE /api/kernelmemory/indexes
      * Delete index
      * 
      * @param index  (optional)
@@ -322,6 +243,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * DELETE /api/kernelmemory/indexes
      * Delete index
      * 
      * @param index  (optional)
@@ -367,6 +289,93 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /api/kernelmemory/download
+     * Download specific document
+     * 
+     * @param documentId 
+     * @param filename 
+     * @param index  (optional)
+     * @return StreamableFileContent
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun kernelMemoryDownload(documentId: kotlin.String, filename: kotlin.String, index: kotlin.String? = null) : StreamableFileContent {
+        val localVarResponse = kernelMemoryDownloadWithHttpInfo(documentId = documentId, filename = filename, index = index)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as StreamableFileContent
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /api/kernelmemory/download
+     * Download specific document
+     * 
+     * @param documentId 
+     * @param filename 
+     * @param index  (optional)
+     * @return ApiResponse<StreamableFileContent?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun kernelMemoryDownloadWithHttpInfo(documentId: kotlin.String, filename: kotlin.String, index: kotlin.String?) : ApiResponse<StreamableFileContent?> {
+        val localVariableConfig = kernelMemoryDownloadRequestConfig(documentId = documentId, filename = filename, index = index)
+
+        return request<Unit, StreamableFileContent>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation kernelMemoryDownload
+     *
+     * @param documentId 
+     * @param filename 
+     * @param index  (optional)
+     * @return RequestConfig
+     */
+    fun kernelMemoryDownloadRequestConfig(documentId: kotlin.String, filename: kotlin.String, index: kotlin.String?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (index != null) {
+                    put("index", listOf(index.toString()))
+                }
+                put("documentId", listOf(documentId.toString()))
+                put("filename", listOf(filename.toString()))
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json, application/problem+json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/api/kernelmemory/download",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = false,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /api/kernelmemory/indexes
      * List indexes
      * 
      * @return IndexCollection
@@ -397,6 +406,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /api/kernelmemory/indexes
      * List indexes
      * 
      * @return ApiResponse<IndexCollection?>
@@ -435,6 +445,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * POST /api/kernelmemory/search
      * Search for documents in specific index
      * 
      * @param searchQuery 
@@ -466,6 +477,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * POST /api/kernelmemory/search
      * Search for documents in specific index
      * 
      * @param searchQuery 
@@ -507,6 +519,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * POST /api/kernelmemory/upload
      * Upload file for ingestion
      * 
      * @return UploadAccepted
@@ -537,6 +550,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * POST /api/kernelmemory/upload
      * Upload file for ingestion
      * 
      * @return ApiResponse<UploadAccepted?>
@@ -575,6 +589,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /api/kernelmemory/upload-status
      * Get ingestion status for specific document
      * 
      * @param documentId 
@@ -607,6 +622,7 @@ class KernelMemoryApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
+     * GET /api/kernelmemory/upload-status
      * Get ingestion status for specific document
      * 
      * @param documentId 

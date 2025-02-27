@@ -13,13 +13,13 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Coordinate {
-    /// X-axis value of the coordinate
+    /// X-axis value
     #[serde(rename = "x", skip_serializing_if = "Option::is_none")]
     pub x: Option<f32>,
-    /// Y-axis value of the coordinate
+    /// Y-axis value
     #[serde(rename = "y", skip_serializing_if = "Option::is_none")]
     pub y: Option<f32>,
-    /// Label associated with the coordinate
+    /// Coordinate label
     #[serde(rename = "label", skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
 }

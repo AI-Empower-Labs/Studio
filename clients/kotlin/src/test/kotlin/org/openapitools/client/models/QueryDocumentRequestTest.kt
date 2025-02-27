@@ -44,6 +44,54 @@ class QueryDocumentRequestTest : ShouldSpec() {
             //modelInstance.filter shouldBe ("TODO")
         }
 
+        // to test the property `searchMode` - Optional search mode defining the context or process used in the query. Supported values are 'hybrid', 'semantic'
+        should("test searchMode") {
+            // uncomment below to test the property
+            //modelInstance.searchMode shouldBe ("TODO")
+        }
+
+        // to test the property `language` - Specifies the language of the content.
+        should("test language") {
+            // uncomment below to test the property
+            //modelInstance.language shouldBe ("TODO")
+        }
+
+        // to test the property `languageDetection` - Indicates whether language detection is enabled.
+        should("test languageDetection") {
+            // uncomment below to test the property
+            //modelInstance.languageDetection shouldBe ("TODO")
+        }
+
+        // to test the property `ftsMinScore` - Minimum score for full-text search.
+        should("test ftsMinScore") {
+            // uncomment below to test the property
+            //modelInstance.ftsMinScore shouldBe ("TODO")
+        }
+
+        // to test the property `ftsWeight` - Weight for full-text search.
+        should("test ftsWeight") {
+            // uncomment below to test the property
+            //modelInstance.ftsWeight shouldBe ("TODO")
+        }
+
+        // to test the property `semanticMinRelevance` - Minimum relevance score for semantic search.
+        should("test semanticMinRelevance") {
+            // uncomment below to test the property
+            //modelInstance.semanticMinRelevance shouldBe ("TODO")
+        }
+
+        // to test the property `semanticWeight` - Weight applied for semantic search.
+        should("test semanticWeight") {
+            // uncomment below to test the property
+            //modelInstance.semanticWeight shouldBe ("TODO")
+        }
+
+        // to test the property `smoothingFactorK` - Smoothing factor (k) used in calculations.
+        should("test smoothingFactorK") {
+            // uncomment below to test the property
+            //modelInstance.smoothingFactorK shouldBe ("TODO")
+        }
+
         // to test the property `minRelevance` - Optional filter to specify minimum relevance. Typically values between 0 and 1
         should("test minRelevance") {
             // uncomment below to test the property

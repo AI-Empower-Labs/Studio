@@ -50,16 +50,17 @@ import org.openapitools.client.JSON;
 /**
  * EmbeddingResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class EmbeddingResponse {
   public static final String SERIALIZED_NAME_VECTORS = "vectors";
   @SerializedName(SERIALIZED_NAME_VECTORS)
+  @javax.annotation.Nullable
   private List<List<Float>> vectors = new ArrayList<>();
 
   public EmbeddingResponse() {
   }
 
-  public EmbeddingResponse vectors(List<List<Float>> vectors) {
+  public EmbeddingResponse vectors(@javax.annotation.Nullable List<List<Float>> vectors) {
     this.vectors = vectors;
     return this;
   }
@@ -81,7 +82,7 @@ public class EmbeddingResponse {
     return vectors;
   }
 
-  public void setVectors(List<List<Float>> vectors) {
+  public void setVectors(@javax.annotation.Nullable List<List<Float>> vectors) {
     this.vectors = vectors;
   }
 

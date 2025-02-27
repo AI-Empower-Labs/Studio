@@ -14,8 +14,6 @@
 package org.openapitools.client.api;
 
 import org.openapitools.client.ApiException;
-import org.openapitools.client.model.AskDocumentRequest;
-import org.openapitools.client.model.AskDocumentResponse;
 import org.openapitools.client.model.DataPipelineStatus;
 import java.io.File;
 import org.openapitools.client.model.HttpValidationProblemDetails;
@@ -31,6 +29,7 @@ import org.openapitools.client.model.QueryDocumentResponse;
 import org.openapitools.client.model.ReRankDocumentsRequest;
 import org.openapitools.client.model.ReRankDocumentsResponse;
 import org.openapitools.client.model.SemanticSearchQueryResultsClusteringRequest;
+import java.net.URI;
 import java.util.UUID;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -47,18 +46,6 @@ import java.util.Map;
 public class SemanticSearchApiTest {
 
     private final SemanticSearchApi api = new SemanticSearchApi();
-
-    /**
-     * Ask questions over ingested documents
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void semanticSearchAskTest() throws ApiException {
-        AskDocumentRequest askDocumentRequest = null;
-        AskDocumentResponse response = api.semanticSearchAsk(askDocumentRequest);
-        // TODO: test validations
-    }
 
     /**
      * Delete specific document by id
@@ -86,21 +73,30 @@ public class SemanticSearchApiTest {
     }
 
     /**
-     * Import file document into semantic search
+     * Ingest a File into Semantic Search
+     *
+     * Uploads and ingests a file document into the semantic search index. Supports optional configuration of index, ingestion pipeline, embedding model, and webhook for processing status.
      *
      * @throws ApiException if the Api call fails
      */
     @Test
     public void semanticSearchFileIngestionTest() throws ApiException {
+        String documentId2 = null;
         List<File> files = null;
         String documentId = null;
         String index = null;
         List<String> pipeline = null;
-        String webHookUrl = null;
+        URI webHookUrl = null;
         String embeddingModel = null;
-        Map<String, Object> args = null;
-        Map<String, Object> tags = null;
-        IngestDocumentResponse response = api.semanticSearchFileIngestion(files, documentId, index, pipeline, webHookUrl, embeddingModel, args, tags);
+        String index2 = null;
+        URI webHookUrl2 = null;
+        String embeddingModelName = null;
+        Map<String, String> context = null;
+        Map<String, List<String>> tags = null;
+        List<String> ingestionPipeline = null;
+        Boolean languageAutoDetection = null;
+        String language = null;
+        IngestDocumentResponse response = api.semanticSearchFileIngestion(documentId2, files, documentId, index, pipeline, webHookUrl, embeddingModel, index2, webHookUrl2, embeddingModelName, context, tags, ingestionPipeline, languageAutoDetection, language);
         // TODO: test validations
     }
 
@@ -129,7 +125,7 @@ public class SemanticSearchApiTest {
     }
 
     /**
-     * Query ingested documents using semantic search
+     * Performs semantic or hybrid search over previously ingested data.
      *
      * @throws ApiException if the Api call fails
      */
@@ -165,7 +161,9 @@ public class SemanticSearchApiTest {
     }
 
     /**
-     * Import plain text into semantic search
+     * Ingest Plain Text for Semantic Search
+     *
+     * Ingests a plain text document into the semantic search index. This endpoint allows associating tags and specifying the target index for enhanced search capabilities.
      *
      * @throws ApiException if the Api call fails
      */

@@ -11,18 +11,18 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-/// Centroid : Represents a centroid for a cluster, includes coordinate and array of datapoints
+/// Centroid : A cluster centroid with its coordinate and associated data points
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Centroid {
     #[serde(rename = "coordinate", skip_serializing_if = "Option::is_none")]
     pub coordinate: Option<Box<models::Coordinate>>,
-    /// Array of data points belonging to the centroid
+    /// Data points assigned to this centroid
     #[serde(rename = "dataPoints", skip_serializing_if = "Option::is_none")]
     pub data_points: Option<Vec<models::Coordinate>>,
 }
 
 impl Centroid {
-    /// Represents a centroid for a cluster, includes coordinate and array of datapoints
+    /// A cluster centroid with its coordinate and associated data points
     pub fn new() -> Centroid {
         Centroid {
             coordinate: None,

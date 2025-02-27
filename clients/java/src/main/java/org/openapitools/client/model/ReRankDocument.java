@@ -49,24 +49,27 @@ import org.openapitools.client.JSON;
 /**
  * ReRankDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ReRankDocument {
   public static final String SERIALIZED_NAME_DOCUMENT = "document";
   @SerializedName(SERIALIZED_NAME_DOCUMENT)
+  @javax.annotation.Nullable
   private String document;
 
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
+  @javax.annotation.Nullable
   private Integer index;
 
   public static final String SERIALIZED_NAME_RELEVANCE_SCORE = "relevance_score";
   @SerializedName(SERIALIZED_NAME_RELEVANCE_SCORE)
+  @javax.annotation.Nullable
   private Float relevanceScore;
 
   public ReRankDocument() {
   }
 
-  public ReRankDocument document(String document) {
+  public ReRankDocument document(@javax.annotation.Nullable String document) {
     this.document = document;
     return this;
   }
@@ -80,12 +83,12 @@ public class ReRankDocument {
     return document;
   }
 
-  public void setDocument(String document) {
+  public void setDocument(@javax.annotation.Nullable String document) {
     this.document = document;
   }
 
 
-  public ReRankDocument index(Integer index) {
+  public ReRankDocument index(@javax.annotation.Nullable Integer index) {
     this.index = index;
     return this;
   }
@@ -99,12 +102,12 @@ public class ReRankDocument {
     return index;
   }
 
-  public void setIndex(Integer index) {
+  public void setIndex(@javax.annotation.Nullable Integer index) {
     this.index = index;
   }
 
 
-  public ReRankDocument relevanceScore(Float relevanceScore) {
+  public ReRankDocument relevanceScore(@javax.annotation.Nullable Float relevanceScore) {
     this.relevanceScore = relevanceScore;
     return this;
   }
@@ -118,7 +121,7 @@ public class ReRankDocument {
     return relevanceScore;
   }
 
-  public void setRelevanceScore(Float relevanceScore) {
+  public void setRelevanceScore(@javax.annotation.Nullable Float relevanceScore) {
     this.relevanceScore = relevanceScore;
   }
 

@@ -37,12 +37,6 @@ class SemanticSearchQueryResultsClusteringRequestTest : ShouldSpec() {
             //modelInstance.maxDegreeOfParallelism shouldBe ("TODO")
         }
 
-        // to test the property `maxTokens` - The maximum number of tokens to be used in the KMeans clustering algorithm.
-        should("test maxTokens") {
-            // uncomment below to test the property
-            //modelInstance.maxTokens shouldBe ("TODO")
-        }
-
         // to test the property `index` - Optional index to specify which index to search in. Defaults to 'default'.
         should("test index") {
             // uncomment below to test the property

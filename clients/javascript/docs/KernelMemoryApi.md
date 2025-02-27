@@ -4,64 +4,15 @@ All URIs are relative to *https://studio.aiempowerlabs.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**downloadGet**](KernelMemoryApi.md#downloadGet) | **GET** /download | 
 [**kernelMemoryAsk**](KernelMemoryApi.md#kernelMemoryAsk) | **POST** /api/kernelmemory/ask | Query documents and forward result to LLM
 [**kernelMemoryDelete**](KernelMemoryApi.md#kernelMemoryDelete) | **DELETE** /api/kernelmemory/documents | Delete document from specific index
 [**kernelMemoryDeleteIndex**](KernelMemoryApi.md#kernelMemoryDeleteIndex) | **DELETE** /api/kernelmemory/indexes | Delete index
+[**kernelMemoryDownload**](KernelMemoryApi.md#kernelMemoryDownload) | **GET** /api/kernelmemory/download | Download specific document
 [**kernelMemoryGetIndex**](KernelMemoryApi.md#kernelMemoryGetIndex) | **GET** /api/kernelmemory/indexes | List indexes
 [**kernelMemorySearch**](KernelMemoryApi.md#kernelMemorySearch) | **POST** /api/kernelmemory/search | Search for documents in specific index
 [**kernelMemoryUpload**](KernelMemoryApi.md#kernelMemoryUpload) | **POST** /api/kernelmemory/upload | Upload file for ingestion
 [**kernelMemoryUploadStatus**](KernelMemoryApi.md#kernelMemoryUploadStatus) | **GET** /api/kernelmemory/upload-status | Get ingestion status for specific document
 
-
-
-## downloadGet
-
-> StreamableFileContent downloadGet(documentId, filename, opts)
-
-
-
-### Example
-
-```javascript
-import StudioAiEmpowerLabs from 'studio_ai_empower_labs';
-
-let apiInstance = new StudioAiEmpowerLabs.KernelMemoryApi();
-let documentId = "documentId_example"; // String | 
-let filename = "filename_example"; // String | 
-let opts = {
-  'index': "index_example" // String | 
-};
-apiInstance.downloadGet(documentId, filename, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **documentId** | **String**|  | 
- **filename** | **String**|  | 
- **index** | **String**|  | [optional] 
-
-### Return type
-
-[**StreamableFileContent**](StreamableFileContent.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json, application/problem+json
 
 
 ## kernelMemoryAsk
@@ -188,6 +139,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeleteAccepted**](DeleteAccepted.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/problem+json
+
+
+## kernelMemoryDownload
+
+> StreamableFileContent kernelMemoryDownload(documentId, filename, opts)
+
+Download specific document
+
+### Example
+
+```javascript
+import StudioAiEmpowerLabs from 'studio_ai_empower_labs';
+
+let apiInstance = new StudioAiEmpowerLabs.KernelMemoryApi();
+let documentId = "documentId_example"; // String | 
+let filename = "filename_example"; // String | 
+let opts = {
+  'index': "index_example" // String | 
+};
+apiInstance.kernelMemoryDownload(documentId, filename, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **documentId** | **String**|  | 
+ **filename** | **String**|  | 
+ **index** | **String**|  | [optional] 
+
+### Return type
+
+[**StreamableFileContent**](StreamableFileContent.md)
 
 ### Authorization
 

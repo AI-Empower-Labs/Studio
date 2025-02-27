@@ -70,7 +70,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
 
 <a id="languageGetLanguageList"></a>
 # **languageGetLanguageList**
@@ -129,7 +129,7 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
 
 <a id="languageTranslate"></a>
 # **languageTranslate**
@@ -192,5 +192,5 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
-| **400** | Bad Request |  -  |
+| **400** | Invalid request parameters or validation error. |  -  |
 

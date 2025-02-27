@@ -22,23 +22,23 @@ import com.squareup.moshi.JsonClass
 /**
  * 
  *
- * @param x X-axis value of the coordinate
- * @param y Y-axis value of the coordinate
- * @param label Label associated with the coordinate
+ * @param x X-axis value
+ * @param y Y-axis value
+ * @param label Coordinate label
  */
 
 
 data class Coordinate (
 
-    /* X-axis value of the coordinate */
+    /* X-axis value */
     @Json(name = "x")
     val x: kotlin.Float? = null,
 
-    /* Y-axis value of the coordinate */
+    /* Y-axis value */
     @Json(name = "y")
     val y: kotlin.Float? = null,
 
-    /* Label associated with the coordinate */
+    /* Coordinate label */
     @Json(name = "label")
     val label: kotlin.String? = null
 

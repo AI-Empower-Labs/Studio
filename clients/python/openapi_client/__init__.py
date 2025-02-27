@@ -38,8 +38,6 @@ from openapi_client.exceptions import ApiException
 
 # import models into sdk package
 from openapi_client.models.api_extract_thematic_similarity_cluster_post_request import ApiExtractThematicSimilarityClusterPostRequest
-from openapi_client.models.ask_document_request import AskDocumentRequest
-from openapi_client.models.ask_document_response import AskDocumentResponse
 from openapi_client.models.centroid import Centroid
 from openapi_client.models.citation import Citation
 from openapi_client.models.coordinate import Coordinate

@@ -49,22 +49,24 @@ import java.util.Set;
 import org.openapitools.client.JSON;
 
 /**
- * Represents a centroid for a cluster, includes coordinate and array of datapoints
+ * A cluster centroid with its coordinate and associated data points
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-09-06T09:48:45.857739981Z[Etc/UTC]", comments = "Generator version: 7.9.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-27T12:37:37.320941922Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class Centroid {
   public static final String SERIALIZED_NAME_COORDINATE = "coordinate";
   @SerializedName(SERIALIZED_NAME_COORDINATE)
+  @javax.annotation.Nullable
   private Coordinate coordinate;
 
   public static final String SERIALIZED_NAME_DATA_POINTS = "dataPoints";
   @SerializedName(SERIALIZED_NAME_DATA_POINTS)
+  @javax.annotation.Nullable
   private List<Coordinate> dataPoints = new ArrayList<>();
 
   public Centroid() {
   }
 
-  public Centroid coordinate(Coordinate coordinate) {
+  public Centroid coordinate(@javax.annotation.Nullable Coordinate coordinate) {
     this.coordinate = coordinate;
     return this;
   }
@@ -78,12 +80,12 @@ public class Centroid {
     return coordinate;
   }
 
-  public void setCoordinate(Coordinate coordinate) {
+  public void setCoordinate(@javax.annotation.Nullable Coordinate coordinate) {
     this.coordinate = coordinate;
   }
 
 
-  public Centroid dataPoints(List<Coordinate> dataPoints) {
+  public Centroid dataPoints(@javax.annotation.Nullable List<Coordinate> dataPoints) {
     this.dataPoints = dataPoints;
     return this;
   }
@@ -97,7 +99,7 @@ public class Centroid {
   }
 
   /**
-   * Array of data points belonging to the centroid
+   * Data points assigned to this centroid
    * @return dataPoints
    */
   @javax.annotation.Nullable
@@ -105,7 +107,7 @@ public class Centroid {
     return dataPoints;
   }
 
-  public void setDataPoints(List<Coordinate> dataPoints) {
+  public void setDataPoints(@javax.annotation.Nullable List<Coordinate> dataPoints) {
     this.dataPoints = dataPoints;
   }
 

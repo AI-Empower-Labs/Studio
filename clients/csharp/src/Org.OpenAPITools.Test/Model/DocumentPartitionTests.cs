@@ -18,7 +18,6 @@ using System.Collections.Generic;
 using Org.OpenAPITools.Model;
 using Org.OpenAPITools.Client;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace Org.OpenAPITools.Test.Model
 {
@@ -65,12 +64,57 @@ namespace Org.OpenAPITools.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Relevance'
+        /// Test the property 'FullTextSearchRank'
         /// </summary>
         [Fact]
-        public void RelevanceTest()
+        public void FullTextSearchRankTest()
         {
-            // TODO unit test for the property 'Relevance'
+            // TODO unit test for the property 'FullTextSearchRank'
+        }
+
+        /// <summary>
+        /// Test the property 'SemanticSimilarity'
+        /// </summary>
+        [Fact]
+        public void SemanticSimilarityTest()
+        {
+            // TODO unit test for the property 'SemanticSimilarity'
+        }
+
+        /// <summary>
+        /// Test the property 'FullTextSearchRrf'
+        /// </summary>
+        [Fact]
+        public void FullTextSearchRrfTest()
+        {
+            // TODO unit test for the property 'FullTextSearchRrf'
+        }
+
+        /// <summary>
+        /// Test the property 'SemanticRrf'
+        /// </summary>
+        [Fact]
+        public void SemanticRrfTest()
+        {
+            // TODO unit test for the property 'SemanticRrf'
+        }
+
+        /// <summary>
+        /// Test the property 'RrfScore'
+        /// </summary>
+        [Fact]
+        public void RrfScoreTest()
+        {
+            // TODO unit test for the property 'RrfScore'
+        }
+
+        /// <summary>
+        /// Test the property 'Language'
+        /// </summary>
+        [Fact]
+        public void LanguageTest()
+        {
+            // TODO unit test for the property 'Language'
         }
 
         /// <summary>
