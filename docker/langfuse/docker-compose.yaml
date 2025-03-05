@@ -30,6 +30,8 @@ services:  # Defines the services part of the compose file
       retries: 5
     volumes:
       - ./appsettings.json:/opt/aistudio/appsettings.json  # Mounts a configuration file into the container
+      - /run/user/1000/docker.sock:/var/run/docker.sock:ro  # Mounts the Docker socket into the container
+      #- /run/user/1000/podman/podman.sock:/var/run/docker.sock # Mounts the Podman socket into the container
     networks:
       - ai_internal  # Connects the service to the internal network
       - ai_public  # Connects the service to the public network
@@ -40,6 +42,13 @@ services:  # Defines the services part of the compose file
       - embedding
       - llama3
       - redis
+      - ael-ffmpeg
+
+  ael-ffmpeg:  # Redis database service implemented in ValKey
+    image: docker.io/linuxserver/ffmpeg:version-7.1-cli
+    entrypoint: tail
+    command: -f /dev/null
+    restart: unless-stopped
 
   redis:  # Redis database service implemented in ValKey
     image: docker.io/valkey/valkey:latest  # Image to use for Redis / ValKey
