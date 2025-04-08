@@ -1,0 +1,153 @@
+include:
+  - compose.base.yaml
+
+x-defaults: &defaults
+  environment: &default-environment  # Defines reusable environment variables for services
+    OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"  # Endpoint for OpenTelemetry collector
+  logging: 
+    options:
+      max-size: "100m"  # Log rotation: max log size before rotation
+      max-file: "5"  # Max number of log files to retain
+    driver: json-file  # Specifies the logging driver, here using the default JSON file driver
+
+services:  # Defines the services part of the compose file
+  collector:
+    <<: *defaults
+    image: otel/opentelemetry-collector
+    restart: unless-stopped
+    command: ["--config=/etc/otel-collector-config.yaml"]  # Command to start the collector with a specified config
+    configs:
+      - source: otel-collector-config.yaml
+        target: /etc/otel-collector-config.yaml
+    ports:
+      - 4317:4317 # App -> Collector
+    networks:
+      - ai_internal  # Connects the service to the internal network
+    depends_on:
+      - seq
+      - jaeger
+      - zipkin
+      - prometheus
+      - grafana
+      - aspire
+
+  seq:
+    <<: *defaults
+    image: datalust/seq
+    restart: unless-stopped
+    environment:
+      <<: *default-environment
+      ACCEPT_EULA: Y
+    ports:
+      - 8090:80
+    networks:
+      - ai_internal  # Connects the service to the internal network
+      - ai_public  # Connects the service to the public network
+
+  jaeger:
+    <<: *defaults
+    image: jaegertracing/all-in-one
+    restart: unless-stopped
+    ports:
+      - 16686:16686
+    networks:
+      - ai_internal  # Connects the service to the internal network
+      - ai_public  # Connects the service to the public network
+
+  zipkin:
+    <<: *defaults
+    image: openzipkin/zipkin
+    restart: unless-stopped
+    ports:
+      - 9411:9411
+    networks:
+      - ai_internal  # Connects the service to the internal network
+      - ai_public  # Connects the service to the public network
+
+  prometheus:
+    <<: *defaults
+    image: prom/prometheus
+    restart: unless-stopped
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:cached
+    networks:
+      - ai_internal  # Connects the service to the internal network
+      - ai_public  # Connects the service to the public network
+
+  grafana:
+    <<: *defaults
+    image: grafana/grafana-enterprise
+    restart: unless-stopped
+    environment:
+      <<: *default-environment
+      GF_AUTH_ANONYMOUS_ENABLED: true
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+    volumes:
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    ports:
+      - 3000:3000
+    networks:
+      - ai_internal  # Connects the service to the internal network
+      - ai_public  # Connects the service to the public network
+
+  aspire:
+    <<: *defaults
+    image: mcr.microsoft.com/dotnet/aspire-dashboard
+    restart: unless-stopped
+    ports:
+      - 18888:18888
+    networks:
+      - ai_internal  # Connects the service to the internal network
+      - ai_public  # Connects the service to the public network
+
+networks:
+  ai_public: {}  # Definition of the public network
+  ai_internal: {}  # Definition of the internal network
+
+configs:
+  otel-collector-config.yaml:
+    content: |
+      receivers:
+        otlp:
+          protocols:
+            grpc:
+              endpoint: 0.0.0.0:4317 # Expose in all network interfaces, may be unsafe depending on network configuration
+
+      exporters:
+        debug:
+
+        # Temporary Prometheus scrape endpoint.
+        # Prometheus 3.0 will include OTLP support.
+        prometheus:
+          endpoint: "0.0.0.0:9464"
+
+        otlp/jaeger:
+          endpoint: jaeger:4317
+          tls:
+            insecure: true
+
+        zipkin:
+          endpoint: http://zipkin:9411/api/v2/spans
+          format: proto
+
+        otlphttp/seq:
+          endpoint: http://seq/ingest/otlp
+
+        otlp/aspire:
+          endpoint: aspire:18889
+          tls:
+            insecure: true
+
+      service:
+        pipelines:
+          traces:
+            receivers: [otlp]
+            exporters: [debug, otlp/jaeger, zipkin, otlphttp/seq, otlp/aspire]
+          metrics:
+            receivers: [otlp]
+            exporters: [debug, prometheus, otlp/aspire]
+          logs:
+            receivers: [otlp]
+            exporters: [debug, otlphttp/seq, otlp/aspire]

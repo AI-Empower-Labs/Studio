@@ -1,0 +1,186 @@
+x-defaults: &defaults
+  environment: &default-environment  # Defines reusable environment variables for services
+    OTEL_EXPORTER_OTLP_ENDPOINT: "http://collector:4317"  # Endpoint for OpenTelemetry collector
+  logging: 
+    options:
+      max-size: "100m"  # Log rotation: max log size before rotation
+      max-file: "5"  # Max number of log files to retain
+    driver: json-file  # Specifies the logging driver, here using the default JSON file driver
+
+services:  # Defines the services part of the compose file
+  aistudio:  # Service definition for the main application host
+    <<: *defaults
+    image: registry.aiempowerlabs.com/aistudio:latest  # Specifies the Docker image to use
+    restart: unless-stopped  # Restart policy: restart if the container stops unexpectedly
+    ports:
+      - "8080:8080"  # Port mapping: Maps port 8080 of the container to port 8080 on the host
+    healthcheck:  # Health check using a curl command to a local endpoint
+      test: ["CMD", "curl", "-f", "http://localhost:8080/liveness"]
+      interval: 1m
+      timeout: 20s
+      retries: 5
+    configs:
+      - source: appsettings.json
+        target: /app/appsettings.json
+    volumes:
+      - models:/models
+    networks:
+      - ai_internal  # Connects the service to the internal network
+      - ai_public  # Connects the service to the public network
+    depends_on:  # Specifies dependencies on other services
+      - postgres
+      - embedding
+      - llama3
+      - redis
+
+  redis:  # Redis database service implemented in ValKey
+    <<: *defaults
+    image: docker.io/valkey/valkey:latest  # Image to use for Redis / ValKey
+    restart: unless-stopped
+    networks:
+      - ai_internal  # Connects the database service to the internal network only
+
+  postgres:  # PostgreSQL database service
+    <<: *defaults
+    image: docker.io/pgvector/pgvector:pg17  # Image to use for PostgreSQL
+    restart: unless-stopped
+    environment:  # Database credentials
+      <<: *default-environment
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:  # Checks the health of the service
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d postgres'"]
+      interval: 10s  # Health check interval
+      timeout: 3s  # Timeout for the health check
+      retries: 3  # Number of retries before considering the service unhealthy
+    networks:
+      - ai_internal  # Connects the database service to the internal network only
+
+  llama3:  # Service for LLM llama3
+    <<: *defaults
+    image: ollama/ollama
+    restart: unless-stopped
+    tty: true
+    entrypoint: ["/bin/sh", "-c", "ollama serve & ollama pull llama3.1 && tail -f /dev/null"]
+    environment:
+      <<: *default-environment
+      OLLAMA_KEEP_ALIVE: 24h
+    healthcheck:  # Health check using a curl command to a local endpoint
+      test: ["CMD", "curl", "-f", "http://localhost:11434"]
+      interval: 1m
+      timeout: 20s
+      retries: 5
+    volumes:
+      - models:/root/.ollama
+    networks:
+      - ai_internal  # Connects to the internal network
+
+  embedding:  # Embedding service
+    <<: *defaults
+    image: michaelf34/infinity:latest
+    command: "v2 --model-id mixedbread-ai/mxbai-embed-large-v1 --model-id mixedbread-ai/mxbai-rerank-large-v1"
+    ulimits:
+      nofile:
+        soft: 500000
+        hard: 500000
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:7997/health"]
+      interval: 10s
+      timeout: 10s
+      retries: 120
+    volumes:
+      - models:/app/.cache
+    restart: unless-stopped
+    networks:
+      - ai_internal  # Connects to the internal network
+
+networks:
+  ai_public: {}  # Definition of the public network
+  ai_internal: {}  # Definition of the internal network
+
+configs:
+  appsettings.json:
+    content: |
+      {
+          "AllowedHosts": "*",
+          "ConnectionStrings": {
+              "postgres": "Host=postgres;Port=5432;User Id=postgres;Database=postgres;SearchPath=public;Password=password;Pooling=true",
+              "redis": "redis"
+          },
+          "AiStudioOptions": {
+              "ModelFolder": "/models",
+              "Llm": {
+                  "llama3.1": {
+                      "Default": "true",
+                      "Address": "http://llama3:11434/v1/chat/completions",
+                      "ContextSize": "8192",
+                      "DisplayName": "llama3 7B",
+                      "EmulateFunctionCalling": true,
+                      "Tokenizer": "llama",
+                      "ResponseReplacements": [
+                          {
+                              "Regex": "\"tool_calls\".*:.*null",
+                              "Replacement": "\"tool_calls\":[]"
+                          },
+                          {
+                              "Regex": "\"finish_reason\".*:.*\"eos\"",
+                              "Replacement": "\"finish_reason\":\"stop\""
+                          }
+                      ]
+                  }
+              },
+              "Embedding": {
+                  "mixedbread-ai/mxbai-embed-large-v1": {
+                      "Default": true,
+                      "Address": "http://embedding:7997/embeddings",
+                      "MaxTokens": "512",
+                      "Dimensions": "1024",
+                      "DisplayName": "mxbai-embed-large-v1",
+                      "Tokenizer": "mxbai-embed-large-v1"
+                  }
+              },
+              "ReRanker": {
+                  "mixedbread-ai/mxbai-rerank-large-v1": {
+                      "Default": true,
+                      "Address": "http://embedding:7997/rerank",
+                      "DisplayName": "mxbai-rerank"
+                  }
+              }
+          },
+          "KernelMemory": {
+              "DataIngestion": {
+                  "DefaultSteps": [
+                      "extract",
+                      "sanitize",
+                      "extract_audio",
+                      "partition",
+                      "gen_embeddings",
+                      "save_records"
+                  ],
+                  "TextPartitioning": {
+                      "MaxTokensPerParagraph": 512,
+                      "MaxTokensPerLine": 200,
+                      "OverlappingTokens": 80
+                  }
+              }
+          },
+          "Serilog": {
+              "MinimumLevel": {
+                  "Default": "Debug",
+                  "Override": {
+                      "Microsoft": "Warning",
+                      "Microsoft.Hosting.Lifetime": "Information",
+                      "System": "Warning",
+                      "Wolverine": "Warning",
+                      "Marten": "Warning",
+                      "Npgsql": "Warning"
+                  }
+              }
+          }
+      }
+
+volumes:
+  pgdata:
+  models:
